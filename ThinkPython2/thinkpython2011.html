@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Lists</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2010.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2012.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec113">Chapter&#XA0;10&#XA0;&#XA0;Lists</h1>
+<p>This chapter presents one of Python&#X2019;s most useful built-in types, lists.
+You will also learn more about objects and what can happen when you have
+more than one name for the same object.</p>
+<h2 class="section" id="sec114">10.1&#XA0;&#XA0;A list is a sequence</h2>
+<p>
+<a id="sequence"></a></p><p>Like a string, a <span class="c010">list</span> is a sequence of values. In a string, the
+values are characters; in a list, they can be any type. The values in
+a list are called <span class="c010">elements</span> or sometimes <span class="c010">items</span>.
+<a id="hevea_default696"></a>
+<a id="hevea_default697"></a>
+<a id="hevea_default698"></a>
+<a id="hevea_default699"></a>
+<a id="hevea_default700"></a></p><p>There are several ways to create a new list; the simplest is to
+enclose the elements in square brackets (<code>[</code> and <code>]</code>):</p><pre class="verbatim">[10, 20, 30, 40]
+['crunchy frog', 'ram bladder', 'lark vomit']
+</pre><p>The first example is a list of four integers. The second is a list of
+three strings. The elements of a list don&#X2019;t have to be the same type.
+The following list contains a string, a float, an integer, and
+(lo!) another list:</p><pre class="verbatim">['spam', 2.0, 5, [10, 20]]
+</pre><p>A list within another list is <span class="c010">nested</span>.
+<a id="hevea_default701"></a>
+<a id="hevea_default702"></a></p><p>A list that contains no elements is
+called an empty list; you can create one with empty
+brackets, <code>[]</code>.
+<a id="hevea_default703"></a>
+<a id="hevea_default704"></a></p><p>As you might expect, you can assign list values to variables:</p><pre class="verbatim">&gt;&gt;&gt; cheeses = ['Cheddar', 'Edam', 'Gouda']
+&gt;&gt;&gt; numbers = [42, 123]
+&gt;&gt;&gt; empty = []
+&gt;&gt;&gt; print(cheeses, numbers, empty)
+['Cheddar', 'Edam', 'Gouda'] [42, 123] []
+</pre><p><a id="hevea_default705"></a></p>
+<h2 class="section" id="sec115">10.2&#XA0;&#XA0;Lists are mutable</h2>
+<p>
+<a id="mutable"></a>
+<a id="hevea_default706"></a>
+<a id="hevea_default707"></a>
+<a id="hevea_default708"></a>
+<a id="hevea_default709"></a>
+<a id="hevea_default710"></a></p><p>The syntax for accessing the elements of a list is the same as for
+accessing the characters of a string&#X2014;the bracket operator. The
+expression inside the brackets specifies the index. Remember that the
+indices start at 0:</p><pre class="verbatim">&gt;&gt;&gt; cheeses[0]
+'Cheddar'
+</pre><p>Unlike strings, lists are mutable. When the bracket operator appears
+on the left side of an assignment, it identifies the element of the
+list that will be assigned.
+<a id="hevea_default711"></a></p><pre class="verbatim">&gt;&gt;&gt; numbers = [42, 123]
+&gt;&gt;&gt; numbers[1] = 5
+&gt;&gt;&gt; numbers
+[42, 5]
+</pre><p>The one-eth element of <span class="c004">numbers</span>, which
+used to be 123, is now 5.
+<a id="hevea_default712"></a>
+<a id="hevea_default713"></a></p><p>Figure&#XA0;<a href="thinkpython2011.html#fig.liststate">10.1</a> shows 
+the state diagram for <span class="c004">cheeses</span>, <span class="c004">numbers</span> and <span class="c004">empty</span>:
+<a id="hevea_default714"></a>
+<a id="hevea_default715"></a></p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2011.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 10.1: State diagram.</td></tr>
+</table></div>
+<a id="fig.liststate"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>Lists are represented by boxes with the word &#X201C;list&#X201D; outside
+and the elements of the list inside. <span class="c004">cheeses</span> refers to
+a list with three elements indexed 0, 1 and 2.
+<span class="c004">numbers</span> contains two elements; the diagram shows that the
+value of the second element has been reassigned from 123 to 5.
+<span class="c004">empty</span> refers to a list with no elements.
+<a id="hevea_default716"></a>
+<a id="hevea_default717"></a>
+<a id="hevea_default718"></a></p><p>List indices work the same way as string indices:</p><ul class="itemize"><li class="li-itemize">Any integer expression can be used as an index.</li><li class="li-itemize">If you try to read or write an element that does not exist, you
+get an <span class="c004">IndexError</span>.
+<a id="hevea_default719"></a>
+<a id="hevea_default720"></a></li><li class="li-itemize">If an index has a negative value, it counts backward from the
+end of the list.</li></ul><p>
+<a id="hevea_default721"></a></p><p><a id="hevea_default722"></a>
+<a id="hevea_default723"></a>
+<a id="hevea_default724"></a>
+<a id="hevea_default725"></a></p><p>The <span class="c004">in</span> operator also works on lists.</p><pre class="verbatim">&gt;&gt;&gt; cheeses = ['Cheddar', 'Edam', 'Gouda']
+&gt;&gt;&gt; 'Edam' in cheeses
+True
+&gt;&gt;&gt; 'Brie' in cheeses
+False
+</pre>
+<h2 class="section" id="sec116">10.3&#XA0;&#XA0;Traversing a list</h2>
+<p>
+<a id="hevea_default726"></a>
+<a id="hevea_default727"></a>
+<a id="hevea_default728"></a>
+<a id="hevea_default729"></a>
+<a id="hevea_default730"></a></p><p>The most common way to traverse the elements of a list is
+with a <span class="c004">for</span> loop. The syntax is the same as for strings:</p><pre class="verbatim">for cheese in cheeses:
+    print(cheese)
+</pre><p>This works well if you only need to read the elements of the
+list. But if you want to write or update the elements, you
+need the indices. A common way to do that is to combine
+the built-in functions <span class="c004">range</span> and <span class="c004">len</span>:
+<a id="hevea_default731"></a>
+<a id="hevea_default732"></a></p><pre class="verbatim">for i in range(len(numbers)):
+    numbers[i] = numbers[i] * 2
+</pre><p>This loop traverses the list and updates each element. <span class="c004">len</span>
+returns the number of elements in the list. <span class="c004">range</span> returns
+a list of indices from 0 to <span class="c009">n</span>&#X2212;1, where <span class="c009">n</span> is the length of
+the list. Each time through the loop <span class="c004">i</span> gets the index
+of the next element. The assignment statement in the body uses
+<span class="c004">i</span> to read the old value of the element and to assign the
+new value.
+<a id="hevea_default733"></a>
+<a id="hevea_default734"></a></p><p>A <span class="c004">for</span> loop over an empty list never runs the body:</p><pre class="verbatim">for x in []:
+    print('This never happens.')
+</pre><p>Although a list can contain another list, the nested
+list still counts as a single element. The length of this list is
+four:
+<a id="hevea_default735"></a>
+<a id="hevea_default736"></a></p><pre class="verbatim">['spam', 1, ['Brie', 'Roquefort', 'Pol le Veq'], [1, 2, 3]]
+</pre>
+<h2 class="section" id="sec117">10.4&#XA0;&#XA0;List operations</h2>
+<p>
+<a id="hevea_default737"></a></p><p>The <span class="c004">+</span> operator concatenates lists:
+<a id="hevea_default738"></a>
+<a id="hevea_default739"></a></p><pre class="verbatim">&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; b = [4, 5, 6]
+&gt;&gt;&gt; c = a + b
+&gt;&gt;&gt; c
+[1, 2, 3, 4, 5, 6]
+</pre><p>The <span class="c004">*</span> operator repeats a list a given number of times:
+<a id="hevea_default740"></a>
+<a id="hevea_default741"></a></p><pre class="verbatim">&gt;&gt;&gt; [0] * 4
+[0, 0, 0, 0]
+&gt;&gt;&gt; [1, 2, 3] * 3
+[1, 2, 3, 1, 2, 3, 1, 2, 3]
+</pre><p>The first example repeats <span class="c004">[0]</span> four times. The second example
+repeats the list <span class="c004">[1, 2, 3]</span> three times.</p>
+<h2 class="section" id="sec118">10.5&#XA0;&#XA0;List slices</h2>
+<p>
+<a id="hevea_default742"></a>
+<a id="hevea_default743"></a>
+<a id="hevea_default744"></a>
+<a id="hevea_default745"></a>
+<a id="hevea_default746"></a></p><p>The slice operator also works on lists:</p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c', 'd', 'e', 'f']
+&gt;&gt;&gt; t[1:3]
+['b', 'c']
+&gt;&gt;&gt; t[:4]
+['a', 'b', 'c', 'd']
+&gt;&gt;&gt; t[3:]
+['d', 'e', 'f']
+</pre><p>If you omit the first index, the slice starts at the beginning.
+If you omit the second, the slice goes to the end. So if you
+omit both, the slice is a copy of the whole list.
+<a id="hevea_default747"></a>
+<a id="hevea_default748"></a>
+<a id="hevea_default749"></a></p><pre class="verbatim">&gt;&gt;&gt; t[:]
+['a', 'b', 'c', 'd', 'e', 'f']
+</pre><p>Since lists are mutable, it is often useful to make a copy
+before performing operations that modify lists.
+<a id="hevea_default750"></a></p><p>A slice operator on the left side of an assignment
+can update multiple elements:
+<a id="hevea_default751"></a>
+<a id="hevea_default752"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c', 'd', 'e', 'f']
+&gt;&gt;&gt; t[1:3] = ['x', 'y']
+&gt;&gt;&gt; t
+['a', 'x', 'y', 'd', 'e', 'f']
+</pre>
+<h2 class="section" id="sec119">10.6&#XA0;&#XA0;List methods</h2>
+<p>
+<a id="hevea_default753"></a>
+<a id="hevea_default754"></a></p><p>Python provides methods that operate on lists. For example,
+<span class="c004">append</span> adds a new element to the end of a list:
+<a id="hevea_default755"></a>
+<a id="hevea_default756"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c']
+&gt;&gt;&gt; t.append('d')
+&gt;&gt;&gt; t
+['a', 'b', 'c', 'd']
+</pre><p><span class="c004">extend</span> takes a list as an argument and appends all of
+the elements:
+<a id="hevea_default757"></a>
+<a id="hevea_default758"></a></p><pre class="verbatim">&gt;&gt;&gt; t1 = ['a', 'b', 'c']
+&gt;&gt;&gt; t2 = ['d', 'e']
+&gt;&gt;&gt; t1.extend(t2)
+&gt;&gt;&gt; t1
+['a', 'b', 'c', 'd', 'e']
+</pre><p>This example leaves <span class="c004">t2</span> unmodified.</p><p><span class="c004">sort</span> arranges the elements of the list from low to high:
+<a id="hevea_default759"></a>
+<a id="hevea_default760"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['d', 'c', 'e', 'b', 'a']
+&gt;&gt;&gt; t.sort()
+&gt;&gt;&gt; t
+['a', 'b', 'c', 'd', 'e']
+</pre><p>Most list methods are void; they modify the list and return <span class="c004">None</span>.
+If you accidentally write <span class="c004">t = t.sort()</span>, you will be disappointed
+with the result.
+<a id="hevea_default761"></a>
+<a id="hevea_default762"></a>
+<a id="hevea_default763"></a>
+<a id="hevea_default764"></a></p>
+<h2 class="section" id="sec120">10.7&#XA0;&#XA0;Map, filter and reduce</h2>
+<p>
+<a id="filter"></a></p><p>To add up all the numbers in a list, you can use a loop like this:</p><pre class="verbatim">def add_all(t):
+    total = 0
+    for x in t:
+        total += x
+    return total
+</pre><p><span class="c004">total</span> is initialized to 0. Each time through the loop,
+<span class="c004">x</span> gets one element from the list. The <span class="c004">+=</span> operator
+provides a short way to update a variable. This 
+<span class="c010">augmented assignment statement</span>,
+<a id="hevea_default765"></a>
+<a id="hevea_default766"></a>
+<a id="hevea_default767"></a>
+<a id="hevea_default768"></a></p><pre class="verbatim">    total += x
+</pre><p>is equivalent to</p><pre class="verbatim">    total = total + x
+</pre><p>As the loop runs, <span class="c004">total</span> accumulates the sum of the
+elements; a variable used this way is sometimes called an
+<span class="c010">accumulator</span>.
+<a id="hevea_default769"></a></p><p>Adding up the elements of a list is such a common operation
+that Python provides it as a built-in function, <span class="c004">sum</span>:</p><pre class="verbatim">&gt;&gt;&gt; t = [1, 2, 3]
+&gt;&gt;&gt; sum(t)
+6
+</pre><p>An operation like this that combines a sequence of elements into
+a single value is sometimes called <span class="c010">reduce</span>.
+<a id="hevea_default770"></a>
+<a id="hevea_default771"></a>
+<a id="hevea_default772"></a></p><p>Sometimes you want to traverse one list while building
+another. For example, the following function takes a list of strings
+and returns a new list that contains capitalized strings:</p><pre class="verbatim">def capitalize_all(t):
+    res = []
+    for s in t:
+        res.append(s.capitalize())
+    return res
+</pre><p><span class="c004">res</span> is initialized with an empty list; each time through
+the loop, we append the next element. So <span class="c004">res</span> is another
+kind of accumulator.
+<a id="hevea_default773"></a></p><p>An operation like <code>capitalize_all</code> is sometimes called a <span class="c010">map</span> because it &#X201C;maps&#X201D; a function (in this case the method <span class="c004">capitalize</span>) onto each of the elements in a sequence.
+<a id="hevea_default774"></a>
+<a id="hevea_default775"></a>
+<a id="hevea_default776"></a>
+<a id="hevea_default777"></a></p><p>Another common operation is to select some of the elements from
+a list and return a sublist. For example, the following
+function takes a list of strings and returns a list that contains
+only the uppercase strings:</p><pre class="verbatim">def only_upper(t):
+    res = []
+    for s in t:
+        if s.isupper():
+            res.append(s)
+    return res
+</pre><p><span class="c004">isupper</span> is a string method that returns <span class="c004">True</span> if
+the string contains only upper case letters.</p><p>An operation like <code>only_upper</code> is called a <span class="c010">filter</span> because
+it selects some of the elements and filters out the others.</p><p>Most common list operations can be expressed as a combination
+of map, filter and reduce.</p>
+<h2 class="section" id="sec121">10.8&#XA0;&#XA0;Deleting elements</h2>
+<p>
+<a id="hevea_default778"></a>
+<a id="hevea_default779"></a></p><p>There are several ways to delete elements from a list. If you
+know the index of the element you want, you can use
+<span class="c004">pop</span>:
+<a id="hevea_default780"></a>
+<a id="hevea_default781"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c']
+&gt;&gt;&gt; x = t.pop(1)
+&gt;&gt;&gt; t
+['a', 'c']
+&gt;&gt;&gt; x
+'b'
+</pre><p><span class="c004">pop</span> modifies the list and returns the element that was removed.
+If you don&#X2019;t provide an index, it deletes and returns the
+last element.</p><p>If you don&#X2019;t need the removed value, you can use the <span class="c004">del</span>
+operator:
+<a id="hevea_default782"></a>
+<a id="hevea_default783"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c']
+&gt;&gt;&gt; del t[1]
+&gt;&gt;&gt; t
+['a', 'c']
+</pre><p>If you know the element you want to remove (but not the index), you
+can use <span class="c004">remove</span>:
+<a id="hevea_default784"></a>
+<a id="hevea_default785"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c']
+&gt;&gt;&gt; t.remove('b')
+&gt;&gt;&gt; t
+['a', 'c']
+</pre><p>The return value from <span class="c004">remove</span> is <span class="c004">None</span>.
+<a id="hevea_default786"></a>
+<a id="hevea_default787"></a></p><p>To remove more than one element, you can use <span class="c004">del</span> with
+a slice index:</p><pre class="verbatim">&gt;&gt;&gt; t = ['a', 'b', 'c', 'd', 'e', 'f']
+&gt;&gt;&gt; del t[1:5]
+&gt;&gt;&gt; t
+['a', 'f']
+</pre><p>As usual, the slice selects all the elements up to but not
+including the second index.</p>
+<h2 class="section" id="sec122">10.9&#XA0;&#XA0;Lists and strings</h2>
+<p>
+<a id="hevea_default788"></a>
+<a id="hevea_default789"></a>
+<a id="hevea_default790"></a></p><p>A string is a sequence of characters and a list is a sequence
+of values, but a list of characters is not the same as a
+string. To convert from a string to a list of characters,
+you can use <span class="c004">list</span>:
+<a id="hevea_default791"></a>
+<a id="hevea_default792"></a></p><pre class="verbatim">&gt;&gt;&gt; s = 'spam'
+&gt;&gt;&gt; t = list(s)
+&gt;&gt;&gt; t
+['s', 'p', 'a', 'm']
+</pre><p>Because <span class="c004">list</span> is the name of a built-in function, you should
+avoid using it as a variable name. I also avoid <span class="c004">l</span> because
+it looks too much like <span class="c004">1</span>. So that&#X2019;s why I use <span class="c004">t</span>.</p><p>The <span class="c004">list</span> function breaks a string into individual letters. If
+you want to break a string into words, you can use the <span class="c004">split</span>
+method:
+<a id="hevea_default793"></a>
+<a id="hevea_default794"></a></p><pre class="verbatim">&gt;&gt;&gt; s = 'pining for the fjords'
+&gt;&gt;&gt; t = s.split()
+&gt;&gt;&gt; t
+['pining', 'for', 'the', 'fjords']
+</pre><p>An optional argument called a <span class="c010">delimiter</span> specifies which
+characters to use as word boundaries.
+The following example
+uses a hyphen as a delimiter:
+<a id="hevea_default795"></a>
+<a id="hevea_default796"></a>
+<a id="hevea_default797"></a></p><pre class="verbatim">&gt;&gt;&gt; s = 'spam-spam-spam'
+&gt;&gt;&gt; delimiter = '-'
+&gt;&gt;&gt; t = s.split(delimiter)
+&gt;&gt;&gt; t
+['spam', 'spam', 'spam']
+</pre><p><span class="c004">join</span> is the inverse of <span class="c004">split</span>. It
+takes a list of strings and
+concatenates the elements. <span class="c004">join</span> is a string method,
+so you have to invoke it on the delimiter and pass the
+list as a parameter:
+<a id="hevea_default798"></a>
+<a id="hevea_default799"></a>
+<a id="hevea_default800"></a></p><pre class="verbatim">&gt;&gt;&gt; t = ['pining', 'for', 'the', 'fjords']
+&gt;&gt;&gt; delimiter = ' '
+&gt;&gt;&gt; s = delimiter.join(t)
+&gt;&gt;&gt; s
+'pining for the fjords'
+</pre><p>In this case the delimiter is a space character, so
+<span class="c004">join</span> puts a space between words. To concatenate
+strings without spaces, you can use the empty string,
+<code>''</code>, as a delimiter. 
+<a id="hevea_default801"></a>
+<a id="hevea_default802"></a></p>
+<h2 class="section" id="sec123">10.10&#XA0;&#XA0;Objects and values</h2>
+<p>
+<a id="equivalence"></a>
+<a id="hevea_default803"></a>
+<a id="hevea_default804"></a></p><p>If we run these assignment statements:</p><pre class="verbatim">a = 'banana'
+b = 'banana'
+</pre><p>We know that <span class="c004">a</span> and <span class="c004">b</span> both refer to a
+string, but we don&#X2019;t
+know whether they refer to the <em>same</em> string.
+There are two possible states, shown in Figure&#XA0;<a href="thinkpython2011.html#fig.list1">10.2</a>.
+<a id="hevea_default805"></a></p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2012.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 10.2: State diagram.</td></tr>
+</table></div>
+<a id="fig.list1"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>In one case, <span class="c004">a</span> and <span class="c004">b</span> refer to two different objects that
+have the same value. In the second case, they refer to the same
+object.
+<a id="hevea_default806"></a>
+<a id="hevea_default807"></a></p><p>To check whether two variables refer to the same object, you can
+use the <span class="c004">is</span> operator.</p><pre class="verbatim">&gt;&gt;&gt; a = 'banana'
+&gt;&gt;&gt; b = 'banana'
+&gt;&gt;&gt; a is b
+True
+</pre><p>In this example, Python only created one string object, and both <span class="c004">a</span> and <span class="c004">b</span> refer to it. But when you create two lists, you get
+two objects:</p><pre class="verbatim">&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; b = [1, 2, 3]
+&gt;&gt;&gt; a is b
+False
+</pre><p>So the state diagram looks like Figure&#XA0;<a href="thinkpython2011.html#fig.list2">10.3</a>.
+<a id="hevea_default808"></a>
+<a id="hevea_default809"></a></p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2013.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 10.3: State diagram.</td></tr>
+</table></div>
+<a id="fig.list2"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>In this case we would say that the two lists are <span class="c010">equivalent</span>,
+because they have the same elements, but not <span class="c010">identical</span>, because
+they are not the same object. If two objects are identical, they are
+also equivalent, but if they are equivalent, they are not necessarily
+identical.
+<a id="hevea_default810"></a>
+<a id="hevea_default811"></a></p><p>Until now, we have been using &#X201C;object&#X201D; and &#X201C;value&#X201D;
+interchangeably, but it is more precise to say that an object has a
+value. If you evaluate <span class="c004">[1, 2, 3]</span>, you get a list
+object whose value is a sequence of integers. If another
+list has the same elements, we say it has the same value, but
+it is not the same object.
+<a id="hevea_default812"></a>
+<a id="hevea_default813"></a></p>
+<h2 class="section" id="sec124">10.11&#XA0;&#XA0;Aliasing</h2>
+<p>
+<a id="hevea_default814"></a>
+<a id="hevea_default815"></a></p><p>If <span class="c004">a</span> refers to an object and you assign <span class="c004">b = a</span>,
+then both variables refer to the same object:</p><pre class="verbatim">&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; b = a
+&gt;&gt;&gt; b is a
+True
+</pre><p>The state diagram looks like Figure&#XA0;<a href="thinkpython2011.html#fig.list3">10.4</a>.
+<a id="hevea_default816"></a>
+<a id="hevea_default817"></a></p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2014.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 10.4: State diagram.</td></tr>
+</table></div>
+<a id="fig.list3"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>The association of a variable with an object is called a <span class="c010">reference</span>. In this example, there are two references to the same
+object.
+<a id="hevea_default818"></a></p><p>An object with more than one reference has more
+than one name, so we say that the object is <span class="c010">aliased</span>.
+<a id="hevea_default819"></a></p><p>If the aliased object is mutable, changes made with one alias affect
+the other:</p><pre class="verbatim">&gt;&gt;&gt; b[0] = 42
+&gt;&gt;&gt; a
+[42, 2, 3]
+</pre><p>Although this behavior can be useful, it is error-prone. In general,
+it is safer to avoid aliasing when you are working with mutable
+objects.
+<a id="hevea_default820"></a></p><p>For immutable objects like strings, aliasing is not as much of a
+problem. In this example:</p><pre class="verbatim">a = 'banana'
+b = 'banana'
+</pre><p>It almost never makes a difference whether <span class="c004">a</span> and <span class="c004">b</span> refer
+to the same string or not.</p>
+<h2 class="section" id="sec125">10.12&#XA0;&#XA0;List arguments</h2>
+<p>
+<a id="list.arguments"></a>
+<a id="hevea_default821"></a>
+<a id="hevea_default822"></a>
+<a id="hevea_default823"></a>
+<a id="hevea_default824"></a>
+<a id="hevea_default825"></a></p><p>When you pass a list to a function, the function gets a reference to
+the list. If the function modifies the list, the caller sees
+the change. For example, <code>delete_head</code> removes the first element
+from a list:</p><pre class="verbatim">def delete_head(t):
+    del t[0]
+</pre><p>Here&#X2019;s how it is used:</p><pre class="verbatim">&gt;&gt;&gt; letters = ['a', 'b', 'c']
+&gt;&gt;&gt; delete_head(letters)
+&gt;&gt;&gt; letters
+['b', 'c']
+</pre><p>The parameter <span class="c004">t</span> and the variable <span class="c004">letters</span> are
+aliases for the same object. The stack diagram looks like
+Figure&#XA0;<a href="thinkpython2011.html#fig.stack5">10.5</a>.
+<a id="hevea_default826"></a>
+<a id="hevea_default827"></a></p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2015.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 10.5: Stack diagram.</td></tr>
+</table></div>
+<a id="fig.stack5"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>Since the list is shared by two frames, I drew
+it between them.</p><p>It is important to distinguish between operations that
+modify lists and operations that create new lists. For
+example, the <span class="c004">append</span> method modifies a list, but the
+<span class="c004">+</span> operator creates a new list.
+<a id="hevea_default828"></a>
+<a id="hevea_default829"></a>
+<a id="hevea_default830"></a>
+<a id="hevea_default831"></a></p><p>Here&#X2019;s an example using <span class="c004">append</span>:
+</p><pre class="verbatim">&gt;&gt;&gt; t1 = [1, 2]
+&gt;&gt;&gt; t2 = t1.append(3)
+&gt;&gt;&gt; t1
+[1, 2, 3]
+&gt;&gt;&gt; t2
+None
+</pre><p>The return value from <span class="c004">append</span> is <span class="c004">None</span>.</p><p>Here&#X2019;s an example using the <span class="c004">+</span> operator:
+</p><pre class="verbatim">&gt;&gt;&gt; t3 = t1 + [4]
+&gt;&gt;&gt; t1
+[1, 2, 3]
+&gt;&gt;&gt; t3
+[1, 2, 3, 4]
+</pre><p>The result of the operator is a new list, and the original list is
+unchanged.</p><p>This difference is important when you write functions that
+are supposed to modify lists. For example, this function
+<em>does not</em> delete the head of a list:
+</p><pre class="verbatim">def bad_delete_head(t):
+    t = t[1:]              # WRONG!
+</pre><p>The slice operator creates a new list and the assignment
+makes <span class="c004">t</span> refer to it, but that doesn&#X2019;t affect the caller.
+<a id="hevea_default832"></a>
+<a id="hevea_default833"></a>
+</p><pre class="verbatim">&gt;&gt;&gt; t4 = [1, 2, 3]
+&gt;&gt;&gt; bad_delete_head(t4)
+&gt;&gt;&gt; t4
+[1, 2, 3]
+</pre><p>At the beginning of <code>bad_delete_head</code>, <span class="c004">t</span> and <span class="c004">t4</span>
+refer to the same list. At the end, <span class="c004">t</span> refers to a new list,
+but <span class="c004">t4</span> still refers to the original, unmodified list.</p><p>An alternative is to write a function that creates and
+returns a new list. For
+example, <span class="c004">tail</span> returns all but the first
+element of a list:</p><pre class="verbatim">def tail(t):
+    return t[1:]
+</pre><p>This function leaves the original list unmodified.
+Here&#X2019;s how it is used:</p><pre class="verbatim">&gt;&gt;&gt; letters = ['a', 'b', 'c']
+&gt;&gt;&gt; rest = tail(letters)
+&gt;&gt;&gt; rest
+['b', 'c']
+</pre>
+<h2 class="section" id="sec126">10.13&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="hevea_default834"></a></p><p>Careless use of lists (and other mutable objects)
+can lead to long hours of debugging. Here are some common
+pitfalls and ways to avoid them:</p><ol class="enumerate" type=1><li class="li-enumerate">Most list methods modify the argument and
+return <span class="c004">None</span>. This is the opposite of the string methods,
+which return a new string and leave the original alone.<p>If you are used to writing string code like this:</p><pre class="verbatim">word = word.strip()
+</pre><p>It is tempting to write list code like this:</p><pre class="verbatim">t = t.sort()           # WRONG!
+</pre><p><a id="hevea_default835"></a>
+<a id="hevea_default836"></a></p><p>Because <span class="c004">sort</span> returns <span class="c004">None</span>, the
+next operation you perform with <span class="c004">t</span> is likely to fail.</p><p>Before using list methods and operators, you should read the
+documentation carefully and then test them in interactive mode.</p></li><li class="li-enumerate">Pick an idiom and stick with it.<p>Part of the problem with lists is that there are too many
+ways to do things. For example, to remove an element from
+a list, you can use <span class="c004">pop</span>, <span class="c004">remove</span>, <span class="c004">del</span>,
+or even a slice assignment.</p><p>To add an element, you can use the <span class="c004">append</span> method or
+the <span class="c004">+</span> operator. Assuming that <span class="c004">t</span> is a list and
+<span class="c004">x</span> is a list element, these are correct: </p><pre class="verbatim">t.append(x)
+t = t + [x]
+t += [x]
+</pre><p>And these are wrong:</p><pre class="verbatim">t.append([x])          # WRONG!
+t = t.append(x)        # WRONG!
+t + [x]                # WRONG!
+t = t + x              # WRONG!
+</pre><p>Try out each of these examples in interactive mode to make sure
+you understand what they do. Notice that only the last
+one causes a runtime error; the other three are legal, but they
+do the wrong thing.</p></li><li class="li-enumerate">Make copies to avoid aliasing.
+<a id="hevea_default837"></a>
+<a id="hevea_default838"></a><p>If you want to use a method like <span class="c004">sort</span> that modifies
+the argument, but you need to keep the original list as
+well, you can make a copy.</p><pre class="verbatim">&gt;&gt;&gt; t = [3, 1, 2]
+&gt;&gt;&gt; t2 = t[:]
+&gt;&gt;&gt; t2.sort()
+&gt;&gt;&gt; t
+[3, 1, 2]
+&gt;&gt;&gt; t2
+[1, 2, 3]
+</pre><p>In this example you could also use the built-in function <span class="c004">sorted</span>,
+which returns a new, sorted list and leaves the original alone.
+<a id="hevea_default839"></a>
+<a id="hevea_default840"></a></p><pre class="verbatim">&gt;&gt;&gt; t2 = sorted(t)
+&gt;&gt;&gt; t
+[3, 1, 2]
+&gt;&gt;&gt; t2
+[1, 2, 3]
+</pre></li></ol>
+<h2 class="section" id="sec127">10.14&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">list:</span></dt><dd class="dd-description"> A sequence of values.
+<a id="hevea_default841"></a></dd><dt class="dt-description"><span class="c010">element:</span></dt><dd class="dd-description"> One of the values in a list (or other sequence),
+also called items.
+<a id="hevea_default842"></a></dd><dt class="dt-description"><span class="c010">nested list:</span></dt><dd class="dd-description"> A list that is an element of another list.
+<a id="hevea_default843"></a></dd><dt class="dt-description"><span class="c010">accumulator:</span></dt><dd class="dd-description"> A variable used in a loop to add up or
+accumulate a result.
+<a id="hevea_default844"></a></dd><dt class="dt-description"><span class="c010">augmented assignment:</span></dt><dd class="dd-description"> A statement that updates the value
+of a variable using an operator like <code>+=</code>.
+<a id="hevea_default845"></a>
+<a id="hevea_default846"></a>
+<a id="hevea_default847"></a></dd><dt class="dt-description"><span class="c010">reduce:</span></dt><dd class="dd-description"> A processing pattern that traverses a sequence 
+and accumulates the elements into a single result.
+<a id="hevea_default848"></a>
+<a id="hevea_default849"></a></dd><dt class="dt-description"><span class="c010">map:</span></dt><dd class="dd-description"> A processing pattern that traverses a sequence and
+performs an operation on each element.
+<a id="hevea_default850"></a>
+<a id="hevea_default851"></a></dd><dt class="dt-description"><span class="c010">filter:</span></dt><dd class="dd-description"> A processing pattern that traverses a list and
+selects the elements that satisfy some criterion.
+<a id="hevea_default852"></a>
+<a id="hevea_default853"></a></dd><dt class="dt-description"><span class="c010">object:</span></dt><dd class="dd-description"> Something a variable can refer to. An object
+has a type and a value.
+<a id="hevea_default854"></a></dd><dt class="dt-description"><span class="c010">equivalent:</span></dt><dd class="dd-description"> Having the same value.
+<a id="hevea_default855"></a></dd><dt class="dt-description"><span class="c010">identical:</span></dt><dd class="dd-description"> Being the same object (which implies equivalence).
+<a id="hevea_default856"></a></dd><dt class="dt-description"><span class="c010">reference:</span></dt><dd class="dd-description"> The association between a variable and its value.
+<a id="hevea_default857"></a></dd><dt class="dt-description"><span class="c010">aliasing:</span></dt><dd class="dd-description"> A circumstance where two or more variables refer to the same
+object.
+<a id="hevea_default858"></a></dd><dt class="dt-description"><span class="c010">delimiter:</span></dt><dd class="dd-description"> A character or string used to indicate where a
+string should be split.
+<a id="hevea_default859"></a></dd></dl>
+<h2 class="section" id="sec128">10.15&#XA0;&#XA0;Exercises</h2>
+<p>You can download solutions to these exercises from
+<a href="http://thinkpython2.com/code/list_exercises.py"><span class="c004">http://thinkpython2.com/code/list_exercises.py</span></a>.</p><div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>Write a function called <code>nested_sum</code> that takes a list of lists
+of integers and adds up the elements from all of the nested lists.
+For example:</em></p><pre class="verbatim"><em>&gt;&gt;&gt; t = [[1, 2], [3], [4, 5, 6]]
+&gt;&gt;&gt; nested_sum(t)
+21
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;
+<a id="cumulative"></a>
+<a id="hevea_default860"></a><p><em>Write a function called <span class="c004">cumsum</span> that takes a list of numbers and
+returns the cumulative sum; that is, a new list where the </em><span class="c009">i</span><em>th
+element is the sum of the first </em><span class="c009">i</span>+1<em> elements from the original list.
+For example:</em></p><pre class="verbatim"><em>&gt;&gt;&gt; t = [1, 2, 3]
+&gt;&gt;&gt; cumsum(t)
+[1, 3, 6]
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;3</span>&#XA0;&#XA0;<p><em>Write a function called <code>middle</code> that takes a list and
+returns a new list that contains all but the first and last
+elements. For example:</em></p><pre class="verbatim"><em>&gt;&gt;&gt; t = [1, 2, 3, 4]
+&gt;&gt;&gt; middle(t)
+[2, 3]
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;4</span>&#XA0;&#XA0;<p><em>Write a function called <code>chop</code> that takes a list, modifies it
+by removing the first and last elements, and returns <span class="c004">None</span>.
+For example:</em></p><pre class="verbatim"><em>&gt;&gt;&gt; t = [1, 2, 3, 4]
+&gt;&gt;&gt; chop(t)
+&gt;&gt;&gt; t
+[2, 3]
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;5</span>&#XA0;&#XA0;<em>
+Write a function called <code>is_sorted</code> that takes a list as a
+parameter and returns <span class="c004">True</span> if the list is sorted in ascending
+order and <span class="c004">False</span> otherwise. For example:</em><pre class="verbatim"><em>&gt;&gt;&gt; is_sorted([1, 2, 2])
+True
+&gt;&gt;&gt; is_sorted(['b', 'a'])
+False
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;6</span>&#XA0;&#XA0;
+<a id="anagram"></a>
+<a id="hevea_default861"></a><p><em>Two words are anagrams if you can rearrange the letters from one
+to spell the other. Write a function called <code>is_anagram</code>
+that takes two strings and returns <span class="c004">True</span> if they are anagrams.
+</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;7</span>&#XA0;&#XA0;
+<a id="duplicate"></a>
+<a id="hevea_default862"></a>
+<a id="hevea_default863"></a><p><em>Write a function called <code>has_duplicates</code> that takes
+a list and returns <span class="c004">True</span> if there is any element that
+appears more than once. It should not modify the original
+list.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;8</span>&#XA0;&#XA0;<p><em>This exercise pertains to the so-called Birthday Paradox, which you
+can read about at </em><a href="http://en.wikipedia.org/wiki/Birthday_paradox"><em><span class="c004">http://en.wikipedia.org/wiki/Birthday_paradox</span></em></a><em>.
+</em><a id="hevea_default864"></a></p><p><em>If there are 23 students in your class, what are the chances
+that two of you have the same birthday? You can estimate this
+probability by generating random samples of 23 birthdays
+and checking for matches. Hint: you can generate random birthdays
+with the <span class="c004">randint</span> function in the <span class="c004">random</span> module.
+</em><a id="hevea_default865"></a>
+<a id="hevea_default866"></a>
+<a id="hevea_default867"></a>
+<a id="hevea_default868"></a></p><p><em>You can download my
+solution from </em><a href="http://thinkpython2.com/code/birthday.py"><em><span class="c004">http://thinkpython2.com/code/birthday.py</span></em></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;9</span>&#XA0;&#XA0;
+<a id="hevea_default869"></a>
+<a id="hevea_default870"></a>
+<a id="hevea_default871"></a>
+<a id="hevea_default872"></a><p><em>Write a function that reads the file <span class="c004">words.txt</span> and builds
+a list with one element per word. Write two versions of
+this function, one using the <span class="c004">append</span> method and the
+other using the idiom <span class="c004">t = t + [x]</span>. Which one takes
+longer to run? Why?</em></p><p><em>Solution: </em><a href="http://thinkpython2.com/code/wordlist.py"><span class="c004"><em>http://thinkpython2.com/code/wordlist.py</em></span></a><em>.
+</em><a id="hevea_default873"></a>
+<a id="hevea_default874"></a></p></div><div class="theorem"><span class="c010">Exercise&#XA0;10</span>&#XA0;&#XA0;
+<a id="wordlist1"></a>
+<a id="bisection"></a>
+<a id="hevea_default875"></a>
+<a id="hevea_default876"></a>
+<a id="hevea_default877"></a>
+<a id="hevea_default878"></a>
+<a id="hevea_default879"></a>
+<a id="hevea_default880"></a><p><em>To check whether a word is in the word list, you could use
+the <span class="c004">in</span> operator, but it would be slow because it searches
+through the words in order.</em></p><p><em>Because the words are in alphabetical order, we can speed things up
+with a bisection search (also known as binary search), which is
+similar to what you do when you look a word up in the dictionary. You
+start in the middle and check to see whether the word you are looking
+for comes before the word in the middle of the list. If so, you
+search the first half of the list the same way. Otherwise you search
+the second half.</em></p><p><em>Either way, you cut the remaining search space in half. If the
+word list has 113,809 words, it will take about 17 steps to
+find the word or conclude that it&#X2019;s not there.</em></p><p><em>Write a function called <code>in_bisect</code> that takes a sorted list
+and a target value and returns the index of the value
+in the list if it&#X2019;s there, or <span class="c004">None</span> if it&#X2019;s not.
+</em><a id="hevea_default881"></a>
+<a id="hevea_default882"></a></p><p><em>Or you could read the documentation of the <span class="c004">bisect</span> module
+and use that! Solution: </em><a href="http://thinkpython2.com/code/inlist.py"><span class="c004"><em>http://thinkpython2.com/code/inlist.py</em></span></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;11</span>&#XA0;&#XA0;
+<a id="hevea_default883"></a><p><em>Two words are a &#X201C;reverse pair&#X201D; if each is the reverse of the
+other. Write a program that finds all the reverse pairs in the
+word list. Solution: </em><a href="http://thinkpython2.com/code/reverse_pair.py"><em><span class="c004">http://thinkpython2.com/code/reverse_pair.py</span></em></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;12</span>&#XA0;&#XA0;
+<a id="hevea_default884"></a><p><em>Two words &#X201C;interlock&#X201D; if taking alternating letters from each forms
+a new word. For example, &#X201C;shoe&#X201D; and &#X201C;cold&#X201D;
+interlock to form &#X201C;schooled&#X201D;.
+Solution: </em><a href="http://thinkpython2.com/code/interlock.py"><em><span class="c004">http://thinkpython2.com/code/interlock.py</span></em></a><em>.
+Credit: This exercise is inspired by an example at </em><a href="http://puzzlers.org"><em><span class="c004">http://puzzlers.org</span></em></a><em>.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Write a program that finds all pairs of words that interlock.
+Hint: don&#X2019;t enumerate all pairs!</em></li><li class="li-enumerate"><em>Can you find any words that are three-way interlocked; that is,
+every third letter forms a word, starting from the first, second or
+third?</em></li></ol></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

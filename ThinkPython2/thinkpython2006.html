@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Conditionals and recursion</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2005.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2007.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec54">Chapter&#XA0;5&#XA0;&#XA0;Conditionals and recursion</h1>
+<p>The main topic of this chapter is the <span class="c004">if</span> statement, which
+executes different code depending on the state of the program.
+But first I want to introduce two new operators: floor division
+and modulus.</p>
+<h2 class="section" id="sec55">5.1&#XA0;&#XA0;Floor division and modulus</h2>
+<p>The <span class="c010">floor division</span> operator, <code>//</code>, divides
+two numbers and rounds down to an integer. For example, suppose the
+run time of a movie is 105 minutes. You might want to know how
+long that is in hours. Conventional division
+returns a floating-point number:</p><pre class="verbatim">&gt;&gt;&gt; minutes = 105
+&gt;&gt;&gt; minutes / 60
+1.75
+</pre><p>But we don&#X2019;t normally write hours with decimal points. Floor
+division returns the integer number of hours, dropping the
+fraction part:</p><pre class="verbatim">&gt;&gt;&gt; minutes = 105
+&gt;&gt;&gt; hours = minutes // 60
+&gt;&gt;&gt; hours
+1
+</pre><p>To get the remainder, you could subtract off one hour in minutes:</p><pre class="verbatim">&gt;&gt;&gt; remainder = minutes - hours * 60
+&gt;&gt;&gt; remainder
+45
+</pre><p><a id="hevea_default311"></a>
+<a id="hevea_default312"></a>
+<a id="hevea_default313"></a>
+<a id="hevea_default314"></a>
+<a id="hevea_default315"></a>
+<a id="hevea_default316"></a></p><p>An alternative is to use the <span class="c010">modulus operator</span>, <code>%</code>, which
+divides two numbers and returns the remainder.</p><pre class="verbatim">&gt;&gt;&gt; remainder = minutes % 60
+&gt;&gt;&gt; remainder
+45
+</pre><p>The modulus operator is more useful than it seems. For
+example, you can check whether one number is divisible by another&#X2014;if
+<span class="c004">x % y</span> is zero, then <span class="c004">x</span> is divisible by <span class="c004">y</span>.
+<a id="hevea_default317"></a></p><p>Also, you can extract the right-most digit
+or digits from a number. For example, <span class="c004">x % 10</span> yields the
+right-most digit of <span class="c004">x</span> (in base 10). Similarly <span class="c004">x % 100</span>
+yields the last two digits.</p><p>If you are using Python 2, division works differently. The
+division operator, <code>/</code>, performs floor division if both
+operands are integers, and floating-point division if either
+operand is a <span class="c004">float</span>.
+<a id="hevea_default318"></a></p>
+<h2 class="section" id="sec56">5.2&#XA0;&#XA0;Boolean expressions</h2>
+<p>
+<a id="hevea_default319"></a>
+<a id="hevea_default320"></a>
+<a id="hevea_default321"></a>
+<a id="hevea_default322"></a></p><p>A <span class="c010">boolean expression</span> is an expression that is either true
+or false. The following examples use the 
+operator <span class="c004">==</span>, which compares two operands and produces
+<span class="c004">True</span> if they are equal and <span class="c004">False</span> otherwise:</p><pre class="verbatim">&gt;&gt;&gt; 5 == 5
+True
+&gt;&gt;&gt; 5 == 6
+False
+</pre><p><span class="c004">True</span> and <span class="c004">False</span> are special
+values that belong to the type <span class="c004">bool</span>; they are not strings:
+<a id="hevea_default323"></a>
+<a id="hevea_default324"></a>
+<a id="hevea_default325"></a>
+<a id="hevea_default326"></a>
+<a id="hevea_default327"></a>
+<a id="hevea_default328"></a></p><pre class="verbatim">&gt;&gt;&gt; type(True)
+&lt;class 'bool'&gt;
+&gt;&gt;&gt; type(False)
+&lt;class 'bool'&gt;
+</pre><p>The <span class="c004">==</span> operator is one of the <span class="c010">relational operators</span>; the
+others are:</p><pre class="verbatim">      x != y               # x is not equal to y
+      x &gt; y                # x is greater than y
+      x &lt; y                # x is less than y
+      x &gt;= y               # x is greater than or equal to y
+      x &lt;= y               # x is less than or equal to y
+</pre><p>Although these operations are probably familiar to you, the Python
+symbols are different from the mathematical symbols. A common error
+is to use a single equal sign (<span class="c004">=</span>) instead of a double equal sign
+(<span class="c004">==</span>). Remember that <span class="c004">=</span> is an assignment operator and
+<span class="c004">==</span> is a relational operator. There is no such thing as
+<span class="c004">=&lt;</span> or <span class="c004">=&gt;</span>.
+<a id="hevea_default329"></a>
+<a id="hevea_default330"></a></p>
+<h2 class="section" id="sec57">5.3&#XA0;&#XA0;Logical operators</h2>
+<p>
+<a id="hevea_default331"></a>
+<a id="hevea_default332"></a></p><p>There are three <span class="c010">logical operators</span>: <span class="c004">and</span>, <span class="c004">or</span>, and <span class="c004">not</span>. The semantics (meaning) of these operators is
+similar to their meaning in English. For example,
+<span class="c004">x &gt; 0 and x &lt; 10</span> is true only if <span class="c004">x</span> is greater than 0
+<em>and</em> less than 10.
+<a id="hevea_default333"></a>
+<a id="hevea_default334"></a>
+<a id="hevea_default335"></a>
+<a id="hevea_default336"></a>
+<a id="hevea_default337"></a>
+<a id="hevea_default338"></a></p><p><span class="c004">n%2 == 0 or n%3 == 0</span> is true if <em>either or both</em> of the
+conditions is true, that is, if the number is divisible by 2 <em>or</em>
+3.</p><p>Finally, the <span class="c004">not</span> operator negates a boolean
+expression, so <span class="c004">not (x &gt; y)</span> is true if <span class="c004">x &gt; y</span> is false,
+that is, if <span class="c004">x</span> is less than or equal to <span class="c004">y</span>.</p><p>Strictly speaking, the operands of the logical operators should be
+boolean expressions, but Python is not very strict.
+Any nonzero number is interpreted as <span class="c004">True</span>:</p><pre class="verbatim">&gt;&gt;&gt; 42 and True
+True
+</pre><p>This flexibility can be useful, but there are some subtleties to
+it that might be confusing. You might want to avoid it (unless
+you know what you are doing).</p>
+<h2 class="section" id="sec58">5.4&#XA0;&#XA0;Conditional execution</h2>
+<p>
+<a id="conditional.execution"></a></p><p><a id="hevea_default339"></a>
+<a id="hevea_default340"></a>
+<a id="hevea_default341"></a>
+<a id="hevea_default342"></a>
+<a id="hevea_default343"></a>
+In order to write useful programs, we almost always need the ability
+to check conditions and change the behavior of the program
+accordingly. <span class="c010">Conditional statements</span> give us this ability. The
+simplest form is the <span class="c004">if</span> statement:</p><pre class="verbatim">if x &gt; 0:
+    print('x is positive')
+</pre><p>The boolean expression after <span class="c004">if</span> is
+called the <span class="c010">condition</span>. If it is true, the indented
+statement runs. If not, nothing happens.
+<a id="hevea_default344"></a>
+<a id="hevea_default345"></a>
+<a id="hevea_default346"></a></p><p><span class="c004">if</span> statements have the same structure as function definitions:
+a header followed by an indented body. Statements like this are
+called <span class="c010">compound statements</span>.</p><p>There is no limit on the number of statements that can appear in
+the body, but there has to be at least one.
+Occasionally, it is useful to have a body with no statements (usually
+as a place keeper for code you haven&#X2019;t written yet). In that
+case, you can use the <span class="c004">pass</span> statement, which does nothing.
+<a id="hevea_default347"></a>
+<a id="hevea_default348"></a></p><pre class="verbatim">if x &lt; 0:
+    pass          # TODO: need to handle negative values!
+</pre>
+<h2 class="section" id="sec59">5.5&#XA0;&#XA0;Alternative execution</h2>
+<p>
+<a id="alternative.execution"></a>
+<a id="hevea_default349"></a>
+<a id="hevea_default350"></a>
+<a id="hevea_default351"></a></p><p>A second form of the <span class="c004">if</span> statement is &#X201C;alternative execution&#X201D;,
+in which there are two possibilities and the condition determines
+which one runs. The syntax looks like this:</p><pre class="verbatim">if x % 2 == 0:
+    print('x is even')
+else:
+    print('x is odd')
+</pre><p>If the remainder when <span class="c004">x</span> is divided by 2 is 0, then we know that
+<span class="c004">x</span> is even, and the program displays an appropriate message. If
+the condition is false, the second set of statements runs.
+Since the condition must be true or false, exactly one of the
+alternatives will run. The alternatives are called <span class="c010">branches</span>, because they are branches in the flow of execution.
+<a id="hevea_default352"></a></p>
+<h2 class="section" id="sec60">5.6&#XA0;&#XA0;Chained conditionals</h2>
+<p>
+<a id="hevea_default353"></a>
+<a id="hevea_default354"></a></p><p>Sometimes there are more than two possibilities and we need more than
+two branches. One way to express a computation like that is a <span class="c010">chained conditional</span>:</p><pre class="verbatim">if x &lt; y:
+    print('x is less than y')
+elif x &gt; y:
+    print('x is greater than y')
+else:
+    print('x and y are equal')
+</pre><p><span class="c004">elif</span> is an abbreviation of &#X201C;else if&#X201D;. Again, exactly one
+branch will run. There is no limit on the number of <span class="c004">elif</span> statements. If there is an <span class="c004">else</span> clause, it has to be
+at the end, but there doesn&#X2019;t have to be one.
+<a id="hevea_default355"></a>
+<a id="hevea_default356"></a></p><pre class="verbatim">if choice == 'a':
+    draw_a()
+elif choice == 'b':
+    draw_b()
+elif choice == 'c':
+    draw_c()
+</pre><p>Each condition is checked in order. If the first is false,
+the next is checked, and so on. If one of them is
+true, the corresponding branch runs and the statement
+ends. Even if more than one condition is true, only the
+first true branch runs. </p>
+<h2 class="section" id="sec61">5.7&#XA0;&#XA0;Nested conditionals</h2>
+<p>
+<a id="hevea_default357"></a>
+<a id="hevea_default358"></a></p><p>One conditional can also be nested within another. We could have
+written the example in the previous section like this:</p><pre class="verbatim">if x == y:
+    print('x and y are equal')
+else:
+    if x &lt; y:
+        print('x is less than y')
+    else:
+        print('x is greater than y')
+</pre><p>The outer conditional contains two branches. The
+first branch contains a simple statement. The second branch
+contains another <span class="c004">if</span> statement, which has two branches of its
+own. Those two branches are both simple statements,
+although they could have been conditional statements as well.</p><p>Although the indentation of the statements makes the structure
+apparent, <span class="c010">nested conditionals</span> become difficult to read very
+quickly. It is a good idea to avoid them when you can.</p><p>Logical operators often provide a way to simplify nested conditional
+statements. For example, we can rewrite the following code using a
+single conditional:</p><pre class="verbatim">if 0 &lt; x:
+    if x &lt; 10:
+        print('x is a positive single-digit number.')
+</pre><p>The <span class="c004">print</span> statement runs only if we make it past both
+conditionals, so we can get the same effect with the <span class="c004">and</span> operator:</p><pre class="verbatim">if 0 &lt; x and x &lt; 10:
+    print('x is a positive single-digit number.')
+</pre><p>For this kind of condition, Python provides a more concise option:</p><pre class="verbatim">if 0 &lt; x &lt; 10:
+    print('x is a positive single-digit number.')
+</pre>
+<h2 class="section" id="sec62">5.8&#XA0;&#XA0;Recursion</h2>
+<p>
+<a id="recursion"></a>
+<a id="hevea_default359"></a></p><p>It is legal for one function to call another;
+it is also legal for a function to call itself. It may not be obvious
+why that is a good thing, but it turns out to be one of the most
+magical things a program can do.
+For example, look at the following function:</p><pre class="verbatim">def countdown(n):
+    if n &lt;= 0:
+        print('Blastoff!')
+    else:
+        print(n)
+        countdown(n-1)
+</pre><p>If <span class="c004">n</span> is 0 or negative, it outputs the word, &#X201C;Blastoff!&#X201D;
+Otherwise, it outputs <span class="c004">n</span> and then calls a function named <span class="c004">countdown</span>&#X2014;itself&#X2014;passing <span class="c004">n-1</span> as an argument.</p><p>What happens if we call this function like this?</p><pre class="verbatim">&gt;&gt;&gt; countdown(3)
+</pre><p>The execution of <span class="c004">countdown</span> begins with <span class="c004">n=3</span>, and since
+<span class="c004">n</span> is greater than 0, it outputs the value 3, and then calls itself...</p><blockquote class="quote">
+The execution of <span class="c004">countdown</span> begins with <span class="c004">n=2</span>, and since
+<span class="c004">n</span> is greater than 0, it outputs the value 2, and then calls itself...<blockquote class="quote">
+The execution of <span class="c004">countdown</span> begins with <span class="c004">n=1</span>, and since
+<span class="c004">n</span> is greater than 0, it outputs the value 1, and then calls itself...<blockquote class="quote">
+The execution of <span class="c004">countdown</span> begins with <span class="c004">n=0</span>, and since <span class="c004">n</span> is not greater than 0, it outputs the word, &#X201C;Blastoff!&#X201D; and then
+returns.
+</blockquote><p>The <span class="c004">countdown</span> that got <span class="c004">n=1</span> returns.
+</p></blockquote><p>The <span class="c004">countdown</span> that got <span class="c004">n=2</span> returns.
+</p></blockquote><p>The <span class="c004">countdown</span> that got <span class="c004">n=3</span> returns.</p><p>And then you&#X2019;re back in <code>__main__</code>. So, the
+total output looks like this:</p><pre class="verbatim">3
+2
+1
+Blastoff!
+</pre><p>A function that calls itself is <span class="c010">recursive</span>; the process of
+executing it is called <span class="c010">recursion</span>.
+<a id="hevea_default360"></a>
+<a id="hevea_default361"></a></p><p>As another example, we can write a function that prints a
+string <span class="c004">n</span> times.</p><pre class="verbatim">def print_n(s, n):
+    if n &lt;= 0:
+        return
+    print(s)
+    print_n(s, n-1)
+</pre><p>If <span class="c004">n &lt;= 0</span> the <span class="c010">return statement</span> exits the function. The
+flow of execution immediately returns to the caller, and the remaining
+lines of the function don&#X2019;t run.
+<a id="hevea_default362"></a>
+<a id="hevea_default363"></a></p><p>The rest of the function is similar to <span class="c004">countdown</span>: it displays
+<span class="c004">s</span> and then calls itself to display <span class="c004">s</span> <span class="c009">n</span>&#X2212;1 additional
+times. So the number of lines of output is <span class="c004">1 + (n - 1)</span>, which
+adds up to <span class="c004">n</span>.</p><p>For simple examples like this, it is probably easier to use a <span class="c004">for</span> loop. But we will see examples later that are hard to write
+with a <span class="c004">for</span> loop and easy to write with recursion, so it is
+good to start early.
+<a id="hevea_default364"></a>
+<a id="hevea_default365"></a></p>
+<h2 class="section" id="sec63">5.9&#XA0;&#XA0;Stack diagrams for recursive functions</h2>
+<p>
+<a id="recursive.stack"></a>
+<a id="hevea_default366"></a>
+<a id="hevea_default367"></a>
+<a id="hevea_default368"></a></p><p>In Section&#XA0;<a href="thinkpython2004.html#stackdiagram">3.9</a>, we used a stack diagram to represent
+the state of a program during a function call. The same kind of
+diagram can help interpret a recursive function.</p><p>Every time a function gets called, Python creates a
+frame to contain the function&#X2019;s local variables and parameters.
+For a recursive function, there might be more than one frame on the
+stack at the same time.</p><p>Figure&#XA0;<a href="thinkpython2006.html#fig.stack2">5.1</a> shows a stack diagram for <span class="c004">countdown</span> called with
+<span class="c004">n = 3</span>.</p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2005.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 5.1: Stack diagram.</td></tr>
+</table></div>
+<a id="fig.stack2"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>As usual, the top of the stack is the frame for <code>__main__</code>.
+It is empty because we did not create any variables in 
+<code>__main__</code> or pass any arguments to it.
+<a id="hevea_default369"></a>
+<a id="hevea_default370"></a></p><p>The four <span class="c004">countdown</span> frames have different values for the
+parameter <span class="c004">n</span>. The bottom of the stack, where <span class="c004">n=0</span>, is
+called the <span class="c010">base case</span>. It does not make a recursive call, so
+there are no more frames.</p><p>As an exercise, draw a stack diagram for <code>print_n</code> called with
+<code>s = 'Hello'</code> and <span class="c004">n=2</span>.
+Then write a function called <code>do_n</code> that takes a function
+object and a number, <span class="c004">n</span>, as arguments, and that calls
+the given function <span class="c004">n</span> times.</p>
+<h2 class="section" id="sec64">5.10&#XA0;&#XA0;Infinite recursion</h2>
+<p>
+<a id="hevea_default371"></a>
+<a id="hevea_default372"></a>
+<a id="hevea_default373"></a>
+<a id="hevea_default374"></a>
+<a id="hevea_default375"></a></p><p>If a recursion never reaches a base case, it goes on making
+recursive calls forever, and the program never terminates. This is
+known as <span class="c010">infinite recursion</span>, and it is generally not
+a good idea. Here is a minimal program with an infinite recursion:</p><pre class="verbatim">def recurse():
+    recurse()
+</pre><p>In most programming environments, a program with infinite recursion
+does not really run forever. Python reports an error
+message when the maximum recursion depth is reached:
+<a id="hevea_default376"></a>
+<a id="hevea_default377"></a></p><pre class="verbatim">  File "&lt;stdin&gt;", line 2, in recurse
+  File "&lt;stdin&gt;", line 2, in recurse
+  File "&lt;stdin&gt;", line 2, in recurse
+                  .   
+                  .
+                  .
+  File "&lt;stdin&gt;", line 2, in recurse
+RuntimeError: Maximum recursion depth exceeded
+</pre><p>This traceback is a little bigger than the one we saw in the
+previous chapter. When the error occurs, there are 1000
+<span class="c004">recurse</span> frames on the stack!</p><p>If you write encounter an infinite recursion by accident, review
+your function to confirm that there is a base case that does not
+make a recursive call. And if there is a base case, check whether
+you are guaranteed to reach it.</p>
+<h2 class="section" id="sec65">5.11&#XA0;&#XA0;Keyboard input</h2>
+<p>
+<a id="hevea_default378"></a></p><p>The programs we have written so far accept no input from the user.
+They just do the same thing every time.</p><p>Python provides a built-in function called <span class="c004">input</span> that
+stops the program and
+waits for the user to type something. When the user presses <span class="c006">Return</span> or <span class="c006">Enter</span>, the program resumes and <code>input</code>
+returns what the user typed as a string. In Python 2, the same
+function is called <code>raw_input</code>.
+<a id="hevea_default379"></a>
+<a id="hevea_default380"></a>
+<a id="hevea_default381"></a></p><pre class="verbatim">&gt;&gt;&gt; text = input()
+What are you waiting for?
+&gt;&gt;&gt; text
+'What are you waiting for?'
+</pre><p>Before getting input from the user, it is a good idea to print a
+prompt telling the user what to type. <code>input</code> can take a
+prompt as an argument:
+<a id="hevea_default382"></a></p><pre class="verbatim">&gt;&gt;&gt; name = input('What...is your name?\n')
+What...is your name?
+Arthur, King of the Britons!
+&gt;&gt;&gt; name
+'Arthur, King of the Britons!'
+</pre><p>The sequence <code>\n</code> at the end of the prompt represents a <span class="c010">newline</span>, which is a special character that causes a line break.
+That&#X2019;s why the user&#X2019;s input appears below the prompt. <a id="hevea_default383"></a></p><p>If you expect the user to type an integer, you can try to convert
+the return value to <span class="c004">int</span>:</p><pre class="verbatim">&gt;&gt;&gt; prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
+&gt;&gt;&gt; speed = input(prompt)
+What...is the airspeed velocity of an unladen swallow?
+42
+&gt;&gt;&gt; int(speed)
+42
+</pre><p>But if the user types something other than a string of digits,
+you get an error:</p><pre class="verbatim">&gt;&gt;&gt; speed = input(prompt)
+What...is the airspeed velocity of an unladen swallow?
+What do you mean, an African or a European swallow?
+&gt;&gt;&gt; int(speed)
+ValueError: invalid literal for int() with base 10
+</pre><p>We will see how to handle this kind of error later.
+<a id="hevea_default384"></a>
+<a id="hevea_default385"></a></p>
+<h2 class="section" id="sec66">5.12&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="whitespace"></a>
+<a id="hevea_default386"></a>
+<a id="hevea_default387"></a></p><p>When a syntax or runtime error occurs, the error message contains
+a lot of information, but it can be overwhelming. The most
+useful parts are usually:</p><ul class="itemize"><li class="li-itemize">What kind of error it was, and</li><li class="li-itemize">Where it occurred.</li></ul><p>Syntax errors are usually easy to find, but there are a few
+gotchas. Whitespace errors can be tricky because spaces and
+tabs are invisible and we are used to ignoring them.
+<a id="hevea_default388"></a></p><pre class="verbatim">&gt;&gt;&gt; x = 5
+&gt;&gt;&gt;  y = 6
+  File "&lt;stdin&gt;", line 1
+    y = 6
+    ^
+IndentationError: unexpected indent
+</pre><p>In this example, the problem is that the second line is indented by
+one space. But the error message points to <span class="c004">y</span>, which is
+misleading. In general, error messages indicate where the problem was
+discovered, but the actual error might be earlier in the code,
+sometimes on a previous line.
+<a id="hevea_default389"></a>
+<a id="hevea_default390"></a></p><p>The same is true of runtime errors. Suppose you are trying
+to compute a signal-to-noise ratio in decibels. The formula
+is <span class="c009">SNR</span><sub><span class="c009">db</span></sub> = 10 log<sub>10</sub> (<span class="c009">P</span><sub><span class="c009">signal</span></sub> / <span class="c009">P</span><sub><span class="c009">noise</span></sub>). In Python,
+you might write something like this:</p><pre class="verbatim">import math
+signal_power = 9
+noise_power = 10
+ratio = signal_power // noise_power
+decibels = 10 * math.log10(ratio)
+print(decibels)
+</pre><p>When you run this program, you get an exception:
+<a id="hevea_default391"></a>
+<a id="hevea_default392"></a></p><pre class="verbatim">Traceback (most recent call last):
+  File "snr.py", line 5, in ?
+    decibels = 10 * math.log10(ratio)
+ValueError: math domain error
+</pre><p>The error message indicates line 5, but there is nothing
+wrong with that line. To find the real error, it might be
+useful to print the value of <span class="c004">ratio</span>, which turns out to
+be 0. The problem is in line 4, which uses floor division
+instead of floating-point division.
+<a id="hevea_default393"></a>
+<a id="hevea_default394"></a></p><p>You should take the time to read error messages carefully, but don&#X2019;t
+assume that everything they say is correct.</p>
+<h2 class="section" id="sec67">5.13&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">floor division:</span></dt><dd class="dd-description"> An operator, denoted <span class="c004">//</span>, that divides two
+numbers and rounds down (toward zero) to an integer.
+<a id="hevea_default395"></a> 
+<a id="hevea_default396"></a></dd><dt class="dt-description"><span class="c010">modulus operator:</span></dt><dd class="dd-description"> An operator, denoted with a percent sign
+(<span class="c004">%</span>), that works on integers and returns the remainder when one
+number is divided by another.
+<a id="hevea_default397"></a>
+<a id="hevea_default398"></a></dd><dt class="dt-description"><span class="c010">boolean expression:</span></dt><dd class="dd-description"> An expression whose value is either 
+<span class="c004">True</span> or <span class="c004">False</span>.
+<a id="hevea_default399"></a>
+<a id="hevea_default400"></a></dd><dt class="dt-description"><span class="c010">relational operator:</span></dt><dd class="dd-description"> One of the operators that compares
+its operands: <span class="c004">==</span>, <span class="c004">!=</span>, <span class="c004">&gt;</span>, <span class="c004">&lt;</span>, <span class="c004">&gt;=</span>, and <span class="c004">&lt;=</span>.</dd><dt class="dt-description"><span class="c010">logical operator:</span></dt><dd class="dd-description"> One of the operators that combines boolean
+expressions: <span class="c004">and</span>, <span class="c004">or</span>, and <span class="c004">not</span>.</dd><dt class="dt-description"><span class="c010">conditional statement:</span></dt><dd class="dd-description"> A statement that controls the flow of
+execution depending on some condition.
+<a id="hevea_default401"></a>
+<a id="hevea_default402"></a></dd><dt class="dt-description"><span class="c010">condition:</span></dt><dd class="dd-description"> The boolean expression in a conditional statement
+that determines which branch runs.
+<a id="hevea_default403"></a></dd><dt class="dt-description"><span class="c010">compound statement:</span></dt><dd class="dd-description"> A statement that consists of a header
+and a body. The header ends with a colon (:). The body is indented
+relative to the header.
+<a id="hevea_default404"></a></dd><dt class="dt-description"><span class="c010">branch:</span></dt><dd class="dd-description"> One of the alternative sequences of statements in
+a conditional statement.
+<a id="hevea_default405"></a></dd><dt class="dt-description"><span class="c010">chained conditional:</span></dt><dd class="dd-description"> A conditional statement with a series
+of alternative branches.
+<a id="hevea_default406"></a>
+<a id="hevea_default407"></a></dd><dt class="dt-description"><span class="c010">nested conditional:</span></dt><dd class="dd-description"> A conditional statement that appears
+in one of the branches of another conditional statement.
+<a id="hevea_default408"></a>
+<a id="hevea_default409"></a></dd><dt class="dt-description"><span class="c010">return statement:</span></dt><dd class="dd-description"> A statement that causes a function to
+end immediately and return to the caller.</dd><dt class="dt-description"><span class="c010">recursion:</span></dt><dd class="dd-description"> The process of calling the function that is
+currently executing.
+<a id="hevea_default410"></a></dd><dt class="dt-description"><span class="c010">base case:</span></dt><dd class="dd-description"> A conditional branch in a
+recursive function that does not make a recursive call.
+<a id="hevea_default411"></a></dd><dt class="dt-description"><span class="c010">infinite recursion:</span></dt><dd class="dd-description"> A recursion that doesn&#X2019;t have a
+base case, or never reaches it. Eventually, an infinite recursion
+causes a runtime error.
+<a id="hevea_default412"></a></dd></dl>
+<h2 class="section" id="sec68">5.14&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>The <span class="c004">time</span> module provides a function, also named <span class="c004">time</span>, that
+returns the current Greenwich Mean Time in &#X201C;the epoch&#X201D;, which is
+an arbitrary time used as a reference point. On UNIX systems, the
+epoch is 1 January 1970.</em></p><pre class="verbatim"><em>&gt;&gt;&gt; import time
+&gt;&gt;&gt; time.time()
+1437746094.5735958
+</em></pre><p><em>Write a script that reads the current time and converts it to
+a time of day in hours, minutes, and seconds, plus the number of
+days since the epoch.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;
+<a id="hevea_default413"></a><p><em>Fermat&#X2019;s Last Theorem says that there are no positive integers
+</em><span class="c009">a</span><em>, </em><span class="c009">b</span><em>, and </em><span class="c009">c</span><em> such that</em></p><table class="display dcenter"><tr class="c017"><td class="dcell"><span class="c009">a</span><sup><span class="c009">n</span></sup>&#XA0;+&#XA0;<span class="c009">b</span><sup><span class="c009">n</span></sup>&#XA0;=&#XA0;<span class="c009">c</span><sup><span class="c009">n</span></sup>&#XA0;</td></tr>
+</table><p><em>
+for any values of </em><span class="c009">n</span><em> greater than 2.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Write a function named <code>check_fermat</code> that takes four
+parameters&#X2014;<span class="c004">a</span>, <span class="c004">b</span>, <span class="c004">c</span> and <span class="c004">n</span>&#X2014;and
+checks to see if Fermat&#X2019;s theorem holds. If
+</em><span class="c009">n</span><em> is greater than 2 and </em><table class="display dcenter"><tr class="c017"><td class="dcell"><span class="c009"><em>a</em></span><sup><span class="c009"><em>n</em></span></sup><em>&#XA0;+&#XA0;<span class="c009">b</span></em><sup><span class="c009"><em>n</em></span></sup><em>&#XA0;=&#XA0;<span class="c009">c</span></em><sup><span class="c009"><em>n</em></span></sup><em>&#XA0;</em></td></tr>
+</table><p><em>
+the program should print, &#X201C;Holy smokes, Fermat was wrong!&#X201D;
+Otherwise the program should print, &#X201C;No, that doesn&#X2019;t work.&#X201D;</em></p></li><li class="li-enumerate"><em>Write a function that prompts the user to input values
+for <span class="c004">a</span>, <span class="c004">b</span>, <span class="c004">c</span> and <span class="c004">n</span>, converts them to
+integers, and uses <code>check_fermat</code> to check whether they
+violate Fermat&#X2019;s theorem.</em></li></ol></div><div class="theorem"><span class="c010">Exercise&#XA0;3</span>&#XA0;&#XA0;
+<a id="hevea_default414"></a><p><em>If you are given three sticks, you may or may not be able to arrange
+them in a triangle. For example, if one of the sticks is 12 inches
+long and the other two are one inch long, you will
+not be able to get the short sticks to meet in the middle. For any
+three lengths, there is a simple test to see if it is possible to form
+a triangle:</em></p><blockquote class="quotation"><em>
+If any of the three lengths is greater than the sum of the other
+two, then you cannot form a triangle. Otherwise, you
+can. (If the sum of two lengths equals the third, they form
+what is called a &#X201C;degenerate&#X201D; triangle.)
+</em></blockquote><ol class="enumerate" type=1><li class="li-enumerate"><em>Write a function named <code>is_triangle</code> that takes three
+integers as arguments, and that prints either &#X201C;Yes&#X201D; or &#X201C;No&#X201D;, depending
+on whether you can or cannot form a triangle from sticks with the
+given lengths.</em></li><li class="li-enumerate"><em>Write a function that prompts the user to input three stick
+lengths, converts them to integers, and uses <code>is_triangle</code> to
+check whether sticks with the given lengths can form a triangle.</em></li></ol></div><div class="theorem"><span class="c010">Exercise&#XA0;4</span>&#XA0;&#XA0;<em>
+What is the output of the following program?
+Draw a stack diagram that shows the state of the program
+when it prints the result.</em><pre class="verbatim"><em>def recurse(n, s):
+    if n == 0:
+        print(s)
+    else:
+        recurse(n-1, n+s)
+
+recurse(3, 0)
+</em></pre><ol class="enumerate" type=1><li class="li-enumerate"><em>What would happen if you called this function like this: <span class="c004">recurse(-1, 0)</span>?</em></li><li class="li-enumerate"><em>Write a docstring that explains everything someone would need to
+know in order to use this function (and nothing else).</em></li></ol></div><p>The following exercises use the <span class="c004">turtle</span> module, described in
+Chapter&#XA0;<a href="thinkpython2005.html#turtlechap">4</a>:
+<a id="hevea_default415"></a></p><div class="theorem"><span class="c010">Exercise&#XA0;5</span>&#XA0;&#XA0;<p><em>Read the following function and see if you can figure out
+what it does (see the examples in Chapter&#XA0;</em><a href="thinkpython2005.html#turtlechap"><em>4</em></a><em>). Then run it 
+and see if you got it right.</em></p><pre class="verbatim"><em>def draw(t, length, n):
+    if n == 0:
+        return
+    angle = 50
+    t.fd(length*n)
+    t.lt(angle)
+    draw(t, length, n-1)
+    t.rt(2*angle)
+    draw(t, length, n-1)
+    t.lt(angle)
+    t.bk(length*n)
+</em></pre></div><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2006.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 5.2: A Koch curve.</td></tr>
+</table></div>
+<a id="fig.koch"></a>
+<div class="center"><hr class="c019"></div></blockquote><div class="theorem"><span class="c010">Exercise&#XA0;6</span>&#XA0;&#XA0;
+<a id="hevea_default416"></a><p><em>The Koch curve is a fractal that looks something like
+Figure&#XA0;</em><a href="thinkpython2006.html#fig.koch"><em>5.2</em></a><em>. To draw a Koch curve with length </em><span class="c009">x</span><em>, all you
+have to do is</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Draw a Koch curve with length </em><span class="c009">x</span>/3<em>.</em></li><li class="li-enumerate"><em>Turn left 60 degrees.</em></li><li class="li-enumerate"><em>Draw a Koch curve with length </em><span class="c009">x</span>/3<em>.</em></li><li class="li-enumerate"><em>Turn right 120 degrees.</em></li><li class="li-enumerate"><em>Draw a Koch curve with length </em><span class="c009">x</span>/3<em>.</em></li><li class="li-enumerate"><em>Turn left 60 degrees.</em></li><li class="li-enumerate"><em>Draw a Koch curve with length </em><span class="c009">x</span>/3<em>.</em></li></ol><p><em>The exception is if </em><span class="c009">x</span><em> is less than 3: in that case,
+you can just draw a straight line with length </em><span class="c009">x</span><em>.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Write a function called <span class="c004">koch</span> that takes a turtle and
+a length as parameters, and that uses the turtle to draw a Koch
+curve with the given length.</em></li><li class="li-enumerate"><em>Write a function called <span class="c004">snowflake</span> that draws three
+Koch curves to make the outline of a snowflake.</em><p><em>Solution: </em><a href="http://thinkpython2.com/code/koch.py"><em><span class="c004">http://thinkpython2.com/code/koch.py</span></em></a><em>.</em></p></li><li class="li-enumerate"><em>The Koch curve can be generalized in several ways. See
+</em><a href="http://en.wikipedia.org/wiki/Koch_snowflake"><em><span class="c004">http://en.wikipedia.org/wiki/Koch_snowflake</span></em></a><em> for examples and
+implement your favorite.</em></li></ol></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

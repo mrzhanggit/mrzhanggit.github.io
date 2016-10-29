@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Inheritance</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2018.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2020.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec209">Chapter&#XA0;18&#XA0;&#XA0;Inheritance</h1>
+<p>The language feature most often associated with object-oriented
+programming is <span class="c010">inheritance</span>. Inheritance is the ability to
+define a new class that is a modified version of an existing class.
+In this chapter I demonstrate inheritance using classes that represent
+playing cards, decks of cards, and poker hands.
+<a id="hevea_default1544"></a> 
+<a id="hevea_default1545"></a> 
+<a id="hevea_default1546"></a></p><p>If you don&#X2019;t play
+poker, you can read about it at
+<a href="http://en.wikipedia.org/wiki/Poker"><span class="c004">http://en.wikipedia.org/wiki/Poker</span></a>, but you don&#X2019;t have to; I&#X2019;ll
+tell you what you need to know for the exercises.</p><p>Code examples from
+this chapter are available from
+<a href="http://thinkpython2.com/code/Card.py"><span class="c004">http://thinkpython2.com/code/Card.py</span></a>.</p>
+<h2 class="section" id="sec210">18.1&#XA0;&#XA0;Card objects</h2>
+<p>There are fifty-two cards in a deck, each of which belongs to one of
+four suits and one of thirteen ranks. The suits are Spades, Hearts,
+Diamonds, and Clubs (in descending order in bridge). The ranks are
+Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King. Depending on
+the game that you are playing, an Ace may be higher than King
+or lower than 2.
+<a id="hevea_default1547"></a>
+<a id="hevea_default1548"></a></p><p>If we want to define a new object to represent a playing card, it is
+obvious what the attributes should be: <span class="c004">rank</span> and
+<span class="c004">suit</span>. It is not as obvious what type the attributes
+should be. One possibility is to use strings containing words like
+<code>'Spade'</code> for suits and <code>'Queen'</code> for ranks. One problem with
+this implementation is that it would not be easy to compare cards to
+see which had a higher rank or suit.
+<a id="hevea_default1549"></a>
+<a id="hevea_default1550"></a>
+<a id="hevea_default1551"></a>
+<a id="hevea_default1552"></a></p><p>An alternative is to use integers to <span class="c010">encode</span> the ranks and suits.
+In this context, &#X201C;encode&#X201D; means that we are going to define a mapping
+between numbers and suits, or between numbers and ranks. This
+kind of encoding is not meant to be a secret (that
+would be &#X201C;encryption&#X201D;).</p><p>For example, this table shows the suits and the corresponding integer
+codes:</p><table class="c001 cellpading0"><tr><td class="c013">Spades</td><td class="c012">&#X21A6;</td><td class="c013">3 </td></tr>
+<tr><td class="c013">Hearts</td><td class="c012">&#X21A6;</td><td class="c013">2 </td></tr>
+<tr><td class="c013">Diamonds</td><td class="c012">&#X21A6;</td><td class="c013">1 </td></tr>
+<tr><td class="c013">Clubs</td><td class="c012">&#X21A6;</td><td class="c013">0
+</td></tr>
+</table><p>This code makes it easy to compare cards; because higher suits map to
+higher numbers, we can compare suits by comparing their codes.</p><p>The mapping for ranks is fairly obvious; each of the numerical ranks
+maps to the corresponding integer, and for face cards:</p><table class="c001 cellpading0"><tr><td class="c013">Jack</td><td class="c012">&#X21A6;</td><td class="c013">11 </td></tr>
+<tr><td class="c013">Queen</td><td class="c012">&#X21A6;</td><td class="c013">12 </td></tr>
+<tr><td class="c013">King</td><td class="c012">&#X21A6;</td><td class="c013">13 </td></tr>
+</table><p>I am using the &#X21A6;&#XA0;symbol to make it clear that these mappings
+are not part of the Python program. They are part of the program
+design, but they don&#X2019;t appear explicitly in the code.
+<a id="hevea_default1553"></a>
+<a id="hevea_default1554"></a></p><p>The class definition for <span class="c004">Card</span> looks like this:</p><pre class="verbatim">class Card:
+    """Represents a standard playing card."""
+
+    def __init__(self, suit=0, rank=2):
+        self.suit = suit
+        self.rank = rank
+</pre><p>As usual, the init method takes an optional
+parameter for each attribute. The default card is
+the 2 of Clubs.
+<a id="hevea_default1555"></a>
+<a id="hevea_default1556"></a></p><p>To create a Card, you call <span class="c004">Card</span> with the
+suit and rank of the card you want.</p><pre class="verbatim">queen_of_diamonds = Card(1, 12)
+</pre>
+<h2 class="section" id="sec211">18.2&#XA0;&#XA0;Class attributes</h2>
+<p>
+<a id="class.attribute"></a>
+<a id="hevea_default1557"></a>
+<a id="hevea_default1558"></a></p><p>In order to print Card objects in a way that people can easily
+read, we need a mapping from the integer codes to the corresponding
+ranks and suits. A natural way to
+do that is with lists of strings. We assign these lists to <span class="c010">class
+attributes</span>:</p><pre class="verbatim"># inside class Card:
+
+    suit_names = ['Clubs', 'Diamonds', 'Hearts', 'Spades']
+    rank_names = [None, 'Ace', '2', '3', '4', '5', '6', '7', 
+              '8', '9', '10', 'Jack', 'Queen', 'King']
+
+    def __str__(self):
+        return '%s of %s' % (Card.rank_names[self.rank],
+                             Card.suit_names[self.suit])
+</pre><p>Variables like <code>suit_names</code> and <code>rank_names</code>, which are
+defined inside a class but outside of any method, are called
+class attributes because they are associated with the class object 
+<span class="c004">Card</span>.
+<a id="hevea_default1559"></a>
+<a id="hevea_default1560"></a></p><p>This term distinguishes them from variables like <span class="c004">suit</span> and <span class="c004">rank</span>, which are called <span class="c010">instance attributes</span> because they are
+associated with a particular instance.
+<a id="hevea_default1561"></a></p><p>Both kinds of attribute are accessed using dot notation. For
+example, in <code>__str__</code>, <span class="c004">self</span> is a Card object,
+and <span class="c004">self.rank</span> is its rank. Similarly, <span class="c004">Card</span>
+is a class object, and <code>Card.rank_names</code> is a
+list of strings associated with the class.</p><p>Every card has its own <span class="c004">suit</span> and <span class="c004">rank</span>, but there
+is only one copy of <code>suit_names</code> and <code>rank_names</code>.</p><p>Putting it all together, the expression
+<code>Card.rank_names[self.rank]</code> means &#X201C;use the attribute <span class="c004">rank</span>
+from the object <span class="c004">self</span> as an index into the list <code>rank_names</code>
+from the class <span class="c004">Card</span>, and select the appropriate string.&#X201D;</p><p>The first element of <code>rank_names</code> is <span class="c004">None</span> because there
+is no card with rank zero. By including <span class="c004">None</span> as a place-keeper,
+we get a mapping with the nice property that the index 2 maps to the
+string <code>'2'</code>, and so on. To avoid this tweak, we could have
+used a dictionary instead of a list.</p><p>With the methods we have so far, we can create and print cards:</p><pre class="verbatim">&gt;&gt;&gt; card1 = Card(2, 11)
+&gt;&gt;&gt; print(card1)
+Jack of Hearts
+</pre><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2024.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 18.1: Object diagram.</td></tr>
+</table></div>
+<a id="fig.card1"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>Figure&#XA0;<a href="thinkpython2019.html#fig.card1">18.1</a> is a diagram of the <span class="c004">Card</span> class object and
+one Card instance. <span class="c004">Card</span> is a class object; its type is <span class="c004">type</span>. <span class="c004">card1</span> is an instance of <span class="c004">Card</span>, so its type is
+<span class="c004">Card</span>. To save space, I didn&#X2019;t draw the contents of
+<code>suit_names</code> and <code>rank_names</code>. <a id="hevea_default1562"></a>
+<a id="hevea_default1563"></a> <a id="hevea_default1564"></a> <a id="hevea_default1565"></a></p>
+<h2 class="section" id="sec212">18.3&#XA0;&#XA0;Comparing cards</h2>
+<p>
+<a id="comparecard"></a>
+<a id="hevea_default1566"></a>
+<a id="hevea_default1567"></a></p><p>For built-in types, there are relational operators
+(<span class="c004">&lt;</span>, <span class="c004">&gt;</span>, <span class="c004">==</span>, etc.)
+that compare
+values and determine when one is greater than, less than, or equal to
+another. For programmer-defined types, we can override the behavior of
+the built-in operators by providing a method named
+<code>__lt__</code>, which stands for &#X201C;less than&#X201D;.
+<a id="hevea_default1568"></a>
+<a id="hevea_default1569"></a></p><p><code>__lt__</code> takes two parameters, <span class="c004">self</span> and <span class="c004">other</span>,
+and <span class="c004">True</span> if <span class="c004">self</span> is strictly less than <span class="c004">other</span>.
+<a id="hevea_default1570"></a>
+<a id="hevea_default1571"></a></p><p>The correct ordering for cards is not obvious.
+For example, which
+is better, the 3 of Clubs or the 2 of Diamonds? One has a higher
+rank, but the other has a higher suit. In order to compare
+cards, you have to decide whether rank or suit is more important.</p><p>The answer might depend on what game you are playing, but to keep
+things simple, we&#X2019;ll make the arbitrary choice that suit is more
+important, so all of the Spades outrank all of the Diamonds,
+and so on.
+<a id="hevea_default1572"></a>
+<a id="hevea_default1573"></a></p><p>With that decided, we can write <code>__lt__</code>:</p><pre class="verbatim"># inside class Card:
+
+    def __lt__(self, other):
+        # check the suits
+        if self.suit &lt; other.suit: return True
+        if self.suit &gt; other.suit: return False
+
+        # suits are the same... check ranks
+        return self.rank &lt; other.rank
+</pre><p>You can write this more concisely using tuple comparison:
+<a id="hevea_default1574"></a>
+<a id="hevea_default1575"></a></p><pre class="verbatim"># inside class Card:
+
+    def __lt__(self, other):
+        t1 = self.suit, self.rank
+        t2 = other.suit, other.rank
+        return t1 &lt; t2
+</pre><p>As an exercise, write an <code>__lt__</code> method for Time objects. You
+can use tuple comparison, but you also might consider 
+comparing integers.</p>
+<h2 class="section" id="sec213">18.4&#XA0;&#XA0;Decks</h2>
+<p>
+<a id="hevea_default1576"></a>
+<a id="hevea_default1577"></a></p><p>Now that we have Cards, the next step is to define Decks. Since a
+deck is made up of cards, it is natural for each Deck to contain a
+list of cards as an attribute.
+<a id="hevea_default1578"></a>
+<a id="hevea_default1579"></a></p><p>The following is a class definition for <span class="c004">Deck</span>. The
+init method creates the attribute <span class="c004">cards</span> and generates
+the standard set of fifty-two cards:
+<a id="hevea_default1580"></a>
+<a id="hevea_default1581"></a>
+<a id="hevea_default1582"></a>
+<a id="hevea_default1583"></a></p><pre class="verbatim">class Deck:
+
+    def __init__(self):
+        self.cards = []
+        for suit in range(4):
+            for rank in range(1, 14):
+                card = Card(suit, rank)
+                self.cards.append(card)
+</pre><p>The easiest way to populate the deck is with a nested loop. The outer
+loop enumerates the suits from 0 to 3. The inner loop enumerates the
+ranks from 1 to 13. Each iteration
+creates a new Card with the current suit and rank,
+and appends it to <span class="c004">self.cards</span>.
+<a id="hevea_default1584"></a>
+<a id="hevea_default1585"></a></p>
+<h2 class="section" id="sec214">18.5&#XA0;&#XA0;Printing the deck</h2>
+<p>
+<a id="printdeck"></a>
+<a id="hevea_default1586"></a>
+<a id="hevea_default1587"></a></p><p>Here is a <code>__str__</code> method for <span class="c004">Deck</span>:</p><pre class="verbatim">#inside class Deck:
+
+    def __str__(self):
+        res = []
+        for card in self.cards:
+            res.append(str(card))
+        return '\n'.join(res)
+</pre><p>This method demonstrates an efficient way to accumulate a large
+string: building a list of strings and then using the string method
+<span class="c004">join</span>. The built-in function <span class="c004">str</span> invokes the
+<code>__str__</code> method on each card and returns the string
+representation. <a id="hevea_default1588"></a> <a id="hevea_default1589"></a>
+<a id="hevea_default1590"></a> <a id="hevea_default1591"></a> <a id="hevea_default1592"></a></p><p>Since we invoke <span class="c004">join</span> on a newline character, the cards
+are separated by newlines. Here&#X2019;s what the result looks like:</p><pre class="verbatim">&gt;&gt;&gt; deck = Deck()
+&gt;&gt;&gt; print(deck)
+Ace of Clubs
+2 of Clubs
+3 of Clubs
+...
+10 of Spades
+Jack of Spades
+Queen of Spades
+King of Spades
+</pre><p>Even though the result appears on 52 lines, it is
+one long string that contains newlines.</p>
+<h2 class="section" id="sec215">18.6&#XA0;&#XA0;Add, remove, shuffle and sort</h2>
+<p>To deal cards, we would like a method that
+removes a card from the deck and returns it.
+The list method <span class="c004">pop</span> provides a convenient way to do that:
+<a id="hevea_default1593"></a>
+<a id="hevea_default1594"></a></p><pre class="verbatim">#inside class Deck:
+
+    def pop_card(self):
+        return self.cards.pop()
+</pre><p>Since <span class="c004">pop</span> removes the <em>last</em> card in the list, we are
+dealing from the bottom of the deck.
+<a id="hevea_default1595"></a>
+<a id="hevea_default1596"></a></p><p>To add a card, we can use the list method <span class="c004">append</span>:</p><pre class="verbatim">#inside class Deck:
+
+    def add_card(self, card):
+        self.cards.append(card)
+</pre><p>A method like this that uses another method without doing
+much work is sometimes called a <span class="c010">veneer</span>. The metaphor
+comes from woodworking, where a veneer is a thin
+layer of good quality wood glued to the surface of a cheaper piece of
+wood to improve the appearance.
+<a id="hevea_default1597"></a></p><p>In this case <code>add_card</code> is a &#X201C;thin&#X201D; method that expresses
+a list operation in terms appropriate for decks. It
+improves the appearance, or interface, of the
+implementation.</p><p>As another example, we can write a Deck method named <span class="c004">shuffle</span>
+using the function <span class="c004">shuffle</span> from the <span class="c004">random</span> module:
+<a id="hevea_default1598"></a>
+<a id="hevea_default1599"></a>
+<a id="hevea_default1600"></a>
+<a id="hevea_default1601"></a></p><pre class="verbatim"># inside class Deck:
+            
+    def shuffle(self):
+        random.shuffle(self.cards)
+</pre><p>Don&#X2019;t forget to import <span class="c004">random</span>.</p><p>As an exercise, write a Deck method named <span class="c004">sort</span> that uses the
+list method <span class="c004">sort</span> to sort the cards in a <span class="c004">Deck</span>. <span class="c004">sort</span>
+uses the <code>__lt__</code> method we defined to determine the order.
+<a id="hevea_default1602"></a> <a id="hevea_default1603"></a></p>
+<h2 class="section" id="sec216">18.7&#XA0;&#XA0;Inheritance</h2>
+<p>
+<a id="hevea_default1604"></a>
+<a id="hevea_default1605"></a></p><p>Inheritance is the ability to define a new class that is a modified
+version of an existing class. As an example, let&#X2019;s say we want a
+class to represent a &#X201C;hand&#X201D;, that is, the cards held by one player.
+A hand is similar to a deck: both are made up of a collection of
+cards, and both require operations like adding and removing cards.</p><p>A hand is also different from a deck; there are operations we want for
+hands that don&#X2019;t make sense for a deck. For example, in poker we
+might compare two hands to see which one wins. In bridge, we might
+compute a score for a hand in order to make a bid.</p><p>This relationship between classes&#X2014;similar, but different&#X2014;lends
+itself to inheritance.
+To define a new class that inherits from an existing class,
+you put the name of the existing class in parentheses:
+<a id="hevea_default1606"></a>
+<a id="hevea_default1607"></a>
+<a id="hevea_default1608"></a>
+<a id="hevea_default1609"></a>
+<a id="hevea_default1610"></a></p><pre class="verbatim">class Hand(Deck):
+    """Represents a hand of playing cards."""
+</pre><p>This definition indicates that <span class="c004">Hand</span> inherits from <span class="c004">Deck</span>;
+that means we can use methods like <code>pop_card</code> and <code>add_card</code>
+for Hands as well as Decks.</p><p>When a new class inherits from an existing one, the existing
+one is called the <span class="c010">parent</span> and the new class is
+called the <span class="c010">child</span>.
+<a id="hevea_default1611"></a>
+<a id="hevea_default1612"></a>
+<a id="hevea_default1613"></a></p><p>In this example, <span class="c004">Hand</span> inherits <code>__init__</code> from <span class="c004">Deck</span>,
+but it doesn&#X2019;t really do what we want: instead of populating the hand
+with 52 new cards, the init method for Hands should initialize <span class="c004">cards</span> with an empty list. <a id="hevea_default1614"></a> <a id="hevea_default1615"></a>
+<a id="hevea_default1616"></a></p><p>If we provide an init method in the <span class="c004">Hand</span> class, it overrides the
+one in the <span class="c004">Deck</span> class:</p><pre class="verbatim"># inside class Hand:
+
+    def __init__(self, label=''):
+        self.cards = []
+        self.label = label
+</pre><p>When you create a Hand, Python invokes this init method, not the
+one in <span class="c004">Deck</span>.</p><pre class="verbatim">&gt;&gt;&gt; hand = Hand('new hand')
+&gt;&gt;&gt; hand.cards
+[]
+&gt;&gt;&gt; hand.label
+'new hand'
+</pre><p>The other methods are inherited from <span class="c004">Deck</span>, so we can use
+<code>pop_card</code> and <code>add_card</code> to deal a card:</p><pre class="verbatim">&gt;&gt;&gt; deck = Deck()
+&gt;&gt;&gt; card = deck.pop_card()
+&gt;&gt;&gt; hand.add_card(card)
+&gt;&gt;&gt; print(hand)
+King of Spades
+</pre><p>A natural next step is to encapsulate this code in a method
+called <code>move_cards</code>:
+<a id="hevea_default1617"></a></p><pre class="verbatim">#inside class Deck:
+
+    def move_cards(self, hand, num):
+        for i in range(num):
+            hand.add_card(self.pop_card())
+</pre><p><code>move_cards</code> takes two arguments, a Hand object and the number of
+cards to deal. It modifies both <span class="c004">self</span> and <span class="c004">hand</span>, and
+returns <span class="c004">None</span>.</p><p>In some games, cards are moved from one hand to another,
+or from a hand back to the deck. You can use <code>move_cards</code>
+for any of these operations: <span class="c004">self</span> can be either a Deck
+or a Hand, and <span class="c004">hand</span>, despite the name, can also be a <span class="c004">Deck</span>.</p><p>Inheritance is a useful feature. Some programs that would be
+repetitive without inheritance can be written more elegantly
+with it. Inheritance can facilitate code reuse, since you can
+customize the behavior of parent classes without having to modify
+them. In some cases, the inheritance structure reflects the natural
+structure of the problem, which makes the design easier to
+understand.</p><p>On the other hand, inheritance can make programs difficult to read.
+When a method is invoked, it is sometimes not clear where to find its
+definition. The relevant code may be spread across several modules.
+Also, many of the things that can be done using inheritance can be
+done as well or better without it.</p>
+<h2 class="section" id="sec217">18.8&#XA0;&#XA0;Class diagrams</h2>
+<p>
+<a id="class.diagram"></a></p><p>So far we have seen stack diagrams, which show the state of
+a program, and object diagrams, which show the attributes
+of an object and their values. These diagrams represent a snapshot
+in the execution of a program, so they change as the program
+runs.</p><p>They are also highly detailed; for some purposes, too
+detailed. A class diagram is a more abstract representation
+of the structure of a program. Instead of showing individual
+objects, it shows classes and the relationships between them.</p><p>There are several kinds of relationship between classes:</p><ul class="itemize"><li class="li-itemize">Objects in one class might contain references to objects
+in another class. For example, each Rectangle contains a reference
+to a Point, and each Deck contains references to many Cards.
+This kind of relationship is called <span class="c010">HAS-A</span>, as in, &#X201C;a Rectangle
+has a Point.&#X201D;</li><li class="li-itemize">One class might inherit from another. This relationship
+is called <span class="c010">IS-A</span>, as in, &#X201C;a Hand is a kind of a Deck.&#X201D;</li><li class="li-itemize">One class might depend on another in the sense that objects
+in one class take objects in the second class as parameters, or
+use objects in the second class as part of a computation. This
+kind of relationship is called a <span class="c010">dependency</span>.</li></ul><p>
+<a id="hevea_default1618"></a>
+<a id="hevea_default1619"></a>
+<a id="hevea_default1620"></a>
+<a id="hevea_default1621"></a></p><p>A <span class="c010">class diagram</span> is a graphical representation of these
+relationships. For example, Figure&#XA0;<a href="thinkpython2019.html#fig.class1">18.2</a> shows the
+relationships between <span class="c004">Card</span>, <span class="c004">Deck</span> and <span class="c004">Hand</span>.</p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2025.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 18.2: Class diagram.</td></tr>
+</table></div>
+<a id="fig.class1"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>The arrow with a hollow triangle head represents an IS-A
+relationship; in this case it indicates that Hand inherits
+from Deck.</p><p>The standard arrow head represents a HAS-A
+relationship; in this case a Deck has references to Card
+objects.
+<a id="hevea_default1622"></a></p><p>The star (<span class="c004">*</span>) near the arrow head is a 
+<span class="c010">multiplicity</span>; it indicates how many Cards a Deck has.
+A multiplicity can be a simple number, like <span class="c004">52</span>, a range,
+like <span class="c004">5..7</span> or a star, which indicates that a Deck can
+have any number of Cards.</p><p>There are no dependencies in this diagram. They would normally
+be shown with a dashed arrow. Or if there are a lot of
+dependencies, they are sometimes omitted.</p><p>A more detailed diagram might show that a Deck actually
+contains a <em>list</em> of Cards, but built-in types
+like list and dict are usually not included in class diagrams.</p>
+<h2 class="section" id="sec218">18.9&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="hevea_default1623"></a></p><p>Inheritance can make debugging difficult because when you invoke a
+method on an object, it might be hard to figure out which method will
+be invoked. 
+<a id="hevea_default1624"></a></p><p>Suppose you are writing a function that works with Hand objects.
+You would like it to work with all kinds of Hands, like
+PokerHands, BridgeHands, etc. If you invoke a method like
+<span class="c004">shuffle</span>, you might get the one defined in <span class="c004">Deck</span>,
+but if any of the subclasses override this method, you&#X2019;ll
+get that version instead. This behavior is usually a good
+thing, but it can be confusing.</p><p>Any time you are unsure about the flow of execution through your
+program, the simplest solution is to add print statements at the
+beginning of the relevant methods. If <span class="c004">Deck.shuffle</span> prints a
+message that says something like <span class="c004">Running Deck.shuffle</span>, then as
+the program runs it traces the flow of execution.
+<a id="hevea_default1625"></a></p><p>As an alternative, you could use this function, which takes an
+object and a method name (as a string) and returns the class that
+provides the definition of the method:</p><pre class="verbatim">def find_defining_class(obj, meth_name):
+    for ty in type(obj).mro():
+        if meth_name in ty.__dict__:
+            return ty
+</pre><p>Here&#X2019;s an example:</p><pre class="verbatim">&gt;&gt;&gt; hand = Hand()
+&gt;&gt;&gt; find_defining_class(hand, 'shuffle')
+&lt;class 'Card.Deck'&gt;
+</pre><p>So the <span class="c004">shuffle</span> method for this Hand is the one in <span class="c004">Deck</span>.
+<a id="hevea_default1626"></a>
+<a id="hevea_default1627"></a>
+<a id="hevea_default1628"></a></p><p><code>find_defining_class</code> uses the <span class="c004">mro</span> method to get the list
+of class objects (types) that will be searched for methods. &#X201C;MRO&#X201D;
+stands for &#X201C;method resolution order&#X201D;, which is the sequence of
+classes Python searches to &#X201C;resolve&#X201D; a method name.</p><p>Here&#X2019;s a design suggestion: when you override a method,
+the interface of the new method should be the same as the old. It
+should take the same parameters, return the same type, and obey the
+same preconditions and postconditions. If you follow this rule, you
+will find that any function designed to work with an instance of a
+parent class, like a Deck, will also work with instances of child
+classes like a Hand and PokerHand.
+<a id="hevea_default1629"></a>
+<a id="hevea_default1630"></a>
+<a id="hevea_default1631"></a>
+<a id="hevea_default1632"></a></p><p>If you violate this rule, which is called the &#X201C;Liskov substitution
+principle&#X201D;, your code will collapse like (sorry) a house of cards.
+<a id="hevea_default1633"></a></p>
+<h2 class="section" id="sec219">18.10&#XA0;&#XA0;Data encapsulation</h2>
+<p>The previous chapters demonstrate a development plan we might call
+&#X201C;object-oriented design&#X201D;. We identified objects we needed&#X2014;like
+<span class="c004">Point</span>, <span class="c004">Rectangle</span> and <span class="c004">Time</span>&#X2014;and defined classes to
+represent them. In each case there is an obvious correspondence
+between the object and some entity in the real world (or at least a
+mathematical world). 
+<a id="hevea_default1634"></a></p><p>But sometimes it is less obvious what objects you need
+and how they should interact. In that case you need a different
+development plan. In the same way that we discovered function
+interfaces by encapsulation and generalization, we can discover
+class interfaces by <span class="c010">data encapsulation</span>.
+<a id="hevea_default1635"></a></p><p>Markov analysis, from Section&#XA0;<a href="thinkpython2014.html#markov">13.8</a>, provides a good example.
+If you download my code from <a href="http://thinkpython2.com/code/markov.py"><span class="c004">http://thinkpython2.com/code/markov.py</span></a>,
+you&#X2019;ll see that it uses two global variables&#X2014;<code>suffix_map</code> and
+<code>prefix</code>&#X2014;that are read and written from several functions.</p><pre class="verbatim">suffix_map = {}        
+prefix = ()            
+</pre><p>Because these variables are global, we can only run one analysis at a
+time. If we read two texts, their prefixes and suffixes would be
+added to the same data structures (which makes for some interesting
+generated text).</p><p>To run multiple analyses, and keep them separate, we can encapsulate
+the state of each analysis in an object.
+Here&#X2019;s what that looks like:</p><pre class="verbatim">class Markov:
+
+    def __init__(self):
+        self.suffix_map = {}
+        self.prefix = ()    
+</pre><p>Next, we transform the functions into methods. For example,
+here&#X2019;s <code>process_word</code>:</p><pre class="verbatim">    def process_word(self, word, order=2):
+        if len(self.prefix) &lt; order:
+            self.prefix += (word,)
+            return
+
+        try:
+            self.suffix_map[self.prefix].append(word)
+        except KeyError:
+            # if there is no entry for this prefix, make one
+            self.suffix_map[self.prefix] = [word]
+
+        self.prefix = shift(self.prefix, word)        
+</pre><p>Transforming a program like this&#X2014;changing the design without
+changing the behavior&#X2014;is another example of refactoring
+(see Section&#XA0;<a href="thinkpython2005.html#refactoring">4.7</a>).
+<a id="hevea_default1636"></a></p><p>This example suggests a development plan for designing objects and
+methods:</p><ol class="enumerate" type=1><li class="li-enumerate">Start by writing functions that read and write global
+variables (when necessary).</li><li class="li-enumerate">Once you get the program working, look for associations
+between global variables and the functions that use them.</li><li class="li-enumerate">Encapsulate related variables as attributes of an object.</li><li class="li-enumerate">Transform the associated functions into methods of the new
+class.</li></ol><p>As an exercise, download my Markov code from
+<a href="http://thinkpython2.com/code/markov.py"><span class="c004">http://thinkpython2.com/code/markov.py</span></a>, and follow the steps
+described above to encapsulate the global variables as attributes of a
+new class called <span class="c004">Markov</span>. Solution:
+<a href="http://thinkpython2.com/code/Markov.py"><span class="c004">http://thinkpython2.com/code/Markov.py</span></a> (note the capital M).</p>
+<h2 class="section" id="sec220">18.11&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">encode:</span></dt><dd class="dd-description"> To represent one set of values using another
+set of values by constructing a mapping between them.
+<a id="hevea_default1637"></a></dd><dt class="dt-description"><span class="c010">class attribute:</span></dt><dd class="dd-description"> An attribute associated with a class
+object. Class attributes are defined inside
+a class definition but outside any method.
+<a id="hevea_default1638"></a>
+<a id="hevea_default1639"></a></dd><dt class="dt-description"><span class="c010">instance attribute:</span></dt><dd class="dd-description"> An attribute associated with an
+instance of a class.
+<a id="hevea_default1640"></a>
+<a id="hevea_default1641"></a></dd><dt class="dt-description"><span class="c010">veneer:</span></dt><dd class="dd-description"> A method or function that provides a different
+interface to another function without doing much computation.
+<a id="hevea_default1642"></a></dd><dt class="dt-description"><span class="c010">inheritance:</span></dt><dd class="dd-description"> The ability to define a new class that is a
+modified version of a previously defined class.
+<a id="hevea_default1643"></a></dd><dt class="dt-description"><span class="c010">parent class:</span></dt><dd class="dd-description"> The class from which a child class inherits.
+<a id="hevea_default1644"></a></dd><dt class="dt-description"><span class="c010">child class:</span></dt><dd class="dd-description"> A new class created by inheriting from an
+existing class; also called a &#X201C;subclass&#X201D;.
+<a id="hevea_default1645"></a>
+<a id="hevea_default1646"></a></dd><dt class="dt-description"><span class="c010">IS-A relationship:</span></dt><dd class="dd-description"> A relationship between a child class
+and its parent class.
+<a id="hevea_default1647"></a></dd><dt class="dt-description"><span class="c010">HAS-A relationship:</span></dt><dd class="dd-description"> A relationship between two classes
+where instances of one class contain references to instances of
+the other.
+<a id="hevea_default1648"></a></dd><dt class="dt-description"><span class="c010">dependency:</span></dt><dd class="dd-description"> A relationship between two classes
+where instances of one class use instances of the other class,
+but do not store them as attributes.
+<a id="hevea_default1649"></a></dd><dt class="dt-description"><span class="c010">class diagram:</span></dt><dd class="dd-description"> A diagram that shows the classes in a program
+and the relationships between them.
+<a id="hevea_default1650"></a>
+<a id="hevea_default1651"></a></dd><dt class="dt-description"><span class="c010">multiplicity:</span></dt><dd class="dd-description"> A notation in a class diagram that shows, for
+a HAS-A relationship, how many references there are to instances
+of another class.
+<a id="hevea_default1652"></a></dd><dt class="dt-description"><span class="c010">data encapsulation:</span></dt><dd class="dd-description"> A program development plan that
+involves a prototype using global variables and a final version
+that makes the global variables into instance attributes. 
+<a id="hevea_default1653"></a>
+<a id="hevea_default1654"></a></dd></dl>
+<h2 class="section" id="sec221">18.12&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<em>
+For the following program, draw a UML class diagram that shows
+these classes and the relationships among them.</em><pre class="verbatim"><em>class PingPongParent:
+    pass
+
+class Ping(PingPongParent):
+    def __init__(self, pong):
+        self.pong = pong
+
+
+class Pong(PingPongParent):
+    def __init__(self, pings=None):
+        if pings is None:
+            self.pings = []
+        else:
+            self.pings = pings
+
+    def add_ping(self, ping):
+        self.pings.append(ping)
+
+pong = Pong()
+ping = Ping(pong)
+pong.add_ping(ping)
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;<em>
+Write a Deck method called <code>deal_hands</code> that
+takes two parameters, the number of hands and the number of cards per
+hand. It should create the appropriate number of Hand objects, deal
+the appropriate number of cards per hand, and return a list of Hands.
+</em></div><div class="theorem"><span class="c010">Exercise&#XA0;3</span>&#XA0;&#XA0;
+<a id="poker"></a><p><em>The following are the possible hands in poker, in increasing order
+of value and decreasing order of probability:
+</em><a id="hevea_default1655"></a></p><dl class="description"><dt class="dt-description"><em><span class="c010">pair:</span></em></dt><dd class="dd-description"><em> two cards with the same rank
+</em></dd><dt class="dt-description"><span class="c010"><em>two pair:</em></span></dt><dd class="dd-description"><em> two pairs of cards with the same rank
+</em></dd><dt class="dt-description"><span class="c010"><em>three of a kind:</em></span></dt><dd class="dd-description"><em> three cards with the same rank
+</em></dd><dt class="dt-description"><span class="c010"><em>straight:</em></span></dt><dd class="dd-description"><em> five cards with ranks in sequence (aces can
+be high or low, so <span class="c004">Ace-2-3-4-5</span> is a straight and so is <span class="c004">10-Jack-Queen-King-Ace</span>, but <span class="c004">Queen-King-Ace-2-3</span> is not.)
+</em></dd><dt class="dt-description"><span class="c010"><em>flush:</em></span></dt><dd class="dd-description"><em> five cards with the same suit
+</em></dd><dt class="dt-description"><span class="c010"><em>full house:</em></span></dt><dd class="dd-description"><em> three cards with one rank, two cards with another
+</em></dd><dt class="dt-description"><span class="c010"><em>four of a kind:</em></span></dt><dd class="dd-description"><em> four cards with the same rank
+</em></dd><dt class="dt-description"><span class="c010"><em>straight flush:</em></span></dt><dd class="dd-description"><em> five cards in sequence (as defined above) and
+with the same suit
+</em></dd></dl><p><em>
+The goal of these exercises is to estimate
+the probability of drawing these various hands.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Download the following files from </em><a href="http://thinkpython2.com/code"><em><span class="c004">http://thinkpython2.com/code</span></em></a><em>:</em><dl class="description"><dt class="dt-description"><span class="c005"><em>Card.py</em></span></dt><dd class="dd-description"><em>: A complete version of the <span class="c004">Card</span>,
+<span class="c004">Deck</span> and <span class="c004">Hand</span> classes in this chapter.</em></dd><dt class="dt-description"><span class="c005"><em>PokerHand.py</em></span></dt><dd class="dd-description"><em>: An incomplete implementation of a class
+that represents a poker hand, and some code that tests it.</em></dd></dl></li><li class="li-enumerate"><em>If you run <span class="c004">PokerHand.py</span>, it deals seven 7-card poker hands
+and checks to see if any of them contains a flush. Read this
+code carefully before you go on.</em></li><li class="li-enumerate"><em>Add methods to <span class="c004">PokerHand.py</span> named <code>has_pair</code>,
+<code>has_twopair</code>, etc. that return True or False according to
+whether or not the hand meets the relevant criteria. Your code should
+work correctly for &#X201C;hands&#X201D; that contain any number of cards
+(although 5 and 7 are the most common sizes).</em></li><li class="li-enumerate"><em>Write a method named <span class="c004">classify</span> that figures out
+the highest-value classification for a hand and sets the
+<span class="c004">label</span> attribute accordingly. For example, a 7-card hand
+might contain a flush and a pair; it should be labeled &#X201C;flush&#X201D;.</em></li><li class="li-enumerate"><em>When you are convinced that your classification methods are
+working, the next step is to estimate the probabilities of the various
+hands. Write a function in <span class="c004">PokerHand.py</span> that shuffles a deck of
+cards, divides it into hands, classifies the hands, and counts the
+number of times various classifications appear.</em></li><li class="li-enumerate"><em>Print a table of the classifications and their probabilities.
+Run your program with larger and larger numbers of hands until the
+output values converge to a reasonable degree of accuracy. Compare
+your results to the values at </em><a href="http://en.wikipedia.org/wiki/Hand_rankings"><span class="c004"><em>http://en.wikipedia.org/wiki/Hand_rankings</em></span></a><em>.</em></li></ol><p><em>Solution: </em><a href="http://thinkpython2.com/code/PokerHandSoln.py"><em><span class="c004">http://thinkpython2.com/code/PokerHandSoln.py</span></em></a><em>.
+</em></p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Classes and objects</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2015.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2017.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec177">Chapter&#XA0;15&#XA0;&#XA0;Classes and objects</h1>
+<p>
+<a id="clobjects"></a></p><p>At this point you know how to use
+functions to organize code and 
+built-in types to organize data. The next step is to learn
+&#X201C;object-oriented programming&#X201D;, which uses programmer-defined types
+to organize both code and data. Object-oriented programming is
+a big topic; it will take a few chapters to get there.
+<a id="hevea_default1322"></a></p><p>Code examples from this chapter are available from
+<a href="http://thinkpython2.com/code/Point1.py"><span class="c004">http://thinkpython2.com/code/Point1.py</span></a>; solutions
+to the exercises are available from
+<a href="http://thinkpython2.com/code/Point1_soln.py"><span class="c004">http://thinkpython2.com/code/Point1_soln.py</span></a>.</p>
+<h2 class="section" id="sec178">15.1&#XA0;&#XA0;Programmer-defined types</h2>
+<p>
+<a id="point"></a>
+<a id="hevea_default1323"></a>
+<a id="hevea_default1324"></a></p><p>We have used many of Python&#X2019;s built-in types; now we are going
+to define a new type. As an example, we will create a type
+called <span class="c004">Point</span> that represents a point in two-dimensional
+space.
+<a id="hevea_default1325"></a></p><p>In mathematical notation, points are often written in
+parentheses with a comma separating the coordinates. For example,
+(0,0) represents the origin, and (<span class="c009">x</span>,<span class="c009">y</span>) represents the
+point <span class="c009">x</span> units to the right and <span class="c009">y</span> units up from the origin.</p><p>There are several ways we might represent points in Python:</p><ul class="itemize"><li class="li-itemize">We could store the coordinates separately in two
+variables, <span class="c004">x</span> and <span class="c004">y</span>.</li><li class="li-itemize">We could store the coordinates as elements in a list
+or tuple.</li><li class="li-itemize">We could create a new type to represent points as
+objects.</li></ul><p>
+<a id="hevea_default1326"></a></p><p>Creating a new type
+is more complicated than the other options, but
+it has advantages that will be apparent soon.</p><p>A programmer-defined type is also called a <span class="c010">class</span>.
+A class definition looks like this:
+<a id="hevea_default1327"></a>
+<a id="hevea_default1328"></a>
+<a id="hevea_default1329"></a>
+<a id="hevea_default1330"></a></p><pre class="verbatim">class Point:
+    """Represents a point in 2-D space."""
+</pre><p>The header indicates that the new class is called <span class="c004">Point</span>.
+The body is a docstring that explains what the class is for.
+You can define variables and methods inside a class definition,
+but we will get back to that later.
+<a id="hevea_default1331"></a>
+<a id="hevea_default1332"></a>
+<a id="hevea_default1333"></a></p><p>Defining a class named <span class="c004">Point</span> creates a <span class="c010">class object</span>.</p><pre class="verbatim">&gt;&gt;&gt; Point
+&lt;class '__main__.Point'&gt;
+</pre><p>Because <span class="c004">Point</span> is defined at the top level, its &#X201C;full
+name&#X201D; is <code>__main__.Point</code>.
+<a id="hevea_default1334"></a>
+<a id="hevea_default1335"></a></p><p>The class object is like a factory for creating objects. To create a
+Point, you call <span class="c004">Point</span> as if it were a function.</p><pre class="verbatim">&gt;&gt;&gt; blank = Point()
+&gt;&gt;&gt; blank
+&lt;__main__.Point object at 0xb7e9d3ac&gt;
+</pre><p>The return value is a reference to a Point object, which we
+assign to <span class="c004">blank</span>. </p><p>Creating a new object is called
+<span class="c010">instantiation</span>, and the object is an <span class="c010">instance</span> of
+the class.
+<a id="hevea_default1336"></a>
+<a id="hevea_default1337"></a></p><p>When you print an instance, Python tells you what class it
+belongs to and where it is stored in memory (the prefix
+<span class="c004">0x</span> means that the following number is in hexadecimal).
+<a id="hevea_default1338"></a></p><p>Every object is an instance of some class, so &#X201C;object&#X201D; and
+&#X201C;instance&#X201D; are interchangeable. But in this chapter I use
+&#X201C;instance&#X201D; to indicate that I am talking about a programmer-defined
+type.</p>
+<h2 class="section" id="sec179">15.2&#XA0;&#XA0;Attributes</h2>
+<p>
+<a id="attributes"></a>
+<a id="hevea_default1339"></a>
+<a id="hevea_default1340"></a>
+<a id="hevea_default1341"></a></p><p>You can assign values to an instance using dot notation:</p><pre class="verbatim">&gt;&gt;&gt; blank.x = 3.0
+&gt;&gt;&gt; blank.y = 4.0
+</pre><p>This syntax is similar to the syntax for selecting a variable from a
+module, such as <span class="c004">math.pi</span> or <span class="c004">string.whitespace</span>. In this case,
+though, we are assigning values to named elements of an object.
+These elements are called <span class="c010">attributes</span>.</p><p>As a noun, &#X201C;AT-trib-ute&#X201D; is pronounced with emphasis on the first
+syllable, as opposed to &#X201C;a-TRIB-ute&#X201D;, which is a verb.</p><p>The following diagram shows the result of these assignments.
+A state diagram that shows an object and its attributes is
+called an <span class="c010">object diagram</span>; see Figure&#XA0;<a href="thinkpython2016.html#fig.point">15.1</a>.
+<a id="hevea_default1342"></a>
+<a id="hevea_default1343"></a>
+<a id="hevea_default1344"></a>
+<a id="hevea_default1345"></a></p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2020.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 15.1: Object diagram.</td></tr>
+</table></div>
+<a id="fig.point"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>The variable <span class="c004">blank</span> refers to a Point object, which
+contains two attributes. Each attribute refers to a
+floating-point number.</p><p>You can read the value of an attribute using the same syntax:</p><pre class="verbatim">&gt;&gt;&gt; blank.y
+4.0
+&gt;&gt;&gt; x = blank.x
+&gt;&gt;&gt; x
+3.0
+</pre><p>The expression <span class="c004">blank.x</span> means, &#X201C;Go to the object <span class="c004">blank</span>
+refers to and get the value of <span class="c004">x</span>.&#X201D; In the example, we assign that
+value to a variable named <span class="c004">x</span>. There is no conflict between
+the variable <span class="c004">x</span> and the attribute <span class="c004">x</span>.</p><p>You can use dot notation as part of any expression. For example:</p><pre class="verbatim">&gt;&gt;&gt; '(%g, %g)' % (blank.x, blank.y)
+'(3.0, 4.0)'
+&gt;&gt;&gt; distance = math.sqrt(blank.x**2 + blank.y**2)
+&gt;&gt;&gt; distance
+5.0
+</pre><p>You can pass an instance as an argument in the usual way.
+For example:
+<a id="hevea_default1346"></a></p><pre class="verbatim">def print_point(p):
+    print('(%g, %g)' % (p.x, p.y))
+</pre><p><code>print_point</code> takes a point as an argument and displays it in
+mathematical notation. To invoke it, you can pass <span class="c004">blank</span> as
+an argument:</p><pre class="verbatim">&gt;&gt;&gt; print_point(blank)
+(3.0, 4.0)
+</pre><p>Inside the function, <span class="c004">p</span> is an alias for <span class="c004">blank</span>, so if
+the function modifies <span class="c004">p</span>, <span class="c004">blank</span> changes.
+<a id="hevea_default1347"></a></p><p>As an exercise, write a function called <code>distance_between_points</code>
+that takes two Points as arguments and returns the distance between
+them.</p>
+<h2 class="section" id="sec180">15.3&#XA0;&#XA0;Rectangles</h2>
+<p>
+<a id="rectangles"></a></p><p>Sometimes it is obvious what the attributes of an object should be,
+but other times you have to make decisions. For example, imagine you
+are designing a class to represent rectangles. What attributes would
+you use to specify the location and size of a rectangle? You can
+ignore angle; to keep things simple, assume that the rectangle is
+either vertical or horizontal.
+<a id="hevea_default1348"></a></p><p>There are at least two possibilities: </p><ul class="itemize"><li class="li-itemize">You could specify one corner of the rectangle
+(or the center), the width, and the height.</li><li class="li-itemize">You could specify two opposing corners.</li></ul><p>At this point it is hard to say whether either is better than
+the other, so we&#X2019;ll implement the first one, just as an example.
+<a id="hevea_default1349"></a>
+<a id="hevea_default1350"></a></p><p>Here is the class definition:</p><pre class="verbatim">class Rectangle:
+    """Represents a rectangle. 
+
+    attributes: width, height, corner.
+    """
+</pre><p>The docstring lists the attributes: <span class="c004">width</span> and
+<span class="c004">height</span> are numbers; <span class="c004">corner</span> is a Point object that
+specifies the lower-left corner.</p><p>To represent a rectangle, you have to instantiate a Rectangle
+object and assign values to the attributes:</p><pre class="verbatim">box = Rectangle()
+box.width = 100.0
+box.height = 200.0
+box.corner = Point()
+box.corner.x = 0.0
+box.corner.y = 0.0
+</pre><p>The expression <span class="c004">box.corner.x</span> means,
+&#X201C;Go to the object <span class="c004">box</span> refers to and select the attribute named
+<span class="c004">corner</span>; then go to that object and select the attribute named
+<span class="c004">x</span>.&#X201D;</p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2021.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 15.2: Object diagram.</td></tr>
+</table></div>
+<a id="fig.rectangle"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>Figure&#XA0;<a href="thinkpython2016.html#fig.rectangle">15.2</a> shows the state of this object.
+An object that is an attribute of another object is <span class="c010">embedded</span>.
+<a id="hevea_default1351"></a>
+<a id="hevea_default1352"></a>
+<a id="hevea_default1353"></a>
+<a id="hevea_default1354"></a>
+<a id="hevea_default1355"></a>
+<a id="hevea_default1356"></a></p>
+<h2 class="section" id="sec181">15.4&#XA0;&#XA0;Instances as return values</h2>
+<p>
+<a id="hevea_default1357"></a>
+<a id="hevea_default1358"></a></p><p>Functions can return instances. For example, <code>find_center</code>
+takes a <span class="c004">Rectangle</span> as an argument and returns a <span class="c004">Point</span>
+that contains the coordinates of the center of the <span class="c004">Rectangle</span>:</p><pre class="verbatim">def find_center(rect):
+    p = Point()
+    p.x = rect.corner.x + rect.width/2
+    p.y = rect.corner.y + rect.height/2
+    return p
+</pre><p>Here is an example that passes <span class="c004">box</span> as an argument and assigns
+the resulting Point to <span class="c004">center</span>:</p><pre class="verbatim">&gt;&gt;&gt; center = find_center(box)
+&gt;&gt;&gt; print_point(center)
+(50, 100)
+</pre>
+<h2 class="section" id="sec182">15.5&#XA0;&#XA0;Objects are mutable</h2>
+<p>
+<a id="hevea_default1359"></a>
+<a id="hevea_default1360"></a></p><p>You can change the state of an object by making an assignment to one of
+its attributes. For example, to change the size of a rectangle
+without changing its position, you can modify the values of <span class="c004">width</span> and <span class="c004">height</span>:</p><pre class="verbatim">box.width = box.width + 50
+box.height = box.height + 100
+</pre><p>You can also write functions that modify objects. For example,
+<code>grow_rectangle</code> takes a Rectangle object and two numbers,
+<span class="c004">dwidth</span> and <span class="c004">dheight</span>, and adds the numbers to the
+width and height of the rectangle:</p><pre class="verbatim">def grow_rectangle(rect, dwidth, dheight):
+    rect.width += dwidth
+    rect.height += dheight
+</pre><p>Here is an example that demonstrates the effect:</p><pre class="verbatim">&gt;&gt;&gt; box.width, box.height
+(150.0, 300.0)
+&gt;&gt;&gt; grow_rectangle(box, 50, 100)
+&gt;&gt;&gt; box.width, box.height
+(200.0, 400.0)
+</pre><p>Inside the function, <span class="c004">rect</span> is an
+alias for <span class="c004">box</span>, so when the function modifies <span class="c004">rect</span>, 
+<span class="c004">box</span> changes.</p><p>As an exercise, write a function named <code>move_rectangle</code> that takes
+a Rectangle and two numbers named <span class="c004">dx</span> and <span class="c004">dy</span>. It
+should change the location of the rectangle by adding <span class="c004">dx</span>
+to the <span class="c004">x</span> coordinate of <span class="c004">corner</span> and adding <span class="c004">dy</span>
+to the <span class="c004">y</span> coordinate of <span class="c004">corner</span>.</p>
+<h2 class="section" id="sec183">15.6&#XA0;&#XA0;Copying</h2>
+<p>
+<a id="copying"></a>
+<a id="hevea_default1361"></a></p><p>Aliasing can make a program difficult to read because changes
+in one place might have unexpected effects in another place.
+It is hard to keep track of all the variables that might refer
+to a given object.
+<a id="hevea_default1362"></a>
+<a id="hevea_default1363"></a>
+<a id="hevea_default1364"></a>
+<a id="hevea_default1365"></a></p><p>Copying an object is often an alternative to aliasing.
+The <span class="c004">copy</span> module contains a function called <span class="c004">copy</span> that
+can duplicate any object:</p><pre class="verbatim">&gt;&gt;&gt; p1 = Point()
+&gt;&gt;&gt; p1.x = 3.0
+&gt;&gt;&gt; p1.y = 4.0
+
+&gt;&gt;&gt; import copy
+&gt;&gt;&gt; p2 = copy.copy(p1)
+</pre><p><span class="c004">p1</span> and <span class="c004">p2</span> contain the same data, but they are
+not the same Point.</p><pre class="verbatim">&gt;&gt;&gt; print_point(p1)
+(3, 4)
+&gt;&gt;&gt; print_point(p2)
+(3, 4)
+&gt;&gt;&gt; p1 is p2
+False
+&gt;&gt;&gt; p1 == p2
+False
+</pre><p>The <span class="c004">is</span> operator indicates that <span class="c004">p1</span> and <span class="c004">p2</span> are not the
+same object, which is what we expected. But you might have expected
+<span class="c004">==</span> to yield <span class="c004">True</span> because these points contain the same
+data. In that case, you will be disappointed to learn that for
+instances, the default behavior of the <span class="c004">==</span> operator is the same
+as the <span class="c004">is</span> operator; it checks object identity, not object
+equivalence. That&#X2019;s because for programmer-defined types, Python doesn&#X2019;t
+know what should be considered equivalent. At least, not yet.
+<a id="hevea_default1366"></a>
+<a id="hevea_default1367"></a>
+<a id="hevea_default1368"></a>
+<a id="hevea_default1369"></a></p><p>If you use <span class="c004">copy.copy</span> to duplicate a Rectangle, you will find
+that it copies the Rectangle object but not the embedded Point.
+<a id="hevea_default1370"></a></p><pre class="verbatim">&gt;&gt;&gt; box2 = copy.copy(box)
+&gt;&gt;&gt; box2 is box
+False
+&gt;&gt;&gt; box2.corner is box.corner
+True
+</pre><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2022.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 15.3: Object diagram.</td></tr>
+</table></div>
+<a id="fig.rectangle2"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>Figure&#XA0;<a href="thinkpython2016.html#fig.rectangle2">15.3</a> shows what the object diagram looks like.
+<a id="hevea_default1371"></a>
+<a id="hevea_default1372"></a>
+<a id="hevea_default1373"></a>
+<a id="hevea_default1374"></a>
+This operation is called a <span class="c010">shallow copy</span> because it copies the
+object and any references it contains, but not the embedded objects.
+<a id="hevea_default1375"></a>
+<a id="hevea_default1376"></a></p><p>For most applications, this is not what you want. In this example,
+invoking <code>grow_rectangle</code> on one of the Rectangles would not
+affect the other, but invoking <code>move_rectangle</code> on either would
+affect both! This behavior is confusing and error-prone.
+<a id="hevea_default1377"></a>
+<a id="hevea_default1378"></a></p><p>Fortunately, the <span class="c004">copy</span> module provides a method named <span class="c004">deepcopy</span> that copies not only the object but also 
+the objects it refers to, and the objects <em>they</em> refer to,
+and so on.
+You will not be surprised to learn that this operation is
+called a <span class="c010">deep copy</span>.
+<a id="hevea_default1379"></a>
+<a id="hevea_default1380"></a></p><pre class="verbatim">&gt;&gt;&gt; box3 = copy.deepcopy(box)
+&gt;&gt;&gt; box3 is box
+False
+&gt;&gt;&gt; box3.corner is box.corner
+False
+</pre><p><span class="c004">box3</span> and <span class="c004">box</span> are completely separate objects.</p><p>As an exercise, write a version of <code>move_rectangle</code> that creates and
+returns a new Rectangle instead of modifying the old one.</p>
+<h2 class="section" id="sec184">15.7&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="hasattr"></a>
+<a id="hevea_default1381"></a></p><p>When you start working with objects, you are likely to encounter
+some new exceptions. If you try to access an attribute
+that doesn&#X2019;t exist, you get an <span class="c004">AttributeError</span>:
+<a id="hevea_default1382"></a>
+<a id="hevea_default1383"></a></p><pre class="verbatim">&gt;&gt;&gt; p = Point()
+&gt;&gt;&gt; p.x = 3
+&gt;&gt;&gt; p.y = 4
+&gt;&gt;&gt; p.z
+AttributeError: Point instance has no attribute 'z'
+</pre><p>If you are not sure what type an object is, you can ask:
+<a id="hevea_default1384"></a>
+<a id="hevea_default1385"></a></p><pre class="verbatim">&gt;&gt;&gt; type(p)
+&lt;class '__main__.Point'&gt;
+</pre><p>You can also use <span class="c004">isinstance</span> to check whether an object
+is an instance of a class:
+<a id="hevea_default1386"></a>
+<a id="hevea_default1387"></a></p><pre class="verbatim">&gt;&gt;&gt; isinstance(p, Point)
+True
+</pre><p>If you are not sure whether an object has a particular attribute,
+you can use the built-in function <span class="c004">hasattr</span>:
+<a id="hevea_default1388"></a>
+<a id="hevea_default1389"></a></p><pre class="verbatim">&gt;&gt;&gt; hasattr(p, 'x')
+True
+&gt;&gt;&gt; hasattr(p, 'z')
+False
+</pre><p>The first argument can be any object; the second argument is a <em>string</em> that contains the name of the attribute.
+<a id="hevea_default1390"></a></p><p>You can also use a <span class="c004">try</span> statement to see if the object has the
+attributes you need:
+<a id="hevea_default1391"></a>
+<a id="hevea_default1392"></a></p><pre class="verbatim">try:
+    x = p.x
+except AttributeError:
+    x = 0
+</pre><p>This approach can make it easier to write functions that work with
+different types; more on that topic is
+coming up in Section&#XA0;<a href="thinkpython2018.html#polymorphism">17.9</a>.</p>
+<h2 class="section" id="sec185">15.8&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">class:</span></dt><dd class="dd-description"> A programmer-defined type. A class definition creates a new
+class object.
+<a id="hevea_default1393"></a>
+<a id="hevea_default1394"></a>
+<a id="hevea_default1395"></a></dd><dt class="dt-description"><span class="c010">class object:</span></dt><dd class="dd-description"> An object that contains information about a
+programmer-defined type. The class object can be used to create instances
+of the type.
+<a id="hevea_default1396"></a>
+<a id="hevea_default1397"></a></dd><dt class="dt-description"><span class="c010">instance:</span></dt><dd class="dd-description"> An object that belongs to a class.
+<a id="hevea_default1398"></a></dd><dt class="dt-description"><span class="c010">instantiate:</span></dt><dd class="dd-description"> To create a new object.
+<a id="hevea_default1399"></a></dd><dt class="dt-description"><span class="c010">attribute:</span></dt><dd class="dd-description"> One of the named values associated with an object.
+<a id="hevea_default1400"></a>
+<a id="hevea_default1401"></a></dd><dt class="dt-description"><span class="c010">embedded object:</span></dt><dd class="dd-description"> An object that is stored as an attribute
+of another object.
+<a id="hevea_default1402"></a>
+<a id="hevea_default1403"></a></dd><dt class="dt-description"><span class="c010">shallow copy:</span></dt><dd class="dd-description"> To copy the contents of an object, including
+any references to embedded objects;
+implemented by the <span class="c004">copy</span> function in the <span class="c004">copy</span> module.
+<a id="hevea_default1404"></a></dd><dt class="dt-description"><span class="c010">deep copy:</span></dt><dd class="dd-description"> To copy the contents of an object as well as any
+embedded objects, and any objects embedded in them, and so on;
+implemented by the <span class="c004">deepcopy</span> function in the <span class="c004">copy</span> module.
+<a id="hevea_default1405"></a></dd><dt class="dt-description"><span class="c010">object diagram:</span></dt><dd class="dd-description"> A diagram that shows objects, their
+attributes, and the values of the attributes.
+<a id="hevea_default1406"></a>
+<a id="hevea_default1407"></a></dd></dl>
+<h2 class="section" id="sec186">15.9&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>Write a definition for a class named <span class="c004">Circle</span> with attributes
+<span class="c004">center</span> and <span class="c004">radius</span>, where <span class="c004">center</span> is a Point object
+and radius is a number.</em></p><p><em>Instantiate a Circle object that represents a circle with its center
+at </em>(150, 100)<em> and radius 75.</em></p><p><em>Write a function named <code>point_in_circle</code> that takes a Circle and
+a Point and returns True if the Point lies in or on the boundary of
+the circle.</em></p><p><em>Write a function named <code>rect_in_circle</code> that takes a Circle and a
+Rectangle and returns True if the Rectangle lies entirely in or on the boundary
+of the circle.</em></p><p><em>Write a function named <code>rect_circle_overlap</code> that takes a Circle
+and a Rectangle and returns True if any of the corners of the Rectangle fall
+inside the circle. Or as a more challenging version, return True if
+any part of the Rectangle falls inside the circle.</em></p><p><em>Solution: </em><a href="http://thinkpython2.com/code/Circle.py"><em><span class="c004">http://thinkpython2.com/code/Circle.py</span></em></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;<p><em>Write a function called <code>draw_rect</code> that takes a Turtle object
+and a Rectangle and uses the Turtle to draw the Rectangle. See
+Chapter&#XA0;</em><a href="thinkpython2005.html#turtlechap"><em>4</em></a><em> for examples using Turtle objects.</em></p><p><em>Write a function called <code>draw_circle</code> that takes a Turtle and
+a Circle and draws the Circle.</em></p><p><em>Solution: </em><a href="http://thinkpython2.com/code/draw.py"><em><span class="c004">http://thinkpython2.com/code/draw.py</span></em></a><em>.</em></p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

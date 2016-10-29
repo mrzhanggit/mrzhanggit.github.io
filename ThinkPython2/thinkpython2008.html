@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Iteration</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2007.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2009.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec81">Chapter&#XA0;7&#XA0;&#XA0;Iteration</h1>
+<p>This chapter is about iteration, which is the ability to run
+a block of statements repeatedly. We saw a kind of iteration,
+using recursion, in Section&#XA0;<a href="thinkpython2006.html#recursion">5.8</a>.
+We saw another kind, using a <span class="c004">for</span> loop,
+in Section&#XA0;<a href="thinkpython2005.html#repetition">4.2</a>. In this chapter we&#X2019;ll see yet another
+kind, using a <span class="c004">while</span> statement.
+But first I want to say a little more about variable assignment.</p>
+<h2 class="section" id="sec82">7.1&#XA0;&#XA0;Reassignment</h2>
+<p>
+<a id="hevea_default491"></a>
+<a id="hevea_default492"></a>
+<a id="hevea_default493"></a></p><p>As you may have discovered, it is legal to make more than one
+assignment to the same variable. A new assignment makes an existing
+variable refer to a new value (and stop referring to the old value).</p><pre class="verbatim">&gt;&gt;&gt; x = 5
+&gt;&gt;&gt; x
+5
+&gt;&gt;&gt; x = 7
+&gt;&gt;&gt; x
+7
+</pre><p>The first time we display 
+<span class="c004">x</span>, its value is 5; the second time, its
+value is 7.</p><p>Figure&#XA0;<a href="thinkpython2008.html#fig.assign2">7.1</a> shows what <span class="c010">reassignment</span> looks
+like in a state diagram. <a id="hevea_default494"></a> <a id="hevea_default495"></a></p><p>At this point I want to address a common source of
+confusion.
+Because Python uses the equal sign (<span class="c004">=</span>) for assignment, it is
+tempting to interpret a statement like <span class="c004">a = b</span> as a
+mathematical
+proposition of equality; that is, the claim that <span class="c004">a</span> and
+<span class="c004">b</span> are equal. But this interpretation is wrong.
+<a id="hevea_default496"></a></p><p>First, equality is a symmetric relationship and assignment is not. For
+example, in mathematics, if <span class="c009">a</span>=7 then 7=<span class="c009">a</span>. But in Python, the
+statement <span class="c004">a = 7</span> is legal and <span class="c004">7 = a</span> is not.</p><p>Also, in mathematics, a proposition of equality is either true or
+false for all time. If <span class="c009">a</span>=<span class="c009">b</span> now, then <span class="c009">a</span> will always equal <span class="c009">b</span>.
+In Python, an assignment statement can make two variables equal, but
+they don&#X2019;t have to stay that way:</p><pre class="verbatim">&gt;&gt;&gt; a = 5
+&gt;&gt;&gt; b = a    # a and b are now equal
+&gt;&gt;&gt; a = 3    # a and b are no longer equal
+&gt;&gt;&gt; b
+5
+</pre><p>The third line changes the value of <span class="c004">a</span> but does not change the
+value of <span class="c004">b</span>, so they are no longer equal. </p><p>Reassigning variables is often useful, but you should use it
+with caution. If the values of variables change frequently, it can
+make the code difficult to read and debug.</p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2008.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 7.1: State diagram.</td></tr>
+</table></div>
+<a id="fig.assign2"></a>
+<div class="center"><hr class="c019"></div></blockquote>
+<h2 class="section" id="sec83">7.2&#XA0;&#XA0;Updating variables</h2>
+<p>
+<a id="update"></a></p><p><a id="hevea_default497"></a>
+<a id="hevea_default498"></a></p><p>A common kind of reassignment is an <span class="c010">update</span>,
+where the new value of the variable depends on the old.</p><pre class="verbatim">&gt;&gt;&gt; x = x + 1
+</pre><p>This means &#X201C;get the current value of <span class="c004">x</span>, add one, and then
+update <span class="c004">x</span> with the new value.&#X201D;</p><p>If you try to update a variable that doesn&#X2019;t exist, you get an
+error, because Python evaluates the right side before it assigns
+a value to <span class="c004">x</span>:</p><pre class="verbatim">&gt;&gt;&gt; x = x + 1
+NameError: name 'x' is not defined
+</pre><p>Before you can update a variable, you have to <span class="c010">initialize</span>
+it, usually with a simple assignment:
+<a id="hevea_default499"></a></p><pre class="verbatim">&gt;&gt;&gt; x = 0
+&gt;&gt;&gt; x = x + 1
+</pre><p>Updating a variable by adding 1 is called an <span class="c010">increment</span>;
+subtracting 1 is called a <span class="c010">decrement</span>.
+<a id="hevea_default500"></a>
+<a id="hevea_default501"></a></p>
+<h2 class="section" id="sec84">7.3&#XA0;&#XA0;The <span class="c004">while</span> statement</h2>
+<p>
+<a id="hevea_default502"></a>
+<a id="hevea_default503"></a>
+<a id="hevea_default504"></a>
+<a id="hevea_default505"></a></p><p>Computers are often used to automate repetitive tasks. Repeating
+identical or similar tasks without making errors is something that
+computers do well and people do poorly. In a computer program,
+repetition is also called <span class="c010">iteration</span>.</p><p>We have already seen two functions, <span class="c004">countdown</span> and
+<code>print_n</code>, that iterate using recursion. Because iteration is so
+common, Python provides language features to make it easier.
+One is the <span class="c004">for</span> statement we saw in Section&#XA0;<a href="thinkpython2005.html#repetition">4.2</a>.
+We&#X2019;ll get back to that later.</p><p>Another is the <span class="c004">while</span> statement. Here is a version of <span class="c004">countdown</span> that uses a <span class="c004">while</span> statement:</p><pre class="verbatim">def countdown(n):
+    while n &gt; 0:
+        print(n)
+        n = n - 1
+    print('Blastoff!')
+</pre><p>You can almost read the <span class="c004">while</span> statement as if it were English.
+It means, &#X201C;While <span class="c004">n</span> is greater than 0,
+display the value of <span class="c004">n</span> and then decrement
+<span class="c004">n</span>. When you get to 0, display the word <span class="c004">Blastoff!</span>&#X201D;
+<a id="hevea_default506"></a></p><p>More formally, here is the flow of execution for a <span class="c004">while</span> statement:</p><ol class="enumerate" type=1><li class="li-enumerate">Determine whether the condition is true or false.</li><li class="li-enumerate">If false, exit the <span class="c004">while</span> statement
+and continue execution at the next statement.</li><li class="li-enumerate">If the condition is true, run the
+body and then go back to step 1.</li></ol><p>This type of flow is called a loop because the third step
+loops back around to the top. 
+<a id="hevea_default507"></a>
+<a id="hevea_default508"></a>
+<a id="hevea_default509"></a></p><p>The body of the loop should change the value of one or more variables
+so that the condition becomes false eventually and the loop
+terminates. Otherwise the loop will repeat forever, which is called
+an <span class="c010">infinite loop</span>. An endless source of amusement for computer
+scientists is the observation that the directions on shampoo,
+&#X201C;Lather, rinse, repeat&#X201D;, are an infinite loop.
+<a id="hevea_default510"></a>
+<a id="hevea_default511"></a></p><p>In the case of <span class="c004">countdown</span>, we can prove that the loop
+terminates: if <span class="c004">n</span> is zero or negative, the loop never runs.
+Otherwise, <span class="c004">n</span> gets smaller each time through the
+loop, so eventually we have to get to 0.</p><p>For some other loops, it is not so easy to tell. For example:</p><pre class="verbatim">def sequence(n):
+    while n != 1:
+        print(n)
+        if n % 2 == 0:        # n is even
+            n = n / 2
+        else:                 # n is odd
+            n = n*3 + 1
+</pre><p>The condition for this loop is <span class="c004">n != 1</span>, so the loop will continue
+until <span class="c004">n</span> is <span class="c004">1</span>, which makes the condition false.</p><p>Each time through the loop, the program outputs the value of <span class="c004">n</span>
+and then checks whether it is even or odd. If it is even, <span class="c004">n</span> is
+divided by 2. If it is odd, the value of <span class="c004">n</span> is replaced with
+<span class="c004">n*3 + 1</span>. For example, if the argument passed to <span class="c004">sequence</span>
+is 3, the resulting values of <span class="c004">n</span> are 3, 10, 5, 16, 8, 4, 2, 1.</p><p>Since <span class="c004">n</span> sometimes increases and sometimes decreases, there is no
+obvious proof that <span class="c004">n</span> will ever reach 1, or that the program
+terminates. For some particular values of <span class="c004">n</span>, we can prove
+termination. For example, if the starting value is a power of two,
+<span class="c004">n</span> will be even every time through the loop
+until it reaches 1. The previous example ends with such a sequence,
+starting with 16.
+<a id="hevea_default512"></a></p><p>The hard question is whether we can prove that this program terminates
+for <em>all</em> positive values of <span class="c004">n</span>. So far, no one has
+been able to prove it <em>or</em> disprove it! (See
+<a href="http://en.wikipedia.org/wiki/Collatz_conjecture"><span class="c004">http://en.wikipedia.org/wiki/Collatz_conjecture</span></a>.)</p><p>As an exercise, rewrite the function <code>print_n</code> from
+Section&#XA0;<a href="thinkpython2006.html#recursion">5.8</a> using iteration instead of recursion.</p>
+<h2 class="section" id="sec85">7.4&#XA0;&#XA0;<span class="c004">break</span></h2>
+<p>
+<a id="hevea_default513"></a>
+<a id="hevea_default514"></a></p><p>Sometimes you don&#X2019;t know it&#X2019;s time to end a loop until you get half
+way through the body. In that case you can use the <span class="c004">break</span>
+statement to jump out of the loop.</p><p>For example, suppose you want to take input from the user until they
+type <span class="c004">done</span>. You could write:</p><pre class="verbatim">while True:
+    line = input('&gt; ')
+    if line == 'done':
+        break
+    print(line)
+
+print('Done!')
+</pre><p>The loop condition is <span class="c004">True</span>, which is always true, so the
+loop runs until it hits the break statement.</p><p>Each time through, it prompts the user with an angle bracket.
+If the user types <span class="c004">done</span>, the <span class="c004">break</span> statement exits
+the loop. Otherwise the program echoes whatever the user types
+and goes back to the top of the loop. Here&#X2019;s a sample run:</p><pre class="verbatim">&gt; not done
+not done
+&gt; done
+Done!
+</pre><p>This way of writing <span class="c004">while</span> loops is common because you
+can check the condition anywhere in the loop (not just at the
+top) and you can express the stop condition affirmatively
+(&#X201C;stop when this happens&#X201D;) rather than negatively (&#X201C;keep going
+until that happens&#X201D;).</p>
+<h2 class="section" id="sec86">7.5&#XA0;&#XA0;Square roots</h2>
+<p>
+<a id="squareroot"></a>
+<a id="hevea_default515"></a></p><p>Loops are often used in programs that compute
+numerical results by starting with an approximate answer and
+iteratively improving it.
+<a id="hevea_default516"></a></p><p>For example, one way of computing square roots is Newton&#X2019;s method.
+Suppose that you want to know the square root of <span class="c009">a</span>. If you start
+with almost any estimate, <span class="c009">x</span>, you can compute a better
+estimate with the following formula:</p><table class="display dcenter"><tr class="c017"><td class="dcell"><span class="c009">y</span>&#XA0;=&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell c011"><span class="c009">x</span>&#XA0;+&#XA0;<span class="c009">a</span>/<span class="c009">x</span></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell c011">2</td></tr>
+</table></td><td class="dcell">&#XA0;</td></tr>
+</table><p>
+For example, if <span class="c009">a</span> is 4 and <span class="c009">x</span> is 3:</p><pre class="verbatim">&gt;&gt;&gt; a = 4
+&gt;&gt;&gt; x = 3
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.16666666667
+</pre><p>The result is closer to the correct answer (&#X221A;<span class="c016">4</span> = 2). If we
+repeat the process with the new estimate, it gets even closer:</p><pre class="verbatim">&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.00641025641
+</pre><p>After a few more updates, the estimate is almost exact:
+<a id="hevea_default517"></a></p><pre class="verbatim">&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.00001024003
+&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.00000000003
+</pre><p>In general we don&#X2019;t know ahead of time how many steps it takes
+to get to the right answer, but we know when we get there
+because the estimate
+stops changing:</p><pre class="verbatim">&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.0
+&gt;&gt;&gt; x = y
+&gt;&gt;&gt; y = (x + a/x) / 2
+&gt;&gt;&gt; y
+2.0
+</pre><p>When <span class="c004">y == x</span>, we can stop. Here is a loop that starts
+with an initial estimate, <span class="c004">x</span>, and improves it until it
+stops changing:</p><pre class="verbatim">while True:
+    print(x)
+    y = (x + a/x) / 2
+    if y == x:
+        break
+    x = y
+</pre><p>For most values of <span class="c004">a</span> this works fine, but in general it is
+dangerous to test <span class="c004">float</span> equality.
+Floating-point values are only approximately right:
+most rational numbers, like 1/3, and irrational numbers, like
+&#X221A;<span class="c016">2</span>, can&#X2019;t be represented exactly with a <span class="c004">float</span>.
+<a id="hevea_default518"></a>
+<a id="hevea_default519"></a></p><p>Rather than checking whether <span class="c004">x</span> and <span class="c004">y</span> are exactly equal, it
+is safer to use the built-in function <span class="c004">abs</span> to compute the
+absolute value, or magnitude, of the difference between them:</p><pre class="verbatim">    if abs(y-x) &lt; epsilon:
+        break
+</pre><p>Where <code>epsilon</code> has a value like <span class="c004">0.0000001</span> that
+determines how close is close enough.</p>
+<h2 class="section" id="sec87">7.6&#XA0;&#XA0;Algorithms</h2>
+<p>
+<a id="hevea_default520"></a></p><p>Newton&#X2019;s method is an example of an <span class="c010">algorithm</span>: it is a
+mechanical process for solving a category of problems (in this
+case, computing square roots).</p><p>To understand what an algorithm is, it might help to start with
+something that is not an algorithm. When you learned to multiply
+single-digit numbers, you probably memorized the multiplication table.
+In effect, you memorized 100 specific solutions. That kind of
+knowledge is not algorithmic.</p><p>But if you were &#X201C;lazy&#X201D;, you might have learned a few
+tricks. For example, to find the product of <span class="c009">n</span> and 9, you can
+write <span class="c009">n</span>&#X2212;1 as the first digit and 10&#X2212;<span class="c009">n</span> as the second
+digit. This trick is a general solution for multiplying any
+single-digit number by 9. That&#X2019;s an algorithm!
+<a id="hevea_default521"></a>
+<a id="hevea_default522"></a>
+<a id="hevea_default523"></a>
+<a id="hevea_default524"></a></p><p>Similarly, the techniques you learned for addition with carrying,
+subtraction with borrowing, and long division are all algorithms. One
+of the characteristics of algorithms is that they do not require any
+intelligence to carry out. They are mechanical processes where
+each step follows from the last according to a simple set of rules.</p><p>Executing algorithms is boring, but designing them is interesting,
+intellectually challenging, and a central part of computer science.</p><p>Some of the things that people do naturally, without difficulty or
+conscious thought, are the hardest to express algorithmically.
+Understanding natural language is a good example. We all do it, but
+so far no one has been able to explain <em>how</em> we do it, at least
+not in the form of an algorithm.</p>
+<h2 class="section" id="sec88">7.7&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="bisectbug"></a></p><p>As you start writing bigger programs, you might find yourself
+spending more time debugging. More code means more chances to
+make an error and more places for bugs to hide.
+<a id="hevea_default525"></a>
+<a id="hevea_default526"></a></p><p>One way to cut your debugging time is &#X201C;debugging by bisection&#X201D;.
+For example, if there are 100 lines in your program and you
+check them one at a time, it would take 100 steps.</p><p>Instead, try to break the problem in half. Look at the middle
+of the program, or near it, for an intermediate value you
+can check. Add a <span class="c004">print</span> statement (or something else
+that has a verifiable effect) and run the program.</p><p>If the mid-point check is incorrect, there must be a problem in the
+first half of the program. If it is correct, the problem is
+in the second half.</p><p>Every time you perform a check like this, you halve the number of
+lines you have to search. After six steps (which is fewer than 100),
+you would be down to one or two lines of code, at least in theory.</p><p>In practice it is not always clear what
+the &#X201C;middle of the program&#X201D; is and not always possible to
+check it. It doesn&#X2019;t make sense to count lines and find the
+exact midpoint. Instead, think about places
+in the program where there might be errors and places where it
+is easy to put a check. Then choose a spot where you
+think the chances are about the same that the bug is before
+or after the check.</p>
+<h2 class="section" id="sec89">7.8&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">reassignment:</span></dt><dd class="dd-description"> Assigning a new value to a variable that
+already exists.
+<a id="hevea_default527"></a></dd><dt class="dt-description"><span class="c010">update:</span></dt><dd class="dd-description"> An assignment where the new value of the variable
+depends on the old.
+<a id="hevea_default528"></a></dd><dt class="dt-description"><span class="c010">initialization:</span></dt><dd class="dd-description"> An assignment that gives an initial value to
+a variable that will be updated.
+<a id="hevea_default529"></a></dd><dt class="dt-description"><span class="c010">increment:</span></dt><dd class="dd-description"> An update that increases the value of a variable
+(often by one).
+<a id="hevea_default530"></a></dd><dt class="dt-description"><span class="c010">decrement:</span></dt><dd class="dd-description"> An update that decreases the value of a variable.
+<a id="hevea_default531"></a></dd><dt class="dt-description"><span class="c010">iteration:</span></dt><dd class="dd-description"> Repeated execution of a set of statements using
+either a recursive function call or a loop.
+<a id="hevea_default532"></a></dd><dt class="dt-description"><span class="c010">infinite loop:</span></dt><dd class="dd-description"> A loop in which the terminating condition is
+never satisfied.
+<a id="hevea_default533"></a></dd><dt class="dt-description"><span class="c010">algorithm:</span></dt><dd class="dd-description"> A general process for solving a category of
+problems.
+<a id="hevea_default534"></a></dd></dl>
+<h2 class="section" id="sec90">7.9&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;
+<a id="hevea_default535"></a><p><em>Copy the loop from Section&#XA0;</em><a href="thinkpython2008.html#squareroot"><em>7.5</em></a><em>
+and encapsulate it in a function called
+<code>mysqrt</code> that takes <span class="c004">a</span> as a parameter, chooses a
+reasonable value of <span class="c004">x</span>, and returns an estimate of the square
+root of <span class="c004">a</span>. </em><a id="hevea_default536"></a></p><p><em>To test it, write a function named <code>test_square_root</code>
+that prints a table like this:</em></p><pre class="verbatim"><em>a   mysqrt(a)     math.sqrt(a)  diff
+-   ---------     ------------  ----
+1.0 1.0           1.0           0.0
+2.0 1.41421356237 1.41421356237 2.22044604925e-16
+3.0 1.73205080757 1.73205080757 0.0
+4.0 2.0           2.0           0.0
+5.0 2.2360679775  2.2360679775  0.0
+6.0 2.44948974278 2.44948974278 0.0
+7.0 2.64575131106 2.64575131106 0.0
+8.0 2.82842712475 2.82842712475 4.4408920985e-16
+9.0 3.0           3.0           0.0
+</em></pre><p><em>The first column is a number, </em><span class="c009">a</span><em>; the second column is the square
+root of </em><span class="c009">a</span><em> computed with <code>mysqrt</code>; the third column is the
+square root computed by <span class="c004">math.sqrt</span>; the fourth column is the
+absolute value of the difference between the two estimates.
+</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;
+<a id="hevea_default537"></a>
+<a id="hevea_default538"></a><p><em>The built-in function <span class="c004">eval</span> takes a string and evaluates
+it using the Python interpreter. For example:</em></p><pre class="verbatim"><em>&gt;&gt;&gt; eval('1 + 2 * 3')
+7
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; eval('math.sqrt(5)')
+2.2360679774997898
+&gt;&gt;&gt; eval('type(math.pi)')
+&lt;class 'float'&gt;
+</em></pre><p><em>Write a function called <code>eval_loop</code> that iteratively
+prompts the user, takes the resulting input and evaluates
+it using <span class="c004">eval</span>, and prints the result.</em></p><p><em>It should continue until the user enters <code>'done'</code>, and then
+return the value of the last expression it evaluated.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;3</span>&#XA0;&#XA0;
+<a id="hevea_default539"></a><p><em>The mathematician Srinivasa Ramanujan found an
+infinite series
+that can be used to generate a numerical
+approximation of </em>1 / &#X3C0;<em>:
+</em><a id="hevea_default540"></a></p><table class="display dcenter"><tr class="c017"><td class="dcell"><table class="display"><tr><td class="dcell c011">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell c011">&#X3C0;</td></tr>
+</table></td><td class="dcell">&#XA0;=&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell c011"><table class="display"><tr class="c017"><td class="dcell">2</td><td class="dcell"><span class="c008">&#X221A;</span></td><td class="dcell"><table class="c002 cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td class="c012">2</td></tr>
+</table></td></tr>
+</table></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell c011">9801</td></tr>
+</table></td><td class="dcell">&#XA0;
+</td><td class="dcell"><table class="display"><tr><td class="dcell c011">&#X221E;</td></tr>
+<tr><td class="dcell c011"><span style="font-size:xx-large">&#X2211;</span></td></tr>
+<tr><td class="dcell c011"><span class="c009">k</span>=0</td></tr>
+</table></td><td class="dcell">&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell c011">(4<span class="c009">k</span>)!(1103+26390<span class="c009">k</span>)</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell c011">(<span class="c009">k</span>!)<sup>4</sup>&#XA0;396<sup>4<span class="c009">k</span></sup></td></tr>
+</table></td><td class="dcell">&#XA0;</td></tr>
+</table><p><em>Write a function called <code>estimate_pi</code> that uses this formula
+to compute and return an estimate of </em>&#X3C0;<em>. It should use a <span class="c004">while</span>
+loop to compute terms of the summation until the last term is
+smaller than <span class="c004">1e-15</span> (which is Python notation for </em>10<sup>&#X2212;15</sup><em>).
+You can check the result by comparing it to <span class="c004">math.pi</span>.</em></p><p><em>Solution: </em><a href="http://thinkpython2.com/code/pi.py"><em><span class="c004">http://thinkpython2.com/code/pi.py</span></em></a><em>.</em></p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

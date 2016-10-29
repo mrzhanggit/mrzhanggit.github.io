@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Case study: interface design</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2004.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2006.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec41">Chapter&#XA0;4&#XA0;&#XA0;Case study: interface design</h1>
+<p>
+<a id="turtlechap"></a></p><p>This chapter presents a case study that demonstrates a process for
+designing functions that work together.</p><p>It introduces the <span class="c004">turtle</span> module, which allows you to
+create images using turtle graphics. The <span class="c004">turtle</span> module is
+included in most Python installations, but if you are running Python
+using PythonAnywhere, you won&#X2019;t be able to run the turtle examples (at
+least you couldn&#X2019;t when I wrote this).</p><p>If you have already installed Python on your computer, you should
+be able to run the examples. Otherwise, now is a good time
+to install. I have posted instructions at
+<a href="http://tinyurl.com/thinkpython2e"><span class="c004">http://tinyurl.com/thinkpython2e</span></a>.</p><p>Code examples from this chapter are available from
+<a href="http://thinkpython2.com/code/polygon.py"><span class="c004">http://thinkpython2.com/code/polygon.py</span></a>.</p>
+<h2 class="section" id="sec42">4.1&#XA0;&#XA0;The turtle module</h2>
+<p>
+<a id="turtle"></a></p><p>To check whether you have the <span class="c004">turtle</span> module, open the Python
+interpreter and type</p><pre class="verbatim">&gt;&gt;&gt; import turtle
+&gt;&gt;&gt; bob = turtle.Turtle()
+</pre><p>When you run this code, it should create a new window
+with small arrow that represents the turtle. Close the window.</p><p>Create a file named <span class="c004">mypolygon.py</span> and type in the following
+code:</p><pre class="verbatim">import turtle
+bob = turtle.Turtle()
+print(bob)
+turtle.mainloop()
+</pre><p>The <span class="c004">turtle</span> module (with a lowercase &#X2019;t&#X2019;) provides a function
+called <span class="c004">Turtle</span> (with an uppercase &#X2019;T&#X2019;) that creates a Turtle
+object, which we assign to a variable named <span class="c004">bob</span>.
+Printing <span class="c004">bob</span> displays something like:</p><pre class="verbatim">&lt;turtle.Turtle object at 0xb7bfbf4c&gt;
+</pre><p>This means that <span class="c004">bob</span> refers to an object with type
+<span class="c004">Turtle</span>
+as defined in module <span class="c004">turtle</span>.</p><p><code>mainloop</code> tells the window to wait for the user
+to do something, although in this case there&#X2019;s not much for
+the user to do except close the window.</p><p>Once you create a Turtle, you can call a <span class="c010">method</span> to move it
+around the window. A method is similar to a function, but it
+uses slightly different syntax. For example, to move the turtle
+forward:</p><pre class="verbatim">bob.fd(100)
+</pre><p>The method, <span class="c004">fd</span>, is associated with the turtle
+object we&#X2019;re calling <span class="c004">bob</span>. 
+Calling a method is like making a request: you are asking <span class="c004">bob</span>
+to move forward.</p><p>The argument of <span class="c004">fd</span> is a distance in pixels, so the actual
+size depends on your display.</p><p>Other methods you can call on a Turtle are <span class="c004">bk</span> to move
+backward, <span class="c004">lt</span> for left turn, and <span class="c004">rt</span> right turn. The
+argument for <span class="c004">lt</span> and <span class="c004">rt</span> is an angle in degrees.</p><p>Also, each Turtle is holding a pen, which is
+either down or up; if the pen is down, the Turtle leaves
+a trail when it moves. The methods <span class="c004">pu</span> and <span class="c004">pd</span>
+stand for &#X201C;pen up&#X201D; and &#X201C;pen down&#X201D;.</p><p>To draw a right angle, add these lines to the program
+(after creating <span class="c004">bob</span> and before calling <code>mainloop</code>):</p><pre class="verbatim">bob.fd(100)
+bob.lt(90)
+bob.fd(100)
+</pre><p>When you run this program, you should see <span class="c004">bob</span> move east and then
+north, leaving two line segments behind.</p><p>Now modify the program to draw a square. Don&#X2019;t go on until
+you&#X2019;ve got it working!</p>
+<h2 class="section" id="sec43">4.2&#XA0;&#XA0;Simple repetition</h2>
+<p>
+<a id="repetition"></a>
+<a id="hevea_default261"></a></p><p>Chances are you wrote something like this:</p><pre class="verbatim">bob.fd(100)
+bob.lt(90)
+
+bob.fd(100)
+bob.lt(90)
+
+bob.fd(100)
+bob.lt(90)
+
+bob.fd(100)
+</pre><p>We can do the same thing more concisely with a <span class="c004">for</span> statement.
+Add this example to <span class="c004">mypolygon.py</span> and run it again:
+<a id="hevea_default262"></a>
+<a id="hevea_default263"></a>
+<a id="hevea_default264"></a></p><pre class="verbatim">for i in range(4):
+    print('Hello!')
+</pre><p>You should see something like this:</p><pre class="verbatim">Hello!
+Hello!
+Hello!
+Hello!
+</pre><p>This is the simplest use of the <span class="c004">for</span> statement; we will see
+more later. But that should be enough to let you rewrite your
+square-drawing program. Don&#X2019;t go on until you do.</p><p>Here is a <span class="c004">for</span> statement that draws a square:</p><pre class="verbatim">for i in range(4):
+    bob.fd(100)
+    bob.lt(90)
+</pre><p>The syntax of a <span class="c004">for</span> statement is similar to a function
+definition. It has a header that ends with a colon and an indented
+body. The body can contain any number of statements.</p><p>A <span class="c004">for</span> statement is also called a <span class="c010">loop</span> because
+the flow of execution runs through the body and then loops back
+to the top. In this case, it runs the body four times.
+<a id="hevea_default265"></a></p><p>This version is actually a little different from the previous
+square-drawing code because it makes another turn after
+drawing the last side of the square. The extra turn takes
+more time, but it simplifies the code if we do the same thing
+every time through the loop. This version also has the effect
+of leaving the turtle back in the starting position, facing in
+the starting direction.</p>
+<h2 class="section" id="sec44">4.3&#XA0;&#XA0;Exercises</h2>
+<p>The following is a series of exercises using TurtleWorld. They
+are meant to be fun, but they have a point, too. While you are
+working on them, think about what the point is.</p><p>The following sections have solutions to the exercises, so
+don&#X2019;t look until you have finished (or at least tried).</p><ol class="enumerate" type=1><li class="li-enumerate">Write a function called <span class="c004">square</span> that takes a parameter
+named <span class="c004">t</span>, which is a turtle. It should use the turtle to draw
+a square.<p>Write a function call that passes <span class="c004">bob</span> as an argument to
+<span class="c004">square</span>, and then run the program again.</p></li><li class="li-enumerate">Add another parameter, named <span class="c004">length</span>, to <span class="c004">square</span>.
+Modify the body so length of the sides is <span class="c004">length</span>, and then
+modify the function call to provide a second argument. Run the
+program again. Test your program with a range of values for <span class="c004">length</span>.</li><li class="li-enumerate">Make a copy of <span class="c004">square</span> and change the name to <span class="c004">polygon</span>. Add another parameter named <span class="c004">n</span> and modify the body
+so it draws an n-sided regular polygon. Hint: The exterior angles
+of an n-sided regular polygon are 360/<span class="c009">n</span> degrees. <a id="hevea_default266"></a> <a id="hevea_default267"></a></li><li class="li-enumerate">Write a function called <span class="c004">circle</span> that takes a turtle, 
+<span class="c004">t</span>, and radius, <span class="c004">r</span>, as parameters and that draws an
+approximate circle by calling <span class="c004">polygon</span> with an appropriate
+length and number of sides. Test your function with a range of values
+of <span class="c004">r</span>. <a id="hevea_default268"></a> <a id="hevea_default269"></a><p>Hint: figure out the circumference of the circle and make sure that
+<span class="c004">length * n = circumference</span>.</p></li><li class="li-enumerate">Make a more general version of <span class="c004">circle</span> called <span class="c004">arc</span>
+that takes an additional parameter <span class="c004">angle</span>, which determines
+what fraction of a circle to draw. <span class="c004">angle</span> is in units of
+degrees, so when <span class="c004">angle=360</span>, <span class="c004">arc</span> should draw a complete
+circle.
+<a id="hevea_default270"></a>
+<a id="hevea_default271"></a></li></ol>
+<h2 class="section" id="sec45">4.4&#XA0;&#XA0;Encapsulation</h2>
+<p>The first exercise asks you to put your square-drawing code
+into a function definition and then call the function, passing
+the turtle as a parameter. Here is a solution:</p><pre class="verbatim">def square(t):
+    for i in range(4):
+        t.fd(100)
+        t.lt(90)
+
+square(bob)
+</pre><p>The innermost statements, <span class="c004">fd</span> and <span class="c004">lt</span> are indented twice to
+show that they are inside the <span class="c004">for</span> loop, which is inside the
+function definition. The next line, <span class="c004">square(bob)</span>, is flush with
+the left margin, which indicates the end of both the <span class="c004">for</span> loop
+and the function definition.</p><p>Inside the function, <span class="c004">t</span> refers to the same turtle <span class="c004">bob</span>, so
+<span class="c004">t.lt(90)</span> has the same effect as <span class="c004">bob.lt(90)</span>. In that
+case, why not
+call the parameter <span class="c004">bob</span>? The idea is that <span class="c004">t</span> can be any
+turtle, not just <span class="c004">bob</span>, so you could create a second turtle and
+pass it as an argument to <span class="c004">square</span>:</p><pre class="verbatim">alice = turtle.Turtle()
+square(alice)
+</pre><p>Wrapping a piece of code up in a function is called <span class="c010">encapsulation</span>. One of the benefits of encapsulation is that it
+attaches a name to the code, which serves as a kind of documentation.
+Another advantage is that if you re-use the code, it is more concise
+to call a function twice than to copy and paste the body!
+<a id="hevea_default272"></a></p>
+<h2 class="section" id="sec46">4.5&#XA0;&#XA0;Generalization</h2>
+<p>The next step is to add a <span class="c004">length</span> parameter to <span class="c004">square</span>.
+Here is a solution:</p><pre class="verbatim">def square(t, length):
+    for i in range(4):
+        t.fd(length)
+        t.lt(90)
+
+square(bob, 100)
+</pre><p>Adding a parameter to a function is called <span class="c010">generalization</span>
+because it makes the function more general: in the previous
+version, the square is always the same size; in this version
+it can be any size.
+<a id="hevea_default273"></a></p><p>The next step is also a generalization. Instead of drawing
+squares, <span class="c004">polygon</span> draws regular polygons with any number of
+sides. Here is a solution:</p><pre class="verbatim">def polygon(t, n, length):
+    angle = 360 / n
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+
+polygon(bob, 7, 70)
+</pre><p>This example draws a 7-sided polygon with side length 70.</p><p>If you are using Python 2, the value of <span class="c004">angle</span> might be off
+because of integer division. A simple solution is to compute
+<span class="c004">angle = 360.0 / n</span>. Because the numerator is a floating-point
+number, the result is floating point.
+<a id="hevea_default274"></a></p><p>When a function has more than a few numeric arguments, it is easy to
+forget what they are, or what order they should be in. In that case
+it is often a good idea to include the names of the parameters in the
+argument list:</p><pre class="verbatim">polygon(bob, n=7, length=70)
+</pre><p>These are called <span class="c010">keyword arguments</span> because they include
+the parameter names as &#X201C;keywords&#X201D; (not to be confused with
+Python keywords like <span class="c004">while</span> and <span class="c004">def</span>).
+<a id="hevea_default275"></a>
+<a id="hevea_default276"></a></p><p>This syntax makes the program more readable. It is also a reminder
+about how arguments and parameters work: when you call a function, the
+arguments are assigned to the parameters.</p>
+<h2 class="section" id="sec47">4.6&#XA0;&#XA0;Interface design</h2>
+<p>The next step is to write <span class="c004">circle</span>, which takes a radius,
+<span class="c004">r</span>, as a parameter. Here is a simple solution that uses
+<span class="c004">polygon</span> to draw a 50-sided polygon:</p><pre class="verbatim">import math
+
+def circle(t, r):
+    circumference = 2 * math.pi * r
+    n = 50
+    length = circumference / n
+    polygon(t, n, length)
+</pre><p>The first line computes the circumference of a circle with radius
+<span class="c004">r</span> using the formula 2 &#X3C0; <span class="c009">r</span>. Since we use <span class="c004">math.pi</span>, we
+have to import <span class="c004">math</span>. By convention, <span class="c004">import</span> statements
+are usually at the beginning of the script.</p><p><span class="c004">n</span> is the number of line segments in our approximation of a circle,
+so <span class="c004">length</span> is the length of each segment. Thus, <span class="c004">polygon</span>
+draws a 50-sided polygon that approximates a circle with radius <span class="c004">r</span>.</p><p>One limitation of this solution is that <span class="c004">n</span> is a constant, which
+means that for very big circles, the line segments are too long, and
+for small circles, we waste time drawing very small segments. One
+solution would be to generalize the function by taking <span class="c004">n</span> as
+a parameter. This would give the user (whoever calls <span class="c004">circle</span>)
+more control, but the interface would be less clean.
+<a id="hevea_default277"></a></p><p>The <span class="c010">interface</span> of a function is a summary of how it is used: what
+are the parameters? What does the function do? And what is the return
+value? An interface is &#X201C;clean&#X201D; if it allows the caller to do
+what they want without dealing with unnecessary details.</p><p>In this example, <span class="c004">r</span> belongs in the interface because it
+specifies the circle to be drawn. <span class="c004">n</span> is less appropriate
+because it pertains to the details of <em>how</em> the circle should
+be rendered.</p><p>Rather than clutter up the interface, it is better
+to choose an appropriate value of <span class="c004">n</span>
+depending on <span class="c004">circumference</span>:</p><pre class="verbatim">def circle(t, r):
+    circumference = 2 * math.pi * r
+    n = int(circumference / 3) + 3
+    length = circumference / n
+    polygon(t, n, length)
+</pre><p>Now the number of segments is an integer near <span class="c004">circumference/3</span>,
+so the length of each segment is approximately 3, which is small
+enough that the circles look good, but big enough to be efficient,
+and acceptable for any size circle.</p><p>Adding 3 to <span class="c004">n</span> guarantees that the polygon has at least 3 sides.</p>
+<h2 class="section" id="sec48">4.7&#XA0;&#XA0;Refactoring</h2>
+<p>
+<a id="refactoring"></a>
+<a id="hevea_default278"></a></p><p>When I wrote <span class="c004">circle</span>, I was able to re-use <span class="c004">polygon</span>
+because a many-sided polygon is a good approximation of a circle.
+But <span class="c004">arc</span> is not as cooperative; we can&#X2019;t use <span class="c004">polygon</span>
+or <span class="c004">circle</span> to draw an arc.</p><p>One alternative is to start with a copy
+of <span class="c004">polygon</span> and transform it into <span class="c004">arc</span>. The result
+might look like this:</p><pre class="verbatim">def arc(t, r, angle):
+    arc_length = 2 * math.pi * r * angle / 360
+    n = int(arc_length / 3) + 1
+    step_length = arc_length / n
+    step_angle = angle / n
+    
+    for i in range(n):
+        t.fd(step_length)
+        t.lt(step_angle)
+</pre><p>The second half of this function looks like <span class="c004">polygon</span>, but we
+can&#X2019;t re-use <span class="c004">polygon</span> without changing the interface. We could
+generalize <span class="c004">polygon</span> to take an angle as a third argument,
+but then <span class="c004">polygon</span> would no longer be an appropriate name!
+Instead, let&#X2019;s call the more general function <span class="c004">polyline</span>:</p><pre class="verbatim">def polyline(t, n, length, angle):
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+</pre><p>Now we can rewrite <span class="c004">polygon</span> and <span class="c004">arc</span> to use <span class="c004">polyline</span>:</p><pre class="verbatim">def polygon(t, n, length):
+    angle = 360.0 / n
+    polyline(t, n, length, angle)
+
+def arc(t, r, angle):
+    arc_length = 2 * math.pi * r * angle / 360
+    n = int(arc_length / 3) + 1
+    step_length = arc_length / n
+    step_angle = float(angle) / n
+    polyline(t, n, step_length, step_angle)
+</pre><p>Finally, we can rewrite <span class="c004">circle</span> to use <span class="c004">arc</span>:</p><pre class="verbatim">def circle(t, r):
+    arc(t, r, 360)
+</pre><p>This process&#X2014;rearranging a program to improve
+interfaces and facilitate code re-use&#X2014;is called <span class="c010">refactoring</span>.
+In this case, we noticed that there was similar code in <span class="c004">arc</span> and
+<span class="c004">polygon</span>, so we &#X201C;factored it out&#X201D; into <span class="c004">polyline</span>.
+<a id="hevea_default279"></a></p><p>If we had planned ahead, we might have written <span class="c004">polyline</span> first
+and avoided refactoring, but often you don&#X2019;t know enough at the
+beginning of a project to design all the interfaces. Once you start
+coding, you understand the problem better. Sometimes refactoring is a
+sign that you have learned something.</p>
+<h2 class="section" id="sec49">4.8&#XA0;&#XA0;A development plan</h2>
+<p>
+<a id="hevea_default280"></a></p><p>A <span class="c010">development plan</span> is a process for writing programs. The
+process we used in this case study is &#X201C;encapsulation and
+generalization&#X201D;. The steps of this process are:</p><ol class="enumerate" type=1><li class="li-enumerate">Start by writing a small program with no function definitions.</li><li class="li-enumerate">Once you get the program working, identify a coherent piece of
+it, encapsulate the piece in a function and give it a name.</li><li class="li-enumerate">Generalize the function by adding appropriate parameters.</li><li class="li-enumerate">Repeat steps 1&#X2013;3 until you have a set of working functions.
+Copy and paste working code to avoid retyping (and re-debugging).</li><li class="li-enumerate">Look for opportunities to improve the program by refactoring.
+For example, if you have similar code in several places, consider
+factoring it into an appropriately general function.</li></ol><p>This process has some drawbacks&#X2014;we will see alternatives later&#X2014;but
+it can be useful if you don&#X2019;t know ahead of time how to divide the
+program into functions. This approach lets you design as you go
+along.</p>
+<h2 class="section" id="sec50">4.9&#XA0;&#XA0;docstring</h2>
+<p>
+<a id="docstring"></a>
+<a id="hevea_default281"></a></p><p>A <span class="c010">docstring</span> is a string at the beginning of a function that
+explains the interface (&#X201C;doc&#X201D; is short for &#X201C;documentation&#X201D;). Here
+is an example:</p><pre class="verbatim">def polyline(t, n, length, angle):
+    """Draws n line segments with the given length and
+    angle (in degrees) between them.  t is a turtle.
+    """    
+    for i in range(n):
+        t.fd(length)
+        t.lt(angle)
+</pre><p>By convention, all docstrings are triple-quoted strings, also known
+as multiline strings because the triple quotes allow the string
+to span more than one line.
+<a id="hevea_default282"></a>
+<a id="hevea_default283"></a>
+<a id="hevea_default284"></a>
+<a id="hevea_default285"></a>
+<a id="hevea_default286"></a></p><p>It is terse, but it contains the essential information
+someone would need to use this function. It explains concisely what
+the function does (without getting into the details of how it does
+it). It explains what effect each parameter has on the behavior of
+the function and what type each parameter should be (if it is not
+obvious).</p><p>Writing this kind of documentation is an important part of interface
+design. A well-designed interface should be simple to explain;
+if you have a hard time explaining one of your functions,
+maybe the interface could be improved.</p>
+<h2 class="section" id="sec51">4.10&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="hevea_default287"></a>
+<a id="hevea_default288"></a></p><p>An interface is like a contract between a function and a caller.
+The caller agrees to provide certain parameters and the function
+agrees to do certain work.</p><p>For example, <span class="c004">polyline</span> requires four arguments: <span class="c004">t</span> has to be
+a Turtle; <span class="c004">n</span> has to be an
+integer; <span class="c004">length</span> should be a positive number; and <span class="c004">angle</span> has to be a number, which is understood to be in degrees.</p><p>These requirements are called <span class="c010">preconditions</span> because they
+are supposed to be true before the function starts executing.
+Conversely, conditions at the end of the function are
+<span class="c010">postconditions</span>. Postconditions include the intended
+effect of the function (like drawing line segments) and any
+side effects (like moving the Turtle or making other changes).
+<a id="hevea_default289"></a>
+<a id="hevea_default290"></a></p><p>Preconditions are the responsibility of the caller. If the caller
+violates a (properly documented!) precondition and the function
+doesn&#X2019;t work correctly, the bug is in the caller, not the function.</p><p>If the preconditions are satisfied and the postconditions are
+not, the bug is in the function. If your pre- and postconditions
+are clear, they can help with debugging.</p>
+<h2 class="section" id="sec52">4.11&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">method:</span></dt><dd class="dd-description"> A function that is associated with an object and called
+using dot notation.
+<a id="hevea_default291"></a></dd><dt class="dt-description"><span class="c010">loop:</span></dt><dd class="dd-description"> A part of a program that can run repeatedly.
+<a id="hevea_default292"></a></dd><dt class="dt-description"><span class="c010">encapsulation:</span></dt><dd class="dd-description"> The process of transforming a sequence of
+statements into a function definition.
+<a id="hevea_default293"></a></dd><dt class="dt-description"><span class="c010">generalization:</span></dt><dd class="dd-description"> The process of replacing something
+unnecessarily specific (like a number) with something appropriately
+general (like a variable or parameter).
+<a id="hevea_default294"></a></dd><dt class="dt-description"><span class="c010">keyword argument:</span></dt><dd class="dd-description"> An argument that includes the name of
+the parameter as a &#X201C;keyword&#X201D;.
+<a id="hevea_default295"></a>
+<a id="hevea_default296"></a></dd><dt class="dt-description"><span class="c010">interface:</span></dt><dd class="dd-description"> A description of how to use a function, including
+the name and descriptions of the arguments and return value.
+<a id="hevea_default297"></a></dd><dt class="dt-description"><span class="c010">refactoring:</span></dt><dd class="dd-description"> The process of modifying a working program to
+improve function interfaces and other qualities of the code.
+<a id="hevea_default298"></a></dd><dt class="dt-description"><span class="c010">development plan:</span></dt><dd class="dd-description"> A process for writing programs.
+<a id="hevea_default299"></a></dd><dt class="dt-description"><span class="c010">docstring:</span></dt><dd class="dd-description"> A string that appears at the top of a function
+definition to document the function&#X2019;s interface. 
+<a id="hevea_default300"></a></dd><dt class="dt-description"><span class="c010">precondition:</span></dt><dd class="dd-description"> A requirement that should be satisfied by
+the caller before a function starts.
+<a id="hevea_default301"></a></dd><dt class="dt-description"><span class="c010">postcondition:</span></dt><dd class="dd-description"> A requirement that should be satisfied by
+the function before it ends.
+<a id="hevea_default302"></a></dd></dl>
+<h2 class="section" id="sec53">4.12&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>Download the code in this chapter from
+</em><a href="http://thinkpython2.com/code/polygon.py"><em><span class="c004">http://thinkpython2.com/code/polygon.py</span></em></a><em>.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Draw a stack diagram that shows the state of the program
+while executing <span class="c004">circle(bob, radius)</span>. You can do the
+arithmetic by hand or add <span class="c004">print</span> statements to the code.
+</em><a id="hevea_default303"></a></li><li class="li-enumerate"><em>The version of <span class="c004">arc</span> in Section&#XA0;</em><a href="thinkpython2005.html#refactoring"><em>4.7</em></a><em> is not
+very accurate because the linear approximation of the
+circle is always outside the true circle. As a result,
+the Turtle ends up a few pixels away from the correct
+destination. My solution shows a way to reduce
+the effect of this error. Read the code and see if it makes
+sense to you. If you draw a diagram, you might see how it works.</em></li></ol></div><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2003.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 4.1: Turtle flowers.</td></tr>
+</table></div>
+<a id="fig.flowers"></a>
+<div class="center"><hr class="c019"></div></blockquote><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;
+<a id="hevea_default304"></a><p><em>Write an appropriately general set of functions that
+can draw flowers as in Figure&#XA0;</em><a href="thinkpython2005.html#fig.flowers"><em>4.1</em></a><em>.</em></p><p><em>Solution: </em><a href="http://thinkpython2.com/code/flower.py"><em><span class="c004">http://thinkpython2.com/code/flower.py</span></em></a><em>,
+also requires </em><a href="http://thinkpython2.com/code/polygon.py"><em><span class="c004">http://thinkpython2.com/code/polygon.py</span></em></a><em>.</em></p></div><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2004.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 4.2: Turtle pies.</td></tr>
+</table></div>
+<a id="fig.pies"></a>
+<div class="center"><hr class="c019"></div></blockquote><div class="theorem"><span class="c010">Exercise&#XA0;3</span>&#XA0;&#XA0;
+<a id="hevea_default305"></a><p><em>Write an appropriately general set of functions that
+can draw shapes as in Figure&#XA0;</em><a href="thinkpython2005.html#fig.pies"><em>4.2</em></a><em>.</em></p><p><em>Solution: </em><a href="http://thinkpython2.com/code/pie.py"><em><span class="c004">http://thinkpython2.com/code/pie.py</span></em></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;4</span>&#XA0;&#XA0;
+<a id="hevea_default306"></a>
+<a id="hevea_default307"></a>
+<a id="hevea_default308"></a><p><em>The letters of the alphabet can be constructed from a moderate number
+of basic elements, like vertical and horizontal lines and a few
+curves. Design an alphabet that can be drawn with a minimal
+number of basic elements and then write functions that draw the letters.</em></p><p><em>You should write one function for each letter, with names
+<code>draw_a</code>, <code>draw_b</code>, etc., and put your functions
+in a file named <span class="c004">letters.py</span>. You can download a
+&#X201C;turtle typewriter&#X201D; from </em><a href="http://thinkpython2.com/code/typewriter.py"><span class="c004"><em>http://thinkpython2.com/code/typewriter.py</em></span></a><em>
+to help you test your code.</em></p><p><em>You can get a solution from </em><a href="http://thinkpython2.com/code/letters.py"><em><span class="c004">http://thinkpython2.com/code/letters.py</span></em></a><em>;
+it also requires
+</em><a href="http://thinkpython2.com/code/polygon.py"><em><span class="c004">http://thinkpython2.com/code/polygon.py</span></em></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;5</span>&#XA0;&#XA0;<p><em>Read about spirals at </em><a href="http://en.wikipedia.org/wiki/Spiral"><span class="c004"><em>http://en.wikipedia.org/wiki/Spiral</em></span></a><em>; then
+write a program that draws an Archimedian spiral (or one of the other
+kinds). Solution: </em><a href="http://thinkpython2.com/code/spiral.py"><span class="c004"><em>http://thinkpython2.com/code/spiral.py</em></span></a><em>.
+</em><a id="hevea_default309"></a>
+<a id="hevea_default310"></a> </p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

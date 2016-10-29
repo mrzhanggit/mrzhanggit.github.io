@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Fruitful functions</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2006.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2008.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec69">Chapter&#XA0;6&#XA0;&#XA0;Fruitful functions</h1>
+<p>
+<a id="fruitchap"></a></p><p>Many of the Python functions we have used, such as the math
+functions, produce return values. But the functions we&#X2019;ve written
+are all void: they have an effect, like printing a value
+or moving a turtle, but they don&#X2019;t have a return value. In
+this chapter you will learn to write fruitful functions.</p>
+<h2 class="section" id="sec70">6.1&#XA0;&#XA0;Return values</h2>
+<p>
+<a id="hevea_default417"></a></p><p>Calling the function generates a return
+value, which we usually assign to a variable or use as part of an
+expression.</p><pre class="verbatim">e = math.exp(1.0)
+height = radius * math.sin(radians)
+</pre><p>The functions we have written so far are void. Speaking casually,
+they have no return value; more precisely,
+their return value is <span class="c004">None</span>.</p><p>In this chapter, we are (finally) going to write fruitful functions.
+The first example is <span class="c004">area</span>, which returns the area of a circle
+with the given radius:</p><pre class="verbatim">def area(radius):
+    a = math.pi * radius**2
+    return a
+</pre><p>We have seen the <span class="c004">return</span> statement before, but in a fruitful
+function the <span class="c004">return</span> statement includes
+an expression. This statement means: &#X201C;Return immediately from
+this function and use the following expression as a return value.&#X201D;
+The expression can be arbitrarily complicated, so we could
+have written this function more concisely:
+<a id="hevea_default418"></a>
+<a id="hevea_default419"></a></p><pre class="verbatim">def area(radius):
+    return math.pi * radius**2
+</pre><p>On the other hand, <span class="c010">temporary variables</span> like <span class="c004">a</span> can make
+debugging easier.
+<a id="hevea_default420"></a>
+<a id="hevea_default421"></a></p><p>Sometimes it is useful to have multiple return statements, one in each
+branch of a conditional:</p><pre class="verbatim">def absolute_value(x):
+    if x &lt; 0:
+        return -x
+    else:
+        return x
+</pre><p>Since these <span class="c004">return</span> statements are in an alternative conditional,
+only one runs.</p><p>As soon as a return statement runs, the function
+terminates without executing any subsequent statements.
+Code that appears after a <span class="c004">return</span> statement, or any other place
+the flow of execution can never reach, is called <span class="c010">dead code</span>.
+<a id="hevea_default422"></a></p><p>In a fruitful function, it is a good idea to ensure
+that every possible path through the program hits a
+<span class="c004">return</span> statement. For example:</p><pre class="verbatim">def absolute_value(x):
+    if x &lt; 0:
+        return -x
+    if x &gt; 0:
+        return x
+</pre><p>This function is incorrect because if <span class="c004">x</span> happens to be 0,
+neither condition is true, and the function ends without hitting a
+<span class="c004">return</span> statement. If the flow of execution gets to the end
+of a function, the return value is <span class="c004">None</span>, which is not
+the absolute value of 0.
+<a id="hevea_default423"></a>
+<a id="hevea_default424"></a></p><pre class="verbatim">&gt;&gt;&gt; print(absolute_value(0))
+None
+</pre><p>By the way, Python provides a built-in function called 
+<span class="c004">abs</span> that computes absolute values.
+<a id="hevea_default425"></a>
+<a id="hevea_default426"></a></p><p>As an exercise, write a <span class="c004">compare</span> function
+takes two values, <span class="c004">x</span> and <span class="c004">y</span>, and returns <span class="c004">1</span> if <span class="c004">x &gt; y</span>,
+<span class="c004">0</span> if <span class="c004">x == y</span>, and <span class="c004">-1</span> if <span class="c004">x &lt; y</span>.
+<a id="hevea_default427"></a>
+<a id="hevea_default428"></a></p>
+<h2 class="section" id="sec71">6.2&#XA0;&#XA0;Incremental development</h2>
+<p>
+<a id="incremental.development"></a>
+<a id="hevea_default429"></a></p><p>As you write larger functions, you might find yourself
+spending more time debugging.</p><p>To deal with increasingly complex programs,
+you might want to try a process called
+<span class="c010">incremental development</span>. The goal of incremental development
+is to avoid long debugging sessions by adding and testing only
+a small amount of code at a time.
+<a id="hevea_default430"></a>
+<a id="hevea_default431"></a></p><p>As an example, suppose you want to find the distance between two
+points, given by the coordinates (<span class="c009">x</span><sub>1</sub>, <span class="c009">y</span><sub>1</sub>) and (<span class="c009">x</span><sub>2</sub>, <span class="c009">y</span><sub>2</sub>).
+By the Pythagorean theorem, the distance is:</p><table class="display dcenter"><tr class="c017"><td class="dcell"><span class="c009">distance</span>&#XA0;=&#XA0;</td><td class="dcell"><span class="c008">&#X221A;</span></td><td class="dcell"><table class="c002 cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td class="c012">(<span class="c009">x</span><sub>2</sub>&#XA0;&#X2212;&#XA0;<span class="c009">x</span><sub>1</sub>)<sup>2</sup>&#XA0;+&#XA0;(<span class="c009">y</span><sub>2</sub>&#XA0;&#X2212;&#XA0;<span class="c009">y</span><sub>1</sub>)<sup>2</sup></td></tr>
+</table></td></tr>
+</table><p>
+The first step is to consider what a <span class="c004">distance</span> function should
+look like in Python. In other words, what are the inputs (parameters)
+and what is the output (return value)?</p><p>In this case, the inputs are two points, which you can represent
+using four numbers. The return value is the distance represented by
+a floating-point value.</p><p>Immediately you can write an outline of the function:</p><pre class="verbatim">def distance(x1, y1, x2, y2):
+    return 0.0
+</pre><p>Obviously, this version doesn&#X2019;t compute distances; it always returns
+zero. But it is syntactically correct, and it runs, which means that
+you can test it before you make it more complicated.</p><p>To test the new function, call it with sample arguments:</p><pre class="verbatim">&gt;&gt;&gt; distance(1, 2, 4, 6)
+0.0
+</pre><p>I chose these values so that the horizontal distance is 3 and the
+vertical distance is 4; that way, the result is 5, the hypotenuse 
+of a 3-4-5 triangle. When testing a function, it is
+useful to know the right answer.
+<a id="hevea_default432"></a></p><p>At this point we have confirmed that the function is syntactically
+correct, and we can start adding code to the body.
+A reasonable next step is to find the differences
+<span class="c009">x</span><sub>2</sub> &#X2212; <span class="c009">x</span><sub>1</sub> and <span class="c009">y</span><sub>2</sub> &#X2212; <span class="c009">y</span><sub>1</sub>. The next version stores those values in
+temporary variables and prints them.</p><pre class="verbatim">def distance(x1, y1, x2, y2):
+    dx = x2 - x1
+    dy = y2 - y1
+    print('dx is', dx)
+    print('dy is', dy)
+    return 0.0
+</pre><p>If the function is working, it should display <code>dx is 3</code> and 
+<code>dy is 4</code>. If so, we know that the function is getting the right
+arguments and performing the first computation correctly. If not,
+there are only a few lines to check.</p><p>Next we compute the sum of squares of <span class="c004">dx</span> and <span class="c004">dy</span>:</p><pre class="verbatim">def distance(x1, y1, x2, y2):
+    dx = x2 - x1
+    dy = y2 - y1
+    dsquared = dx**2 + dy**2
+    print('dsquared is: ', dsquared)
+    return 0.0
+</pre><p>Again, you would run the program at this stage and check the output
+(which should be 25).
+Finally, you can use <span class="c004">math.sqrt</span> to compute and return the result:
+<a id="hevea_default433"></a>
+<a id="hevea_default434"></a></p><pre class="verbatim">def distance(x1, y1, x2, y2):
+    dx = x2 - x1
+    dy = y2 - y1
+    dsquared = dx**2 + dy**2
+    result = math.sqrt(dsquared)
+    return result
+</pre><p>If that works correctly, you are done. Otherwise, you might
+want to print the value of <span class="c004">result</span> before the return
+statement.</p><p>The final version of the function doesn&#X2019;t display anything when it
+runs; it only returns a value. The <span class="c004">print</span> statements we wrote
+are useful for debugging, but once you get the function working, you
+should remove them. Code like that is called <span class="c010">scaffolding</span>
+because it is helpful for building the program but is not part of the
+final product.
+<a id="hevea_default435"></a></p><p>When you start out, you should add only a line or two of code at a
+time. As you gain more experience, you might find yourself writing
+and debugging bigger chunks. Either way, incremental development
+can save you a lot of debugging time.</p><p>The key aspects of the process are:</p><ol class="enumerate" type=1><li class="li-enumerate">Start with a working program and make small incremental changes. 
+At any point, if there is an error, you should have a good idea
+where it is.</li><li class="li-enumerate">Use variables to hold intermediate values so you can
+display and check them.</li><li class="li-enumerate">Once the program is working, you might want to remove some of
+the scaffolding or consolidate multiple statements into compound
+expressions, but only if it does not make the program difficult to
+read.</li></ol><p>As an exercise, use incremental development to write a function
+called <span class="c004">hypotenuse</span> that returns the length of the hypotenuse of a
+right triangle given the lengths of the other two legs as arguments.
+Record each stage of the development process as you go.
+<a id="hevea_default436"></a></p>
+<h2 class="section" id="sec72">6.3&#XA0;&#XA0;Composition</h2>
+<p>
+<a id="hevea_default437"></a>
+<a id="hevea_default438"></a></p><p>As you should expect by now, you can call one function from within
+another. As an example, we&#X2019;ll write a function that takes two points,
+the center of the circle and a point on the perimeter, and computes
+the area of the circle.</p><p>Assume that the center point is stored in the variables <span class="c004">xc</span> and
+<span class="c004">yc</span>, and the perimeter point is in <span class="c004">xp</span> and <span class="c004">yp</span>. The
+first step is to find the radius of the circle, which is the distance
+between the two points. We just wrote a function, <span class="c004">distance</span>, that does that:</p><pre class="verbatim">radius = distance(xc, yc, xp, yp)
+</pre><p>The next step is to find the area of a circle with that radius;
+we just wrote that, too:</p><pre class="verbatim">result = area(radius)
+</pre><p>Encapsulating these steps in a function, we get:
+<a id="hevea_default439"></a></p><pre class="verbatim">def circle_area(xc, yc, xp, yp):
+    radius = distance(xc, yc, xp, yp)
+    result = area(radius)
+    return result
+</pre><p>The temporary variables <span class="c004">radius</span> and <span class="c004">result</span> are useful for
+development and debugging, but once the program is working, we can
+make it more concise by composing the function calls:</p><pre class="verbatim">def circle_area(xc, yc, xp, yp):
+    return area(distance(xc, yc, xp, yp))
+</pre>
+<h2 class="section" id="sec73">6.4&#XA0;&#XA0;Boolean functions</h2>
+<p>
+<a id="boolean"></a></p><p>Functions can return booleans, which is often convenient for hiding
+complicated tests inside functions. <a id="hevea_default440"></a>
+For example:</p><pre class="verbatim">def is_divisible(x, y):
+    if x % y == 0:
+        return True
+    else:
+        return False
+</pre><p>It is common to give boolean functions names that sound like yes/no
+questions; <code>is_divisible</code> returns either <span class="c004">True</span> or <span class="c004">False</span>
+to indicate whether <span class="c004">x</span> is divisible by <span class="c004">y</span>.</p><p>Here is an example:</p><pre class="verbatim">&gt;&gt;&gt; is_divisible(6, 4)
+False
+&gt;&gt;&gt; is_divisible(6, 3)
+True
+</pre><p>The result of the <span class="c004">==</span> operator is a boolean, so we can write the
+function more concisely by returning it directly:</p><pre class="verbatim">def is_divisible(x, y):
+    return x % y == 0
+</pre><p>Boolean functions are often used in conditional statements:
+<a id="hevea_default441"></a>
+<a id="hevea_default442"></a></p><pre class="verbatim">if is_divisible(x, y):
+    print('x is divisible by y')
+</pre><p>It might be tempting to write something like:</p><pre class="verbatim">if is_divisible(x, y) == True:
+    print('x is divisible by y')
+</pre><p>But the extra comparison is unnecessary.</p><p>As an exercise, write a function <code>is_between(x, y, z)</code> that
+returns <span class="c004">True</span> if <span class="c009">x</span> &#X2264; <span class="c009">y</span> &#X2264; <span class="c009">z</span> or <span class="c004">False</span> otherwise.</p>
+<h2 class="section" id="sec74">6.5&#XA0;&#XA0;More recursion</h2>
+<p>
+<a id="more.recursion"></a>
+<a id="hevea_default443"></a>
+<a id="hevea_default444"></a>
+<a id="hevea_default445"></a>
+<a id="hevea_default446"></a>
+<a id="hevea_default447"></a></p><p>We have only covered a small subset of Python, but you might
+be interested to know that this subset is a <em>complete</em>
+programming language, which means that anything that can be
+computed can be expressed in this language. Any program ever written
+could be rewritten using only the language features you have learned
+so far (actually, you would need a few commands to control devices
+like the mouse, disks, etc., but that&#X2019;s all).</p><p>Proving that claim is a nontrivial exercise first accomplished by Alan
+Turing, one of the first computer scientists (some would argue that he
+was a mathematician, but a lot of early computer scientists started as
+mathematicians). Accordingly, it is known as the Turing Thesis.
+For a more complete (and accurate) discussion of the Turing Thesis,
+I recommend Michael Sipser&#X2019;s book <em>Introduction to the
+Theory of Computation</em>.</p><p>To give you an idea of what you can do with the tools you have learned
+so far, we&#X2019;ll evaluate a few recursively defined mathematical
+functions. A recursive definition is similar to a circular
+definition, in the sense that the definition contains a reference to
+the thing being defined. A truly circular definition is not very
+useful:</p><dl class="description"><dt class="dt-description"><span class="c010">vorpal:</span></dt><dd class="dd-description"> An adjective used to describe something that is vorpal.
+<a id="hevea_default448"></a>
+<a id="hevea_default449"></a>
+<a id="hevea_default450"></a></dd></dl><p>If you saw that definition in the dictionary, you might be annoyed. On
+the other hand, if you looked up the definition of the factorial
+function, denoted with the symbol !, you might get something like
+this:
+</p><table class="display dcenter"><tr class="c017"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c015">&nbsp;</td><td class="c012">&nbsp;</td><td class="c013">0!&#XA0;=&#XA0;1&#XA0;</td></tr>
+<tr><td class="c015">&nbsp;</td><td class="c012">&nbsp;</td><td class="c013"><span class="c009">n</span>!&#XA0;=&#XA0;<span class="c009">n</span>&#XA0;(<span class="c009">n</span>&#X2212;1)!
+</td></tr>
+</table></td></tr>
+</table><p>
+This definition says that the factorial of 0 is 1, and the factorial
+of any other value, <span class="c009">n</span>, is <span class="c009">n</span> multiplied by the factorial of <span class="c009">n</span>&#X2212;1.</p><p>So 3! is 3 times 2!, which is 2 times 1!, which is 1 times
+0!. Putting it all together, 3! equals 3 times 2 times 1 times 1,
+which is 6.
+<a id="hevea_default451"></a>
+<a id="hevea_default452"></a>
+<a id="hevea_default453"></a></p><p>If you can write a recursive definition of something, you can
+write a Python program to evaluate it. The first step is to decide
+what the parameters should be. In this case it should be clear
+that <span class="c004">factorial</span> takes an integer:</p><pre class="verbatim">def factorial(n):
+</pre><p>If the argument happens to be 0, all we have to do is return 1:</p><pre class="verbatim">def factorial(n):
+    if n == 0:
+        return 1
+</pre><p>Otherwise, and this is the interesting part, we have to make a
+recursive call to find the factorial of <span class="c009">n</span>&#X2212;1 and then multiply it by
+<span class="c009">n</span>:</p><pre class="verbatim">def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        recurse = factorial(n-1)
+        result = n * recurse
+        return result
+</pre><p>The flow of execution for this program is similar to the flow of <span class="c004">countdown</span> in Section&#XA0;<a href="thinkpython2006.html#recursion">5.8</a>. If we call <span class="c004">factorial</span>
+with the value 3:</p><p>Since 3 is not 0, we take the second branch and calculate the factorial
+of <span class="c004">n-1</span>...</p><blockquote class="quote">
+Since 2 is not 0, we take the second branch and calculate the factorial of
+<span class="c004">n-1</span>...<blockquote class="quote">
+Since 1 is not 0, we take the second branch and calculate the factorial
+of <span class="c004">n-1</span>...<blockquote class="quote">
+Since 0 equals 0, we take the first branch and return 1
+without making any more recursive calls.
+</blockquote><p>The return value, 1, is multiplied by <span class="c009">n</span>, which is 1, and the
+result is returned.
+</p></blockquote><p>The return value, 1, is multiplied by <span class="c009">n</span>, which is 2, and the
+result is returned.
+</p></blockquote><p>The return value (2) is multiplied by <span class="c009">n</span>, which is 3, and the result, 6,
+becomes the return value of the function call that started the whole
+process.
+<a id="hevea_default454"></a></p><p>Figure&#XA0;<a href="thinkpython2007.html#fig.stack3">6.1</a> shows what the stack diagram looks like for
+this sequence of function calls.</p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2007.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 6.1: Stack diagram.</td></tr>
+</table></div>
+<a id="fig.stack3"></a>
+<div class="center"><hr class="c019"></div></blockquote><p>The return values are shown being passed back up the stack. In each
+frame, the return value is the value of <span class="c004">result</span>, which is the
+product of <span class="c004">n</span> and <span class="c004">recurse</span>.
+<a id="hevea_default455"></a>
+<a id="hevea_default456"></a></p><p>In the last frame, the local
+variables <span class="c004">recurse</span> and <span class="c004">result</span> do not exist, because
+the branch that creates them does not run.</p>
+<h2 class="section" id="sec75">6.6&#XA0;&#XA0;Leap of faith</h2>
+<p>
+<a id="hevea_default457"></a>
+<a id="hevea_default458"></a></p><p>Following the flow of execution is one way to read programs, but
+it can quickly become overwhelming. An
+alternative is what I call the &#X201C;leap of faith&#X201D;. When you come to a
+function call, instead of following the flow of execution, you <em>assume</em> that the function works correctly and returns the right
+result.</p><p>In fact, you are already practicing this leap of faith when you use
+built-in functions. When you call <span class="c004">math.cos</span> or <span class="c004">math.exp</span>,
+you don&#X2019;t examine the bodies of those functions. You just
+assume that they work because the people who wrote the built-in
+functions were good programmers.</p><p>The same is true when you call one of your own functions. For
+example, in Section&#XA0;<a href="thinkpython2007.html#boolean">6.4</a>, we wrote a function called 
+<code>is_divisible</code> that determines whether one number is divisible by
+another. Once we have convinced ourselves that this function is
+correct&#X2014;by examining the code and testing&#X2014;we can use the function
+without looking at the body again.
+<a id="hevea_default459"></a></p><p>The same is true of recursive programs. When you get to the recursive
+call, instead of following the flow of execution, you should assume
+that the recursive call works (returns the correct result) and then ask
+yourself, &#X201C;Assuming that I can find the factorial of <span class="c009">n</span>&#X2212;1, can I
+compute the factorial of <span class="c009">n</span>?&#X201D; It is clear that you
+can, by multiplying by <span class="c009">n</span>.</p><p>Of course, it&#X2019;s a bit strange to assume that the function works
+correctly when you haven&#X2019;t finished writing it, but that&#X2019;s why
+it&#X2019;s called a leap of faith!</p>
+<h2 class="section" id="sec76">6.7&#XA0;&#XA0;One more example</h2>
+<p>
+<a id="one.more.example"></a></p><p><a id="hevea_default460"></a>
+<a id="hevea_default461"></a>
+After <span class="c004">factorial</span>, the most common example of a recursively
+defined mathematical function is <span class="c004">fibonacci</span>, which has the
+following definition (see
+<a href="http://en.wikipedia.org/wiki/Fibonacci_number"><span class="c004">http://en.wikipedia.org/wiki/Fibonacci_number</span></a>):
+</p><table class="display dcenter"><tr class="c017"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c015">&nbsp;</td><td class="c012">&nbsp;</td><td class="c013"><span class="c009">fibonacci</span>(0)&#XA0;=&#XA0;0&#XA0;</td></tr>
+<tr><td class="c015">&nbsp;</td><td class="c012">&nbsp;</td><td class="c013"><span class="c009">fibonacci</span>(1)&#XA0;=&#XA0;1&#XA0;</td></tr>
+<tr><td class="c015">&nbsp;</td><td class="c012">&nbsp;</td><td class="c013"><span class="c009">fibonacci</span>(<span class="c009">n</span>)&#XA0;=&#XA0;<span class="c009">fibonacci</span>(<span class="c009">n</span>&#X2212;1)&#XA0;+&#XA0;<span class="c009">fibonacci</span>(<span class="c009">n</span>&#X2212;2)
+</td></tr>
+</table></td></tr>
+</table><p>
+Translated into Python, it looks like this:</p><pre class="verbatim">def fibonacci(n):
+    if n == 0:
+        return 0
+    elif  n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+</pre><p>If you try to follow the flow of execution here, even for fairly
+small values of <span class="c009">n</span>, your head explodes. But according to the
+leap of faith, if you assume that the two recursive calls
+work correctly, then it is clear that you get
+the right result by adding them together.
+<a id="hevea_default462"></a></p>
+<h2 class="section" id="sec77">6.8&#XA0;&#XA0;Checking types</h2>
+<p>
+<a id="guardian"></a></p><p>What happens if we call <span class="c004">factorial</span> and give it 1.5 as an argument?
+<a id="hevea_default463"></a>
+<a id="hevea_default464"></a>
+<a id="hevea_default465"></a>
+<a id="hevea_default466"></a></p><pre class="verbatim">&gt;&gt;&gt; factorial(1.5)
+RuntimeError: Maximum recursion depth exceeded
+</pre><p>It looks like an infinite recursion. How can that be? The function
+has a base case&#X2014;when <span class="c004">n == 0</span>. But if <span class="c004">n</span> is not an integer,
+we can <em>miss</em> the base case and recurse forever.
+<a id="hevea_default467"></a>
+<a id="hevea_default468"></a></p><p>In the first recursive call, the value of <span class="c004">n</span> is 0.5.
+In the next, it is -0.5. From there, it gets smaller
+(more negative), but it will never be 0.</p><p>We have two choices. We can try to generalize the <span class="c004">factorial</span>
+function to work with floating-point numbers, or we can make <span class="c004">factorial</span> check the type of its argument. The first option is
+called the gamma function and it&#X2019;s a
+little beyond the scope of this book. So we&#X2019;ll go for the second.
+<a id="hevea_default469"></a></p><p>We can use the built-in function <span class="c004">isinstance</span> to verify the type
+of the argument. While we&#X2019;re at it, we can also make sure the
+argument is positive:
+<a id="hevea_default470"></a>
+<a id="hevea_default471"></a></p><pre class="verbatim">def factorial(n):
+    if not isinstance(n, int):
+        print('Factorial is only defined for integers.')
+        return None
+    elif n &lt; 0:
+        print('Factorial is not defined for negative integers.')
+        return None
+    elif n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+</pre><p>The first base case handles nonintegers; the
+second handles negative integers. In both cases, the program prints
+an error message and returns <span class="c004">None</span> to indicate that something
+went wrong:</p><pre class="verbatim">&gt;&gt;&gt; print(factorial('fred'))
+Factorial is only defined for integers.
+None
+&gt;&gt;&gt; print(factorial(-2))
+Factorial is not defined for negative integers.
+None
+</pre><p>If we get past both checks, we know that <span class="c009">n</span> is positive or
+zero, so we can prove that the recursion terminates.
+<a id="hevea_default472"></a>
+<a id="hevea_default473"></a></p><p>This program demonstrates a pattern sometimes called a <span class="c010">guardian</span>.
+The first two conditionals act as guardians, protecting the code that
+follows from values that might cause an error. The guardians make it
+possible to prove the correctness of the code.</p><p>In Section&#XA0;<a href="thinkpython2012.html#raise">11.4</a> we will see a more flexible alternative to printing
+an error message: raising an exception.</p>
+<h2 class="section" id="sec78">6.9&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="factdebug"></a></p><p>Breaking a large program into smaller functions creates natural
+checkpoints for debugging. If a function is not
+working, there are three possibilities to consider:
+<a id="hevea_default474"></a> </p><ul class="itemize"><li class="li-itemize">There is something wrong with the arguments the function
+is getting; a precondition is violated.</li><li class="li-itemize">There is something wrong with the function; a postcondition
+is violated.</li><li class="li-itemize">There is something wrong with the return value or the
+way it is being used.</li></ul><p>To rule out the first possibility, you can add a <span class="c004">print</span> statement
+at the beginning of the function and display the values of the
+parameters (and maybe their types). Or you can write code
+that checks the preconditions explicitly.
+<a id="hevea_default475"></a>
+<a id="hevea_default476"></a></p><p>If the parameters look good, add a <span class="c004">print</span> statement before each
+<span class="c004">return</span> statement and display the return value. If
+possible, check the result by hand. Consider calling the
+function with values that make it easy to check the result
+(as in Section&#XA0;<a href="thinkpython2007.html#incremental.development">6.2</a>).</p><p>If the function seems to be working, look at the function call
+to make sure the return value is being used correctly (or used
+at all!).
+<a id="hevea_default477"></a></p><p>Adding print statements at the beginning and end of a function
+can help make the flow of execution more visible.
+For example, here is a version of <span class="c004">factorial</span> with
+print statements:</p><pre class="verbatim">def factorial(n):
+    space = ' ' * (4 * n)
+    print(space, 'factorial', n)
+    if n == 0:
+        print(space, 'returning 1')
+        return 1
+    else:
+        recurse = factorial(n-1)
+        result = n * recurse
+        print(space, 'returning', result)
+        return result
+</pre><p><span class="c004">space</span> is a string of space characters that controls the
+indentation of the output. Here is the result of <span class="c004">factorial(4)</span> :</p><pre class="verbatim">                 factorial 4
+             factorial 3
+         factorial 2
+     factorial 1
+ factorial 0
+ returning 1
+     returning 1
+         returning 2
+             returning 6
+                 returning 24
+</pre><p>If you are confused about the flow of execution, this kind of
+output can be helpful. It takes some time to develop effective
+scaffolding, but a little bit of scaffolding can save a lot of debugging.</p>
+<h2 class="section" id="sec79">6.10&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">temporary variable:</span></dt><dd class="dd-description"> A variable used to store an intermediate value in
+a complex calculation.
+<a id="hevea_default478"></a>
+<a id="hevea_default479"></a></dd><dt class="dt-description"><span class="c010">dead code:</span></dt><dd class="dd-description"> Part of a program that can never run, often because
+it appears after a <span class="c004">return</span> statement.
+<a id="hevea_default480"></a></dd><dt class="dt-description"><span class="c010">incremental development:</span></dt><dd class="dd-description"> A program development plan intended to
+avoid debugging by adding and testing only
+a small amount of code at a time.
+<a id="hevea_default481"></a></dd><dt class="dt-description"><span class="c010">scaffolding:</span></dt><dd class="dd-description"> Code that is used during program development but is
+not part of the final version.
+<a id="hevea_default482"></a></dd><dt class="dt-description"><span class="c010">guardian:</span></dt><dd class="dd-description"> A programming pattern that uses a conditional
+statement to check for and handle circumstances that
+might cause an error.
+<a id="hevea_default483"></a>
+<a id="hevea_default484"></a></dd></dl>
+<h2 class="section" id="sec80">6.11&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>Draw a stack diagram for the following program. What does the program print?
+</em><a id="hevea_default485"></a></p><pre class="verbatim"><em>def b(z):
+    prod = a(z, z)
+    print(z, prod)
+    return prod
+
+def a(x, y):
+    x = x + 1
+    return x * y
+
+def c(x, y, z):
+    total = x + y + z
+    square = b(total)**2
+    return square
+
+x = 1
+y = x + 1
+print(c(x, y+3, x+y))
+</em></pre></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;
+<a id="ackermann"></a><p><em>The Ackermann function, </em><span class="c009">A</span>(<span class="c009">m</span>, <span class="c009">n</span>)<em>, is defined:</em></p><table class="display dcenter"><tr class="c017"><td class="dcell"><table class="c001 cellpading0"><tr><td class="c015"><table class="display"><tr class="c017"><td class="dcell"><span class="c009">A</span>(<span class="c009">m</span>,&#XA0;<span class="c009">n</span>)&#XA0;=&#XA0;</td><td class="dcell"><table class="display"><tr class="c017"><td class="dcell">&#X23A7;<br>
+&#X23AA;<br>
+&#X23A8;<br>
+&#X23AA;<br>
+&#X23A9;</td><td class="dcell"><table class="c001 cellpading0"><tr><td class="c013">&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;<span class="c009">n</span>+1</td><td class="c013">if &#XA0;<span class="c009">m</span>&#XA0;=&#XA0;0&#XA0;</td></tr>
+<tr><td class="c013">&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;&#XA0;<span class="c009">A</span>(<span class="c009">m</span>&#X2212;1,&#XA0;1)</td><td class="c013">if &#XA0;<span class="c009">m</span>&#XA0;&gt;&#XA0;0&#XA0; and &#XA0;<span class="c009">n</span>&#XA0;=&#XA0;0&#XA0;</td></tr>
+<tr><td class="c013"><span class="c009">A</span>(<span class="c009">m</span>&#X2212;1,&#XA0;<span class="c009">A</span>(<span class="c009">m</span>,&#XA0;<span class="c009">n</span>&#X2212;1))</td><td class="c013">if &#XA0;<span class="c009">m</span>&#XA0;&gt;&#XA0;0&#XA0; and &#XA0;<span class="c009">n</span>&#XA0;&gt;&#XA0;0.
+</td></tr>
+</table></td></tr>
+</table></td></tr>
+</table></td></tr>
+</table></td></tr>
+</table><p><em>
+See </em><a href="http://en.wikipedia.org/wiki/Ackermann_function"><span class="c004"><em>http://en.wikipedia.org/wiki/Ackermann_function</em></span></a><em>.
+Write a function named <span class="c004">ack</span> that evaluates the Ackermann function.
+Use your function to evaluate <span class="c004">ack(3, 4)</span>, which should be 125.
+What happens for larger values of <span class="c004">m</span> and <span class="c004">n</span>?
+Solution: </em><a href="http://thinkpython2.com/code/ackermann.py"><span class="c004"><em>http://thinkpython2.com/code/ackermann.py</em></span></a><em>.
+</em><a id="hevea_default486"></a>
+<a id="hevea_default487"></a></p></div><div class="theorem"><span class="c010">Exercise&#XA0;3</span>&#XA0;&#XA0;
+<a id="palindrome"></a><p><em>A palindrome is a word that is spelled the same backward and
+forward, like &#X201C;noon&#X201D; and &#X201C;redivider&#X201D;. Recursively, a word
+is a palindrome if the first and last letters are the same
+and the middle is a palindrome.
+</em><a id="hevea_default488"></a></p><p><em>The following are functions that take a string argument and
+return the first, last, and middle letters:</em></p><pre class="verbatim"><em>def first(word):
+    return word[0]
+
+def last(word):
+    return word[-1]
+
+def middle(word):
+    return word[1:-1]
+</em></pre><p><em>We&#X2019;ll see how they work in Chapter&#XA0;</em><a href="thinkpython2009.html#strings"><em>8</em></a><em>.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Type these functions into a file named <span class="c004">palindrome.py</span>
+and test them out. What happens if you call <span class="c004">middle</span> with
+a string with two letters? One letter? What about the empty
+string, which is written <code>''</code> and contains no letters?</em></li><li class="li-enumerate"><em>Write a function called <code>is_palindrome</code> that takes
+a string argument and returns <span class="c004">True</span> if it is a palindrome
+and <span class="c004">False</span> otherwise. Remember that you can use the
+built-in function <span class="c004">len</span> to check the length of a string.</em></li></ol><p><em>Solution: </em><a href="http://thinkpython2.com/code/palindrome_soln.py"><em><span class="c004">http://thinkpython2.com/code/palindrome_soln.py</span></em></a><em>.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;4</span>&#XA0;&#XA0;<p><em>A number, </em><span class="c009">a</span><em>, is a power of </em><span class="c009">b</span><em> if it is divisible by </em><span class="c009">b</span><em>
+and </em><span class="c009">a</span>/<span class="c009">b</span><em> is a power of </em><span class="c009">b</span><em>. Write a function called
+<code>is_power</code> that takes parameters <span class="c004">a</span> and <span class="c004">b</span>
+and returns <span class="c004">True</span> if <span class="c004">a</span> is a power of <span class="c004">b</span>.
+Note: you will have to think about the base case.</em></p></div><div class="theorem"><span class="c010">Exercise&#XA0;5</span>&#XA0;&#XA0;
+<a id="hevea_default489"></a>
+<a id="hevea_default490"></a><p><em>The greatest common divisor (GCD) of </em><span class="c009">a</span><em> and </em><span class="c009">b</span><em> is the largest number
+that divides both of them with no remainder. </em></p><p><em>One way to find the GCD of two numbers is based on the observation
+that if </em><span class="c009">r</span><em> is the remainder when </em><span class="c009">a</span><em> is divided by </em><span class="c009">b</span><em>, then </em><span class="c009">gcd</span>(<span class="c009">a</span>,
+<span class="c009">b</span>) = <span class="c009">gcd</span>(<span class="c009">b</span>, <span class="c009">r</span>)<em>. As a base case, we can use </em><span class="c009">gcd</span>(<span class="c009">a</span>, 0) = <span class="c009">a</span><em>.</em></p><p><em>Write a function called
+<code>gcd</code> that takes parameters <span class="c004">a</span> and <span class="c004">b</span>
+and returns their greatest common divisor.</em></p><p><em>Credit: This exercise is based on an example from Abelson and
+Sussman&#X2019;s </em>Structure and Interpretation of Computer Programs<em>.</em></p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

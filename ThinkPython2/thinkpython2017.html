@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>Classes and functions</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2016.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2018.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec187">Chapter&#XA0;16&#XA0;&#XA0;Classes and functions</h1>
+<p>
+<a id="time"></a></p><p>Now that we know how to create new types, the next
+step is to write functions that take programmer-defined objects
+as parameters and return them as results. In this chapter I
+also present &#X201C;functional programming style&#X201D; and two new
+program development plans.</p><p>Code examples from this chapter are available from
+<a href="http://thinkpython2.com/code/Time1.py"><span class="c004">http://thinkpython2.com/code/Time1.py</span></a>.
+Solutions to the exercises are at
+<a href="http://thinkpython2.com/code/Time1_soln.py"><span class="c004">http://thinkpython2.com/code/Time1_soln.py</span></a>.</p>
+<h2 class="section" id="sec188">16.1&#XA0;&#XA0;Time</h2>
+<p>
+<a id="isafter"></a></p><p>As another example of a programmer-defined type, we&#X2019;ll define a class
+called <span class="c004">Time</span> that records the time of day. The class definition
+looks like this: <a id="hevea_default1408"></a>
+<a id="hevea_default1409"></a> <a id="hevea_default1410"></a> <a id="hevea_default1411"></a></p><pre class="verbatim">class Time:
+    """Represents the time of day.
+       
+    attributes: hour, minute, second
+    """
+</pre><p>We can create a new <span class="c004">Time</span> object and assign
+attributes for hours, minutes, and seconds:</p><pre class="verbatim">time = Time()
+time.hour = 11
+time.minute = 59
+time.second = 30
+</pre><p>The state diagram for the <span class="c004">Time</span> object looks like Figure&#XA0;<a href="thinkpython2017.html#fig.time">16.1</a>.
+<a id="hevea_default1412"></a>
+<a id="hevea_default1413"></a>
+<a id="hevea_default1414"></a>
+<a id="hevea_default1415"></a></p><p>As an exercise, write a function called <code>print_time</code> that takes a 
+Time object and prints it in the form <span class="c004">hour:minute:second</span>.
+Hint: the format sequence <code>'%.2d'</code> prints an integer using
+at least two digits, including a leading zero if necessary.</p><p>Write a boolean function called <code>is_after</code> that
+takes two Time objects, <span class="c004">t1</span> and <span class="c004">t2</span>, and
+returns <span class="c004">True</span> if <span class="c004">t1</span> follows <span class="c004">t2</span> chronologically and
+<span class="c004">False</span> otherwise. Challenge: don&#X2019;t use an <span class="c004">if</span> statement.</p><blockquote class="figure"><div class="center"><hr class="c019"></div>
+<div class="center"><img src="images/thinkpython2023.png"></div>
+<div class="caption"><table class="c001 cellpading0"><tr><td class="c018">Figure 16.1: Object diagram.</td></tr>
+</table></div>
+<a id="fig.time"></a>
+<div class="center"><hr class="c019"></div></blockquote>
+<h2 class="section" id="sec189">16.2&#XA0;&#XA0;Pure functions</h2>
+<p>
+<a id="hevea_default1416"></a>
+<a id="hevea_default1417"></a></p><p>In the next few sections, we&#X2019;ll write two functions that add time
+values. They demonstrate two kinds of functions: pure functions and
+modifiers. They also demonstrate a development plan I&#X2019;ll call <span class="c010">prototype and patch</span>, which is a way of tackling a complex problem
+by starting with a simple prototype and incrementally dealing with the
+complications.</p><p>Here is a simple prototype of <code>add_time</code>:</p><pre class="verbatim">def add_time(t1, t2):
+    sum = Time()
+    sum.hour = t1.hour + t2.hour
+    sum.minute = t1.minute + t2.minute
+    sum.second = t1.second + t2.second
+    return sum
+</pre><p>The function creates a new <span class="c004">Time</span> object, initializes its
+attributes, and returns a reference to the new object. This is called
+a <span class="c010">pure function</span> because it does not modify any of the objects
+passed to it as arguments and it has no effect,
+like displaying a value or getting user input, 
+other than returning a value.
+<a id="hevea_default1418"></a>
+<a id="hevea_default1419"></a></p><p>To test this function, I&#X2019;ll create two Time objects: <span class="c004">start</span>
+contains the start time of a movie, like <em>Monty Python and the
+Holy Grail</em>, and <span class="c004">duration</span> contains the run time of the movie,
+which is one hour 35 minutes.
+<a id="hevea_default1420"></a></p><p><code>add_time</code> figures out when the movie will be done.</p><pre class="verbatim">&gt;&gt;&gt; start = Time()
+&gt;&gt;&gt; start.hour = 9
+&gt;&gt;&gt; start.minute = 45
+&gt;&gt;&gt; start.second =  0
+
+&gt;&gt;&gt; duration = Time()
+&gt;&gt;&gt; duration.hour = 1
+&gt;&gt;&gt; duration.minute = 35
+&gt;&gt;&gt; duration.second = 0
+
+&gt;&gt;&gt; done = add_time(start, duration)
+&gt;&gt;&gt; print_time(done)
+10:80:00
+</pre><p>The result, <span class="c004">10:80:00</span> might not be what you were hoping
+for. The problem is that this function does not deal with cases where the
+number of seconds or minutes adds up to more than sixty. When that
+happens, we have to &#X201C;carry&#X201D; the extra seconds into the minute column
+or the extra minutes into the hour column.
+<a id="hevea_default1421"></a></p><p>Here&#X2019;s an improved version:</p><pre class="verbatim">def add_time(t1, t2):
+    sum = Time()
+    sum.hour = t1.hour + t2.hour
+    sum.minute = t1.minute + t2.minute
+    sum.second = t1.second + t2.second
+
+    if sum.second &gt;= 60:
+        sum.second -= 60
+        sum.minute += 1
+
+    if sum.minute &gt;= 60:
+        sum.minute -= 60
+        sum.hour += 1
+
+    return sum
+</pre><p>Although this function is correct, it is starting to get big.
+We will see a shorter alternative later.</p>
+<h2 class="section" id="sec190">16.3&#XA0;&#XA0;Modifiers</h2>
+<p>
+<a id="increment"></a>
+<a id="hevea_default1422"></a>
+<a id="hevea_default1423"></a></p><p>Sometimes it is useful for a function to modify the objects it gets as
+parameters. In that case, the changes are visible to the caller.
+Functions that work this way are called <span class="c010">modifiers</span>.
+<a id="hevea_default1424"></a></p><p><span class="c004">increment</span>, which adds a given number of seconds to a <span class="c004">Time</span>
+object, can be written naturally as a
+modifier. Here is a rough draft:</p><pre class="verbatim">def increment(time, seconds):
+    time.second += seconds
+
+    if time.second &gt;= 60:
+        time.second -= 60
+        time.minute += 1
+
+    if time.minute &gt;= 60:
+        time.minute -= 60
+        time.hour += 1
+</pre><p>The first line performs the basic operation; the remainder deals
+with the special cases we saw before.
+<a id="hevea_default1425"></a></p><p>Is this function correct? What happens if <span class="c004">seconds</span>
+is much greater than sixty? </p><p>In that case, it is not enough to carry once; we have to keep doing it
+until <span class="c004">time.second</span> is less than sixty. One solution is to
+replace the <span class="c004">if</span> statements with <span class="c004">while</span> statements. That
+would make the function correct, but not very efficient. As an
+exercise, write a correct version of <span class="c004">increment</span> that doesn&#X2019;t
+contain any loops.</p><p>Anything that can be done with modifiers can also be done with pure
+functions. In fact, some programming languages only allow pure
+functions. There is some evidence that programs that use pure
+functions are faster to develop and less error-prone than programs
+that use modifiers. But modifiers are convenient at times,
+and functional programs tend to be less efficient.</p><p>In general, I recommend that you write pure functions whenever it is
+reasonable and resort to modifiers only if there is a compelling
+advantage. This approach might be called a <span class="c010">functional
+programming style</span>.
+<a id="hevea_default1426"></a></p><p>As an exercise, write a &#X201C;pure&#X201D; version of <span class="c004">increment</span> that
+creates and returns a new Time object rather than modifying the
+parameter.</p>
+<h2 class="section" id="sec191">16.4&#XA0;&#XA0;Prototyping versus planning</h2>
+<p>
+<a id="prototype"></a>
+<a id="hevea_default1427"></a>
+<a id="hevea_default1428"></a>
+<a id="hevea_default1429"></a>
+<a id="hevea_default1430"></a></p><p>The development plan I am demonstrating is called &#X201C;prototype and
+patch&#X201D;. For each function, I wrote a prototype that performed the
+basic calculation and then tested it, patching errors along the
+way.</p><p>This approach can be effective, especially if you don&#X2019;t yet have a
+deep understanding of the problem. But incremental corrections can
+generate code that is unnecessarily complicated&#X2014;since it deals with
+many special cases&#X2014;and unreliable&#X2014;since it is hard to know if you
+have found all the errors.</p><p>An alternative is <span class="c010">designed development</span>, in which high-level
+insight into the problem can make the programming much easier. In
+this case, the insight is that a Time object is really a three-digit
+number in base 60 (see <a href="http://en.wikipedia.org/wiki/Sexagesimal"><span class="c004">http://en.wikipedia.org/wiki/Sexagesimal</span></a>.)! The
+<span class="c004">second</span> attribute is the &#X201C;ones column&#X201D;, the <span class="c004">minute</span>
+attribute is the &#X201C;sixties column&#X201D;, and the <span class="c004">hour</span> attribute is
+the &#X201C;thirty-six hundreds column&#X201D;.
+<a id="hevea_default1431"></a></p><p>When we wrote <code>add_time</code> and <span class="c004">increment</span>, we were effectively
+doing addition in base 60, which is why we had to carry from one
+column to the next.
+<a id="hevea_default1432"></a></p><p>This observation suggests another approach to the whole problem&#X2014;we
+can convert Time objects to integers and take advantage of the fact
+that the computer knows how to do integer arithmetic. </p><p>Here is a function that converts Times to integers:</p><pre class="verbatim">def time_to_int(time):
+    minutes = time.hour * 60 + time.minute
+    seconds = minutes * 60 + time.second
+    return seconds
+</pre><p>And here is a function that converts an integer to a Time
+(recall that <span class="c004">divmod</span> divides the first argument by the second
+and returns the quotient and remainder as a tuple).
+<a id="hevea_default1433"></a></p><pre class="verbatim">def int_to_time(seconds):
+    time = Time()
+    minutes, time.second = divmod(seconds, 60)
+    time.hour, time.minute = divmod(minutes, 60)
+    return time
+</pre><p>You might have to think a bit, and run some tests, to convince
+yourself that these functions are correct. One way to test them is to
+check that <code>time_to_int(int_to_time(x)) == x</code> for many values of
+<span class="c004">x</span>. This is an example of a consistency check.
+<a id="hevea_default1434"></a></p><p>Once you are convinced they are correct, you can use them to 
+rewrite <code>add_time</code>:</p><pre class="verbatim">def add_time(t1, t2):
+    seconds = time_to_int(t1) + time_to_int(t2)
+    return int_to_time(seconds)
+</pre><p>This version is shorter than the original, and easier to verify. As
+an exercise, rewrite <span class="c004">increment</span> using <code>time_to_int</code> and
+<code>int_to_time</code>.</p><p>In some ways, converting from base 60 to base 10 and back is harder
+than just dealing with times. Base conversion is more abstract; our
+intuition for dealing with time values is better.</p><p>But if we have the insight to treat times as base 60 numbers and make
+the investment of writing the conversion functions (<code>time_to_int</code>
+and <code>int_to_time</code>), we get a program that is shorter, easier to
+read and debug, and more reliable.</p><p>It is also easier to add features later. For example, imagine
+subtracting two Times to find the duration between them. The
+naive approach would be to implement subtraction with borrowing.
+Using the conversion functions would be easier and more likely to be
+correct.
+<a id="hevea_default1435"></a>
+<a id="hevea_default1436"></a>
+<a id="hevea_default1437"></a></p><p>Ironically, sometimes making a problem harder (or more general) makes it
+easier (because there are fewer special cases and fewer opportunities
+for error).</p>
+<h2 class="section" id="sec192">16.5&#XA0;&#XA0;Debugging</h2>
+<p>
+<a id="hevea_default1438"></a></p><p>A Time object is well-formed if the values of <span class="c004">minute</span> and <span class="c004">second</span> are between 0 and 60 (including 0 but not 60) and if 
+<span class="c004">hour</span> is positive. <span class="c004">hour</span> and <span class="c004">minute</span> should be
+integral values, but we might allow <span class="c004">second</span> to have a
+fraction part.
+<a id="hevea_default1439"></a></p><p>Requirements like these are called <span class="c010">invariants</span> because
+they should always be true. To put it a different way, if they
+are not true, something has gone wrong.</p><p>Writing code to check invariants can help detect errors
+and find their causes. For example, you might have a function
+like <code>valid_time</code> that takes a Time object and returns
+<span class="c004">False</span> if it violates an invariant:</p><pre class="verbatim">def valid_time(time):
+    if time.hour &lt; 0 or time.minute &lt; 0 or time.second &lt; 0:
+        return False
+    if time.minute &gt;= 60 or time.second &gt;= 60:
+        return False
+    return True
+</pre><p>At the beginning of each function you could check the
+arguments to make sure they are valid:
+<a id="hevea_default1440"></a>
+<a id="hevea_default1441"></a></p><pre class="verbatim">def add_time(t1, t2):
+    if not valid_time(t1) or not valid_time(t2):
+        raise ValueError('invalid Time object in add_time')
+    seconds = time_to_int(t1) + time_to_int(t2)
+    return int_to_time(seconds)
+</pre><p>Or you could use an <span class="c010">assert statement</span>, which checks a given invariant
+and raises an exception if it fails:
+<a id="hevea_default1442"></a>
+<a id="hevea_default1443"></a></p><pre class="verbatim">def add_time(t1, t2):
+    assert valid_time(t1) and valid_time(t2)
+    seconds = time_to_int(t1) + time_to_int(t2)
+    return int_to_time(seconds)
+</pre><p><span class="c004">assert</span> statements are useful because they distinguish
+code that deals with normal conditions from code
+that checks for errors.</p>
+<h2 class="section" id="sec193">16.6&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">prototype and patch:</span></dt><dd class="dd-description"> A development plan that involves
+writing a rough draft of a program, testing, and correcting errors as
+they are found.
+<a id="hevea_default1444"></a></dd><dt class="dt-description"><span class="c010">designed development:</span></dt><dd class="dd-description"> A development plan that involves
+high-level insight into the problem and more planning than incremental
+development or prototype development.
+<a id="hevea_default1445"></a></dd><dt class="dt-description"><span class="c010">pure function:</span></dt><dd class="dd-description"> A function that does not modify any of the objects it
+receives as arguments. Most pure functions are fruitful.
+<a id="hevea_default1446"></a></dd><dt class="dt-description"><span class="c010">modifier:</span></dt><dd class="dd-description"> A function that changes one or more of the objects it
+receives as arguments. Most modifiers are void; that is, they
+return <span class="c004">None</span>. <a id="hevea_default1447"></a></dd><dt class="dt-description"><span class="c010">functional programming style:</span></dt><dd class="dd-description"> A style of program design in which the
+majority of functions are pure.
+<a id="hevea_default1448"></a></dd><dt class="dt-description"><span class="c010">invariant:</span></dt><dd class="dd-description"> A condition that should always be true during the
+execution of a program.
+<a id="hevea_default1449"></a></dd><dt class="dt-description"><span class="c010">assert statement:</span></dt><dd class="dd-description"> A statement that check a condition and raises
+an exception if it fails.
+<a id="hevea_default1450"></a>
+<a id="hevea_default1451"></a></dd></dl>
+<h2 class="section" id="sec194">16.7&#XA0;&#XA0;Exercises</h2>
+<p>Code examples from this chapter are available from
+<a href="http://thinkpython2.com/code/Time1.py"><span class="c004">http://thinkpython2.com/code/Time1.py</span></a>; solutions to the
+exercises are available from <a href="http://thinkpython2.com/code/Time1_soln.py"><span class="c004">http://thinkpython2.com/code/Time1_soln.py</span></a>.</p><div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>Write a function called <code>mul_time</code> that takes a Time object
+and a number and returns a new Time object that contains
+the product of the original Time and the number.</em></p><p><em>Then use <code>mul_time</code> to write a function that takes a Time
+object that represents the finishing time in a race, and a number
+that represents the distance, and returns a Time object that represents
+the average pace (time per mile).
+</em><a id="hevea_default1452"></a></p></div><div class="theorem"><span class="c010">Exercise&#XA0;2</span>&#XA0;&#XA0;
+<a id="hevea_default1453"></a>
+<a id="hevea_default1454"></a><p><em>The <span class="c004">datetime</span> module provides <span class="c004">time</span> objects
+that are similar to the Time objects in this chapter, but
+they provide a rich set of methods and operators. Read the
+documentation at </em><a href="http://docs.python.org/3/library/datetime.html"><span class="c004"><em>http://docs.python.org/3/library/datetime.html</em></span></a><em>.</em></p><ol class="enumerate" type=1><li class="li-enumerate"><em>Use the <span class="c004">datetime</span> module to write a program that gets the
+current date and prints the day of the week.</em></li><li class="li-enumerate"><em>Write a program that takes a birthday as input and prints the
+user&#X2019;s age and the number of days, hours, minutes and seconds until
+their next birthday.
+</em><a id="hevea_default1455"></a></li><li class="li-enumerate"><em>For two people born on different days, there is a day when one
+is twice as old as the other. That&#X2019;s their Double Day. Write a
+program that takes two birthdays and computes their Double Day.</em></li><li class="li-enumerate"><em>For a little more challenge, write the more general version that
+computes the day when one person is </em><span class="c009">n</span><em> times older than the other.
+</em><a id="hevea_default1456"></a></li></ol><p><em>Solution: </em><a href="http://thinkpython2.com/code/double.py"><em><span class="c004">http://thinkpython2.com/code/double.py</span></em></a></p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>

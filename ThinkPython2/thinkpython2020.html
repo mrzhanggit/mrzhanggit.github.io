@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.09">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="thinkpython2.css">
+<title>The Goodies</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><strong>Think Python</strong> - How to Think like a Computer Scientist (2e) <em>by Allen B. Downey</em></a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://greenteapress.com/thinkpython2/html/index.html"><span class="glyphicon glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2019.html"><span class="glyphicon glyphicon glyphicon-menu-left" aria-hidden="true"></span></a></li>
+          <li><a href="index.html"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+          <li><a href="thinkpython2021.html"><span class="glyphicon glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></li>
+          <li><a href="http://amzn.to/1VUYQUU"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+        </ul>
+      <div>
+    </div><!-- /.container-fluid -->
+  </nav>
+<table>
+
+<tr>
+
+<td valign="top" width="100" bgcolor="#b6459a" id="col-left">
+</td>
+
+<td valign="top" id="content">
+
+<p>
+
+
+<h1 class="chapter" id="sec222">Chapter&#XA0;19&#XA0;&#XA0;The Goodies</h1>
+<p>One of my goals for this book has been to teach you as little Python
+as possible. When there were two ways to do something, I picked 
+one and avoided mentioning the other. Or sometimes I put the second
+one into an exercise.</p><p>Now I want to go back for some of the good bits that got left behind.
+Python provides a number of features that are not really necessary&#X2014;you
+can write good code without them&#X2014;but with them you can sometimes
+write code that&#X2019;s more concise, readable or efficient, and sometimes
+all three.</p>
+<h2 class="section" id="sec223">19.1&#XA0;&#XA0;Conditional expressions</h2>
+<p>We saw conditional statements in Section&#XA0;<a href="thinkpython2006.html#conditional.execution">5.4</a>.
+Conditional statements are often used to choose one of two values;
+for example:
+<a id="hevea_default1656"></a>
+<a id="hevea_default1657"></a></p><pre class="verbatim">if x &gt; 0:
+    y = math.log(x)
+else:
+    y = float('nan')
+</pre><p>This statement checks whether <span class="c004">x</span> is positive. If so, it computes
+<span class="c004">math.log</span>. If not, <span class="c004">math.log</span> would raise a ValueError. To
+avoid stopping the program, we generate a &#X201C;NaN&#X201D;, which is a special
+floating-point value that represents &#X201C;Not a Number&#X201D;.
+<a id="hevea_default1658"></a>
+<a id="hevea_default1659"></a></p><p>We can write this statement more concisely using a <span class="c010">conditional
+expression</span>:</p><pre class="verbatim">y = math.log(x) if x &gt; 0 else float('nan')
+</pre><p>You can almost read this line like English: &#X201C;<span class="c004">y</span> gets log-<span class="c004">x</span>
+if <span class="c004">x</span> is greater than 0; otherwise it gets NaN&#X201D;.</p><p>Recursive functions can sometimes be rewritten using conditional
+expressions. For example, here is a recursive version of <span class="c004">factorial</span>:
+<a id="hevea_default1660"></a>
+<a id="hevea_default1661"></a></p><pre class="verbatim">def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+</pre><p>We can rewrite it like this:</p><pre class="verbatim">def factorial(n):
+    return 1 if n == 0 else n * factorial(n-1)
+</pre><p>Another use of conditional expressions is handling optional
+arguments. For example, here is the init method from
+<span class="c004">GoodKangaroo</span> (see Exercise&#XA0;<a href="thinkpython2018.html#kangaroo">2</a>):
+<a id="hevea_default1662"></a>
+<a id="hevea_default1663"></a></p><pre class="verbatim">    def __init__(self, name, contents=None):
+        self.name = name
+        if contents == None:
+            contents = []
+        self.pouch_contents = contents
+</pre><p>We can rewrite this one like this:</p><pre class="verbatim">    def __init__(self, name, contents=None):
+        self.name = name
+        self.pouch_contents = [] if contents == None else contents 
+</pre><p>In general, you can replace a conditional statement with a conditional
+expression if both branches contain simple expressions that are
+either returned or assigned to the same variable.
+<a id="hevea_default1664"></a>
+<a id="hevea_default1665"></a></p>
+<h2 class="section" id="sec224">19.2&#XA0;&#XA0;List comprehensions</h2>
+<p>In Section&#XA0;<a href="thinkpython2011.html#filter">10.7</a> we saw the map and filter patterns. For
+example, this function takes a list of strings, maps the string method
+<span class="c004">capitalize</span> to the elements, and returns a new list of strings:</p><pre class="verbatim">def capitalize_all(t):
+    res = []
+    for s in t:
+        res.append(s.capitalize())
+    return res
+</pre><p>We can write this more concisely using a <span class="c010">list comprehension</span>:
+<a id="hevea_default1666"></a></p><pre class="verbatim">def capitalize_all(t):
+    return [s.capitalize() for s in t]
+</pre><p>The bracket operators indicate that we are constructing a new
+list. The expression inside the brackets specifies the elements
+of the list, and the <span class="c004">for</span> clause indicates what sequence
+we are traversing.
+<a id="hevea_default1667"></a>
+<a id="hevea_default1668"></a></p><p>The syntax of a list comprehension is a little awkward because
+the loop variable, <span class="c004">s</span> in this example, appears in the expression
+before we get to the definition.
+<a id="hevea_default1669"></a></p><p>List comprehensions can also be used for filtering. For example,
+this function selects only the elements of <span class="c004">t</span> that are
+upper case, and returns a new list:
+<a id="hevea_default1670"></a>
+<a id="hevea_default1671"></a></p><pre class="verbatim">def only_upper(t):
+    res = []
+    for s in t:
+        if s.isupper():
+            res.append(s)
+    return res
+</pre><p>We can rewrite it using a list comprehension</p><pre class="verbatim">def only_upper(t):
+    return [s for s in t if s.isupper()]
+</pre><p>List comprehensions are concise and easy to read, at least for simple
+expressions. And they are usually faster than the equivalent for
+loops, sometimes much faster. So if you are mad at me for not
+mentioning them earlier, I understand.</p><p>But, in my defense, list comprehensions are harder to debug because
+you can&#X2019;t put a print statement inside the loop. I suggest that you
+use them only if the computation is simple enough that you are likely
+to get it right the first time. And for beginners that means never.
+<a id="hevea_default1672"></a></p>
+<h2 class="section" id="sec225">19.3&#XA0;&#XA0;Generator expressions</h2>
+<p><span class="c010">Generator expressions</span> are similar to list comprehensions, but
+with parentheses instead of square brackets:
+<a id="hevea_default1673"></a>
+<a id="hevea_default1674"></a></p><pre class="verbatim">&gt;&gt;&gt; g = (x**2 for x in range(5))
+&gt;&gt;&gt; g
+&lt;generator object &lt;genexpr&gt; at 0x7f4c45a786c0&gt;
+</pre><p>The result is a generator object that knows how to iterate through
+a sequence of values. But unlike a list comprehension, it does not
+compute the values all at once; it waits to be asked. The built-in
+function <span class="c004">next</span> gets the next value from the generator:
+<a id="hevea_default1675"></a>
+<a id="hevea_default1676"></a></p><pre class="verbatim">&gt;&gt;&gt; next(g)
+0
+&gt;&gt;&gt; next(g)
+1
+</pre><p>When you get to the end of the sequence, <span class="c004">next</span> raises a 
+StopIteration exception. You can also use a <span class="c004">for</span> loop to iterate
+through the values:
+<a id="hevea_default1677"></a>
+<a id="hevea_default1678"></a></p><pre class="verbatim">&gt;&gt;&gt; for val in g:
+...     print(val)
+4
+9
+16
+</pre><p>The generator object keeps track of where it is in the sequence,
+so the <span class="c004">for</span> loop picks up where <span class="c004">next</span> left off. Once the
+generator is exhausted, it continues to raise <span class="c004">StopException</span>:</p><pre class="verbatim">&gt;&gt;&gt; next(g)
+StopIteration
+</pre><p>Generator expressions are often used with functions like <span class="c004">sum</span>,
+<span class="c004">max</span>, and <span class="c004">min</span>:
+<a id="hevea_default1679"></a>
+<a id="hevea_default1680"></a></p><pre class="verbatim">&gt;&gt;&gt; sum(x**2 for x in range(5))
+30
+</pre>
+<h2 class="section" id="sec226">19.4&#XA0;&#XA0;<span class="c004">any</span> and <span class="c004">all</span></h2>
+<p>Python provides a built-in function, <span class="c004">any</span>, that takes a sequence
+of boolean values and returns <span class="c004">True</span> if any of the values are <span class="c004">True</span>. It works on lists:
+<a id="hevea_default1681"></a>
+<a id="hevea_default1682"></a></p><pre class="verbatim">&gt;&gt;&gt; any([False, False, True])
+True
+</pre><p>But it is often used with generator expressions:
+<a id="hevea_default1683"></a>
+<a id="hevea_default1684"></a></p><pre class="verbatim">&gt;&gt;&gt; any(letter == 't' for letter in 'monty')
+True
+</pre><p>That example isn&#X2019;t very useful because it does the same thing
+as the <span class="c004">in</span> operator. But we could use <span class="c004">any</span> to rewrite
+some of the search functions we wrote in Section&#XA0;<a href="thinkpython2010.html#search">9.3</a>. For
+example, we could write <span class="c004">avoids</span> like this:
+<a id="hevea_default1685"></a>
+<a id="hevea_default1686"></a></p><pre class="verbatim">def avoids(word, forbidden):
+    return not any(letter in forbidden for letter in word)
+</pre><p>The function almost reads like English, &#X201C;<span class="c004">word</span> avoids
+<span class="c004">forbidden</span> if there are not any forbidden letters in <span class="c004">word</span>.&#X201D;</p><p>Using <span class="c004">any</span> with a generator expression is efficient because
+it stops immediately if it finds a <span class="c004">True</span> value,
+so it doesn&#X2019;t have to evaluate the whole sequence.</p><p>Python provides another built-in function, <span class="c004">all</span>, that returns
+<span class="c004">True</span> if every element of the sequence is <span class="c004">True</span>. As
+an exercise, use <span class="c004">all</span> to re-write <code>uses_all</code> from
+Section&#XA0;<a href="thinkpython2010.html#search">9.3</a>.
+<a id="hevea_default1687"></a>
+<a id="hevea_default1688"></a></p>
+<h2 class="section" id="sec227">19.5&#XA0;&#XA0;Sets</h2>
+<p>
+<a id="sets"></a></p><p>In Section&#XA0;<a href="thinkpython2014.html#dictsub">13.6</a> I use dictionaries to find the words
+that appear in a document but not in a word list. The function
+I wrote takes <span class="c004">d1</span>, which contains the words from the document
+as keys, and <span class="c004">d2</span>, which contains the list of words. It
+returns a dictionary that contains the keys from <span class="c004">d1</span> that
+are not in <span class="c004">d2</span>.</p><pre class="verbatim">def subtract(d1, d2):
+    res = dict()
+    for key in d1:
+        if key not in d2:
+            res[key] = None
+    return res
+</pre><p>In all of these dictionaries, the values are <span class="c004">None</span> because
+we never use them. As a result, we waste some storage space.
+<a id="hevea_default1689"></a></p><p>Python provides another built-in type, called a <span class="c004">set</span>, that
+behaves like a collection of dictionary keys with no values. Adding
+elements to a set is fast; so is checking membership. And sets
+provide methods and operators to compute common set operations.
+<a id="hevea_default1690"></a>
+<a id="hevea_default1691"></a></p><p>For example, set subtraction is available as a method called
+<span class="c004">difference</span> or as an operator, <span class="c004">-</span>. So we can rewrite
+<span class="c004">subtract</span> like this:
+<a id="hevea_default1692"></a></p><pre class="verbatim">def subtract(d1, d2):
+    return set(d1) - set(d2)
+</pre><p>The result is a set instead of a dictionary, but for operations like
+iteration, the behavior is the same.</p><p>Some of the exercises in this book can be done concisely and
+efficiently with sets. For example, here is a solution to
+<code>has_duplicates</code>, from
+Exercise&#XA0;<a href="thinkpython2011.html#duplicate">7</a>, that uses a dictionary:</p><pre class="verbatim">def has_duplicates(t):
+    d = {}
+    for x in t:
+        if x in d:
+            return True
+        d[x] = True
+    return False
+</pre><p>When an element appears for the first time, it is added to the
+dictionary. If the same element appears again, the function returns
+<span class="c004">True</span>.</p><p>Using sets, we can write the same function like this:</p><pre class="verbatim">def has_duplicates(t):
+    return len(set(t)) &lt; len(t)
+</pre><p>An element can only appear in a set once, so if an element in <span class="c004">t</span>
+appears more than once, the set will be smaller than <span class="c004">t</span>. If there
+are no duplicates, the set will be the same size as <span class="c004">t</span>.
+<a id="hevea_default1693"></a></p><p>We can also use sets to do some of the exercises in
+Chapter&#XA0;<a href="thinkpython2010.html#wordplay">9</a>. For example, here&#X2019;s a version of
+<code>uses_only</code> with a loop:</p><pre class="verbatim">def uses_only(word, available):
+    for letter in word: 
+        if letter not in available:
+            return False
+    return True
+</pre><p><code>uses_only</code> checks whether all letters in <span class="c004">word</span> are
+in <span class="c004">available</span>. We can rewrite it like this:</p><pre class="verbatim">def uses_only(word, available):
+    return set(word) &lt;= set(available)
+</pre><p>The <code>&lt;=</code> operator checks whether one set is a subset or another,
+including the possibility that they are equal, which is true if all
+the letters in <span class="c004">word</span> appear in <span class="c004">available</span>.
+<a id="hevea_default1694"></a></p><p>As an exercise, rewrite <code>avoids</code> using sets.</p>
+<h2 class="section" id="sec228">19.6&#XA0;&#XA0;Counters</h2>
+<p>A Counter is like a set, except that if an element appears more
+than once, the Counter keeps track of how many times it appears.
+If you are familiar with the mathematical idea of a <span class="c010">multiset</span>,
+a Counter is a natural way to represent a multiset.
+<a id="hevea_default1695"></a>
+<a id="hevea_default1696"></a>
+<a id="hevea_default1697"></a></p><p>Counter is defined in a standard module called <span class="c004">collections</span>,
+so you have to import it. You can initialize a Counter with a string,
+list, or anything else that supports iteration:
+<a id="hevea_default1698"></a>
+<a id="hevea_default1699"></a></p><pre class="verbatim">&gt;&gt;&gt; from collections import Counter
+&gt;&gt;&gt; count = Counter('parrot')
+&gt;&gt;&gt; count
+Counter({'r': 2, 't': 1, 'o': 1, 'p': 1, 'a': 1})
+</pre><p>Counters behave like dictionaries in many ways; they map from each
+key to the number of times it appears. As in dictionaries,
+the keys have to be hashable.</p><p>Unlike dictionaries, Counters don&#X2019;t raise an exception if you access
+an element that doesn&#X2019;t appear. Instead, they return 0:</p><pre class="verbatim">&gt;&gt;&gt; count['d']
+0
+</pre><p>We can use Counters to rewrite <code>is_anagram</code> from
+Exercise&#XA0;<a href="thinkpython2011.html#anagram">6</a>:</p><pre class="verbatim">def is_anagram(word1, word2):
+    return Counter(word1) == Counter(word2)
+</pre><p>If two words are anagrams, they contain the same letters with the same
+counts, so their Counters are equivalent.</p><p>Counters provide methods and operators to perform set-like operations,
+including addition, subtraction, union and intersection. And
+they provide an often-useful method, <code>most_common</code>, which
+returns a list of value-frequency pairs, sorted from most common to
+least:</p><pre class="verbatim">&gt;&gt;&gt; count = Counter('parrot')
+&gt;&gt;&gt; for val, freq in count.most_common(3):
+...     print(val, freq)
+r 2
+p 1
+a 1
+</pre>
+<h2 class="section" id="sec229">19.7&#XA0;&#XA0;defaultdict</h2>
+<p>The <span class="c004">collections</span> module also provides <span class="c004">defaultdict</span>, which is
+like a dictionary except that if you access a key that doesn&#X2019;t exist,
+it can generate a new value on the fly.
+<a id="hevea_default1700"></a>
+<a id="hevea_default1701"></a>
+<a id="hevea_default1702"></a>
+<a id="hevea_default1703"></a></p><p>When you create a defaultdict, you provide a function that&#X2019;s used to
+create new values. A function used to create objects is sometimes
+called a <span class="c010">factory</span>. The built-in functions that create lists, sets,
+and other types can be used as factories:
+<a id="hevea_default1704"></a></p><pre class="verbatim">&gt;&gt;&gt; from collections import defaultdict
+&gt;&gt;&gt; d = defaultdict(list)
+</pre><p>Notice that the argument is <span class="c004">list</span>, which is a class object,
+not <span class="c004">list()</span>, which is a new list. The function you provide
+doesn&#X2019;t get called unless you access a key that doesn&#X2019;t exist.</p><pre class="verbatim">&gt;&gt;&gt; t = d['new key']
+&gt;&gt;&gt; t
+[]
+</pre><p>The new list, which we&#X2019;re calling <span class="c004">t</span>, is also added to the
+dictionary. So if we modify <span class="c004">t</span>, the change appears in <span class="c004">d</span>:</p><pre class="verbatim">&gt;&gt;&gt; t.append('new value')
+&gt;&gt;&gt; d
+defaultdict(&lt;class 'list'&gt;, {'new key': ['new value']})
+</pre><p>If you are making a dictionary of lists, you can often write simpler
+code using <span class="c004">defaultdict</span>. In my solution to
+Exercise&#XA0;<a href="thinkpython2013.html#anagrams">2</a>, which you can get from
+<a href="http://thinkpython2.com/code/anagram_sets.py"><span class="c004">http://thinkpython2.com/code/anagram_sets.py</span></a>, I make a
+dictionary that maps from a sorted string of letters to the list of
+words that can be spelled with those letters. For example, <span class="c004">&#X2019;opst&#X2019;</span> maps to the list <span class="c004">[&#X2019;opts&#X2019;, &#X2019;post&#X2019;, &#X2019;pots&#X2019;, &#X2019;spot&#X2019;,
+&#X2019;stop&#X2019;, &#X2019;tops&#X2019;]</span>.</p><p>Here&#X2019;s the original code:</p><pre class="verbatim">def all_anagrams(filename):
+    d = {}
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        if t not in d:
+            d[t] = [word]
+        else:
+            d[t].append(word)
+    return d
+</pre><p>This can be simplified using <span class="c004">setdefault</span>, which you might
+have used in Exercise&#XA0;<a href="thinkpython2012.html#setdefault">2</a>:
+<a id="hevea_default1705"></a></p><pre class="verbatim">def all_anagrams(filename):
+    d = {}
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        d.setdefault(t, []).append(word)
+    return d
+</pre><p>This solution has the drawback that it makes a new list
+every time, regardless of whether it is needed. For lists,
+that&#X2019;s no big deal, but if the factory
+function is complicated, it might be.
+<a id="hevea_default1706"></a></p><p>We can avoid this problem and 
+simplify the code using a <span class="c004">defaultdict</span>:</p><pre class="verbatim">def all_anagrams(filename):
+    d = defaultdict(list)
+    for line in open(filename):
+        word = line.strip().lower()
+        t = signature(word)
+        d[t].append(word)
+    return d
+</pre><p>My solution to Exercise&#XA0;<a href="thinkpython2019.html#poker">3</a>, which you can download from
+<a href="http://thinkpython2.com/code/PokerHandSoln.py"><span class="c004">http://thinkpython2.com/code/PokerHandSoln.py</span></a>,
+uses <span class="c004">setdefault</span> in the function
+<code>has_straightflush</code>. This solution has the drawback
+of creating a <span class="c004">Hand</span> object every time through the loop, whether
+it is needed or not. As an exercise, rewrite it using
+a defaultdict.</p>
+<h2 class="section" id="sec230">19.8&#XA0;&#XA0;Named tuples</h2>
+<p>Many simple objects are basically collections of related values.
+For example, the Point object defined in Chapter&#XA0;<a href="thinkpython2016.html#clobjects">15</a> contains
+two numbers, <span class="c004">x</span> and <span class="c004">y</span>. When you define a class like
+this, you usually start with an init method and a str method:</p><pre class="verbatim">class Point:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return '(%g, %g)' % (self.x, self.y)
+</pre><p>This is a lot of code to convey a small amount of information.
+Python provides a more concise way to say the same thing:</p><pre class="verbatim">from collections import namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+</pre><p>The first argument is the name of the class you want to create.
+The second is a list of the attributes Point objects should have,
+as strings. The return value from <span class="c004">namedtuple</span> is a class object:
+<a id="hevea_default1707"></a>
+<a id="hevea_default1708"></a>
+<a id="hevea_default1709"></a>
+<a id="hevea_default1710"></a></p><pre class="verbatim">&gt;&gt;&gt; Point
+&lt;class '__main__.Point'&gt;
+</pre><p><span class="c004">Point</span> automatically provides methods like <code>__init__</code> and
+<code>__str__</code> so you don&#X2019;t have to write them.
+<a id="hevea_default1711"></a>
+<a id="hevea_default1712"></a></p><p>To create a Point object, you use the Point class as a function:</p><pre class="verbatim">&gt;&gt;&gt; p = Point(1, 2)
+&gt;&gt;&gt; p
+Point(x=1, y=2)
+</pre><p>The init method assigns the arguments to attributes using the names
+you provided. The str method prints a representation of the Point
+object and its attributes.</p><p>You can access the elements of the named tuple by name:</p><pre class="verbatim">&gt;&gt;&gt; p.x, p.y
+(1, 2)
+</pre><p>But you can also treat a named tuple as a tuple:</p><pre class="verbatim">&gt;&gt;&gt; p[0], p[1]
+(1, 2)
+
+&gt;&gt;&gt; x, y = p
+&gt;&gt;&gt; x, y
+(1, 2)
+</pre><p>Named tuples provide a quick way to define simple classes.
+The drawback is that simple classes don&#X2019;t always stay simple.
+You might decide later that you want to add methods to a named tuple.
+In that case, you could define a new class that inherits from
+the named tuple:
+<a id="hevea_default1713"></a></p><pre class="verbatim">class Pointier(Point):
+    # add more methods here
+</pre><p>Or you could switch to a conventional class definition.</p>
+<h2 class="section" id="sec231">19.9&#XA0;&#XA0;Gathering keyword args</h2>
+<p>In Section&#XA0;<a href="thinkpython2013.html#gather">12.4</a>, we saw how to write a function that
+gathers its arguments into a tuple:
+<a id="hevea_default1714"></a></p><pre class="verbatim">def printall(*args):
+    print(args)
+</pre><p>You can call this function with any number of positional arguments
+(that is, arguments that don&#X2019;t have keywords):
+<a id="hevea_default1715"></a>
+<a id="hevea_default1716"></a></p><pre class="verbatim">&gt;&gt;&gt; printall(1, 2.0, '3')
+(1, 2.0, '3')
+</pre><p>But the <span class="c004">*</span> operator doesn&#X2019;t gather keyword arguments:
+<a id="hevea_default1717"></a>
+<a id="hevea_default1718"></a></p><pre class="verbatim">&gt;&gt;&gt; printall(1, 2.0, third='3')
+TypeError: printall() got an unexpected keyword argument 'third'
+</pre><p>To gather keyword arguments, you can use the <span class="c004">**</span> operator:</p><pre class="verbatim">def printall(*args, **kwargs):
+    print(args, kwargs)
+</pre><p>You can call the keyword gathering parameter anything you want, but
+<span class="c004">kwargs</span> is a common choice. The result is a dictionary that maps
+keywords to values:</p><pre class="verbatim">&gt;&gt;&gt; printall(1, 2.0, third='3')
+(1, 2.0) {'third': '3'}
+</pre><p>If you have a dictionary of keywords and values, you can use the
+scatter operator, <span class="c004">**</span> to call a function:
+<a id="hevea_default1719"></a></p><pre class="verbatim">&gt;&gt;&gt; d = dict(x=1, y=2)
+&gt;&gt;&gt; Point(**d)
+Point(x=1, y=2)
+</pre><p>Without the scatter operator, the function would treat <span class="c004">d</span> as
+a single positional argument, so it would assign <span class="c004">d</span> to
+<span class="c004">x</span> and complain because there&#X2019;s nothing to assign to <span class="c004">y</span>:</p><pre class="verbatim">&gt;&gt;&gt; d = dict(x=1, y=2)
+&gt;&gt;&gt; Point(d)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: __new__() missing 1 required positional argument: 'y'
+</pre><p>When you are working with functions that have a large number of
+parameters, it is often useful to create and pass around dictionaries
+that specify frequently used options.</p>
+<h2 class="section" id="sec232">19.10&#XA0;&#XA0;Glossary</h2>
+<dl class="description"><dt class="dt-description"><span class="c010">conditional expression:</span></dt><dd class="dd-description"> An expression that has one of two
+values, depending on a condition.
+<a id="hevea_default1720"></a>
+<a id="hevea_default1721"></a></dd><dt class="dt-description"><span class="c010">list comprehension:</span></dt><dd class="dd-description"> An expression with a <span class="c004">for</span> loop in square
+brackets that yields a new list.
+<a id="hevea_default1722"></a></dd><dt class="dt-description"><span class="c010">generator expression:</span></dt><dd class="dd-description"> An expression with a <span class="c004">for</span> loop in parentheses
+that yields a generator object. 
+<a id="hevea_default1723"></a>
+<a id="hevea_default1724"></a></dd><dt class="dt-description"><span class="c010">multiset:</span></dt><dd class="dd-description"> A mathematical entity that represents a mapping
+between the elements of a set and the number of times they appear.</dd><dt class="dt-description"><span class="c010">factory:</span></dt><dd class="dd-description"> A function, usually passed as a parameter, used to
+create objects. 
+<a id="hevea_default1725"></a></dd></dl>
+<h2 class="section" id="sec233">19.11&#XA0;&#XA0;Exercises</h2>
+<div class="theorem"><span class="c010">Exercise&#XA0;1</span>&#XA0;&#XA0;<p><em>The following is a function computes the binomial
+coefficient recursively.</em></p><pre class="verbatim"><em>def binomial_coeff(n, k):
+    """Compute the binomial coefficient "n choose k".
+
+    n: number of trials
+    k: number of successes
+
+    returns: int
+    """
+    if k == 0:
+        return 1
+    if n == 0:
+        return 0
+
+    res = binomial_coeff(n-1, k) + binomial_coeff(n-1, k-1)
+    return res
+</em></pre><p><em>Rewrite the body of the function using nested conditional
+expressions.</em></p><p><em>One note: this function is not very efficient because it ends up computing
+the same values over and over. You could make it more efficient by
+memoizing (see Section&#XA0;</em><a href="thinkpython2012.html#memoize"><em>11.6</em></a><em>). But you will find that it&#X2019;s harder to
+memoize if you write it using conditional expressions.</em></p></div>
+<p>
+
+
+</td>
+
+<td width=130 valign="top" id="col-right">
+
+<p>
+<h4>Are you using one of our books in a class?</h4>  We'd like to know
+about it.  Please consider filling out <a href="http://spreadsheets.google.com/viewform?formkey=dC0tNUZkMjBEdXVoRGljNm9FRmlTMHc6MA" onClick="javascript: pageTracker._trackPageview('/outbound/survey');">this short survey</a>.
+
+<p>
+<br>
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=2JJH4SWCAVVYSQHO">Think DSP</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491938455/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491938455&linkCode=as2&tag=greenteapre01-20&linkId=CTV7PDT7E5EGGJUM"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491938455&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491938455" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=ZY6MAYM33ZTNSCNZ">Think Java</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491929561/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491929561&linkCode=as2&tag=greenteapre01-20&linkId=PT77ANWARUNNU3UK"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491929561&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491929561" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20">Think Bayes</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449370780/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449370780&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449370780&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449370780" width="1" height="1" border="0" alt="">
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=FJKSQ3IHEMY2F2VA">Think Python 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+
+<p>
+<a rel="nofollow" href="http://www.amazon.com/gp/product/1491939362/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491939362&linkCode=as2&tag=greenteapre01-20&linkId=ZZ454DLQ3IXDHNHX"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1491939362&Format=_SL160_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491939362" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=O7WYM6H6YBYUFNWU">Think Stats 2e</a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1491907339/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1491907339&linkCode=as2&tag=greenteapre01-20&linkId=JVSYKQHYSUIEYRHL"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1491907339&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://ir-na.amazon-adsystem.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1491907339" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_tl?ie=UTF8&tag=greenteapre01-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1449314635">Think Complexity</a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+<p>
+<a href="http://www.amazon.com/gp/product/1449314635/ref=as_li_tf_il?ie=UTF8&camp=1789&creative=9325&creativeASIN=1449314635&linkCode=as2&tag=greenteapre01-20"><img border="0" src="http://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;ASIN=1449314635&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=greenteapre01-20"></a><img class="c003" src="http://www.assoc-amazon.com/e/ir?t=greenteapre01-20&l=as2&o=1&a=1449314635" width="1" height="1" border="0" alt="">
+
+
+</td>
+</tr>
+</table>
+</body>
+</html>
