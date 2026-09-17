@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·哲学（第五章）｜枪炮、病菌与钢铁 精读</title>
+<meta name="description" content="全书最小的一章，回答的却是最大的问题：生命的意义是什么——三个答案、四条价值观、一种可验证的信仰，最后全部落进此时此地。">
+<style>
+:root{
+  --paper:#F8F5EC;      /* 暖金纸底 */
+  --paper-2:#EBE7D8;    /* 纸色深一档 */
+  --card:#FEFDF9;
+  --ink:#1F2A33;        /* 深靛墨（主色） */
+  --ink-2:#37424C;
+  --ink-deep:#0F171E;   /* 深墨（hero 底） */
+  --gold:#A8791E;       /* 鎏金（强调 · 财富与复利） */
+  --gold-b:#C4973B;
+  --gold-soft:rgba(168,121,30,.16);
+  --cinnabar:#9A3B26;   /* 铜红（警示 · 欲望与贪婪） */
+  --teal:#2E5A6E;       /* 静谧蓝（对照 · 幸福与内在平静） */
+  --tx:#253039;
+  --tx-2:#46525C;
+  --tx-3:#7A828C;
+  --line:rgba(31,42,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,42,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#37424C 0%,var(--ink-deep) 62%);
+  color:#E9F0F2;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(196,151,59,.42)}
+.hero::after{inset:22px;border:1px solid rgba(196,151,59,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(196,151,59,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,59,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF3F5}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(196,151,59,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,59,38,.6);background:rgba(154,59,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(168,121,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E7EDF0;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(196,151,59,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EEE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(196,151,59,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EEE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(168,121,30,.5);box-shadow:0 4px 18px rgba(31,42,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(168,121,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(46,90,110,.055)}
+.duo .colR{background:rgba(154,59,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,59,38,.1);color:var(--cinnabar);border:1px solid rgba(154,59,38,.28)}
+.case .tag.good{background:rgba(46,90,110,.1);color:var(--teal);border:1px solid rgba(46,90,110,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(168,121,30,.45);background:rgba(168,121,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,59,38,.55);border-radius:8px;
+  background:rgba(154,59,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,59,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(168,121,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(250,248,240,.94);
+  border-bottom:1px solid rgba(31,42,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,42,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#37424C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(168,121,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,42,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,42,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-自我救赎/index.html">← 自我救赎</a><a href="../07-额外推荐/index.html">额外推荐 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">悟</div>
+  <div class="stamp s4">理性佛教</div>
+  <h1>哲学（第五章）</h1>
+  <p class="sub">全书最小的一章，回答的却是最大的问题：生命的意义是什么——三个答案、四条价值观、一种可验证的信仰，最后全部落进此时此地。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">当下</span>
+    <span>正文 3,701 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>生命的意义</a><a href="#s3" data-t="s3"><span class="cn">叁</span>价值观</a><a href="#s4" data-t="s4"><span class="cn">肆</span>理性佛教</a><a href="#s5" data-t="s5"><span class="cn">伍</span>当下</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>真理经常会被当成异端邪说，无法被公开讨论。真理只能靠探索去发现、靠耳语去传播，也许还能编撰成文，供人阅读。</p><cite>——第五章 卷首题记</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书最小的章，却是全书离「为什么」最近的章</p><p class="thesis">第五章只有三千七百字、四个小节，却把前四章的财富与幸福收拢成一个哲学问题：既然生命终将归于热寂，人为什么还要认真地活。纳瓦尔给出<b>三个答案</b>、<b>四条价值观</b>、<b>一种可验证的信仰</b>，最后全部落进<b>当下</b>。</p><div class="chain"><div class="node"><div class="n">开篇</div><div><p class="tt">真理像异端</p><p class="dd">真理经常会被当成异端邪说，无法被公开讨论；只能靠探索去发现、靠耳语去传播</p></div></div><div class="node"><div class="n">起问</div><div><p class="tt">生命的意义</p><p class="dd">三个答案：私人问题／生命没有意义／局部熵减——重要的不是答案，而是问题</p></div></div><div class="node"><div class="n">立身</div><div><p class="tt">价值观生活</p><p class="dd">诚实、拒绝短期思维、平级关系、剔除愤怒——四件不会妥协的事</p></div></div><div class="node"><div class="n">信仰</div><div><p class="tt">理性佛教</p><p class="dd">一方面是进化论（约束性原则），一方面是佛教（精神哲学）；无法亲自验证的理念一概拒绝</p></div></div><div class="node"><div class="n">收束</div><div><p class="tt">智慧的 定义</p><p class="dd">智慧是一种知道个人行为的长期后果的思维能力</p></div></div><div class="node"><div class="n">归宿</div><div><p class="tt">唯有当下</p><p class="dd">除了当下，一切都是不存在的；你每时每刻都在死亡和重生</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>生命的意义：三个答案</h2><span class="en">THE MEANING</span></div><h3 class="h3">生命的意义和目的是什么？</h3><p class="prose">纳瓦尔说这个问题「确实非常丰富。这个问题很大，我会给你三个答案。」第一个答案：<b>生命的意义是一个私人问题</b>。每个人都必须找到自己生命的意义，其他人给的任何智慧听起来都像是胡说八道；寻找人生的意义可能需要几年甚至几十年，一旦找到令自己满意的答案，这个答案就会成为你生活的根基。</p><div class="aband"><q>所以重要的不是答案，而是问题。</q><cite>——第五章 · 生命的意义</cite></div><p class="prose">第二个答案：<b>生命没有意义，生活没有目的</b>。宇宙已经存在了100亿年，未来可能会继续存在700亿年；与宇宙的历史相比，你的生命相当于不存在。你做的任何事情都将烟消云散，人类终将灭亡，地球也会荡然无存——无论你是艺术家、诗人、征服者、贫民，几代人过后，都不会有人记得你。</p><div class="aband"><q>人生如水上写字或以沙建房。</q><cite>——第五章 · 生命的意义（纳瓦尔转引）</cite></div><p class="prose">既然没有现成的意义，追问「为什么」就停不下来。他借物理学家费曼的比喻说明：任何一个答案都会引出另一个「为什么」，宇宙没有什么基本的内在目的或意义——</p><div class="aband"><q>就好像一个东西被一只乌龟驮在背上，这只乌龟下面是一只更大的乌龟，再下面都是乌龟。一个问题总会带来另一个问题，“为什么”会不断累积。任何一个答案都会引出另一个“为什么”。</q><cite>——纳瓦尔转引理查德·费曼</cite></div><p class="prose">第三个答案最复杂：他根据自己阅读的科学书籍拼凑出一些理论——在物理学中，<b>时间之箭来自熵</b>。根据热力学第二定律，宇宙中的无序状态只会增加；而人类或人类文明这样的系统，是在<b>局部熵减</b>。三种答案摆在一起，反面样本与正面出路都摆在了明面上——</p><div class="tbwrap"><table><thead><tr><th>答案</th><th>主张</th><th>关键细节</th></tr></thead><tbody><tr><td>第一个答案</td><td>生命的意义是一个私人问题</td><td>每个人都必须自己去寻找答案；重要的不是答案，而是问题；一旦找到令自己满意的答案，这个答案就会成为你生活的根基</td></tr><tr><td>第二个答案</td><td>生命没有意义，生活没有目的</td><td>人生如水上写字或以沙建房；你做的任何事情都将烟消云散；无论你是谁，几代人过后，都不会有人记得你</td></tr><tr><td>第三个答案</td><td>生命系统在局部熵减</td><td>人类在局部熵减，因为我们有行动力；所有这些更复杂的系统都在使宇宙加速达到热寂，把我们推向“万物一体”的终极境界</td></tr></tbody></table></div><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「永恒的来世」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">仅仅因为在这个星球上生活了70年，你就能获得永恒的来世——他觉得这个说法毫无依据，荒谬至极。「来世」跟「前世」差不多：你还记得自己的前世吗？不记得了吧，「来世」也一样。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>自己创造意义</h4><span class="ar">▶</span></div><div class="cb"><div class="in">归根到底，一个人必须创造自己人生的意义。生命只是一场戏而我只是观众？做事情是为了自我实现？对某种东西的渴望是因为其本身？所有这些都是你编造出来的意义。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>局部熵减</h4><span class="ar">▶</span></div><div class="cb"><div class="in">人类在局部熵减，因为我们有行动力；而整个地球在整体熵增，直到宇宙归于热寂。在热寂状态里，能量不再集中，万物归一，毫无二致。</div></div></div></div><div class="aband"><q>作为生命系统，我们所做的一切都是在推动宇宙加速达到热寂。创作艺术、研究数学、组建家庭、发明计算机、创建文明等等——所有这些更复杂的系统都在使宇宙加速达到热寂。你正在把我们推向“万物一体”的终极境界。</q><cite>——第五章 · 生命的意义（第三个答案）</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>按照自己的价值观生活</h2><span class="en">VALUES</span></div><h3 class="h3">你的核心价值观是什么？</h3><p class="prose">他从未完整地总结过自己的价值观，但列举了几件<b>不会妥协的事</b>——「我的整个人生都以它们为参考和标杆」。这四条放在一起看，其实是同一种活法的四个侧面：真实、长期、平等、不怒。</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>诚实</h3><p class="cp">「我说的诚实，指的是做真实的自己。」如果心里一套、嘴上一套，大脑就需要多个线程同时处理信息，每次与人交谈都在追悔过去或计划未来，就无法活在当下。他只想跟一类人相处：在他们面前可以做到心口如一。</p></div><div class="card num"><div class="idx">二</div><h3>拒绝短期思维</h3><p class="cp">「我不赞成任何短期思维或短期交易。」生意伙伴一味追求短期利益，就不想合作。生活中所有的回报，无论是财富、人际关系、爱情、健康、活动，还是习惯，都来自复利。</p></div><div class="card num"><div class="idx">三</div><h3>平级关系</h3><p class="cp">「我不想高于任何人，也不想低于任何人。」如果和别人不能像平级那样对待彼此，就不想和他们交往了。</p></div><div class="card num"><div class="idx">四</div><h3>愤怒毫无意义</h3><p class="cp">年轻时他认为愤怒是好事，是男子汉气概的象征；现在他把愤怒的人从自己的生活中剔除了——不是在评判他们，他们必须自己解决这个问题。</p></div></div><div class="aband"><q>在对别人撒谎之前，你必须先对自己撒谎。</q><cite>——第五章 · 按照自己的价值观生活</cite></div><div class="aband"><q>执怒就像握了一把要丢向他人的热煤炭，被烫伤的人反而是你。</q><cite>——佛教说法（纳瓦尔转引）</cite></div><p class="prose">价值观的用途在关系里。「每个人都有自己的价值观」，要想获得好的人际关系、好的同事、好的恋人、好的妻子、好的丈夫，就要找到与自己价值观相契合的人——志同则道合，道合则无虞。人们如果因为什么事情争执不休，乃至大打出手，一般来说，就是价值观不一致。</p><p class="prose">他举了自己的婚姻做例证：与妻子的携手经历了很大的考验，最后在一起，是因为「她看到了我的价值观」。他庆幸自己在当时已经拥有了这套价值观，如若不然，就配不上她。投资大师查理·芒格的话被引来收束——</p><div class="aband"><q>若要找到一位优秀的伴侣，你先要成为一位优秀的伴侣。</q><cite>——纳瓦尔转引查理·芒格</cite></div><p class="prose">这一节的落点在生儿育女：「有了子女的那一刻，生命的意义、生命的目的等类似问题突然就有了答案，这种感觉非常神奇。」突然间，宇宙中最重要的东西从你的身上转移到孩子的身上——你会因此而改变，你的价值观从本质上变得不那么自私了。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>理性佛教：可验证的信仰</h2><span class="en">RATIONAL BUDDHISM</span></div><div class="aband"><q>问题越古老，答案存世的时间越长。</q><cite>——第五章 · 理性佛教（小节引语）</cite></div><h3 class="h3">理性佛教与传统佛教有何不同？</h3><p class="prose">「理性部分意味着我必须接受科学和进化论，我必须拒绝所有无法亲自验证的理念。」冥想有好处吗？是的。厘清思绪是件好事吗？是的。心猿之下是否有一个基本的意识层？是的——所有这些他都亲自验证过。与此同时，他相信并遵循一些来自佛教的说法，原因是：已对这些说法进行了验证，或者通过思想实验对其进行了论证。</p><div class="duo"><div class="colL"><h4>留下的：可验证的哲学</h4><ul><li>接受科学和进化论，拒绝所有无法亲自验证的理念</li><li>冥想的好处、厘清思绪、心猿之下的基本意识层——全部亲自验证过</li><li>进化论是约束性原则，因为它解释了关于人类的诸多问题</li><li>佛教是最古老、最经得起时间考验的精神哲学，关于我们每个人的内心状态</li><li>两者并不矛盾，可以相辅相成，互为补充</li></ul></div><div class="colR"><h4>拒之门外的：不可证伪的玄虚</h4><ul><li>「前世的业果，今生来偿还」——没见过前世，也不记得任何前世，没有办法相信</li><li>「第三脉轮开启」——无法证实，也无法确认，有些玄虚</li><li>不可证伪的东西不能被视为基本真理</li><li>不会因为一个高深的概念被写进书里就觉得它是对的</li><li>不能飘浮起来，冥想也不带来超能力</li></ul></div></div><p class="prose">对理性佛教的完整定义是：理解佛教所倡导的内在修行，以此让自己变得更快乐、更富有、更能活在当下、更能控制自己的情绪——成为一个更好的人。方法论的落点是主动二字：「要勇于尝试，亲自验证，始终保持怀疑精神，沙里淘金，使其为我所用。」</p><p class="prose">他的人生哲学因此包含两个方面：一方面是<b>进化论</b>，是约束性原则；另一方面是<b>佛教</b>，是精神哲学。两者在他看来可以互相印证——他甚至想写一篇博客，讨论如何把佛教的教义，尤其是那些可以验证的教义，直接映射到虚拟现实中。</p><h3 class="h3">你如何定义智慧？</h3><div class="aband"><q>智慧是一种知道个人行为的长期后果的思维能力。</q><cite>——第五章 · 理性佛教</cite></div><p class="prose">但智慧无法靠语言直接传递：「如果仅仅通过语言就可以传授智慧，我们今天就不需要努力了。」他的人性观收在这一节末尾——人之初，性本善，而后被污染腐化；智慧就是通过追求知识，去伪存真，抛弃罪恶，回归美德。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>我们唯一拥有的是当下</h2><span class="en">THE PRESENT</span></div><div class="aband"><q>除了当下，一切都是不存在的。没有人能够回到过去，也没有人能够以任何有意义的方式成功地预测未来。唯一存在的就是此时此地，就是你恰好存在的这个时刻和在宇宙空间里的这个位置。</q><cite>——第五章 · 我们唯一拥有的是当下</cite></div><p class="prose">他说就像所有伟大而深刻的真理一样，这些都是悖论：任何两个点都是无限不同的，任何时刻都是独一无二的，每一刻都转瞬即逝，时光是抓不住的。于是过去在他眼里轻得几乎不存在——他甚至不记得两分钟前自己说了什么。</p><div class="aband"><q>你每时每刻都在死亡和重生。是遗忘还是牢记，取决于你自己。</q><cite>——第五章 · 我们唯一拥有的是当下</cite></div><div class="aband"><q>只因在劫难逃，万物更显美好。你永远不会比此刻更美，我们也永远不会重回此地。</q><cite>——荷马《伊利亚特》（纳瓦尔转引）</cite></div><p class="prose">荷马这句诗是全章唯一的外来引文，落在死亡与当下之间：在他看来，过去最多只是脑海中一些虚幻的记忆片段，「我的过去早已死去，消失不见」——死亡唯一的真正含义就是不再有未来的时刻。</p><div class="aband"><q>我甚至不记得两分钟前我说了什么。过去最多只是我脑海中一些虚幻的记忆片段。在我看来，我的过去早已死去，消失不见。死亡唯一的真正含义就是不再有未来的时刻。</q><cite>——第五章 · 我们唯一拥有的是当下</cite></div><div class="check" data-k="06a"><p class="ct">自测：这一章立下的几条，你接住了几条</p><label><input type="checkbox"><span>做真实的自己，心口如一，不对自己撒谎</span></label><label><input type="checkbox"><span>不做短期思维与短期交易，回报来自复利</span></label><label><input type="checkbox"><span>只要平级关系，不想高于也不想低于任何人</span></label><label><input type="checkbox"><span>愤怒毫无意义，不和愤怒的人纠缠</span></label><label><input type="checkbox"><span>无法亲自验证的理念，不接受为基本真理</span></label><label><input type="checkbox"><span>除了当下，一切都是不存在的</span></label><div class="cf">勾选状态存在本机浏览器。 <b>0</b> / 6</div></div><div class="chips"><span class="chip">生命没有意义，生活没有目的。</span><span class="chip">归根到底，一个人必须创造自己人生的意义。</span><span class="chip">志同则道合，道合则无虞。</span><span class="chip">问题越古老，答案存世的时间越长。</span><span class="chip">任何时刻都是独一无二的。</span><span class="chip">灵感本易逝，行动应当时。</span></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">句子跨段</span><span class="nd"><b>01｜</b>「生命的意义」一节中，「我觉得这个说法毫无依据，」与「荒谬至极。」本是一句话，被导出器硬切成两段；转写按一句连读理解，引文未跨段截取。</span></div><div class="note" id="n2"><span class="nn">署名跨行</span><span class="nd"><b>02｜</b>「我们唯一拥有的是当下」一节中荷马诗句的署名「——荷马，《伊利亚特》」单独成段（C 类形态），本篇按引文署名并入 quote 的 src。</span></div><div class="note" id="n3"><span class="nn">题记无署名</span><span class="nd"><b>03｜</b>第五章开篇 53 字题记（「真理经常会被当成异端邪说」起）无署名行，按卷首题记处理，收进 hero 题记。</span></div><div class="note" id="n4"><span class="nn">脚注保留</span><span class="nd"><b>04｜</b>正文内嵌 [4][2][11] 等引文编号属源文原样，保留不作处理；资料来源见附录。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜贾雷德·戴蒙德《枪炮、病菌与钢铁》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜哲学</span><a href="../05-自我救赎/index.html">← 自我救赎</a><a href="../07-额外推荐/index.html">额外推荐 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

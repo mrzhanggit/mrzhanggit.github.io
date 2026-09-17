@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·学习幸福（第三章）｜枪炮、病菌与钢铁 精读</title>
+<meta name="description" content="幸福感从2分到9分，纳瓦尔说靠的不是钱，而是把幸福当成技能来练习：幸福是默认状态，欲望是你和自己的约定，接受是最后一课。">
+<style>
+:root{
+  --paper:#F8F5EC;      /* 暖金纸底 */
+  --paper-2:#EBE7D8;    /* 纸色深一档 */
+  --card:#FEFDF9;
+  --ink:#1F2A33;        /* 深靛墨（主色） */
+  --ink-2:#37424C;
+  --ink-deep:#0F171E;   /* 深墨（hero 底） */
+  --gold:#A8791E;       /* 鎏金（强调 · 财富与复利） */
+  --gold-b:#C4973B;
+  --gold-soft:rgba(168,121,30,.16);
+  --cinnabar:#9A3B26;   /* 铜红（警示 · 欲望与贪婪） */
+  --teal:#2E5A6E;       /* 静谧蓝（对照 · 幸福与内在平静） */
+  --tx:#253039;
+  --tx-2:#46525C;
+  --tx-3:#7A828C;
+  --line:rgba(31,42,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,42,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#37424C 0%,var(--ink-deep) 62%);
+  color:#E9F0F2;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(196,151,59,.42)}
+.hero::after{inset:22px;border:1px solid rgba(196,151,59,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(196,151,59,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,59,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF3F5}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(196,151,59,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,59,38,.6);background:rgba(154,59,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(168,121,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E7EDF0;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(196,151,59,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EEE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(196,151,59,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EEE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(168,121,30,.5);box-shadow:0 4px 18px rgba(31,42,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(168,121,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(46,90,110,.055)}
+.duo .colR{background:rgba(154,59,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,59,38,.1);color:var(--cinnabar);border:1px solid rgba(154,59,38,.28)}
+.case .tag.good{background:rgba(46,90,110,.1);color:var(--teal);border:1px solid rgba(46,90,110,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(168,121,30,.45);background:rgba(168,121,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,59,38,.55);border-radius:8px;
+  background:rgba(154,59,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,59,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(168,121,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(250,248,240,.94);
+  border-bottom:1px solid rgba(31,42,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,42,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#37424C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(168,121,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,42,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,42,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../03-增强判断力/index.html">← 增强判断力</a><a href="../05-自我救赎/index.html">自我救赎 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">福</div>
+  <div class="stamp s4">学习幸福</div>
+  <h1>学习幸福（第三章）</h1>
+  <p class="sub">幸福感从2分到9分，纳瓦尔说靠的不是钱，而是把幸福当成技能来练习：幸福是默认状态，欲望是你和自己的约定，接受是最后一课。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">幸福技能</span>
+    <span>正文 13,272 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>技能与选择</a><a href="#s3" data-t="s3"><span class="cn">叁</span>当下与平和</a><a href="#s4" data-t="s4"><span class="cn">肆</span>欲望</a><a href="#s5" data-t="s5"><span class="cn">伍</span>成功与幸福</a><a href="#s6" data-t="s6"><span class="cn">陆</span>嫉妒</a><a href="#s7" data-t="s7"><span class="cn">柒</span>幸福习惯</a><a href="#s8" data-t="s8"><span class="cn">捌</span>接受</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>别太把自己当回事。你只是一只会做计划的猴子。</p><cite>——第三章 · 学习幸福 卷首</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第三章全图：从「幸福是什么」走到「怎么练」</p><p class="thesis">本章是一条<b>从定义到训练</b>的路线：先重新定义幸福（剔除缺憾感），再指出障碍（欲望、嫉妒、对成功的执迷），最后给出训练法（好习惯与接受）。每一环都由纳瓦尔的原话引文承担论证。</p><div class="chain"><div class="node"><div class="n">定义</div><div><p class="tt">剔除缺憾感</p><p class="dd">幸福是一种不需要主动作为的状态；把「缺憾感」从生活中剔除，剩下的中性状态是孩子才有的状态，并不平淡</p></div></div><div class="node"><div class="n">转向</div><div><p class="tt">技能与选择</p><p class="dd">幸福与基因无关，甚至与选择无关，是可后天习得的技能；既然是选择，就可以着手做出这个选择</p></div></div><div class="node"><div class="n">障碍</div><div><p class="tt">欲望与嫉妒</p><p class="dd">欲望是你和自己的约定：不得到想要的东西就不快乐；嫉妒的解法是不愿与他人百分之百交换人生</p></div></div><div class="node"><div class="n">勘误</div><div><p class="tt">成功≠幸福</p><p class="dd">幸福就是满足现状，成功源于对现状的不满，两者只能选一个；真正的赢家是退出游戏的人</p></div></div><div class="node"><div class="n">训练</div><div><p class="tt">好习惯</p><p class="dd">用精心培养的好习惯替换不经意间养成的坏习惯；幸福指数取决于习惯和最常相处的人</p></div></div><div class="node"><div class="n">底座</div><div><p class="tt">接受与死亡</p><p class="dd">改变、接受、逃避三种选择里，纳瓦尔说得最多的两个字是接受；正视死亡是活在当下的本原</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>幸福是一种技能，也是一种选择</h2><span class="en">SKILL &amp; CHOICE</span></div><p class="prose">本章从一次自我评分开场：10年前若给幸福感打分，纳瓦尔只有2分或3分，而现在<b>是9分</b>。他明说有钱确实能提高幸福感，但金钱其实只发挥了很小的作用，提升主要来自他认识到「让自己幸福对我来说是最重要的事」，并运用了大量技巧来培养。</p><h3 class="h3">幸福是一种技能</h3><div class="aband"><q>可以说，幸福与基因无关，甚至与选择无关，它是一种与个体密切相关、可以后天习得的技能，就像通过锻炼强健体魄、通过吃饭摄取营养一样。</q><cite>——第三章 · 幸福是一种技能</cite></div><p class="prose">幸福是什么？源文先摆出三种流行答案——有人认为幸福是心流状态，有人认为是欲望得到满足，还有人认为是知足常乐——再给出他自己的、随时间变化的定义。</p><div class="grid g2"><div class="card"><div class="idx">甲</div><h3>流行答案</h3><p class="cp">心流状态；欲望得到满足；知足常乐。纳瓦尔说他对幸福的定义也在不断变化，一年前的答案跟现在就完全不同。</p></div><div class="card"><div class="idx">乙</div><h3>纳瓦尔的定义</h3><p class="cp">幸福就是一种不需要主动作为的状态。当把「缺憾感」从生活中剔除时，幸福感就会油然而生——幸福就是消除缺憾感之后的感受。</p></div><div class="card"><div class="idx">丙</div><h3>常被混淆的版本</h3><p class="cp">人们往往误将积极乐观的想法和行为等同于幸福。但每个积极的想法其实都包含一个消极的想法，积极和消极是如影随形的相对概念。</p></div><div class="card"><div class="idx">丁</div><h3>中性状态</h3><p class="cp">剔除了幸福和不幸福，剩下的是中性状态——孩子才有的状态。孩子通常都很快乐，因为真的沉浸在当下。中性状态其实是一种完美的状态，绝不等于索然无味。</p></div></div><div class="aband"><q>“幸福”并不是一种客观存在，而是一种主观感受。</q><cite>——第三章 · 幸福是一种技能</cite></div><p class="prose">既然幸福是主观感受，选择权就在自己手上：现实是中性的，一棵树没有对与错的概念，如何思考、判断和对待你所感知的一切，全由你自己决定。他还给了一条自我松绑的注脚——我们是可塑的，而世界基本上是固定不变的。</p><div class="duo"><div class="colL"><h4>纳瓦尔：技能与选择</h4><ul><li>幸福是一种与个体密切相关、可以后天习得的技能</li><li>幸福，爱，激情……这些都不是我们追寻的事物，而是我们做出的选择</li><li>大脑就像身体一样，是可塑的，每一天都是崭新的</li><li>幸福的人是可以轻松地以特定的方式诠释事件、保持内心平和的人</li></ul></div><div class="colR"><h4>常见误读：奖赏与结果</h4><ul><li>误将积极乐观的想法和行为等同于幸福</li><li>把中性状态当成索然无味、缺乏激情</li><li>认为幸福是欲望得到满足后的回报，于是不断向外抓取</li><li>认为通过改变外部世界就能获得内心的平静、永久的开心、应得的幸福</li></ul></div></div><h3 class="h3">幸福是一种选择</h3><p class="prose">这一节只有四段，但落点极硬：我们花费大量时间和精力改造外部世界、改造他人、改造身体，却只是简单地接受了年轻时被塑造的自己；记忆和身份只是来自过去的负担，让我们无法心无旁骛地活在当下。</p><h3 class="h3">访谈问答：练习冥想能帮助你接受现实吗？</h3><p class="prose">纳瓦尔的回答带着自嘲：可以，但作用其实微乎其微——有人一句话刺激到你，平和状态也可能瞬间被打破。冥想当然比什么都不做要好，但他把位置摆得很清楚：真正的幸福只是内心平和的副产品，主要源于接受现实，而不是改变外部环境。理性很强的人可以学会漠视自己无法控制的事物，他开出的清单是——</p><div class="chips"><span class="chip">我降低自己的身份感。</span><span class="chip">我屏蔽脑海中的噪声和杂念。</span><span class="chip">我不在乎那些无关紧要的事。</span><span class="chip">我不参与政治。</span><span class="chip">我远离郁郁寡欢的人。</span><span class="chip">我珍惜光阴。</span><span class="chip">我阅读哲学作品。</span><span class="chip">我进行冥想练习。</span><span class="chip">我和快乐知足的人交往。</span></div><p class="prose">清单之后他补了一句：这些方法很有效，可以有条不紊、循序渐进地稳步提高自己的幸福基线，就像提高身体素质一样。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>活在当下，心境平和</h2><span class="en">PRESENCE &amp; PEACE</span></div><h3 class="h3">幸福需要活在当下</h3><p class="prose">任何时候（比如走路的时候），大脑都只有很小一部分是关注当下的，主要精力用于规划未来或悔恨过去。如果每天都沉浸在对未来的规划和幻想中，那就是在亲手扼杀自己的幸福——我们渴望能感知当下的体验，殊不知这样的渴望却让我们脱离了当下。</p><div class="aband"><q>既往不恋。人之所以感到痛苦，很多时候是因为拿以往和现在做比较。</q><cite>——第三章 · 幸福需要活在当下</cite></div><p class="prose">关于「开悟」，他转述过一个他认为是很好的定义——开悟不需要在山顶修行30年，而是一个时时刻刻都可以达到的境界，每天都可以提高自己的开悟水平。</p><div class="aband"><q>你有没有想过，现在的生活可能就是上帝承诺给你的天堂，而你却毫不珍惜，肆意挥霍？</q><cite>——第三章 · 幸福需要活在当下</cite></div><h3 class="h3">幸福需要心境平和</h3><p class="prose">对现在的纳瓦尔而言，幸福的本质更倾向于<b>平和</b>，而不是快乐。他观察到大多数人都有如影随形的轻微焦虑感：事情总是一件压着一件，永远有做不完的事；什么都不做地干坐着，焦虑感会如坐针毡地催你站起来去做事。而焦虑感正源于脑海中此起彼伏的想法。</p><p class="prose">他应对焦虑的方法是不与之对抗，只问自己一个问题：「我是想一直执着于这些想法，还是想重获内心的平静？」另外，目的也分两种——追随内在的目的，做自己想做的事情，自然会幸福；目的是外界强加的，做不得不做的事情，就不会幸福。</p><div class="aband"><q>幸福的人是可以轻松地以特定的方式诠释事件、保持内心平和的人。</q><cite>——第三章 · 幸福需要心境平和</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>欲望是主动选择的不开心</h2><span class="en">DESIRE</span></div><p class="prose">本章标题本身就是全书最著名的金句之一。纳瓦尔先讲了自己的例子：等提车的那段日子，他每天晚上上论坛查看研究——明知这只是一辆普普通通的车，到手后就不会再关注。他给自己的诊断是：沉迷于对外物的欲望，对外部事物会带给自己幸福和快乐的执念，其实是一种痴念。并注明这并非他的原创总结，而是佛学的终极智慧。</p><div class="aband"><q>欲望就是你跟自己的约定，约定的内容是：不得到我想要的东西，我是不会快乐的。</q><cite>——第三章 · 欲望是主动选择的不开心</cite></div><p class="prose">他进一步拆解这个约定的荒谬处：我们每天生活在欲望中，又奇怪为什么自己不快乐。所以他的对策是对欲望保持清醒、慎重选择——目标是无论什么情况下，都尽量不让自己对生活有一个以上的欲望。同时他并不否定现实责任：人需要履行社会职责，在力所能及的范围内减少无序状态，即所谓「局部熵减」，这是你的人生责任。</p><div class="aband"><q>我们的根本错觉是：总有一样东西会让我一直满足、永远快乐。</q><cite>——第三章 · 欲望是主动选择的不开心</cite></div><div class="duo"><div class="colL"><h4>慎选欲望（纳瓦尔的练法）</h4><ul><li>欲望是我痛苦的来源，所以对欲望保持清醒，慎重选择</li><li>任何特定时间段，只选择一个最有价值的欲望作为奋斗目标</li><li>相较于做一些不是自己百分之百想要做的事情，努力调整欲望更重要</li><li>获得内心平静的唯一方法是摒弃“问题”这个概念</li></ul></div><div class="colR"><h4>欲望驱动（自寻烦恼）</h4><ul><li>认为外部环境一变，幸福就会自动到来——本质是痴心妄想</li><li>「等得到那个东西，我就快乐了」——时时刻刻都在犯的根本错误</li><li>人在年富力强时能做的事情更多，做得越多，欲望越多</li><li>同时追求多个欲望让人分心，难以保持心态平和</li></ul></div></div><p class="prose">本节还藏着全书流传最广的一段人生账本——它同时解释了为什么人越年轻、身体越好，幸福指数反而越低：</p><div class="aband"><q>年轻的时候有时间、有健康，但没有钱。到了中年，有钱、有健康，但没有时间。老了以后，有钱、有时间，但没了健康。人生的大赢家就是同时拥有时间、健康和金钱。</q><cite>——第三章 · 欲望是主动选择的不开心</cite></div><p class="prose">而等到人们觉得自己已经拥有足够的金钱时，他们却失去了时间和健康。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>成功不一定带来幸福</h2><span class="en">SUCCESS VS HAPPINESS</span></div><div class="aband"><q>幸福就是满足现状。</q><cite>——第三章 · 成功不一定带来幸福（本节开篇第一句）</cite></div><p class="prose">本节开篇是三句连发的短判语：「而成功源于对现状的不满，是对现状的改造。」「两者只能选一个。」——幸福与成功在源文里被摆成了二选一的对立面，这也为全节定调。</p><h3 class="h3">访谈问答：你的第二次生命是何时开始的？</h3><p class="prose">纳瓦尔自认属于到了一定人生阶段不得不做出巨大改变的人。他花了很多年奋力拼搏，就是为了获得物质上的成功和社会的认可；得到之后，他发现身边同样在奋力成功的人似乎并没有那么幸福。</p><div class="aband"><q>我个人的经验完全符合享乐适应理论：再好的东西，我也很快就习惯了，它们无法再带给我刺激或愉快的感觉了。</q><cite>——第三章 · 成功不一定带来幸福</cite></div><p class="prose">于是他得出结论：幸福是一种内在感受，所有真正意义上的成功都是内在的，与外部环境关系不大。当对一个回报很大的游戏逐渐上手，人反而会沉迷其中、无法停止——生存和繁衍的本能驱使人们劳作，而享乐适应让我们步履不停。</p><div class="aband"><q>幸福的秘诀在于，知道何时停下劳作的脚步，开始随心去玩耍。</q><cite>——第三章 · 成功不一定带来幸福</cite></div><h3 class="h3">访谈问答：谁是你心目中的成功人士？</h3><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>赢得游戏的人</h4><span class="ar">▶</span></div><div class="cb"><div class="in">大多数人对成功人士的定义都是赢得游戏的人。几年前的纳瓦尔也会点名史蒂夫·乔布斯、马克·安德森、中本聪、埃隆·马斯克——能成功实现商业化的人。但游戏上手后的问题是：你会沉迷其中，即使它早已过于简单。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>退出游戏的人</h4><span class="ar">▶</span></div><div class="cb"><div class="in">对现在的他来说，真正的赢家是已经完全退出游戏、甚至根本不玩游戏的人。耶日·格雷戈雷克不需要任何人为他提供任何东西，无论赚的钱比别人多还是少，心理状态都不受影响；佛陀和克里希那穆提也是成功的，因为输赢对他们来说并不重要。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>帕斯卡的房间测试</h4><span class="ar">▶</span></div><div class="cb"><div class="in">布莱士·帕斯卡说过，人之所以有烦恼，是因为他不能独自安静地在一个房间里坐着。纳瓦尔接了一句话：如果你能坐上30分钟，同时保持幸福的心境，你就是成功的——这是一种超然物外的境界，不过极少有人能做到。</div></div></div></div><div class="aband"><q>平和是静态的幸福，幸福是动态的平和。只要愿意，你就随时可以把平和激活，使之变成幸福。</q><cite>——第三章 · 成功不一定带来幸福</cite></div><p class="prose">颇具讽刺意味的是，我们大多数人都试图通过斗争找到平和：创业像打仗，和室友争论谁该洗碗也是打仗——都想用现阶段的挣扎换取日后的些许安全与平和。但外部问题是无穷无尽的，他也承认内心的平和状态不是一劳永逸的，在大多数情况下，接受并顺应现实，才是获得幸福的核心技能。</p><div class="aband"><q>因此，获得内心平静的唯一方法是摒弃“问题”这个概念。</q><cite>——第三章 · 成功不一定带来幸福</cite></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>嫉妒是幸福的敌人</h2><span class="en">ENVY</span></div><p class="prose">这一节从一个词的清除开始：纳瓦尔在生活中努力摆脱「应该」——当「应该」在脑海中出现时，其背后隐藏的是负罪感或社会规训；如果做一件事是因为「应该」，就表示你内心不想这么做。他顺势引出全节的钥匙：</p><div class="aband"><q>内心平和的敌人是社会和其他人灌注给你的期望。</q><cite>——第三章 · 嫉妒是幸福的敌人</cite></div><p class="prose">社会告诉我们要锻炼、要打扮、要赚钱、要买大房子——这些都是多人竞争的游戏，做得好不好会受到别人的检视。而训练幸福感完全是内在的。巴菲特那个著名的二选一（世人眼里最差但自己心里最好的情人，还是世人眼里最好但自己心里最差的情人）之所以是很好的例子，正说明存在内在和外部两套评价标准，而所有真正的评价标准都是内在的。</p><div class="tbwrap"><table><thead><tr><th>多人游戏</th><th>单人游戏</th></tr></thead><tbody><tr><td>快去锻炼、好好打扮、快去赚钱、去买栋大房子——由社会发令</td><td>训练自己获得幸福感，完全是内在的</td></tr><tr><td>做得好不好会受到别人的检视，需要外界评判进展、认可结果</td><td>不需要外界评判你的进展、认可你的结果，你是在跟自己竞争</td></tr><tr><td>人和蜜蜂或蚂蚁一样是社会性生物，遵从社会规则、受社会反馈驱动</td><td>人独自出生，独自死亡，独自解读人世间的一切</td></tr><tr><td>我们完全投身于多人游戏的竞争，已经不知道如何玩儿和赢得单人游戏</td><td>瑜伽和冥想只关乎内心、没有外在价值，所以很难坚持——它们是纯粹的单人游戏</td></tr></tbody></table></div><h3 class="h3">嫉妒的解法：百分之百交换人生</h3><p class="prose">纳瓦尔自认年轻时嫉妒心很强，克服它靠的是一次思想实验：我嫉妒别人，只是嫉妒他们的某些方面，而不可能只拥有我嫉妒的那些东西。要交换人生，就必须接受对方<b>全部</b>的人生——反应、欲望、家庭、幸福感、人生观、自我形象，一个不落。</p><div class="aband"><q>你可以接受吗？如果你不愿意与别人进行百分之百的交换，嫉妒就毫无意义。</q><cite>——第三章 · 嫉妒是幸福的敌人</cite></div><div class="aband"><q>当我意识到这一点时，嫉妒心瞬间就消失了，因为我不想成为其他任何人。我很高兴我是我自己。</q><cite>——第三章 · 嫉妒是幸福的敌人</cite></div><p class="prose">他还补了一句耐人寻味的话：即使是「开心做自己」这件事，也在他的掌控之下，只是社会不会因此给他任何奖励。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>幸福源于好习惯</h2><span class="en">HABITS</span></div><p class="prose">过去5年最让纳瓦尔意外的发现是：获取平和与幸福其实是一种技能，这种技能不是与生俱来的。基因决定感受的上限和下限，环境也会产生较大影响，但个体可以突破环境的塑造，主动进行自我重塑——前提是先相信自己可以做到。他把幸福和营养搭配、节食减肥、锻炼、赚钱、与异性交往、人际关系、爱并列：都是可以通过学习获得的技能。</p><div class="aband"><q>从本质上讲，生活的过程就是用精心培养的好习惯替换那些在不经意间养成的坏习惯，努力成为一个更幸福的人。你的幸福指数最终取决于你的习惯和你花最多时间与之相处的人。</q><cite>——第三章 · 幸福源于好习惯</cite></div><p class="prose">关于「相处的人」，他搬出「五只黑猩猩理论」：通过观察最常与一只黑猩猩一起玩耍的五只黑猩猩，就能准确预测这只黑猩猩的行为方式。不能因为一个人恰好是你的邻居或同事，你就不加选择地跟他成为朋友——最幸福和最乐观的人会选择五只正确的黑猩猩做朋友。</p><p class="prose">他的两个选择标准是：工作时，和比自己更成功的人在一起；玩耍时，和比自己更快乐的人在一起。</p><h3 class="h3">幸福习惯（源文 lv5 小节，18 段）</h3><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>洞察冥想</h3><p class="cp">效果最明显的技巧。时时刻刻保持洞察：意识到自己在对别人评头论足时，停下来自问「我能不能正面解读这件事？」——从花几秒钟想出积极解读，练到不到一秒就能完成。</p></div><div class="card num"><div class="idx">二</div><h3>对欲望提问</h3><p class="cp">每当意识到自己对什么东西产生了欲望，就自问：这个东西对我来说真的那么重要吗？我至于因为这件事不合我意就感到不开心吗？大部分情况下，答案是没有那么重要。</p></div><div class="card num"><div class="idx">三</div><h3>照顾身体</h3><p class="cp">戒掉咖啡因，情绪更稳定；每天锻炼，身体健康，内心就更容易平和。多让阳光照射在自己的皮肤上，心中敞亮，抬头微笑。</p></div><div class="card num"><div class="idx">四</div><h3>借一致性偏见</h3><p class="cp">告诉你的朋友你是一个幸福的人，这样你就不得不表现出幸福的状态——你得言出必行，朋友也会期待你是一个幸福的人。</p></div><div class="card num"><div class="idx">五</div><h3>远离三件套</h3><p class="cp">尽量不要使用电话、日历和闹钟这三个手机应用程序，重获时间和幸福感。看屏幕的时间越长，幸福感越低。</p></div><div class="card num"><div class="idx">六</div><h3>换情绪频道</h3><p class="cp">陷入惶恐怎么办？用冥想、音乐和运动重新调整情绪，然后把让你感到惶恐的事情放下，选择新的事情，把情绪能量投入其中。</p></div></div><div class="check" data-k="04a"><p class="ct">自测：源文开出的习惯账单，你做到了几条？</p><label><input type="checkbox"><span>不喝酒、不吃糖，提高情绪的稳定性</span></label><label><input type="checkbox"><span>远离社交媒体（脸书、Snapchat和推特）</span></label><label><input type="checkbox"><span>每天锻炼，让身体健康带动内心平和</span></label><label><input type="checkbox"><span>戒掉咖啡因，减少情绪波动</span></label><label><input type="checkbox"><span>缩短看屏幕的时间</span></label><label><input type="checkbox"><span>少读新闻，多看趋势与积极意义</span></label><label><input type="checkbox"><span>尽量不用电话、日历和闹钟</span></label><div class="cf">勾选状态存在本机浏览器。 <b>0</b> / 7</div></div><p class="prose">清单里有两条值得单独念出来：你的秘密越多，幸福感就越低；幸福指数的个人衡量标准是，一天中你有多少时间用于履行职责，而不是追随兴趣。另有伊朗朋友贝赫扎德作证——他热爱生活，无暇理会不快乐的人，幸福秘诀只有八个字：</p><div class="aband"><q>停止追问，开始欣赏。</q><cite>——第三章 · 幸福源于好习惯（贝赫扎德的回答）</cite></div><h3 class="h3">如何改变习惯（源文 lv5 小节，8 段）</h3><div class="ladder"><div class="step"><div class="dot">1</div><h4>许下愿望</h4><p>选择一件事情，许下一个愿望，并使其具象化。</p></div><div class="step"><div class="dot">2</div><h4>规划路径</h4><p>规划一条可持续的路径。</p></div><div class="step"><div class="dot">3</div><h4>定替代品</h4><p>确定需求、诱因和替代品。</p></div><div class="step"><div class="dot">4</div><h4>告诉朋友</h4><p>把自己的规划告诉朋友。</p></div><div class="step"><div class="dot">5</div><h4>稳步前行</h4><p>一丝不苟地稳步前行。</p></div><div class="step"><div class="dot">6</div><h4>自律为桥</h4><p>自律是通向新的自我形象的桥梁。</p></div><div class="step"><div class="dot">7</div><h4>接受新我</h4><p>全面接受新的自我形象，这就是现在的你。</p></div></div><p class="prose">源文随后把七步收拢成一句话：首先，知道自己要做什么；其次，知道该怎么做；再次，把规划告诉朋友，让一致性偏见发挥作用；最后，严格自律，知行合一，进行自我重塑，直至蜕变成全新的自己。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>于接受中寻找幸福</h2><span class="en">ACCEPTANCE</span></div><div class="aband"><q>在生活中，无论面对何种状况，你都有三种选择：改变现状，接受现状，逃避现状。</q><cite>——第三章 · 于接受中寻找幸福</cite></div><p class="prose">试图改变现状是一种欲望，在成功改变之前会让人痛苦，所以任何特定时间段只选一个最有价值的欲望。为什么不能同时选两个？纳瓦尔的回答很干脆：因为这样会让人分心——平静的内心源于毫无杂念的大脑，而消除杂念很大程度上依赖于活在当下。</p><p class="prose">人生中大部分痛苦恰恰来自三不沾的纠结：想改变却没有横下一条心，想离开却没有毅然决然，又不能心平气和地接受。</p><div class="aband"><q>我在脑海里对自己说得最多的就是两个字：接受。</q><cite>——第三章 · 于接受中寻找幸福</cite></div><p class="prose">所谓接受，就是无论结果如何，都可以泰然处之；就是保持心态平衡，大脑专注；就是退一步海阔天空；就是观大势，顾全局，谋长远。达到「接受」的状态很难，他自陈试了几个小方法，不敢说每个都百分之百有用。</p><div class="check" data-k="04b"><p class="ct">自测：源文里达到「接受」的三个小方法</p><label><input type="checkbox"><span>退后一步，把上次分手、生意失败、健康出问题写下来，看随后几年的成长和进步</span></label><label><input type="checkbox"><span>遭遇挫折时自问：这种情况有什么积极的意义吗</span></label><label><input type="checkbox"><span>找不到积极意义时，就当宇宙现在要给我上一课，认真听讲、好好学习</span></label><div class="cf">勾选状态存在本机浏览器。 <b>0</b> / 3</div></div><p class="prose">最简单的例子：主办方往他邮箱发了一大堆活动照片，第一反应是「搞什么鬼，就不能挑几张好的发给我吗」，但马上转念——积极的一面是我可以靠自己最喜欢的5张照片来选，靠的是自己的判断力。过去一年他成功降低了自己的反应时间：从花几秒钟找到一件事的积极面，练到大脑几乎瞬间做出反应。这是一个可以训练自己去养成的习惯。</p><h3 class="h3">访谈问答：如何学会接受无法改变的事情？</h3><p class="prose">答案只有一句：从根本上说，就是学会坦然面对死亡。人终有一死，选择正视、承认死亡而不是逃避死亡，将赋予人生巨大的意义——我们很多奋斗目标都可以归结为对永生的追求：信宗教的求来世，普通人生孩子传基因，艺术家留作品，商人留商业遗产。</p><p class="prose">但他特别提醒：其实我们没有什么遗产，也没有什么会永垂不朽，从宏观角度看，宇宙已经存在了100亿年，并将继续存在100亿年。</p><div class="aband"><q>相对于宇宙，你就像一只在夜空中闪烁的萤火虫，你的生命转瞬即逝。</q><cite>——第三章 · 于接受中寻找幸福</cite></div><p class="prose">如果能彻底认识到你所做的一切不过是徒劳，你就能获得巨大的幸福感和平和感——因为生命不过是一场游戏，而且是一场有趣的游戏。他以苏美尔人为例自我开解：那些取得过伟大成就的文明，你现在能想起任何一个苏美尔人的名字吗？你肯定什么都想不到。也许1万年、10万年后，人们对美国人也只会说一句「哦，对，听说过」。</p><div class="aband"><q>人固有一死，死后万事皆空。所以，好好享受生命吧。对社会做一些积极的贡献。向世界主动释放和传播爱。给他人带来快乐和幸福。让生活多一些笑声。珍视眼前的每个瞬间。承担使命，尽职尽责，不枉此生。</q><cite>——第三章 · 于接受中寻找幸福（本篇收束）</cite></div><div class="chips"><span class="chip">幸福就是消除缺憾感之后的感受。</span><span class="chip">既往不恋。</span><span class="chip">思考的间隙即开悟。</span><span class="chip">工作时，和比自己更成功的人在一起。</span><span class="chip">玩耍时，和比自己更快乐的人在一起。</span><span class="chip">你的秘密越多，幸福感就越低。</span><span class="chip">平和是静态的幸福，幸福是动态的平和。</span><span class="chip">人固有一死，死后万事皆空。</span></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">插图剥离</span><span class="nd"><b>01｜</b>「幸福需要心境平和」「于接受中寻找幸福」两节各标注插图 2 张（已从正文剥离），共 4 张；正文文字无缺漏，按 F 类登记。</span></div><div class="note" id="n2"><span class="nn">访谈黑体丢失</span><span class="nd"><b>02｜</b>本章大量小节以访谈问句作标题（如「练习冥想能帮助你接受现实吗？」「谁是你心目中的成功人士？」），源文自述访谈提问用黑体突出表示，导出后黑体不可见；本篇将问答转写为 prose 小标题与问答段，不虚构黑体标记。</span></div><div class="note" id="n3"><span class="nn">转引标注</span><span class="nd"><b>03｜</b>帕斯卡「人之所以有烦恼……」为纳瓦尔转引，贝赫扎德的「停止追问，开始欣赏」为其转述友人回答，相应 quote 的 src 均已注明转引关系。</span></div><div class="note" id="n4"><span class="nn">引文编号保留</span><span class="nd"><b>04｜</b>正文内嵌[1][2][4][5][7][8][9][10][11][77]等引文编号，表示摘录结束，资料来源见附录；均为源文原样，保留不作处理。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜贾雷德·戴蒙德《枪炮、病菌与钢铁》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜学习幸福</span><a href="../03-增强判断力/index.html">← 增强判断力</a><a href="../05-自我救赎/index.html">自我救赎 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
