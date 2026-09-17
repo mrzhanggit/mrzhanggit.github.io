@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>卷首·开场 · 一场关于习惯的田野调查｜富有的习惯 精读</title>
+<meta name="description" content="序言里，科里先把调查数据摆上台面——富人与穷人在行为、说话、思考三个层面的习惯差异；导言里，他回到一切起点：一份 20 个问题的问卷。">
+<style>
+:root{
+  --paper:#F7F3E7;      /* 暖晨纸底 */
+  --paper-2:#EAE4D4;    /* 纸色深一档 */
+  --card:#FEFCF5;
+  --ink:#1E2B3A;        /* 晨蓝墨（主色） */
+  --ink-2:#35455A;
+  --ink-deep:#0E1826;   /* 深夜晨蓝（hero 底） */
+  --gold:#B08A1F;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#D2A93C;
+  --gold-soft:rgba(176,138,31,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#2F6B5C;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(30,43,58,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(30,43,58,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35455A 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(210,169,60,.42)}
+.hero::after{inset:22px;border:1px solid rgba(210,169,60,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(210,169,60,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(210,169,60,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,31,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(210,169,60,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1ECDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(210,169,60,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1ECDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,31,.5);box-shadow:0 4px 18px rgba(30,43,58,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,31,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(46,90,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(46,90,110,.1);color:var(--teal);border:1px solid rgba(46,90,110,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,31,.45);background:rgba(176,138,31,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,31,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(250,248,240,.94);
+  border-bottom:1px solid rgba(30,43,58,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(30,43,58,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35455A;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,31,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(30,43,58,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(30,43,58,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="dis">← 首篇</span><a href="../01-保险推销员/index.html">保险推销员 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">富</div>
+  <div class="stamp ">开场</div>
+  <h1>开场 · 一场关于习惯的田野调查</h1>
+  <p class="sub">序言里，科里先把调查数据摆上台面——富人与穷人在行为、说话、思考三个层面的习惯差异；导言里，他回到一切起点：一份 20 个问题的问卷。</p>
+  <div class="meta"><span>卷首</span>
+    <span class="k">富人与穷人</span>
+    <span>正文 4,843 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>序言</a><a href="#s3" data-t="s3"><span class="cn">叁</span>行为差异</a><a href="#s4" data-t="s4"><span class="cn">肆</span>说话方式</a><a href="#s5" data-t="s5"><span class="cn">伍</span>思考方式</a><a href="#s6" data-t="s6"><span class="cn">陸</span>全书承诺</a><a href="#s7" data-t="s7"><span class="cn">柒</span>导言</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书的门厅：先看数据全景，再看这套方案从哪里来</p><p class="thesis">中文版序言是写给中国读者的一封<b>导读信</b>——用小岗村的故事开场，把 5 年调查的核心数据一次摆完；Part1 扉页宣告第一部分的主题；<b>导言</b>则回到一切的起点：一位客户、一顿午饭、一份 20 个问题的问卷。</p><div class="chain"><div class="node"><div class="n">开场</div><div><p class="tt">小岗村</p><p class="dd">1978 年 18 位农民的尝试引出主题：成功与财富从来不是天上掉下来的</p></div></div><div class="node"><div class="n">样本</div><div><p class="tt">233 + 128</p><p class="dd">5 年调查 233 位百万富翁（177 位白手起家），比对 128 位贫困线上的普通人</p></div></div><div class="node"><div class="n">行为</div><div><p class="tt">做什么</p><p class="dd">运动、阅读、人脉、决策、礼仪、激情、目标、说「不」——八组富人的习惯性行为</p></div></div><div class="node"><div class="n">说话</div><div><p class="tt">怎么说</p><p class="dd">不八卦、送祝福、三思后行——沟通是富人维护人脉的日常工程</p></div></div><div class="node"><div class="n">思考</div><div><p class="tt">怎么想</p><p class="dd">相信自己、勤能补拙、坚持带来好运——习惯性想法先于习惯性行为</p></div></div><div class="node"><div class="n">来路</div><div><p class="tt">20 个问题</p><p class="dd">导言：一位财务健康的客户为何发不出工资？一份问卷揭开了富人与穷人之间的大峡谷</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>序言：从小岗村讲起</h2><span class="en">PREFACE</span></div><p class="prose">中文版序言没有从华尔街讲起，而是从 1978 年安徽小岗村的 18 位农民讲起——科里显然清楚，中国读者对「白手起家」有自己鲜活的参照系。他接着给出中国版追加的判断：如今中国的亿万富翁人数位居世界首位，百万富翁的数量也将很快赶超美国。而这一切的引子只有一句话：</p><div class="aband"><q>不过，成功的机遇以及成功所创造的财富从来不是天上掉下来的。</q><cite>——作者序言</cite></div><p class="prose">接下来说明调查规模：5 年时间，针对 233 位百万富翁——尤其是 177 位白手起家的百万富翁——的日常习惯进行调查，同时研究了 128 位在贫困线上挣扎的普通人的日常习惯，希望通过比对找出贫困人士的错误症结所在。方法不是玄学，是<b>对照组</b>。</p><div class="aband"><q>如果你养成了他们拥有的那些日常习惯，就等于在沿着他们的足迹前进，而且那条路只会通往一个地方——充满机遇、成就、财富、健康和幸福的人生。</q><cite>——作者序言</cite></div><p class="prose">序言的结尾同样诚实：成功并非易事，要花费时间、坚持不懈——白手起家的富人们平均用了 12 年才积累起自己的财富。科里还补了一句写给中国读者的话：只有那些为成功时刻准备着的人，才知道怎样利用中国日益增长的经济以及从中国经济取得的成就中获益。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>富人与穷人的行为有何区别</h2><span class="en">BEHAVIOR</span></div><p class="prose">序言的主体是三张数据清单，第一张关于<b>行为</b>。每一项都带百分比——这是科里的行文标识：结论永远挂在数据钉子上。</p><div class="tbwrap"><table><thead><tr><th>习惯性行为</th><th>源文数据</th></tr></thead><tbody><tr><td>关心身体状况</td><td>76% 的富人每星期至少有 4 天会花 20～30 分钟做有氧运动；75% 的富人不去快餐餐厅吃饭</td></tr><tr><td>会阅读</td><td>85% 的富人每个月至少阅读两本书，88% 每天至少阅读 30 分钟；51% 读历史，55% 读自我成长类，58% 读成功人士自传，79% 读学习资料</td></tr><tr><td>培养人脉</td><td>86% 的富人会结交能够帮助自己实现梦想和目标的人</td></tr><tr><td>是决策者</td><td>91% 的富人为自己的业务做出决策——快速决定，接受后果，不思虑过度</td></tr><tr><td>讲究礼仪</td><td>75% 的富人会送出致谢卡片；把「请」「谢谢」「我是否可以……」挂在嘴边；不批评、谴责或抱怨别人</td></tr><tr><td>充满激情</td><td>82% 的富人坚持做自己感兴趣的事——激情是坚持不懈的能量开关</td></tr><tr><td>追求宏大目标</td><td>55% 的富人会花上至少一年时间追求某一个目标</td></tr><tr><td>经常说「不」</td><td>对可能阻碍自己实现人生目标和梦想的人和事说「不」——重要的时间管理工具</td></tr></tbody></table></div><div class="aband"><q>拒绝别人很难，但这是富人们常用的一个重要的时间管理工具。</q><cite>——作者序言</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>富人怎样说话</h2><span class="en">COMMUNICATION</span></div><p class="prose">第二张清单关于<b>沟通</b>。前提只有一句：持续的沟通是建立稳固的人际关系的先决条件。富人擅长沟通，因此得以建立稳固而长久的人际关系——具体策略有四条。</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>从不八卦</h3><p class="cp">94% 的富人从不聊八卦。八卦消息大多是负面的，会对人际关系带来无法弥补的伤害——他们像对待瘟疫一般唯恐避之不及。</p></div><div class="card num"><div class="idx">二</div><h3>打电话送生日祝福</h3><p class="cp">80% 的富人会给看重的人打电话送上生日祝福——相当于为重要的人际关系加上一套「生命维持系统」。</p></div><div class="card num"><div class="idx">三</div><h3>打电话致以问候</h3><p class="cp">80% 的富人会给希望建立稳固关系的对象致电问候，同时收集对建立人际关系有益的信息。</p></div><div class="card num"><div class="idx">四</div><h3>关注对方人生重要时刻</h3><p class="cp">新生儿降生、升职、加薪时致电恭贺——形成强烈的情绪共鸣，像为人际关系修筑一层保护壳。</p></div></div><p class="prose">清单的收尾是一条反直觉的数据：94% 的富人<b>不会</b>把心里话完全说出来。他们三思而后行，对自己的想法进行分析和归纳，在针对重要的事情进行沟通时尽量做到有效——「怎么想就怎么说」在富人那里恰恰是坏习惯。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>富人怎样思考</h2><span class="en">MINDSET</span></div><p class="prose">第三张清单是全书的枢纽——<b>想法先于行为</b>：头脑中的想法被频繁地重复，就形成了习惯。习惯性想法决定了我们的为人。先出现习惯性想法，习惯性的行为便会紧随其后。要成为富人，必须有积极的想法，就要学习怎样像富人一样思考。</p><div class="tbwrap"><table><thead><tr><th>习惯性想法</th><th>源文数据</th></tr></thead><tbody><tr><td>相信自己</td><td>79% 的富人坚信自己能够摆脱贫穷或从中产跃升为富有阶层；90% 不相信命运</td></tr><tr><td>相信勤能补拙</td><td>90% 的富人相信努力工作比高智商更为重要</td></tr><tr><td>相信坚持带来好运气</td><td>92% 的富人相信，只要对热爱的事物不懈追求，便能为自己创造好运气——平均耗费 12 年</td></tr><tr><td>拥有乐观心态</td><td>54% 的富人相信乐观是成功的重要因素</td></tr><tr><td>懂得控制情绪</td><td>81% 的富人养成了控制愤怒、嫉妒、埋怨和仇恨等负面情绪的习惯</td></tr><tr><td>相信诚实是最好的策略</td><td>85% 的富人坚持说真话，从不撒谎——信任是成功和稳固人际关系的基础</td></tr></tbody></table></div><div class="aband"><q>习惯性想法一旦成型，我们就形成了自己的惯性思维。</q><cite>——作者序言</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>这本书承诺教你的十件事</h2><span class="en">PROMISES</span></div><p class="prose">序言的后半段是一份「内容目录」——科里逐条列出读完全书你能学到什么。这份清单本身就是全书的骨架，后续每一篇精读都会兑现其中一项或几项。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>如何百分之百地实现自己的目标</h4><p>梦想的设定包含三个步骤——掌握梦想设定的过程，就能把目标一一实现</p></div><div class="step"><div class="dot">2</div><h4>怎样找到人生的主要目标</h4><p>确定人生目标的详细步骤，可以与孩子们分享；一旦感受到人生召唤，工作便像玩游戏一样充满激情</p></div><div class="step"><div class="dot">3</div><h4>如何培养成功、富有而幸福的孩子</h4><p>一些能够教给孩子们的习惯，帮助他们获得成功、财富、健康和幸福</p></div><div class="step"><div class="dot">4</div><h4>如何找到贵人</h4><p>为自己的事业寻找支持者——极大提高成功的机会，比自己埋头用功轻松得多</p></div><div class="step"><div class="dot">5</div><h4>如何找到改变习惯的捷径</h4><p>习惯堆叠法、启动习惯改变的小策略，以及早间、午间、晚间习惯的养成</p></div><div class="step"><div class="dot">6</div><h4>通往财富的三条路径</h4><p>富人们积累财富的三种方法</p></div><div class="step"><div class="dot">7</div><h4>怎样才能交好运</h4><p>四种不同类型的运气——怎样创造机遇，怎样避免厄运</p></div><div class="step"><div class="dot">8</div><h4>不当老板也能变得富有</h4><p>只有 51% 的百万富翁是公司老板，其他 49% 靠任职积累财富</p></div><div class="step"><div class="dot">9</div><h4>如何拓展收入渠道</h4><p>大部分富人拥有至少三种收入来源</p></div><div class="step"><div class="dot">10</div><h4>习惯为什么重要</h4><p>日常活动中有 40%～85% 的行为都是习惯——大脑形成习惯的机制，以及怎样「蒙蔽」大脑来养成好习惯</p></div></div><p class="prose">清单之外还有两枚彩蛋：<b>如何提高智商</b>（用最新科学成果「更新」大脑）与<b>如何延长寿命</b>（坚持一些非常具体的活动，为自己增加至少 10 年寿命）。科里特别叮嘱：这些内容对你的孩子，甚至是孩子的孩子同样有帮助。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>导言：一切始于一份 20 个问题的问卷</h2><span class="en">INTRODUCTION</span></div><p class="prose">Part1 扉页只有一句话：「引领人们走上致富之路的日常习惯分析致富方法，揭示致富秘籍」。而导言的起点是一个谜：科里是注册公共会计师、注册理财规划师，为超过 1000 家小企业和个人提供财务服务。一位客户的生意蒸蒸日上，却无法保持收支平衡——「我到底哪里做错了？</p><p class="prose">」科里花了好几个月分析支出、生产流程、人工费率、行业比较数据，甚至向同行「富有」客户请教，始终没能发现明显的问题。</p><p class="prose">转机出现在一顿午饭。财务问题问不出结果，科里换了个家常问题：晚上回家后做点什么？客户的脸上有了一个几乎算得上淘气的表情——「哪个晚上？」「就说你最喜欢的一个晚上吧。」答案是周三晚上，而周三晚上做的事让科里满脸震惊（找几个女人，喝上几瓶酒……）。震惊不是因为道德，而是因为他突然意识到：</p><div class="aband"><q>我突然意识到，在过去几个月里，自己一直在问这位客户错误的问题。我恍然大悟，比起眼睛看得到的财务问题，还有许多深层的问题是我们看不到的。关键在于，我问的问题要正确。</q><cite>——Part1 导言</cite></div><p class="prose">于是有了那份包含 20 个问题的问卷。在接下来的 5 年时间里，科里向每一位客户做了问卷调查——包括成功的客户和不那么成功的客户——另外还加上他认识的生意伙伴和熟人。数据的结论浓缩成一句话：</p><div class="aband"><q>我发现在富人和穷人的生活中隔着如同大峡谷一般巨大的鸿沟。不知不觉中，这位客户把我带上了一条揭示财务成功秘籍的道路。</q><cite>——Part1 导言</cite></div><p class="prose">下一篇章好戏开场：第一位学员，保险推销员——一个把秘密锁进空壳保险柜的人。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜托马斯·科里《富有的习惯》（民主与建设出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">卷首｜开场·序言与导言</span><span class="dis">← 首篇</span><a href="../01-保险推销员/index.html">保险推销员 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='fh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

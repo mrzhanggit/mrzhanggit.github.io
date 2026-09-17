@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>附录·改变习惯 · 工具箱与三十天跟进表｜富有的习惯 精读</title>
+<meta name="description" content="全书的工具章：科里先谢幕，再把「知道」变成「做到」——三个 7 天的跟进表、六条捷径、五个典型案例，最后以「成功大雪崩」收束全书。">
+<style>
+:root{
+  --paper:#F7F3E7;      /* 暖晨纸底 */
+  --paper-2:#EAE4D4;    /* 纸色深一档 */
+  --card:#FEFCF5;
+  --ink:#1E2B3A;        /* 晨蓝墨（主色） */
+  --ink-2:#35455A;
+  --ink-deep:#0E1826;   /* 深夜晨蓝（hero 底） */
+  --gold:#B08A1F;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#D2A93C;
+  --gold-soft:rgba(176,138,31,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#2F6B5C;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(30,43,58,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(30,43,58,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35455A 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(210,169,60,.42)}
+.hero::after{inset:22px;border:1px solid rgba(210,169,60,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(210,169,60,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(210,169,60,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,31,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(210,169,60,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1ECDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(210,169,60,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1ECDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,31,.5);box-shadow:0 4px 18px rgba(30,43,58,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,31,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(46,90,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(46,90,110,.1);color:var(--teal);border:1px solid rgba(46,90,110,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,31,.45);background:rgba(176,138,31,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,31,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(250,248,240,.94);
+  border-bottom:1px solid rgba(30,43,58,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(30,43,58,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35455A;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,31,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(30,43,58,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(30,43,58,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-围绕梦想与改变习惯/index.html">← 围绕梦想与改变习惯</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">习</div>
+  <div class="stamp ">收官</div>
+  <h1>改变习惯 · 工具箱与三十天跟进表</h1>
+  <p class="sub">全书的工具章：科里先谢幕，再把「知道」变成「做到」——三个 7 天的跟进表、六条捷径、五个典型案例，最后以「成功大雪崩」收束全书。</p>
+  <div class="meta"><span>附录</span>
+    <span class="k">跟进表</span>
+    <span>正文 6,068 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>后记</a><a href="#s3" data-t="s3"><span class="cn">叁</span>三十天</a><a href="#s4" data-t="s4"><span class="cn">肆</span>数据差距</a><a href="#s5" data-t="s5"><span class="cn">伍</span>巩固</a><a href="#s6" data-t="s6"><span class="cn">陸</span>六条捷径</a><a href="#s7" data-t="s7"><span class="cn">柒</span>典型案例</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书的工具箱：一张三十天跟进表，把前八篇的数据变成每天的检查动作</p><p class="thesis">后记里科里谢幕，把话筒递还给团队；<b>跟进表</b>则把全书收拢成可执行的动作——早间、日间、晚间三个 7 天逐段合并新习惯，再用<b>六条捷径</b>降低执行难度，最后用五个典型案例证明：富有的习惯真的有效。</p><div class="chain"><div class="node"><div class="n">谢幕</div><div><p class="tt">后记</p><p class="dd">「躲在洞穴里的原始人」被团队拉出来递上麦克风，《成功杂志》报道后近 30 万人知道了这本书</p></div></div><div class="node"><div class="n">工具</div><div><p class="tt">跟进表</p><p class="dd">习惯的改变是一个过程：三个阶段各花 7 天，从简单的习惯入手，逐段合并巩固</p></div></div><div class="node"><div class="n">早间</div><div><p class="tt">44%</p><p class="dd">44% 的成功人士每天比上班点提前至少 3 小时起床——清晨是给自己增加的一份投资</p></div></div><div class="node"><div class="n">日间</div><div><p class="tt">63% vs 95%</p><p class="dd">通勤时段的分野：成功人士听有声书或播客，非成功人士听脱口秀或音乐节目</p></div></div><div class="node"><div class="n">晚间</div><div><p class="tt">62% vs 6%</p><p class="dd">每天花时间追求自己的目标——成功人士与非成功人士之间 10 倍的差距</p></div></div><div class="node"><div class="n">捷径</div><div><p class="tt">6 条</p><p class="dd">习惯合并、限定人际交往对象、改变环境、从小习惯开始、列入待办事项表、架空坏习惯</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>后记：递过来的麦克风</h2><span class="en">EPILOGUE</span></div><p class="prose">收官的后记是一份致谢名单。科里说，团队的支持很重要，不然点子再好也是枉然——他把「富有的习惯」研究渐渐为公众所了解的功劳记在合作者身上：</p><div class="aband"><q>是他们把我这个躲在洞穴里的原始人拉了出来，并递给了我一个麦克风。</q><cite>——后记</cite></div><p class="prose">名单上的关键人物：《成功杂志》发行人达伦·哈迪——2014 年 11 月的报道之后，将近 30 万人知道了这本书；商业内幕网的利比·凯恩邀请他成为撰稿人，与百万读者分享；出版商山顶传媒集团让书跻身畅销书及获奖作品行列；保拉·安德烈娅提出宝贵意见，特别是在财务成功的内容上。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>三十天跟进表：三个 7 天</h2><span class="en">THIRTY DAYS</span></div><p class="prose">跟进表把习惯的改变切成三个阶段，每段花 7 天：先改早上的习惯，再改日间的，最后加入晚间的。比较稳妥的做法是从先改变一些简单的习惯入手，每天检查自己的行为是否符合每一条新制定的富有的习惯——这份清单会迫使我们尽职尽责地执行。</p><div class="tbwrap"><table><thead><tr><th>阶段</th><th>源文口径</th></tr></thead><tbody><tr><td>第一阶段：早间习惯</td><td>花 7 天时间改变早上的习惯；44% 的成功人士每天比上班点提前至少 3 小时起床</td></tr><tr><td>第二阶段：日间习惯</td><td>早间清单执行至少 7 天后开始；继续保持早晨的习惯，尽量将早晨的习惯和日间习惯进行合并</td></tr><tr><td>第三阶段：晚间习惯</td><td>再花至少 7 天把晚间习惯加入日常活动；同样继续保持早间和日间的习惯</td></tr><tr><td>巩固</td><td>将所有新习惯合并填写在完整的跟进表中，监督自己每天严格执行其中的项目</td></tr><tr><td>达标线</td><td>完成习惯核查单中的 30% 或更多的项目，就应该好好夸奖自己一番</td></tr></tbody></table></div><div class="aband"><q>充分利用每天清晨的这段时间，就像给自己增加了一份投资</q><cite>——跟进表 · 第一阶段</cite></div><div class="aband"><q>如果能够完成习惯核查单中的30%或更多的项目，我们应该好好夸奖自己一番。</q><cite>——跟进表 · 第一阶段</cite></div><p class="prose">7 天后，这些习惯就会生根发芽——大脑里随之产生新的神经元突触，并随着每天不断重复新习惯而逐渐长大强壮。哪怕只是改变少数几个日常习惯，也会对我们的生活产生深远的影响。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>三个阶段的「小提示」数据</h2><span class="en">DATA</span></div><p class="prose">每个阶段的小提示都是一组对照数据——科里在收官时刻仍不忘把结论挂在百分比钉子上。先看<b>日间</b>：</p><div class="tbwrap"><table><thead><tr><th>日间习惯</th><th>源文数据</th></tr></thead><tbody><tr><td>通勤</td><td>63% 的成功人士在上下班途中听有声书或播客，95% 的非成功人士听收音机里的脱口秀或音乐节目</td></tr><tr><td>吸烟</td><td>79% 的成功人士不抽烟，而 46% 的非成功人士抽烟</td></tr><tr><td>八卦</td><td>八卦消息一般都是负面的：94% 的成功人士不聊任何八卦，79% 的非成功人士每天聊八卦</td></tr><tr><td>垃圾食品</td><td>70% 的成功人士每天通过垃圾食品摄入的热量少于 300 卡路里，97% 的非成功人士摄入量超过 300 卡路里</td></tr><tr><td>邮件与语音信箱</td><td>成功人士拨出专门的时间段回复，免于分心、保持专注；非成功人士却随时回复</td></tr></tbody></table></div><p class="prose">再看<b>晚间</b>——差距在睡前时段被进一步拉大：</p><div class="tbwrap"><table><thead><tr><th>晚间习惯</th><th>源文数据</th></tr></thead><tbody><tr><td>看电视</td><td>67% 的成功人士每天少于 1 小时，77% 的非成功人士超过 1 小时</td></tr><tr><td>网络娱乐</td><td>63% 的成功人士花在网络娱乐上的时间少于 1 小时，74% 的非成功人士每天浏览社交网站超过 1 小时</td></tr><tr><td>追求目标</td><td>62% 的成功人士每天都花时间追求自己的目标，做到这一点的非成功人士只有 6%</td></tr><tr><td>睡眠</td><td>每晚 7～8 小时的睡眠对健康很重要，尤其是大脑：成功人士平均每晚睡 7 个半小时，非成功人士平均少于 7 小时</td></tr></tbody></table></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>巩固：等待成功大雪崩</h2><span class="en">CONSOLIDATE</span></div><p class="prose">三个 7 天走完，把所有新习惯合并填进一张完整的跟进表。日积月累，新养成的习惯会成为下意识的行为，无须动用意志力或思想就能自动执行——这些习惯就像是为成功做的投资：</p><div class="aband"><q>这些习惯就像是我们为成功做的投资，回报则是成功和快乐的人生。</q><cite>——跟进表 · 巩固养成的新习惯</cite></div><div class="aband"><q>每天一点点的积累也许很不起眼，但是到了某个时刻，它们就会演变成一场“成功大雪崩”，我们会得到奖金、加薪、升迁、更好的工作、更大的客户或者更加健康的身体作为回报。</q><cite>——跟进表 · 巩固养成的新习惯</cite></div><p class="prose">雪崩的回礼清单是：奖金、加薪、升迁、更好的工作、更大的客户，或者更加健康的身体。下面这张核查单，把三个阶段的小提示数据变成了每天可以打勾的动作：</p><div class="check" data-k="p9check"><p class="ct">三十天跟进 · 每日核查单（依源文数据整理）</p><label><input type="checkbox"><span>今天我比上班点提前至少 3 小时起床了吗？</span></label><label><input type="checkbox"><span>今天我在上下班途中听有声书或播客了吗？</span></label><label><input type="checkbox"><span>今天我没有聊八卦。</span></label><label><input type="checkbox"><span>今天我通过垃圾食品摄入的热量少于 300 卡路里。</span></label><label><input type="checkbox"><span>今天我看电视的时间少于 1 小时。</span></label><label><input type="checkbox"><span>今天我花在网络娱乐上的时间少于 1 小时。</span></label><label><input type="checkbox"><span>今天我花时间追求自己的目标了。</span></label><label><input type="checkbox"><span>今晚我睡满 7～8 小时。</span></label><div class="cf">已勾选 <b>0</b> / 8</div></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>改变习惯的六条捷径</h2><span class="en">SHORTCUTS</span></div><p class="prose">跟进表之外，科里另附六条捷径——每一条都能使习惯改变起来更快更容易，需要的意志力也更少。</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>习惯合并</h3><p class="cp">把现有习惯想象成大脑里运行的一列火车，新习惯只是搭个便车的新乘客——在爬梯机上放一本书边锻炼边阅读；把咖啡杯挨着水壶放好，找咖啡杯的动作便成了提醒喝水的新习惯。</p></div><div class="card num"><div class="idx">二</div><h3>限定人际交往对象</h3><p class="cp">人际交往对象会触发老习惯：限制与触发坏习惯的人的联系，同时增加与拥有好习惯的人的联系——加入阅读小组、找坚持慢跑的人一起锻炼。一旦开始改变，就会发现他们一直就在身边。</p></div><div class="card num"><div class="idx">三</div><h3>改变环境</h3><p class="cp">新的家、新的邻居、新朋友、新工作、新城市都为新习惯的形成提供机会。环境变了就不得不思考新的处事方法，大脑最终会迫使我们在新环境下养成新的习惯。</p></div><div class="card num"><div class="idx">四</div><h3>从小习惯开始</h3><p class="cp">多喝水、吃维生素补充剂、上班途中听有声书；也可以通过限制坏习惯来实现——每天看电视限制在半小时之内，上网限制在 1 小时之内。成功改变小习惯能让我们不断获得动力和自信。</p></div><div class="card num"><div class="idx">五</div><h3>将新习惯列入待办事项表</h3><p class="cp">67% 白手起家的富人每天制定待办事项列表。把一部分好习惯嵌入待办事项中，迫使自己每天重复正在培养的新习惯；几周后习惯真正形成，再用其他新习惯替换，继续利用「待办事项法」。</p></div><div class="card num"><div class="idx">六</div><h3>架空坏习惯</h3><p class="cp">在坏习惯与自身之间人为制造障碍：储藏柜里不放垃圾食品、换一种健康的点心；晚饭后刷一整晚网页的，就把电脑挪到地下室或拔掉网线——意志力往往在一天快结束时最薄弱。</p></div></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>典型案例：富有的习惯的效果</h2><span class="en">CASES</span></div><p class="prose">收官之前，科里请出五个名字，逐条印证前八篇讲过的习惯——阅读、专注、开源、早起、拜师：</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>本·卡森：为了自我提升而坚持阅读</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在底特律贫民区长大的神经外科医生。母亲要求他每天去图书馆读书、每周交一份读书总结——多年后他才知道，母亲根本不识字，只是凭直觉逼他坚持这个富有的习惯。阅读打开了眼界、带来了成绩、重塑了自信，最终把他送进医学院。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>阿诺德·施瓦辛格：全心全意追逐梦想</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1960 年第一次举起杠铃，10 年后第一次赢得奥林匹亚先生头衔。父亲去世前两个月他拒绝回家奔丧，理由是训练不能分心——对梦想的专注近乎极端，却同样用这种激光般精准的努力拿下了好莱坞和加州州长。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>理查德·布兰森：拓展开源渠道</h4><span class="ar">▶</span></div><div class="cb"><div class="in">建立并经营 400 多家公司，涉及音乐零售、国际航空、航天器制造、电信、铁路等数百个行业，从不依赖任何单一的收入来源。数以千计的错误没有让他止步——拓宽赢利渠道，正是他知道的富有的习惯。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>罗宾·夏玛：早起好处多</h4><span class="ar">▶</span></div><div class="cb"><div class="in">书销量达 600 万册的领导力专家。他把成功归功于早起，称之为「清晨 5 点联盟」——一天里用来锻炼、阅读、冥想和为一天工作做准备的时间。这个富有的习惯为他创造了巨大的财富帝国。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>杰克·坎菲尔德：寻找人生导师</h4><span class="ar">▶</span></div><div class="cb"><div class="in">《心灵鸡汤》系列销量达 5 亿册、创下吉尼斯世界纪录。他接受过 C.克莱门特·斯通的指导，导师名单里还有马克·维克多·汉森、约翰·格雷、吉姆·罗恩、约翰·麦克斯韦尔等——看来导师也是多多益善。</div></div></div></div><p class="prose">五个故事收束全书，也回应了开篇的承诺：习惯的改变是一个过程，需要一定的时间——而三个 7 天，就是任何人都可以立刻开始的起点。至此，《富有的习惯》精读收官。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜托马斯·科里《富有的习惯》（民主与建设出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">附录｜工具箱与跟进表</span><a href="../08-围绕梦想与改变习惯/index.html">← 围绕梦想与改变习惯</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='fh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
