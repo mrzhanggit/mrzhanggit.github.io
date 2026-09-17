@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部分·饥饿与健康（第2—3章）｜枪炮、病菌与钢铁 精读</title>
+<meta name="description" content="第二章拆掉「穷人吃不饱饭」的直觉：多数穷人并非在挨饿，真正稀缺的是微量营养素；第三章追问更费解的事——廉价而有效的健康干预为什么没人用，答案落在价格、信念与拖延上，而出路是助推。">
+<style>
+:root{
+  --paper:#F7F4EA;      /* 田野笔记米纸底 */
+  --paper-2:#EAE4D2;    /* 纸色深一档 */
+  --card:#FDFBF4;
+  --ink:#2B2620;        /* 深炭褐墨（主色） */
+  --ink-2:#3E4238;
+  --ink-deep:#131109;   /* 深墨（hero 底） */
+  --gold:#B4561F;       /* 赤陶橙（强调 · 赤贫土地与劳作） */
+  --gold-b:#C58A3A;
+  --gold-soft:rgba(180,86,31,.16);
+  --cinnabar:#8C3A20;   /* 锈红（警示 · 贫困的代价） */
+  --teal:#4A7048;       /* 禾青（对照 · 田野实验与希望） */
+  --tx:#2D2A24;
+  --tx-2:#4B4A40;
+  --tx-3:#7D7C6C;
+  --line:rgba(43,38,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,38,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E4238 0%,var(--ink-deep) 62%);
+  color:#EDF1E7;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(197,138,58,.42)}
+.hero::after{inset:22px;border:1px solid rgba(197,138,58,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(197,138,58,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(140,58,32,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F4E9}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(238,242,232,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(197,138,58,.34);color:rgba(238,242,232,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(140,58,32,.6);background:rgba(140,58,32,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(180,86,31,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDE1;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(197,138,58,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1EDE0;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(197,138,58,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1EDE0;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(236,240,230,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(180,86,31,.5);box-shadow:0 4px 18px rgba(43,38,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(180,86,31,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,112,72,.055)}
+.duo .colR{background:rgba(140,58,32,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(140,58,32,.1);color:var(--cinnabar);border:1px solid rgba(140,58,32,.28)}
+.case .tag.good{background:rgba(74,112,72,.1);color:var(--teal);border:1px solid rgba(74,112,72,.28)}
+.case .tag.mid{background:rgba(125,124,108,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(180,86,31,.45);background:rgba(180,86,31,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(140,58,32,.55);border-radius:8px;
+  background:rgba(140,58,32,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(130,50,28,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(140,58,32,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(180,86,31,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,245,236,.94);
+  border-bottom:1px solid rgba(43,38,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,38,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E4238;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(180,86,31,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,38,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,38,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7D7C6C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-再好好想想/index.html">← 再好好想想</a><a href="../03-全班最优/index.html">全班最优 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">饿</div>
+  <div class="stamp s4">饥饿与健康</div>
+  <h1>饥饿与健康（第2—3章）</h1>
+  <p class="sub">第二章拆掉「穷人吃不饱饭」的直觉：多数穷人并非在挨饿，真正稀缺的是微量营养素；第三章追问更费解的事——廉价而有效的健康干预为什么没人用，答案落在价格、信念与拖延上，而出路是助推。</p>
+  <div class="meta"><span>第一部分</span>
+    <span class="k">木豆</span>
+    <span>正文 47,275 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>十亿迷思</a><a href="#s3" data-t="s3"><span class="cn">叁</span>吃得好吗</a><a href="#s4" data-t="s4"><span class="cn">肆</span>比食物重要</a><a href="#s5" data-t="s5"><span class="cn">伍</span>健康陷阱</a><a href="#s6" data-t="s6"><span class="cn">陆</span>奇迹闲置</a><a href="#s7" data-t="s7"><span class="cn">柒</span>免费与信念</a><a href="#s8" data-t="s8"><span class="cn">捌</span>木豆与助推</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">两章一条线：先拆「饥饿陷阱」的直觉，再查「免费的好东西」为何闲置</p><p class="thesis">第二章从帕克·索林的故事出发，检验基于营养的<b>「贫穷陷阱」</b>，结论是它对今天的大多数成年人并不成立——真正的问题在儿童、孕妇与微量营养素。第三章转向健康：便宜的「果子」到处都是，却少有人摘，原因被逐一排查后，落在<b>价格、信念与拖延</b>上。</p><div class="chain"><div class="node"><div class="n">迷思</div><div><p class="tt">饥饿人口已达到10亿？</p><p class="dd">2009年联合国粮农组织声明曾头条：全球超过10亿人正在挨饿；但对18个国家的调查显示，食品消费只占农村极度贫困人口总消费的45%~79%</p></div></div><div class="node"><div class="n">拆解</div><div><p class="tt">吃得少，不是买不起</p><p class="dd">1983年马哈拉施特拉邦：总花费增1%，食物花费只增0.67%；穷人把钱花在口味更好的食品上，而不是更多能量</p></div></div><div class="node"><div class="n">转向</div><div><p class="tt">质的问题，不是量的问题</p><p class="dd">基于饥饿的贫穷陷阱对大多数成年人不成立；卡路里之外，微量营养素决定儿童与孕妇——肯尼亚驱虫的终身收入增加按购买力平价计算为3 269美元</p></div></div><div class="node"><div class="n">健康</div><div><p class="tt">唾手可得的果子</p><p class="dd">含氯消毒剂、口服补液盐、驱虫蚊帐、疫苗接种：廉价而有效；家用含氯消毒剂上每花费100美元，就能够预防32个腹泻病例</p></div></div><div class="node"><div class="n">阻力</div><div><p class="tt">价格、信念与拖延</p><p class="dd">蚊帐价格接近于零时需求成倍增长；免费得到与花钱买来的蚊帐使用率没有差别；接种奖励2磅木豆使接种率升至38%</p></div></div><div class="node"><div class="n">出路</div><div><p class="tt">助推与默认选项</p><p class="dd">水井旁免费「转一圈」释氯器——在所有随机对照试验证实的干预手段中，这是预防腹泻的一种最廉价的方式；让正确的事容易做</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>「饥饿人口已达到10亿？」之疑</h2><span class="en">S-CURVE</span></div><p class="prose">第二章从一条听上去无懈可击的逻辑开始：穷人买不起足够的食物，所以效率低下、生活贫困——这正是「贫穷陷阱」常被提及的根本原因之一。</p><p class="prose">印度尼西亚西爪哇的临时农工<b>帕克·索林</b>是这条逻辑的化身：化肥、燃料价格上涨后农民们被迫节省开支，不再雇用更多人手，年过四十的他在我们见到他之前的两个月里一份农活儿也没找到，访谈前一周，有4天他每天只吃两顿饭，剩下的3天每天只吃一顿。</p><div class="aband"><q>这就产生了一种“贫穷陷阱”：穷人变得越来越穷；而富人则变得越来越富，吃得越来越好，身体也越来越强壮，从而变得更加富有。</q><cite>——第二章开头（S形曲线的机制）</cite></div><p class="prose">但对18个国家的穷人生活的调查显示：食品消费只占农村极度贫困人口总消费的<b>45%~79%</b>，城市为52%~74%。在乌代布尔，若完全削减烟酒及节日性花费，贫困家庭花在食物上的钱可以比实际多30%。</p><p class="prose">1983年马哈拉施特拉邦最贫穷的群体，总花费每增加1%，食物花费只增加0.67%；即便按每卢比所购买食物的能量计算，粟类最合算，人们也只用约2/3的钱购买这类粮食，另外1/3买了每卡路里价钱约为粟类2倍的大米和小麦。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>帕克·索林的账</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在地里干一天活儿能挣1万印度尼西亚盾（按购买力平价计算，合2美元）。他把问题归结为缺粮——但作者在富裕地区爪哇的一个村庄见到他时提出质疑：当地粮食储备显然是充足的，为什么没有人肯花钱雇用他，给予他所需的额外营养？</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>中国的主食补贴实验</h4><span class="ar">▶</span></div><div class="cb"><div class="in">罗伯特·延森和诺兰·米勒在中国两个地区随机给予贫穷家庭大量主食价格补贴（一个地区是面条，另一个地区是大米）。结果价格便宜了，购买反而减少了，虾和肉的消费却提升了——「追求质量」压倒了获取更多能量。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>印度人吃得越来越少</h4><span class="ar">▶</span></div><div class="cb"><div class="in">安格斯·迪顿和让·德雷兹发现，过去25年来印度人均卡路里消费持续下降：城市地区超过3/4的人口人均卡路里消费不足2 100卡，农村地区人口则不足2 400卡——而这并非源于收入下降或食品价格上涨。</div></div></div></div><h3 class="h3">饥饿人口真的已达到了10亿？</h3><p class="prose">谜底的第一层：今天的世界有能力让每一个人都吃饱饭。1996年世界粮食首脑会议上，联合国粮农组织估计当年世界粮食产量足以向每人提供每天2 700卡路里热量；饥饿是<b>食物分配方式</b>的一种结果。</p><p class="prose">根据菲律宾人的价格数据，提供2 400卡路里的最便宜食品按购买力平价计算只花费21美分——只要人们愿意吃香蕉和鸡蛋，几乎没有人会停留在S形曲线的左半边。印度调查显示，自认吃不饱的比例从1983年的17%降到2004年的2%；卡路里消耗量的下降几乎可以解释为一天中大部分时间从事重体力劳动的人数略有减少。</p><div class="aband"><q>只要人们在必要时有吃香蕉和鸡蛋的心理准备，我们就会发现，几乎没有人会停留在S形曲线的左半边，那样他们就没有能力赚到足够的钱养活自己。</q><cite>——第二章「饥饿人口真的已达到了10亿？」一节</cite></div><p class="prose">第二层：卡路里与生产力的关系不是S形，而是<b>反向的L形</b>（图1–2）。约翰·施特劳斯选定塞拉利昂的农民研究发现：卡路里摄入量增加10%，生产力最多提高4%——最大的收益来自低水平的食物消耗，因此大多数人的贫穷状态并非由吃不饱饭造成。</p><p class="prose">但源文同样保留历史的分量：按罗伯特·福格尔的计算，文艺复兴时期及中世纪的欧洲粮食产量不足以维持所有劳动者所需的卡路里；小冰期「杀死女巫」、印度旱灾中女孩更容易夭折、坦桑尼亚旱灾中祖母被赶走或杀死，都是资源紧缺下的极端选择。正如阿马蒂亚·森指出的，近期的一些饥荒并不是粮食短缺造成的，而是制度出现了问题。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>穷人真的吃得好、吃得饱吗？</h2><span class="en">STUNTED</span></div><p class="prose">「吃得少不是买不起」并不等于「吃得够好」。按体重指数（BMI）衡量，2004—2005年印度33%的男性和36%的女性是营养不良的（1989年时这一比例均为49%）；在有人口统计及健康调查数据的83个国家之中，只有厄立特里亚出现了更多营养不良的成年女性。</p><p class="prose">印度国家家庭卫生研究（NFHS 3）显示：约<b>一半</b>5岁以下的儿童发育迟缓，其中1/4极度发育迟缓；3岁以下儿童中每5个就有一个处于消瘦状态——而世界上最贫穷的撒哈拉以南非洲，儿童发育迟缓及消瘦的比例仅为印度的一半。</p><div class="tbwrap"><table><thead><tr><th>指标</th><th>源文数字</th></tr></thead><tbody><tr><td>18国调查：食品消费占极度贫困人口总消费</td><td>农村45%~79%；城市52%~74%</td></tr><tr><td>乌代布尔：完全削减烟酒及节日性花费后食物支出可增加</td><td>30%</td></tr><tr><td>1983年马哈拉施特拉邦：总花费增1%，食物花费增加</td><td>0.67%</td></tr><tr><td>印度人均卡路里（体力劳动者「最低要求」口径）</td><td>城市超过3/4人口不足2 100卡；农村不足2 400卡</td></tr><tr><td>印度自认吃不饱的比例</td><td>1983年17% → 2004年2%</td></tr><tr><td>塞拉利昂：卡路里摄入增10%，生产力至多提高</td><td>4%</td></tr></tbody></table></div><p class="prose">身材矮小是不是无所谓？源文给出奥运会这面镜子：拥有10亿人口的印度在过去22届奥运会平均每届仅获得0.92枚奖牌，少于特立尼达和多巴哥的0.93枚；中国8届共386枚，平均每届48.3枚。</p><p class="prose">安妮·凯斯和克里斯·帕克森的研究进一步指出：在英国和美国，身高对收入的影响完全可以由智商的高低来解释——真正重要的是<b>童年时期充足的营养摄取</b>。这项研究以《关于更高的人更聪明的研究》为标题报道后，不怀好意的电子邮件蜂拥而至。</p><div class="grid g2"><div class="card"><div class="idx">凯斯-帕克森</div><h3>身高、智商与收入</h3><p class="cp">对智商相同的两个人做比较时，身高与收入之间不存在任何关系；童年营养充足的人长得更高大、更聪明，也因此赚到更多的钱。</p></div><div class="card"><div class="idx">巴克假说</div><h3>子宫里的不平等</h3><p class="cp">戴维·巴克医生的理论：母体子宫的条件对婴儿生活际遇具有长期影响。坦桑尼亚孕期摄入足量碘（每剂药花费51美分）所生的孩子，接受的教育多4个月至半年；若每位母亲当初都服用了碘胶囊，非洲中部及南部孩子们的总受教育程度就会上升7.5%。</p></div><div class="card"><div class="idx">WISE研究</div><h3>补铁是一笔好投资</h3><p class="cp">印度尼西亚的WISE研究项目随机补铁数月：铁元素的补充使男性工作更努力，自雇男性每年收入增加46美元，而购买一年的加铁鱼露只需花费7美元（按购买力平价）。</p></div><div class="card"><div class="idx">肯尼亚驱虫</div><h3>两美元改写一生</h3><p class="cp">持续得到驱虫药片达2年的孩子，受教育时间更长，青年时期挣的钱多20%；终身收入的增加按购买力平价计算为3 269美元——驱虫每年花费仅1.36美元。</p></div></div><h3 class="h3">谁知道？</h3><p class="prose">那么为什么贫血的印度尼西亚工人自己不买加铁鱼露？一重答案是激励错位：只有自雇工人的收入有了明显增长——菲律宾的研究显示，挣计件工资的人要比挣基本工资时多吃25%的食物。</p><p class="prose">另一重答案是信息与习惯：1966—1967年大米价格迅速上涨时，西孟加拉邦首席部长建议少吃大米、多吃蔬菜，结果抗议者无论他走到哪里都用蔬菜做的花环迎接他。而18世纪的法国药剂师安托万·帕尔芒捷靠一套自创的土豆食谱（包括土豆泥焗牛肉糜）为土豆开路，最终「发明了自由薯条」。</p><p class="prose">乔治·奥威尔在《通往威根码头之路》里把账算得更直白：</p><div class="aband"><q>他们的食物主要有白面包、人造黄油、罐装牛肉、加糖茶和土豆——这些食物都很糟糕。</q><cite>——《通往威根码头之路》（第二章「谁知道？」一节转引）</cite></div><div class="aband"><q>而且，特别遗憾的一点是，你手里的钱越少，你就越不愿意购买健康食品。</q><cite>——《通往威根码头之路》（同上）</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>比食物更重要——营养陷阱的真正位置</h2><span class="en">MORE THAN FOOD</span></div><h3 class="h3">比食物更重要</h3><p class="prose">穷人的钱还流向另一个方向：面子与乏味生活的对抗。源文给出的三组画面——南非的葬礼、摩洛哥的电视机、乌代布尔的节庆——指向同一件事：<b>穷人的首要选择显然是让自己的生活少一点儿乏味</b>。</p><p class="prose">在摩洛哥的偏远山村，欧查·姆巴克一家吃不饱饭，屋里却摆着电视机、抛物面天线及DVD播放机；他为此攒了几个月的钱，不是赊账买的。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>南非的葬礼规范</h4><span class="ar">▶</span></div><div class="cb"><div class="in">按传统，死去的老人要办隆重葬礼，费用为死者一生的积蓄；由于艾滋病毒泛滥，很多年轻人没攒下葬礼费用便撒手人寰。一个家庭可能为葬礼花费大约3 400兰特（按购买力平价计算，约合825美元），或者该家庭40%的年收入——葬礼所花的钱越多，人们来年就会变得越沮丧，而他们的孩子就越可能被迫辍学。2002年斯威士兰国王发布禁止葬礼铺张浪费的条令：宰了一头牛，就必须再上交一头牛。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>欧查·姆巴克的电视机</h4><span class="ar">▶</span></div><div class="cb"><div class="in">问他有更多钱会做什么，他说买更多的食物；再问有更多更多的钱呢，他说买更多好吃的食物。可他坐着的房间里就有电视机。为什么？他笑着回答：「哦，电视机比食物更重要！」村里的生活十分乏味——他和两个邻居一年只干了约70天的农活儿，还有约30天在工地干活儿。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>乌代布尔的节庆预算</h4><span class="ar">▶</span></div><div class="cb"><div class="in">对18个国家的数据集显示：穷人在没有收音机或电视机的情况下，可能会在节庆活动上花更多的钱。乌代布尔几乎每家没有电视机，极度贫穷的人将自己14%的预算花在了节庆上；相比之下，尼加拉瓜56%的农村贫困家庭有收音机、21%有电视机，在那里几乎听不到有哪个家庭为节庆花钱。</div></div></div></div><div class="aband"><q>哦，电视机比食物更重要！</q><cite>——欧查·姆巴克，摩洛哥偏远山村</cite></div><div class="aband"><q>他们的行为常常反映出这样一种想法，即任何意义重大、值得做出牺牲的改变都要花很长时间。</q><cite>——第二章「比食物更重要」一节</cite></div><h3 class="h3">基于营养的“贫穷陷阱”真的存在吗？</h3><p class="prose">回到帕克·索林：他的主要问题可能不是缺少卡路里——大多数成年人，即使是非常贫穷的人，也处于「贫穷陷阱」地带之外。但营养问题没有消失，只是换了位置：<b>食物的数量变成食物的质量</b>。营养充足真正带来大回报的两类人，是未出生的婴儿和幼儿，因为他们还不能自主选择食物。</p><p class="prose">这对食品政策是一记重锤：解决办法并非提供更多粮食那么简单，仅仅给予穷人更多的钱，可能也不足以解决问题——穷人即使在自己收入增加的情况下，也不会吃得更多更好。</p><div class="grid g2"><div class="card"><div class="idx">肯尼亚</div><h3>在校驱虫系统化</h3><p class="cp">肯尼亚政府目前对在校儿童提供系统化的驱虫治疗——正是前面那笔「1.36美元换3 269美元」的干预。</p></div><div class="card"><div class="idx">哥伦比亚与墨西哥</div><h3>微量营养素进膳食</h3><p class="cp">哥伦比亚在学龄前儿童的膳食中加入微量营养素；墨西哥将免费的营养补充与社会福利金一道发放给各个家庭。</p></div><div class="card"><div class="idx">乌干达与莫桑比克</div><h3>橙色红薯</h3><p class="cp">引进了适合非洲种植的各种橙色红薯（β–胡萝卜素含量比当地品种更高），背后是微量营养素行动组织与生物强化项目的推动。</p></div><div class="card"><div class="idx">多个国家</div><h3>新型食盐</h3><p class="cp">目前多个国家（包括印度）已批准使用一种添加了铁和碘的新型食盐；然而有太多例子表明，食品政策只停留在「穷人需要的只是便宜的粮食」这一想法上。</p></div></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>健康陷阱与萨克斯的乐观</h2><span class="en">HEALTH TRAP</span></div><p class="prose">第三章从乌代布尔的一次气氛活跃的交谈开始：政府医疗机构的护士直言不讳——腹泻患儿母亲大多不相信一包口服补液盐可以治病，她们想要抗生素或静脉输液，拿走补液盐的母亲永远都不会再来了。</p><p class="prose">而数字是残酷的：每年900万不到5岁就夭折的儿童中，约每5名儿童中就有一个死于腹泻；已经有三种「神药」（含氯消毒剂、糖和盐）可以挽救大多数儿童，但赞比亚只有10%的家庭使用含氯消毒剂，印度5岁以下的腹泻患儿中只有1/3服用了口服补液盐。</p><div class="aband"><q>这种工作其实一点儿意义都没有。</q><cite>——乌代布尔的护士，2005年冬</cite></div><h3 class="h3">健康陷阱</h3><p class="prose">健康问题确实可能成为陷阱的源头。印度尼西亚的竹篮编织工之妻<b>伊布·艾姆塔特</b>：丈夫视力有问题不能再工作，她向放债人借了40万印度尼西亚盾（合74.75美元），月息10%，拖欠后债务积累到100万盾（合187美元）；年幼的儿子患严重哮喘，家里已拿不出钱买药。</p><p class="prose">父亲的病使他们陷入了贫穷，导致孩子的病没钱治——典型的「贫穷陷阱」。杰弗里·萨克斯由此主张：世界上的穷人掉进了与健康有关的贫穷陷阱，只要有人出资「推一把」（如分发蚊帐消灭疟疾），他们就会移到S形曲线的右半部分，走上繁荣之路。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>伊布·艾姆塔特的债</h4><span class="ar">▶</span></div><div class="cb"><div class="in">借40万盾：10万为丈夫买药，30万用于恢复期购买食品（7个孩子中的3个还和他们生活在一起）。月息10%，债务翻倍至100万盾，放债人威胁要拿走他们所有的东西。</div></div></div></div><div class="duo"><div class="colL"><h4>证据与实效（源文的核对）</h4><ul><li>对多个国家成功消灭疟疾案例的研究：生于抗疟活动之后、疟疾高发地区的儿童，人生成就与低发地区基本一致</li><li>未患过疟疾的儿童长大后每年的收入比患过疟疾的多50%（美国南部及拉丁美洲的抗疟研究）</li><li>一顶长效驱虫蚊帐最多14美元、效力达5年；儿童成年后的全部工作时间每年都会带来88美元的收益</li><li>乡村发展组织的供水系统运转后：重症腹泻病例几乎一夜之间减少一半，疟疾病例也减少了1/3</li></ul></div><div class="colR"><h4>直觉与大推论（被检验的）</h4><ul><li>萨克斯：控制疟疾的公共健康投资将会产生很高的回报，收入增加足以支付干预措施的成本</li><li>疟疾盛行的非洲国家都被困在S形曲线的左半部分，有人出资消灭疟疾就会走上繁荣之路</li><li>怀疑论者的反向断言：这些国家贫穷也许只说明国家治理能力很差，除非改善体制，仅消除疟疾成效微乎其微</li><li>传统观念：每个家庭每月20美元的自来水及卫生设施费用，对大多数发展中国家都太贵了</li></ul></div></div><p class="prose">核对的结论是：<b>梯子存在，回报真实</b>——但「效果不像杰弗里·萨克斯所说的那样大」。同时还有更廉价的路：通过管道向家庭输送无污染的氯化水，腹泻病例可减少95%；1900—1946年间的美国，由于自来水、良好的卫生设施及水源氯化的推广，婴儿死亡率下降了约3/4。</p><p class="prose">全球约13%的人口无法获得改善的水源，42%的人口没有家用卫生间；而乡村发展组织（Gram Vikas）在奥里萨邦把每月成本压到了传统估价的20%。</p><div class="prof"><p class="pn">乡村发展组织（Gram Vikas）与乔·马蒂斯</p><p class="pm">印度奥里萨邦的非政府组织 · 从水和卫生设施发起长期社会变革</p><dl><dt>做法</dt><dd>坚持每个家庭都与一个总水管连接——卫生间、水龙头及浴室同属一个系统；这意味着高种姓家庭与低种姓家庭分享水源</dd><dt>原则</dt><dd>除非得到一个村子所有村民的同意，否则不在那里开展工作；工程施工为期一两年，每个家庭都配好水龙头及卫生间后系统才运转</dd><dt>实效</dt><dd>重症腹泻病例减少一半，疟疾病例减少1/3，且效果能持续好几年</dd><dt>成本</dt><dd>每个家庭每月190卢比（约合4美元，含维护），仅为传统上认为的这种系统成本的20%</dd></dl></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>没有充分利用的奇迹</h2><span class="en">IDLE MIRACLES</span></div><h3 class="h3">没有充分利用的奇迹</h3><p class="prose">萨克斯理论的缺陷在于：有些方法十分廉价，即使是非常贫穷的人都负担得起。母乳喂养根本无需任何花费，但全世界只有不到40%的婴儿得到了6个月的母乳喂养。</p><p class="prose">赞比亚一户六口之家买足够全年净水的含氯消毒剂只需800克瓦查（合0.18美元）——约为管道供水年花费的2%——可使幼儿腹泻患病率降低48%；98%的赞比亚人知道它，实际使用的只有10%。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>800克瓦查（合0.18美元）</h4><p>正规补贴价：可用一个月；但实际使用消毒剂对水进行处理的人只有10%</p></div><div class="step"><div class="dot">2</div><h4>700克瓦查（合0.16美元）＋打折优惠券</h4><p>实验中只有50%的人愿意去买</p></div><div class="step"><div class="dot">3</div><h4>300克瓦查（合0.07美元）</h4><p>愿意购买的人数出现了大幅增长——不过即使如此，仍有1/4的人不愿购买</p></div><div class="step"><div class="dot">4</div><h4>对照：食用油</h4><p>一般家庭每周仅购买食用油一项就会花掉4 800克瓦查（按购买力平价计算，合1.10美元）</p></div></div><p class="prose">蚊帐的需求量同样很低。杰茜卡·科恩和帕斯卡利娜·迪帕的TAMTAM实验在肯尼亚产前诊所随机提供价格不等的蚊帐：免费时几乎所有人都来领，按国际人口服务组织的补贴价（约合0.75美元）购买时需求已接近于零。</p><p class="prose">更令人困扰的是，需求对价格很敏感、<b>对收入却不敏感</b>：蚊帐使收入增加15%，购买蚊帐的可能性却只增加5%——分发的结果只是把睡在蚊帐中的人数从47%增加到52%，远不足以开启良性循环。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>TAMTAM蚊帐定价实验</h4><span class="ar">▶</span></div><div class="cb"><div class="in">随机在不同诊所提供价格不等的蚊帐：免费——需求成倍增长；0.75美元补贴价——接近于零。允许回家拿钱再买时，以补贴价购买的人更多，但价格接近于零时需求量仍成倍增长。</div></div></div></div><div class="aband"><q>低需求量突显的是解决健康问题的根本性难点：逃出“贫穷陷阱”的“梯子”是存在的，但并非总是放在正确的地方，而且人们似乎不知道怎样踏上“梯子”，或者他们甚至根本不想那样做。</q><cite>——第三章「没有充分利用的奇迹」一节</cite></div><h3 class="h3">钱什么也没换来</h3><p class="prose">穷人并非不关心健康：乌代布尔及南非约1/4的穷人回答最近一个月感到「担心、紧张或不安」，44%的压力案例源于健康问题；印度农村极度贫穷家庭平均将每月预算的6%花在医疗保健上，1/3的受访家庭正在为解决健康问题还贷——贷款月息3%（每年42%）。</p><p class="prose">问题在于钱花到了哪里：去公共医疗机构的次数不到1/4，超过一半去的是私人医疗机构，其余求助以驱邪为主的传统治疗法。而私人市场的水准令人惊愕：只有半数多一点的私人「医生」有医学院学位，1/3根本没受过任何专科教育，「医生助手」中2/3没有正式行医资格；德里的贫民窟只有34%的「医生」拥有正式的医学学位。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「孟加拉医生」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">一位受访者展示高中文凭——曾学过地理、心理学和梵文：「我高中毕业后找不到工作，就决定当一名医生。」他们手中除了听诊器和一袋子常用药，几乎没有其他东西。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>达斯-哈默「小场景」测试</h4><span class="ar">▶</span></div><div class="cb"><div class="in">世界银行的两位经济学家给各类医生5个与健康有关的「小场景」：最优秀的医生（前20名）连一半该问的问题都没问，最糟糕的（最后20名）只提出了1/6；专家组评估，大多数医生的建议可能都弊大于利。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>针头与类固醇</h4><span class="ar">▶</span></div><div class="cb"><div class="in">乌代布尔去私人诊所看病的病人中66%接受注射、12%接受静脉输液，只有3%接受检查。有医生重复使用未经消毒的针头，结果使整个村子的人都染上了乙肝；类固醇滥用使人过早衰老、寿命缩短。</div></div></div></div><div class="aband"><q>因此，问题并不在于穷人为健康花了多少钱，而是他们的钱究竟花到哪儿去了。</q><cite>——第三章「钱什么也没换来」一节</cite></div><div class="aband"><q>这些错误有一个常见的明显模式：医生一般会诊断不足、用药过度。</q><cite>——第三章「钱什么也没换来」一节</cite></div><h3 class="h3">政府该受到责备吗？</h3><div class="tbwrap"><table><thead><tr><th>指标</th><th>源文数字</th></tr></thead><tbody><tr><td>乌代布尔医疗机构在工作时间处于关闭状态</td><td>56%的时间里（其中仅12%护士在附近值班）</td></tr><tr><td>六国卫生人员平均缺勤率（世界银行2002—2003调查）</td><td>35%（印度为43%）</td></tr><tr><td>达斯-哈默总结的“3–3–3”规则</td><td>互动3分钟；只问3个问题；开3种药</td></tr><tr><td>塞瓦·曼迪尔干预后护士在岗概率</td><td>由40%上升到60%——但就诊人数并未增加</td></tr><tr><td>乌代布尔地区基本接种服务覆盖率（组织参与前）</td><td>不到5%</td></tr></tbody></table></div><p class="prose">公立系统确实糟糕，但这不是故事的全部：护士在岗率提升后病人没有增加。塞瓦·曼迪尔随后在相同几个村庄按月组织接种——医疗团队所在村庄平均77%的儿童至少接受了一次接种，完成整个接种周期的比例从对照村庄的6%升至17%；可即使免费的高质量私家接种服务在自家门前，仍有<b>4/5</b>的儿童没有接受完整的接种。</p><p class="prose">人们不去公立医院的部分原因，是对那里的服务不是特别感兴趣。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>免费意味着没用？——信念的问题</h2><span class="en">FREE &amp; BELIEF</span></div><h3 class="h3">免费意味着没用？</h3><p class="prose">一种流行的解释是「心理沉没成本」：人们更有可能会利用他们为之支付很多钱的东西，并可能根据价格判断质量——恰恰由于某物品是廉价的，人们便有可能认为它没有价值。威廉·伊斯特利在《白人的负担》里举例：人们将补贴的蚊帐当作婚纱，还有人提到马桶被用作花盆，甚至把避孕套当作气球。但严谨的实验不支持这种担心。</p><div class="duo"><div class="colL"><h4>实验说了什么</h4><ul><li>TAMTAM数周后实地家访：60%~70%曾买过蚊帐的妇女确实都在使用</li><li>另一次实验中，随着时间的推移，蚊帐的使用率上升至90%左右</li><li>花钱买下蚊帐的人与免费得到蚊帐的人，二者在蚊帐的使用率上没有差别</li><li>在其他一些情况中也发现了同样的结果，可以排除补贴降低使用率的可能性</li></ul></div><div class="colR"><h4>传闻与直觉</h4><ul><li>心理沉没成本：人们更有可能会利用他们为之支付很多钱的东西</li><li>根据价格判断质量：恰恰由于某物品是廉价的，人们便有可能认为它没有价值</li><li>伊斯特利《白人的负担》：补贴的蚊帐被当作婚纱</li><li>马桶被用作花盆，避孕套被当作气球</li></ul></div></div><h3 class="h3">信念？</h3><p class="prose">如果原因不是补贴，那就是信念。阿比吉特在两个家庭的饭桌间长大：马哈拉施特拉邦的每一位母亲都知道发烧时大米有助于恢复，而西孟加拉邦发烧时大米是禁用的——想说你退烧了，就说「他今天能吃大米了」。作者由此指出：<b>对于大量的信念及原理，我们几乎没有任何直接的证据可以证明</b>。</p><p class="prose">我们能信任抗生素，靠的是对FDA认证的信任；连美国和英国都有很多人拒绝让孩子接种麻疹疫苗。信息来源更少的穷人，其决定实际上就是在开盲盒。</p><div class="aband"><q>人们会根据事情是否合理来做出选择，但如果大多数人连基本的高中生物学知识都不具备，就像我们看到的那样，他们就没理由去相信医生的专业能力与水平，因而他们的决定实际上就是在开盲盒。</q><cite>——第三章「信念？」一节</cite></div><p class="prose">经验学习在这里系统性地失灵。大多数需要看医生的疾病都是自限性的——打完一针抗生素后病情好转，病人会把好转归功于它，形成虚幻的因果联想；而医生什么也没做病人却好转时，病人只觉得自己是幸运的。接种更难：它预防的是没有发生的问题，孩子接种后仍得了别的病，家长就会觉得自己受了骗。</p><p class="prose">而且很多国家的穷人似乎都认为，将药物直接输送至血液是很重要的——要驳倒这一理论，你至少要具备高中水平的生物学知识。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>木豆、时间不一致性与我们的看法</h2><span class="en">NUDGE &amp; US</span></div><h3 class="h3">脆弱的信念与必要的希望</h3><p class="prose">穷人坚持漏洞百出的信念还有一个原因：在无能为力的情况下，希望变得至关重要。「孟加拉医生」自己说得明白——穷人治不起大病，得了点小病就来找他，「我会给他们开点儿药，让他们感觉好一点儿」。</p><p class="prose">塞瓦·曼迪尔则决定对信念做一次实验：劝说首席执行官尼力玛·科顿在试点基础上，每次向接种的人提供2磅木豆，完成全部接种再得一套不锈钢餐盘。负责健康计划的医生起初并不愿意——贿赂人们去做该做的事似乎是不对的，而且2磅木豆仅值40卢比（合1.83美元），还不到在工地干一天活儿所挣工资的一半。</p><div class="aband"><q>团队所在村庄的疫苗接种率增长了7倍，上升至38%。</q><cite>——第三章「脆弱的信念与必要的希望」一节</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>2磅木豆的奖励</h4><span class="ar">▶</span></div><div class="cb"><div class="in">30个附带奖励的团队取得巨大成功：接种率增长7倍至38%，6英里之内所有邻近的村庄也大大提升；而且赠送木豆反而降低了每次接种的成本——提高接种率让带薪护士一直处于繁忙状态。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>「转一圈」释氯器</h4><span class="ar">▶</span></div><div class="cb"><div class="in">迈克尔·克雷默和同事把免费释氯器安装在村庄的水井旁边，把手每转一圈都会释放适量的氯元素。这使氯化水的过程变得极为容易——在所有随机对照试验证实的干预手段中，这是预防腹泻的一种最廉价的方式。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>加铁面粉的「默认选项」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">与塞瓦·曼迪尔设计的加铁面粉计划：家庭只需做一次参与决定，此后面粉永远加铁。但磨坊主的激励是对立的——除非提出要求，否则不给面粉加铁；坚持使用加铁面粉的小小代价足以使大多数人气馁。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>迪帕的蚊帐复购实验</h4><span class="ar">▶</span></div><div class="cb"><div class="in">曾免费或大减价获得蚊帐的家庭，比需全价购买第一床的家庭更有可能再买一床（即使他们已经有了一床）；而且知识会传播——免费得到蚊帐的人，他们的朋友和邻居也更有可能会为自己买一床。</div></div></div></div><p class="prose">对奖励的抵制来自左右两个方向：右派认为是浪费，传统左派（包括塞瓦·曼迪尔的好医生）认为是一种侮辱。作者认为两种观点都失之偏颇：<b>穷人其实是相信各种各样的事的，但他们的很多信念并不坚定</b>——他们不会因害怕邪恶的目光而拒绝接受木豆，这就意味着，他们其实知道自己没有足够依据对疫苗的成本与收益进行评估。</p><p class="prose">至于「全或无」之争——38%离80%~90%的群体免疫率还差得很远——源文的回答是：将预防基本疾病的全程接种率从6%提高至38%，仍然会产生巨大的社会效益。</p><div class="aband"><q>第二，右派和左派似乎都认为，行动都带有目的性：如果人们相信接种的价值，他们就会让自己的孩子接种。这并非永远都是正确的，但其意义十分深远。</q><cite>——第三章「脆弱的信念与必要的希望」一节</cite></div><h3 class="h3">新年新愿望</h3><p class="prose">为什么奖励有效？因为<b>时间不一致性</b>：当前的我们是冲动的，由情绪与即时欲望支配；贫穷的家长可能完全相信接种的好处——但这些好处只能在未来的某个时刻实现，而费用却需要今天来支付。当明天成为今天，相同的逻辑便会重现。</p><p class="prose">这正是理查德·塞勒和卡斯·桑斯坦《助推》的用武之地：让「正确的事」成为默认选项，人们有权选择退出，但要为此付出一点代价；小小的奖励则给了人们一个今天就行动的理由，以免无限期地拖延。</p><h3 class="h3">我们的看法</h3><p class="prose">两章在第三章末尾合流：穷人所陷入的困境与我们其他人的困扰似乎是一样的——缺乏信息、信念不坚定、拖延。我们真正的优势来自自认为理所当然的东西：自来水、污水自行排出、公立卫生系统、保险公司对健身的奖励——我们几乎用不着自己有限的自制力及决断能力，而穷人则经常被要求运用这种能力。</p><p class="prose">因此贫穷国家医疗保健政策的首要目标，是让穷人尽可能容易地获得预防性保健（清单见下方自测），同时规范医疗服务的质量——包括尽最大努力控制抗生素等药品的销售，以防止耐药性的增强。</p><div class="aband"><q>我们应该认识到，谁也没有那么明智、耐心或博学到能够为自己的健康做出正确的决定。</q><cite>——第三章「我们的看法」一节</cite></div><div class="check" data-k="02a"><p class="ct">「我们的看法」开出的预防性保健清单</p><label><input type="checkbox"><span>首先免费提供预防性服务，甚至奖励那些利用这种服务的家庭</span></label><label><input type="checkbox"><span>尽量使这些服务成为自然的“默认选择”</span></label><label><input type="checkbox"><span>免费的释氯器应放在水源旁边</span></label><label><input type="checkbox"><span>给自己孩子接种疫苗的家长应得到奖励</span></label><label><input type="checkbox"><span>学校里的孩子们应得到免费的驱虫药片和营养补充剂</span></label><label><input type="checkbox"><span>至少在人口密集地区，政府应对供水及卫生设施进行投资</span></label><div class="cf">已勾选（状态存在本机浏览器）。 <b>0</b> / 6</div></div><div class="chips"><span class="chip">医生一般会诊断不足、用药过度</span><span class="chip">缺乏信息、信念不坚定、拖延</span><span class="chip">几乎没有人会停留在S形曲线的左半边</span><span class="chip">逃出“贫穷陷阱”的“梯子”是存在的</span><span class="chip">使人们尽可能轻松地去做“正确的事”</span><span class="chip">值得做出牺牲的改变都要花很长时间</span><span class="chip">他今天能吃大米了</span><span class="chip">给他们提供更多的援助并不能使他们吃得更好</span><span class="chip">贫穷的家长可能完全相信接种的好处</span></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">插图剥离</span><span class="nd"><b>01｜</b>源目录项「第一部分 生活案例」为标题页，插图3张已从正文剥离，此项无正文。</span></div><div class="note" id="n2"><span class="nn">图表缺失</span><span class="nd"><b>02｜</b>正文引用的两幅原书图导出后内容缺失：第二章以「这种关系很像图1–1所展现的情况」引用S形曲线图，以「而是反向的L形曲线，就像图1–2所展现的那样」引用反向L形曲线图；两处均只剩文字指称，图整体缺失。</span></div><div class="note" id="n3"><span class="nn">空标题小节</span><span class="nd"><b>03｜</b>章内3个lv2小节在源文中0段正文、仅作引导标题：「为什么穷人吃得这么少？」「为什么不更多地使用这些方法呢？」「理解求医行为」——其下lv3小节直接承接正文，按源文结构原样分层。</span></div><div class="note" id="n4"><span class="nn">专名疑误</span><span class="nd"><b>04｜</b>第三章「改善健康的愿望」一节写「有记录的医疗花费超过5 000卢布（按购买力平价计算，合228美元）」——乌代布尔在印度，此处「卢布」疑为「卢比」之误，照原样保留，仅在此登记。</span></div><div class="note" id="n5"><span class="nn">数字写法</span><span class="nd"><b>05｜</b>源文大数以空格分节（「3 269美元」「2 400卡」「2 100卡」「3 400兰特」「5 000卢布」），全部照抄；「4/5」「1/3」等分数写法照抄。</span></div><div class="note" id="n6"><span class="nn">脚注保留</span><span class="nd"><b>06｜</b>第二章末附[1]—[36]编号引注、第三章末附[1]—[42]编号引注及其后英文参考文献条目，均为源文原样，保留不作处理（脚注[17]中出版社名「Public Afairs」的拼写亦照原样）。</span></div><div class="note" id="n7"><span class="nn">标题退化</span><span class="nd"><b>07｜</b>本篇未出现段末「← 疑似原书小标题」标记，各小节标题（含lv3）在导出中均为完整独立标题。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜贾雷德·戴蒙德《枪炮、病菌与钢铁》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部分｜饥饿与健康</span><a href="../01-再好好想想/index.html">← 再好好想想</a><a href="../03-全班最优/index.html">全班最优 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

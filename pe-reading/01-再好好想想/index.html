@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一章·第一章 · 再好好想想（贫穷陷阱之辩）｜枪炮、病菌与钢铁 精读</title>
+<meta name="description" content="从一张罗西娅传单到两张曲线图：把「贫穷能否被解决」的大问题，拆成一顶蚊帐该不该免费的具体问题。">
+<style>
+:root{
+  --paper:#F7F4EA;      /* 田野笔记米纸底 */
+  --paper-2:#EAE4D2;    /* 纸色深一档 */
+  --card:#FDFBF4;
+  --ink:#2B2620;        /* 深炭褐墨（主色） */
+  --ink-2:#3E4238;
+  --ink-deep:#131109;   /* 深墨（hero 底） */
+  --gold:#B4561F;       /* 赤陶橙（强调 · 赤贫土地与劳作） */
+  --gold-b:#C58A3A;
+  --gold-soft:rgba(180,86,31,.16);
+  --cinnabar:#8C3A20;   /* 锈红（警示 · 贫困的代价） */
+  --teal:#4A7048;       /* 禾青（对照 · 田野实验与希望） */
+  --tx:#2D2A24;
+  --tx-2:#4B4A40;
+  --tx-3:#7D7C6C;
+  --line:rgba(43,38,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,38,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E4238 0%,var(--ink-deep) 62%);
+  color:#EDF1E7;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(197,138,58,.42)}
+.hero::after{inset:22px;border:1px solid rgba(197,138,58,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(197,138,58,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(140,58,32,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F4E9}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(238,242,232,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(197,138,58,.34);color:rgba(238,242,232,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(140,58,32,.6);background:rgba(140,58,32,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(180,86,31,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDE1;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(197,138,58,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1EDE0;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(197,138,58,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1EDE0;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(236,240,230,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(180,86,31,.5);box-shadow:0 4px 18px rgba(43,38,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(180,86,31,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,112,72,.055)}
+.duo .colR{background:rgba(140,58,32,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(140,58,32,.1);color:var(--cinnabar);border:1px solid rgba(140,58,32,.28)}
+.case .tag.good{background:rgba(74,112,72,.1);color:var(--teal);border:1px solid rgba(74,112,72,.28)}
+.case .tag.mid{background:rgba(125,124,108,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(180,86,31,.45);background:rgba(180,86,31,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(140,58,32,.55);border-radius:8px;
+  background:rgba(140,58,32,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(130,50,28,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(140,58,32,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(180,86,31,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,245,236,.94);
+  border-bottom:1px solid rgba(43,38,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,38,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E4238;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(180,86,31,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,38,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,38,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7D7C6C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-开场-15年后的回望/index.html">← 开场·15年后的回望</a><a href="../02-饥饿与健康/index.html">饥饿与健康 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">辩</div>
+  <div class="stamp s4">贫穷陷阱</div>
+  <h1>第一章 · 再好好想想（贫穷陷阱之辩）</h1>
+  <p class="sub">从一张罗西娅传单到两张曲线图：把「贫穷能否被解决」的大问题，拆成一顶蚊帐该不该免费的具体问题。</p>
+  <div class="meta"><span>第一章</span>
+    <span class="k">陷阱</span>
+    <span>正文 13,599 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>传单实验</a><a href="#s3" data-t="s3"><span class="cn">叁</span>两个阵营</a><a href="#s4" data-t="s4"><span class="cn">肆</span>证据与重点</a><a href="#s5" data-t="s5"><span class="cn">伍</span>一顶蚊帐</a><a href="#s6" data-t="s6"><span class="cn">陆</span>陷阱之问</a><a href="#s7" data-t="s7"><span class="cn">柒</span>曲线与方法</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">全书总论章：先劝你「再好好想想」，再把关于贫穷的最大争论摆上台面</p><p class="thesis">本章是全书的总论：开篇用罗西娅的传单实验说明大问题如何让人<b>束手无策</b>，中段摆出萨克斯与伊斯特利的阵营对垒，后半用一顶蚊帐和两张曲线图示范本书的方法——把大问题拆成可以用证据逐一回答的具体问题。</p><div class="chain"><div class="node"><div class="n">入口</div><div><p class="tt">别把书扔到一边</p><p class="dd">不到5岁便夭折的儿童每年有900万；宾夕法尼亚大学的传单实验显示，人们面对数百万人的困境会泄气，却愿意为一个7岁女孩罗西娅承担一点儿责任</p></div></div><div class="node"><div class="n">对垒</div><div><p class="tt">两个阵营</p><p class="dd">萨克斯：穷国陷于地域困境，需要大推动与外来援助启动良性循环；伊斯特利、莫约：援助弊大于利，「贫穷陷阱」并不存在</p></div></div><div class="node"><div class="n">僵局</div><div><p class="tt">大问题无定论</p><p class="dd">卢旺达个例与跨国比较都各有解读；真正的重点不在钱从哪里来，而在钱去了哪里</p></div></div><div class="node"><div class="n">拆解</div><div><p class="tt">一顶蚊帐</p><p class="dd">约10美元的蚊帐该免费赠送、补贴销售还是全价出售？迪帕在肯尼亚用随机对照试验作答</p></div></div><div class="node"><div class="n">图形</div><div><p class="tt">两张曲线</p><p class="dd">S形曲线对应「贫穷陷阱」存在，反向L形曲线对应不存在；曲线的形状是关键，但仅靠理论是不够的</p></div></div><div class="node"><div class="n">方法</div><div><p class="tt">走出办公室</p><p class="dd">2003年创建贫困行动实验室（即后来的J-PAL）；截至2010年已在全球40个国家完成或正在开展240多个实验——本书正建立在这一知识体系之上</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>别把书扔到一边：传单实验与大问题</h2><span class="en">DON&#x27;T LOOK AWAY</span></div><p class="prose">本章开头连摆四组数字：不到5岁便夭折的儿童每年有900万；在撒哈拉以南的非洲地区，妇女因分娩死亡的概率为3.33%，这一比例在发达国家仅为0.018%；全球至少有25个国家人口的平均寿命不超过55岁；仅在印度一国，就有超过5 000万的学龄儿童连简单的课文也看不懂。</p><p class="prose">看了这些，或许你只想把书扔到一边，不去想世界贫穷这件大事——而作者写这本书的目的，就在于劝你不要那样做。</p><p class="prose">宾夕法尼亚大学的一项实验表明，面对重要的问题，我们多么容易感到束手无策：研究人员发给每个学生5美元填写调查表，再请他们为「救助儿童会」捐款。传单有两种：一种铺陈数百万人的统计困境，另一种只画着一个小女孩——来自非洲马里的7岁女孩罗西娅，她过着极度贫穷的生活，面临着挨饿甚至饿死的危险。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>一个人 vs 数百万人</h4><span class="ar">▶</span></div><div class="cb"><div class="in">展现一个人而不是数百万人的困境：看了罗西娅版传单的学生平均每人捐了2.83美元；看统计版（马拉维的食品短缺影响着超过300万儿童、赞比亚玉米产量自2000年以来的严重干旱已下降42%、400万安哥拉人被迫离开家乡、超过1 100万埃塞俄比亚人急需食品援助）的学生平均只捐了1.16美元。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>先告诉他们「会这样」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">研究人员又随机选定一些学生，先告知「人们不愿关注那种泛泛的信息，而更有可能会捐钱给某一特定受害者」，再给他们看那两份传单：统计版平均捐款1.26美元，与不知情者差不多；罗西娅版平均仅捐1.36美元，还不到不知情者所捐金额的一半——鼓励学生们再想想反而使他们对罗西娅不那么慷慨了。</div></div></div></div><div class="aband"><q>本书会让您再好好想想，如何摆脱那种“贫穷的问题难以解决”的感觉，将这一挑战视为一系列具体问题，只要能找出问题、理解问题，就能够逐一解决。</q><cite>——第一章开篇</cite></div><p class="prose">遗憾的是，关于贫穷的辩论往往不是这样展开的：很多侃侃而谈的专家并没有讨论怎样对付腹泻和登革热最有效，而是专注于那些「大问题」——贫穷的根本原因是什么？我们应该在多大程度上信任自由市场？穷人能够受益于民主制度吗？外来援助可以发挥什么样的作用？</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>两个阵营：萨克斯与伊斯特利</h2><span class="en">SACHS VS EASTERLY</span></div><p class="prose">杰弗里·萨克斯是联合国顾问、哥伦比亚大学地球研究所主任，同时也是一位贫穷问题专家。他的回答是：「贫穷国家之所以贫穷，原因在于这些国家都气候炎热、土地贫瘠、疟疾肆虐，且往往是内陆国家」。</p><p class="prose">如果没有大量的原始投资助其解决这些地域性问题，这些国家很难提高自己的生产力——而恰恰因为贫穷，这些国家无法负担这些投资，这就是经济学家们所谓的「贫穷陷阱」。</p><p class="prose">在其2005年出版的畅销书《贫穷的终结》中，他称如果富国在2005—2025年间每年拿出1 950亿美元的资金来援助穷国，那么贫穷问题到2025年末便可完全得到解决。</p><p class="prose">然而还有一些侃侃而谈的人认为，萨克斯的回答是错误的。纽约大学的威廉·伊斯特利随着《在增长的迷雾中求索》及《白人的负担》的面世，已成为反援助人士中最具影响力的公众人物之一；曾在高盛集团及世界银行任职的经济学家丹比萨·莫约在《援助的死亡》中对伊斯特利的观点表示赞同。</p><p class="prose">他们都认为，援助的弊大于利：援助使人们停止寻找自己解决问题的方法，腐蚀地方机构并削弱其作用，导致一些援助机构形同虚设。从这个意义上讲，在看待世界运转的方式上，对援助持悲观态度的人实际上表现得颇为乐观。</p><div class="duo"><div class="colL"><h4>萨克斯阵营：援助能启动良性循环</h4><ul><li>贫穷的根源是地域性的：气候炎热、土地贫瘠、疟疾肆虐、往往内陆</li><li>因贫穷而无力负担解决问题的投资——此即经济学家们所谓的「贫穷陷阱」</li><li>外来援助启动良性循环：关键领域投资→生产力提高→更高收入带来更多投资，收益呈螺旋状上升</li><li>《贫穷的终结》：富国在2005—2025年间每年拿出1 950亿美元，贫穷问题到2025年末便可完全得到解决</li><li>主张免费赠送穷人一些物品（化肥、蚊帐、学生电脑等）</li></ul></div><div class="colR"><h4>伊斯特利与莫约：援助弊大于利</h4><ul><li>援助使人们停止寻找自己解决问题的方法</li><li>腐蚀地方机构并削弱其作用，导致一些援助机构形同虚设</li><li>只要有自由市场和恰当的奖励机制，人们就能自己找到解决问题的方法</li><li>伊斯特利：「贫穷陷阱」并不存在——很多过去贫穷的国家现在却很富有</li><li>反对免费发放：人们不花钱得到就不会珍惜，还会对施舍习以为常</li></ul></div></div><div class="aband"><q>只要有自由市场和恰当的奖励机制，人们就能自己找到解决问题的方法，而不需要接受外国人或自己政府的施舍。</q><cite>——伊斯特利与莫约的立场（第一章转述）</cite></div><div class="tbwrap"><table><thead><tr><th>人物</th><th>身份与著作</th><th>在本篇中的角色</th></tr></thead><tbody><tr><td><b>杰弗里·萨克斯</b></td><td>联合国顾问、哥伦比亚大学地球研究所主任；《贫穷的终结》（2005）</td><td>援助有益派：贫穷陷阱存在，需要大推动</td></tr><tr><td><b>威廉·伊斯特利</b></td><td>纽约大学；《在增长的迷雾中求索》《白人的负担》</td><td>反援助阵营中最具影响力的公众人物之一：贫穷陷阱并不存在</td></tr><tr><td><b>丹比萨·莫约</b></td><td>曾在高盛集团及世界银行任职的经济学家；《援助的死亡》</td><td>赞同伊斯特利：援助弊大于利，免费发放会摧毁运转良好的市场</td></tr></tbody></table></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>证据的困境与真正的重点</h2><span class="en">EVIDENCE</span></div><p class="prose">这一争论无法从理论上得到解决，我们需要的是证据。然而，那种常常用来解答大问题的数据并不能得到人们的信任：引人注目的奇闻逸事比比皆是，且总能找出至少一件事来支持任何立场。</p><p class="prose">卢旺达在发生种族大屠杀之后的几年里得到了大笔捐款，整个国家逐渐走向繁荣，总统保罗·卡加梅开始不再接受援助——这究竟是援助有益的证明（萨克斯的观点），还是自力更生的典型代表（莫约的观点），还是二者兼备？</p><p class="prose">跨国比较同样给不出定论：针对世界上两百多个国家和地区的数据表明，接受更多援助的国家并不比其他国家发展得快——这常常被认为是援助无用的证据，但实际上也可能意味着相反的观点：援助使某些国家避免了一场灾难。作者的态度是：「对此，我们根本不知道，只是在泛泛地猜测而已。」</p><div class="aband"><q>关于援助是非的无休止争论模糊了真正的重点：不在于钱从哪里来，而在于钱去了哪里。</q><cite>——第一章（论援助之辩）</cite></div><p class="prose">而且争论本身可能高估了援助的分量：援助只占每年给穷人所划拨款项的一小部分，大多数针对全球穷人的项目资金都是由各国自己的资源提供的。</p><p class="prose">印度基本上不接受援助，2004—2005年为穷人的初等教育项目投入了5 000亿卢比（按购买力平价计算，合310亿美元）；即使是在非洲这样外国援助发挥重要作用的地方，2003年度的外国援助资金也只占政府预算的5.7%（排除几乎不接受援助的尼日利亚和南非后为12%）。</p><div class="grid g2"><div class="card"><div class="idx">彼得·辛格</div><h3>哲学家的落水儿童</h3><p class="cp">他写过关于拯救陌生人生命的道德义务：「大多数人都愿意损失一套价值1 000美元的西装，换取一个落水儿童的性命」，这名落水儿童与那些每年活不到5岁的900万儿童并无二致。但辛格的观点隐含了一个前提——你知道如何去做：在你不会游泳的前提下，甘愿牺牲一套西装的道德准则便显得苍白无力。</p></div><div class="card"><div class="idx">阿马蒂亚·森</div><h3>令人难以容忍的人才浪费</h3><p class="cp">这位诺贝尔经济学奖得主的观点得到了很多人的赞同：贫穷会导致令人难以容忍的人才浪费。一个来自非洲的贫穷小女孩即使很聪明，可能最多也只能上几年学；她很可能由于营养不良而无法成长为世界顶级运动员，即使她有什么做生意的好想法，也没有启动资金。</p></div><div class="card"><div class="idx">戴满菊</div><h3>一个疏忽改变的人生</h3><p class="cp">这位中国小姑娘上学的机会来源于银行职员的一个疏忽，这可能使她最终成为雇用上千人的商业巨头——尼古拉斯·克里斯托弗和舍丽·吴顿在其著作《半边天》中讲述了她的故事。即使她没有这样的际遇，我们又有何理由不给她一次机会呢？</p></div><div class="card"><div class="idx">共识与分歧</div><h3>争论双方同意的前提</h3><p class="cp">为援助问题而争论的人基本上都同意一个前提：我们应在力所能及时向穷人伸出援助之手。真正的分歧在「我们知道帮助穷人的有效方式吗」——只谈世界上存在什么问题，而不去谈可行的解决方案，这样只能导致社会瘫痪，而非进步。</p></div></div><div class="aband"><q>贫穷并不仅仅意味着缺钱，它会使人丧失挖掘自身潜力的能力。</q><cite>——阿马蒂亚·森（第一章转引）</cite></div><div class="aband"><q>只谈世界上存在什么问题，而不去谈可行的解决方案，这样只能导致社会瘫痪，而非进步。</q><cite>——第一章</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>一顶蚊帐：把大问题拆成具体问题</h2><span class="en">BED NETS</span></div><p class="prose">从实际问题的角度去思考，蚊帐是现成的样本。世界卫生组织称，疟疾在2008年造成约100万人丧生，其中大多数是来自非洲的儿童；研究表明，在疟疾传播严重的地区，让人们睡在经过杀虫剂处理的蚊帐中，可以将疟疾的感染病例减少一半。只要拿出约10美元，一个家庭就能得到一顶这样的蚊帐。</p><p class="prose">那么，政府或非政府组织是否应向家长们免费提供？或按优惠价卖给他们？还是让他们自己去市场上按全价购买？这些问题是可以回答的，但答案却不甚明了——很多「专家」在这些问题上的立场十分强硬，却拿不出任何有力的证据。</p><p class="prose">蚊帐还有传染病的特殊性：「如果玛丽睡在蚊帐中，约翰就不太可能被传染」——如果至少有一半人睡在蚊帐中，另一半人即使没睡在蚊帐中，被传染的概率也会大大降低。可现实是，睡在蚊帐中的孩子的人数还不到面临风险的孩子总数的1/4。对于马里及肯尼亚的很多家庭来说，10美元的花费有些高。</p><p class="prose">免费发放蚊帐正是萨克斯所提倡的；伊斯特利和莫约则认为，人们不花钱就得到了便不会珍惜，还会对施舍习以为常——据莫约讲，一名蚊帐供应商就曾因一项免费发放蚊帐计划而破产。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>全价还买吗</h4><p>如果人们必须以全价（或者至少是全价的一大半）购买蚊帐，他们是否会放弃购买？</p></div><div class="step"><div class="dot">2</div><h4>白给会用吗</h4><p>如果蚊帐是免费赠送的，或是以补贴价卖给人们的，他们是会使用这些蚊帐，还是将其束之高阁？</p></div><div class="step"><div class="dot">3</div><h4>断了补贴还买吗</h4><p>如果人们以补贴价购买了蚊帐，那么一旦以后不再有补贴，他们是否还愿意去购买呢？</p></div></div><p class="prose">要回答这三个问题，就要观察并比较几组人在面对不同程度补贴价时的行为，而这里的关键词是「可比性」：自己花钱购买蚊帐的人可能比较富有、受过良好的教育；免费得到蚊帐的人可能因贫穷被某家非政府组织选中，也可能社会关系优越——无论是哪种情况，都无法从他们使用蚊帐的方式上得出任何结论。</p><p class="prose">对这些问题最简洁的回答方式，就是仿照医学中为评估新药效力而采用的随机对照试验。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>迪帕的肯尼亚实验</h4><span class="ar">▶</span></div><div class="cb"><div class="in">加利福尼亚大学洛杉矶分校的帕斯卡利娜·迪帕在肯尼亚开展了随机对照试验：随机选定的对象在购买蚊帐时享受了不同程度的补贴价格。通过比较几个小组以不同价格购买蚊帐时的行为，迪帕便能回答前面列出的三个问题——至少在这项实验的背景下是这样的。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>乌干达与马达加斯加跟进</h4><span class="ar">▶</span></div><div class="cb"><div class="in">随后，其他研究人员分别在乌干达和马达加斯加进行了类似的实验。尽管有争议的问题仍然存在（例如，这些实验并没有告诉我们，将进口的蚊帐以补贴价出售是否会损害当地厂家的利益），但这些实验结果还是使这场争论取得了实质性的进展，并极大地影响了这方面的话语和政策导向。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>破产的蚊帐供应商</h4><span class="ar">▶</span></div><div class="cb"><div class="in">据莫约讲，一名蚊帐供应商就曾因一项免费发放蚊帐计划而破产：在该项计划停止之后，再也没有人愿意以任何价格提供蚊帐了——这是反免费派最直观的论据。</div></div></div></div><div class="check" data-k="01a"><p class="ct">蚊帐之争的三个问题（先自测，再读第三章）</p><label><input type="checkbox"><span>必须以全价（或全价的一大半）购买时，人们会放弃购买吗</span></label><label><input type="checkbox"><span>免费赠送或以补贴价卖出时，人们会使用还是将其束之高阁</span></label><label><input type="checkbox"><span>补贴取消之后，人们还愿意自己掏钱购买吗</span></label><div class="cf">勾选状态存在本机浏览器。 <b>0</b> / 3</div></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>被困于“贫穷陷阱”？：肯尼迪与化肥</h2><span class="en">TRAPPED?</span></div><h3 class="h3">被困于“贫穷陷阱”？</h3><p class="prose">对于蚊帐应免费赠送还是有价销售的问题，萨克斯和伊斯特利提出了截然相反的观点，这并不是巧合：在发展援助及对待贫穷等问题上，大多数富国专家所持的立场仍会受其特定世界观的影响。</p><p class="prose">一方面，萨克斯（以及联合国、世界卫生组织和很大一部分援助机构）希望能为穷人提供更多援助，他们普遍认为应该免费赠送穷人一些物品（化肥、蚊帐、学生电脑等），应诱导穷人去做自己认为对他们有好处的事。</p><p class="prose">另一方面，伊斯特利、莫约、美国企业研究所的相关人员及其他一些人则反对援助——他们认为，我们应该尊重人们的自由：如果这是他们不想要的东西，我们就没有理由强迫他们接受。</p><p class="prose">这些观点并不是下意识的意识形态反应：萨克斯和伊斯特利都是经济学家，他们的分歧在很大程度上取决于对一个经济问题的回答，即一个国家是否会陷入贫穷。</p><p class="prose">萨克斯认为，地理位置不佳或运气不好使有些国家陷入了贫穷，而且常常会变得越来越穷，需要先让自身走出困境才能踏上繁荣之路，因此他强调巨大推力的重要性；伊斯特利则指出，很多过去贫穷的国家现在却很富有，一些过去富有的国家现在却变穷了。</p><div class="aband"><q>如果贫穷的状况不是恒定的，那么“贫穷陷阱”就是一个残酷地诱骗穷国的伪概念。</q><cite>——威廉·伊斯特利（第一章转述）</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>千年村与萨乌里村</h4><span class="ar">▶</span></div><div class="cb"><div class="in">萨克斯「千年村」计划蕴含的哲学理念是：一次性的援助投入会给一个人的生活带来巨大改变。幸运的村庄得到免费的化肥、免费在学校用餐及使用计算机、免费的医疗服务，每个村庄每年消耗50万美元。在肯尼亚的萨乌里村，年轻的农民肯尼迪由于领取了免费的化肥，收成是前几年的20倍，攒下了足够养活他自己一辈子的积蓄。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>怀疑者的步步紧逼</h4><span class="ar">▶</span></div><div class="cb"><div class="in">如果化肥这么有用的话，肯尼迪当初为什么不只买一点点化肥，用在那块最适合施肥的田地里，再用挣来的钱多买一点儿、留作来年用，如此循环买下全部化肥？答案取决于这一策略的可行性：化肥或许只能批量购买，或许在使用过几次之后才有成效，抑或将收益再次投入并不如想象的那般顺利。</div></div></div></div><div class="aband"><q>对于几乎无钱可投的人来说，收入或财富迅速增长的空间总是受限的，这就是“贫穷陷阱”；但对于多少有能力投入的人来说，这一空间就会极大地扩展。</q><cite>——第一章（小节「被困于“贫穷陷阱”？」）</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>两张曲线图与一种方法</h2><span class="en">TWO CURVES, ONE METHOD</span></div><p class="prose">经济学家都喜欢简单（有人称之为过于简单）的理论，他们习惯用图表来表现这种理论。对于那些相信「贫穷陷阱」的人来说，整个世界就像图1—1：你今天的收入会影响将来的收入——这个将来可能是明天、下个月，也可能是下一代；今天有多少钱决定着你能吃多少，有多少钱用来买药、支付你孩子的教育费、为自家田地买来化肥或更好的种子。</p><p class="prose">这条曲线一开始很平坦，然后突然上升，之后又逐渐变平；对处于「贫穷陷阱」的穷人来说，曲线处于对角线（今天的收入等于将来的收入）下方，随着时间的流逝他们会变得越来越穷，最终在N点陷入贫穷。</p><div class="broken-tip">原书此处有图1—1（S形曲线和“贫穷陷阱”）与图1—2（反向L形曲线：不存在“贫穷陷阱”）两幅曲线图，微信读书导出后图片已剥离、仅存图注文字；图中对角线、N点及A1—A3、B1—B3轨迹随图缺失，曲线形状仅以正文文字转述。</div><div class="duo"><div class="colL"><h4>图1—1 · S形曲线：陷阱存在</h4><ul><li>曲线一开始很平坦，然后突然上升，之后又逐渐变平</li><li>对处于「贫穷陷阱」的穷人，将来的收入低于今天的收入：曲线处于对角线下方</li><li>随时间流逝越来越穷，最终在N点陷入贫穷（A1→A2→A3）</li><li>起点在「贫穷陷阱」以外的人则越来越富（B1→B2→B3）</li></ul></div><div class="colR"><h4>图1—2 · 反向L形曲线：陷阱不存在</h4><ul><li>很多（或许是大多数）经济学家认为，整个世界常常更像图1—2</li><li>像图1—1的右半部分，没有平缓的左半部分：一开始上升得很快，然后慢慢变缓</li><li>最穷的人也能挣到比他们原来的收入更多的钱，会变得越来越富</li><li>一次性的施舍最多让人前进得稍微快一些，并不能改变他们最终前进的方向——此图暗示着我们几乎没有必要帮助穷人</li></ul></div></div><div class="aband"><q>这条线一开始很平坦，然后突然上升，之后又逐渐变平。我们暂且选用英文字母“S”为其命名，称之为“S形曲线”。</q><cite>——第一章</cite></div><p class="prose">那么，哪张图能更好地体现肯尼迪的生活呢？这需要了解一组简单的事实：化肥能否少量购买？一个种植季到下一个种植季期间，是否不太容易攒下积蓄？这两张简单的图所包含的理论传达了一个最重要的信息，即仅靠理论是不够的——要想真正回答「贫穷陷阱」是否存在，就需要通过一个个事例做出判断。</p><p class="prose">找不到一个普遍适用的答案，这听上去或许会令人有失信心；但实际上，政策制定者应该要弄明白的不是穷人陷入困境的100万种方式，而是「贫穷陷阱」形成的几个重要因素。</p><p class="prose">这种观点上的根本转变——放弃那种普遍适用的答案——需要我们走出办公室，仔细地观察一下这个世界，遵循发展经济学家多年强调搜集正确资料的传统。</p><p class="prose">与前人相比，我们拥有两大优势：第一，我们现在可以得到以前没有的、来自很多穷国的可靠信息；第二，我们可以使用一种强有力的新工具——随机对照试验，使研究人员可以在当地伙伴的配合下开展大规模实验，从而验证他们的理论。</p><p class="prose">2003年，作者创建了贫困行动实验室（即后来的J-PAL）；截至2010年，实验室研究人员已在全球40个国家完成或正在开展240多个实验项目。</p><div class="aband"><q>我们必须继续工作，而你们却沉溺于寻求证据。</q><cite>——顽固的政策制定者与其顾问（第一章转述）</cite></div><div class="aband"><q>正是从某一特定答案中发展出来的知识体系，以及对于这些答案的深入了解，给了我们有朝一日消除贫穷的最佳机会。</q><cite>——第一章</cite></div><p class="prose">本书正是建立在这一知识体系之上的：大量材料源于作者及他人开展的随机对照试验，但作者也使用了对穷人生活的定性和定量描述、关于特定机构是怎样运转的调查等其他类型的证据。</p><p class="prose">在英文配套网站（www.pooreconomics.com）上提供了所引用研究的链接，以及一个记录关于18个国家中每人每天不足99美分生活的方方面面之数据集的摘录和图表。要记住的是：「贫穷陷阱」并不是存在于每个领域；政策选择错误的例子并非来自动机不良或腐败，而仅仅是因为某些政策制定者头脑中的世界模式是错误的。</p><div class="aband"><q>我们希望你能明白，我们一步步耐心的研究，不仅仅是抗击贫穷的有效方式，而且还能使世界变成一个更有趣的地方。</q><cite>——第一章（章末）</cite></div><div class="chips"><span class="chip">曲线的形状是关键</span><span class="chip">仅靠理论是不够的</span><span class="chip">找不到一个普遍适用的答案</span><span class="chip">这里的关键词是“可比性”</span><span class="chip">不在于钱从哪里来，而在于钱去了哪里</span><span class="chip">一个残酷地诱骗穷国的伪概念</span><span class="chip">真正有用的方式是从实际问题的角度去思考</span></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">插图剥离</span><span class="nd"><b>01｜</b>源目录项「第一章 再好好想想」标注插图5张（已从正文剥离），正文无图片残留，本篇按纯文字转写。</span></div><div class="note" id="n2"><span class="nn">图表缺失</span><span class="nd"><b>02｜</b>原书图1—1（S形曲线和“贫穷陷阱”）与图1—2（反向L形曲线：不存在“贫穷陷阱”）两幅曲线图以图片形式存在，导出后仅存两行图注文字，曲线图整体缺失；图中对角线、N点与A1—A3、B1—B3轨迹随之不可见，本篇以正文文字转述曲线形状并以红框就地提示，不虚构图形数据。</span></div><div class="note" id="n3"><span class="nn">写法前后不一</span><span class="nd"><b>03｜</b>图号写法不一：正文一处作「图1—1和图1—2」（全角破折号），图注与他处作「图1–1」「图1–2」（半字线）；照原样保留，仅在此登记。</span></div><div class="note" id="n4"><span class="nn">脚注保留</span><span class="nd"><b>04｜</b>正文内嵌[1]—[18]编号引注，章末附18条英文参考文献及脚注[7]的购买力平价说明；均为源文原样，保留不作处理。</span></div><div class="note" id="n5"><span class="nn">数字写法</span><span class="nd"><b>05｜</b>源文大数以空格分节（「5 000万」「1 100万」「1 950亿」「5 000亿卢比」），全部照抄；捐款金额保留两位小数（1.16美元、2.83美元、1.26美元、1.36美元）。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜贾雷德·戴蒙德《枪炮、病菌与钢铁》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一章｜再好好想想</span><a href="../00-开场-15年后的回望/index.html">← 开场·15年后的回望</a><a href="../02-饥饿与健康/index.html">饥饿与健康 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
