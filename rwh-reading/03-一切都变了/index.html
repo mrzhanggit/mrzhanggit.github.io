@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三章·一切都变了｜更富有、更睿智、更快乐 精读</title>
+<meta name="description" content="一切都在变、未来不可知——马克斯的整套方法都从承认这一点长出来：先低估自己，再读周期，最后守住不会被压垮的位置。">
+<style>
+:root{
+  --paper:#F7F3EA;      /* 暖白纸底 */
+  --paper-2:#EFE8D9;    /* 纸色深一档 */
+  --card:#FFFDF8;
+  --ink:#0B1D33;        /* 墨蓝（主色） */
+  --ink-2:#16304C;
+  --ink-deep:#07131F;   /* 深墨（hero 底） */
+  --gold:#B8923A;
+  --gold-b:#D3AC4B;
+  --gold-soft:rgba(184,146,58,.16);
+  --cinnabar:#A63A2B;
+  --teal:#2F6B63;
+  --tx:#26303A;
+  --tx-2:#495156;
+  --tx-3:#7A7364;
+  --line:rgba(11,29,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(11,29,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#16304C 0%,var(--ink-deep) 62%);
+  color:#F1E9D8;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(211,172,75,.42)}
+.hero::after{inset:22px;border:1px solid rgba(211,172,75,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(211,172,75,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,58,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F6EFE0}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(241,233,216,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(211,172,75,.34);color:rgba(241,233,216,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,58,43,.6);background:rgba(166,58,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(184,146,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EDE4D2;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(211,172,75,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F5EDDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(211,172,75,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F5EDDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(237,228,210,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(184,146,58,.5);box-shadow:0 4px 18px rgba(11,29,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(184,146,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(47,107,99,.055)}
+.duo .colR{background:rgba(166,58,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,58,43,.1);color:var(--cinnabar);border:1px solid rgba(166,58,43,.28)}
+.case .tag.good{background:rgba(47,107,99,.1);color:var(--teal);border:1px solid rgba(47,107,99,.28)}
+.case .tag.mid{background:rgba(122,115,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(184,146,58,.45);background:rgba(184,146,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,58,43,.55);border-radius:8px;
+  background:rgba(166,58,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,45,33,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,58,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(184,146,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(11,29,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(11,29,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px}
+.bknav a{color:#16304C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap}
+.bknav a:hover{background:rgba(184,146,58,.16)}
+.bknav .home{font-weight:600}
+.bknav .sp{flex:1}
+.bknav .dis{color:rgba(11,29,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(11,29,51,.14);border-radius:5px}
+.bknav .cur{color:#7A7364;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+@media(max-width:760px){.bknav .inner{padding:0 16px;gap:8px}
+  .bknav .cur{display:none}.bknav a{padding:5px 8px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-愿意孤独/index.html">← 第二章</a><a href="../04-坚韧的投资者/index.html">第四章 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">变</div>
+  <div class="stamp s4">知道无知</div>
+  <h1>一切都变了</h1>
+  <p class="sub">一切都在变、未来不可知——马克斯的整套方法都从承认这一点长出来：先低估自己，再读周期，最后守住不会被压垮的位置。</p>
+  <div class="meta"><span>第三章</span>
+    <span class="k">不可知</span>
+    <span>正文 19,649 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>幸运与谦逊</a><a href="#s3" data-t="s3"><span class="cn">叁</span>知道自己无知</a><a href="#s4" data-t="s4"><span class="cn">肆</span>寻找秩序</a><a href="#s5" data-t="s5"><span class="cn">伍</span>末日不出现</a><a href="#s6" data-t="s6"><span class="cn">陆</span>五个理念</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>世事无常，这是亘古不变的基本真理，是对一切佛教教义的凝练。</p><cite>——铃木俊隆，《禅者的初心》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">HOW MARKS THINKS</span></div><div class="map"><p class="mt">本篇论证主线</p><p class="thesis">马克斯把「不可知」当前提而不是障碍：先承认自己渺小又幸运，再放弃预测、改读周期，最后在别人恐慌时用事先备好的位置下注——全程守住「没有达到极限」这条底线。</p><div class="chain"><div class="node"><div class="n">起点</div><div><p class="tt">世界变了</p><p class="dd">一切都在不断变化中，而投资者要把真金白银押注在不持久的环境和不可知的未来上。</p></div></div><div class="node"><div class="n">第一条</div><div><p class="tt">谦逊</p><p class="dd">实事求是地看待自己的局限性和脆弱性；反复提醒自己运气是主角，以免滑向「宇宙巨人综合征」。</p></div></div><div class="node"><div class="n">第二条</div><div><p class="tt">无知</p><p class="dd">不预测利率、通货膨胀或经济增速，放弃选择市场时机，也不做「面向未来的投资」。</p></div></div><div class="node"><div class="n">方法</div><div><p class="tt">周期</p><p class="dd">「要把世界看作是周期性的、震荡的，而不是直线发展的」——摆锤总会朝相反的方向摆动。</p></div></div><div class="node"><div class="n">行动</div><div><p class="tt">逆周期</p><p class="dd">当过于悲观时，怀疑主义呼唤乐观主义；2008 年 9 月起由守转攻，每周投入 5 亿—6 亿美元。</p></div></div><div class="node"><div class="n">底线</div><div><p class="tt">别到极限</p><p class="dd">「你反脆弱的能力来自你没有达到极限的程度」——先保证不崩溃，再谈收益。</p></div></div></div></div><p class="prose">本章从佛教的<b>无常</b>讲起。马克斯在宾夕法尼亚大学读本科时，因为被美术课老师淘汰而转修日本文学与文明，在一堂日本佛教课上第一次接触「无常」这个概念。此后他用一整套投资方法回答副题里的那个问题：<em>当一切都发生了改变，且未来不可知时，我们如何才能做出明智的决策？</em></p><div class="aband"><q>世界变了，这是市场上最大的问题。</q><cite>——比尔·米勒，转引自本篇导语</cite></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>首先要幸运，其次要谦逊</h2><span class="en">LUCK &amp; HUMILITY</span></div><p class="prose">在一切都不稳定、不可靠以及几乎任何事情都有可能发生的世界里，源文给出的第一条原则是<b>实事求是地看待自己的局限性和脆弱性</b>。</p><div class="aband"><q>当第一次事故就能彻底摧毁你时，你怎么能认为自己是个伟人呢？</q><cite>——欧里庇得斯（蒙田把这句话篆刻在自家图书馆的横梁上）</cite></div><p class="prose">马克斯办公室的一面墙上挂着一幅数百年前的画：一艘船在波涛汹涌的大海里航行。他在 2001 年买下这幅画，当时愚蠢的投机者正因互联网泡沫遭受惨痛的打击。这幅画提醒的是：<b>在我们无法控制的巨大破坏性力量面前，无人不受冲击</b>。</p><div class="aband"><q>绝对没有人想过他们会经历这次疫情，但它是我们生活中具有决定性意义的事件。</q><cite>——霍华德·马克斯（2020 年）</cite></div><h3 class="h3">「宇宙巨人综合征」</h3><p class="prose">汤姆·沃尔夫在 1987 年发表的小说《虚荣的篝火》（The Bonfire of the Vanities）里创造了「宇宙巨人」（Masters of the Universe）这个词，用以描述那些每年拿数百万美元奖金的炙手可热的投资银行家。</p><div class="aband"><q>认为自己是宇宙巨人，这是你能做的最糟糕的事情。我们每个人都只是一颗小齿轮，没有我们，宇宙会继续存在下去，我们必须适应它。</q><cite>——霍华德·马克斯</cite></div><p class="prose">读到马尔科姆·格拉德威尔的《异类》之后，马克斯整理了一份助他走上成功之路的幸运事件清单。他的好运最初体现在人口统计学方面：在战后经济增长的黄金时代，他在一个美国中产阶级白人家庭出生。他家里没有人上过大学，但父母很重视学习，为他买了一本百科全书。他高中成绩平平，所以他认为沃顿商学院录取他纯粹是幸运女神的眷顾。</p><div class="duo"><div class="colL"><h4>他列出的「幸运事件」</h4><ul><li>出生于 1946 年、战后美国中产阶级白人家庭，赶上经济增长的黄金时代。</li><li>家里没有人上过大学，但父母为他买了一本百科全书，还鼓励他上大学。</li><li>高中成绩平平，却被沃顿商学院录取；第二志愿只是一所大型州立大学。</li><li>向哈佛申请 MBA 被拒，于是 1967 年进了芝加哥大学商学院——当时那里正引领金融理论革命。</li><li>想进雷曼兄弟却没去成，转而进入第一花旗银行。</li><li>老板最终让他在没有经验的领域里经营两只新基金：可转换证券和高收益债券。</li></ul></div><div class="colR"><h4>但运气本身不够用</h4><ul><li>「听着，光靠运气是不够的。」</li><li>「但只有聪明的才智和努力也是不够的，甚至有毅力也不一定能成功，你需要四者兼备。」</li><li>「我们都知道，有的人很聪明，工作也很努力，但他们没有得到幸运女神的眷顾，这让人心碎。」</li><li>他的第二志愿是大型州立大学，在华尔街招聘人员眼里，这所大学肯定不能与沃顿商学院相提并论。</li></ul></div></div><div class="aband"><q>听着，光靠运气是不够的。</q><cite>——霍华德·马克斯</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>雷曼兄弟：一个没接到的电话</h4><span class="ar">▶</span></div><div class="cb"><div class="in">从芝加哥大学毕业后，马克斯最想得到雷曼的那份工作，却没能成功，于是去了第一花旗银行（后来改名花旗银行），在那里做股票分析师，后升任研究总监。多年后一位校园招聘人员告诉他：<b>雷曼当初决定聘用他，但负责给他打电话的那位合伙人喝醉了，没能把这个好消息传达给他</b>。他常想，如果接到那个电话，现在会是什么样。<b>2008 年，雷曼兄弟公司破产，所有合伙人血本无归，全球经济崩溃。</b></div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>可转换证券与高收益债券：他最幸运的机会</h4><span class="ar">▶</span></div><div class="cb"><div class="in">做了 10 年股票研究后，马克斯得知花旗银行将派人接替他担任部门主管。他不想把时间浪费在医疗保健股上——「我可以做任何事，就是不能把我的余生用来在默克公司和礼来公司之间做选择」。<b>最后老板让他在一个没有经验的领域里经营两只新基金：可转换证券和高收益债券</b>，他从此站进了一个数十年间兴盛繁荣的信贷领域。<b>他说，这可能是他最幸运的机会。</b>他还提到，「债务领域的投资符合我的个性，因为我有偿还承诺」。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>垃圾债券：偏见把高风险资产变便宜了</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1978 年他开始做高收益债券时，这还不是一份令人向往的工作。大多数投资机构都禁止购买垃圾债券，世界三大评级机构之一的穆迪公司则讽刺地宣称，所有 B 级债券都「不具备理想投资标的的特征」。<b>这种教条式理念对马克斯却很有吸引力。</b>他抓住了机会，与同事布鲁斯·卡什建立了持久的伙伴关系，1995 年两人退出 TCW 集团，共同创立橡树资本。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「当你名不副实时，你就会陷入麻烦」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">当作者提起他的一位亿万富翁同行经常对经济和市场做出大胆预测时，马克斯承认对方「非常聪明」，但补充说：<b>「到了最后，全世界都会看到他是否有自己预想中那么聪明。当你名不副实时，你就会陷入麻烦……有时候我希望他不认为自己有那么棒」。</b>源文用这件事说明，对最聪明（或最幸运）的投资者来说，过度自信是一大威胁。</div></div></div></div><div class="prof"><p class="pn">霍华德·马克斯（Howard Marks）</p><p class="pm">橡树资本管理公司创始人 · 备忘录作者 · 佛教「无常」的信奉者</p><dl><dt>履历</dt><dd>1946 年出生于纽约皇后区；沃顿商学院本科，1967 年入芝加哥大学商学院读 MBA；在花旗银行做了 10 年股票研究，1985 年转投洛杉矶 TCW 集团，1995 年与布鲁斯·卡什创立橡树资本。</dd><dt>规模</dt><dd>管理着约 1200 亿美元的资产；公司约有 950 名员工，在他的组织安排下这些员工都不必向他汇报工作。</dd><dt>客户</dt><dd>包括约 70 家美国最大的养老基金、数以百计的捐赠基金和基金会，以及许多世界上最大的主权财富基金。</dd><dt>身家</dt><dd>《福布斯》估计他的净资产为 22 亿美元；曾拥有马里布市一处价值 7500 万美元的房产，后在曼哈顿购入一处价值 5250 万美元的公寓。</dd><dt>著述</dt><dd>写了 25 年多的备忘录；沃伦·巴菲特说「当我在邮件中看到霍华德·马克斯写的备忘录时，我会先打开它们并阅读」。后结集为《投资最重要的事》。</dd></dl></div><div class="aband"><q>我觉得自己是个幸运的人，我带着这种不可思议的感觉四处走动。</q><cite>——霍华德·马克斯</cite></div><p class="prose">承认好运还有另一个好处：<b>这让他很快乐</b>。他出生于犹太人家庭，却成长为一名基督教科学派的信徒，如今他承认自己是犹太人，但不信教。他说：「我非常相信随机性。」</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>知道自己的无知</h2><span class="en">KNOWING WHAT YOU DON&#x27;T KNOW</span></div><p class="prose">马克斯有一本厚厚的汇编，里面记录了他几十年来积累的名言警句。他最喜欢的一条见解来自经济学家约翰·肯尼斯·加尔布雷斯——在马克斯眼里，加尔布雷斯就是知识分子里的英雄。</p><div class="aband"><q>我们有两类预测者，一类是无知的，另一类是不知道自己无知的。</q><cite>——约翰·肯尼斯·加尔布雷斯</cite></div><p class="prose">源文列举了投资界四类认为（或假装认为）自己有未卜先知能力的人。马克斯的判断是：这些成功的预测大多只不过印证了这句老话——<b>瞎猫碰上了死耗子</b>。他也承认存在少数例外，比如乔治·索罗斯和斯坦利·德鲁肯米勒，但他认为「你不能忽视人的因素」。</p><div class="grid g2"><div class="card"><div class="idx">一</div><h3>华尔街的「市场策略师」</h3><p class="cp">他们口若悬河，自信地预测来年股市的涨幅，不承认自己不知道股市接下来是涨还是跌。</p></div><div class="card"><div class="idx">二</div><h3>股票分析师</h3><p class="cp">他们为某些公司提供季度盈利预测，造成了利润是一致的和可预测的，而非杂乱无章和不稳定的假象。</p></div><div class="card"><div class="idx">三</div><h3>宏观对冲基金的经理</h3><p class="cp">他们对货币、利率和任何其他因素的变动积极下注。</p></div><div class="card"><div class="idx">四</div><h3>电视专家和财经记者</h3><p class="cp">他们会直言不讳地宣称，他们知道最近的（而且大多是无法解释的）市场波动对投资者预示着什么。</p></div></div><div class="aband"><q>认为自己不知道一些事情固然可怕，但更怕的是，认为世界是由那些相信自己确切知道发生了什么事情的人掌控的。</q><cite>——阿莫斯·特沃斯基（与丹尼尔·卡尼曼一起研究认知偏见）</cite></div><h3 class="h3">承认无知之后，他放下的四件事</h3><div class="grid g2"><div class="card num"><div class="idx">不预测</div><h3>不预测利率、通货膨胀或经济增速</h3><p class="cp">他不会浪费任何时间去预测这些事情。<b>与许多竞争对手不同，橡树资本公司甚至没有自己的经济学家，也不邀请外部「专家」来解读宏观经济形势。</b></p></div><div class="card num"><div class="idx">不择时</div><h3>放弃选择市场时机的想法</h3><p class="cp">他在早期的一份备忘录中指出，1926 年至 1987 年间的股票年均收益率为 9.44%，但「如果你去套现时，错过了744个月中收益最高的50个月，那么你就会错失了所有的收益」。<b>「试图把握市场时机是风险的一大源头，而不是防范风险的措施」。</b></p></div><div class="card num"><div class="idx">不追时髦</div><h3>不做「面向未来的投资」</h3><p class="cp">橡树资本还试图避免马克斯所称的「面向未来的投资」，这就排除了对科技股、时尚产品供应商以及任何时髦的诱人资产的投资。</p></div><div class="card num"><div class="idx">不看热度</div><h3>只问价格里含多少乐观</h3><p class="cp">分析任何资产时，他最想知道的是「其价格中包含多少乐观的成分」。就脸书、亚马逊、网飞和字母表的股票而言，「乐观成分非常高」；<b>不可知和狂热的乐观结合在一起足以吓跑他，不是因为他明确知道未来会发生什么，而是因为失望的概率太高。</b></p></div></div><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「漂亮 50 股」：源文在这里断了</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在职业生涯的早期，他在花旗银行任职时所在的部门非常青睐著名的时尚公司，包括施乐（Xerox Corp.）、雅芳（Avon Products）和宝丽来（Polaroid Corp.）等优质成长类公司，它们的股票被投资界称为「漂亮50股」，在 1973—1974 年股市暴跌前<b>——源文到此句中截断，后半句缺失</b>，见下方红框与文末校勘。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>2020 年 3 月：别人恐慌，他买了「几十亿美元」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2020 年 3 月，美国 11 年的牛市结束了，标准普尔 500 指数在不到一个月的时间里暴跌了 33.9%。随着病毒传播，投资者的情绪从「投到哪里都不会出错」转变成了「投到哪里都不对」。<b>在恐慌中，橡树资本斥资「几十亿美元」抢购了能带来「巨额回报」的高收益债券。</b>马克斯说：「你只需要知道市场存在脆弱性即可。」</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>没买亚马逊：他承认这是错误，但不算容忍</h4><span class="ar">▶</span></div><div class="cb"><div class="in">回首过去，马克斯承认，没有投资亚马逊股票是个错误。但在「信心过强、避险情绪过低、试图寻找投资目标的资本过多、杠杆使用过多」时，「持谨慎的态度并没有错」。当其他人因他不看好的股票赚得盆满钵满时，<b>他却能够安静地袖手旁观，内心毫无波澜</b>。他说：「我不记得我犯过大错，我只因疏忽大意犯过小错。」</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>2017 年：脸书、亚马逊、网飞与字母表</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2017 年作者与马克斯交谈时正是市场情绪高涨的时期，市场上出现了对脸书（Facebook）、亚马逊（Amazon）、网飞（Netflix）和字母表（Alphabet，即之前的 Google 公司）等股票的投资热。他警告说：<b>「人们表现得就好像它们会一直成功下去、股价会一直涨下去似的。从历史上看，这样的情形大多是危险的。树木长得再高，也不会高过天空。总有一天会出问题，我可不想下注。」</b></div></div></div></div><div class="broken-tip"><b>源文缺口（就地标注）</b>｜本节第 9 段止于「在1973—1974年股市暴跌前」，句中截断，后半句（这些「漂亮50股」后来发生了什么）在源文中缺失。本页不补写、不推测，见文末校勘 02。此外本篇导语第 5 段止于「托马斯·罗·普莱斯（T. Rowe Price）」，同属句中截断，见校勘 01。</div><div class="aband"><q>投资于梦想很容易，真正的挑战是如何确定资产的价值。</q><cite>——霍华德·马克斯</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>在混乱中寻找秩序</h2><span class="en">FINDING ORDER IN CHAOS</span></div><p class="prose">作者用小说家亨利·詹姆斯的一句评语开篇：生活是「包容与混乱」，而艺术是「歧视与选择」。詹姆斯把艺术家的这种寻找比作一条多疑的狗搜寻「被掩埋的骨头」。</p><p class="prose">就识别金融市场上反复出现的周期性规律而言，马克斯有罕见的天赋。他把这些模式比作<b>摆锤从一端向另一端的摆动</b>。</p><div class="aband"><q>要把世界看作是周期性的、震荡的，而不是直线发展的。</q><cite>——霍华德·马克斯</cite></div><div class="grid g3"><div class="card"><div class="idx">一</div><h3>经济</h3><p class="cp">会扩张和收缩。</p></div><div class="card"><div class="idx">二</div><h3>消费</h3><p class="cp">消费者支出有增有减。</p></div><div class="card"><div class="idx">三</div><h3>盈利</h3><p class="cp">企业盈利能力有升有降。</p></div><div class="card"><div class="idx">四</div><h3>信贷</h3><p class="cp">信贷的可获得性有高有低。</p></div><div class="card"><div class="idx">五</div><h3>估值</h3><p class="cp">资产估值会升会降。</p></div><div class="card"><div class="idx">六</div><h3>心理</h3><p class="cp">投资者心理总是在兴奋和沮丧、贪婪和害怕、轻信和怀疑、自满和恐惧之间转变。</p></div></div><p class="prose">马克斯的操作以这一假设为前提：<b>这种循环最终会自我修正，摆锤会朝相反的方向摆动</b>。未来或许是不可预测的，但反复出现的繁荣和萧条是可预测的。麻烦在于，大多数投资者做出的行为就好像最新的市场趋势会永远持续下去一样——行为经济学家称之为<b>「近期偏差」</b>。</p><p class="prose">马克斯还指出，人类的思维存在压抑痛苦记忆的危险倾向。而「过去的不幸和苦难往往能带来最宝贵的教训」。抑制这种倾向的一种方法是<b>深入研究市场的历史</b>。他从书架上拿出加尔布雷斯的《金融狂热简史》，当着作者的面朗读了自己最喜欢的一段。</p><div class="aband"><q>宽松的时代紧跟着惩罚性的修正。</q><cite>——霍华德·马克斯（2007 年备忘录，源文注明他用粗体字写出）</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>2007 年那份让他自豪的备忘录</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2007 年是金融危机爆发的前一年，他撰写了一份后来让他倍感自豪的备忘录，里面记录了许多危险的迹象，包括美国和英国愚蠢地放宽了抵押贷款的标准、无条件地为无价值的公司提供融资，以及愿意在没有契约保护的情况下投资高风险债券。源文注明：<b>为了醒目，他用粗体字写道：「宽松的时代紧跟着惩罚性的修正。」</b></div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>阿根廷百年债券：「希望战胜了经验」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2017 年，阿根廷发行了年收益率为 9% 的百年期债券。<b>尽管该国在 200 年的时间里有 8 次债务违约的记录（最近的一次发生在 2014 年），但这些债券仍然被超额认购了。</b>源文称这似乎是塞缪尔·约翰逊所称的「希望战胜了经验」的典型例子。2020 年作者采访马克斯时，他指出阿根廷刚刚第九次债务违约了。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>比特币、特斯拉与网飞：这一次是不是也一样？</h4><span class="ar">▶</span></div><div class="cb"><div class="in">看着 2017 年比特币价格飞速上涨，马克斯想知道，这是否仅仅是历史长河中最新一次看起来让人难以置信但其实并非那么神奇的奇迹。同样地，他也无法确定特斯拉和网飞等公司的股票是否能永远飙涨下去。<b>「无论是公司还是个人，当他们越来越成功时，他们会变得傲慢自大，这是非常危险的，我们不能忽视这一点。」</b></div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>他试图「预测现在」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在马克斯看来，现在与未来不同，它是可知的；不可知的是什么时候周期会逆转。<b>他说：「我甚至不考虑时机。在投资行业，做正确的事情很难，在正确的时间做正确的事情更难。」</b>为了得出结论，他会问自己：投资者是合理地持怀疑态度并规避了风险还是忽视了风险并乐于付出代价？相对于历史上的标准，估值是否合理？交易结构对投资者公平吗？投资者过于相信未来了吗？</div></div></div></div><div class="aband"><q>天下莫柔弱于水，而攻坚强者，莫之能胜。</q><cite>——老子（马克斯在 2006 年备忘录中引用；源文附译文「最高的善像水那样」）</cite></div><p class="prose">投资者也要像水一样，适应遇到的一切。「这听起来很简单，但在人类本性的驱使下，投资者很难做到这一点。」在人类本性的驱使下，几乎所有人都会被群体的情绪所左右，在极端情况下——比如风险最大时——我们最难理性行事。</p><div class="aband"><q>我不是说去套现，我想说的是，当市场上的价值主张发生变化时，你的投资组合也应该相应地发生变化。</q><cite>——霍华德·马克斯</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>「大多数时候，世界末日不会出现」</h2><span class="en">NOT THE END OF THE WORLD</span></div><p class="prose">信贷危机爆发前几个月，橡树资本已经未雨绸缪。<b>2008 年初，当世界上大多数人都自信地看涨股市时，该公司已募集到了 109 亿美元的资产，建立了史上规模最大的不良债务基金。</b></p><p class="prose">根据马克斯的研究，<b>信贷周期比其他周期更容易预测</b>。他在《投资最重要的事》里写道：「繁荣导致信贷扩张，不明智的贷款产生，巨大的损失出现，机构停止放贷，繁荣终结。这一过程周而复始」。</p><div class="tbwrap"><table><thead><tr><th>时间（2008 年 9 月前后）</th><th>事件</th></tr></thead><tbody><tr><td>9 月</td><td>美国政府拿走了房利美（Fannie Mae）和房地美（Freddie Mac）的控制权。</td></tr><tr><td>9 月</td><td>美林公司（Merrill Lynch）被迫出售给了美国银行（Bank of America）。</td></tr><tr><td>9 月</td><td>雷曼兄弟（Lehman）提出了美国历史上最大规模的破产申请。</td></tr><tr><td>9 月</td><td>美国国际集团（AIG）不得不从政府借款 850 亿美元。</td></tr><tr><td>9 月</td><td>连高盛都站到了悬崖边上。</td></tr><tr><td>9 月 15 日</td><td>橡树资本开始大手笔买入其他人避之不及的资产。</td></tr><tr><td>此后 15 周</td><td>在马克斯和卡什的领导下，该公司<b>每周投资 5 亿—6 亿美元</b>。</td></tr></tbody></table></div><p class="prose">9 月 19 日，他给橡树资本的客户写了一份备忘录，提出了一个无法回答但又不得不回答的问题：「金融体系会崩溃吗？还是这仅仅是我们经历的最严重的周期性衰退？」</p><div class="aband"><q>大多数时候，世界末日不会出现。</q><cite>——霍华德·马克斯（源文称他以典型的冷幽默口吻说出）</cite></div><p class="prose">马克斯从不认为未来的走势只有一种可能性。他的标准做法是给每一种「可能的未来」赋一个概率值，但由于不确定性很大，为一系列可能的结果赋概率值的做法会毫无意义。<b>他发现，此时用二元关系来思考问题、简化决策是非常有益的。</b></p><div class="aband"><q>当过于乐观时，怀疑主义呼唤悲观主义；当过于悲观时，它又呼唤乐观主义。</q><cite>——霍华德·马克斯（备忘录《消极主义的限度》）</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>10 月中旬：5 倍杠杆、追加保证金与一次摊牌</h4><span class="ar">▶</span></div><div class="cb"><div class="in">橡树资本旗下的一只基金对高收益债券进行了杠杆投资，杠杆比例为 5 倍。该基金拥有风险相对较低的高级别贷款：<b>在过去的 30 年里，橡树资本这类债务的年均违约率仅为 1%</b>，但此时由于价格远低于历史标准，公司面临追加保证金的威胁。马克斯联系了客户，请求他们增持股本。他见到的一位养老基金经理反复问「如果情况比这更糟糕呢？」</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>Pierre 食品公司：8 年，22 亿美元</h4><span class="ar">▶</span></div><div class="cb"><div class="in">橡树资本最骄人的战绩来自对 Pierre 食品公司的 1 亿美元投资。2008 年该公司濒临破产时，橡树资本收购了它。重组之后，该公司改名为 AdvancePierre 食品公司，后发展为美国包装三明治领域的领头羊，2017 年被泰森食品收购（Tyson Foods）。<b>源文写道：橡树资本在 8 年的时间里总共赚了 22 亿美元，是其投资本金的 23 倍</b>——本金 1 亿美元对应 23 倍与「赚了 22 亿美元」并不吻合，见校勘 03。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>总额：投入约 100 亿美元，收益 90 亿美元</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在危机最严重的时候，橡树资本总共投资了大约 100 亿美元。马克斯估计，这些投资的收益为 90 亿美元，这是该公司历史上最大的意外收获。作为最大的股东，没有人比马克斯和卡什赚得更多了。他还提到：「我总是问自己‘哪里出错了？是买入对还是不买入对’。很容易就能做出判断，这些都是好买卖。」</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>「我不记得度过危机有什么难的」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">当「所有人都认为形势只会变得更加糟糕」时，与犹如「惊弓之鸟」的人群背道而驰需要非同寻常的清醒和冷静。当作者问他危机是否让他感到很痛苦时，他直截了当地回答：<b>「我不记得度过危机有什么难的。」</b>作者问他是否总是不受情绪干扰，他说「是的」。这种性格让他和卡什能持续交流、相互支持：在橡树资本，马克斯指导大局，卡什及其团队做资产评估等实质性工作。</div></div></div></div><div class="check" data-k="03a"><p class="ct">自 测 · 我的组合扛得住哪种坏情况</p><label><input type="checkbox"><span>我能说清楚手里的资产在什么情况下会「崩溃」。</span></label><label><input type="checkbox"><span>如果市场一年内跌三分之一，我不会被迫卖出任何东西。</span></label><label><input type="checkbox"><span>我没有在「人人都不相信坏事可能发生」的时候加过杠杆。</span></label><label><input type="checkbox"><span>我知道自己错过了哪些机会，并且能接受错过。</span></label><label><input type="checkbox"><span>我买入的理由不是「它最近一直在涨」。</span></label><label><input type="checkbox"><span>我能说出当前价格里「包含多少乐观的成分」。</span></label><div class="cf">已勾选（勾中的项目越多，越应该在好日子里提前处理） <b>0</b> / 6</div></div><div class="aband"><q>我们押了注，而且我们赌赢了</q><cite>——霍华德·马克斯</cite></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>五个理念，与「你超越极限了吗」</h2><span class="en">FIVE IDEAS</span></div><p class="prose">源文在最后一节写道：马克斯反复提及了他几十年来一直深思的主题，<b>有 5 个关键的理念值得铭记</b>。随后以项目符号逐条列出，本页照录如下。</p><div class="grid g2"><div class="card num"><div class="idx">理念 1</div><h3>承认无知</h3><p class="cp">承认我们无法预测或掌控未来很重要。</p></div><div class="card num"><div class="idx">理念 2</div><h3>以史为鉴</h3><p class="cp">研究历史规律，考虑接下来可能发生的事情时要以史为鉴。</p></div><div class="card num"><div class="idx">理念 3</div><h3>周期必反转</h3><p class="cp">周期必将逆转，不计后果的过分行为必受惩罚。</p></div><div class="card num"><div class="idx">理念 4</div><h3>逆周期操作</h3><p class="cp">可以通过逆周期行为利用好周期性。</p></div><div class="card num"><div class="idx">理念 5</div><h3>保持谦逊</h3><p class="cp">为了在不确定的世界里取得长期的成功，要保持谦逊、怀疑和谨慎的心态。</p></div></div><p class="prose">但源文说，真正的影响如此深远、以至于作者要将它作为自己世界观中心的信条，是马克斯 50 多年前在大学里学到的另外四个字：<b>世事无常</b>。</p><p class="prose">金融市场提供了许多体现佛教教义的例子：亚洲「经济奇迹」后紧接着是 1997 年的金融危机；20 世纪 90 年代末的互联网热潮后紧接着是 2000 年的股市崩盘；房地产泡沫后是信贷危机，信贷危机后是始于 2009 年的史诗级牛市；而到了 2020 年，股市在 23 天内下跌了 34%，随后又在几周内飙升了近 40%。</p><div class="aband"><q>如果我们不接受一切都在变化的教义，我们就无法保持镇静。</q><cite>——铃木俊隆</cite></div><p class="prose">源文还提到不执着的另一面：会消失的不只有美好的事物，还有不好的事物——情绪和心理上的痛苦、糟糕的政治领导人、衰退和流行病等。「考虑到万事万物皆在变化中，我们不应该在时局好时忘乎所以，在时局差时灰心丧气。」</p><div class="aband"><q>经济上独立并非指赚大钱或拥有很多钱，你知道钱从哪里来吗？只要你花的比赚的少，你就能攒下钱，要量入为出。切记，你反脆弱的能力来自你没有达到极限的程度。</q><cite>——霍华德·马克斯</cite></div><div class="check" data-k="03b"><p class="ct">自 测 · 我离「极限」有多远</p><label><input type="checkbox"><span>我花的钱和赚的钱之间，几乎没有余量。</span></label><label><input type="checkbox"><span>我承担了需要靠「不出意外」才能维持的固定支出。</span></label><label><input type="checkbox"><span>我借了钱去投资。</span></label><label><input type="checkbox"><span>我相信「房价会涨下去，永不会下跌」这类说法。</span></label><label><input type="checkbox"><span>我需要在坏消息出现时卖出资产来应付生活。</span></label><label><input type="checkbox"><span>我把所有钱放在一家银行、一家券商、一个国家或一只基金里。</span></label><div class="cf">已勾选（勾中项越多，越接近马克斯所说的「达到极限」） <b>0</b> / 6</div></div><details class="ext"><summary>源文引用的《念住经》：「超越执着」重复了 13 次</summary><div class="ex">源文提到，最有影响力的佛经《念住经》（Satipatthana Sutta）记载的是佛陀把正念作为涅槃手段的论述。佛陀解释说，醒悟之路要求我们「时刻留意」出现在我们面前的一切事物，当它们（包括我们的思想、感觉和感官知觉）出现和消失时，我们要超然地观察它们。内心要清楚，一切都是暂时的，这样心灵就不再受羁绊。<b>「超越执着，不再贪恋身心世界的任何事物」，这句话在经文中重复出现多达 13 次。</b></div></details><p class="prose">如今马克斯已经 70 多岁，他越来越多地思考自己的表现是否令人钦佩，尤其是他对待同事和客户的方式。他很满意橡树资本的收益率，但他也为它的声誉、诚信和联合创始人卡什感到自豪：<b>他说他们在一起共事了 30 年，其间从未争吵过。</b></p><div class="aband"><q>你取得的成就并非唯一重要的事情，你做事的方法也很重要。</q><cite>——霍华德·马克斯</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">句中截断</span><span class="nd"><b>01｜</b>本篇<b>导语第 5 段</b>止于「总部位于巴尔的摩的投资公司普信公司的创始人托马斯·罗·普莱斯（T. Rowe Price）」，<b>句中截断</b>，谓语与下文（这位创始人主张什么）在源文中缺失。本页未补写、未推测。依据：该段 75 字，末字符为「）」，非句末标点。</span></div><div class="note" id="n2"><span class="nn">句中截断</span><span class="nd"><b>02｜</b>本篇<b>节 2（知道自己的无知）第 9 段</b>止于「……它们的股票被投资界称为『漂亮50股』，在1973—1974年股市暴跌前」，<b>句中截断</b>，后半句缺失。本页在「貳」节对应案例卡后以红框就地标注，不补写。依据：该段 194 字，末字符为「前」。</span></div><div class="note" id="n3"><span class="nn">数字存疑</span><span class="nd"><b>03｜</b>本篇<b>节 4 第 17 段</b>：橡树资本对 Pierre 食品公司投入 <b>1 亿美元</b>本金，「在 8 年的时间里总共赚了 22 亿美元，是其投资本金的 23 倍」。<b>本金 1 亿美元的 23 倍为 23 亿美元，与同句的「22 亿美元」相差 1 亿美元</b>；源文未说明是否含本金回收或四舍五入。本页在案例卡内如实并存两个数字，不裁定、不改写。</span></div><div class="note" id="n4"><span class="nn">样式残片</span><span class="nd"><b>04｜</b>微信读书在每章文件尾部统一注入 5 行样式残片（<b>/*封面*/ .frontCover { qrfullpage: 1; } /*</b>），本章同其他 11 章完全一致，属导出器注入而非正文文字。解析阶段已剔除，零丢失校验按「源文段落序列减去这 5 行」的口径逐段比对通过。</span></div><div class="note" id="n5"><span class="nn">引文口径</span><span class="nd"><b>05｜</b>本页所有引号内文字均逐字取自源文，未做缩短或改写（引文为长句时取源文内的连续片段，不改标点）；节标题、小节标题按源文原样保留。分析性文字（「一篇之图」的论证主线、各节导语、卡片中的归纳句）由源文内容推出，不引入书外观点。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜威廉·格林《更富有、更睿智、更快乐》（马林梅 译，中国青年出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三章·一切都变了</span><a href="../02-愿意孤独/index.html">← 第二章</a><a href="../04-坚韧的投资者/index.html">第四章 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

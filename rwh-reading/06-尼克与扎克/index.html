@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第六章·尼克和扎克的精彩冒险｜更富有、更睿智、更快乐 精读</title>
+<meta name="description" content="两个不想在华尔街干活的人，把一只基金当实验室：先扔掉绝大部分信息，再等上十年二十年——他们管这叫「我们把一磅变成了十磅」。">
+<style>
+:root{
+  --paper:#F7F3EA;      /* 暖白纸底 */
+  --paper-2:#EFE8D9;    /* 纸色深一档 */
+  --card:#FFFDF8;
+  --ink:#0B1D33;        /* 墨蓝（主色） */
+  --ink-2:#16304C;
+  --ink-deep:#07131F;   /* 深墨（hero 底） */
+  --gold:#B8923A;
+  --gold-b:#D3AC4B;
+  --gold-soft:rgba(184,146,58,.16);
+  --cinnabar:#A63A2B;
+  --teal:#2F6B63;
+  --tx:#26303A;
+  --tx-2:#495156;
+  --tx-3:#7A7364;
+  --line:rgba(11,29,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(11,29,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#16304C 0%,var(--ink-deep) 62%);
+  color:#F1E9D8;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(211,172,75,.42)}
+.hero::after{inset:22px;border:1px solid rgba(211,172,75,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(211,172,75,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,58,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F6EFE0}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(241,233,216,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(211,172,75,.34);color:rgba(241,233,216,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,58,43,.6);background:rgba(166,58,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(184,146,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EDE4D2;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(211,172,75,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F5EDDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(211,172,75,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F5EDDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(237,228,210,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(184,146,58,.5);box-shadow:0 4px 18px rgba(11,29,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(184,146,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(47,107,99,.055)}
+.duo .colR{background:rgba(166,58,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,58,43,.1);color:var(--cinnabar);border:1px solid rgba(166,58,43,.28)}
+.case .tag.good{background:rgba(47,107,99,.1);color:var(--teal);border:1px solid rgba(47,107,99,.28)}
+.case .tag.mid{background:rgba(122,115,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(184,146,58,.45);background:rgba(184,146,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,58,43,.55);border-radius:8px;
+  background:rgba(166,58,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,45,33,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,58,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(184,146,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(11,29,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(11,29,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px}
+.bknav a{color:#16304C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap}
+.bknav a:hover{background:rgba(184,146,58,.16)}
+.bknav .home{font-weight:600}
+.bknav .sp{flex:1}
+.bknav .dis{color:rgba(11,29,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(11,29,51,.14);border-radius:5px}
+.bknav .cur{color:#7A7364;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+@media(max-width:760px){.bknav .inner{padding:0 16px;gap:8px}
+  .bknav .cur{display:none}.bknav a{padding:5px 8px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-简单的境界/index.html">← 第五章</a><a href="../07-高绩效习惯/index.html">第七章 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">缓</div>
+  <div class="stamp s3">游牧者</div>
+  <h1>尼克和扎克的精彩冒险</h1>
+  <p class="sub">两个不想在华尔街干活的人，把一只基金当实验室：先扔掉绝大部分信息，再等上十年二十年——他们管这叫「我们把一磅变成了十磅」。</p>
+  <div class="meta"><span>第六章</span>
+    <span class="k">延迟满足</span>
+    <span>正文 22,008 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>建在沙土上的房子</a><a href="#s3" data-t="s3"><span class="cn">叁</span>不看什么</a><a href="#s4" data-t="s4"><span class="cn">肆</span>共享的规模经济</a><a href="#s5" data-t="s5"><span class="cn">伍</span>5 点启示</a><a href="#s6" data-t="s6"><span class="cn">陆</span>速查与自测</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>无乐小乐，小辩小慧，观求大者，乃获大安。（勿以世俗小乐为乐，勿求世俗的小辩小慧，当求出世之乐之慧，获此大乐大慧永安康。）</p><cite>——《法句经》</cite></div><div class="epi"><p>所以，凡听见我这话就去行的，好比一个聪明人，把房子盖在磐石上。雨淋，水冲，风吹，撞着那房子，房子总不倒塌，因为根基立在磐石上。凡听见我这话不去行的，好比一个无知的人，把房子盖在沙土上。雨淋，水冲，风吹，撞着那房子，房子就倒塌了，并且倒塌得很厉害。</p><cite>——《马太福音》第7章第24—27节</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">THE MAP</span></div><div class="map"><p class="mt">本篇论证主线</p><p class="thesis">斯利普和扎卡里亚把<b>不看什么</b>当成第一道工序：先按保质期筛掉日度噪音，再用目标分析法判断企业十年、二十年的走向，最后集中押注少数肯把规模经济分享给客户的公司。源文第 4 节把它收成一句：应当朝短期主义的反方向走。</p><div class="chain"><div class="node"><div class="n">出身</div><div><p class="tt">两只意外的鸭子</p><p class="dd">一位受挫的景观设计师、一位不得志的气象学家。源文说，因为「在很长的时间里不是业内人士」，他们「对一切都提出了质疑」。</p></div></div><div class="node"><div class="n">筛选</div><div><p class="tt">按保质期筛信息</p><p class="dd">「信息与食物一样，都有保质期」——不看卖方研究、不看彭博终端、不理会季度每股收益。</p></div></div><div class="node"><div class="n">提问</div><div><p class="tt">目标分析法</p><p class="dd">不问未来 3 个月的利润和 12 个月的目标价，问 10 年或 20 年内这家企业想完成什么目标。</p></div></div><div class="node"><div class="n">发现</div><div><p class="tt">共享的规模经济</p><p class="dd">把规模扩大带来的好处分给客户，形成「收入增加利于扩大规模，规模扩大促进成本降低，成本降低导致价格降低，价格降低导致收入增加」的良性循环。</p></div></div><div class="node"><div class="n">持有</div><div><p class="tt">漫长而简单的游戏</p><p class="dd">不用杠杆、不做空、不押宏观；游牧者股票平均持有 7 年，同期其他投资者持有其组合中美国公司股票平均只有 51 天。</p></div></div><div class="node"><div class="n">结果</div><div><p class="tt">一磅变成十磅</p><p class="dd">13 年收益率 921.1%，同期 MSCI 世界指数 116.9%；2014 年退还股东资金，两人 45 岁退休。</p></div></div></div></div><p class="prose">本章的骨架是一组对照：一边是扎卡里亚父亲掉进的<b>金字塔计划</b>、和信超媒体 IPO 后暴跌 98%、每隔 12 周就作废一次的每股收益估算；另一边是开市客的 18 年和亚马逊的 16 年。</p><p class="prose">源文用「保质期长的 5 点启示」把这组对照收束成一条可执行的原则：<em>在一个短期主义和即时满足日益盛行的世界里，那些一贯朝相反方向前进的人可获得巨大的优势</em>。</p><div class="aband"><q>游牧者对我们的意义远不止管理一只基金那么简单……管理它就如同一次理性的、形而上学的、近乎精神上的旅行（没有沙漠和骆驼，尽管扎克可能更喜欢它们）。</q><cite>——尼克·斯利普，致游牧者股东信</cite></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>建在沙土上的房子：两个人怎么进的这一行</h2><span class="en">BUILT ON SAND</span></div><p class="prose">源文把两个人的来路并排讲出来：扎卡里亚是<b>逃难者的儿子</b>，斯利普是<b>被解雇的园林学徒</b>。两人都没打算进投资业——扎卡里亚想做气象学家，斯利普想做景观设计师。</p><h3 class="h3">扎卡里亚：从巴格达到剑桥，再到被炒鱿鱼</h3><div class="prof"><p class="pn">凯伊斯·「扎克」·扎卡里亚（Qais “Zak” Zakaria）</p><p class="pm">1969 年生于伊拉克 · 剑桥大学数学系 · 怡富公司分析师 → 德意志银行股票经纪 → 马拉松资产管理公司分析师 → 游牧者联合经理</p><dl><dt>家境</dt><dd>父亲在伊拉克中央银行工作，母亲在巴格达大学讲授营养学；1972 年一家天主教慈善机构帮助他的父母在英国找到了一处避难所，「他们在那里安顿了下来，一无所有。」</dd><dt>转折</dt><dd>1987 年前往剑桥大学学习数学，就在那一年，他的父亲破产了——父亲借钱在股市做投机交易，中了推销员的金字塔计划圈套。</dd><dt>第一份投资工作</dt><dd>1990 年毕业后进入亚洲领先的资产管理公司怡富公司（Jardine Fleming）做股票分析师，直到 1996 年：上司被指控把成功交易分配到自己的账户，被解雇罚款，公司重组，他也被炒了。</dd><dt>最痛苦的 4 年</dt><dd>1997 年起在德意志银行站卖方立场分析亚洲股票，「这份工作我做了 4 年，简直如在地狱一般。」</dd><dt>转机</dt><dd>2000 年 4 月逃离德意志银行，加入马拉松资产管理公司；5 月与斯利普同去奥马哈参加伯克希尔股东大会。</dd></dl></div><h3 class="h3">斯利普：一本《投资信托解释》和一位天生的批评者</h3><div class="prof"><p class="pn">尼克·斯利普（Nick Sleep）</p><p class="pm">英国人 · 爱丁堡大学地理专业 · 马拉松资产管理公司投资分析师（1995 年起十余年）· 游牧者合伙投资创始人</p><dl><dt>入行</dt><dd>园林学徒被解雇后「四处走了走，看了看爱丁堡有哪些优势行业」，读《投资信托解释》（Investment Trusts Explained）弄清了投资业务；「我喜欢这种感觉，就像在做测智商的题。」</dd><dt>性格</dt><dd>「我很早就习惯了与众不同，人群之外的生活很快乐。」他怀疑自己从不寻常角度看世界的习惯源自惠灵顿学院的走读经历。</dd><dt>导师</dt><dd>马拉松联合创始人杰里米·霍斯金（Jeremy Hosking）——「他天生就是批评传统信仰的人」「他喜欢购买他能找到的最受他人鄙视的资产」。</dd><dt>思想底本</dt><dd>约 20 岁时被《禅与摩托车维修艺术》（Zen and the Art of Motorcycle Maintenance: An Inquiry into Values）迷住，「你真的想高质量地完成每件事，因为那样你内心才能感到满足与平静。」</dd></dl></div><h3 class="h3">1999—2000 年：源文用来做反面的那个黄金时代</h3><p class="prose">源文说，如果你想写关于华尔街的糟糕故事，就会选 1999 年底和 2000 年初——「当时的科技股和互联网股热潮使银行家、经纪人、基金经理和定投者都陷入了癫狂状态」。扎卡里亚在德意志银行亲历了这场癫狂，并把它变成了自己的反面教材。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>父亲的破产：金字塔计划与「足够高」的收益</h4><span class="ar">▶</span></div><div class="cb"><div class="in">事后得知，他的父亲借钱在股市做投机交易。他交易了受追捧的热门股，中了卑鄙的推销员的金字塔计划圈套。扎卡里亚说，「股票经纪人根据金字塔上的顺序推荐股票，<b>你投入的资金越多，你从金字塔中得到的收益就越高。我父亲从未得到过足够高的收益。</b>当这个计划失败时，他失去了一切。」家里负债累累，出口生意终止。他的结论是：「我父亲在他了解的业务上赚了钱，而在他不了解的业务上赔了钱，他被非常卑鄙的人带到了破产的境地。」</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>和信超媒体：27 美元到 88 美元，再到 −98%</h4><span class="ar">▶</span></div><div class="cb"><div class="in">中国台湾一家成立不到两年、盈利遥遥无期的科技创业公司，高盛和德意志银行「不顾事实」，决定在 2000 年 2 月泡沫最严重的时候在纳斯达克公开发行。同事在巴黎打电话推销，一位基金经理下了一笔 <b>1.5 亿美元</b>的订单——「但问题是，这一额度超出了他的基金资产总额，不过，似乎没人在意这一点，一切都是游戏。」股价在 IPO 当天从 <b>27 美元飙升至了 88 美元</b>，估值超过 <b>40 亿美元</b>；几周之后互联网泡沫破灭，<b>暴跌了 98%</b>。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>2000 年 5 月的奥马哈：另一种做法是存在的</h4><span class="ar">▶</span></div><div class="cb"><div class="in">扎卡里亚加入马拉松的次月，与斯利普一起去了伯克希尔·哈撒韦的股东年度大会。「感觉太棒了。」沃伦·巴菲特和查理·芒格在大会上谈到了他们打算持股数十年的公司，<b>他们没有选择 IPO，也不打算以他人受损为代价让自己的腰包变得鼓起来</b>。扎卡里亚的反应是：「哦，天哪，」他说，「他们没想赌博，他们真正地考虑了企业！」</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>「我们不必做华尔街那些乌七八糟的事情」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">斯利普此前一直在劝老板让他推出一只投资比较集中的基金，效仿巴菲特的打法。他看到的两个极端是：一极「巴菲特尽可能地按原则行事」；另一极「营销驱动的公司可能兜售投资基金，也可能兜售汽车或洗衣机……他们不在乎客户」。2001 年老板同意后，他请扎卡里亚一同担任基金经理：「<b>我们想证明另一种投资和行为方式是行得通的。</b>」</div></div></div></div><div class="aband"><q>我父亲在他了解的业务上赚了钱，而在他不了解的业务上赔了钱，他被非常卑鄙的人带到了破产的境地。</q><cite>——凯伊斯·「扎克」·扎卡里亚</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>从不在意胡言乱语：保质期与目标分析法</h2><span class="en">IGNORING NOISE</span></div><p class="prose">源文第 2 节给的第一个数字是目标：把游牧者合伙投资基金的资产净值<b>提高 10 倍</b>。斯利普有 3 个女儿和一个教子，他这样向孩子们描述这一目标：如果孩子们问他「你们在战争中做了什么」，他想回答「我们把一磅变成了十磅。」</p><div class="aband"><q>聪明之道无他，学会忽略一些事情而已。</q><cite>——威廉·詹姆斯（斯利普引用）</cite></div><h3 class="h3">他们主动扔掉的东西</h3><div class="grid g3"><div class="card"><div class="idx">一</div><h3>短时财经新闻</h3><p class="cp">2020 年 5 月，财经新闻充斥新冠疫情对消费者支出、企业利润、失业率、利率和资产价格的短期猜测，《金融时报》甚至讨论复苏轨迹是像字母 F、U、W、L 还是像耐克的标志。「既然无法预测接下来的经济状况，为什么要把精力浪费在这些不可知的事情上呢？」</p></div><div class="card"><div class="idx">二</div><h3>季度每股收益</h3><p class="cp">经纪公司有刺激投资者进行交易的动机，对数千家公司下一季的每股收益做出了不可靠的估计。斯利普把渴求这些信息的人称为「季度每股收益瘾君子」，这些信息会在 <b>12 周</b>后变得「一文不值」。</p></div><div class="card"><div class="idx">三</div><h3>卖方研究</h3><p class="cp">「我们把它们堆起来。」扎卡里亚说，大概一个月后才开始翻看，「<b>如此无聊</b>」，所有研究都会被扔进垃圾箱；他们直言不讳地告诉股票经纪人，打电话推销是徒劳的。</p></div><div class="card"><div class="idx">四</div><h3>彭博终端</h3><p class="cp">彭博显示屏年租金约为 <b>2.4 万美元</b>，在专业投资者眼中是地位的象征；他们把唯一的显示屏装在了一张矮桌上，旁边没放椅子——「我们就是想让人在看显示屏的时候感到不舒服。」</p></div><div class="card"><div class="idx">五</div><h3>「猜来猜去」的信息</h3><p class="cp">在奖励即时获取无限多信息的文化里，这种刻意断开联系「似乎是不合情理的」；他们想安安静静地思考，不愿受这类信息的干扰。</p></div><div class="card"><div class="idx">六</div><h3>营销与规模</h3><p class="cp">源文说大多数投资公司的首要任务是利润最大化，而游牧者「从一开始就被视为实现投资者回报最大化而非资产最大化的工具」；他们几乎从不接受媒体采访，规模妨碍业绩时就把资金返还给股东。</p></div></div><div class="duo"><div class="colL"><h4>他们看什么（长保质期）</h4><ul><li>「我们看年报，直到筋疲力尽，我们尽可能走访每一家公司，直到我们厌烦了为止。」斯利普每年出行多次，护照每一页都被填满，不得不换了一本新的。</li><li>在 10 年或 20 年内，这家企业想完成什么目标？</li><li>为了提高实现目标的概率，管理层现在必须做些什么？</li><li>又有哪些因素可能阻止这家公司实现如此喜人的目标？</li><li>公司能否通过提供优质的产品、低廉的价格和高效的服务来增进与客户的关系？</li><li>CEO 是否为提高公司的长期价值合理地配置了资本？</li></ul></div><div class="colR"><h4>他们不看什么（易腐品）</h4><ul><li>公司未来 3 个月的利润是多少？</li><li>股票 12 个月的目标价是多少？</li><li>卖方分析师的研究报告——堆一个月再翻，然后整摞扔掉。</li><li>彭博终端上的实时数据与财务新闻。</li><li>经纪人的电话推销。</li><li>所有可能让投资者分心的短时信息。</li></ul></div></div><p class="prose">源文提醒，目标分析法不只用于选股。想知道老了能不能保持健康，就问现在要投入什么；想被家人和朋友缅怀，就想象他们正在参加你的葬礼，问现在的你需要如何做。</p><p class="prose">斯利普把这套问法落到自己身上：「当你 80 岁时，回首过去，想想你公平地对待了客户，认真地工作了一辈子，理智地做了慈善，而不是拥有 4 栋房子和一架飞机，你会是什么感觉？」</p><h3 class="h3">把「利益冲突」写进收费条款</h3><div class="tbwrap"><table><thead><tr><th>项目</th><th>源文所述的行业惯例</th><th>游牧者的做法</th></tr></thead><tbody><tr><td>管理费</td><td>惯常的 <b>1% 或 2%</b> 资产管理费</td><td>只收取能够弥补成本的低费用</td></tr><tr><td>业绩报酬</td><td>以规模为核心，规模扩大即可多收费用</td><td>年化收益率高于 <b>6%</b> 时获得超额收益的 <b>20%</b></td></tr><tr><td>业绩不佳时</td><td>照收管理费</td><td><b>根本不会收取任何费用</b></td></tr><tr><td>事后回拨</td><td>无此机制</td><td>若之后的收益率不能达到 6% 的门槛值，<b>将向股东退还之前收取的部分费用</b></td></tr><tr><td>开放与关闭</td><td>抵制关闭超大规模基金、不再接受新投资</td><td>从 2004 年开始多次关闭基金、禁止新的认购；只有找到能部署更多资金的好时机才重新开放</td></tr><tr><td>投资期限</td><td>无约束</td><td>投资者需签署文件，<b>确认投资时间不得短于 5 年</b></td></tr><tr><td>工具</td><td>冲短期业绩、快速致富的策略（斯利普称为「投资伟哥」）</td><td>从不使用杠杆，从不做空股票，从不投机期权或期货，从不对宏观经济进行押注</td></tr></tbody></table></div><div class="aband"><q>当一个人的薪水取决于他不理解的事物时，要让他理解该事物是何等困难！</q><cite>——厄普顿·辛克莱（源文引）</cite></div><p class="prose">源文给出的对照数据是：当先锋基金创始人约翰·博格于 1951 年进入投资行业时，共同基金持股的平均时间为 <b>6 年左右</b>，到了 2000 年已缩减为 <b>一年左右</b>；博格因此警告「愚蠢的短期投机已经取代了明智的长期投资」。</p><p class="prose">2006 年斯利普在致股东的信中说，游牧者的股票平均持有时长是 <b>7 年</b>，而其他投资者持有其投资组合中美国公司股票（伯克希尔·哈撒韦的除外）的平均时间只有 <b>51 天</b>。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>建在岩石上的房子：共享的规模经济</h2><span class="en">SCALE ECONOMIES SHARED</span></div><p class="prose">基金命名为<b>游牧者</b>，是因为他们愿意在任何地方寻宝。它于 <b>2001 年 9 月 10 日</b>（「9·11」事件前一天）开始交易。</p><p class="prose">早期买的是经典「雪茄烟蒂」：菲律宾全国最大的水泥生产商联合水泥公司（Union Cement，股价从 30 美分暴跌至不足 2 美分）、泰国报纸出版商《民意报》（Matichon，从 12 美元跌至 1 美元）、市值缩水 98% 的朗讯科技（Lucent Technologies）优先股——到 2003 年底，游牧者的资产净值翻了一番。</p><p class="prose">廉价股的供应会枯竭，于是他们冒险去了津巴布韦：在罗伯特·穆加贝统治下经济因腐败、货币崩溃、私有农场国有化和抢劫者出没而瘫痪。他们买入了 4 只津巴布韦股，实际上都是垄断企业，其中志美公司（Zimcem）在哈拉雷证券交易所以其资产重置成本的 <b>70%</b> 出售。</p><p class="prose">斯利普这样描述这个市场的吸引力：「客户讨厌它，合规人员讨厌它，顾问讨厌它，市场营销人员讨厌它。投资机会很少，没有被纳入基准……非常完美！」</p><h3 class="h3">一次代价高昂的失误，换来了本章最重要的发现</h3><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>捷达公司：赚了 6 倍，却「看走眼了」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2002 年，游牧者完成了自成立以来金额最大的一笔押注——负债累累的英国公交运营商捷达公司（Stagecoach）。该公司股价从 <b>2.85 英镑暴跌至 14 便士</b>，他们估计股票应该值 60 便士。创始人从半退休状态复出，整顿企业、精简业务，被忽视的摇钱树——在英国的巴士业务——再度得到重视。斯利普和扎卡里亚以 <b>90 便士左右</b>套现，获得 <b>6 倍</b>收益；但到 2007 年末，其股票暴涨至 <b>3.68 英镑</b>。「我们觉得自己太差劲了。」斯利普说，「我们受到了思维的束缚，我们看走眼了。」</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>开市客：主动压低毛利，把规模的好处还给会员</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2002 年因投资者担心利润率低，股价从 <b>55 美元</b>跌至 <b>30 美元</b>，游牧者开始投资。当时客户每年支付 <b>45 美元</b>会员费进场，开市客对商品的加价<b>不超过成本价的 15%</b>，而一家普通的超市可能加价 30%。据斯利普和扎卡里亚估计，<b>开市客每赚取 1 美元，其会员就能节省 5 美元</b>。到 2005 年，对它的投资额占基金资产额的<b>六分之一</b>；持有 18 年，股价从 30 美元涨到 <b>380 美元</b>，同时还收获了丰厚的股息。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>亚马逊：贝索斯走的是福特和沃尔顿走过的路</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1997 年斯利普第一次看到亚马逊的信息，老板反问：「嗯，是的，尼克，但他们做了什么其他人做不到的事情吗？」多年后他们发现，贝索斯走的是福特、沃尔顿、西格尔等人走过的路，而且互联网使这套经典策略更容易实施：把办公室自动售货机上的灯泡去掉，仅此一举一年就能为公司节省 <b>2 万美元</b>；每年以折扣价和航运补贴的形式投入<b>数亿美元</b>，且从不指望在 5 到 7 年内看到结果。2005 年超级会员制推出，年费 <b>79 美元</b>——「亚马逊突然变成了加速版的开市客。」</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>2008 年：索罗斯只提了一只将被做空的股票</h4><span class="ar">▶</span></div><div class="cb"><div class="in">市场崩盘前夕，斯利普在纽约听乔治·索罗斯谈即将爆发的金融灾难，「这位历史上最成功的交易者只提到了一只将被做空的股票，那就是亚马逊」。当天中午他去拜访亚马逊最大的外部股东比尔·米勒，米勒说为满足赎回要求，他被迫减持。当晚斯利普打电话给扎卡里亚：「你确定我们现在这么做是因为这里的每个人都往另一个方向去了吗？」——「<b>我们要么大获成功，要么一败涂地。</b>」2008 年亚马逊损失了近一半市值，游牧者的资产缩水 <b>45.3%</b>，两人在一个「豪华雅致」的地方（麦当劳）紧急碰面。</div></div></div></div><div class="ladder"><div class="step"><div class="dot">1</div><h4>收入增加利于扩大规模</h4><p>回头客不断增加，而且他们在开市客的其他商店里花费了更多的钱，这给公司带来了巨额的收入。源文说，这种自我约束政策的结果是形成了一种良性循环。</p></div><div class="step"><div class="dot">2</div><h4>规模扩大促进成本降低</h4><p>随着公司的发展，它与供应商在谈判后达成了更有利的协议，并且不断压低了采购成本。</p></div><div class="step"><div class="dot">3</div><h4>成本降低导致价格降低</h4><p>随后公司进一步降价，与消费者分享了规模经济的好处——「它没有攫取所有的战利品，它的低利润率恰恰反映了它的耐心而不是软弱。」</p></div><div class="step"><div class="dot">4</div><h4>价格降低导致收入增加</h4><p>规模因此成了它的一大优势，而非负担；与其他利润率更高的竞争对手相比，它的优势扩大了。源文说，他们研究沃尔玛、戴尔电脑、西南航空、特易购、盖可保险、内布拉斯加州家具商场以及福特 T 型车（从 1908 年的 850 美元降到 1925 年的不足 300 美元）后认定：就促进企业长寿而言，没有哪种模式比得上规模经济。</p></div></div><div class="aband"><q>收入增加利于扩大规模，规模扩大促进成本降低，成本降低导致价格降低，价格降低导致收入增加。</q><cite>——源文对开市客良性循环的总结</cite></div><div class="aband"><q>所以对我们来说，只持有某些公司的股票是合理的，因为我们真正了解它们。</q><cite>——尼克·斯利普（第 4 节论集中持股）</cite></div><p class="prose">2008 年的回撤之后，他们没有收手，反而利用混乱升级了投资组合，把更多资金集中于最优质的公司。从 <b>2009 年到 2013 年</b>，游牧者基金的收益率高达 <b>404%</b>。</p><p class="prose">2014 年初基金关闭时资产规模已增加至大约 <b>30 亿美元</b>，亚马逊自 2005 年以来价格上涨 <b>10 倍</b>，一度占该基金资产的比例增加到<b> 40% 左右</b>。斯利普写道，许多基金「以做大蛋糕为目标」，而他自己的满足感来自过程：「做大蛋糕只是（令人愉快的）副产品」。</p><div class="aband"><q>你和扎克做出了正确的选择，我想你会发现，生活才刚刚开始。</q><cite>——沃伦·巴菲特回复斯利普的信</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>保质期长的 5 点启示</h2><span class="en">FIVE LESSONS</span></div><p class="prose">源文第 4 节自列编号框架：「在我看来，我们可以从斯利普和扎卡里亚的经历中得到 5 点启示。」下面按源文自身的编号归位，序号与原话一一对应。</p><div class="grid g3"><div class="card num"><div class="idx">启示 1</div><h3>以追求高质量为指导原则</h3><p class="cp">「这是他们受《禅和摩托车维修艺术》一书的启发形成的道德和智慧理念。」源文说，把「质量」视为模糊、主观的概念很容易，但它为许多决策提供了极为有用的筛选标准——例如只收取足够游牧者保持运营的低年度管理费，「无论他们的业绩如何，这一选择都会使他们变得富有」。</p></div><div class="card num"><div class="idx">启示 2</div><h3>关注保质期长的因素</h3><p class="cp">「我们要铭记这一思想：关注保质期长的因素，不要太在意昙花一现的因素。」源文指出，他们在选择信息时运用了这一原则，在选择拟投资的公司时也运用了这一原则。</p></div><div class="card num"><div class="idx">启示 3</div><h3>共享的规模经济</h3><p class="cp">「规模经济共享这种特殊的商业模式创造了一种良性循环，能够在长期内创造可持续的财富。」自相矛盾的是，他们还认为持有少量股票（通常约为 10 只）的风险比持有数百只股票的风险要小——「多样化是标准的策略，必然会导致平庸的回报。」</p></div><div class="card num"><div class="idx">启示 4</div><h3>不必不道德也能取得惊人成功</h3><p class="cp">「即使是在自私行为是常态、生性贪婪的资本主义企业里，也没有必要为了取得惊人的成功而做出不道德或肆无忌惮的行为。」证据是收费方案利于股东而非自己；扎卡里亚坚持斯利普应拥有投资公司 51% 的股份；两人在关闭基金几年后仍共用一间办公室。</p></div><div class="card num"><div class="idx">启示 5</div><h3>朝短期主义的反方向走</h3><p class="cp">「在一个短期主义和即时满足日益盛行的世界里，那些一贯朝相反方向前进的人可获得巨大的优势。这一点不仅适用于商业和投资领域，而且适用于人际关系、健康、职业以及其他一切重要的领域。」</p></div></div><div class="aband"><q>良好的行为有较长的保质期。</q><cite>——尼克·斯利普</cite></div><div class="duo"><div class="colL"><h4>延迟满足：源文列出的做法</h4><ul><li>构建支持长期主义的内部生态：多数投资者是投资期限长的非营利性机构（比如大学的捐赠基金），斯利普盛赞他们「富有耐心」。</li><li>办公室在国王路一家中草药店的楼上，远离大投资中心的喧嚣，办公不受不良环境的影响。</li><li>不听卖方分析师和财务顾问的意见——他们喜欢监控基金的日常业绩。</li><li>把「无视」与快乐挂钩：「在短期内奖励自己」，想象不理会即时欲求后将来能享受的所有好处。</li><li>以鲁索为典型：「我把自己视为农民。」「华尔街到处都是猎人，他们总是在四处寻找猎物。」</li></ul></div><div class="colR"><h4>即时满足：源文点名的冲动</h4><ul><li>交易过于频繁。</li><li>根据耸人听闻或捕风捉影的消息作出情绪化的决定。</li><li>追逐最受热捧的（和价格过高的）资产。</li><li>不合时宜地抛售业绩已落后了一两年的基金。</li><li>过早地卖出赢家股，而不是让它们在几年内利滚利。</li><li>斯利普的判词：「当你审视生活中犯过的所有错误时，无论是私人生活中的还是职业领域里的，你会发现，这些错误几乎都是因为你重视短期的措施或是短期的高点所致的……这是炒股人的习惯。」</li></ul></div></div><div class="chips"><span class="chip">信息与食物一样，都有保质期</span><span class="chip">短期持股人群</span><span class="chip">虚假刺激</span><span class="chip">投资伟哥</span><span class="chip">雪茄烟蒂</span><span class="chip">漫长而简单的游戏</span><span class="chip">共享的规模经济</span><span class="chip">无悔之乐</span><span class="chip">把一磅变成了十磅</span></div><details class="ext"><summary>拉比与卡巴拉：源文给「延迟满足」找的另外两个出处</summary><div class="ex">源文在这里把话题从市场推到宗教：扎卡里亚说，当其他人屈服于诱惑时，他想做个「苦行僧」，想「拒绝获得即时满足」，他很享受那种虔诚的感觉——这让作者想起佛教短语<b>「无悔之乐」</b>。同样，犹太卡巴拉主义者拉夫·耶胡达·阿什拉格（Rav Yehuda Ashlag）和拉夫·菲利普·伯格（Rav Philip Berg）教导：要获得持久的幸福、满足和自由，唯一的方法就是抵制我们的消极倾向。拉夫·伯格在《外行的卡巴拉》（Kabbalah for the Layman）中写道：「卡巴拉主义者不会选择阻力最小、节奏快、即时满足的线路，他们会选择阻力最大的。」源文还补了《创世记》的对照：以扫为一碗扁豆汤交出长子权，而约瑟在「7 年丰收」期间储粮，使埃及在随后的「7 年饥荒」中幸存。</div></details></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>关键数字速查与自测</h2><span class="en">CHECKLIST</span></div><p class="prose">本节把散在源文各处的数字归位，便于与原文逐条对照。金额、年份、倍数一律按源文照录。</p><div class="tbwrap"><table><thead><tr><th>项目</th><th>数字</th><th>出处（源文位置）</th></tr></thead><tbody><tr><td>游牧者成立与首日交易</td><td>2001 年 9 月 10 日（「9·11」事件前一天）开始交易</td><td>第 3 节</td></tr><tr><td>13 年业绩对比</td><td>游牧者 <b>921.1%</b>，摩根士丹利资本国际（MSCI）世界指数 <b>116.9%</b></td><td>导语</td></tr><tr><td>目标与实际</td><td>目标是把资产净值提高 <b>10 倍</b>；不到 13 年获得 <b>921%</b>（扣除各项费用前），「稍低于」目标</td><td>第 2 节 / 第 3 节</td></tr><tr><td>创办时的基金规模</td><td>2004 年首次关闭基金时管理的资产约 <b>1 亿美元</b>，按行业标准「微不足道」</td><td>第 2 节</td></tr><tr><td>开市客持仓</td><td>股价 <b>30 → 380 美元</b>，持有 <b>18 年</b>；2005 年占基金资产 <b>六分之一</b></td><td>第 3 节</td></tr><tr><td>亚马逊持仓</td><td>以每股 <b>30 美元</b>左右大举买入，先投 <b>20%</b> 基金资金；持 <b>16 年</b>；一度占基金资产 <b>40% 左右</b></td><td>第 3 节 / 第 4 节</td></tr><tr><td>2008 年回撤</td><td>亚马逊损失近一半市值，游牧者资产缩水 <b>45.3%</b></td><td>第 3 节</td></tr><tr><td>2009—2013 反弹</td><td>游牧者基金收益率 <b>404%</b></td><td>第 3 节</td></tr><tr><td>基金关闭</td><td>2014 年初关闭，资产规模约 <b>30 亿美元</b>；两人 <b>45 岁</b>退休</td><td>导语 / 第 3 节</td></tr><tr><td>退休后</td><td>头 5 年财富增长<b>近两倍</b>；斯利普几乎把全部资金投在亚马逊、开市客、伯克希尔 <b>3 只股票</b>上</td><td>导语 / 第 3 节</td></tr><tr><td>斯利普减持亚马逊</td><td><b>2018 年</b>占其净资产 <b>70% 以上</b>时，以每股 <b>1500 美元</b>卖掉一半（持有 13 年后）</td><td>第 3 节</td></tr><tr><td>持有期限对照</td><td>游牧者股票平均持有 <b>7 年</b>；其他投资者持有其组合中美国公司股票平均 <b>51 天</b></td><td>第 2 节</td></tr></tbody></table></div><div class="check" data-k="06x"><p class="ct">自 测 · 我这一周是按保质期还是按时效在做事</p><label><input type="checkbox"><span>今天看过至少一条几天后就作废的行情/预测消息。</span></label><label><input type="checkbox"><span>我最近一次调整持仓，理由是「最新消息」而不是公司本身的变化。</span></label><label><input type="checkbox"><span>我说不出自己关注的公司「10年或20年内，这家企业想完成什么目标」。</span></label><label><input type="checkbox"><span>我因为某个东西最近涨得好而想买它。</span></label><label><input type="checkbox"><span>我卖掉了一只赢家股，只是因为它已经涨了。</span></label><label><input type="checkbox"><span>我每天都要刷好几次自己的收益数字。</span></label><div class="cf">已勾选（勾中项越多，越偏向短期主义） <b>0</b> / 6</div></div><div class="broken-tip"><b>源文缺口（就地标注）</b>｜第 4 节第 17 段在<b>句中中断</b>：原文止于「鉴于此，我忽略了所有关于市场调整和崩溃的毫无价值的媒体言论；我连续几周不看我的投资业绩」，<b>句末无标点、下文缺失</b>。该段末尾的「我连续几周不看我的投资业绩」为残句，本页不补写，源文如此。</div><div class="broken-tip"><b>源文异写（就地标注）</b>｜同一本书名在源文中有两种写法：导语与第 2 节写作<b>《禅与摩托车维修艺术》</b>，第 4 节第 2 段写作<b>《禅和摩托车维修艺术》</b>。本页两处均按源文原样引用，不作统一。</div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">句中截断</span><span class="nd"><b>01｜</b>源文<b>第 4 节第 17 段句中断裂</b>：该段止于「鉴于此，我忽略了所有关于市场调整和崩溃的毫无价值的媒体言论；我连续几周不看我的投资业绩」，<b>句末无标点、下文缺失</b>。已在本页第陆节以红框就地标注并保留残句原样，<b>不补写</b>。依据：全文逐段扫描，仅此一段末尾不以句末标点收尾。</span></div><div class="note" id="n2"><span class="nn">书名异写</span><span class="nd"><b>02｜</b>同一著作《禅与摩托车维修艺术》（Zen and the Art of Motorcycle Maintenance: An Inquiry into Values）在源文中有两种译名写法：<b>导语（第 5 段）与第 2 节第 17 段</b>写作「《禅与摩托车维修艺术》」，<b>第 4 节第 2 段</b>写作「《禅和摩托车维修艺术》」。本页两处均照源文引用，未作统一，已在第陆节就地提示。</span></div><div class="note" id="n3"><span class="nn">样式残片</span><span class="nd"><b>03｜</b>微信读书在每章文件尾部统一注入 5 行样式残片（<b>/*封面*/ .frontCover { qrfullpage: 1; } /*</b>），本章同其他 11 章完全一致，属导出器注入而非正文文字。解析阶段已剔除；本章源文非空非标题行 124 行 − 题记 4 行 = 正文 120 段，与骨架段数一致。</span></div><div class="note" id="n4"><span class="nn">引文口径</span><span class="nd"><b>04｜</b>本页所有引号内文字均逐字取自骨架_06.md，未做缩短、改写或补标点；节标题、小节标题按源文原样保留（含「保质期长的5点启示」中数字与文字之间不加空格的原样写法）。分析性文字（首节论证主线、各节导语、卡片中的归纳句）由源文内容推出，不引入书外观点。</span></div><div class="note" id="n5"><span class="nn">数字口径</span><span class="nd"><b>05｜</b>源文对同一事实给了两种颗粒度：导语称 13 年收益率为 <b>921.1%</b>，第 3 节第 32 段称「在不到13年的时间里，游牧者获得了 <b>921%</b> 的惊人利润（扣除各项费用前）」。本页两处均按各自原文引用，未合并、未取整。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜威廉·格林《更富有、更睿智、更快乐》（马林梅 译，中国青年出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第六章·尼克和扎克的精彩冒险</span><a href="../05-简单的境界/index.html">← 第五章</a><a href="../07-高绩效习惯/index.html">第七章 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第八章·不做蠢事｜更富有、更睿智、更快乐 精读</title>
+<meta name="description" content="地球上最聪明的人不追求「做聪明事」，他花一辈子在降低「做蠢事」的概率——因为变聪明很难，而「不做什么」完全可以控制。">
+<style>
+:root{
+  --paper:#F7F3EA;      /* 暖白纸底 */
+  --paper-2:#EFE8D9;    /* 纸色深一档 */
+  --card:#FFFDF8;
+  --ink:#0B1D33;        /* 墨蓝（主色） */
+  --ink-2:#16304C;
+  --ink-deep:#07131F;   /* 深墨（hero 底） */
+  --gold:#B8923A;
+  --gold-b:#D3AC4B;
+  --gold-soft:rgba(184,146,58,.16);
+  --cinnabar:#A63A2B;
+  --teal:#2F6B63;
+  --tx:#26303A;
+  --tx-2:#495156;
+  --tx-3:#7A7364;
+  --line:rgba(11,29,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(11,29,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#16304C 0%,var(--ink-deep) 62%);
+  color:#F1E9D8;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(211,172,75,.42)}
+.hero::after{inset:22px;border:1px solid rgba(211,172,75,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(211,172,75,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,58,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F6EFE0}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(241,233,216,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(211,172,75,.34);color:rgba(241,233,216,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,58,43,.6);background:rgba(166,58,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(184,146,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EDE4D2;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(211,172,75,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F5EDDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(211,172,75,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F5EDDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(237,228,210,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(184,146,58,.5);box-shadow:0 4px 18px rgba(11,29,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(184,146,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(47,107,99,.055)}
+.duo .colR{background:rgba(166,58,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,58,43,.1);color:var(--cinnabar);border:1px solid rgba(166,58,43,.28)}
+.case .tag.good{background:rgba(47,107,99,.1);color:var(--teal);border:1px solid rgba(47,107,99,.28)}
+.case .tag.mid{background:rgba(122,115,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(184,146,58,.45);background:rgba(184,146,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,58,43,.55);border-radius:8px;
+  background:rgba(166,58,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,45,33,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,58,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(184,146,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(11,29,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(11,29,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px}
+.bknav a{color:#16304C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap}
+.bknav a:hover{background:rgba(184,146,58,.16)}
+.bknav .home{font-weight:600}
+.bknav .sp{flex:1}
+.bknav .dis{color:rgba(11,29,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(11,29,51,.14);border-radius:5px}
+.bknav .cur{color:#7A7364;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+@media(max-width:760px){.bknav .inner{padding:0 16px;gap:8px}
+  .bknav .cur{display:none}.bknav a{padding:5px 8px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-高绩效习惯/index.html">← 第七章</a><a href="../09-财富之外/index.html">尾声 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">避</div>
+  <div class="stamp s4">不做蠢事</div>
+  <h1>不做蠢事</h1>
+  <p class="sub">地球上最聪明的人不追求「做聪明事」，他花一辈子在降低「做蠢事」的概率——因为变聪明很难，而「不做什么」完全可以控制。</p>
+  <div class="meta"><span>第八章</span>
+    <span class="k">逆向思维</span>
+    <span>正文 21,706 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>逆向思维</a><a href="#s3" data-t="s3"><span class="cn">叁</span>蠢事收集者</a><a href="#s4" data-t="s4"><span class="cn">肆</span>当心你的大脑</a><a href="#s5" data-t="s5"><span class="cn">伍</span>一生的启示</a><a href="#s6" data-t="s6"><span class="cn">陆</span>七条技巧速查</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>愚昧人行路，显出无知。</p><cite>——《传道书》</cite></div><div class="epi"><p>明智之人必须研究好的和坏的思想和行为，但首先要研究坏的。你首先应该知道什么是不聪明的，什么是不公正的，什么是不需要做的。</p><cite>——列夫·托尔斯泰，《智慧历书》</cite></div><div class="epi"><p>坚持不做傻事而不是努力做聪明事的人，长期坚持下来，必将获得非凡的优势。</p><cite>——查理·芒格</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">HOW TO THINK</span></div><div class="map"><p class="mt">本篇论证主线</p><p class="thesis">芒格把「不做蠢事」当成一套可复制的工程：先用逆向思维找出灾难路径，再用一辈子的蠢事素材训练判断，然后用科学与程序锁住认知偏误，最后管住身体与情绪这个变量——六道防线叠起来，剩下的才是胜率。</p><div class="chain"><div class="node"><div class="n">起点</div><div><p class="tt">一个悖论</p><p class="dd">地球上最聪明的人公开说：「我的好见解并不比别人的多，我只是比其他人少说了蠢话、少做了蠢事而已。」</p></div></div><div class="node"><div class="n">方法</div><div><p class="tt">逆向提问</p><p class="dd">不问「怎么才能成功」，问「什么会导致灾难性的后果」——找出问题并避开，比确认好事并去做更有效。</p></div></div><div class="node"><div class="n">素材</div><div><p class="tt">收集蠢事</p><p class="dd">别人的蠢事是「一剂良药」，自己的蠢事是最好的学习技巧。芒格把「荒唐事」当成收藏品。</p></div></div><div class="node"><div class="n">案例</div><div><p class="tt">从军舰到基金</p><p class="dd">弗雷德·马丁在海军里学会「不让灾难夺去生命」，把它变成安全边际、3% 上限与「转弯前亲眼看一看」。</p></div></div><div class="node"><div class="n">防线</div><div><p class="tt">极端客观</p><p class="dd">效仿达尔文式科学家，主动找能推翻自己最珍视信念的反面证据；配一个不讨好的诤友。</p></div></div><div class="node"><div class="n">状态</div><div><p class="tt">管住情绪</p><p class="dd">情绪强烈地、可预测地、普遍地影响决策。先确认自己在可做决策的生理与心理状态，再谈判断。</p></div></div></div></div><p class="prose">本章不是「聪明人方法论」，而是一份<b>减法清单</b>。本书作者威廉·格林从 4,800 公里外赶来，只为与芒格私下谈 10 分钟，得到的核心答案是：<em>「因为这么做的效果好」</em>。</p><div class="aband"><q>人要变聪明很难。如果你能四处走走，识别出所有的灾难，知道「是什么造成了灾难」并努力避开它们，你会发现，这是寻找机会和避免麻烦的一个非常简单的方法。</q><cite>——查理·芒格，2017 年于洛杉矶</cite></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>不做蠢事的指南：先问「怎样会毁掉它」</h2><span class="en">INVERSION</span></div><h3 class="h3">逆向法从哪来</h3><p class="prose">芒格的方法受 19 世纪数学家<b>卡尔·古斯塔夫·雅可比</b>影响，后者有句名言：<em>「倒过来想，一定要倒过来想」</em>。真正把它变成芒格心理习惯的，是生态学家<b>加勒特·哈丁</b>——一位对劣质思维的可怕后果颇有研究的人。</p><div class="aband"><q>哈丁的基本想法是，当有人问你应该如何帮助印度时，你只要说，「要毁灭印度应该做什么呢？」然后你想清楚你能做什么，之后你倒过来说，「现在，我不会这么做。」这种做法违反直觉，但它确实有助于你解决问题，是一种考虑更周全的方式。</q><cite>——查理·芒格</cite></div><h3 class="h3">1986 年那份「如何保证过苦日子」的药方</h3><p class="prose">芒格在洛杉矶一所预科学校的毕业典礼上演讲，他的 8 个孩子和继子中有好几个都在场。他没有讲成功和幸福的秘诀，而是给学生们开出了一张<b>确保他们过苦日子</b>的药方。</p><div class="grid g3"><div class="card"><div class="idx">一</div><h3>信任层面</h3><p class="cp">不可信赖、寸步不让。</p></div><div class="card"><div class="idx">二</div><h3>情绪层面</h3><p class="cp">心怀不满、睚眦必报、妒火中烧。</p></div><div class="card"><div class="idx">三</div><h3>习惯层面</h3><p class="cp">嗜酒如命。</p></div><div class="card"><div class="idx">四</div><h3>学习层面</h3><p class="cp">不从别人的各种经历中吸取教训。</p></div><div class="card"><div class="idx">五</div><h3>心态层面</h3><p class="cp">顽固不化。</p></div><div class="card"><div class="idx">六</div><h3>抗挫层面</h3><p class="cp">当遭受生命中的挫折时萎靡不振。</p></div></div><p class="prose">逆向提问的日常形态，是把问题从正门换成偏门：不问「这么做的后果很美妙吗」，改问<b>「这么做的后果是灾难性的吗」</b>。买一只管理良好的基金，就先问：怎么做会导致我投资这只基金产生灾难性的后果？——这一问，会把高得离谱的费用、最热门最昂贵行业的风险敞口、近期攀升但几乎肯定不可持续的回报率，一次性摆到台面上。</p><div class="aband"><q>这是一种预防措施，就像飞机起飞前的检查。</q><cite>——查理·芒格</cite></div><h3 class="h3">把它做到极致的人：乔尔·蒂林哈斯特</h3><div class="prof"><p class="pn">乔尔·蒂林哈斯特（Joel Tillinghast）</p><p class="pm">富达低价股基金经理（1989 年起）· 腼腆胆小的数学天才</p><dl><dt>业绩</dt><dd>自 1989 年起，每年的收益率比罗素 2000 指数高出了 3.7 个百分点；被《富达投资者》通讯编辑吉姆·洛厄尔称为「他那一代最有天赋的选股人」。</dd><dt>规模</dt><dd>目前管理着 400 多亿美元的资产。</dd><dt>策略特征</dt><dd>问他的制胜策略，他列出的是<b>他回避的所有股票</b>——先说不做什么。</dd><dt>最惊人的一笔</dt><dd>怪物饮料（Monster Beverage），截至目前已经上涨了 1000 倍。</dd></dl></div><div class="duo"><div class="colL"><h4>他回避的（先列「不做」）</h4><ul><li>处于发展阶段的生物科技股——「未来非常黯淡」，波动大，会让他情绪失控：「如果我买入了生物科技股，我会发疯的。」</li><li>支付太高的价格。</li><li>容易遭淘汰和打击的企业。</li><li>跟骗子和白痴一起投资。</li><li>自己不懂的领域——「远离无知」比什么都重要。</li><li>周期性强、负债累累或风靡一时的企业。</li><li>「促销管理」和「激进的会计处理」——视为危险的信号。</li><li>过于公开或频繁地谈论自己的持仓——那样就难以改变主意、难以承认错误。</li><li>积极交易的冲动——频繁交易产生繁重的交易成本和税负，侵蚀收益。</li></ul></div><div class="colR"><h4>排除后剩下的（组合长什么样）</h4><ul><li>由诚信之人经营的。</li><li>价值被低估的。</li><li>可被理解的。</li><li>财务稳定的。</li><li>有利可图的。</li><li>不断增长的企业的股票。</li></ul></div></div><div class="aband"><q>变得更优秀很难，但你可以选择不做什么，这很容易控制，更容易做到。对我来说，减掉6.8公斤很难，但拒绝吃甜甜圈很容易。</q><cite>——乔尔·蒂林哈斯特</cite></div><h3 class="h3">同一套方法，用在婚姻上</h3><p class="prose">马克尔公司的联合 CEO <b>汤姆·盖纳</b>举过一个例子：他与一位可爱的女士结了婚，一天他独自一人在酒吧饮酒——「与适量饮酒相比，酗酒产生了一系列不同的诱惑和条件。」他建议用芒格的逆向法问一句：<b>做什么会产生恶劣的结果，如何避免这样的恶果？</b>一个合理的答案是「喝两杯酒而不是十杯」。</p><div class="aband"><q>如果你的目标是成为一名出色的选股人或一位出色的配偶，你要先问问自己，如何做才能成为一名糟糕的选股人或糟糕的配偶。然后再倒过来思考。</q><cite>——第八章 · 本节结语</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>蠢事收集者：把别人的灾难当教材</h2><span class="en">COLLECTING FOLLY</span></div><p class="prose">当其他亿万富翁忙着收藏艺术品、古董车和赛马时，芒格成了<b>「荒唐事」「愚蠢事」和「无聊事」的收集者</b>。他的女儿莫莉说，她青少年时期常听父亲讲许多蠢人蠢事的警示性故事，这些故事通常含有「忘恩负义的情节和糟糕的道德评判」——一个典型故事是：一位备受宠爱的财产继承人后来对其父恨之入骨。</p><p class="prose">莫莉的判词是：「无论从哪个层面看，此人的做法都是愚蠢的，他忘恩负义、自毁前程、不切实际、妄自尊大。」</p><p class="prose">芒格说，任何人都可以从这种做法中受益，<em>「但我认为，除非你有相应的性情，否则你做不好它。我做的很多事都与智商无关，而是与性情、态度有关。」</em></p><h3 class="h3">他连自己也不放过</h3><div class="aband"><q>我喜欢人们承认自己是十足的蠢货。我知道，如果我能直面自己的错误，我会表现得更好。这是一个很棒的学习技巧。</q><cite>——查理·芒格，致伯克希尔股东</cite></div><p class="prose">2017 年伯克希尔年度股东大会上，他当着约 <b>4 万名</b>股东坦白两个最严重的错误：没有买入谷歌公司的股票「让你们失望了」，以及「当一切很顺利时，我们卖出了沃尔玛的股票」。</p><p class="prose">另有一笔深深刺痛他的错误：1993 年收购<b>德克斯特鞋业公司</b>（Dexter Shoe Co.），该公司后来被低成本的中国竞争对手所淘汰——但在其宏大的计划中，这些都算不上灾难性的。</p><div class="aband"><q>我们要定期梳理错误，我们从别人的经历中间接学到了很多，我们也从自己不愉快的经历中学到了很多。</q><cite>——查理·芒格</cite></div><h3 class="h3">把「不让灾难发生」练成肌肉：弗雷德·马丁</h3><div class="prof"><p class="pn">弗雷德·马丁（Fred Martin）</p><p class="pm">明尼阿波利斯原则成长股投资者公司（Disciplined Growth Investors）创始人 · 前海军军官 · 资深飞行员</p><dl><dt>履历</dt><dd>1969 年 6 月从达特茅斯商学院毕业后加入美国海军；1973 年退役后，在明尼阿波利斯一家银行做股票分析师。12 岁起就开始买股票。</dd><dt>规模</dt><dd>管理 60 亿美元资产；客户至少要投入 1,500 万美元才能单独开户。</dd><dt>方法</dt><dd>只在价格足够便宜、且预计未来 7 年内能获得高回报时买入；平均持有期 10 年。</dd><dt>理念</dt><dd>「你不必怀着兴奋感去做这件事，这样做只是为了学习。」</dd></dl></div><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「弗兰克·埃文斯」号：一次可预防的判断失误</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1969 年 6 月，一艘美国驱逐舰「弗兰克·埃文斯」号在南海与澳大利亚的一艘航空母舰相撞。当时是<b>凌晨 3 点，驱逐舰的指挥官睡着了，留下了两名经验不足的中尉值守</b>。驱逐舰转向了错误的方向，误入了航母的航道，被拦腰截成了两半。在短短的几分钟内，驱逐舰的前半部分就沉没了，大部分船员被困在了里面。<b>此次事件总共导致 74 人死亡，4 名军官受到了军事法庭的审判</b>。最终的调查结论是：这是一起「悲剧事件，是人为判断失误导致的」。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>24 岁，240 条命，和一条「本应该是」的简单规则</h4><span class="ar">▶</span></div><div class="cb"><div class="in">马丁被任命为另一艘驱逐舰的中尉，成了海军历史上最年轻的指挥官。<b>当舰长入睡时，24 岁的他就要为 240 条生命负责。</b>一夜又一夜的值守导致他睡眠严重不足，但即使精疲力竭时，他也会站着值守。他养成了一个习惯：每当军舰要转弯时，他都会走到舰桥上，<b>用肉眼确认航道是畅通的</b>。马丁说，转弯前必须「看一看」的「简单规则」不是「我们训练的一部分」，但「它本应该是」。现在他已经 70 多岁了，回首往事，他意识到，自己谨小慎微的习惯正是在那个时候形成的。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「纽约有个叫麦道夫的家伙能确保获得12%」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">一位客户打电话问马丁能否保证「每年都获得」12% 的收益率。马丁告诉他，股市波动性太大，无法保证。对方回答：「纽约有个叫麦道夫的家伙能确保获得 12% 的收益率，但他不告诉任何人他是怎么做到的，他是个天才。」后来这位客户把资金交给了<b>伯尼·麦道夫</b>——史上最大庞氏骗局的操盘者。教训：<b>「当对方说不出他们是怎么做的，或者你不能理解他们是怎么做到的时候，那他们可能不是最好的选择。」</b>马丁的「风险管理黄金法则」很简单：「知道自己拥有什么。」</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>威朗制药：两位天才的 95% 蒸发</h4><span class="ar">▶</span></div><div class="cb"><div class="in">比尔·阿克曼（Bill Ackman）和鲍勃·戈德法布（Bob Goldfarb）对威朗制药投下了巨额赌注。会计欺诈和药品定价奇高的丑闻爆出后，这家公司<b>损失了 95% 的价值</b>。戈德法布将红杉基金 30% 以上的资金投给了这只股票，丑闻爆发后他悻悻地退休，辉煌记录毁于一旦；<b>阿克曼损失了 40 亿美元</b>。马丁的评价：「显然，他是个聪明人，但是，哎，他的操作显得太业余了……他持仓没必要那么极端。」</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>二手湾流，和「天空中两个最大的懦夫」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">马丁严格奉行「不让灾难夺去生命」。他驾驶的是一架二手湾流喷气式飞机，这架飞机最初的价格是 <b>1,400 万美元，等它的价格跌至 525 万美元时，他买下了它</b>。尽管如此，他还是把自己和公司的首席飞行员称为<b>「天空中两个最大的懦夫」</b>。他们多年的「铁律」是：旅行时若任何一个人没有「温暖而舒心的感觉，他就要说出来，我们就会掉转方向……对此没有任何争议」。因为存在燃油不足的风险，他推迟了与一位大客户在佛罗里达州的会面——<b>「我不愿意违反安全边际原则……开会迟到是小事，机毁人亡可是大事。」</b></div></div></div></div><h3 class="h3">马丁的「金融万有引力定律」</h3><div class="tbwrap"><table><thead><tr><th>准则</th><th>具体设定</th><th>它挡住的灾难</th></tr></thead><tbody><tr><td>安全边际</td><td>以低于价值的价格买入资产</td><td>错误难免，但「你能很快复原吗」——安全边际让错误可控</td></tr><tr><td>最低回报门槛</td><td>中盘股 12%，风险较大的小盘股 15%（7 年期内）</td><td>只有在价格足够便宜时才系统性买入；不靠感觉靠程序</td></tr><tr><td>单一持仓上限</td><td>对一只股票的投资额不超过执掌资产的 <b>3%</b></td><td>挡住威朗制药那类单点毁灭</td></tr><tr><td>组合分散度</td><td>通常持有 <b>45—50 只</b>股票</td><td>「这么保守」并没有妨碍他多年来以绝对优势跑赢指数，同时不用承受无尽的痛苦</td></tr><tr><td>否决权机制</td><td>授予两位值得信任的同事否决他选定任何股票的权力</td><td>防止他因疏忽大意和过度自信而铸成大错</td></tr><tr><td>操作纪律</td><td>「按程序走」——转弯前亲眼看一看</td><td>「永远尊重它，因为它能让你远离麻烦。」</td></tr></tbody></table></div><div class="aband"><q>有三样东西会毁了人：毒品、酒精和债务</q><cite>——查理·芒格（引自第八章）</cite></div><p class="prose">芒格用这句话讲的是<b>不对称性风险</b>：避免做出会导致股价小幅上涨但大幅下跌的行为。具有这种不对称性的行为还包括酒后驾车、婚外情和骗税或虚开发票——<b>不管我们的道德观念如何，这些都是愚蠢的做法</b>。</p><div class="aband"><q>永远不要忘记，能活到最后才是最重要的。</q><cite>——弗雷德·马丁</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>当心你的大脑：认知偏误与四道防御</h2><span class="en">MISJUDGMENT</span></div><p class="prose">作为投资者，我们面临的一个最棘手的问题是：<b>我们的大脑不具备做出理性决策的能力</b>。我们的判断常常被恐惧、贪婪、嫉妒和急躁等情绪左右，常常受一些因素的干扰，比如偏见会扭曲我们对现实的认知、我们易受五花八门的推销和同行压力的影响、我们常常根据错误的或不完整的信息采取行动。</p><p class="prose">进化生物学家罗伯特·特里弗斯在《愚昧者的愚昧》中写道，「我们奇妙的感知器官」会让我们获得能导致大脑系统性地「退化和损毁」的信息。</p><h3 class="h3">芒格的 25 种「心理倾向」清单</h3><p class="prose">20 世纪 90 年代，芒格在有关「人类误判心理」的 <b>3 次演讲</b>中阐述了这个问题；2005 年他把演讲稿进一步扩展，收录进《穷查理宝典》。</p><p class="prose">他没有上过心理学课程，只读过 3 本关于这一主题的教科书，却总结出了 <b>25 种</b>可能导致我们大脑功能失调的「心理倾向」，还给它们起了非常贴切的名字——比如过度自尊心倾向、胡言乱语倾向、避免痛苦和否认现实心理倾向。他的演讲被尼克·斯利普誉为「有史以来最精彩的投资类演讲」。</p><div class="aband"><q>要注意的是，首先要理解它们，然后训练自己摆脱它们。</q><cite>——尼克·斯利普</cite></div><div class="aband"><q>说起来容易做起来难，这是一项艰苦的工作。</q><cite>——尼克·斯利普</cite></div><div class="grid g3"><div class="card num"><div class="idx">倾向 01</div><h3>激励性偏见</h3><p class="cp">激励在「改变认知和行为」中均发挥重要作用。富兰克林：「<b>当你想要说服别人时，诉诸利益而非理性。</b>」芒格警告：当专业的建议对提出建议的人特别有好处时，尤其要保持警惕。</p></div><div class="card num"><div class="idx">倾向 02</div><h3>快速消除疑虑</h3><p class="cp">由压力引发的、仓促下结论的习惯。从进化角度看有道理——祖先面对紧急威胁必须果断——但导致投资者做出冲动决策的心理捷径往往造成灾难性后果。</p></div><div class="card num"><div class="idx">倾向 03</div><h3>避免不一致性</h3><p class="cp">「当一个精子进入卵子体内时，卵子会自动启动关闭装置以阻止其他精子进入。人类的思维也有这样的倾向。」不愿重新审视观点、改变想法，是理性思考的最大障碍。</p></div><div class="card num"><div class="idx">倾向 04</div><h3>自视过高 + 过度乐观</h3><p class="cp">高估自己的才能、观点和决定；一切顺利、感觉自己很聪明时对财务问题粗心大意。</p></div><div class="card num"><div class="idx">倾向 05</div><h3>避免痛苦的心理否认</h3><p class="cp">「现实太痛苦而无法承受」时歪曲事实——这解释了为什么那么多投资者自欺欺人地认为，尽管缺乏必要技能、素养或成本控制，长期来看他们能跑赢指数基金。</p></div><div class="card num"><div class="idx">倾向 06</div><h3>从众</h3><p class="cp">巨大的压力和困惑会加剧随波逐流的冲动，市场暴跌时尤其如此。芒格：「在某些情况下，做出群体性蠢行的人跟旅鼠很像。」</p></div></div><div class="chips"><span class="chip">没有比自我欺骗更容易的事了，人总是相信他愿意相信的东西。——德摩斯提尼</span><span class="chip">投资者主要的问题，甚至他最大的敌人，很可能就是他自己。——本杰明·格雷厄姆</span><span class="chip">当你的思维被一厢情愿的想法牵制时，你的判断就会偏向于这些想法。——霍华德·马克斯</span></div><h3 class="h3">四道防御：把「小心」变成程序</h3><div class="ladder"><div class="step"><div class="dot">1</div><h4>① 极端客观：主动去找能推翻自己的证据</h4><p>芒格效仿查尔斯·达尔文、阿尔伯特·爱因斯坦、理查德·费曼，做到「极端客观」。他说这三类人的共同点是：「他们对自己都很苛刻……他们致力于减少蠢行，他们重视深思熟虑。他们的注意力持续的时间很长，他们非常非常努力地避免做出蠢行。」达尔文在 1859 年《物种起源》导言中直接摒弃了自己原本的信仰：「经过我深思熟虑的研究和冷静的判断，我肯定地得出了这一结论：大多数博物学者所持的观点，也是我之前所持的观点，即物种是被独立创造出来的，是错误的。」</p></div><div class="step"><div class="dot">2</div><h4>② 给自己定一年的期限：必须推翻一个最爱的想法</h4><p>每当芒格成功推翻根深蒂固的信念，他都会为自己喝彩——「消除无知」让他感受到满足而非耻辱。他说：「伯克希尔公司取得的微小进步很大程度上得益于我和巴菲特善于推翻我们最喜爱的想法。<b>在任何一年里，若你没有推翻自己最喜欢的想法，那这可能是被浪费掉的一年。</b>」</p></div><div class="step"><div class="dot">3</div><h4>③ 配一个敢跟你唱反调的诤友</h4><p>巴菲特的答案：「找一位不屈从、逻辑性极强的伙伴……这大概是你能拥有的最好的机制了。」芒格正是他理想的人选，因此他称芒格为「老唱反调的人」。帕伯莱把斯皮尔介绍给芒格时说：「芒格，就是这个人对我所有的想法都提了意见。」斯皮尔自嘲说帕伯莱还不如和猴子说话——<b>「猴子可起不到这样的作用。」芒格立刻说，「猴子不起作用是因为莫尼什知道它是猴子。」</b></p></div><div class="step"><div class="dot">4</div><h4>④ 假意反对评估 + 预先检验</h4><p>比尔·尼格伦（芝加哥哈里斯合伙公司）受迈克尔·斯坦哈特启发，在购买任何股票前都会进行「假意的反对评估」：一位分析师提出看涨的理由，另一位则「提出最强烈的看跌理由」。他每年让团队成员至少重新评估一次有问题的股票，并「有责任提出卖出股票的理由」——用来对冲着禀赋效应。另一个策略是「预先检验」：设想自己身处未来，问「为什么事后证明这个决策是一场灾难？」舒宾·斯坦因在哥伦比亚商学院让学生想象自己 3 年后投资失败并写文章解释失败原因。</p></div></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">mid</span><h4>喜诗糖果：一次信念翻转，改了伯克希尔 50 年</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1972 年，巴菲特和芒格获得以 <b>3,000 万美元</b>收购加州巧克力生产商喜诗糖果（See's Candies）的机会，这一价格几乎是其有形资产净值的 <b>4 倍</b>。巴菲特是个吝啬鬼，靠从格雷厄姆那里学到的低价买入策略赚钱——他怎么会抛弃这种根深蒂固的想法，以高价买入优质企业？芒格认为这个价格是合理的：公司强大的品牌、忠实的客户群以及提价能力。<br><br>巴菲特在 2014 年年报中回忆：「我错误的谨慎可能毁了一笔好交易，但幸运的是，卖家决定接受我们 <b>2,500 万美元</b>的出价。」芒格说，<b>如果价格再高 10 万美元，他和巴菲特就放弃喜诗糖果了</b>——「那时我们就是那么蠢。」<br><br>自 1972 年以来，喜诗糖果已为他们赚取了 <b>20 亿美元的税前利润</b>。新的信念改变了一切：他们后来投资了可口可乐等世界一流公司，对无形资产（包括品牌忠诚度和卓越的管理）的看法不断演变，以更高的溢价收购了伊斯卡（ISCAR）和精密铸件（Precision Castparts）。巴菲特在 2014 年年报中称赞芒格把他从对「雪茄烟蒂」的沉迷中拉了出来：「他给我的蓝图很简单：<b>忘记以低价收购平庸企业的想法，记住以公平价格购买优秀企业的想法。</b>」</div></div></div></div><h3 class="h3">第五、六道防线之后：情绪才是最后一个变量</h3><p class="prose">2015 年，《心理学年鉴》刊登了一份关于情绪对决策影响的调查报告，它是对一项为期 <b>35 年</b>的科学研究的总结。作者写道，这些研究得出的「一个最重要的结论」是：<b>「情绪强烈地、可预测地、普遍地影响了决策」</b>。</p><p class="prose">研究赌博决策的人员发现：「悲伤增加了人们对高风险、高回报投资的选择，而焦虑增加了人们对低风险、低回报投资的选择。」</p><div class="grid g3"><div class="card num"><div class="idx">H</div><h3>饥饿 Hunger</h3><p class="cp">常见「导致糟糕决策的因素」之一。</p></div><div class="card num"><div class="idx">A</div><h3>愤怒 Anger</h3><p class="cp">同上。</p></div><div class="card num"><div class="idx">L</div><h3>孤独 Loneliness</h3><p class="cp">同上。</p></div><div class="card num"><div class="idx">T</div><h3>疲倦 Tiredness</h3><p class="cp">同上。</p></div><div class="card num"><div class="idx">P</div><h3>痛苦 Pain</h3><p class="cp">同上。</p></div><div class="card num"><div class="idx">S</div><h3>压力 Stress</h3><p class="cp">同上。</p></div></div><p class="prose">舒宾·斯坦因用这些因素的首字母缩略词 <b>HALT-PS</b> 提醒自己：当它们可能影响判断时，他要<b>停下来，将重要的决策延后，直到他的大脑恢复正常状态</b>。他说，不管你有多聪明或多有自知之明，「<b>你都无法有效地</b>」对抗认知偏见——认识到我们都会受偏见影响只是个开始。</p><div class="check" data-k="08b"><p class="ct">自 测 · 现在适合做决定吗</p><label><input type="checkbox"><span>我现在饿着肚子——或者刚吃撑。</span></label><label><input type="checkbox"><span>我有未消化的怒气，正想找人算账。</span></label><label><input type="checkbox"><span>我很久没和人真正说过话了。</span></label><label><input type="checkbox"><span>我睡眠不足，注意力已经涣散。</span></label><label><input type="checkbox"><span>我身体某处在痛。</span></label><label><input type="checkbox"><span>我有外部压力（期限、亏损、被追问）。</span></label><div class="cf">已勾选（勾中项越多，越该把手从决策上拿开） <b>0</b> / 6</div></div><p class="prose">斯坦因的护脑四件事是<b>冥想、锻炼、睡眠和补充营养</b>。2020 年，他以医生志愿者的身份在重症监护室里工作，那里挤满了插着呼吸机、正在死亡边缘挣扎的新冠患者，而就在几天前他的妻子生下了他们的第一个孩子——为了保护妻儿，他搬进了一家旅馆居住。</p><p class="prose">在这样的处境里，他保持了吃营养丰富的食物、加强锻炼和「短时冥想」；回到重症监护室之前，他会在浴室里<b>「深呼吸 10 秒钟」</b>。</p><div class="aband"><q>养成健康习惯的最佳时机不是在混乱发生时，而是在混乱发生前。</q><cite>——作者威廉·格林的提炼（源文原句）</cite></div><div class="aband"><q>要避免疯狂的愤怒、疯狂的怨恨等。</q><cite>——查理·芒格</cite></div><div class="aband"><q>我不会让这些情绪萌芽，更不会让它们发酵。</q><cite>——查理·芒格</cite></div><p class="prose">芒格几乎没有这方面的困扰。当被问是否同意「所有出色的投资者都不受情绪干扰」，他回答：「是的，绝对是这样。」他没有为投资烦恼或恐惧过——「因为没有体验过这些情绪，所以他不必与这些情绪对抗。</p><p class="prose">」于是他能从容计算概率：金融危机期间银行股遭重创，他认为富国银行的股价已经低得离谱，出现了<b>「40 年难得一遇的机会」</b>；2009 年 3 月，他代表每日期刊公司在「最低点」买入，称之为「理智和正确的判断」的范例。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>一生的启示：他最珍视的不是赚了多少钱</h2><span class="en">A LIFE&#x27;S LESSONS</span></div><p class="prose">采访结束时，芒格拄着手杖，步履蹒跚地穿过每日期刊办公楼的大厅走向舞台，观众一看到他就爆发出经久不息的掌声。他表情冷漠地说，今年的人比往年多，因为<b>「他们认为这是最后一次机会了」</b>。在接下来的两个小时里，他回答了 40 多个问题，从市场到婚姻。</p><div class="grid g2"><div class="card num"><div class="idx">职业</div><h3>在有独特天赋的领域谋求发展</h3><p class="cp">「你必须在自己有独特天赋的领域里谋求发展，如果你的身高只有 155 厘米，你肯定不想和身高 251 厘米的人打篮球，想赢对方太难了，所以你必须找出你有优势的领域，它必须是你感兴趣的。」</p></div><div class="card num"><div class="idx">胜率</div><h3>不要相信运气，要相信胜率</h3><p class="cp">他惊叹于中国的经济转型，但感叹有一部分人「喜欢赌博了，他们实际上相信运气。现在，不要相信运气，要相信胜率」。他说：「如果胜率对我不利，我就不玩了。」</p></div><div class="card num"><div class="idx">暴跌</div><h3>习惯 50% 的跌幅，是入场的前提</h3><p class="cp">伯克希尔的股价曾有 3 次幅度高达 50% 的暴跌。「如果你想长期玩这个游戏，你就要习惯这种变化，你最好能在不过分担忧的情况下应对 50% 的下跌局面……不要试图回避它，这种事肯定会发生。事实上，我想说，如果它不发生，你就不会有足够的积极性，它能激发你的斗志。」</p></div><div class="card num"><div class="idx">集中</div><h3>等胜率远大于赔率的机会，再积极下注</h3><p class="cp">多样化「对一无所知的人来说这是个好规则」，但他的首选策略是等待胜率远远大于赔率的难得机会。芒格透露，他家族的大量财富几乎全部来自这 3 项投资：伯克希尔、开市客和李录挑选的中国股投资组合。「这 3 项投资中任何一项损失的概率几乎为零。」</p></div></div><p class="prose">从芒格的金融冒险经历可以明显看出，<b>他最珍视的不是赚了多少钱，而是怎么赚的钱</b>。他和巴菲特曾愉快地拒绝了「我们生平见过的最好的一笔交易」——收购一家鼻烟制造商。这笔交易只有一个问题：该公司靠出售一种能致癌的上瘾产品发了财。</p><p class="prose">后来普利茨克家族大胆买下「这颗丑陋的宝石」，获利了约 30 亿美元，芒格并不后悔：「<b>我们绝不会染指能致人死亡的产品，我们为什么要这样做呢？</b>」</p><div class="duo"><div class="colL"><h4>芒格：我想成为的那类人</h4><ul><li>不赞成运用刻薄的策略，比如以延迟付款的方式「残酷压榨」供应商。</li><li>「我奉行双赢的人生理念，我希望供应商信任我，我也信任他们，我不想绞尽脑汁地欺骗他们。」</li><li>与正派、值得信赖的人合作：「巴菲特一直是我的好搭档，我也一直是他的好搭档……<b>如果你想有个好搭档，首先你得做一个好搭档。</b>」</li><li>同样的原则适用于婚姻：「若你想要一位佳偶，你首先应该做个佳偶。」</li><li>不试图利用任何人——巴菲特：「41 年来，我从未见过芒格试图利用任何人……投资失误时，他也总是承担更多的责任，业绩辉煌时，他获得的奖赏却很少。」</li></ul></div><div class="colR"><h4>雷德斯通：我不想成为的那类人</h4><ul><li>亿万富翁、媒体大亨萨姆纳·雷德斯通，以精明和「强硬」著称，拥有维亚康姆集团（Viacom）和哥伦比亚广播公司（CBS）的控股权。</li><li>芒格：「几乎没有人喜欢他，包括他的妻子和孩子。」</li><li>「我和萨姆纳·雷德斯通时隔一年左右从哈佛法学院毕业，现在他比我有钱，所以你可以说他是最成功的，但我不这么看。」</li><li>「我不认为人生只是一场金融游戏，我认为最好用另一种方式玩这个游戏……」</li><li>「<b>萨姆纳·雷德斯通是我不想成为的那类人的典型。</b>」</li></ul></div></div><h3 class="h3">他也经历过绝望</h3><p class="prose">他的第一个儿子特迪在 9 岁时死于白血病：「那是悲惨、缓慢的死亡。最后，他可能意识到死神要来临，此前我一直在骗他……那真的非常痛苦。」离婚、失去一只眼睛、第二任妻子南希在他们结婚 <b>52 年</b>后去世，这些变故都曾令他痛不欲生。</p><div class="aband"><q>把生活当成一系列的磨炼，每一次磨炼都会让你变得更好，这是一种非常非常好的理念。当困难降临时，坦然面对它们。带上祝福，尽你所能，从磨炼中获得乐趣吧！</q><cite>——查理·芒格</cite></div><details class="ext"><summary>幽默感也是一大优势：80 年前那次失败的舞会邀请</summary><div class="ex">每日期刊公司年度股东大会的一大亮点，是芒格讲述 80 年前他在奥马哈中心高中读书时的浪漫失败。当时他身材矮小、体型瘦弱。高一那年，他邀请了一位「金发女神」参加舞会，为了给她留下好印象，他假装自己是个烟鬼。他说：「她穿着一件网纱裙，<b>我把她的裙子点着了，但我很机智，用可乐泼了她一身，火很快就熄灭了</b>。不过，这位金发女神再也不理我了。」</div></details></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>七条反蠢技巧速查</h2><span class="en">CHECKLIST</span></div><p class="prose">源文把「不做蠢事」拆成了一套编号技巧，散落在本章各处。下表按源文自身的编号归位——注意<b>第四格是空的</b>，原因见文末校勘。</p><div class="grid g3"><div class="card num"><div class="idx">技巧 1</div><h3>逆向思考，想象可怕的后果</h3><p class="cp">「这是我们应该从芒格身上学到的<b>第一个防止做蠢事的心理诀窍</b>：想象可怕的后果；逆向思考，问问自己哪些错误行为可能导致不幸的结果；然后小心谨慎地避免做出这些自我毁灭的行为。」</p></div><div class="card num"><div class="idx">技巧 2</div><h3>收集蠢事：他人的失败是「一剂良药」</h3><p class="cp">「这种积极收集他人蠢事的习惯是防止做出蠢事的『一剂良药』。事实上，它是我们应该向芒格学习的<b>第二大反蠢行技巧</b>。」</p></div><div class="card num"><div class="idx">技巧 3</div><h3>公开透明地审视自己的错误</h3><p class="cp">「我们大多数人都不愿意向公众提及自己犯过的错误……但在芒格看来，他越是公开透明地审视自己的错误，他就越不可能重蹈覆辙。」「这是<b>我们为防止在职场中做出蠢行必须向他学习的第三个技巧</b>。」</p></div><div class="card num"><div class="idx">技巧 4</div><h3>（源文未出现此编号）</h3><p class="cp"><b>源文依次出现「第一个」「第二大」「第三个」「第五个」「第六个」「第七个」技巧编号，「第四个技巧」在源文中没有出现。</b>本格如实留空，不补编号、不臆造内容。</p></div><div class="card num"><div class="idx">技巧 5</div><h3>寻找可能推翻自己最珍视信念的反面证据</h3><p class="cp">「芒格特别钦佩他们能坚定不移地寻找甚至可能推翻他们最珍视的信念的『反面证据』。这种心理习惯有多种表现形式，是<b>我们预防蠢行的第五个技巧</b>。」</p></div><div class="card num"><div class="idx">技巧 6</div><h3>用系统性的分析方法放慢速度</h3><p class="cp">「假意反对评估、预先检验、与持怀疑态度的伙伴交谈、列出提示我们最大偏见和过去错误的认知清单，这些都是自我控制的分析技巧……重视采用系统性的分析方法，是<b>我们防止做出蠢行的第六个技巧</b>。」</p></div><div class="card num"><div class="idx">技巧 7</div><h3>情绪状态清单：HALT-PS</h3><p class="cp">「饥饿、愤怒、孤独、疲倦、痛苦和压力是常见的『导致糟糕决策的因素』，因此舒宾·斯坦因用这些因素的首字母缩略词『HALT-PS』提醒自己……<b>这是我们避免做蠢事的第七个技巧</b>。」</p></div></div><div class="broken-tip"><b>源文缺口（就地标注）</b>｜源文在「第三个技巧」（节二）与「第五个技巧」（节三）之间是<b>连续叙述，没有出现「第四个技巧」的编号与内容</b>。可能是译文合并或漏排，本页不擅自补编号，也不臆造一条技巧凑数。</div><div class="check" data-k="08c"><p class="ct">自 测 · 我这一周守了几条</p><label><input type="checkbox"><span>做重要决定前，问过「怎样会毁掉它」而不是「怎样会更好」。</span></label><label><input type="checkbox"><span>记录或复盘过至少一个别人的失败案例。</span></label><label><input type="checkbox"><span>公开承认过一个自己的错误（不找借口）。</span></label><label><input type="checkbox"><span>主动找过一条与自己立场相反的证据。</span></label><label><input type="checkbox"><span>用清单或程序，而不是用直觉，做过一次判断。</span></label><label><input type="checkbox"><span>在情绪/身体状态差时，主动推迟过一个决定。</span></label><div class="cf">本周做到几条 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">编号缺失</span><span class="nd"><b>01｜</b>源文依次出现「第一个防止做蠢事的心理诀窍」「第二大反蠢行技巧」「第三个技巧」「第五个技巧」「第六个技巧」「第七个技巧」，<b>「第四个技巧」的编号与内容在源文中均未出现</b>。本页在「七条反蠢技巧速查」中如实留空并就地标注，不补编号、不臆造。依据：全文检索「第[一二三四五六七八九十]」共 12 处，其中技巧编号 6 处。</span></div><div class="note" id="n2"><span class="nn">样式残片</span><span class="nd"><b>02｜</b>微信读书在每章文件尾部统一注入 5 行样式残片（<b>/*封面*/ .frontCover { qrfullpage: 1; } /*</b>），本章同其他 11 章完全一致，属导出器注入而非正文文字。解析阶段已剔除，零丢失校验按「源文段落序列减去这 5 行」的口径逐段比对通过。</span></div><div class="note" id="n3"><span class="nn">编者说明</span><span class="nd"><b>03｜</b>「HALT-PS」在源文中只给出了中文六项（饥饿、愤怒、孤独、疲倦、痛苦、压力），<b>英文单词的对应还原（Hunger / Anger / Loneliness / Tiredness / Pain / Stress）系编者依首字母缩写推定</b>，供记忆用，非源文原文。</span></div><div class="note" id="n4"><span class="nn">引文口径</span><span class="nd"><b>04｜</b>本页所有引号内文字均逐字取自源文，未做缩短或改写；节标题、小节标题按源文原样保留。分析性文字（「一篇之图」的论证主线、各节导语、卡片中的归纳句）由源文内容推出，不引入书外观点。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜威廉·格林《更富有、更睿智、更快乐》（马林梅 译，中国青年出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第八章·不做蠢事</span><a href="../07-高绩效习惯/index.html">← 第七章</a><a href="../09-财富之外/index.html">尾声 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

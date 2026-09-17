@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一章·效仿沃伦·巴菲特的人｜更富有、更睿智、更快乐 精读</title>
+<meta name="description" content="一个自称「我没有任何原创的思想」的印度裔基金经理，靠逐字复制巴菲特的收费结构、选股清单与作息，在 18 年里把基金做到 1204% 的收益——源文追问的是：独创性是不是被高估了。">
+<style>
+:root{
+  --paper:#F7F3EA;      /* 暖白纸底 */
+  --paper-2:#EFE8D9;    /* 纸色深一档 */
+  --card:#FFFDF8;
+  --ink:#0B1D33;        /* 墨蓝（主色） */
+  --ink-2:#16304C;
+  --ink-deep:#07131F;   /* 深墨（hero 底） */
+  --gold:#B8923A;
+  --gold-b:#D3AC4B;
+  --gold-soft:rgba(184,146,58,.16);
+  --cinnabar:#A63A2B;
+  --teal:#2F6B63;
+  --tx:#26303A;
+  --tx-2:#495156;
+  --tx-3:#7A7364;
+  --line:rgba(11,29,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(11,29,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#16304C 0%,var(--ink-deep) 62%);
+  color:#F1E9D8;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(211,172,75,.42)}
+.hero::after{inset:22px;border:1px solid rgba(211,172,75,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(211,172,75,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,58,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F6EFE0}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(241,233,216,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(211,172,75,.34);color:rgba(241,233,216,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,58,43,.6);background:rgba(166,58,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(184,146,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EDE4D2;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(211,172,75,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F5EDDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(211,172,75,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F5EDDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(237,228,210,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(184,146,58,.5);box-shadow:0 4px 18px rgba(11,29,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(184,146,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(47,107,99,.055)}
+.duo .colR{background:rgba(166,58,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,58,43,.1);color:var(--cinnabar);border:1px solid rgba(166,58,43,.28)}
+.case .tag.good{background:rgba(47,107,99,.1);color:var(--teal);border:1px solid rgba(47,107,99,.28)}
+.case .tag.mid{background:rgba(122,115,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(184,146,58,.45);background:rgba(184,146,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,58,43,.55);border-radius:8px;
+  background:rgba(166,58,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,45,33,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,58,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(184,146,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(11,29,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(11,29,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px}
+.bknav a{color:#16304C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap}
+.bknav a:hover{background:rgba(184,146,58,.16)}
+.bknav .home{font-weight:600}
+.bknav .sp{flex:1}
+.bknav .dis{color:rgba(11,29,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(11,29,51,.14);border-radius:5px}
+.bknav .cur{color:#7A7364;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+@media(max-width:760px){.bknav .inner{padding:0 16px;gap:8px}
+  .bknav .cur{display:none}.bknav a{padding:5px 8px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-前言/index.html">← 前言</a><a href="../02-愿意孤独/index.html">第二章 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">仿</div>
+  <div class="stamp s4">效仿之道</div>
+  <h1>效仿沃伦·巴菲特的人</h1>
+  <p class="sub">一个自称「我没有任何原创的思想」的印度裔基金经理，靠逐字复制巴菲特的收费结构、选股清单与作息，在 18 年里把基金做到 1204% 的收益——源文追问的是：独创性是不是被高估了。</p>
+  <div class="meta"><span>第一章</span>
+    <span class="k">效仿</span>
+    <span>正文 19,935 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>100万变10亿</a><a href="#s3" data-t="s3"><span class="cn">叁</span>投资法则</a><a href="#s4" data-t="s4"><span class="cn">肆</span>对所有事说不</a><a href="#s5" data-t="s5"><span class="cn">伍</span>65万美元的午餐</a><a href="#s6" data-t="s6"><span class="cn">陆</span>绑架之都</a><a href="#s7" data-t="s7"><span class="cn">柒</span>莫尼什的启示</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>智者当始终遵循伟人走过的道路，当效法过去的杰出者，这样，当他能力不及时，至少他还带有他们的一点意味。</p><cite>——尼可罗·马基亚维利</cite></div><div class="epi"><p>我相信吸取其他人宝贵的经验教训是明智之举，我不相信闭目塞听能梦想成真。</p><cite>——查理·芒格</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇论证主线</p><p class="thesis">源文用一个印度农村教室的场景开场：一个出身贫寒的 15 岁女孩解出了帕伯莱出的数论题。随后帕伯莱给出的致富答案不是算法，而是「效仿」——不做原创，去逆向考察技能最娴熟的玩家，把他的每一个细节复制过来，包括收费结构、选股清单、作息和对人的排序。</p><div class="chain"><div class="node"><div class="n">场景</div><div><p class="tt">一个农村教室</p><p class="dd">作者随帕伯莱到印度达德拉—纳加尔哈维利，看他给 40 名贫困女孩出题；15 岁的阿丽莎答对了，</p></div></div><div class="node"><div class="n">提问</div><div><p class="tt">「您是怎么赚到那么多钱的？」</p><p class="dd">帕伯莱的回答是「我会发挥复利的作用」，并让学生算 4800 美元在 60 年后变成多少。</p></div></div><div class="node"><div class="n">方法</div><div><p class="tt">效仿</p><p class="dd">「我是个十足的模仿者，一切都是模仿别人的……我没有任何原创的思想。」他系统挖掘巴菲特与芒格的想法。</p></div></div><div class="node"><div class="n">规则</div><div><p class="tt">巴菲特的投资法则</p><p class="dd">帕伯莱读遍巴菲特致股东的信，认定这些法则是“物理定律一样基本”的“投资法则”，并逐条照做。</p></div></div><div class="node"><div class="n">战绩</div><div><p class="tt">100 万变 10 亿</p><p class="dd">从 2000 年到 2018 年，他执掌的对冲基金收益率达 1204%，同期标普 500 只有 159%。</p></div></div><div class="node"><div class="n">外溢</div><div><p class="tt">效仿到投资之外</p><p class="dd">慈善（达克沙纳复制「超级30」模式）、人际关系、时间安排、幸福——帕伯莱把同一套方法用到全部生活。</p></div></div></div></div><p class="prose">源文的开篇不在办公室，而在印度西海岸。圣诞节当日的早上 7 点钟，作者与莫尼什·帕伯莱从孟买出发，驱车数小时前往达德拉—纳加尔哈维利，终点是一所名为 JNV 西尔瓦萨的农村高中。</p><p class="prose">帕伯莱给教室里的 40 名十多岁女孩子出了一道数学题：<b>n 是大于等于 5 的质数，证明 n2-1 总是能被 24 整除</b>。他预计西尔瓦萨没有学生能应对这一挑战，但 15 岁的阿丽莎在 10 分钟后给出了答案。</p><p class="prose">帕伯莱请她对着全班讲解，并告诉她肯定能上印度理工学院。事后作者得知，阿丽莎来自印度最贫穷的地区之一，在她以前就读的学校里共有 80 名学生，她的成绩排名第一。</p><div class="aband"><q>只要对自己有信心，就没有人能瞧不起你。</q><cite>——阿丽莎身后墙上的标语牌（第一章 · 导语）</cite></div><p class="prose">那天早上晚些时候，有人鼓起勇气问了一个人人都想知道答案的问题：「先生，您是怎么赚到那么多钱的？」帕伯莱的回答只有一句——他会发挥复利的作用。他让学生们算：他那 18 岁女儿莫玛奇暑假赚的 <b>4800 美元</b>存进养老账户，如果每年以 15% 的幅度增加，60 年后会变成多少。</p><div class="aband"><q>我会发挥复利的作用。</q><cite>——莫尼什·帕伯莱，答学生提问</cite></div><div class="aband"><q>每5年钱就会翻一番，总共会翻12番。这就是复利的例子。</q><cite>——莫尼什·帕伯莱，在 JNV 西尔瓦萨的课堂上</cite></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>如何把100万变成10亿</h2><span class="en">THE GAME</span></div><p class="prose">源文先把帕伯莱的来路交代清楚。他 1964 年出生，在孟买度过了人生的头 10 年，父母以每月 <b>20 美元</b>的租金租住着一套郊区小公寓；他对投资、华尔街或高级金融一无所知。</p><div class="prof"><p class="pn">莫尼什·帕伯莱（Mohnish Pabrai）</p><p class="pm">帕伯莱基金经理 · 达克沙纳慈善基金会创办人 · 自称「十足的模仿者」</p><dl><dt>出身</dt><dd>1964 年出生，在孟买度过头 10 年；祖父是著名的魔术师戈吉亚·帕夏（Gogia Pasha），常扮演出游世界的神秘埃及人；父亲奥姆·帕伯莱是企业家，但所创立的公司频频破产，多次创业，开过珠宝工厂、经营过广播电台，还通过邮寄的方式出售过魔术套装。</dd><dt>转折点</dt><dd>九年级时接受智商测试，测出「你的智商至少是180」；高中毕业后前往南卡罗来纳州的克莱姆森大学求学，在那里第一次知道股票市场。</dd><dt>创业</dt><dd>1990 年，他用 <b>7 万美元</b>的信用卡借债和从 401（k）账户中取出的 <b>3 万美元</b>创立技术咨询公司创思科技（TransTech）；顶峰时雇用 160 名员工。</dd><dt>第一桶金</dt><dd>1994 年攒下 100 万美元；在希思罗机场买了一本彼得·林奇的《彼得·林奇的成功投资》，第一次读到巴菲特。</dd><dt>业绩</dt><dd>从 2000 年到 2018 年，他执掌的对冲基金收益率高达 <b>1204%</b>，而同期标准普尔 500 指数的收益率仅为 <b>159%</b>；1999 年 7 月投入 10 万美元，到 2018 年 3 月 31 日增至 <b>1826500 美元</b>（扣除各项费用后）。</dd></dl></div><p class="prose">读到巴菲特从 20 岁开始连续 <b>44 年</b>投资回报率高达 31％ 之后，帕伯莱算了一笔账：按复利计算，巴菲特 1950 年投资的 1 美元到了 1994 年变成了 <b>14.4523 万美元</b>。他由此得出一个合乎逻辑的结论——巴菲特不是个笨蛋。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>父亲的破产：资金严重不足，而且过度举债</h4><span class="ar">▶</span></div><div class="cb"><div class="in">祖父是著名的魔术师，父亲奥姆·帕伯莱却是「所创立的公司频频破产」的企业家。帕伯莱说：<b>「我多次看到父母失去了一切，」</b>——「失去一切指的是，第二天没有足够的钱买日用杂货，也没有钱付房租」。他从中记住的却是父亲的那句话：「即使一无所有，也不影响我从头再来」。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>21 点：把 3000 美元变成 15 万美元</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在拉斯维加斯的赌场里，他坚持不懈地运用一位拥有金融学博士学位的算牌人开发的「非常无聊的」系统。他的计划是<b>赚取 100 万美元且被赌场禁赌</b>；到 2020 年，他已经将 <b>3000 美元</b>的本金变成了 <b>15 万美元</b>，还被「一家乌七八糟的小赌场」终身禁赌了。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>棋盘上的米粒：复利有多可怕</h4><span class="ar">▶</span></div><div class="cb"><div class="in">传说中发明国际象棋的人向国王要赏赐：第一个方格放 1 粒米，第二个放 2 粒，第三个放 4 粒，以此类推到第 64 个方格。帕伯莱算出国王欠下 <b>18446744073709551615 粒</b>大米，现在值约 <b>300 万亿美元</b>。他随即意识到，巴菲特已经掌握了复利的游戏之道：44 年里把自己的资金翻了 <b>18 番</b>。</div></div></div></div><div class="tbwrap"><table><thead><tr><th>场景</th><th>起点</th><th>假设与结果</th></tr></thead><tbody><tr><td>课堂上的复利演示</td><td>女儿莫玛奇的 4800 美元</td><td>每年以 15% 的幅度增加；60 年后她 78 岁时变成 <b>2100 万美元</b>；「每5年钱就会翻一番，总共会翻12番」</td></tr><tr><td>帕伯莱给自己定的目标</td><td>100 万美元</td><td>「在30年内将100万美元变成10亿美元的游戏」；按 26% 的年均收益率，本金每 3 年翻一番</td></tr><tr><td>退一步的底线</td><td>100 万美元</td><td>年均收益率只做到 16%，30 年后也有 <b>8585 万美元</b>；他把车牌号定为 <b>COMLB 26</b> 提醒自己</td></tr></tbody></table></div><div class="aband"><q>我这么做不是为了发财，而是为了赢得比赛，这跟巴菲特的动机是一样的，就是用结果证明我做得最好、我是最棒的，因为我按规则公平公正地参与了比赛，而且最终我赢了。</q><cite>——莫尼什·帕伯莱（第一章 · 节 1）</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>投资法则</h2><span class="en">THE LAWS</span></div><p class="prose">帕伯莱对巴菲特的学习是「门徒般的虔诚」。他如饥似渴地读巴菲特数十年来写给伯克希尔股东的信，以及罗杰·洛温斯坦写的《巴菲特传》，并开始每年到奥马哈朝圣，20 年来一直如此。</p><p class="prose">他读得越多，就越相信巴菲特在芒格的帮助下制定了与“物理定律一样基本”的“投资法则”。让他困惑的是，其他理财专家几乎都没有遵循这些法则。他形容那像是遇到一群不相信重力的物理学家——「无论你是否相信重力存在，它都会把你往下拉」。</p><p class="prose">在帕伯莱看来，大多数基金经理显然持有了太多的股票，他们为这些股票付出了太多，交易频率也很高。巴菲特却能好几年按兵不动：1970 年到 1972 年他几乎没有买入任何股票，1973 年股市崩盘时他买入了华盛顿邮报公司的大量股票，并持有了 <b>40 年</b>之久。</p><div class="grid g3"><div class="card num"><div class="idx">思想 1</div><h3>买的是企业，不是纸片</h3><p class="cp">无论何时购买股票，你购买的是持续经营、具有潜在价值的企业，而不仅仅是供投机者交易的纸片。</p></div><div class="card num"><div class="idx">思想 2</div><h3>市场是「投票机」，不是「称重机」</h3><p class="cp">这意味着股价往往无法反映这些企业的真实价值。格雷厄姆在《聪明的投资者》（The Intelligent Investor）里说的这句话，源文此处并未引完。</p></div><div class="card num"><div class="idx">思想 3</div><h3>只在远低于保守估值时买入</h3><p class="cp">公司的内在价值与股价之间的差距，就是格雷厄姆所说的「安全边际」。</p></div></div><div class="broken-tip"><b>源文缺口（就地标注）</b>｜节 2 第 10 段以「正如格雷厄姆在《聪明的投资者》（The Intelligent Investor）」结尾，<b>句子在此处截断，书中的引文没有给出</b>（后接「最后，只有在股票的售价远低于对其价值的保守估计时才应该买入。」另起一段）。本页不代为补引，原文照录。</div><h3 class="h3">等待最肥美的鲑鱼</h3><p class="prose">帕伯莱把格雷厄姆的三个核心思想落成一条行为规则：投资主要是等待难得的时机出现，即赚钱概率大大高于赔钱概率的时机。他自己在 2008 年股市崩盘时两个月内完成 10 笔投资交易，平常年份却极少出手——2011 年只买入两只股票，2012 年买入 3 只，2013 年一只也没买入。</p><p class="prose">2018 年，他的离岸对冲基金根本没有持有任何美国股票。美国主要交易所上市公司大约有 <b>3700 家</b>，他从中找不到一家值得交易的，于是带着鱼叉去了印度、中国和韩国。</p><div class="duo"><div class="colL"><h4>帕伯莱的做法（主线）</h4><ul><li>「投资的首要技能是保持耐心，极度的耐心。」</li><li>喜欢等待最肥美的鲑鱼出现：2008 年崩盘时两个月完成 10 笔交易。</li><li>持有 <b>10 只股票</b>就能满足他的多样化需求。</li><li>「我的标准非常简单：如果其股价在短时间内（两三年内）不能翻倍，我不会对它有任何兴趣。」</li><li>2020 年春季利用恐慌情绪购入西瑞泰奇 <b>13%</b> 的股份，认为最终会赚到 <b>10 倍</b>的收益。</li></ul></div><div class="colR"><h4>多数基金经理的做法（反面）</h4><ul><li>他们「多次下注，数额不大，但很频繁」。</li><li>「这些共同基金投资于一千只或两百只股票，你如何找到两百家估值将翻倍的股票呢？」</li><li>他们买的股票「是以30倍收益交易的股票……我看到他们都走霉运了」。</li><li>「大机构不善于静待时机。」</li><li>「我们不会因采取行动而获益，只会因决策正确而获益」——巴菲特，伯克希尔 1998 年股东大会。</li></ul></div></div><div class="aband"><q>你必须像一个手持长叉站在小溪边的捕鱼人，大部分时间里你什么都不做，但是，当一条肥硕的鲑鱼游过时，你要叉住它，然后你又什么都不做了，下一条鲑鱼游过可能要等6个月之后了。</q><cite>——查理·芒格（第一章 · 节 2）</cite></div><div class="aband"><q>当你能以不低于4亿美元的价格把资产出售给十个买家中的任何一个时，市场对该资产的估值为8000万美元……不要以8000万美元的价格购买一个价值8300万美元的企业。你要给自己留有余地。当你建造一座可以承受3万磅压力的桥梁时，你只会让自己驾驶一辆1万磅的卡车过桥。同样的道理也适用于投资。</q><cite>——沃伦·巴菲特，《格雷厄姆-多德式的超级投资者》</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>几乎对所有事情都说不</h2><span class="en">SAYING NO</span></div><p class="prose">帕伯莱最早选中的投资对象是一家印度小型科技公司萨蒂扬电脑服务公司，他 1995 年买入。五年内它上涨了约 <b>140 倍</b>；2000 年价格被严重高估时他抛售，获利 <b>150 万美元</b>。随后科技股泡沫破裂，这只股票的跌幅超过了 80%。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>萨蒂扬：140 倍，和一次及时的卖出</h4><span class="ar">▶</span></div><div class="cb"><div class="in">他了解该公司的业务，因为他之前在这一行业里工作过，而且当时这只股票「非常便宜」。在智慧和运气的双重作用下，他不到 5 年就把 <b>100 万美元</b>变成了 <b>1000 万美元</b>。他把自己比作从「某个水果公司」（即苹果电脑公司）的股票中大赚了一笔的阿甘。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>B 计划：反过来复制巴菲特的收费结构</h4><span class="ar">▶</span></div><div class="cb"><div class="in">他写信给巴菲特表示愿意免费为其效力，巴菲特回信说：「我深入思考过如何才能最佳地利用时间，我自己能做出最好的操作。」于是帕伯莱推行 B 计划：1999 年以 <b>600 万美元</b>卖掉自己的技术咨询公司，开始专注投资。他效仿了巴菲特合伙关系模式的每一个细节——不收取年度管理费，但<b>当收益率超出 6% 时，收取超出部分的 25％</b>。</div></div></div></div><p class="prose">帕伯莱借用巴菲特的做法，却从不照单全收。他举的例子正相反：格雷厄姆主张投资多样化，而巴菲特通过将赌注集中于少数被低估的股票而致富；「关键是要取其精华，弃其糟粕，而不是盲目地照搬一切」。以巴菲特为榜样，帕伯莱构建了一个异常集中的投资组合，认为 10 只股票就够用。</p><h3 class="h3">四条选股原则（都不是他原创的）</h3><div class="grid g2"><div class="card num"><div class="idx">第一</div><h3>只投资「在自己能力范围内」的公司</h3><p class="cp">这是巴菲特的「核心戒律」。分析一家公司时，帕伯莱首先会问：「我真的理解其业务吗？」</p></div><div class="card num"><div class="idx">第二</div><h3>交易价格大幅低于其基本价值</h3><p class="cp">他不创建复杂的电子表格，因为那样做会让他产生自己能精准预测未来的错觉；理想标的是「一眼就能看出其价格便宜」，通常意味着<b>以不到50美分的价格买到价值1美元的资产</b>。</p></div><div class="card num"><div class="idx">第三</div><h3>从廉价股转向优质企业</h3><p class="cp">在芒格的影响下，他重视公司是否拥有持久的竞争优势，是否由一位诚实、能力非凡的 CEO 管理。芒格指出，专注廉价股的格雷厄姆，最高回报来自持有 GEICO 保险公司——「他赚钱是因为这是一家优秀的企业。」</p></div><div class="card num"><div class="idx">第四</div><h3>财务报表应当简单明了</h3><p class="cp">巴菲特说：「人们不理解财务报表的唯一原因是制表者不想让人们理解它」。巴菲特办公桌的一个盒子上贴有「太难理解」的标签，用来提醒自己抵制诱惑。像安然和威朗制药这样的暴雷企业，帕伯莱很容易淘汰掉。</p></div></div><p class="prose">对帕伯莱来说，投资成功的一大秘诀是避免「太难理解」的企业。他避开了所有的初创企业和首次公开募股，因为他不太可能在靠销售炒作和被过高的预期主导的领域里找到便宜货；他也从来没有做空过一只股票，因为股票最大的涨幅是 100%，而跌幅是无限的。</p><p class="prose">上述这些基本原则非常可靠，但值得注意的是，它们都不是他原创的。在他的投资生涯中，每一个重要的想法不是源自芒格，就是源自巴菲特。作者坦白说，这一点让他略感不安——但这正是关键所在。</p><div class="aband"><q>他们不像我这么脸皮厚，他们自尊心比较强。要成为一名卓越的模仿者，你就必须放下自尊。</q><cite>——莫尼什·帕伯莱，答作者「为什么很多人不像他一样采用效仿之法呢」</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>投资大师和他的信徒以及65万美元的午餐</h2><span class="en">THE LUNCH</span></div><p class="prose">帕伯莱的模仿投资法效果惊人。1999 年 7 月他推出帕伯莱基金时，科技股泡沫即将破灭。在接下来的 8 年时间里，美国表现最好的指数道琼斯指数的年化收益率为 <b>4.6%</b>，而同期帕伯莱基金扣除各项费用后的年化收益率为 <b>29.4%</b>。</p><p class="prose">媒体盛赞他为「超级明星」「下一个沃伦·巴菲特」和「尔湾市的预言家」，他管理的资产规模增至 <b>6 亿美元</b>。他总结自己的业绩来自把注押在被不确定性笼罩的低估值股票上。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>巴西航空工业公司：恐怖袭击后买入喷气式飞机制造商</h4><span class="ar">▶</span></div><div class="cb"><div class="in">「9·11」恐怖袭击事件发生后不久，许多航空公司取消了对该公司的飞机制造订单，短期冲击使内心恐惧的投资者忽视了长期以来的现实：这是一家优质企业，其产品优越，制造成本低，管理一流，有充足的现金流。<b>2001 年他以每股 12 美元的价格大量买入，2005 年以 30 美元的价格全部售出。</b></div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>前线油轮：清算价值 11 美元，股价 5.90 美元</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2002 年油轮租赁价格暴跌后，他投资了斯堪的纳维亚的前线油轮有限公司。当时股价已暴跌至 <b>5.90 美元</b>，但据他计算，公司的清算价值应该超过了 <b>11 美元</b>。他对这类投资的总结是：「正面我赢，反面我输不了太多。」<b>几个月后，他就获得了 55% 的回报。</b></div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>IPSCO：以 44 美元买下全部钢铁厂</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2005 年，他以 <b>44 美元/股</b>买入特种钢材生产商 IPSCO，当时该公司账面上的每股超额现金约为 15 美元；他预计未来两年每年将产生每股约 13 美元的超额现金。手握以 44 美元买入的股票，他实际上是以<b>每股 3 美元</b>的价格收购了 IPSCO 的所有钢铁厂和其他资产。<b>2007 年卖出时，2470 万美元变成了 8720 万美元，26 个月的回报率高达 253%。</b></div></div></div></div><p class="prose">帕伯莱想当面表达他对巴菲特的感激之情，于是在 2007 年 7 月，他与好友盖伊·斯皮尔联手参加了一场慈善拍卖会，角逐与巴菲特「共进午餐的权力」。2008 年 6 月 25 日，他们在曼哈顿一家名叫史密斯沃伦斯基的牛排餐厅里待了 <b>3 个小时</b>，房间毗邻后厨，全木装修。</p><div class="grid g2"><div class="card num"><div class="idx">启迪 1</div><h3>关于投资：杠杆与不耐烦招致的风险</h3><p class="cp">帕伯莱问巴菲特：「里克·格林（Rick Guerin）是怎么了？」格林曾出现在《格雷厄姆-多德式的超级投资者》一文中，但他因「急于致富」用保证金贷款投资，1973—1974 年遭到追讨，被迫出售了后来价值飙升的股票。</p></div><div class="card num"><div class="idx">启迪 2</div><h3>关于生活：用「内心的计分卡」衡量自己</h3><p class="cp">巴菲特解释说，他和芒格总是以「内心的计分卡」来衡量自己，从不担心别人如何评价自己。判断你是根据外在还是内在标准生活的一种方法是问自己：「我愿意做世界上最坏但公众眼里最好的爱人还是做世界上最好但公众眼里最坏的爱人？」</p></div></div><p class="prose">这次交流对帕伯莱和斯皮尔都产生了持久的影响。帕伯莱也形成了一种「有利于采取不积极的投资策略」的生活风格：他睡得很晚，早上 10 点后进入办公室，没有任何日程安排；上午 11 点左右由助理送来打印的电子邮件，他直接在纸上写下最简短的回复——这是在效仿芒格的做法。</p><div class="aband"><q>如果你是一个略高于普通水平的投资者，而且你花的钱比赚的少，那么你这辈子肯定会变得非常富有。</q><cite>——沃伦·巴菲特，2008 年 6 月 25 日午餐（第一章 · 节 4）</cite></div><div class="aband"><q>和比你优秀的人在一起，你会在不知不觉中进步。</q><cite>——沃伦·巴菲特（第一章 · 节 4）</cite></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>欢迎来到印度的绑架之都</h2><span class="en">DAKSHANA</span></div><p class="prose">随着财富的增长，一个令帕伯莱开心的问题出现了：如何处理所有的钱。他再次从巴菲特身上寻求启迪——巴菲特一再谈到，财富带给他的满足感微乎其微：「如果我有七八栋房子，我的生活会更糟……因为它们根本不重要。」</p><p class="prose">他给两个女儿留「适当的财富」，让她们做想做的任何事情，但不能留太多，以免她们过寄生虫式的生活；同时决定效仿巴菲特，把自己的钱捐出去。他给自己提的问题是：「如果我今天就去世了，我想把大部分财产捐给什么事业或组织呢？」</p><p class="prose">答案是照抄。2006 年他读到一篇介绍数学老师阿南德·库马尔在印度农村实施的「超级30」项目的文章：库马尔每年为 <b>30 名</b>贫困高中毕业生提供免费的辅导和住宿，受资助的学生通过印度理工学院入学考试的比例高得令人难以置信。</p><p class="prose">帕伯莱想出资扩大这个项目，但库马尔无意于此，于是他决定「亲自去做一番实地考察」。</p><p class="prose">比哈尔邦被称为「印度的绑架之都」。他从新德里一家保安公司雇了两名保镖陪同出行，一名保镖之前是印度黑猫突击队的成员；由于无法在飞机上携带枪支，他们只好分别乘火车前往。帕伯莱后来发现，为确保他的安全，库马尔还另雇了 <b>4 名</b>保镖。</p><div class="tbwrap"><table><thead><tr><th>年份</th><th>每位学生支出</th><th>考入印度理工学院比例</th><th>其他关键数字</th></tr></thead><tbody><tr><td>2008 年</td><td><b>3913 美元</b></td><td>34%</td><td>帕伯莱向巴菲特发送了达克沙纳的第一份年报，巴菲特与芒格和比尔·盖茨分享了这份年报，并在福克斯电视台采访中称他「对慈善事业的考虑如对投资一样出色」。</td></tr><tr><td>2016 年</td><td><b>2649 美元</b></td><td><b>85%</b></td><td>运行效率大大提高；帕伯莱估计，达克沙纳每在学生身上投入 1 美元，政府就会相应投入 <b>1000 美元</b>。</td></tr><tr><td>2018 年</td><td>——</td><td>——</td><td>该基金会同时在印度的 <b>8 个网点</b>辅导了 <b>1000 多名</b>学生，其中包括占地 <b>109 英亩</b>的达克沙纳谷；仅这个网点就可容纳 <b>2600 名</b>学生。</td></tr><tr><td>2019 年</td><td>——</td><td>医学院通过率 <b>64%</b></td><td>有 <b>164 名</b>达克沙纳资助的学生进入医学院学习；所有举措由 CEO 拉姆·夏尔玛实施，他是一位退休的炮兵军官（上校），每年仅收取 <b>一卢比</b>的服务费。</td></tr></tbody></table></div><div class="prof"><p class="pn">阿肖克·塔拉帕特拉（达克沙纳校友）</p><p class="pm">基金会明星校友 · 印度理工学院孟买分校计算机科学工程 · 谷歌软件工程师</p><dl><dt>出身</dt><dd>在海得拉巴的一个贫民窟长大，父亲是个裁缝，一个月只能挣 <b>6 美元</b>；一家住在一个非常简陋的小屋子里，前门是一个粉色的浴帘，屋顶覆盖着石棉瓦，每逢下雨就会漏水。</dd><dt>成绩</dt><dd>印度理工学院入学考试中在 <b>471000 名</b>申请者里排第 <b>63 位</b>，这是达克沙纳资助的学生取得的最好成绩。</dd><dt>现状</dt><dd>毕业后在谷歌公司找到了年薪 6 位数的工作；进入谷歌公司不到一年后，就给父母买了套两室一厅一卫的新公寓，装有空调，而且屋顶不会漏水。</dd><dt>关系</dt><dd>在帕伯莱的启发下对投资越来越着迷；帕伯莱已经成了他的朋友和导师，他阅读帕伯莱推荐的投资书籍，定期参加伯克希尔·哈撒韦公司的年度股东大会。</dd></dl></div><div class="aband"><q>可以肯定地说，他的成功源自他对细节的重视。</q><cite>——拉姆·夏尔玛上校（第一章 · 节 5）</cite></div><div class="aband"><q>救人一命，宛如拯救了整个世界。</q><cite>——犹太教法典（作者在达克沙纳谷想起的一句话）</cite></div><div class="aband"><q>当你觉得生活毫无意义时，你该怎么办？不要毁了别人的生活。留下一个更美好的星球，照顾好孩子，剩下的就是无关紧要的游戏了。</q><cite>——莫尼什·帕伯莱，在孟买的出租车上（第一章 · 节 5）</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>莫尼什的启示</h2><span class="en">TAKEAWAYS</span></div><p class="prose">在从尔湾乘飞机归家的途中，作者写了一个题为「莫尼什的启示」的备忘录。他先提出两个最基本的问题：「我应该效仿的制胜之法是什么？我应该效仿谁？」</p><div class="grid g2"><div class="card num"><div class="idx">原则 1</div><h3>疯狂地效仿</h3><p class="cp">源文备忘录原文：「原则1：疯狂地效仿。」</p></div><div class="card num"><div class="idx">原则 2</div><h3>与比自己优秀的人为伍</h3><p class="cp">源文备忘录原文：「原则2：与比自己优秀的人为伍。」</p></div><div class="card num"><div class="idx">原则 3</div><h3>把生活视为一场游戏</h3><p class="cp">源文备忘录原文：「原则3：把生活视为一场游戏而不是生存竞赛或者你死我活的战斗。」</p></div><div class="card num"><div class="idx">原则 4</div><h3>做真实的自己</h3><p class="cp">源文备忘录原文：「原则4：做真实的自己，不做自己不想做或者自己认为不适合的事情。」</p></div><div class="card num"><div class="idx">原则 5</div><h3>按自己内心的评判标准生活</h3><p class="cp">源文备忘录原文：「原则5：按自己内心的评判标准生活，不要在意其他人的看法，不要被外部条件所束缚。」</p></div><div class="card num"><div class="idx">最后一条</div><h3>接受简单的想法并认真对待它</h3><p class="cp">作者写了芒格说过的一句话，帕伯莱也经常引用它。他补了一句：「这些原则中，最后一个可能最为重要。」</p></div></div><p class="prose">作者紧接着给自己划了边界：目标不是成为其他人思想的盲从者，「我们要领会原则精神并根据自己的实际条件加以调整」。他以帕伯莱对「求真」原则的执着为例自问：如果执着于宽厚仁慈又会怎样呢？他不必选择与帕伯莱一样的美德。</p><p class="prose">效仿的最佳效果出现在「以符合自己天赋和气质的方式」进行时。帕伯莱与斯皮尔常互相讨论是否投资某家公司，因此往往持有许多相同的股票，但斯皮尔的持仓规模要小得多，因为他比帕伯莱更谨慎、更胆小一些——「我不像莫尼什那样财大气粗」。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>汽车股：六年赚 7 倍，与他人的恐惧</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2015 年，帕伯莱对菲亚特克莱斯勒和通用汽车的股权投资额占其基金资产额的一半。斯皮尔的资产规模为帕伯莱的四分之一，他发现帕伯莱的投资集中度「惊人地可怕」；另一位对冲基金经理警告称，帕伯莱过于重视汽车行业了，几乎到了「疯狂」的地步。但随着菲亚特股价飙升，<b>帕伯莱在 6 年内赚了 7 倍的钱</b>。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>2018 年：两只股票占 70%，当年亏损 42%</h4><span class="ar">▶</span></div><div class="cb"><div class="in">他在 2018 年将离岸基金 <b>70%</b> 的资产投资于两只股票，这一冒险的做法导致他当年亏损了 <b>42%</b>。作者引斯皮尔的话收束这个两难：「聪明和愚蠢之间的界限很模糊」。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「极度集中」：芒格的说法不是对谁都适用</h4><span class="ar">▶</span></div><div class="cb"><div class="in">帕伯莱「极度集中」的策略深受芒格影响，后者曾说过「一个高度多样化的投资组合只需要包含4只股票」。但作者提醒：如果你我不具备帕伯莱那样的毅力和分析天赋，效仿这种做法无异于自掘坟墓。帕伯莱自己倒是从不为资金缩水 67% 感到压力：「我没有压力……我妻子甚至没有发现我有任何异常。」</div></div></div></div><div class="check" data-k="01c"><p class="ct">自 测 · 我能在哪些地方使用效仿法</p><label><input type="checkbox"><span>我在要学的那件事上，说得出一个「最娴熟的玩家」是谁。</span></label><label><input type="checkbox"><span>我研究过他的做法，而不是只看他的结果。</span></label><label><input type="checkbox"><span>我抄的是细节（流程、清单、结构），不只是态度。</span></label><label><input type="checkbox"><span>我核验过：这个做法为什么对他有效。</span></label><label><input type="checkbox"><span>我根据自己的条件和气质做过调整，而不是盲目照搬。</span></label><label><input type="checkbox"><span>我判断过他的哪些做法是我不打算碰的那一类。</span></label><div class="cf">已勾选（效仿是技能，不是抄袭） <b>0</b> / 6</div></div><div class="aband"><q>开始实践一个想法，让这个想法成为你的一切，白天思考它，晚上梦到它，活在这个想法里。让你的大脑、肌肉以及身体的每一部分都充满这个想法，不要管其他的想法。这就是成功的秘诀。</q><cite>——辨喜（Swami Vivekananda），第一章 · 节 4 引</cite></div><div class="aband"><q>问题是，这些都不难做到。</q><cite>——莫尼什·帕伯莱（第一章 · 节 6）</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">句中截断</span><span class="nd"><b>01｜</b>节 2 第 10 段：「其次，格雷厄姆将市场视为“投票机”，而不是“称重机”，这意味着股价往往无法反映这些企业的真实价值。正如格雷厄姆在《聪明的投资者》（The Intelligent Investor）」——<b>句子在书名的英文括注处截断，源文未给出格雷厄姆的原话</b>，下一段直接以「最后，只有在股票的售价远低于对其价值的保守估计时才应该买入。」起头。本页在「投资法则」一节就地插红框标注，并在卡片中说明源文此处并未引完，不代为补引。</span></div><div class="note" id="n2"><span class="nn">上标丢失</span><span class="nd"><b>02｜</b>导语第 5 段「证明n2-1总是能被24整除」，其中 n 的上标 2 在导出文本中被排成平排的「n2」（应为 n 的平方减 1）。本页正文照录源文写法，并在卡片与正文中保留「n2-1」原样。</span></div><div class="note" id="n3"><span class="nn">全半角混用</span><span class="nd"><b>03｜</b>同一数字单位在源文中全半角不统一：节 1 第 7 段「连续44年投资回报率高达31％」、节 3 第 3 段「收取超出部分的25％」用<b>全角％</b>，而节 2 第 3 段「当收益率超出6%时」用<b>半角 %</b>。本页引用时逐处保留源文原样，不作统一。</span></div><div class="note" id="n4"><span class="nn">编者说明</span><span class="nd"><b>04｜</b>源文分 6 节（另有 12 段导语）。本页将导语并入首节一篇之图，其余六节沿用源文小节原题（如何把100万变成10亿 / 投资法则 / 几乎对所有事情都说不 / 投资大师和他的信徒以及65万美元的午餐 / 欢迎来到印度的绑架之都 / 莫尼什的启示），共 7 节；节标题未作改写。</span></div><div class="note" id="n5"><span class="nn">编者说明</span><span class="nd"><b>05｜</b>源文节标题提到「65万美元的午餐」，正文只写 2007 年 7 月他与盖伊·斯皮尔「联手参加了一场慈善拍卖会」，<b>并未给出成交金额</b>；本页只用节标题原题，不推算、不补写金额。</span></div><div class="note" id="n6"><span class="nn">引文口径</span><span class="nd"><b>06｜</b>本页所有引号内文字均逐字取自源文，未做缩短或改写；省略号「……」沿用源文原有省略。源文内层的单引号（如「‘挥棒击球！’」「‘与这个人建立联系会让我变得更好还是更糟’」）按源文原样保留。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜威廉·格林《更富有、更睿智、更快乐》（马林梅 译，中国青年出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一章·效仿沃伦·巴菲特的人</span><a href="../00-前言/index.html">← 前言</a><a href="../02-愿意孤独/index.html">第二章 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rwh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
