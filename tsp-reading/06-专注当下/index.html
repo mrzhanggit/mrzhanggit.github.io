@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第六章·专注当下 · 消除干扰，缓解焦虑｜时间贫困 精读</title>
+<meta name="description" content="永远在任务间仓促切换的凯特，是所有人的缩影：基林斯沃思与吉尔伯特的数据显示我们近一半时间在分神，而心不在焉时人们更不快乐。本章给出四条经验法则，让「行动模式」切换成「在场模式」。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖灰纸底 */
+  --paper-2:#E7E3D9;    /* 纸色深一档 */
+  --card:#FCFBF7;
+  --ink:#22303B;        /* 主墨 */
+  --ink-2:#3E6B8E;      /* 暮蓝（次级文字与链接） */
+  --ink-deep:#0D1520;   /* 暮夜蓝（hero 底） */
+  --accent:#3E6B8E;     /* 暮蓝（accent · 时间与幸福科学的冷静基调） */
+  --accent-b:#7FA8C9;   /* 高亮暮蓝 */
+  --accent-soft:rgba(62,107,142,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 时间贫困） */
+  --contrast:#B08A3A;   /* 沙漏金（对照 · 快乐时光与投资） */
+  --tx:#22303B;
+  --tx-2:#44525E;
+  --tx-3:#79848E;
+  --line:rgba(34,48,59,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(34,48,59,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E6B8E 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(127,168,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(127,168,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(127,168,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--accent-b);
+  color:var(--accent-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(127,168,201,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--accent-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--accent);background:var(--accent-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--accent);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--accent)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--accent);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--accent),rgba(62,107,142,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--accent);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(127,168,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--accent-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E7EEF4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(127,168,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--accent-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E7EEF4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--accent);background:linear-gradient(90deg,var(--accent-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(62,107,142,.5);box-shadow:0 4px 18px rgba(34,48,59,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--accent);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--accent);border:1px solid var(--accent-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--accent),rgba(62,107,142,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--accent);color:var(--accent);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--contrast)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--contrast)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--accent-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--contrast);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--accent);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--accent);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--accent)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--accent-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--accent);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--accent);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--accent);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(62,107,142,.45);background:rgba(62,107,142,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(62,107,142,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--accent)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(34,48,59,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(34,48,59,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E6B8E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(62,107,142,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(34,48,59,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(34,48,59,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#79848E;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-忙里偷闲/index.html">← 忙里偷闲</a><a href="../07-时间隐喻储时罐/index.html">时间隐喻·储时罐 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">专</div>
+  <div class="stamp s4">专注当下</div>
+  <h1>专注当下 · 消除干扰，缓解焦虑</h1>
+  <p class="sub">永远在任务间仓促切换的凯特，是所有人的缩影：基林斯沃思与吉尔伯特的数据显示我们近一半时间在分神，而心不在焉时人们更不快乐。本章给出四条经验法则，让「行动模式」切换成「在场模式」。</p>
+  <div class="meta"><span>第六章</span>
+    <span class="k">专注当下</span>
+    <span>正文 7,573 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>心不在焉</a><a href="#s3" data-t="s3"><span class="cn">叁</span>度假思维</a><a href="#s4" data-t="s4"><span class="cn">肆</span>冥想与心流</a><a href="#s5" data-t="s5"><span class="cn">伍</span>数码脱瘾</a><a href="#s6" data-t="s6"><span class="cn">陸</span>核心要义</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>活在当下。</p><cite>——释一行禅师</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章不是教你换活动，而是教你换状态：从「行动」切换到「在场」</p><p class="thesis">凯特随身携带长长的待办清单，在儿子球赛时间用手机协调亲子活动、点菜、购物——于是错过了对方的精彩扑救。哈佛的研究表明<b>我们对所做之事的专注程度，比事情本身对幸福感的影响更大</b>。本章给出四条经验法则：像度假那样过周末、练习冥想、营造心流环境、收起手机。</p><div class="chain"><div class="node"><div class="n">困境</div><div><p class="tt">凯特的清单</p><p class="dd">给 7 岁孩子挑包装纸时，错过了「头号死因是车祸」的演讲要点——效率的代价是当下</p></div></div><div class="node"><div class="n">数据</div><div><p class="tt">走神研究</p><p class="dd">基林斯沃思与吉尔伯特用手机随机问答：人们近一半时间心不在焉，且分神时更不快乐</p></div></div><div class="node"><div class="n">法则一</div><div><p class="tt">像度假那样过周末</p><p class="dd">实验证实：把周末当作度假的人周末更快乐，之后一周也更愉悦——起作用的是关注度</p></div></div><div class="node"><div class="n">法则二</div><div><p class="tt">练习冥想</p><p class="dd">每天 10 分钟正念（初学者从 3~5 分钟开始）：缓解焦虑，聚焦当下——外加五感冥想</p></div></div><div class="node"><div class="n">法则三</div><div><p class="tt">营造心流</p><p class="dd">契克森米哈赖：人们处于心流状态时感到最快乐——关起门、戴上耳机、收起手机</p></div></div><div class="node"><div class="n">法则四</div><div><p class="tt">数码脱瘾</p><p class="dd">美国人每天至少拿手机 96 次；学生们断网 6 小时后，从不安到平静与满足</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>心不在焉：近一半人生的风险</h2><span class="en">MIND-WANDERING</span></div><p class="prose">哈佛大学的马特·基林斯沃思和丹·吉尔伯特通过一款智能手机应用，在人们每天使用手机时随机问答：(1) 你此刻正在做什么？(2) 除了此刻正在做的事情，你脑中有没有想其他事情？(3) 你现在感觉如何？</p><p class="prose">结果令人震惊：<b>人们正在做的事情并不会对是否专注产生重要影响</b>——除了享受性高潮，人们很可能在运动、穿衣服、通勤、工作、做家务、放松、看电视、读书、带孩子或与朋友聊天时分心。</p><p class="prose">思绪游走并非毫无益处——它是人类一种独特的认知技能，能让我们思考解决方案、追忆过往、筹划未来。但当思绪在近一半的时间里出走，大脑就面临错失一半人生的风险。而数据显示：<b>心不在焉时，人们的快乐程度更低</b>——我们有近一半的时间处于分神状态。</p><div class="aband"><q>人们对所做之事的专注程度比事情本身对幸福感的影响更大。</q><cite>——第六章 · 心不在焉（基林斯沃思与吉尔伯特）</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>法则一：像度假那样过周末</h2><span class="en">WEEKEND AS VACATION</span></div><p class="prose">度假太美好了：研究显示它对满足感、健康、创造力乃至工作表现都有积极影响。但美国人尤其不擅长度假——美国是唯一一个没有法定假期的工业化国家，当欧洲国家每年给予劳动者 20~30 天带薪假时，<b>四分之一的美国劳动者竟然连一天带薪假都没有</b>。</p><p class="prose">好在每周都有现成的周末——问题是，我们将待办清单从工作日延续到了周末。</p><p class="prose">科林、桑福德和霍姆斯验证了这个想法：让一部分参与者在周末执行「把周末当作度假」的指令（不一定外出，也无需花钱），周一再联系他们。结果——<b>将周末当作度假的参与者在周末结束时感到更快乐、更轻松，也更满足，之后的一周也更愉悦</b>。真正起作用的变量并不是时间分配，而是<b>关注度提高了</b>。</p><div class="aband"><q>真正提升“度假者”周一愉悦感的变量是他们对整个周末的关注度提高了。</q><cite>——第六章 · 像度假那样过周末</cite></div><p class="prose">凯特一定会从中获益：不咆哮着催促家人冲向球场，而是坐在场边的折叠椅上享受清新空气，在儿子成功扑救时兴奋地跳起来；去生日聚会的路上摇下车窗、放大音乐、一路高歌。度假带来的部分益处是<b>思维模式的转变</b>——你甚至可以把周三下午或周四晚上下班回家的时间当作假日。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>法则二与三：冥想，与心流环境</h2><span class="en">MINDFULNESS &amp; FLOW</span></div><p class="prose">所谓正念，就是「将意识集中于当下」。它已经得到充分研究：正念与改善身心健康、行为规范和人际关系息息相关；冥想通过把思绪聚焦于当下，缓解我们对未来的担忧——是治疗焦虑的有效方法。呼吸易于捕捉、持续不断，是绝佳的参照点。</p><p class="prose">科学家主要研究了每天冥想 10 分钟的效果，但初学者不妨从 3 分钟或 5 分钟开始，循序渐进。</p><div class="check" data-k="ch6-senses"><p class="ct">练 习 · 五 感 冥 想</p><label><input type="checkbox"><span>运用五感将注意力集中于你眼前的环境，寻找：五件能看到的事物。</span></label><label><input type="checkbox"><span>四件能摸到的事物。</span></label><label><input type="checkbox"><span>三件能听到的事物。</span></label><label><input type="checkbox"><span>两件能闻到的事物。</span></label><label><input type="checkbox"><span>一件能尝到的事物。</span></label><label><input type="checkbox"><span>你可以独立完成，也可以与别人一起，大声分享出五感所察觉到的事物。</span></label><div class="cf">已找到 <b>0</b> / 6</div></div><p class="prose">冥想之外，还需要物理空间：米哈里·契克森米哈赖把精力高度集中的超然状态称为<b>心流</b>——完全沉浸于当下所做之事，忘记了时间。他采访观察了全世界数千个体后指出：人们处于心流状态时感到最快乐。要进入心流，就得排除所有干扰。</p><div class="tbwrap"><table><thead><tr><th>心流环境七招</th><th>源文要点</th></tr></thead><tbody><tr><td>1. 腾出线程空间</td><td>看似紧迫但并不重要的小事经常会转移我们对大事的注意力——先清掉或放下它们</td></tr><tr><td>2. 行程表腾出几小时</td><td>在不同任务间切换的成本很高，会使你难以在任何一件事上进入最佳状态</td></tr><tr><td>3. 在最清醒时营造</td><td>有些人天生是百灵鸟（早晨精力充沛），有些人则是夜猫子（夜深人静时善于思考）</td></tr><tr><td>4. 关起门来</td><td>告诉同事（或家人）你不希望被打扰；开放式办公室就预订一间有门的会议室</td></tr><tr><td>5. 戴上耳塞或耳机</td><td>用白噪声或背景音乐减少声音干扰——同时也暗示同事：你已关闭了办公室大门</td></tr><tr><td>6. 退出电子邮箱</td><td>我们并不能同时处理多项任务——所谓的多任务只是在任务间切换</td></tr><tr><td>7. 收起手机</td><td>不要只是调成震动或倒扣在桌上，把它放到看不见的地方</td></tr></tbody></table></div><div class="aband"><q>人们处于心流状态时感到最快乐。</q><cite>——米哈里·契克森米哈赖，《心流：最优体验心理学》</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>法则四：收起手机，数码脱瘾</h2><span class="en">PHONE-FREE</span></div><div class="aband"><q>美国人每天至少拿起智能手机96次，也就是每10分钟一次。</q><cite>——第六章 · 收起手机</cite></div><p class="prose">手机是令我们分心的罪魁祸首：18~24 岁的人群查看手机的频率是其他年龄段的两倍。每次你看手机，也在向周围的人发出信号——他们的注意力在别处，「传递出他们不值得你全神贯注的信号」。</p><p class="prose">伊丽莎白·邓恩团队的实验直接而生动：几组朋友一起就餐，把手机收起来的人用餐体验更好；把手机放在显眼位置的人不太享受，因为他们更容易分心。</p><p class="prose">霍姆斯课程的第一项任务是把这一点推向极致：<b>整整 6 小时与所有数码产品断开连接</b>，并与最终成绩的 5% 挂钩。学生们先是不安——习惯性地把手伸向常放手机的地方、在社交场合靠看手机避免尴尬；但很快发生变化：沉浸于当下、感到平静和满足，「事实上别人并没有试图联系他们」。</p><p class="prose">摆脱了手机这个「减压阀」后，他们与陌生人交谈的可能性更大，并获得连接感。有学生把这份亲密归因于安息日的延续——从周五日落到周六日落，与所有数码设备断开连接。</p><p class="prose">练习：在每天清醒时留出 6 小时的「离线」时间——没有电话、电子邮件、社交媒体、电视或任何形式的互联网（可以听流媒体音乐或看电子书），之后写一篇反思短文，谈谈这段数码脱瘾期对你的情绪、思维和行为的影响。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>温馨提示 · 本章核心要义</h2><span class="en">TAKEAWAYS</span></div><p class="prose">温馨提示：我们有时会<b>主动</b>分心——面临糟糕的情况时，分心至少能帮我们转移一会儿注意力；经济低迷时期，人们越来越喜欢阅读内容轻松的书籍、观看情节更有趣的电影。也要记得，摆脱分心之事会令你暴露在当下的真实境况中——疫情隔离期间，有些人正是在静默中发现自己陷入糟糕的家庭关系或难以形容的孤独。</p><div class="check" data-k="ch6-takeaways"><p class="ct">核 心 要 义 自 测</p><label><input type="checkbox"><span>我们经常因为走神而分心，这样会降低当下的幸福感。所以，为了提升幸福感，需要用正确的方法消除干扰，专注当下。</span></label><label><input type="checkbox"><span>度假能提升幸福感，也能提高创造力和工作表现。</span></label><label><input type="checkbox"><span>即使像度假那样过周末，也能让你更享受周末，从而提升幸福感。</span></label><label><input type="checkbox"><span>冥想练习可以帮助你学会关注当下，也有助于缓解对未来的焦虑。</span></label><label><input type="checkbox"><span>营造一个保护自己不受外界干扰的环境，提升进入心流状态的可能性。</span></label><label><input type="checkbox"><span>只要放在眼前，手机就会让人分心，所以收起手机吧，这样你才会更快乐。</span></label><div class="cf">已认同 <b>0</b> / 6</div></div><p class="prose">下一章是一个隐喻，也是一个预算工具：如果你的时间是一个储时罐，你会把哪些沙子倒进去？——第七章「时间隐喻：储时罐」。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜凯茜·霍姆斯《时间贫困》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第六章｜专注当下</span><a href="../05-忙里偷闲/index.html">← 忙里偷闲</a><a href="../07-时间隐喻储时罐/index.html">时间隐喻·储时罐 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='tsp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

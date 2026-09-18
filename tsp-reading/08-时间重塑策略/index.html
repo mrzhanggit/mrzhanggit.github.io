@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第八章·用视觉工具规划时间 · 时间重塑策略｜时间贫困 精读</title>
+<meta name="description" content="掌握时间科学后，是时候搞点儿艺术创作了：把待办事项想成不同颜色和大小的瓷砖，在空白周计划画布上拼出理想的一周——奥巴马的家庭晚餐、离岗的早晨、没有安排的星期天下午，都是画布上的瓷砖。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖灰纸底 */
+  --paper-2:#E7E3D9;    /* 纸色深一档 */
+  --card:#FCFBF7;
+  --ink:#22303B;        /* 主墨 */
+  --ink-2:#3E6B8E;      /* 暮蓝（次级文字与链接） */
+  --ink-deep:#0D1520;   /* 暮夜蓝（hero 底） */
+  --accent:#3E6B8E;     /* 暮蓝（accent · 时间与幸福科学的冷静基调） */
+  --accent-b:#7FA8C9;   /* 高亮暮蓝 */
+  --accent-soft:rgba(62,107,142,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 时间贫困） */
+  --contrast:#B08A3A;   /* 沙漏金（对照 · 快乐时光与投资） */
+  --tx:#22303B;
+  --tx-2:#44525E;
+  --tx-3:#79848E;
+  --line:rgba(34,48,59,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(34,48,59,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--accent-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E6B8E 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(127,168,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(127,168,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(127,168,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--accent-b);
+  color:var(--accent-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(127,168,201,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--accent-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--accent);background:var(--accent-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--accent);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--accent)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--accent);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--accent),rgba(62,107,142,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--accent);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(127,168,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--accent-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E7EEF4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(127,168,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--accent-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E7EEF4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--accent);background:linear-gradient(90deg,var(--accent-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(62,107,142,.5);box-shadow:0 4px 18px rgba(34,48,59,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--accent);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--accent);border:1px solid var(--accent-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--accent),rgba(62,107,142,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--accent);color:var(--accent);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--contrast)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--contrast)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--accent-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--contrast);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--accent);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--accent);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--accent)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--accent-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--accent);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--accent);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--accent);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(62,107,142,.45);background:rgba(62,107,142,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(62,107,142,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--accent)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(34,48,59,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(34,48,59,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E6B8E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(62,107,142,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(34,48,59,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(34,48,59,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#79848E;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-时间隐喻储时罐/index.html">← 时间隐喻·储时罐</a><a href="../09-鸟瞰时间与致谢/index.html">鸟瞰时间·致谢 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">塑</div>
+  <div class="stamp s4">时间重塑</div>
+  <h1>用视觉工具规划时间 · 时间重塑策略</h1>
+  <p class="sub">掌握时间科学后，是时候搞点儿艺术创作了：把待办事项想成不同颜色和大小的瓷砖，在空白周计划画布上拼出理想的一周——奥巴马的家庭晚餐、离岗的早晨、没有安排的星期天下午，都是画布上的瓷砖。</p>
+  <div class="meta"><span>第八章</span>
+    <span class="k">周计划</span>
+    <span>正文 12,864 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>周计划画布</a><a href="#s3" data-t="s3"><span class="cn">叁</span>快乐策略</a><a href="#s4" data-t="s4"><span class="cn">肆</span>留白</a><a href="#s5" data-t="s5"><span class="cn">伍</span>排序策略</a><a href="#s6" data-t="s6"><span class="cn">陸</span>马赛克</a><a href="#s7" data-t="s7"><span class="cn">柒</span>核心要义</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>你无法阻挡海浪，但能够学会冲浪。</p><cite>——乔·卡巴金</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章把前七章的科学变成一件作品：你的周计划马赛克</p><p class="thesis">时间重塑 = <b>日程安排练习 + 科学支撑</b>：把待办事项想成瓷砖——最有乐趣和最有意义的事情是天生吸引人的瓷砖，而通过转换视角，连家务、工作和通勤这些最不起眼的瓷砖也能光芒四射。四个步骤、18 条策略，最终把「要不要做这件事」变成「什么时候做这件事」。</p><div class="chain"><div class="node"><div class="n">画布</div><div><p class="tt">周计划</p><p class="dd">从 www.cassiemholmes.com 下载打印，用铅笔草图、准备橡皮——霍姆斯与嫂子克里斯蒂娜双案例示范</p></div></div><div class="node"><div class="n">第一步</div><div><p class="tt">固定日程</p><p class="dd">只画无法选择是否要做或何时去做的活动：上课、通勤、接送孩子</p></div></div><div class="node"><div class="n">第二步</div><div><p class="tt">快乐日程</p><p class="dd">策略 1–10：捍卫社交时间、禁止使用手机、外包琐事、建立传统、经营友谊、捆绑、心流……</p></div></div><div class="node"><div class="n">第三步</div><div><p class="tt">留白</p><p class="dd">策略 11–13：离岗的早晨、舒式一小时、什么都不做的星期天下午</p></div></div><div class="node"><div class="n">第四步</div><div><p class="tt">瓷砖排序</p><p class="dd">策略 14–18：拆分乐事、打包苦差事、苦后美差、持续回味——用享乐适应为自己服务</p></div></div><div class="node"><div class="n">成品</div><div><p class="tt">马赛克</p><p class="dd">退一步看整幅拼图：一个小时不能定义你是谁，时间组合起来才能代表你所珍视的一切</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>周计划画布：四个步骤</h2><span class="en">THE CANVAS</span></div><p class="prose">霍姆斯以自己（学者、弹性工作、年幼的孩子）和嫂子克里斯蒂娜（特教学校教导主任、工作高度结构化、几乎没有自主权）双案例教学——「虽然特定的时间规划策略只对某些人更有意义，但每个人进行时间规划的基本步骤都是一样的」。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>第一步 · 安排固定日程</h4><p>只框出你无法选择是否要做或何时去做的活动。克里斯蒂娜：周一至周五 8:00~15:30 在校，单程通勤 1 小时，周一周三周四辅导至晚 7 点。霍姆斯：周三下午与周四上午的课、周五的教师会议。注意：不要完全排除这些时间——之后可能还有捆绑或整合的机会。</p></div><div class="step"><div class="dot">2</div><h4>第二步 · 优先安排快乐日程</h4><p>整个规划过程中最重要的一步——先往储时罐放高尔夫球，并明确高尔夫球的具体位置：把最好的时光奉献给最有意义的事情，并将这段时间彻底与其他时间隔开。快乐瓷砖来自第三章时间追踪与第七章识别乐事的笔记。</p></div><div class="step"><div class="dot">3</div><h4>第三步 · 留白</h4><p>艺术家会在色彩之间谨慎地留下空隙。提前留出真正休息、反思或机动应对琐事的时间，避免它们被其他事情占用。</p></div><div class="step"><div class="dot">4</div><h4>第四步 · 为瓷砖排序</h4><p>整合固定、快乐、空闲、必做和想做日程，将美好时光的影响最大化、杂事的影响最小化——用享乐适应为你服务。</p></div></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>优先快乐日程：策略精选</h2><span class="en">HAPPINESS STRATEGIES</span></div><div class="grid g3"><div class="card num"><div class="idx">策略 1</div><h3>捍卫社交时间</h3><p class="cp">周五晚上是约会之夜的完美之选：它让整个工作周有了盼头，在美酒佳肴的烘托下成为庆祝周末开始的仪式，而且第二天早上不需要早起、完全不用考虑工作问题。</p></div><div class="card num"><div class="idx">策略 2</div><h3>「禁止使用手机」</h3><p class="cp">巴拉克·奥巴马每天晚上 6:30 准时离开办公室，与妻子、岳母和两个女儿共进晚餐，之后两小时直到给女儿们盖好被子，工作人员知道不能打扰他——「这位美国前总统将每晚固定的家庭晚餐当作自己的『救命稻草』」。霍姆斯夫妇把手机放在前门；克里斯蒂娜说这个办法「改变了她的人生」。</p></div><div class="card num"><div class="idx">策略 3–5</div><h3>外包琐事 · 记录美好 · 建立传统</h3><p class="cp">晚餐 15 分钟上桌（外包给餐饮服务公司）；餐桌谈话回顾「当天最棒的部分」——朋友的「玫瑰、刺与花蕾」练习；以及定期相聚的传统：莉塔的咖啡约会从周四挪到了周日上午 7 点半，穿运动衫和人字拖，在去咖啡店的 800 米路上手牵着手。</p></div></div><div class="aband"><q>这位美国前总统将每晚固定的家庭晚餐当作自己的“救命稻草”。</q><cite>——第八章 · 周计划画布（奥巴马家庭晚餐）</cite></div><p class="prose">策略 6「花时间经营友谊」来自一位资深女教授的忠告。霍姆斯问她「您是如何成就这一切的」，得到的回答朴实无华：「我只是做了分内之事」——包括生完孩子 5 天后就去给以男性居多的教室上课。但触动她的是接下来这句话：</p><div class="aband"><q>凯茜，我没有把所有事情都做好。我错过了和女性交朋友的机会。</q><cite>——第八章 · 花时间经营友谊</cite></div><p class="prose">于是霍姆斯把友谊列为优先事项：每周四下午 2 点离开办公室带莉塔去舞蹈课——真正原因是结识其他妈妈；每月第一周的周四晚上去读书会——真正动机是与喜欢并能向她们取经的女性保持联系。</p><p class="prose">策略 7–10 则覆盖捆绑与心流：通勤路上安排电话约会、周二周四 5:30 起床晨跑、上午 9 点到下午 1 点留给自己最清醒时的科研写作——关闭邮箱、关掉铃声、关上办公室的门，甚至自带午餐。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>留白：离岗的早晨与没有安排的下午</h2><span class="en">WHITE SPACE</span></div><div class="aband"><q>这就是为什么有小孩的父母是时间最匮乏的人——母亲的情况比父亲更糟糕。</q><cite>——第八章 · 留白</cite></div><p class="prose">策略 11「给自己留出随意支配的时间」：霍姆斯夫妇设计了<b>任务分配方案</b>——工作日的早晨各自负责几天，一个人「在岗」全权负责孩子们一天的开始，另一个「离岗」的人可以选择晨跑、早点儿开始工作或和朋友喝咖啡，且不得干预另一方照顾孩子的方式（没有谢丽尔·桑德伯格所谓的「母性把关」）。</p><p class="prose">克里斯蒂娜的答案则是周六上午的瑜伽课。飞机上戴氧气面罩的顺序就是最好的例子：先给自己戴上面罩。</p><p class="prose">策略 12「腾出时间去思考」：舒式一小时——霍姆斯把它和每周一晨跑结合，不听音乐或播客，专心思考「我应该给这本书起什么名字」。策略 13「留出什么都不做的时间」：疫情期间人们被迫放慢速度，反而更有创造力；限制一解除日程又变得满满当当——于是霍姆斯家腾出<b>星期天下午</b>不做任何安排，并禁止使用手机。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>为瓷砖排序：让享乐适应为你打工</h2><span class="en">SEQUENCING</span></div><div class="grid g3"><div class="card num"><div class="idx">策略 14</div><h3>拆分并延续乐事</h3><p class="cp">我们在活动开始时最专注、体验最强烈——所以把喜欢的活动拆分开，创造更多「开始」：与其一次看 5 小时电视，不如每周 5 次每次 1 小时。有研究显示，节目中间插播广告反而让人们更享受电视。霍姆斯朋友的变体：每集结束前 10 分钟关掉电视，下次从悬念开始。注意：不要打断心流或刚深入谈话的约会。</p></div><div class="card num"><div class="idx">策略 15–16</div><h3>打包苦差事，苦中作乐</h3><p class="cp">「每天只做一点儿」的建议在享乐适应面前并不成立——那会让一整周弥漫着烦恼。克里斯蒂娜把周三晚上留给洗衣服和打扫卫生，不再让琐事影响整个周末；再叠加第四章的捆绑策略，一边做家务一边听播客——化苦闷为乐趣。</p></div><div class="card num"><div class="idx">策略 17–18</div><h3>苦后美差，持续回味</h3><p class="cp">消极情绪往往挥之不去——在预料到的苦差事之后安排一件美差事。全校教职工会议让霍姆斯焦虑，所以她提前约同事会后去喝珍珠奶茶、漫步校园，压力烟消云散。而精神体验比物质财富更能产生持久幸福感——在脑海中再次回味快乐的时刻，能让联系感贯穿一整个星期。</p></div></div><div class="aband"><q>你把时间分配到有价值的事情上，让时间变得有价值。</q><cite>——第八章 · 把时间看作马赛克拼图</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>把时间看作马赛克拼图</h2><span class="en">THE MOSAIC</span></div><p class="prose">近距离观察，任何瓷砖都可能美丽或黯淡；但我们经常想不到后退一步，为迫在眉睫的事情忧心忡忡。这种短视把时间变成两难困境：选办公室就为没见朋友内疚，见朋友就为没做完工作内疚——<b>这个问题没有正确答案</b>。退后一步看整幅拼图，问题就从「要不要做这件事」转变为「什么时候做这件事」。</p><div class="aband"><q>一个小时并不能定义你是谁，但是时间组合起来，就能代表你所珍视的一切和你自己的所有维度。</q><cite>——第八章 · 把时间看作马赛克拼图</cite></div><p class="prose">你不必只选一种颜色，不必在做一个好父母和拥有一份事业间做出选择。下午 3 点离开办公室去接孩子，不是一个矛盾的、令人内疚的、能够定义你是谁的决定——看看马赛克拼图，投入工作和陪伴孩子的时间都清清楚楚。这正是霍姆斯在火车上那一晚想要寻找的答案。</p><div class="aband"><q>是的，我不可能在任何给定的时间里事事兼顾、面面俱到。但我可以充实地度过每一周，以及我生命中的每一年。你也同样可以。</q><cite>——第八章 · 把时间看作马赛克拼图</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>本章核心要义</h2><span class="en">TAKEAWAYS</span></div><div class="check" data-k="ch8-takeaways"><p class="ct">核 心 要 义 自 测</p><label><input type="checkbox"><span>最好使用视觉辅助工具来规划时间。就像艺术家创作马赛克作品一样，通过挑选瓷砖、划分空间、排列事件来创造理想的一周。</span></label><label><input type="checkbox"><span>你可以通过活动安排将美差事的影响最大化、苦差事的影响最小化。</span></label><label><input type="checkbox"><span>为最重要的活动预留时间（例如，让你获得更多联系感的活动，帮助你实现目标的活动，思考的时间，无所事事的时间，属于自己的时间）。</span></label><label><input type="checkbox"><span>在这些时间中「禁止使用手机」，这样你就不会分心了。</span></label><label><input type="checkbox"><span>为了确保你把时间花在想做之事上，把想做之事和该做之事进行捆绑。</span></label><label><input type="checkbox"><span>为了苦中作乐，可以把你的该做之事和想做之事结合在一起。</span></label><label><input type="checkbox"><span>把你的乐事延伸开来，增强做这些事情的乐趣，拥有更多值得期待的美好时光。</span></label><label><input type="checkbox"><span>将苦差事整合起来，把做非常繁重且使你害怕的事情的时间减到最少。</span></label><label><input type="checkbox"><span>重构时间决策，将「是否要做」转化为「何时去做」，以这种心态展望未来的一周，可以减少冲突和内疚感。</span></label><div class="cf">已认同 <b>0</b> / 9</div></div><p class="prose">最后一章，视角从一周拉到一生：以年为单位鸟瞰时间，写自己的悼词——第九章「鸟瞰时间」。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜凯茜·霍姆斯《时间贫困》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第八章｜时间重塑策略</span><a href="../07-时间隐喻储时罐/index.html">← 时间隐喻·储时罐</a><a href="../09-鸟瞰时间与致谢/index.html">鸟瞰时间·致谢 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='tsp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
