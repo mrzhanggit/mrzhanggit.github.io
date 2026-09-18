@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第四部分 分散投资·资产类别与投资范围 · 税务｜财富方程式 精读</title>
+<meta name="description" content="股票、债券、房地产、大宗商品、基金——五大资产类别逐一盘点；再加上绕不开的税务：为什么年收入 200 万美元的家庭几乎不受所得税影响。">
+<style>
+:root{
+  --paper:#F5F3EA;      /* 素纸底 */
+  --paper-2:#E9E5D6;    /* 素纸深一档 */
+  --card:#FBFAF1;
+  --ink:#222831;        /* 主墨 */
+  --ink-2:#31404F;      /* 石板次墨 */
+  --ink-deep:#0D131C;   /* 深海夜蓝（hero 底） */
+  --gold:#3D5A80;       /* 板岩蓝（强调 · 方程的主色） */
+  --gold-b:#7A9CC6;     /* 高亮蓝 */
+  --gold-soft:rgba(61,90,128,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 陷阱与祸患） */
+  --teal:#C9A227;       /* 方程金（对照 · 分式的高光） */
+  --tx:#262B33;
+  --tx-2:#4C565F;
+  --tx-3:#8A929B;
+  --line:rgba(34,40,49,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(34,40,49,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#31404F 0%,var(--ink-deep) 62%);
+  color:#E7EDF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(122,156,198,.42)}
+.hero::after{inset:22px;border:1px solid rgba(122,156,198,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(122,156,198,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(236,240,228,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(122,156,198,.34);color:rgba(236,240,228,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(61,90,128,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF5;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(122,156,198,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EBF1F7;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(122,156,198,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EBF1F7;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(234,239,226,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(61,90,128,.5);box-shadow:0 4px 18px rgba(34,40,49,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(61,90,128,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(100,110,120,.12);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(61,90,128,.45);background:rgba(61,90,128,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,62,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(61,90,128,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,243,234,.94);
+  border-bottom:1px solid rgba(34,40,49,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(34,40,49,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#31404F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(61,90,128,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(34,40,49,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(34,40,49,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A929B;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-分散-原则与手册/index.html">← 原则与手册</a><a href="../10-分散-投资建议/index.html">投资建议 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">税</div>
+  <div class="stamp ">资产</div>
+  <h1>资产类别与投资范围 · 税务</h1>
+  <p class="sub">股票、债券、房地产、大宗商品、基金——五大资产类别逐一盘点；再加上绕不开的税务：为什么年收入 200 万美元的家庭几乎不受所得税影响。</p>
+  <div class="meta"><span>第四部分 分散投资</span>
+    <span class="k">资产配置</span>
+    <span>正文 28,387 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>懒人投资法</a><a href="#s3" data-t="s3"><span class="cn">叁</span>股票</a><a href="#s4" data-t="s4"><span class="cn">肆</span>债券</a><a href="#s5" data-t="s5"><span class="cn">伍</span>房地产</a><a href="#s6" data-t="s6"><span class="cn">陸</span>衍生品</a><a href="#s7" data-t="s7"><span class="cn">柒</span>基金</a><a href="#s8" data-t="s8"><span class="cn">捌</span>所得税</a><a href="#s9" data-t="s9"><span class="cn">玖</span>高收入陷阱</a><a href="#s10" data-t="s10"><span class="cn">拾</span>延迟纳税</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇覆盖第十四、十五章：懒人投资法、五大资产类别与税务的底层逻辑</p><p class="thesis">实现财富自由的「懒人投资法」只需 3 步：<b>开一个低费用券商账户、买入 6 个低成本多样化的 ETF、持续加钱</b>。它很靠谱，但需要你有赚钱的魄力和攒钱的毅力。而让财富真正加速的，是把大量收入转化为资本——因为资本利得的税率低于劳动收入。</p><div class="chain"><div class="node"><div class="n">框架</div><div><p class="tt">80/20 分配</p><p class="dd">第一笔 1 万美元长期资金：80% 被动投资（ETF），20% 主动投资练手——目标是了解市场、了解风险，最重要的是了解你自己</p></div></div><div class="node"><div class="n">资产</div><div><p class="tt">五大类别</p><p class="dd">股票（财富创造的直接参与）、债券（证券化的债务）、房地产（资产类别中的王者）、大宗商品与衍生品、基金（长期投资的主要方式）</p></div></div><div class="node"><div class="n">样本</div><div><p class="tt">损益表之河</p><p class="dd">从营业收入到净利润，河流流经整个企业——EBITDA 会被 CEO 们偏爱，但巴菲特问：难道管理层认为资本支出是由牙仙子支付的吗？</p></div></div><div class="node"><div class="n">税收</div><div><p class="tt">认识·理解·协助</p><p class="dd">美国的税法典有 2 600 多页，税率表只占不到一页——剩下的都在讨论如何计算你的「收入」</p></div></div><div class="node"><div class="n">加速</div><div><p class="tt">资本 > 劳动</p><p class="dd">财富来自资本投资而不是劳动工资——一旦你能将大量工资转化为投资资本，财富就会像坐上火箭一样飞速增长</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第十四章 懒人投资法与 80/20</h2><span class="en">LAZY PORTFOLIO</span></div><p class="prose">实现财富自由的「懒人投资法」只需 3 步——这不是唯一能成功的方法，但它已经被证实过：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>① 开账户</h4><p>把长期资金（投资本金）放在一家信誉良好的券商那里，比如富达或嘉信理财，开一个没有费用的标准账户。</p></div><div class="step"><div class="dot">2</div><h4>② 买 ETF</h4><p>把你的钱投入 6 个低成本、多样化的 ETF，大部分资金要投到美国公司的股票上。</p></div><div class="step"><div class="dot">3</div><h4>③ 持续加钱</h4><p>继续往投资账户里加钱，直到达到你的目标金额——也就是光靠被动收入就能过上好日子。</p></div></div><p class="prose">具体分配上，作者建议第一笔 1 万美元长期资金（现金储蓄，不含退休金）按 <b>80/20</b> 分配：80% 用于被动投资（ETF，买入并持有数年甚至永远）；20% 用于主动投资——几千美元就足够练手，输了会心疼，但不会威胁财富自由。</p><p class="prose"><b>我们的目标不是一夜暴富，而是了解市场、了解风险，最重要的是，了解你自己。</b>同事达莫达兰说过，最好的监管措施就是人生教训。一旦储蓄超过 1 万美元，就把所有额外储蓄投入被动投资——在市场上主动管理 2 万美元学到的东西，并不比管理 2 000 美元多。</p><p class="prose">开始主动投资前，你应达到的前置条件：遵循反映实际消费的最低预算（含储蓄）；最大限度利用退休计划缴款的税收优惠；已积累与情况相符的应急储备金，并有计划地为中期支出储蓄；已开始积累额外的现金储蓄并按 80/20 分配。一旦完成，你就准备好了。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>股票：损益表之河与估值倍数</h2><span class="en">STOCKS</span></div><p class="prose">股票让你直接参与经济的财富创造过程，而美国公司正是这股创造力的最佳体现。股权有两个维度：<b>控制权</b>（股东投票选董事会，董事会聘用或解雇首席执行官）与<b>经济利益</b>（对资产的剩余索取权＋对未来利润相应份额的分享权）。</p><p class="prose">成熟的公司开始通过股息或股票回购向股东返还利润——股息不是免费的午餐（支付时股价通常会下跌），而回购正逐渐取代股息：股东可以控制纳税的时间，这是重要的税务优势。</p><p class="prose">了解公司靠三份财务报表：<b>资产负债表</b>（资产、负债与股东权益）、<b>现金流量表</b>（核对权责发生制下声称的收入与实际到账的现金）、以及最重要的<b>损益表</b>——从上到下阅读它，就像看到一条河流流经整个企业：源头是营业收入，第一道分流是销货成本（剩下毛利润），然后是运营成本（剩下营业利润，即 EBIT），加上折旧摊销的回加就是 EBITDA。</p><p class="prose">首席执行官们喜欢强调 EBITDA，因为它能让业务看起来更有利可图——作者出售 L2 时也如此。巴菲特曾尖锐地批评：</p><div class="aband"><q>难道管理层认为资本支出是由牙仙子支付的吗？</q><cite>——沃伦·巴菲特，论 EBITDA</cite></div><p class="prose">损益表之河剩下的水就是净利润，除以流通股数即 EPS（每股收益）。估值上，市盈率是最常见的市场倍数：超过 30 视为高增长公司，成熟公司接近 10；经验丰富的投资者更关注息税前利润倍数。更直接的方法是 DCF（现金流折现模型）——预测未来业绩、应用折现率、加总为现值，与市价不同即可能存在投资机会。</p><p class="prose">还要理解公司的真实业务：<b>谷歌并不销售搜索引擎，它销售广告</b>——更像传统电视网络而不是科技公司。</p><p class="prose">实操建议：我们是在「二级市场」从其他投资者手里买股票——交易越频繁损失越大，千万别做日内交易；若薪酬以 RSU 发放，在符合税收政策的前提下尽快出售——你的职业发展已与公司深度绑定，不必再加大风险集中度。</p><p class="prose">作者自己把净资产很大一部分押在亚马逊上——基于 20 年零售业经验判断市场估值过低，过去 20 多年这笔投资获得了 25 倍回报。ESG 投资则不必盲目跟风：你的资金对你自己的意义，远比对那些公司的意义更大。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>债券：证券化的债务</h2><span class="en">BONDS</span></div><p class="prose">美国债券市场总额超过 120 万亿美元。用简化的例子说明运作：亚马逊向富国银行借 100 美元，谈判后以 5% 利率成交——富国银行把这笔还款承诺拆分成 100 份小承诺（每份一年后支付 1.05 美元）在公开市场出售，这些就是债券。</p><p class="prose">债券进入二级市场后，两种风险决定价格：<b>信用风险</b>（亚马逊陷入困境，价格可能从 1 美元跌到 0.9 美元）与<b>利率风险</b>（市场利率上升时，没人愿意为一年的 1.05 美元支付那么多——无论亚马逊多么可靠，也不可能比美国政府更可靠）。</p><div class="tbwrap"><table><thead><tr><th>术语</th><th>含义（以亚马逊债券为例）</th></tr></thead><tbody><tr><td>面值（票面价值）</td><td>债券到期时支付的金额——本例为 1 美元</td></tr><tr><td>票面利率</td><td>最初协商确定的利率——本例为 5%</td></tr><tr><td>到期日</td><td>偿还本金的日期——本例为年底，偿还 1 美元本金加 0.05 美元利息</td></tr><tr><td>收益率</td><td>以市场价格购买债券所能获得的实际年化利率：到期前一年以 1 美元买入为 5%；到期前 6 个月以 1 美元买入则为 10%</td></tr></tbody></table></div><p class="prose">债券市场大部分是政府债券：美国国债面值为 100 美元的整数倍，期限从 4 周到 30 年不等，财政部每周拍卖发行，且利息免征州所得税。与股票相比，债券风险较低、回报可预测，持有到期几乎不会亏损——但上涨潜力也不大：<b>任何超出票面部分的利润都归股东所有。风险与回报总是相伴而生。</b></p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>房地产：资产类别中的王者</h2><span class="en">REAL ESTATE</span></div><p class="prose">房地产堪称资产类别中的王者：土地能产生收入，终值几乎是确定的（土地资源有限），还享有多种税收优惠。但风险有二：<b>流动性几乎最低</b>——买下时你的投资通常从亏损开始（经纪人、评估师、政府费用），卖时再交一轮；<b>持有本身就要花钱</b>——房产税、保险、维护，甚至未开发土地的围栏安保成本。</p><p class="prose">对大多数人来说，最重要的房地产投资是自己的房子——它很可能长期是你投资组合中最大的组成部分。经济上的优势：出售自住房所得收入中有 25 万美元（已婚夫妇为 50 万美元）免税；房子是你唯一可以居住的投资品；抵押贷款是「担保」贷款所以利率相对较低；房贷更是一种<b>「强制储蓄」</b>。</p><p class="prose">但税法在变：2017 年《减税与就业法案》让标准扣除翻番（从 6 000 美元提高到 12 000 美元）后，申请抵押贷款利息扣除的纳税人比例从 21% 骤降至 8%——买房前先了解当前规则对你是否适用。</p><p class="prose">此外的途径：直接持有投资性房产（其实相当「主动」，像拥有第二份职业，适合自律、注重细节、有韧性与租户周旋的人）；或通过 REITs（房地产投资信托基金）投资——但这更像是股票投资，因为你投资的是一个管理团队和一种商业模式，只不过这种商业模式恰好是房地产。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>大宗商品、货币和衍生品</h2><span class="en">DERIVATIVES</span></div><p class="prose">大宗商品（石油、黄金、玉米）和货币本身是实物资产，价格受现实世界因素影响；加密货币主要受市场情绪影响，截至 2023 年仍存在重大的技术和社会障碍。作为投资者，你通常交易的是捕捉这些资产价格变化的<b>衍生品</b>——基于大宗商品的叫「期货」，基于股票的叫「期权」。</p><p class="prose">衍生品既可以降低风险也可以增加风险：金矿商押注金价下跌以对冲风险——这本质上是一种保险机制。但在 2008 年全球金融危机中，银行交易的 CDO（担保债务凭证）连银行自己都搞不懂，房地产下跌时才意识到面临数十亿美元亏损。</p><p class="prose">对散户：期权提供高杠杆——几百美元的看涨期权可能短期带来数千美元利润，也可能让你亏损超过初始投资；期权市场由构建「跨式」「宽跨式」「铁蝴蝶」的专业交易者主导，散户在他们面前就像「小鱼」。<b>一次性的零售期权交易并不是真正意义上的投资，它更像是赌博。</b></p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>基金：长期投资的主要方式</h2><span class="en">FUNDS</span></div><p class="prose">基金不是一种具体的资产，而是集合其他资产的投资工具——<b>它应该是你进行长期投资的主要方式</b>。ETF 比共同基金更便捷、更具成本效益且更有税收优势；避开收费较高的主动管理型基金；最关心的是费用比率——越低越好，最好远低于 1%。</p><p class="prose">最著名的标普 500 ETF 是 SPDR（代码 SPY），自 1993 年以来一直存在。机器人顾问所做的也只是把钱分配到几个 ETF 里——既然已经读到这里，你可以自己购买。</p><p class="prose">对长期投资来说，标普 500 ETF 才是你真正的基准：自 1957 年设立以来回报约 11%，过去 20 年为 8%。</p><p class="prose">资产配置上，常见的「100 减年龄」法则建议股票比例等于 100 减去年龄；但 2005 年经济学家罗伯特·席勒（后来的诺贝尔奖得主）分析了几种策略，发现<b>表现最好的是 100% 投资公司股票</b>——加入更保守的投资只会降低回报。</p><p class="prose">如果你的职业生涯正朝高收入方向发展且能严格控制开支，作者建议年轻时让长期投资更积极一些。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>第十五章 税务：所得税</h2><span class="en">TAXES</span></div><p class="prose">作者与国税局的关系很复杂：「从这个角度来说，我爱国税局」「从这个角度来说，我恨国税局」。西塞罗将税收描述为「国家的筋骨」；而公民的双重义务是既要对国家负责，也要对家庭负责——在合法的前提下尽量少缴税，就像战俘有义务尝试逃跑一样。减少税负的 3 个基本步骤：<b>认识、理解和协助</b>。</p><p class="prose">美国的税法典有 2 600 多页，个人所得税税率表只占不到一页——大部分篇幅在讨论如何计算你的「收入」。抵御税收的第一道防线是让一部分钱根本不计入收入：<b>借来的钱不算收入</b>——贝佐斯和马斯克用股票做抵押、以极低利率获得大额贷款维持生活，同时保持投票权，这是超级富豪常用的避税手段。</p><p class="prose">收入分两类：<b>当期收入</b>（工资）与<b>资本利得</b>（出售资产的利润）——联邦层面资本利得税率从 0 到最高 23.8%，通常低于当期收入。</p><p class="prose">所得税是分级累进的：2022 年单身申报者前 10 275 美元适用 10%，超过 539 900 美元的部分适用 37%——你不会因为赚得更多而受罚，只是超出部分被征收更高的税。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>高收入陷阱 · 工资税 · 有效税率</h2><span class="en">THE TRAP</span></div><p class="prose">累进税制对年收入 3 万美元的人和 300 万美元的人影响完全不同——因为收入的边际效用递减。比较两个家庭：年收入 50 万美元税后剩 25 万，生活水平受巨大影响；年收入 200 万美元即使缴一半的税，也剩 100 万——它的主要支出（私立学校学费、退休储蓄、房贷车贷）都在 50 万美元以下。</p><p class="prose">把时间线拉长更明显：<b>后者每年还能剩 150 万美元投资，以 8% 年回报率计算，10 年就能积累近 2 500 万美元的基金，每年产生超过 200 万美元的投资收益</b>（按资本利得税率征税）。</p><div class="aband"><q>财富来自资本投资，而不是劳动工资。一旦你能将大量工资转化为投资资本，你的财富就会像坐上火箭一样，飞速增长。</q><cite>——第十五章 高收入陷阱</cite></div><p class="prose">这就是为什么我们说「资本主义」而不是「劳动主义」。但也因此所得税对医生、律师、工程师等高收入打工者影响最大——巴菲特就说过，他的税率比他的秘书还低。工资税无法避开：社会保障税 12.4%（工资单显示 6.2%，「由雇主承担」只是幻象），2023 年上限 160 200 美元；医疗保险税 2.9% 无上限。</p><p class="prose">还要分清<b>有效税率</b>（总税款占总收入比例）与<b>边际税率</b>（每增加 1 美元收入的税率）：丈夫年收入 20 万美元的家庭有效税率约 16%，但妻子若出外工作年薪 10 万美元，边际税率可达 30%——高税率州差距更大。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>延迟纳税策略：传统型 vs 罗斯型</h2><span class="en">DEFERRAL</span></div><p class="prose">税务规划中时机最重要：把 1 美元收入从边际税率 47% 的年份推迟到 20% 的年份，就能省下 27 美分——光是延迟纳税就带来 27% 的回报，再加上复利的力量。这就是 401(k) 和 IRA 退休计划的优势：它们让你控制部分收入的纳税时间。两种类型的选择：</p><div class="duo"><div class="colL"><h4>传统型计划</h4><ul><li>存入的钱可从当年应纳税收入中扣除：税率 30% 时存 1 000 美元即省 300 美元税</li><li>账户内投资收益暂不交税；取出时为本金和收益缴所得税</li><li>59.5 岁前不能随意取出（要交税＋罚金）；73 岁必须开始取款</li><li>适合收入高峰期的人：按目前较高的税率抵扣，节省当年税负</li></ul></div><div class="colR"><h4>罗斯型计划</h4><ul><li>存入的钱不能在当年抵扣税款</li><li>将来取款时包括投资收益在内全部免税</li><li>可随时取出存入的本金（不能取收益），无严格年龄限制</li><li>适合刚开始工作、收入还比较低的人；罗斯型 IRA 只对中低收入者开放，罗斯型 401(k) 无此限制</li></ul></div></div><p class="prose">还有针对特定情况的工具：529 大学储蓄计划、健康储蓄账户。核心思想始终是<b>尽量减少一生的纳税总额，而不是某一年的纳税额</b>——职业生涯早期缴纳的税款比后期更「昂贵」，因为你失去了用这笔钱投资生钱的机会。资本相对于劳动收入的优势就在于此：你可以持有升值的资产直到需要用钱时再出售，从而推迟纳税。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜斯科特·加洛韦《财富方程式：拥抱富足、自洽与幸福的人生》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">分散投资｜资产与税务</span><a href="../08-分散-原则与手册/index.html">← 原则与手册</a><a href="../10-分散-投资建议/index.html">投资建议 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='weq-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

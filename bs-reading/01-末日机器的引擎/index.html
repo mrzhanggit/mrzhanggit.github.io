@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一章·末日机器的引擎 · 史蒂夫·艾斯曼的起点｜大空头 精读</title>
+<meta name="description" content="从奥本海默的初级分析员到洛玛斯的卖出评级，从家庭金融公司的欺骗性贷款到前点合伙的做空团队——艾斯曼的每一步都在为 2005 年那个判断蓄力：这看起来真的不妙。">
+<style>
+:root{
+  --paper:#F4F1EC;      /* 冷纸底 */
+  --paper-2:#E7E2D9;    /* 纸色深一档 */
+  --card:#FBF9F6;
+  --ink:#23201E;        /* 主墨 */
+  --ink-2:#4E5E6E;
+  --ink-deep:#0F0B0A;   /* 冷钢黑（hero 底） */
+  --gold:#B33A2B;       /* 警报红（强调 · 做空与崩塌） */
+  --gold-b:#D97B62;
+  --gold-soft:rgba(179,58,43,.16);
+  --cinnabar:#B08A3A;   /* 美元金（警示 · 金钱与贪婪） */
+  --teal:#4E5E6E;       /* 冷钢蓝（对照 · 机构与克制） */
+  --tx:#2A2724;
+  --tx-2:#4C565E;
+  --tx-3:#7D8084;
+  --line:rgba(35,32,30,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,32,30,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4E5E6E 0%,var(--ink-deep) 62%);
+  color:#EDE9E4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(217,123,98,.42)}
+.hero::after{inset:22px;border:1px solid rgba(217,123,98,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(217,123,98,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(176,138,58,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F2EFEA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,233,228,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(217,123,98,.34);color:rgba(237,233,228,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(176,138,58,.6);background:rgba(176,138,58,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(179,58,43,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#ECE8E3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(217,123,98,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F0EAE4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(217,123,98,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F0EAE4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(236,232,227,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(179,58,43,.5);box-shadow:0 4px 18px rgba(35,32,30,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(179,58,43,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(176,138,58,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(176,138,58,.1);color:var(--cinnabar);border:1px solid rgba(176,138,58,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(122,120,114,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(179,58,43,.45);background:rgba(179,58,43,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(176,138,58,.55);border-radius:8px;
+  background:rgba(176,138,58,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(133,44,33,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(176,138,58,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(179,58,43,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,241,236,.94);
+  border-bottom:1px solid rgba(35,32,30,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,32,30,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4E5E6E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(179,58,43,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,32,30,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,32,30,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7D8084;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-开场-推荐序与序/index.html">← 开场·敲门的小鬼</a><a href="../02-寻找市场的漏洞/index.html">寻找市场的漏洞 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">空</div>
+  <div class="stamp ">引擎</div>
+  <h1>末日机器的引擎 · 史蒂夫·艾斯曼的起点</h1>
+  <p class="sub">从奥本海默的初级分析员到洛玛斯的卖出评级，从家庭金融公司的欺骗性贷款到前点合伙的做空团队——艾斯曼的每一步都在为 2005 年那个判断蓄力：这看起来真的不妙。</p>
+  <div class="meta"><span>第一章</span>
+    <span class="k">艾斯曼</span>
+    <span>正文 17,351 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>天才型人物</a><a href="#s3" data-t="s3"><span class="cn">叁</span>双重人格</a><a href="#s4" data-t="s4"><span class="cn">肆</span>文尼登场</a><a href="#s5" data-t="s5"><span class="cn">伍</span>末日机器</a><a href="#s6" data-t="s6"><span class="cn">陸</span>负债变产品</a><a href="#s7" data-t="s7"><span class="cn">柒</span>家庭金融</a><a href="#s8" data-t="s8"><span class="cn">捌</span>团队聚齐</a><a href="#s9" data-t="s9"><span class="cn">玖</span>第二幕</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>开张支票，以确保谈话中的许诺能兑现。</p><cite>——沃伦·巴菲特（章末引语）</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第一章的主线：艾斯曼如何长出一双能嗅到次贷尸味的鼻子</p><p class="thesis">艾斯曼不是先知下凡，而是一台被经历改装过的机器：律师生涯的厌恶 → 奥本海默的<b>卖出评级</b>传统 → 1997 年第一份抨击次贷发起人的报告 → 家庭金融公司欺诈案让他转向 → 摩根士丹利门下的前点合伙凑齐了团队。<b>末日机器的引擎</b>则是文尼发现的核心机制：放款公司保留一小部分自己发起的贷款，并按「可收回、不提前还款」的假设记账——这些假设成了它们的末日机器的引擎。</p><div class="chain"><div class="node"><div class="n">起点</div><div><p class="tt">恨律师的律师</p><p class="dd">宾大＋哈佛法学院的企业律师，1991 年由父母塞进奥本海默公司当分析员</p></div></div><div class="node"><div class="n">成名</div><div><p class="tt">卖出评级</p><p class="dd">洛玛斯金融公司「完美对冲」报告——几个月后公司重回破产保护</p></div></div><div class="node"><div class="n">机制</div><div><p class="tt">末日机器</p><p class="dd">贷款断供率不披露；保留贷款按乐观假设记为利润——庞氏特征</p></div></div><div class="node"><div class="n">转折</div><div><p class="tt">家庭金融</p><p class="dd">7% 的「有效利率」实为 12.5%；4.84 亿美元和解、155 亿美元卖身汇丰</p></div></div><div class="node"><div class="n">团队</div><div><p class="tt">前点合伙</p><p class="dd">文尼·丹尼尔、波特·柯林斯、丹尼·摩西聚齐——坏事随时会发生</p></div></div><div class="node"><div class="n">共识</div><div><p class="tt">借卖空牟利</p><p class="dd">2005 年：我们借卖空这个东西来赚取巨额财富的时机就要到了</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>天才型人物</h2><span class="en">THE ODD ONE</span></div><div class="prof"><p class="pn">史蒂夫·艾斯曼 Steve Eisman</p><p class="pm">奥本海默公司分析师 · 后为前点合伙基金经理</p><dl><dt>出身</dt><dd>纽约市长大，犹太中学，先后以优异成绩毕业于宾夕法尼亚大学与哈佛法学院</dd><dt>入行</dt><dd>1991 年 30 岁，从企业律师转行——「我恨这个职业，我讨厌当一名律师」</dd><dt>家庭</dt><dd>父母莉莲与艾略特是奥本海默证券部门经纪人；第一年薪酬按公司规定由父母支付</dd><dt>标签</dt><dd>「扑克牌脸」的反面；嘴总是半开，担心想法来不及说出口</dd></dl></div><p class="prose">奥本海默是华尔街硕果仅存的合伙人制公司之一，靠高盛和摩根士丹利的残羹冷炙苟延残喘，却因此养出了反主流文化：「坐在大公司里面的那些人获得酬劳，就是为了达成一致意见」，而在这里，「要想赚到钱，唯一的办法就是把事情做对，并且制造出足够大的噪声，让人们注意到它」。</p><p class="prose">1991 年 12 月，次贷公司阿艾梅斯金融上市无人敢看，初级分析员艾斯曼因为「审读过资金商店公司的文件」被推上首席分析师的位置。</p><p class="prose">他负责的第二家公司洛玛斯金融刚走出破产阴影，他给了<b>卖出</b>评级，并写下了他自认最有意义的一句报告——</p><div class="aband"><q>洛玛斯金融公司是一家很完美地进行了风险对冲的金融机构，它在每一种可以想到的利率环境下都在亏损。</q><cite>——艾斯曼 · 洛玛斯评级报告</cite></div><p class="prose">「我非常享受写下这句话时的感觉，我所写过的其他任何句子带给我的愉悦都无法与这句话相比。」几个月后，洛玛斯再次进入破产保护。华尔街开始把他看作天才型人物——尽管他的穿着好像某人特意给他买了漂亮新衣裳却没告诉他怎么穿。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>天生的导师与双重人格</h2><span class="en">MENTOR</span></div><p class="prose">与他共事的人爱他或觉得他有趣——「他天生就是一位导师，而且他对女士有一种强烈的保护意愿」。他不顺从大人物：午餐会上当面解释某经纪公司头目对自己的业务一无所知，对方从此拒绝与他同室；日本房地产企业 CEO 递上财报争取投资，他发现报表没有披露任何真正重要的细节，于是把报表拎起来「就像捏着一堆不干净的东西」——</p><div class="aband"><q>这……这就是厕纸</q><cite>——艾斯曼 · 对日本 CEO</cite></div><p class="prose">「那个日本佬摘下了眼镜，他的嘴唇颤抖着，第三次世界大战一触即发。『厕纸？厕纸？』」——「把这翻译给他听。」妻子瓦莱丽的解释是：他的粗野带着率性而为的坦诚——他知道大家都把他当成大人物，但他自己不这样看。</p><p class="prose">母亲莉莲则给出了另一个说法：他小时候把梦寐以求的崭新自行车骑到中央公园，借给一个素不相识的孩子，然后看着它消失在视线里。他研究《塔木德》不是因为对上帝有兴趣，而是因为对书中的自相矛盾之处感到好奇——「有谁会为了发现书里的错误而去研究《塔木德》？」</p><p class="prose">这个为找错误而生的头脑，正是华尔街即将需要的东西。后来变得富有的艾斯曼，连处理金钱都要引发一场战争：他找到致力于帮助哈西德派犹太人脱离信仰的「脚步」组织捐款——在母亲看来，这简直是对家族的冒犯。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>审计的黑箱：文尼登场</h2><span class="en">VINNY</span></div><div class="prof"><p class="pn">文森特·丹尼尔 Vincent Daniel</p><p class="pm">皇后区出身 · 注册会计师 · 艾斯曼团队的数字眼睛</p><dl><dt>出身</dt><dd>皇后区下层中产阶级家庭，1994 年毕业于纽约州立大学宾汉姆顿分校</dd><dt>入行</dt><dd>先在阿瑟·安德森做初级会计师，第一项任务是审计所罗门兄弟公司</dd><dt>结论</dt><dd>「对于一名被分派去审计华尔街大公司的会计师来说，根本没有办法知道这家公司是在赚钱还是在赔钱」</dd><dt>跳槽</dt><dd>经理让他「做 XYZ 并且闭上你的嘴」——「我走出了他的办公室，并且说，我现在就走」</dd></dl></div><p class="prose">艾斯曼当时正在找人帮他分析次贷发起人越来越晦涩的账目：「我不擅长计算，我是用故事来思考的。我需要有人在数字方面帮助我。」两人只见了两面，艾斯曼就在电话里让他干等着，然后放下听筒再没回来——文尼举着话筒默默等了 15 分钟。两个月后电话才再次响起，问他什么时候可以上班。</p><p class="prose">那次挂断的答案令人心碎：艾斯曼接到的是另一个紧急电话——他刚出生的儿子麦克斯在睡梦中夭折了。「从宇宙发展史的观点来看，麦克斯的死不是什么大事，」艾斯曼说，「但这是我个人的大事。」妻子瓦莱丽说，在那之前他总觉得有天使在肩膀上，「在麦克斯的事情之后，他肩膀上的天使出事了。</p><p class="prose">任何事情都可能在任何时候发生在任何人的身上。」文尼来报到时面对的，已经不是面试时那个艾斯曼了。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>末日机器的引擎</h2><span class="en">DOOMSDAY MACHINE</span></div><p class="prose">穆迪公司的数据库不允许检查具体的单笔贷款，只给出贷款池的总体图景：有多少是浮动利率，有多少贷款买入的房子是自住的，最重要的是——有多少是断供的。「这就是数据库，」艾斯曼言简意赅地说。文尼只有 26 岁，还没真正搞清楚抵押贷款债券是什么，只能自学。</p><p class="prose">他最先盯上的是「预制房屋」行业高得反常的提前还款率：那些房子的价值离开商店就开始下跌，购买者根本不可能两年内再融资——所谓的「非自愿提前还款」，就是被收回房屋的委婉说法。</p><div class="aband"><q>在工资不增长的情况下，怎么能让穷人感觉到富有？答案是：向他们提供低廉的贷款。</q><cite>——文尼 · 对次贷的顿悟</cite></div><p class="prose">他花 6 个月筛遍每一个次级贷款池，结论是这些公司全都具有庞氏骗局的基本特征：为了维持赢利的假象，需要更多的资金来创造越来越多的次级贷款。会计规则允许它们把保留的贷款视为可收回、不会提前还款——<b>这些假设成了它们的末日机器的引擎</b>。</p><p class="prose">1997 年 9 月，艾斯曼发表报告，一家接一家地抨击次级贷款发起人，「它们提交给你们的数字与真实数字之间有着天壤之别」。他对着声嘶力竭的公司们吼回去：「这是你们的数据！」</p><div class="aband"><q>我的名字已经深深地嵌入了这个行业。我的整个名声都建立在研究这些股票上面。如果我错了，这可能就是史蒂夫·艾斯曼事业的终结。</q><cite>——艾斯曼 · 押上名声</cite></div><p class="prose">报告发表在史上最大经济繁荣期的高点。不到一年，俄罗斯断供潮、长期资本管理公司倒闭，早期次贷放款人成批破产——败因正是「在利润实现之前就记入了收益」。「据我所知，除了我，没有任何人研究那些即将在一场前所未有的经济繁荣中破产的企业，」文尼说，「我看到了这一切是怎么发生的，事情真的很蹊跷。」</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>将负债变成产品销售</h2><span class="en">SECURITIZATION</span></div><p class="prose">要理解艾斯曼闻到的味道，得先理解这台机器。抵押贷款债券不是单一贷款，而是对数千笔住房抵押贷款池现金流的追索权。所罗门兄弟的解法是把还款切成「部分」：<b>底楼</b>买家承受第一波提前还款冲击、换取最高利率；越往上层利率越低、保障越高。</p><p class="prose">这套结构原本运行在政府担保的世界里（房地美、房利美、吉利美），20 世纪 90 年代起被投入新用途——发放达不到政府担保要求的贷款。</p><p class="prose">拉涅里创建的证券化模型里，「一个人的负债就是另外一个人的资产，但是现在越来越多的负债变成了一堆纸片，你可以向任何人销售」——信用卡应收账款、飞机租赁、汽车贷款、健身俱乐部会费都成了债券的支撑物。而最显眼的未被充分利用的资产是住房。</p><p class="prose">次级债思维的理念包装颇具蛊惑性：仅仅因为信用评级差一点就要支付高得离谱的利率，把债券推向大众市场就能降低借款人成本——「而且这将成为一个自我实现的预言」。</p><div class="duo"><div class="colL"><h4>天才想法的一面</h4><ul><li>让下层中产阶级用低利率抵押贷款替换高利率信用卡债务</li><li>资本市场的新效率：为债务支付的利率越来越低</li><li>艾斯曼自己也深信不疑，还把很多次级债公司推上市</li></ul></div><div class="colR"><h4>藏着的道德风险</h4><ul><li>放款人把贷款的大部分以债券形式卖给其他投资者</li><li>「任何一个只要销售产品并能从中赚钱，而不用担心产品效益的行业，都能够吸引肮脏的商人」</li><li>债务成为可典当的新资产：只需要找到新的资产，就可以创造一个新市场</li></ul></div></div><p class="prose">艾斯曼当时对行业叙事照单全收——「我们在帮助客户，因为我们将他们从高利率的信用卡债务中拯救出来」。他还把行业的存在归因于收入分配的恶化：「美国的收入分配出现了偏差，而且偏离正常状态越来越严重，其结果就是你拥有了更多的次级客户。」随后，有些事情改变了。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>真实的金融界：家庭金融公司</h2><span class="en">HOUSEHOLD</span></div><p class="prose">2002 年，公开上市的次级贷款公司已无一幸存，消费贷款巨人家庭金融公司却在逆势狂奔。艾斯曼拿到它新的住房权益贷款销售文件：一份 15 年期固定利率贷款被<b>伪装成 30 年期</b>——把 15 年的还款额假设性地分摊到 30 年来算「有效利率」。借款人听到的是 7%，实际是 12.5%。</p><p class="prose">「这是无耻的欺骗，」艾斯曼说，「他们在愚弄他们的客户。」</p><p class="prose">他顺藤摸到华盛顿州《贝林哈姆新闻》的记者约翰·史塔克——后者一篇关于 4 名受骗者的报道见报后，周边数百人发现自己「7%」的抵押贷款实际利率是 12.5%。艾斯曼提醒报社、动员撰稿人、拜访州总检察长，把一个华尔街分析师的火力全部对准了一家放贷巨头。</p><p class="prose">结局却是荒诞的：2002 年年末，家庭金融公司以 4.84 亿美元与 12 个州庭外和解；次年，它把自己连同巨额次贷组合以 155 亿美元卖给汇丰集团，CEO 奥尔丁格赚到上亿美元。</p><div class="aband"><q>这不仅是一个公司的问题，这是迄今为止从事次级贷款业务的最大的公司，而它却参与了这种明目张胆的欺诈。</q><cite>——艾斯曼 · 事件之后</cite></div><p class="prose">「就是在这个时候，我开始注意到了社会影响。」艾斯曼的政治立场从极端共和党向左转，他自嘲正走在成为「金融市场上第一位社会主义者」的路上：「我现在意识到，社会上存在着一个完整的产业，叫作消费金融，从根本上说，它的存在就是为了剥削人民。</p><p class="prose">」佐证来自金色西部金融公司 CEO 桑德勒——他在午餐会上说，银行做免费支票业务「其实只是为了更多地盘剥穷人」。艾斯曼问：有监管者对此表示出兴趣吗？「没有。」桑德勒说。「就在那个时候，我确信这个体系真的是在『剥削穷人』。」</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>坏事随时会发生：团队聚齐</h2><span class="en">FRONTPOINT</span></div><p class="prose">2004 年年初，摩根士丹利同意在旗下前点合伙给艾斯曼设立一只紧盯金融公司的基金——提供场所、家具和后勤，唯独不提供资金。艾斯曼飞遍全球拜会数百名一流投资者，一无所获；他在凌晨 4 点醒来浑身是汗，去上了「工作小组」心理治疗——还在会谈尾声发作起来、把问题全盘托出后提前离场，治疗师只好反复打电话给他妻子告状。</p><p class="prose">资金没到位，同路人却聚齐了：写出「没有权益的住房只是负债出租」的文尼；参加过两届奥运会划艇比赛的波特·柯林斯；以及后来的首席交易员丹尼·摩西——后者在奥本海默亲眼见过艾斯曼站上交易大厅演讲台宣布「下面 8 只股票将会归零」，而这 8 家公司后来确实全部破产。</p><p class="prose">丹尼与团队共享同一条世界观，用他自己的谈判方式表达——</p><div class="aband"><q>我很感激这一点，但我想知道一件事情：你们将会怎样盘剥我？</q><cite>——丹尼·摩西 · 对交易员</cite></div><p class="prose">「我们俩都很清楚，像这笔交易这样完美的好事不会发生在一家小对冲基金公司和一家华尔街大公司之间。我会接受这笔生意，但是你必须先跟我讲清楚你将会怎么盘剥我，我才会干。」最后，交易员解释了他将会怎么盘剥他，而丹尼也接受了这笔交易。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>开辟债券市场：第二幕更恐怖</h2><span class="en">2005</span></div><p class="prose">到 2005 年年初，团队形成共识：绝大多数在华尔街工作的人都不清楚自己所做的事情。如果说次贷第一幕是畸形的，第二幕就是恐怖的——规模与结构同时恶化，甚至在利率上升时继续繁荣。</p><div class="tbwrap"><table><thead><tr><th>指标</th><th>1996 年</th><th>2000 年</th><th>2005 年</th></tr></thead><tbody><tr><td>次级抵押贷款规模</td><td>——</td><td>1 300 亿美元</td><td>6 250 亿美元</td></tr><tr><td>其中重包装为抵押贷款债券</td><td>——</td><td>550 亿美元</td><td>5 070 亿美元</td></tr><tr><td>固定利率贷款占比</td><td>65%</td><td>——</td><td>25%（75% 为浮动利率，前两年利率通常固定）</td></tr></tbody></table></div><p class="prose">市场本该从上一轮崩溃学到「不要借钱给还不起钱的人」，却学到了「不要让贷款出现在你的账本上」——长滩储蓄开创的<b>「发起销售」</b>模式席卷行业，雷曼兄弟甚至收购了专做此业务的 B&amp;C 抵押贷款公司。</p><p class="prose">贝尔斯登、美林、高盛、摩根士丹利都开出了名字古怪的次贷「架子」：HEAT、SAIL、GSAMP——普通投资者很难想到这些债券背后站着响当当的大公司。</p><div class="aband"><q>是我最先涉足次级贷款的，我最先与狼共舞，这些家伙的谎话是无边无际的。我从那些经历中学到的是，华尔街卖出去的东西什么都不是。</q><cite>——艾斯曼 · 与狼共舞</cite></div><p class="prose">艾斯曼想卖空的是涉次公司的股票，但贷款坏账显形之前股价可能疯狂——文尼于是紧盯借款人行为，每月 25 日浏览还款记录报告：「信用质量还算好。至少到 2005 年下半年仍是这样。」而艾斯曼自己也完成了一场认知升级：「定息债券世界使股权世界相形见绌，股权世界与债券市场相比，简直就像一个侏儒。</p><p class="prose">」他需要学习定息债券的一切。他不知道的是——债券市场也有针对他的计划，将要显现出一个艾斯曼形状的洞来。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜迈克尔·刘易斯《大空头》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一章｜末日机器的引擎</span><a href="../00-开场-推荐序与序/index.html">← 开场·敲门的小鬼</a><a href="../02-寻找市场的漏洞/index.html">寻找市场的漏洞 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='bs-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>财富方程式｜精读全集</title>
+<style>
+:root{
+  --paper:#F5F3EA;      /* 素纸底 */
+  --paper-2:#E9E5D6;    /* 素纸深一档 */
+  --card:#FBFAF1;
+  --ink:#222831;        /* 主墨 */
+  --ink-2:#31404F;      /* 石板次墨 */
+  --ink-deep:#0D131C;   /* 深海夜蓝（hero 底） */
+  --gold:#3D5A80;       /* 板岩蓝（强调 · 方程的主色） */
+  --gold-b:#7A9CC6;     /* 高亮蓝 */
+  --gold-soft:rgba(61,90,128,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 陷阱与祸患） */
+  --teal:#C9A227;       /* 方程金（对照 · 分式的高光） */
+  --tx:#262B33;
+  --tx-2:#4C565F;
+  --tx-3:#8A929B;
+  --line:rgba(34,40,49,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(34,40,49,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#31404F 0%,var(--ink-deep) 62%);
+  color:#E7EDF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(122,156,198,.42)}
+.hero::after{inset:22px;border:1px solid rgba(122,156,198,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(122,156,198,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(236,240,228,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(122,156,198,.34);color:rgba(236,240,228,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(61,90,128,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF5;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(122,156,198,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EBF1F7;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(122,156,198,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EBF1F7;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(234,239,226,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(61,90,128,.5);box-shadow:0 4px 18px rgba(34,40,49,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(61,90,128,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(100,110,120,.12);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(61,90,128,.45);background:rgba(61,90,128,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,62,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(61,90,128,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.hubtop{background:radial-gradient(120% 90% at 76% 6%,#31404F 0%,#0D131C 62%);
+  color:#E7EDF4;padding:70px 26px 58px;text-align:center;position:relative;overflow:hidden}
+.hubtop::before{content:"";position:absolute;inset:16px;border:1px solid rgba(122,156,198,.4)}
+.hubtop::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--serif);font-size:260px;color:rgba(122,156,198,.05);pointer-events:none}
+.hubtop h1{position:relative;font-family:var(--serif);font-size:clamp(28px,4.6vw,44px);
+  margin:0;letter-spacing:.14em;text-indent:.14em;color:#F0F4F8}
+.hubtop .s{position:relative;margin:18px auto 0;max-width:700px;font-size:15px;
+  line-height:1.9;color:rgba(236,240,228,.74)}
+.hubtop .m{position:relative;margin-top:24px;font-family:var(--sans);font-size:12.5px;
+  letter-spacing:.05em;color:rgba(122,156,198,.9)}
+.hubwrap{max-width:1000px;margin:0 auto;padding:44px 26px 80px;position:relative;z-index:1}
+.hubwrap .hd{font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);
+  border-bottom:1px solid var(--line);padding-bottom:11px;margin:0 0 6px}
+.row{display:grid;grid-template-columns:52px 1fr auto auto auto;gap:16px;align-items:center;
+  padding:17px 16px;border-bottom:1px solid var(--line);border-left:0;border-radius:6px;
+  transition:.18s;color:var(--tx)}
+.row:hover{background:var(--card);box-shadow:0 4px 20px rgba(34,40,49,.07);
+  transform:translateX(3px)}
+.row .no{font-family:var(--serif);font-size:21px;color:var(--gold);letter-spacing:.02em}
+.row .bd{min-width:0}
+.row .tt{display:block;font-family:var(--serif);font-size:18px;color:var(--ink);
+  letter-spacing:.04em;margin-bottom:4px}
+.row .ss{display:block;font-size:13.4px;line-height:1.7;color:var(--tx-3);
+  font-family:var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:44em}
+.row .tg{font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.3);background:rgba(160,67,39,.06);
+  padding:3px 10px;border-radius:20px;white-space:nowrap}
+.row .mk{font-family:var(--sans);font-size:12px;color:var(--tx-3);white-space:nowrap}
+.row .go{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap}
+.hubfoot{margin-top:34px;font-family:var(--sans);font-size:12.6px;line-height:1.95;
+  color:var(--tx-3)}
+.hubfoot b{color:var(--tx-2)}
+@media(max-width:820px){.row{grid-template-columns:40px 1fr auto;gap:12px}
+  .row .tg,.row .mk{display:none}}
+</style></head><body>
+<div class="hubtop">
+  <h1>财富方程式</h1>
+  <p class="s">拥抱富足、自洽与幸福的人生 —— 12 篇主题精读：加洛韦把财富拆成一条可执行的
+  方程——先以自律修品格，再以专注选赛道，让时间发挥复利，用分散投资守住成果。
+  还原每一章的完整论证与原始案例。</p>
+  <p class="m">斯科特·加洛韦 ｜ 中信出版集团 ｜ 精读篇正文合计 14.4 万字</p>
+</div>
+<div class="hubwrap">
+  <p class="hd">全 书 目 次</p>
+  <a class="row" href="00-卷首-财富方程式/index.html"><span class="no">00</span><span class="bd"><span class="tt">开场 · 财富方程式</span><span class="ss">财富＝专注＋（自律×时间×分散投资）——前言把公式的每个变量摊开</span></span><span class="tg">财富公式</span><span class="mk">9,871 字</span><span class="go">阅读 →</span></a><a class="row" href="01-自律-品格与行为/index.html"><span class="no">01</span><span class="bd"><span class="tt">品格与行为 · 修炼强大品格</span><span class="ss">财富自由不来自智力的修炼，而是行为模式的结果——品格是第一桶金</span></span><span class="tg">品格塑造</span><span class="mk">14,982 字</span><span class="go">阅读 →</span></a><a class="row" href="02-自律-优化关系网/index.html"><span class="no">02</span><span class="bd"><span class="tt">优化你的关系网</span><span class="ss">强大的品格是财富的加速器——没有人能靠一己之力抵达财富自由</span></span><span class="tg">相互依存</span><span class="mk">6,085 字</span><span class="go">阅读 →</span></a><a class="row" href="03-专注-平衡与热情/index.html"><span class="no">03</span><span class="bd"><span class="tt">生活与事业的平衡 · 切勿追随热情</span><span class="ss">专注就是学会说「不」；精通能带来热情，热情却带不来精通</span></span><span class="tg">专注之道</span><span class="mk">4,939 字</span><span class="go">阅读 →</span></a><a class="row" href="04-专注-天赋与职业/index.html"><span class="no">04</span><span class="bd"><span class="tt">追随天赋 · 职业选择</span><span class="ss">天赋是可观察、可衡量的——发掘它、精通它，热情会自然随之而来</span></span><span class="tg">匹配质量</span><span class="mk">17,793 字</span><span class="go">阅读 →</span></a><a class="row" href="05-专注-最佳实践/index.html"><span class="no">05</span><span class="bd"><span class="tt">最佳实践</span><span class="ss">职业生涯是山脉，而非阶梯——从选城市到精简爱好的十二条职场军规</span></span><span class="tg">职场军规</span><span class="mk">10,564 字</span><span class="go">阅读 →</span></a><a class="row" href="06-时间-复利/index.html"><span class="no">06</span><span class="bd"><span class="tt">时间的力量：复利</span><span class="ss">宇宙终将战胜一切，因为它掌握着终极武器——时间</span></span><span class="tg">复利效应</span><span class="mk">3,400 字</span><span class="go">阅读 →</span></a><a class="row" href="07-时间-把握当下/index.html"><span class="no">07</span><span class="bd"><span class="tt">把握当下 · 未来可期</span><span class="ss">真正重要的货币是时间——记账、3 个桶、应急基金，以及与伴侣谈钱</span></span><span class="tg">现金流</span><span class="mk">19,584 字</span><span class="go">阅读 →</span></a><a class="row" href="08-分散-原则与手册/index.html"><span class="no">08</span><span class="bd"><span class="tt">投资的基本原则 · 聪明投资者的手册</span><span class="ss">投资是让别人替你干活——恭喜你，你现在也是个「资本家」了</span></span><span class="tg">分散投资</span><span class="mk">22,242 字</span><span class="go">阅读 →</span></a><a class="row" href="09-分散-资产与税务/index.html"><span class="no">09</span><span class="bd"><span class="tt">资产类别与投资范围 · 税务</span><span class="ss">懒人投资法只需 3 步——但税，是你为社会秩序付出的代价</span></span><span class="tg">资产配置</span><span class="mk">28,387 字</span><span class="go">阅读 →</span></a><a class="row" href="10-分散-投资建议/index.html"><span class="no">10</span><span class="bd"><span class="tt">让你受用一生的投资建议</span><span class="ss">反其道而行之、管好情绪、别做日内交易、千里之行始于足下</span></span><span class="tg">终身建议</span><span class="mk">3,071 字</span><span class="go">阅读 →</span></a><a class="row" href="11-尾声-生命的意义/index.html"><span class="no">11</span><span class="bd"><span class="tt">后记 · 生命的意义与致谢</span><span class="ss">经济上的宽裕，是让你更从容地陪伴家人的工具——全书终点回到人</span></span><span class="tg">生命的意义</span><span class="mk">3,329 字</span><span class="go">阅读 →</span></a>
+  <div class="hubfoot">
+    <p><b>制作口径</b>｜每篇页面正文与微信读书导出源文逐段逐字符一致（去空白比对）；
+    源文缺失处如实标注、不补写；分析性文字均由源文内容推出。导出源结构完整、
+    无重复收录，切分逐行校验，无一行丢失。</p>
+    <p><b>怎么读</b>｜建议从「开场」读起——前言给出全书论纲：财富是一张许可证，
+    幸福方程式里财富只是分母之一。此后沿四部推进：<b>自律</b>（品格是第一桶金）→
+    <b>专注</b>（追随天赋而非热情）→ <b>时间</b>（复利与当下的现金流管理）→
+    <b>分散投资</b>（原则、资产类别与税务）；最后一篇收录后记「生命的意义」与致谢，
+    可作为全书的收束与自省。</p>
+  </div>
+</div>
+</body></html>

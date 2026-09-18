@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第十章·投行业的黑暗面 · 崩塌与孤独的胜利｜大空头 精读</title>
+<meta name="description" content="拔河变成了捆绑沉船：空头赢了，却发现胜利者不希望体系崩溃。艾斯曼在德意志银行讲台上亲历贝尔斯登死亡直播；丹尼在雷曼破产后的第四天心跳失控；康沃尔想起诉评级机构；巴里孤独地关闭基金——最后，作者与前「华尔街之王」面对面，被">
+<style>
+:root{
+  --paper:#F4F1EC;      /* 冷纸底 */
+  --paper-2:#E7E2D9;    /* 纸色深一档 */
+  --card:#FBF9F6;
+  --ink:#23201E;        /* 主墨 */
+  --ink-2:#4E5E6E;
+  --ink-deep:#0F0B0A;   /* 冷钢黑（hero 底） */
+  --gold:#B33A2B;       /* 警报红（强调 · 做空与崩塌） */
+  --gold-b:#D97B62;
+  --gold-soft:rgba(179,58,43,.16);
+  --cinnabar:#B08A3A;   /* 美元金（警示 · 金钱与贪婪） */
+  --teal:#4E5E6E;       /* 冷钢蓝（对照 · 机构与克制） */
+  --tx:#2A2724;
+  --tx-2:#4C565E;
+  --tx-3:#7D8084;
+  --line:rgba(35,32,30,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,32,30,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4E5E6E 0%,var(--ink-deep) 62%);
+  color:#EDE9E4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(217,123,98,.42)}
+.hero::after{inset:22px;border:1px solid rgba(217,123,98,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(217,123,98,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(176,138,58,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F2EFEA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,233,228,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(217,123,98,.34);color:rgba(237,233,228,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(176,138,58,.6);background:rgba(176,138,58,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(179,58,43,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#ECE8E3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(217,123,98,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F0EAE4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(217,123,98,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F0EAE4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(236,232,227,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(179,58,43,.5);box-shadow:0 4px 18px rgba(35,32,30,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(179,58,43,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(176,138,58,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(176,138,58,.1);color:var(--cinnabar);border:1px solid rgba(176,138,58,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(122,120,114,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(179,58,43,.45);background:rgba(179,58,43,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(176,138,58,.55);border-radius:8px;
+  background:rgba(176,138,58,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(133,44,33,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(176,138,58,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(179,58,43,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,241,236,.94);
+  border-bottom:1px solid rgba(35,32,30,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,32,30,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4E5E6E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(179,58,43,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,32,30,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,32,30,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7D8084;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../09-书写结尾的时刻/index.html">← 书写结尾的时刻</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">终</div>
+  <div class="stamp ">终局</div>
+  <h1>投行业的黑暗面 · 崩塌与孤独的胜利</h1>
+  <p class="sub">拔河变成了捆绑沉船：空头赢了，却发现胜利者不希望体系崩溃。艾斯曼在德意志银行讲台上亲历贝尔斯登死亡直播；丹尼在雷曼破产后的第四天心跳失控；康沃尔想起诉评级机构；巴里孤独地关闭基金——最后，作者与前「华尔街之王」面对面，被问「你想尝尝魔鬼蛋吗？」</p>
+  <div class="meta"><span>第十章</span>
+    <span class="k">崩塌</span>
+    <span>正文 25,974 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>末日对决</a><a href="#s3" data-t="s3"><span class="cn">叁</span>贝尔斯登之死</a><a href="#s4" data-t="s4"><span class="cn">肆</span>9月18日</a><a href="#s5" data-t="s5"><span class="cn">伍</span>康沃尔的愤怒</a><a href="#s6" data-t="s6"><span class="cn">陸</span>巴里告别</a><a href="#s7" data-t="s7"><span class="cn">柒</span>末日审判</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第十章＋尾声的主线：赢了之后，世界并不值得庆幸</p><p class="thesis">次贷市场的拔河赛在 2008 年变成<b>捆绑沉船</b>——空头杀死对手，自己也随之下沉。三组空头各自抵达终局：艾斯曼团队在 3 月 14 日直播现场看贝尔斯登死亡、9 月 18 日几乎用尽做空额度却只感到恐惧；康沃尔赢到 1.35 亿美元却想起诉评级机构；巴里赚到 489.34% 后关闭基金。尾声把镜头拉远：从 1985 年的所罗门兄弟到 2008 年的 TARP，华尔街的病灶从未改变。</p><div class="chain"><div class="node"><div class="n">比喻</div><div><p class="tt">捆绑沉船</p><p class="dd">李普曼的拔河变成两人同缚于一条船、以命相搏</p></div></div><div class="node"><div class="n">直播</div><div><p class="tt">3 月 14 日</p><p class="dd">艾斯曼在德意志银行演讲的同时贝尔斯登 53→2 美元</p></div></div><div class="node"><div class="n">恐慌</div><div><p class="tt">9 月 18 日</p><p class="dd">雷曼破产第 4 天，丹尼心脏失控；金融股自由落体</p></div></div><div class="node"><div class="n">愤怒</div><div><p class="tt">康沃尔</p><p class="dd">组建非营利法律实体，想起诉穆迪与标准普尔</p></div></div><div class="node"><div class="n">孤独</div><div><p class="tt">巴里</p><p class="dd">489.34% 收益、7.5 亿美元，换来的只有赎回与沉默</p></div></div><div class="node"><div class="n">收束</div><div><p class="tt">魔鬼蛋</p><p class="dd">作者与古特弗罗因德午餐：「你……的……书。」</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>末日对决</h2><span class="en">SHOWDOWN</span></div><p class="prose">格雷格·李普曼曾经把次级抵押贷款市场想象成一场拔河比赛：一头是制造、包装债券的华尔街公司，另一端是他自己的对赌团队——乐观主义者对阵悲观主义者，错的一方对阵对的一方。</p><p class="prose">这个比喻曾经一针见血，但现在情况变了：<b>一条船上有两个人，他们被一条绳索捆在一起，以命相搏；其中一人杀了另一人，把他的尸体扔向海里，但这样的做法只会把自己也拖下水。</b></p><div class="aband"><q>2008年的情况则是整个金融体系都岌岌可危，而我们仍然在做空，但是我们不希望这个体系崩溃。这就像洪水就要到来，而你是诺亚，你在船上。是的，你不会有问题，但是，看着洪水泛滥你不会感到高兴。这不应该是诺亚的幸福时光。</q><cite>——史蒂夫·艾斯曼，谈 2007 与 2008 年做空的区别</cite></div><p class="prose">到 2007 年年底，前点合伙公司押在次贷上的赌注获得巨额回报，基金规模翻倍——从 7 亿美元多一点变成 15 亿美元。丹尼和文尼都想兑现赌注，他们对李普曼的不信任甚至扩展到这份令人目眩的大礼上。「我从来没有从李普曼那里买过一辆车，」丹尼说，「但是我从他那里买了价值5亿美元的信用违约掉期产品。</p><p class="prose">」文尼则对快速的暴利产生宿命论的想法：「这是命中注定的交易，如果我们因为贪婪而放弃了这场命中注定的交易，那我可能把自己杀了。」</p><p class="prose">艾斯曼把赌注当成对手的羞辱：每当华尔街辩解说次贷问题出在撒谎的借款人身上，他会说：「什么？全体美国人在某个早晨醒来，说，『我要在我的贷款申请上撒谎？』是的，他们撒谎了。他们撒谎是因为有人要他们撒谎。」他的愤慨不针对金融体系本身，而是针对体系上层那些了解得更多的人。</p><div class="aband"><q>这是一场道德层面的讨伐。这个世界完全黑白颠倒了。</q><cite>——史蒂夫·艾斯曼</cite></div><p class="prose">账目在继续滚动：「文尼和我应该做了5 000万美元的交易，赚了2 500万美元。」丹尼说，「艾斯曼做了5.5亿美元交易，赚了4亿美元。」到 2008 年 3 月 14 日，他们实际上已经卖空了每一家以任何方式与末日机器有关联的金融公司的股票。</p><p class="prose">「我们做好了末日对决的准备，」艾斯曼说，「但是，有一句话总是浮现在我们的脑海里，要是末日对决不出现，会怎么样？」</p><div class="tbwrap"><table><thead><tr><th>华尔街公司</th><th>账务杠杆比率</th><th>备注</th></tr></thead><tbody><tr><td>贝尔斯登</td><td>20∶1 → 40∶1</td><td>仅过去 5 年间翻倍</td></tr><tr><td>美林</td><td>16∶1（2001）→ 32∶1（2007）</td><td>同一时段近乎翻倍</td></tr><tr><td>摩根士丹利 / 花旗集团</td><td>33∶1</td><td>崩盘前夜的水平</td></tr><tr><td>高盛</td><td>25∶1</td><td>「看上去要保守一点」，但拥有伪装真实杠杆的手段</td></tr></tbody></table></div><p class="prose">杠杆的含义残酷而简单：要让这些公司中的任何一家破产，所需要的只是资产价值的轻微下降。问题是，那些资产是什么东西？一直到 3 月 14 日之前，股票市场都给了华尔街大公司暂不追究的宽大处理——这些人曾一度被看成赚钱高手，因此他们的赌注也应该是高明的赌注。3 月 14 日，市场改变了它的看法。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>一溃千里</h2><span class="en">THE RUN</span></div><p class="prose">那天上午，艾斯曼被德意志银行分析师迈克·马约临时邀请去给一屋子大投资者做报告——排在美联储前主席格林斯潘之前，与持有 2 亿美元以上贝尔斯登股票的比尔·米勒同台。对格林斯潘，艾斯曼从不掩饰：「我认为艾伦·格林斯潘将成为美联储历史上最糟糕的主席，他长期维持过低利率的做法是其中最微不足道的错误。</p><p class="prose">」伙伴们选了个非常靠后的位置观赏这场比赛——「我们去就是为了娱乐，就像去看阿里与弗拉西尔的拳击比赛一样。」</p><p class="prose">然后，一场金融史上的巧合直播开始了：艾斯曼走上讲台剖析美国金融体系的同时，贝尔斯登正在崩塌。他前一天下午很蹊跷地以每股 53 美元买入了一些贝尔斯登股票——丹尼 9 点 41 分趁他登台赶紧卖掉，小赚一笔。「我认为他从他们身上看到了他自己的影子。」文尼说。</p><p class="prose">妻子瓦莱丽的理论是：「他就是用这种怪异的方式来支持他的『世界行将毁灭』的理论的。」</p><div class="tbwrap"><table><thead><tr><th>时间（2008-03-14 上午）</th><th>事件</th></tr></thead><tbody><tr><td>9:13</td><td>艾斯曼结束演讲走下台；贝尔斯登公布从 J·P·摩根获得一笔贷款</td></tr><tr><td>9:22</td><td>施瓦茨签发新闻通稿：「贝尔斯登是大量有关我们流动性谣传的受害者」——当一名经理说他的银行拥有大量流动性的时候，他真正的意思就是没有</td></tr><tr><td>9:41</td><td>丹尼卖出前一日以 53 美元买入的贝尔斯登股票</td></tr><tr><td>9:49</td><td>贝尔斯登 47 美元</td></tr><tr><td>9:55</td><td>贝尔斯登 43 美元</td></tr><tr><td>10:02</td><td>贝尔斯登 29 美元</td></tr><tr><td>10:05</td><td>米勒说华尔街大银行只有犯罪时被当场抓住才可能破产；艾斯曼脱口而出：「现在才10点5分。还有时间。」</td></tr></tbody></table></div><div class="aband"><q>如果（美国的金融体系）听起来像一个循环的庞氏骗局，是因为它本来就是。</q><cite>——史蒂夫·艾斯曼 · 德意志银行演讲</cite></div><p class="prose">砸场的不是艾斯曼，而是后排一个刚满 20 岁的年轻人：「米勒先生，从你开始讲话的时候起，贝尔斯登的股票已经下跌了20%。你现在还会加仓吗？」米勒大惊失色，只说了句「是的，我肯定会加仓」——话音刚落，屋里的人全冲向出口抛售贝尔斯登股票。格林斯潘这时到了，开始讲话，几乎没有人注意听。</p><p class="prose">到星期一，贝尔斯登也走了：被以每股 2 美元的价格卖给了 J·P·摩根。</p><p class="prose">为什么市场忽然失去对华尔街大公司的信任？艾斯曼的答案是「财务杠杆比率」，但问题比这复杂——那些赌注的性质同样是问题。</p><p class="prose">次贷市场至少经历了两个阶段：第一阶段到 2005 年年底，美国国际集团承担了大部分市场崩溃的风险；第二阶段从 2005 年年底到 2007 年年中，华尔街用 CDO 把 3B 级次贷债券改头换面为理论上无风险的 3A 级债券，推出约 2 000亿～4 000 亿美元——假定 3 000 亿，其中约 2 400 亿是 3A 级，从会计角度无需披露。</p><p class="prose">到 2008 年 3 月，股票市场终于明白了每个抵押债券销售员很久以前就知道的事情：<b>有人已经亏损了至少 2 400 亿美元</b>。但是是谁呢？摩根士丹利仍持有 130 亿美元左右（感谢豪伊·许布勒）；德国人持有一些；赵文那样的 CDO 经理更多；安巴克与 MBIA 各持有约 100 亿美元。</p><p class="prose">真相是：没有谁会知道损失有多大，大家知道的只是——任何深陷次贷市场的华尔街公司所遭受的损失都远大于它们所承认的。贝尔斯登的资本中每一美元都背负着押在次贷债券上的 40 美元，问题不是它怎么会破产，而是它怎么可能侥幸过关。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>危机大爆发</h2><span class="en">MELTDOWN</span></div><p class="prose">2008 年 9 月 18 日早上 6 点 40 分，丹尼·摩西在 47 街和麦迪逊大街东北角观察涌出地下通道的人流——这是他的职业本能：拿黑莓的是对冲基金、火车上睡着的是经纪人、提手提箱的不是经纪人、拿《纽约时报》的或许是律师。雷曼和贝尔斯登的人通常走向与他同样的出口，「但是他们的工作已经彻底结束了。」</p><p class="prose">宏观局势已经非常不稳定。这一周：星期一，雷曼兄弟申请破产，美林宣布在次贷支撑的 CDO 上亏损 552 亿美元并被美国银行收购，美股跌幅超过「9·11」后第一个交易日。</p><p class="prose">星期二，美联储宣布向 AIG 提供 850 亿美元清偿其因出售次贷 CDS 造成的亏损——最大一笔是欠高盛的 139 亿美元，加上已以担保形式支付的 84 亿，高盛实际上把超过 200 亿美元的次贷风险转移给了 AIG，「这些或多或少最后都是由美国的纳税人来埋单」。</p><p class="prose">星期三，最古老的货币市场基金 Reserve Primary 宣布亏损并冻结赎回——「你甚至不能相信你的现金」，道指跌 449 点至 4 年最低。星期四上午，英国监管当局正考虑禁止卖空。</p><div class="aband"><q>整个世界正在以一种我在职业生涯中闻所未闻的方式崩塌。</q><cite>——丹尼·摩西</cite></div><p class="prose">前点合伙公司为这一时刻做了堪称完美的布局：7 月初已把最后的 CDS 卖给李普曼，现在是纯粹的股票投资人——几乎用尽了协议允许的全部做空额度，所有赌注都针对银行。开市那一分钟赢利高达 1 000 万美元。按理说他应该高兴，「但是，他却高兴不起来，他很焦虑。</p><p class="prose">」10 点 30 分，所有金融股自由落体，根本不分青红皂白。「所有信息都汇集到了我这里，按理说我应该知道怎么处理这些信息，但是价格变动得如此之快，我根本无法处理。我感觉那就像一个黑洞，深不见底。</p><p class="prose">」他们拥有大约 70 种赌注、全部针对金融机构；他持有 KeyBank、卖空美国银行——两种他们从来没有采取过的做法。「市场上没有任何买方，根本就没有市场。」萦绕心头的担忧是：摩根士丹利可能破产，而它正是他们的基金股东。「我在想，我们已经获得了整个世界，而我们为之卖命的公司却要破产了？」</p><p class="prose">快到 11 点，黑色的波纹线出现在丹尼的双眼与电脑屏幕之间。「我感觉到头部的刺痛，我不是头痛。我想我可能是得了血管瘤。」他往下看，确实看到自己心脏的跳动正击打着胸膛——「我整个早上都在试图控制所有的能量和信息，而我自己却失控了。」</p><p class="prose">这种情形以前只出现过一次：2001 年 9 月 11 日早上 8 点 46 分，他坐在世界贸易中心顶楼的办公桌旁。「我的第一个想法是，那不是一次意外。根本不可能是意外。」「这个时候，人们开始跳楼，尸体开始坠落。」「当第二架飞机撞上来的时候，我的感觉是『永别了，大家』。</p><p class="prose">」他陪两名怀孕的妇女走到住宅区，再步行回 72 街的家。4 天后逃离纽约的车上，一种确定的感觉控制了他——有棵树会倒下砸烂他的车。那些树在 50 米以外。他去了医院，几个月后症状完全消失。</p><p class="prose">2008 年 9 月 18 日，他从桌子旁边站起来找波特：「我想我可能得了心脏病。」曾在奥运田径赛场历练的波特·柯林斯笑起来：「不，你没有。」——「这是他能够做好他的工作的原因，我一直在说，你没有心脏病。然后，他就不讲了。而我说，好吧，或许你有吧。」踉踉跄跄的丹尼转向文尼，最后只说了一句：「我必须离开这里。</p><p class="prose">马上。」</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>摧毁华尔街</h2><span class="en">RAGE</span></div><p class="prose">康沃尔资本对赌次贷债券的赌注已经 4 倍于它的资本——从 3 000 万美元增加到 1.35 亿美元，但三位创始人从来没有开香槟庆祝过。「我们总是在想，怎么把我们的钱投到安全的地方？」本·霍克特说。以前他们没有钱；现在有钱了，却担心自己没有能力保管好这笔财富。</p><p class="prose">他们在考虑：那些凭感觉做对事的人，怎样才能保持这种<b>缺乏自信、充满疑虑和不确定</b>的性格特征——你对自己和自己的判断越是深信不疑，就越难找到由于担心自己可能做错而带来的那些机会。</p><p class="prose">查理·莱德利现在患有偏头痛。「我认为现在存在某些对我们的民主具有根本性威胁的问题，人们有了这么一种感觉，认为这个体系被操纵了，而我们也很难说它没有被操纵。」他和加米制订了一个报复计划：组建一个非营利性质的法律实体，主要目的是起诉穆迪和标准普尔，并捐钱给那些因为投资 3A 级债券而亏损的投资人。</p><p class="prose">「我们的计划是去告诉每一个投资人，你们不知道自己有多么可悲，你们被欺骗了。你们真的应该起诉。」他们不敢找纽约的律师，跑到缅因州波特兰。缅因律师的反应是：因为评级不够精确而起诉评级机构，就跟一辆汽车被撞毁后起诉为它做过广告的《汽车族》杂志一样。</p><p class="prose">查理给他过去的一位老师——研究金融危机史的著名历史学家——打了电话。「这些电话通常在夜里很晚的时候才会打来，而且通话时间一般都会很长。我记得他劈头就问，『你知道什么是夹层担保债务权证吗？</p><p class="prose">』」然后是查理的推理链条：华尔街怎么哄骗评级机构给垃圾贷款浮夸的赞美、怎么使借给普通美国人数万亿美元成为可能、投资人怎么无法进行风险评估、问题怎么注定以灾难收场。历史学家说：「他想谈他的推断，而且想知道我是否会认为他是傻瓜。他问我美联储是否会购买抵押贷款，我说可能性不大。</p><p class="prose">对于美联储来说，如果有了这样的想法，那将会是一场巨大的灾难。」让教授印象深刻的除了事实本身，还有来源：「以任何一种方式看，他都不是一个现实的人，他不是受金钱驱动的人。他会怒火中烧，他把这看成一种非常个人的方式。」</p><p class="prose">2008 年 9 月 18 日早晨，查理被惊得跳起来。华尔街大公司宣布的次贷亏损开始变得巨大且不断增加：美林一开始说 70 亿美元，现在承认 500 亿；花旗集团约 600 亿；摩根士丹利 90 亿以上。「在对现状的解释上，我们错了。我们以为它们把 3A 级担保债务权证产品卖给了像韩国农业公司这样的企业。</p><p class="prose">它们被摧毁的事实说明它们没有这样做，而是自己留下了。」华尔街大公司从精明、自私变成了一群蠢材——查理和加米总认为有一些他们不认识的成年人在负责金融体系的运转，现在他们看出来了，根本就没有这样的人存在。</p><div class="aband"><q>我们从来没有进入过这些野兽的肚子，</q><cite>——查理·莱德利 · 「我们看到尸体被抬了出来。但是我们从来没有进去过。」</cite></div><p class="prose">彭博社的一条新闻标题击碎了加米的心：「参议院多数党领袖谈危机：没有人知道该做什么。」</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>孤独的胜利</h2><span class="en">LONE VICTORY</span></div><p class="prose">早在其他人进入巴里的视线之前，他就注意到：把投资组合变成赌注押在金融体系的崩溃上，让人感觉很不舒服。2008 年 6 月 19 日，贝尔斯登破产三个月之后，导致贝尔斯登破产的两名次级债对冲基金管理人被联邦调查局逮捕、戴上手铐从家中带走。</p><p class="prose">那晚巴里给律师德鲁斯金发邮件：「从内心深处说，这件事情对我是一个很大的打击。我担心我会心不在焉地发出一些电子邮件，而里面的内容可能会给我带来麻烦，我的做法和我最后的结果是完全正确的……我无法想象我居然要在监狱中结束自己的生命，而我们其实并没有做错什么。」他已经开始考虑关闭基金。</p><p class="prose">他的投资人帮他找到了放弃的理由：他为他们赚了非常多的钱，而他们完全没有表现出应有的满意。截至 2008 年 6 月 30 日，从子孙资本创立起就捆绑在一起的投资人，扣除费用后赚得 <b>489.34%</b>（基金毛利率 726%），同期标准普尔 500 指数只上涨约 2%。</p><p class="prose">仅 2007 年一年，巴里就为投资人赚了 7.5 亿美元——而他管理的资金只有 6 亿美元。赎回要求坚决而迅速；没有新投资人打来电话——一个都没有。「我们并没有多么知名。」他写道。</p><p class="prose">让他义愤填膺的是，知名度更高的居然是那些整天与媒体搅在一起的人——「我对这么多人站出来说他们预见到了次级债的崩溃……感到震惊。可以肯定的是，因为这些人对上一次发生的事情的预测错得如此离谱，所以他们永远不敢告诉你接下来会发生什么。</p><p class="prose">」一家行业杂志公布 2007 年排名前 75 位的对冲基金，子孙资本榜上无名——尽管回报足以挤进榜单。「就像他们把一名游泳选手带到奥运会上，然后让他独自在一个游泳池里游泳一样，他游出的时间可以获得金牌，但是，他没有拿到奖牌。我在认真考虑，到底是什么阻碍了我得到它。」</p><p class="prose">2008 年 10 月初，当美国政府介入并表示将实质性吸收金融系统内所有亏损时，巴里首次开始热情洋溢地买入股票——刺激计划将不可避免地导致通货膨胀，同时带来股票价格上升的繁荣。很快，他最大的投资人（1.5 亿美元）开始质疑并威胁赎回。10 月 27 日他给一位笔友写信：「今晚我将要结清我的头寸。</p><p class="prose">我想我遇到了一个瓶颈。我今天没有吃，没有睡，没有跟我的孩子说过话，也没有跟我妻子说过话，我要崩溃了。」11 月初他因胸闷看急诊，血压波动很大——「我感觉我正走向我短暂生命的终点。</p><p class="prose">」11 月 12 日，他给投资人发去最后一封邮件：「我被我自己的行动、基金的投资人和业务伙伴，甚至过去的员工一次又一次地推到崩溃的边缘……我必须关闭这只基金。」之后他消失了。</p><p class="prose">所发生的事情就是：他当初做对了，世界做错了，而世界因此嫉恨他。基金关闭后，库比蒂诺那间足够 25 人使用的办公室空了。最后离开的德鲁斯金的最后一项工作，是处理巴里留下的两份赌注——针对雷曼兄弟开发的基于 2005 年贷款的次级债券的 CDS。「巴里留下了几份，主要是觉得好玩——只有几份。</p><p class="prose">想看看我们是否能够得到足额的赔付。」他持有它们不是为了好玩，而是为了向世界证明：他对赌的那些投资级债券实际上根本没有任何价值。这些债券与它们的发起人同时归零。每份赌注的成本约 10 万美元，<b>他赚了 500 万美元</b>。</p><div class="aband"><q>我没有接到过任何一份来自经纪人的声明，说我们在他们那里拥有一份开放的头寸，</q><cite>——史蒂夫·德鲁斯金 · 「但是我们确实有，好像再也没有人想要谈论这些问题了。」</cite></div><p class="prose">在华尔街，律师扮演着与卫生员在战争中同样的角色：枪战结束之后，负责清理混乱的局面。「经纪人把合同扔了也是有可能的，三年前，没有人会想到经纪人方面会发生这样的状况，所以，也没有人接受过处理这种情况的训练。我们最多就是说一句『我们要歇业了』，而他们说『好的』。」</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>「毁灭它是正义的行为」</h2><span class="en">JUSTICE</span></div><p class="prose">接到丹尼「可能得了心脏病」的电话时，艾斯曼、文尼和波特正坐在圣帕特里克大教堂的台阶上。结局已经显而易见：艾斯曼一直是对的，他们富甲一方了。他在美林大会上有意刺了一下几个月前向他讨教风险模型的 CFO 杰夫·爱德华——「你还记得我说过关于你们的风险模型的话么？我猜，我当时的想法是对的，是吗？</p><p class="prose">」说完立刻后悔：「我感觉非常糟糕，很令人厌恶。他是一个可爱的家伙，他只是做错了而已。我不再是条癞皮狗，我必须以另外一种不同的方式来引导自己了。」</p><p class="prose">妻子瓦莱丽看着他慢慢获得一种象征着权谋的人格特质：「在每件事情发生之后，都会存在一段空白。一旦事实证明他是对的，所有的焦虑和愤怒以及精力就会离他远去，只留给他这片巨大的空白。」形形色色的人都想听听「末日先知」现在会怎么说：一年后他回去做结肠镜检查，躺在检查桌上听到医生说：「这就是那个预言了这场危机的家伙。</p><p class="prose">大家进来听听他是怎么说的。」——检查进行到一半，一屋子的医生和护士都在讲天才艾斯曼的故事。而「艾斯曼社会应急行动队」已经让他变得循规蹈矩：他甚至认真参加了小区圣诞晚会，一直表现得非常和善。「他变成了一个令人感觉愉悦的人，这真是难以想象。」</p><p class="prose">2008 年 9 月 18 日下午，他们一起在教堂的台阶上坐了一个小时左右。难得一见的晴天，阳光透过建筑的丛林倾泻到地上。「我们坐在那里的时候，感觉出奇地平静。我们感觉自己已经与现实的市场完全绝缘了。这是一种灵魂出窍的体验。我们只是坐着，看着人们从我们面前经过，谈论着接下来可能会发生的事情。</p><p class="prose">这些人中有多少会失去工作？在所有的华尔街公司破产之后，还有谁会来租住这里的房子？」波特说：「就像是世界停止了。我们正看着所有这些人，说，这些人当中要么是已经被毁灭的，要么是即将被毁灭的。」</p><div class="aband"><q>华尔街应该灭亡，因为毁灭它是正义的行为。</q><cite>——史蒂夫·艾斯曼</cite></div><p class="prose">团队里唯一对自己的角色——通过对赌社会而赚取财富——在感情上还有点儿挣扎的人是文尼：「我们思考这个问题的方式是，通过做空这个市场，我们创造了流动性，以维持市场的运行。但其实我们并不喜欢这样的思考方式。」艾斯曼说：「就像喂养怪兽，我们喂养着怪兽，直到它发疯。」</p><p class="prose">怪兽开始发疯了，但在曼哈顿的街上，看不出重大事件的痕迹。这是与钱有关的问题：人们用它所做的事情会产生后果，但<b>后果距离行动的时间如此遥远，以至于人们很难将它们联系在一起</b>。</p><p class="prose">你提供的诱惑利率贷款将在两年后利率提高时出问题；基于贷款的债券滞后几个月出问题；从债券开发出的 CDO 则要等到受托人弄清楚是否有足够的现金支付之后——最终持有者将收到一张小纸条：阁下，我们很遗憾地通知您，您的债券不复存在了……但是，罪大恶极的罪犯就在那里，大摇大摆地走在大街上。</p><div class="aband"><q>事实上，没有任何人——那些房屋所有者、金融机构、评级机构、监管机构以及投资者——能够预测到将要发生的事情。</q><cite>——标准普尔总裁沙玛在美国议会作证 · 2008 年 10 月 22 日（源文残句，按原样收录）</cite></div><div class="aband"><q>教皇本尼迪克特十四世是预言全球金融系统危机的第一人……意大利财政部长朱里奥·特雷蒙蒂说。「不受约束的经济会由于自身的规则而崩溃的预言」可以在本尼迪克特1985年所写的一篇文章中找到，特雷蒙蒂昨天在米兰的卡托里卡大学说。</q><cite>——彭博新闻社 · 2008 年 11 月 20 日（源文残句，按原样收录）</cite></div><h3 class="h3">尾声 · 万事万物皆关联</h3><p class="prose">几乎就在艾斯曼们坐在教堂台阶上的同一时刻，作者坐在东边一条长椅上，等着以前的老板约翰·古特弗罗因德一起吃午饭。</p><p class="prose">《说谎者的扑克牌》出版时，大多数学生把它当成操作指南来读，而有一条脐带从发疯的野兽的肚皮上连接到 20 世纪 80 年代的金融业：作者在所罗门兄弟培训班认识的朋友 1986 年创造了第一只抵押贷款衍生产品（「衍生产品就像枪，问题不在于工具，而在于使用工具的人」）。CDO 由米尔肯 1987 年在德崇证券发明。</p><p class="prose">第一只抵押债券支撑的 CDO 于 2000 年由瑞士信贷的安迪·斯通创造——他同时是格雷格·李普曼在华尔街的首位老板。</p><p class="prose">午餐桌上，两人同意华尔街的首席执行官没有能力控制公司内部疯狂的金融创新。</p><p class="prose">而大空头的故事之所以奇怪而复杂，在于<b>赌桌两边的重要人物在离场时都拿着大把的钱</b>：艾斯曼、巴里与康沃尔的年轻人为自己赚了数千万美元；李普曼 2007 年分到 4 700 万美元（其中 2 400 万是限制性股票）；赵文亏掉数十亿美元别人的钱，离开时也拿着数千万；许布勒亏掉华尔街历史上所有单个交易员中最多的钱，却可以拿走之前赚来的数千万。</p><p class="prose">每一家华尔街大公司的首席执行官都站错了边——没有例外——但他们也都非常富有。「如果他们不需要做出聪明的决策，如果他们做出愚蠢的决策也能很富有，那么人们做出聪明决策的概率会有多大？」</p><p class="prose">一切可以追溯到 1981 年：古特弗罗因德把所罗门兄弟从私人合伙企业变成华尔街第一家上市公司——华尔街成了一个黑箱，金融风险从合伙人身上转移给股东。「他们——华尔街其他公司的领导人——都说公开上市是一件多么可怕的事情，你怎么会做这样的事情。但是，当诱惑抬头，他们所有人都对它低头了。</p><p class="prose">」他也同意：主要后果是把金融风险转嫁给股票持有人。「若出了差错那是他们的问题。」说完淡淡一笑——他已经离开了这场游戏，现在这是其他人的错误了。</p><div class="aband"><q>你……的……书。</q><cite>——约翰·古特弗罗因德，字斟句酌地对作者说</cite></div><p class="prose">当作者潦草地记下他说的话，他好奇地问「这是要干什么」。作者回答，或许值得重新探索《说谎者的扑克牌》里描绘的世界。「那真令人恶心。」他说。但最终他还是接受了：「我想我能够接受这个事实：你的书毁了我的事业，但是成就了你。」话音未落，这位华尔街的前王者端起开胃菜，笑眯眯地问：「你想尝尝魔鬼蛋吗？</p><p class="prose">」作者凑过身去取了一块，不吃白不吃。它从来都没有失去它的魅力。</p><p class="prose">政府救助的账单贯穿尾声：贝尔斯登以甩卖价加资产担保被交给 J·P·摩根，债券持有人全额收回资金。房利美房地美很快被国有化。AIG 获 850 亿美元贷款（很快增至 1 800 亿）。</p><p class="prose">财政部保尔森说服国会拿到 7 000 亿美元设立问题资产救助计划（TARP），随后摒弃承诺的战略，把数十亿美元给花旗、摩根士丹利、高盛等「非自然选择生存下来的企业」——AIG 欠高盛的 130 亿美元完全由政府买单，每 1 美元面额支付 100 美分。</p><p class="prose">收到首批 250 亿美元纳税人资金几星期后，花旗又回到财政部，11 月 24 日再获 200 亿美元拨款，外加 3 060 亿美元资产担保——几乎是美国 GDP 的 2%，约等于农业部、教育部、能源部、国土安全部、住房和城市发展部以及交通部预算的总和。</p><p class="prose">老式恐慌中感觉会自我实现（剧场里喊「起火」导致踩踏）；2008 年的华尔街是现实淹没感觉：剧场在大火中坍塌，而很多人还坐在椅子上。「问题不在于雷曼兄弟被允许破产，而在于雷曼兄弟为什么曾经被允许获得成功。」</p><p class="prose">艾斯曼投入了这场争论最热烈的部分。「我能够理解，为什么高盛想要参与有关华尔街该怎么办的对话。但我无法理解的是，为什么会有人愿意听他们胡说八道。</p><p class="prose">」依他之见，问题不在于银行「大到不能倒」，而在于未知金额的信用违约掉期产品在庞然大物之间买卖：「市场对风险没有限制，一家资本金市值10亿美元的银行可能会拥有价值1万亿美元的未到期信用违约掉期产品，没有人知道具体的数字到底是多少。」</p><h3 class="h3">致谢</h3><p class="prose">这本书始于《资产组合》的编辑凯尔·波普的鼓励；布兰顿·亚当斯挖掘出很多蹊跷的事实和人物，令作者都开始怀疑或许应该由他来写这本书；哈佛大学生 A·K·巴尼特-哈特的次贷 CDO 论文比任何一篇华尔街的研究报告都有趣；马克·罗森塔尔是他在次贷与评级机构阴暗世界里的丛林向导。</p><p class="prose">而真正让这本书成立的主角们——史蒂夫·艾斯曼、迈克尔·巴里、查理·莱德利、加米·麦、文森特·丹尼尔、丹尼·摩西、波特·柯林斯、本·霍克特——「尽管承受着某些他们所面临的无法量化的风险，但他们与我分享了他们的思想和感情。对于这一点，我没齿难忘。」</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜迈克尔·刘易斯《大空头》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第十章｜投行业的黑暗面·尾声</span><a href="../09-书写结尾的时刻/index.html">← 书写结尾的时刻</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='bs-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
