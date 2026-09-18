@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>拿铁因素｜精读全集</title>
+<style>
+:root{
+  --paper:#F6F1E8;      /* 奶泡白纸底 */
+  --paper-2:#EDE5D3;    /* 纸色深一档（奶咖） */
+  --card:#FDFBF4;
+  --ink:#2B2118;        /* 深咖墨（主色） */
+  --ink-2:#4A3A2C;
+  --ink-deep:#171009;   /* 深烘咖啡（hero 底） */
+  --gold:#8B5E34;       /* 拿铁棕（强调 · 拿铁杯与复利曲线） */
+  --gold-b:#C89B6A;
+  --gold-soft:rgba(139,94,52,.16);
+  --cinnabar:#A34A28;   /* 焦糖苦（警示 · 金钱误区） */
+  --teal:#6B5843;       /* 奶咖（对照 · 奶泡白系） */
+  --tx:#2E241A;
+  --tx-2:#55432F;
+  --tx-3:#8A7A66;
+  --line:rgba(43,33,24,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,33,24,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3A2C 0%,var(--ink-deep) 62%);
+  color:#F3EDE2;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(200,155,106,.42)}
+.hero::after{inset:22px;border:1px solid rgba(200,155,106,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(200,155,106,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(163,74,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F7F2E9}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(243,237,226,.78)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(200,155,106,.34);color:rgba(243,237,226,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(163,74,40,.6);background:rgba(163,74,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(139,94,52,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(200,155,106,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F5EFE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(200,155,106,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F5EFE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(243,237,226,.72);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(139,94,52,.5);box-shadow:0 4px 18px rgba(43,33,24,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(139,94,52,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(226,214,192,.35)}
+.duo .colR{background:rgba(163,74,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(163,74,40,.1);color:var(--cinnabar);border:1px solid rgba(163,74,40,.28)}
+.case .tag.good{background:rgba(226,214,192,.45);color:var(--teal);border:1px solid rgba(107,88,67,.32)}
+.case .tag.mid{background:rgba(138,120,96,.12);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(139,94,52,.45);background:rgba(139,94,52,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(163,74,40,.55);border-radius:8px;
+  background:rgba(163,74,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(122,53,26,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(163,74,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(139,94,52,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.hubtop{background:radial-gradient(120% 90% at 76% 6%,#4A3A2C 0%,#171009 62%);
+  color:#F3EDE2;padding:70px 26px 58px;text-align:center;position:relative;overflow:hidden}
+.hubtop::before{content:"";position:absolute;inset:16px;border:1px solid rgba(200,155,106,.4)}
+.hubtop::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--serif);font-size:260px;color:rgba(200,155,106,.05);pointer-events:none}
+.hubtop h1{position:relative;font-family:var(--serif);font-size:clamp(28px,4.6vw,44px);
+  margin:0;letter-spacing:.14em;text-indent:.14em;color:#F7F2E9}
+.hubtop .s{position:relative;margin:18px auto 0;max-width:700px;font-size:15px;
+  line-height:1.9;color:rgba(243,237,226,.74)}
+.hubtop .m{position:relative;margin-top:24px;font-family:var(--sans);font-size:12.5px;
+  letter-spacing:.05em;color:rgba(200,155,106,.9)}
+.hubwrap{max-width:1000px;margin:0 auto;padding:44px 26px 80px;position:relative;z-index:1}
+.hubwrap .hd{font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);
+  border-bottom:1px solid var(--line);padding-bottom:11px;margin:0 0 6px}
+.row{display:grid;grid-template-columns:52px 1fr auto auto auto;gap:16px;align-items:center;
+  padding:17px 16px;border-bottom:1px solid var(--line);border-left:0;border-radius:6px;
+  transition:.18s;color:var(--tx)}
+.row:hover{background:var(--card);box-shadow:0 4px 20px rgba(43,33,24,.07);
+  transform:translateX(3px)}
+.row .no{font-family:var(--serif);font-size:21px;color:var(--gold);letter-spacing:.02em}
+.row .bd{min-width:0}
+.row .tt{display:block;font-family:var(--serif);font-size:18px;color:var(--ink);
+  letter-spacing:.04em;margin-bottom:4px}
+.row .ss{display:block;font-size:13.4px;line-height:1.7;color:var(--tx-3);
+  font-family:var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:44em}
+.row .tg{font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(163,74,40,.3);background:rgba(163,74,40,.06);
+  padding:3px 10px;border-radius:20px;white-space:nowrap}
+.row .mk{font-family:var(--sans);font-size:12px;color:var(--tx-3);white-space:nowrap}
+.row .go{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap}
+.hubfoot{margin-top:34px;font-family:var(--sans);font-size:12.6px;line-height:1.95;
+  color:var(--tx-3)}
+.hubfoot b{color:var(--tx-2)}
+@media(max-width:820px){.row{grid-template-columns:40px 1fr auto;gap:12px}
+  .row .tg,.row .mk{display:none}}
+</style></head><body>
+<div class="hubtop">
+  <h1>拿铁因素</h1>
+  <p class="s">一杯拿铁能改变一生吗 —— 10 篇主题精读：纽约旅游杂志副主编佐伊，
+  27 岁没护照、没存款，在咖啡师芭芭拉的三个问题里逐步撞见「先投资自己」的复利数学、
+  让账户自动运转的『大帽子』，以及她自己的拿铁因素；一半是故事，一半是可以照抄的理财功课。</p>
+  <p class="m">戴维·巴赫 & 约翰·戴维·曼恩 ｜ 中信出版集团 ｜ 精读篇正文合计 6.0 万字</p>
+</div>
+<div class="hubwrap">
+  <p class="hd">全 书 目 次</p>
+  <a class="row" href="00-开场-致词与名人推荐/index.html"><span class="no">00</span><span class="bd"><span class="tt">开场 · 一杯拿铁引发的推荐语</span><span class="ss">26 位荐书人、3 位致谢对象与一页版权页——在佐伊出场之前，先听听这本书的来路</span></span><span class="tg">拿铁因素</span><span class="mk">3,208 字</span><span class="go">阅读 →</span></a><a class="row" href="01-我的生活怎么会变成这样/index.html"><span class="no">01</span><span class="bd"><span class="tt">我的生活怎么会变成这样 · 佐伊的双份浓缩拿铁</span><span class="ss">一句大屏箴言、一张搁浅的渔船照片、一句「我支付不起」——27 岁的佐伊在星期一早晨撞见了自己的窘境</span></span><span class="tg">月光族</span><span class="mk">5,485 字</span><span class="go">阅读 →</span></a><a class="row" href="02-你比自己想象中富有/index.html"><span class="no">02</span><span class="bd"><span class="tt">你比自己想象中富有 · 先投资自己</span><span class="ss">章03 一张标价 1200 美元的照片与咖啡师亨利·海顿；章04 三张复利账单，和财务自由的第一个秘密</span></span><span class="tg">先投资自己</span><span class="mk">10,664 字</span><span class="go">阅读 →</span></a><a class="row" href="03-对复利的怀疑/index.html"><span class="no">03</span><span class="bd"><span class="tt">对复利的怀疑 · 不要做预算，让账户自动运转</span><span class="ss">杰弗里替所有人问出那句「这样的利率早就是历史了」，亨利用1926年以来的平均涨幅和一套自动化系统作答</span></span><span class="tg">自动化系统</span><span class="mk">8,001 字</span><span class="go">阅读 →</span></a><a class="row" href="04-大帽子没有牛/index.html"><span class="no">04</span><span class="bd"><span class="tt">大帽子，没有牛 · 金钱的三个误区</span><span class="ss">章07–08：巴伦的破产寓言与芭芭拉的三个金钱误区——外观撑不起资产，债务同样会复利，而别人不会来救你</span></span><span class="tg">金钱的三个误区</span><span class="mk">7,981 字</span><span class="go">阅读 →</span></a><a class="row" href="05-拿铁因素/index.html"><span class="no">05</span><span class="bd"><span class="tt">拿铁因素 · 消费方式能改变生活方式</span><span class="ss">章09：亨利的星巴克自白、一张5美元钞票、一杯4.5美元的拿铁，和深夜计算器上的4110652美元——全书题眼在此登场</span></span><span class="tg">拿铁因素</span><span class="mk">6,047 字</span><span class="go">阅读 →</span></a><a class="row" href="06-从现在起富有地生活/index.html"><span class="no">06</span><span class="bd"><span class="tt">从现在起，富有地生活 · 坐在我对面的百万富翁</span><span class="ss">章10–11：亨利写下三个词——自由、冒险、美丽；梦想账户每月100美元，六个月换来摄影课。芭芭拉用一句「为什么不会？」回应「我永远不会成为有钱人」，再承认：百万富翁就坐在你对面</span></span><span class="tg">从现在起富有地生活</span><span class="mk">8,073 字</span><span class="go">阅读 →</span></a><a class="row" href="07-母亲的期许/index.html"><span class="no">07</span><span class="bd"><span class="tt">母亲的期许 · 账户开始自动运转</span><span class="ss">章12–14：母亲在去车站的路上晕倒，病床前的约定是「不要留下遗憾，尽全力生活」；佐伊设好401k与两个梦想账户，工资开始自动流转；三年后，信用卡归零、第三次激进休假、30岁生日——在她看来，自己是世界上最富有的女人</span></span><span class="tg">不要留下遗憾，尽全力生活</span><span class="mk">5,110 字</span><span class="go">阅读 →</span></a><a class="row" href="08-财务自由的三个秘密/index.html"><span class="no">08</span><span class="bd"><span class="tt">财务自由的三个秘密 · 对话戴维·巴赫</span><span class="ss">祖母罗斯的一美元、岔路口的两个声音，以及 50 岁开始也来得及的赶超数学</span></span><span class="tg">不留遗憾</span><span class="mk">3,780 字</span><span class="go">阅读 →</span></a><a class="row" href="09-致谢与关于作者/index.html"><span class="no">09</span><span class="bd"><span class="tt">致谢与关于作者 · 一杯咖啡的来路</span><span class="ss">20 年的经纪人、写了十几年的构想、一位祖母——全站最后一页，看看这杯拿铁背后站着哪些人</span></span><span class="tg">幕后</span><span class="mk">1,797 字</span><span class="go">阅读 →</span></a>
+  <div class="hubfoot">
+    <p><b>制作口径</b>｜每篇页面正文与微信读书导出源文逐段逐字符一致（去空白比对）；
+    源文缺失处如实标注、不补写；分析性文字均由源文内容推出。导出源无正文重复块，
+    全书按物理行段切分并做零丢失校验，无一行丢失。</p>
+    <p><b>怎么读</b>｜建议按顺序读——第一部（01–05 篇）是佐伊的觉醒之路：从「我的生活
+    怎么会变成这样」到亲手算出自己的拿铁因素；第二部（06–07 篇）是实践：从现在起富有地
+    生活、让账户自动运转；「财务自由的三个秘密」收录作者访谈，可直接当行动清单用。
+    不赶时间的话，每篇末尾的自测清单可以顺手勾一勾。</p>
+    <p><b>未收进精读页</b>｜书内插图页（数字分隔页 / 附录图表）已从正文剥离。</p>
+  </div>
+</div>
+</body></html>

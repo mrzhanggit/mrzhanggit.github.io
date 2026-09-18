@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部·对复利的怀疑 · 不要做预算，让账户自动运转｜拿铁因素 精读</title>
+<meta name="description" content="章05让杰弗里把普通人对复利的怀疑一次说尽，章06由亨利与巴伦逐一回应：预算对个人行不通，唯一的办法是一套简单的自动化系统——在缴税之前先付给自己；而10％不是历史的利率，自1926年起它就是平均数。">
+<style>
+:root{
+  --paper:#F6F1E8;      /* 奶泡白纸底 */
+  --paper-2:#EDE5D3;    /* 纸色深一档（奶咖） */
+  --card:#FDFBF4;
+  --ink:#2B2118;        /* 深咖墨（主色） */
+  --ink-2:#4A3A2C;
+  --ink-deep:#171009;   /* 深烘咖啡（hero 底） */
+  --gold:#8B5E34;       /* 拿铁棕（强调 · 拿铁杯与复利曲线） */
+  --gold-b:#C89B6A;
+  --gold-soft:rgba(139,94,52,.16);
+  --cinnabar:#A34A28;   /* 焦糖苦（警示 · 金钱误区） */
+  --teal:#6B5843;       /* 奶咖（对照 · 奶泡白系） */
+  --tx:#2E241A;
+  --tx-2:#55432F;
+  --tx-3:#8A7A66;
+  --line:rgba(43,33,24,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,33,24,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3A2C 0%,var(--ink-deep) 62%);
+  color:#F3EDE2;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(200,155,106,.42)}
+.hero::after{inset:22px;border:1px solid rgba(200,155,106,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(200,155,106,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(163,74,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F7F2E9}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(243,237,226,.78)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(200,155,106,.34);color:rgba(243,237,226,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(163,74,40,.6);background:rgba(163,74,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(139,94,52,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(200,155,106,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F5EFE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(200,155,106,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F5EFE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(243,237,226,.72);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(139,94,52,.5);box-shadow:0 4px 18px rgba(43,33,24,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(139,94,52,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(226,214,192,.35)}
+.duo .colR{background:rgba(163,74,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(163,74,40,.1);color:var(--cinnabar);border:1px solid rgba(163,74,40,.28)}
+.case .tag.good{background:rgba(226,214,192,.45);color:var(--teal);border:1px solid rgba(107,88,67,.32)}
+.case .tag.mid{background:rgba(138,120,96,.12);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(139,94,52,.45);background:rgba(139,94,52,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(163,74,40,.55);border-radius:8px;
+  background:rgba(163,74,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(122,53,26,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(163,74,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(139,94,52,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,241,232,.94);
+  border-bottom:1px solid rgba(43,33,24,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,33,24,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3A2C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(139,94,52,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,33,24,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,33,24,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#9A8B76;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-你比自己想象中富有/index.html">← 你比自己想象中富有</a><a href="../04-大帽子没有牛/index.html">大帽子，没有牛 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">复</div>
+  <div class="stamp s4">自动运转</div>
+  <h1>对复利的怀疑 · 不要做预算，让账户自动运转</h1>
+  <p class="sub">章05让杰弗里把普通人对复利的怀疑一次说尽，章06由亨利与巴伦逐一回应：预算对个人行不通，唯一的办法是一套简单的自动化系统——在缴税之前先付给自己；而10％不是历史的利率，自1926年起它就是平均数。</p>
+  <div class="meta"><span>第一部</span>
+    <span class="k">自动化系统</span>
+    <span>正文 8,001 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>重算图表</a><a href="#s3" data-t="s3"><span class="cn">叁</span>五连问</a><a href="#s4" data-t="s4"><span class="cn">肆</span>三个策略</a><a href="#s5" data-t="s5"><span class="cn">伍</span>巴伦进场</a><a href="#s6" data-t="s6"><span class="cn">陆</span>第二个秘密</a><a href="#s7" data-t="s7"><span class="cn">柒</span>两个先例</a><a href="#s8" data-t="s8"><span class="cn">捌</span>复利应答</a><a href="#s9" data-t="s9"><span class="cn">玖</span>船长就是你</a><a href="#s10" data-t="s10"><span class="cn">拾</span>本篇自测</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>让它自动发生，否则就不会发生了。</p><cite>——亨利 · 章06</cite></div><div class="epi"><p>这是梭罗所说的‘沉默而绝望的生活’在财务上的表现。</p><cite>——亨利 · 章06</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">一篇之图 · 怀疑 → 求解 → 自动运转</p><p class="thesis">这是全书的<b>论述中枢</b>：章05借杰弗里之口，把普通人对复利的全部怀疑一次说尽；章06让亨利与巴伦逐一回应——先交出第二个秘密（<b>不要做预算，让账户自动运转</b>），再用1926年以来的历史数据和一张30年对比表为复利辩护。读完本篇，「先投资自己」从口号变成一套可执行的系统。</p><div class="chain"><div class="node"><div class="n">重算</div><div><p class="tt">深夜重绘的图表</p><p class="dd">佐伊把亨利的图表重新算一遍：每天存25美元，一年接近6800美元，40年后300多万美元，那时她67岁</p></div></div><div class="node"><div class="n">怀疑</div><div><p class="tt">杰弗里的五连问</p><p class="dd">利率早就是历史、游戏被人操纵、通货膨胀、401k的规定和限制、换工作后计划是否有效——外加一句：六七十岁还在当咖啡师的人懂什么</p></div></div><div class="node"><div class="n">求助</div><div><p class="tt">两个电话都没有答案</p><p class="dd">母亲不清楚爸爸的401k，杰西卡的留言追问离职——佐伊把电话转进了语音信箱</p></div></div><div class="node"><div class="n">秘密</div><div><p class="tt">第二个秘密：不要做预算</p><p class="dd">预算对公司必要、对个人行不通；唯一的解决办法是一套简单的自动化系统，设置好就自动运行</p></div></div><div class="node"><div class="n">回应</div><div><p class="tt">复利的两笔账</p><p class="dd">自1926年起股市平均涨幅在10％以上；10万美元存30年，延期纳税账户与普通账户差近3倍</p></div></div><div class="node"><div class="n">航向</div><div><p class="tt">船长就是你</p><p class="dd">别等那张永远不会到来的彩票——船就在脚下，已经起航，问题是你给它设定了什么方向和航线</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>深夜重算：佐伊重画亨利的图表</h2><span class="en">THE CHART</span></div><p class="prose">从咖啡店回来后，佐伊一边机械地编辑文字，一边回想和亨利谈话的片段，把地铁上草草记下的笔记按顺序重新输入电脑。这就是编辑的工作方式：像考古学家先收集出土的骨头，再观察该如何把它们结合在一起——首先考虑整体，即作者在说什么。</p><p class="prose">笔记上躺着那几句话：先投资自己；有人称之为宇宙中最强大的力量；每天存10美元就可以改变你的生活；把你每天第一个小时赚的工资存起来。还有那句她没听懂的话——如果你买得起这杯拿铁，就买得起这张照片。「拿铁因素」仍让她困惑。</p><p class="prose">上班时，她花时间重新绘制了亨利的图表。理论上来说，如果她在第一年每天存25美元，一年下来就会有接近6800美元，到40年后，这会成为一个天文数字。图表上的每个数字如下：</p><div class="tbwrap"><table><thead><tr><th>图表项</th><th>数值</th></tr></thead><tbody><tr><td>每天存</td><td>25美元</td></tr><tr><td>第一年下来</td><td>接近6800美元</td></tr><tr><td>年收益率假设</td><td>10％——正是杰弗里说「早就是历史」的那个数字</td></tr><tr><td>40年后</td><td>300多万美元，一个天文数字</td></tr><tr><td>佐伊届时</td><td>67岁，可以安心退休</td></tr></tbody></table></div><div class="aband"><q>40年后，我67岁。有了这300多万美元，我就可以安心退休了，杰弗里！</q><cite>——佐伊 · 章05</cite></div><p class="prose">当晚她本想再找亨利问个明白，但店里的年轻人说，亨利下午3点就走了。佐伊这才知道：亨利不轮班，只要他愿意，通常3点左右离开，也可能更晚或更早。这是一份什么样的工作呢？疑问没处安放，她按下对讲机，叫楼上的杰弗里下来吃比萨。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>杰弗里的怀疑：五连问</h2><span class="en">THE DOUBT</span></div><p class="prose">住在佐伊楼上的邻居杰弗里是自由职业者，主要从事社交媒体应用程序的开发，有时靠优化搜索引擎和脸书广告赚点外快。他坚信总有一天会凭借应用程序发家致富，多次问佐伊要不要入股。到目前为止，他开发的程序都还没有成为下一个Instagram。</p><p class="prose">杰弗里是个很好的人，佐伊很喜欢他，但难以接受他愤世嫉俗的态度——他对富人有一种下意识的敌意，不管他们是谁，成功的大企业更是他的眼中钉。尽管如此，两人仍是好朋友，每个星期轮流请对方吃一次晚餐。今晚轮到佐伊，她点了路易基家的经典大比萨。</p><p class="prose">佐伊把和那个古怪咖啡师的谈话讲给杰弗里听，又展示了那张令她兴奋的图表。杰弗里一言不发地听完，擦净手指，然后开始逐条拆解。点击展开他的五个质疑：</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">质疑</span><h4>一问利率：10％早就是历史</h4><span class="ar">▶</span></div><div class="cb"><div class="in">“佐伊，别开玩笑了。怎么可能有10％？这样的利率早就是历史了。”——第一问直指图表的地基：10％的年收益率假设。</div></div></div><div class="case"><div class="ch"><span class="tag mid">质疑</span><h4>二问操纵：存款越多，政府获利越多</h4><span class="ar">▶</span></div><div class="cb"><div class="in">“而且你很清楚，整个游戏都是被人操纵的。你越努力去存款，政府获利就越多。”——储蓄在他眼里是被收割。</div></div></div><div class="case"><div class="ch"><span class="tag mid">质疑</span><h4>三问通胀：40年后的100万美元</h4><span class="ar">▶</span></div><div class="cb"><div class="in">“还有通货膨胀。你知道40年后100万美元才值多少钱吗？哈哈，那时你能顺利找到一家养老院就该谢天谢地了。”</div></div></div><div class="case"><div class="ch"><span class="tag mid">质疑</span><h4>四问401k：规定、限制与换工作</h4><span class="ar">▶</span></div><div class="cb"><div class="in">“还有401k退休计划——他们给这些计划加了那么多规定和限制，都会对你不利。”然后他又补充道，“最后，谁知道你会在现在的公司干多久？如果你离职了，你的退休计划还有效吗？”</div></div></div><div class="case"><div class="ch"><span class="tag mid">质疑</span><h4>五问资格：咖啡师懂什么</h4><span class="ar">▶</span></div><div class="cb"><div class="in">“无意冒犯，佐伊，但他怎么会知道这些呢？毕竟，那个家伙都已经六七十岁了，却还在当咖啡师，对吗？”</div></div></div></div><p class="prose">佐伊哑口无言。杰弗里道谢上楼后，她在接下来的45分钟里洗了头发、清理了几乎空空如也的冰箱、擦洗了很少用的炉灶，瘫倒在堆满杂物的电视椅上才意识到：这场疯狂的清洁，是在试图消除朋友的怀疑言论带来的影响。</p><p class="prose">亨利的图表令她兴奋，她已经下决心照做；那些话点燃了她内心深处一丝纯净而明亮的希望。杰弗里却把这一切都否定了。这样的利率早就是历史了——这句话在她脑子里挥之不去，她拿起手机，拨给了母亲。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>三个策略：杰弗里、杰西卡与佐伊</h2><span class="en">THREE PLANS</span></div><p class="prose">电话里，佐伊问母亲：爸爸的公司有401k计划，您知道他的退休金有多少吗？爸爸换工作的时候，这个计划受影响了吗？母亲的回答是：这个我真的不太清楚，都是你爸爸料理这些——然后反问：你不会是在考虑换工作吧？</p><p class="prose">母亲还没答上，杰西卡的电话插进来。佐伊犹豫了一下，把它转进了语音信箱。留言很杰西卡：星期五见，这周她请客——哦对了，你跟你老板谈过要离职的事了吗？佐伊对着空荡荡的公寓说：还没有。</p><p class="prose">那家公司的邀请，她这个星期大概考虑了第一百次：高风险、高收入且压力很大。杰西卡从来不屑于按部就班地沿着梯子向上爬——她完全跳过了梯子，直接冲到了最顶端。三个人，三种策略：</p><div class="tbwrap"><table><thead><tr><th>人物</th><th>策略</th></tr></thead><tbody><tr><td>杰弗里</td><td>寻求突破、大赚一笔——确信自己会打造出下一个Instagram</td></tr><tr><td>杰西卡</td><td>开足马力把其他人都甩在身后——跳过梯子，直接冲到最顶端</td></tr><tr><td>佐伊</td><td>还没有答案。章05以一个悬而未决的问题收尾：她的策略又是什么？</td></tr></tbody></table></div><p class="prose">答案不在杰弗里的怀疑里，也不在杰西卡的速度里。第二天早晨，佐伊裹紧大衣顶着寒风，又一次站在海伦娜咖啡店门口——杰弗里的话仍在脑海里回响，她不想被这种愤世嫉俗影响，但一些观点还是很有道理的，不是吗？她吸了一口气，拉开门走了进去。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>牛仔进场：巴伦与第二个秘密的引子</h2><span class="en">BARON</span></div><p class="prose">店里角落的高脚桌旁，亨利正和一个高大的男人聊天：那人看起来像好莱坞演牛仔的演员，细细的领带、白衬衫、深色牛仔裤，脚蹬一双蛇皮牛仔靴，一张饱经风霜的脸让人联想起蜿蜒起伏的内华达山脉。</p><div class="prof"><p class="pn">本·道森（朋友都叫他巴伦）</p><p class="pm">做能源生意 · 亨利的朋友 · 自称敌人都回俄克拉何马州了</p><dl><dt>握手</dt><dd>不同于亨利那像画布一样细嫩的手，巴伦的手摸起来就像野牛皮</dd><dt>来路</dt><dd>一开始做的是石油生意，行业低迷后搬到纽约，在一家公司的能源部门做可再生能源：风能、太阳能，还有废热转换</dd><dt>谈吐</dt><dd>亨利介绍佐伊是摄影爱好者；他则打趣亨利是「咖啡小子」，又问佐伊是不是也被灌输了三个秘密和先投资自己</dd><dt>亨利评他</dt><dd>一个相当有韧性的人；提到废热转换时，亨利把声音降了个八度——一些新潮的玩意儿</dd></dl></div><p class="prose">排队等拿铁时，佐伊忽然意识到一件怪事：亨利为什么理所当然地占据角落那张桌子，好像那是他的专属位置？也许他不是咖啡师，而是上早班的楼层管理员——可芭芭拉不是说他是咖啡师吗？</p><p class="prose">落座后，话题绕回亨利那套说法。巴伦转向亨利故作认真地打趣：咖啡小子，你又胡说八道给人家洗脑了吧？亨利的回答让佐伊有点无语：</p><div class="aband"><q>不。其实她已经很富有了，只是她自己还不知道。</q><cite>——亨利 · 章06</cite></div><p class="prose">亨利抬起头，若有所思地看着她：你还有一个疑问，对吧？有好几个，佐伊心想。她坦白自己真的不擅长理财：</p><div class="aband"><q>说实话，我很难坚持做这种事。我明白‘先投资自己’的道理，但实在缺乏自制力。对我来说几个月已经是极限，更不要说几十年了。</q><cite>——佐伊 · 章06</cite></div><p class="prose">亨利点了点头：可能是这样。这也是为什么还有第二个秘密。为了达到某种戏剧性的效果，他稍微停顿了一下——你应该听说过做预算的各种好处吧？佐伊在心里哀叹：哦，天哪，饶了我吧。她讨厌预算，虽然知道这样不够理性，但一想到这个词就很反感。</p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>第二个秘密：不要做预算，让它自动发生</h2><span class="en">SECRET NO.2</span></div><p class="prose">巴伦的反应更激烈：哈，预算！那首先就意味着你要把自己所有的想法、个性和其他所有东西都扔进垃圾桶！他说预算什么的根本就是废话——有些人天生擅长做这些，像独角兽一样稀有，他们公司的首席财务官就热爱预算，恨不得晚上抱着它睡觉；但其他人都对它像毒药一样避之不及。</p><p class="prose">佐伊忍不住好奇，亨利会怎么安抚巴伦的激烈情绪，又不失他一贯的温和有礼。但亨利只是点了点头：说得没错。他的解释是：</p><div class="aband"><q>对公司来说，预算非常必要，但是它并不适用于个人。如果你的存钱计划必须靠每个星期开支票才能维持，那肯定很难做到。这跟个性无关，只是人的本性。从理论上讲，个人预算听起来很合理，但在现实世界中，它很难行得通。</q><cite>——亨利 · 章06</cite></div><div class="duo"><div class="colL"><h4>预算：为什么行不通</h4><ul><li>对公司来说非常必要，但并不适用于个人</li><li>靠每个星期开支票才能维持的存钱计划，肯定很难做到——这跟个性无关，只是人的本性</li><li>像节食：开始容易坚持难，毫无乐趣，而且违背了我们的天性</li><li>没有任何一种预算会允许你「先投资自己」，即使这合乎逻辑或出于责任</li></ul></div><div class="colR"><h4>自动化系统：为什么行得通</h4><ul><li>一套简单的自动化系统：解放你的双手，使这件事不再需要强大的自律性、自控力和意志力</li><li>只要设置好，它就能自动运行</li><li>不能预支你口袋里没有的钱——在钱到手之前先扣下</li><li>必须简单，否则你根本不会去做</li></ul></div></div><div class="aband"><q>唯一的解决办法就是建立一套简单的自动化系统，让它解放你的双手，使这件事不再需要强大的自律性、自控力和意志力。只要设置好，它就能自动运行。</q><cite>——亨利 · 章06</cite></div><p class="prose">亨利说，我们每个人都很忙，一定不想再去做额外的事，比如制定预算，然后按部就班地去执行。这套系统落到工资单上只有几步：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>和公司约定</h4><p>无论你的工资是多少，跟你的公司约定好：每两个星期或每个月，从工资中自动划扣</p></div><div class="step"><div class="dot">2</div><h4>税前先扣401k</h4><p>在扣缴所得税之前，从你的工资中先自动扣除401k养老金</p></div><div class="step"><div class="dot">3</div><h4>余额进活期账户</h4><p>把剩余的工资自动存入你的活期账户。就是这样</p></div><div class="step"><div class="dot">4</div><h4>设置好，别再管</h4><p>让它自动发生——这件事从此不需要自律性、自控力和意志力</p></div></div><div class="aband"><q>必须简单，否则你根本不会去做。让它自动发生，否则就不会发生了。</q><cite>——亨利 · 章06</cite></div><p class="prose">佐伊一边喃喃重复让它自动发生，一边把这几个字输进手机。她轻声说出了自己的对应物：我的401k养老金计划。亨利赞同，又列举了IRA（个人退休金账户）、SEP（简易雇员退休金）等类型——其他国家也有类似的政策：</p><div class="aband"><q>尽管名称和细节不同，但它们归根结底都是同一个东西：让你在被征税之前，先把工资自动支付给自己。</q><cite>——亨利 · 章06</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>政府与健身房：自动化的两个先例</h2><span class="en">PRECEDENTS</span></div><p class="prose">为什么自动化如此有效？巴伦讲了一段历史：直到第二次世界大战之前，勤劳的美国人民都还是先全额领取工资，然后第二年再向政府缴税。问题是，不像政府，美国人民既不懂得制订计划，也不会做预算。</p><div class="aband"><q>所以，后来政府投入了一大笔钱来教我们做预算，好确保我们按时缴税。后来证明这几乎没什么用！于是政府说：‘去他的吧！’然后建立了一套简单的系统，把钱收入囊中。</q><cite>——巴伦 · 章06</cite></div><p class="prose">自动地就把钱收走了——亨利补充。巴伦复述：甚至在钱发到我们手里之前，这个系统确实有效；我们所挣的每一美元，都会有一部分先交给政府。后来，美国的企业界也如法炮制。</p><p class="prose">亨利问佐伊去不去健身房，会不会每个月自动从账户里扣会员费。佐伊点头：我加入的那天，他们就设置好了。巴伦插话：</p><div class="aband"><q>这已经成了现在大多数公司惯用的伎俩，因为非常好用！</q><cite>——巴伦 · 章06</cite></div><p class="prose">政府与健身房是同一条逻辑的两个证词：靠自觉的计划会失败，靠系统的计划会成立。第二个秘密不需要你变成另一个人，只需要你把这套已被反复验证的系统掉转方向，用在你自己身上——在缴税之前，先付给自己。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>复利应答：10％不是历史</h2><span class="en">COMPOUNDING</span></div><p class="prose">巴伦起身去点餐后，佐伊终于问出憋了一夜的问题：昨天您说应该把一部分收入存起来，存到一个年利率为10％的账户里——可我有个朋友说这种利率早就没了，只有在过去才有。亨利笑了笑：我知道很多人对此表示怀疑。</p><div class="aband"><q>自1926年起，也就是有可靠数据记录的第一年，股市的平均涨幅都在10％以上。</q><cite>——亨利 · 章06</cite></div><p class="prose">亨利并不回避波动：伴随经济的繁荣和萧条，也会出现牛市和熊市，每年的实际收入与这一年的大环境以及你的投资方式有关。然而，如果把这些极端事件放在大环境里看，你会发现情况大致是平均的——市场会上涨，然后下跌，然后再上涨，如此循环往复。从来没有过下跌后就不再上涨的情况。</p><div class="aband"><q>在2008年经济危机后，人们都说从市场上赚钱的日子结束了。你猜后来发生了什么？</q><cite>——亨利 · 章06</cite></div><p class="prose">市场上涨了？佐伊试探着回答。亨利笑着说：平均年增长率超过10％。</p><div class="aband"><q>即使是最传统和保守的股票或债券投资组合，也能给你带来8％的可观收益。但确切的数字并不是重点，佐伊。关键是你要把它们存起来，让这个数字通过复利为你创造价值。</q><cite>——亨利 · 章06</cite></div><h3 class="h3">取出来还是要缴税，那又怎样？</h3><p class="prose">佐伊又想起杰弗里：无论采用哪种方式，最后取钱时都会被征税。亨利的回答是——缴税的时间点，本身就是变量：</p><div class="aband"><q>但是如果你现在把一美元留给自己，而不是分一半给政府，那么你现在就会有更多的钱用于投资。时间和复利会为你创造出更多的奇迹般的增长，而且你还不用每年为增长的这部分缴税。</q><cite>——亨利 · 章06</cite></div><p class="prose">亨利翻到笔记本上新的一页，画了一些数字和两条长曲线，当场演示了差距有多大：</p><div class="aband"><q>假设你投资了10万美元，年回报率为10％。30年后，它将增长到大约66.1万美元。如果你把10万美元存入一个延期纳税账户，同样存30年，你最后会有170多万美元。两者差了近3倍。</q><cite>——亨利 · 章06</cite></div><div class="tbwrap"><table><thead><tr><th>账户</th><th>本金</th><th>年回报率</th><th>30年后</th></tr></thead><tbody><tr><td>普通账户：增长部分每年缴税</td><td>10万美元</td><td>10％</td><td>大约66.1万美元</td></tr><tr><td>延期纳税账户：增长期内先不缴税</td><td>10万美元</td><td>10％</td><td>170多万美元</td></tr><tr><td>两者差距</td><td>—</td><td>—</td><td><b>近3倍</b></td></tr></tbody></table></div><p class="prose">虽然还没完全明白其算法，但佐伊已经大概理解了——近3倍的说法足够清楚：把钱存入一个延期纳税账户会有很大不同！亨利补充：如果你在增长期内先不缴税，钱的增长速度会更快，甚至会呈指数级增长。谁会在意你迟一些再缴税呢？</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>船长就是你：别等那张彩票</h2><span class="en">THE CAPTAIN</span></div><p class="prose">佐伊仍然盯着那张图表：为什么不是每个人都知道这些呢？亨利耸耸肩——有时候最简单的事实最容易被忽视，或者被认为太简单了，不够刺激。他反问佐伊知不知道如何吃掉大象：一次咬一口。</p><div class="aband"><q>没错，很多人就是这样一点点富起来的。但大多数人都认为，变富的方式是中彩票，或者很走运地被朋友建议去买了一种新的加密货币或一只无人知晓的科技股。</q><cite>——亨利 · 章06</cite></div><p class="prose">变富的想象总是绕开日常：或者容易发生意外的姑姑突然被钢琴砸中，于是你继承了一大笔遗产；又或者你突然在家里的后院发现了埋藏的宝藏。这让佐伊想到了杰弗里和他要开发下一个Instagram的计划。亨利问：你知道它们有什么共同点吗？</p><div class="aband"><q>它们本质上都是同一种虚无缥缈、没有意义的希望，那就是，总有一天好运气会轮到我。</q><cite>——亨利 · 章06</cite></div><div class="aband"><q>每当有人抽到一张中奖彩票，背后都有数以百万计的人在排队等待那张永远不会到来的彩票。</q><cite>——亨利 · 章06</cite></div><p class="prose">亨利说，他们坐在岸边望着大海，希望那艘满载货物的船能来到自己面前——这是一个童话故事，一种用幻想来安慰自己的方式，它让人们觉得也许这样就不用面对现实了。对很多人来说，生活就是惨淡的，这正是梭罗所说的沉默而绝望的生活在财务上的表现。</p><div class="aband"><q>但是，佐伊，不一定非得如此。你的船其实就在这里，在你脚下。你站在甲板上，而船已经起航。船长就是你。</q><cite>——亨利 · 章06</cite></div><p class="prose">问题是你给它设定了什么方向和航线呢？这一课在咖啡店的喧闹里收尾：巴伦端来西葫芦面包和一杯拿铁，柜台前的队伍排到了店门口，亨利说了声抱歉，起身走回柜台。</p><div class="chips"><span class="chip">让它自动发生</span><span class="chip">先投资自己</span><span class="chip">第二个秘密</span><span class="chip">自动化系统</span><span class="chip">延期纳税账户</span><span class="chip">401k</span><span class="chip">一次咬一口</span><span class="chip">船长就是你</span><span class="chip">复利</span></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>读完本篇自测</h2><span class="en">CHECKLIST</span></div><div class="check" data-k="latte-03-auto"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能列出杰弗里怀疑复利的五个理由，也能说出亨利对『利率早就是历史』的回应</span></label><label><input type="checkbox"><span>我记得两个数字：自1926年起股市平均涨幅在10％以上；最传统和保守的组合也能带来8％的可观收益</span></label><label><input type="checkbox"><span>我能算那笔账：10万美元按10％年回报率存30年，普通账户约66.1万美元，延期纳税账户170多万美元，差近3倍</span></label><label><input type="checkbox"><span>我认同第二个秘密：不做预算，建立一套简单的自动化系统，只要设置好就能自动运行</span></label><label><input type="checkbox"><span>我知道401k、IRA、SEP归根结底是同一个东西：在被征税之前，先把工资自动支付给自己</span></label><label><input type="checkbox"><span>我不再等那张永远不会到来的彩票——我的船就在脚下，船长就是我</span></label><div class="cf">已勾选 <b>0</b> / 6</div></div><p class="prose">下一篇（04）：大帽子，没有牛——金钱的三个误区。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜戴维·巴赫 & 约翰·戴维·曼恩《拿铁因素》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部｜对复利的怀疑</span><a href="../02-你比自己想象中富有/index.html">← 你比自己想象中富有</a><a href="../04-大帽子没有牛/index.html">大帽子，没有牛 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='fh-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
