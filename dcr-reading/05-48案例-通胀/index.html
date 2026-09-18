@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部分·48 场案例详析（二） · 通胀性去杠杆化｜债务危机 精读</title>
+<meta name="description" content="通胀性案例的每一段都以同一句话开头：国际收支危机的演变取决于决策者如何处理不良资本流动。放任紧缩则萧条加深，印钞弥补资金外流则通胀失控——27 场案例是这道选择题的成绩单。">
+<style>
+:root{
+  --paper:#F4F2EF;      /* 危机纸底 */
+  --paper-2:#E7E4DF;    /* 纸色深一档 */
+  --card:#FAF9F6;
+  --ink:#26201F;        /* 债务黑墨（主色） */
+  --ink-2:#4E5E6E;
+  --ink-deep:#100B0B;   /* 债务黑夜（hero 底） */
+  --gold:#8E2C2C;       /* 深危机红（强调 · 债务与萧条） */
+  --gold-b:#C05A5A;
+  --gold-soft:rgba(142,44,44,.16);
+  --cinnabar:#B08A3A;   /* 美元金（警示 · 债务货币） */
+  --teal:#4E5E6E;       /* 钢灰蓝（对照 · 政策与修复） */
+  --tx:#2A2422;
+  --tx-2:#514B47;
+  --tx-3:#7A736E;
+  --line:rgba(38,32,31,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,31,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4E5E6E 0%,var(--ink-deep) 62%);
+  color:#F0EDE8;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,90,90,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,90,90,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,90,90,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(176,138,58,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F4F1EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(238,234,228,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,90,90,.34);color:rgba(238,234,228,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(176,138,58,.6);background:rgba(176,138,58,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(142,44,44,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFECE6;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,90,90,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EAE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,90,90,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EAE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(238,232,224,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(142,44,44,.5);box-shadow:0 4px 18px rgba(38,32,31,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(142,44,44,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(176,138,58,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(176,138,58,.1);color:var(--cinnabar);border:1px solid rgba(176,138,58,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(142,44,44,.45);background:rgba(142,44,44,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(176,138,58,.55);border-radius:8px;
+  background:rgba(176,138,58,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(176,138,58,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(142,44,44,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,239,.94);
+  border-bottom:1px solid rgba(38,32,31,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,31,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4E5E6E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(142,44,44,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,31,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,31,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#6E6763;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「通缩周期·萧条与去杠杆」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../04-48案例-通缩/index.html">← 48案例·通缩</a><a href="../06-通胀周期与战时经济/index.html">通胀周期与战时经济 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">通</div>
+  <div class="stamp ">通胀</div>
+  <h1>48 场案例详析（二） · 通胀性去杠杆化</h1>
+  <p class="sub">通胀性案例的每一段都以同一句话开头：国际收支危机的演变取决于决策者如何处理不良资本流动。放任紧缩则萧条加深，印钞弥补资金外流则通胀失控——27 场案例是这道选择题的成绩单。</p>
+  <div class="meta"><span>第一部分</span>
+    <span class="k">恶性通胀旋涡</span>
+    <span>正文 22,651 字</span>
+    <span>4 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>案例总表</a><a href="#s3" data-t="s3"><span class="cn">叁</span>旋涡的机制</a><a href="#s4" data-t="s4"><span class="cn">肆</span>政策与政局</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">27 场通胀性去杠杆化：一道反复出现的选择题</p><p class="thesis">通胀性萧条的典型路径：外资流入减少 → 货币政策收紧（短期利率动辄上调百分之几十甚至 250%+）→ 货币大幅贬值 → 通胀率螺旋式上升。结局的分野在于：<b>紧缩措施是否带来了必要的调整</b>。</p><div class="chain"><div class="node"><div class="n">起点</div><div><p class="tt">外资撤出</p><p class="dd">资本流入降幅从 GDP 的 4%（阿根廷 1987）到 49%（冰岛）不等</p></div></div><div class="node"><div class="n">保卫</div><div><p class="tt">外汇储备消耗</p><p class="dd">央行动用外汇储备维持货币稳定，但最终决策者放弃捍卫货币</p></div></div><div class="node"><div class="n">贬值</div><div><p class="tt">实际汇率暴跌</p><p class="dd">阿根廷 1977 降至 –138%；保加利亚 –96%；印度尼西亚 –110%</p></div></div><div class="node"><div class="n">旋涡</div><div><p class="tt">恶性通胀</p><p class="dd">秘鲁 1986 与阿根廷 1987 通胀率最高时超过 10000%；巴西 1987 超 5000%</p></div></div><div class="node"><div class="n">结局</div><div><p class="tt">两条出路</p><p class="dd">放弃钉住汇率制度 + 紧缩进口 + 管控坏账（9 个工具用 2～9 个）；部分案例受益于 IMF 援助</p></div></div><div class="node"><div class="n">政治</div><div><p class="tt">民粹主义</p><p class="dd">加西亚·佩雷斯、梅内姆、他信、埃斯特拉达、古铁雷斯、杜阿尔德相继上台</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>27 场案例总表</h2><span class="en">CASE MATRIX</span></div><p class="prose">下表逐行照抄源文数据。通胀性案例的核心变量是<b>实际汇率跌幅</b>与<b>通胀峰值</b>——这两个数字决定了萧条的类型学位置。</p><div class="tbwrap"><table><thead><tr><th>案例</th><th>萧条期</th><th>冲击</th><th>实际汇率下跌</th><th>GDP／股价跌幅</th><th>通胀峰值</th></tr></thead><tbody><tr><td>阿根廷 1977—1988</td><td>1980—1985</td><td>拉美债务危机</td><td>93%</td><td>14%／91%</td><td>超 1 000%</td></tr><tr><td>巴西 1977—1987</td><td>1980—1983</td><td>拉美债务危机</td><td>20%</td><td>6%／51%</td><td>—</td></tr><tr><td>智利 1978—1995</td><td>1981—1985</td><td>拉美债务危机</td><td>50%</td><td>14%／74%</td><td>—</td></tr><tr><td>墨西哥 1979—1991</td><td>1981—1987</td><td>拉美债务危机＋油价下跌</td><td>74%</td><td>7%／86%</td><td>—</td></tr><tr><td>秘鲁 1980—1986</td><td>1982—1985</td><td>拉美债务危机</td><td>—</td><td>13%／56%</td><td>190%</td></tr><tr><td>菲律宾 1979—1992</td><td>1982—1984</td><td>大宗商品骤跌＋政治暴力</td><td>16%</td><td>11%／71%</td><td>—</td></tr><tr><td>马来西亚 1981—1990</td><td>1984—1987</td><td>大宗商品骤跌冲击出口</td><td>19%</td><td>—／56%</td><td>—</td></tr><tr><td>秘鲁 1986—1995</td><td>1987—1990</td><td>领导层不愿与债权人合作</td><td>115%</td><td>30%／91%</td><td>超 10000%</td></tr><tr><td>阿根廷 1987—1993</td><td>1987—1990</td><td>大宗商品价格下跌</td><td>60%</td><td>16%／33%</td><td>超 10000%</td></tr><tr><td>巴西 1987—1995</td><td>1990—1991</td><td>价格管控失灵</td><td>—</td><td>7%／70%</td><td>超 5000%</td></tr><tr><td>土耳其 1990—1995</td><td>1993—1994</td><td>削弱央行独立性</td><td>26%</td><td>12%／70%</td><td>—</td></tr><tr><td>墨西哥 1991—2005</td><td>1994—1995</td><td>政治暴力事件</td><td>—</td><td>10%／66%</td><td>43%</td></tr><tr><td>保加利亚 1995—2003</td><td>1995—1997</td><td>企业/银行亏损潮</td><td>96%</td><td>13%／—</td><td>超 500%</td></tr><tr><td>泰国 1993—2004</td><td>1996—1998</td><td>企业/银行亏损潮</td><td>19%</td><td>14%／87%</td><td>—</td></tr><tr><td>印度尼西亚 1994—2012</td><td>1997—1998</td><td>1997 亚洲金融危机</td><td>110%</td><td>14%／89%</td><td>—</td></tr><tr><td>韩国 1994—2001</td><td>1997—1998</td><td>1997 亚洲金融危机</td><td>50%</td><td>8%／75%</td><td>—</td></tr><tr><td>马来西亚 1994—2001</td><td>1997—1998</td><td>1997 亚洲金融危机</td><td>24%</td><td>9%／83%</td><td>—</td></tr><tr><td>菲律宾 1994—2008</td><td>1997—1998</td><td>1997 亚洲金融危机</td><td>29%</td><td>3%／79%</td><td>—</td></tr><tr><td>俄罗斯 1996—2006</td><td>1997—1998</td><td>亚洲金融危机＋油价下跌</td><td>72%</td><td>10%／—</td><td>—</td></tr><tr><td>哥伦比亚 1995—2008</td><td>1998—2003</td><td>亚洲金融危机波及</td><td>45%</td><td>7%／66%</td><td>—</td></tr><tr><td>厄瓜多尔 1995—2009</td><td>1998—2000</td><td>亚洲金融危机蔓延</td><td>60%</td><td>6%／62%</td><td>76%</td></tr><tr><td>土耳其 1997—2003</td><td>2000—2001</td><td>政治动荡和暴力事件</td><td>12%</td><td>10%／78%</td><td>—</td></tr><tr><td>阿根廷 1998—2012</td><td>2001—2002</td><td>新兴市场危机波及</td><td>77%</td><td>15%／82%</td><td>—</td></tr><tr><td>冰岛 2005—2016</td><td>2008—2010</td><td>2008 全球金融危机</td><td>29%</td><td>11%／96%</td><td>温和水平</td></tr><tr><td>俄罗斯 2005—2011</td><td>2008—2009</td><td>金融危机＋油价暴跌</td><td>21%</td><td>8%／71%</td><td>温和水平</td></tr><tr><td>俄罗斯 2012—2016</td><td>2014—2016</td><td>油价下跌</td><td>30%</td><td>4%／46%</td><td>温和水平</td></tr></tbody></table></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>旋涡的机制：同一句话开头</h2><span class="en">THE SPIRAL</span></div><div class="aband"><q>国际收支危机/货币危机的演变主要取决于决策者如何处理不良资本流动：是允许金融环境收紧（这往往是解决危机必要的措施，但会带来痛苦），还是通过印钞弥补资金外流（这可能导致通胀）。</q><cite>——27 场案例的共同开头</cite></div><p class="prose">27 场案例的第一段几乎都从这句判断开始，第二段则记录每个国家在这道选择题上的答案。选「印钞弥补」而紧缩又不足以带来调整的国家，直接滑进恶性通胀旋涡——以下三句均为源文原句：</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>阿根廷 1977：实际汇率 –138%</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在本案例中，由于紧缩措施未能带来必要的调整，阿根廷陷入汇率急剧下跌和恶性通胀的旋涡，实际汇率触底，降至–138%，通胀率达到峰值，超过1 000%。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>秘鲁 1986：通胀率超过 10000%</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在本案例中，由于紧缩措施未能带来必要的调整，秘鲁陷入了汇率下跌和恶性通胀的旋涡，实际汇率触底，跌至–115%，通胀率最高时超过10000%。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>马来西亚 1994：放弃捍卫货币</h4><span class="ar">▶</span></div><div class="cb"><div class="in">央行动用了外汇储备来维持货币稳定（外汇储备减少了26%），但最终决策者放弃捍卫货币——随后放弃钉住汇率制度，以经常账户余额增幅为 GDP 的 9% 换取调整空间，用了 9 个典型政策工具中的 5 个。</div></div></div></div><div class="aband"><q>这合乎情理，因为当时秘鲁存在大多数导致通胀率螺旋式上升的典型“风险因素”（其中最大的风险因素是实际短期利率较低）。</q><cite>——秘鲁 1986—1995 年案例</cite></div><p class="prose">「风险因素」是每段案例的固定分析项：阿根廷 1977 的最大风险因素是财政赤字之外的——「阿根廷长期忽视对通胀的管控」（1987 案例）、巴西同为「长期忽视对通胀的管控」、保加利亚「历来忽视对通胀的管控」。</p><p class="prose">而结局较好的案例（俄罗斯 2005、2012）共同点是：通胀率处于温和水平，「任其货币浮动」为决策者设定利率提供了更大的灵活性。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>政策工具与政局余波</h2><span class="en">POLICY &amp; POLITICS</span></div><p class="prose">通胀性案例的政策力度分化极大：厄瓜多尔用满 9 个典型政策工具（将银行国有化……</p><p class="prose">），墨西哥 1979 与俄罗斯 2005/2012 只用了 2～4 个；韩国、印度尼西亚、泰国、冰岛各用 7～8 个，多与银行国有化、提供流动性、直接购买不良资产相伴；匈牙利、菲律宾、阿根廷 1998、土耳其 1997 等案例受益于 IMF 援助计划。</p><p class="prose">与通缩案例一样，源文在多场案例结尾附上了政局注脚，句式几乎相同——以下均为源文原句：</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>秘鲁 1980—1986 → 加西亚·佩雷斯</h4><span class="ar">▶</span></div><div class="cb"><div class="in">这场危机对秘鲁政局造成显著影响，为阿兰·加西亚·佩雷斯上台搭建了舞台，而许多人认为佩雷斯是一名民粹主义领导人。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>阿根廷 1987—1993 → 梅内姆</h4><span class="ar">▶</span></div><div class="cb"><div class="in">这场危机对阿根廷政局造成显著影响，为卡洛斯·梅内姆上台搭建了舞台，而许多人认为梅内姆是一名民粹主义领导人。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>菲律宾 1994—2008 → 埃斯特拉达</h4><span class="ar">▶</span></div><div class="cb"><div class="in">这场危机对菲律宾政局造成显著影响，为约瑟夫·埃斯特拉达上台搭建了舞台，而许多人认为埃斯特拉达是一名民粹主义领导人。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>厄瓜多尔 1995—2009 → 古铁雷斯</h4><span class="ar">▶</span></div><div class="cb"><div class="in">这场危机对厄瓜多尔政局造成显著影响，为2003年卢西奥·古铁雷斯上台搭建了舞台，而许多人认为古铁雷斯是一名民粹主义领导人。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>阿根廷 1998—2012 → 杜阿尔德</h4><span class="ar">▶</span></div><div class="cb"><div class="in">这场危机对阿根廷政局造成显著影响，为爱德华多·杜阿尔德上台搭建了舞台，而许多人认为杜阿尔德是一名民粹主义领导人。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>泰国 1993—2004 → 他信</h4><span class="ar">▶</span></div><div class="cb"><div class="in">这场危机对泰国政局造成显著影响，为2010年他信·西那瓦上台搭建了舞台，而许多人认为他信是一名民粹主义领导人。</div></div></div></div><p class="prose">读完这 46 场章内详析（19 场通缩 + 27 场通胀），第一部分模型的解释力已经摆在桌面上：同样的冲击、同样的选择题，不同的答案。接下来三篇（通胀周期理论、魏玛德国、两次美国危机），是达利欧认为最值得逐日复盘的三个样本。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">图表剥离</span><span class="nd"><b>1｜</b>本篇源行段内共 234 张插图（含重复导出），为各案例的分类图示附录，导出源中全部为图片。下表数据逐项照抄自案例正文；「—」表示源文该段未给出对应数字。</span></div><div class="note" id="n2"><span class="nn">案例分布</span><span class="nd"><b>2｜</b>48 场案例中的德国 1918—1925（战时恶性通胀）与英国 1941—1967、美国 1943—1951 三个案例未出现在这批章内详析中，仅在第三部分有摘要（见第 13 篇）。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜瑞·达利欧《债务危机》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部分｜48案例·通胀</span><a href="../04-48案例-通缩/index.html">← 48案例·通缩</a><a href="../06-通胀周期与战时经济/index.html">通胀周期与战时经济 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='dcr-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
