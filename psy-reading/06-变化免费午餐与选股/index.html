@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第2部分·没有人是一成不变的 · 免费午餐与「买这只股票」｜金钱心理学 精读</title>
+<meta name="description" content="第 14 章讲「历史终结错觉」如何打断复利；第 15 章讲天下没有免费的午餐——波动是入场费；第 16 章讲泡沫的真相：长期投资者误读了短线交易者的游戏。">
+<style>
+:root{
+  --paper:#F6F2EA;      /* 暖纸底 */
+  --paper-2:#E9E2D4;    /* 纸色深一档 */
+  --card:#FCF9F1;
+  --ink:#2A2420;        /* 石墨主墨（主色） */
+  --ink-2:#4A4138;
+  --ink-deep:#140E08;   /* 焰夜深棕（hero 底） */
+  --gold:#C46A2B;       /* 焰橙（强调 · 金钱与欲望的热度） */
+  --gold-b:#E09A5A;   
+  --gold-soft:rgba(196,106,43,.16);
+  --cinnabar:#A02B2B;   /* 警示深红（风险与陷阱） */
+  --teal:#46566B;       /* 石墨蓝（对照 · 理性与长期） */
+  --tx:#2E2823;
+  --tx-2:#4A4239;
+  --tx-3:#8A8074;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4138 0%,var(--ink-deep) 62%);
+  color:#F3EDE3;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,90,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,90,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,90,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5EFE5}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,233,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,90,.34);color:rgba(240,233,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,43,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0EAE0;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,90,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EBDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,90,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EBDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(238,231,219,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,43,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,43,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(138,128,116,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,43,.45);background:rgba(196,106,43,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(130,35,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,43,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,244,236,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4138;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,43,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8074;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-意外事件与容错空间/index.html">← 意外事件·容错空间</a><a href="../07-悲观故事与灵活信念/index.html">悲观·故事·信念 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">变</div>
+  <div class="stamp ">变化</div>
+  <h1>没有人是一成不变的 · 免费午餐与「买这只股票」</h1>
+  <p class="sub">第 14 章讲「历史终结错觉」如何打断复利；第 15 章讲天下没有免费的午餐——波动是入场费；第 16 章讲泡沫的真相：长期投资者误读了短线交易者的游戏。</p>
+  <div class="meta"><span>第2部分</span>
+    <span class="k">长期与游戏</span>
+    <span>正文 12,269 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>你会改变</a><a href="#s3" data-t="s3"><span class="cn">叁</span>两个忠告</a><a href="#s4" data-t="s4"><span class="cn">肆</span>免费午餐</a><a href="#s5" data-t="s5"><span class="cn">伍</span>入场费</a><a href="#s6" data-t="s6"><span class="cn">陸</span>不同的游戏</a><a href="#s7" data-t="s7"><span class="cn">柒</span>你的游戏</a><a href="#s8" data-t="s8"><span class="cn">捌</span>自测</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">三章连读：先承认「你会变」，再承认「收益有价」，最后承认「别人玩的游戏和你不同」</p><p class="thesis">长期主义有三道暗礁：<b>你自己会变</b>（历史终结错觉让人低估未来目标的变化，复利因此中断）；<b>收益有代价</b>（波动、恐惧、懊悔是入场费而非罚款）；<b>市场里混着不同游戏的玩家</b>（日内交易者的「合理价格」对长期投资者是灾难）。三道暗礁的共同解药是认清自己：你会变什么、你愿付什么价、你在玩什么游戏。</p><div class="chain"><div class="node"><div class="n">错觉</div><div><p class="tt">历史终结错觉</p><p class="dd">人们能敏锐意识到过去的变化，却低估未来——吉尔伯特的研究表明 18~68 岁的人都如此</p></div></div><div class="node"><div class="n">解药</div><div><p class="tt">没有沉没成本</p><p class="dd">卡尼曼推翻刚完成的书稿时说：「我没有沉没成本」——越早放下旧目标，越早回到复利轨道</p></div></div><div class="node"><div class="n">代价</div><div><p class="tt">入场费</p><p class="dd">道指 1950—2019 年均收益约 11%，但代价是持续低于历史高点 5% 以上的灰色岁月</p></div></div><div class="node"><div class="n">误区</div><div><p class="tt">躲避波动</p><p class="dd">112 只战术性共同基金中仅 9 只跑赢简单的 60/40 组合——试图规避代价的人付出了更高成本</p></div></div><div class="node"><div class="n">泡沫</div><div><p class="tt">不同的游戏</p><p class="dd">1999 年雅虎的疯狂估值对日内交易者是合理的——他们只关心当天，不关心未来 20 年</p></div></div><div class="node"><div class="n">宣言</div><div><p class="tt">写下你的游戏</p><p class="dd">我是一个被动投资者，对世界创造实际经济增长的能力充满信心——写下来，无关的市场噪音就与你无关</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第14章 · 历史终结错觉：连你自己也会变</h2><span class="en">END OF HISTORY</span></div><p class="prose">豪泽尔有位从小一起长大的朋友，少年立志当医生，在几乎无人看好的情况下坚持不懈，比同班同学年长 10 岁终于成功当上一名医生。几年后重逢，他的第一句话是：「这个工作太糟糕了。」他被工作压力和超长工作时间彻底压垮——如今的失望，和 15 年前追梦时的执着几乎同样强烈。</p><p class="prose">这是心理学的基本观察：人们对未来的自己普遍缺乏准确的预测力。</p><p class="prose">更系统的证据来自美联储：仅有 27% 的大学毕业生从事与专业相关的工作，29% 的全职家长拥有大学学位。心理学家将这种倾向称为「历史终结错觉」——人们普遍能敏锐地意识到自己相比过去发生了多少变化，却总是低估自己的性格、欲望和目标在未来可能发生的转变。</p><p class="prose">哈佛大学心理学家丹尼尔·吉尔伯特的研究表明，18~68 岁的人都低估了自己未来会发生的变化：</p><div class="aband"><q><b>我们在人生的每一个阶段，都会做出对未来产生深远影响的决定，可等我们真正成为那个「未来的自己」时，却未必会对曾经的决定感到满意。</b>于是，年轻人花大价钱用激光清除当年自己花钱文下的文身；中年人匆匆离婚，正如当年年轻时匆匆结婚；老年人拼命甩掉中年时累积的赘肉。如此循环往复，没完没了。</q><cite>——第14章 · 引丹尼尔·吉尔伯特</cite></div><p class="prose">查理·芒格曾说，复利的第一法则就是绝不轻易中断。但当你对人生的追求发生变化时，如何确保财务规划不被中断？这非常困难——像里德和巴菲特那样数十年如一日坚持同一策略的人是极端少数，我们大多数人的财富生涯与其说是一个 80 多年的生命周期，不如说可能被分成 4 个截然不同的 20 年阶段。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>两个忠告：避免极端，接受改变</h2><span class="en">TWO REMINDERS</span></div><p class="prose">第一，避免陷入财务规划的极端。无论是认为自己可以靠极低的收入过得很幸福，还是选择无休止地工作以追求高收入，都容易让你在未来的某一天陷入无尽的遗憾——极端规划的好处难以持久（人有很强的适应能力），而其负面影响却成为长久的遗憾。</p><p class="prose">在职业生涯的每个阶段做到：每年有适度的储蓄、拥有一定的自由时间、通勤时间不太离谱、与家人有适度的陪伴——比起让任何一项走向极端，这更有助于坚持既定的生活和理财规划。</p><p class="prose">第二，坦然接受自己改变想法的事实，并尽早付诸行动。豪泽尔见过的最痛苦的职场人士，往往是那些仅因 18 岁时选定的大学专业而一生坚守某个行业的人。《华尔街日报》作家贾森·茨威格协助卡尼曼创作《思考，快与慢》时，见识了最好的示范——卡尼曼能毫不犹豫地推翻刚完成的工作，甚至发来开头结尾都彻底不同的新版本。</p><p class="prose">茨威格问他怎么能像从未写过上一稿一样重新开始：</p><div class="aband"><q>「<b>我没有沉没成本。</b>」</q><cite>——第14章 · 引丹尼尔·卡尼曼</cite></div><p class="prose">所谓沉没成本，是把已无法收回的既往投入作为决策依据——在一个人们会随时间不断变化的世界里，它让未来的自己被过去的自己束缚，几乎等同于让陌生人替你做出重大的人生决定。在你变成了一个不同的自己后，勇于果断放弃过去制定的财务目标，才是减少未来遗憾的明智策略。越早放下，越能及早回到复利的轨道上。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>第15章 · 通用电气的账单：任何一份工作，旁观者都觉得容易</h2><span class="en">NO FREE LUNCH</span></div><p class="prose">2004 年，通用电气是全球市值最大的公司，市值高达 3 300 亿美元。但 2008 年金融危机后，曾贡献逾半利润的金融部门被低价出售，石油和能源投资接连失利造成数十亿美元资产减值，股价从 2007 年的每股 40 美元跌至 2018 年的每股 7 美元。</p><p class="prose">CEO 杰夫·伊梅尔特成为众矢之的，2017 年卸任。但他离开时说了一句颇具洞见的话，送给继任者——那位只坚持了 14 个月的继任者想必深有体会：</p><div class="aband"><q>「<b>任何一份工作，旁观者都觉得容易。</b>」</q><cite>——第15章 · 引杰夫·伊梅尔特</cite></div><p class="prose">标准普尔 500 指数在 1968—2018 年的 50 年间累计上涨了 119 倍。理论上你要做的就是静观其变，让资金复利增长即可。但实际上，投资成功之所以看起来容易，只是因为你不是那个亲身承受波动的人。任何值得追求的事物都有代价——不是金钱，而是波动性、恐惧、怀疑、不确定性和懊悔。</p><p class="prose">如果你没有意识到投资需要付出代价，就容易被「白捡便宜」的幻想诱惑。以买车类比：标价 3 万美元的新车有三种获得方式——支付、买二手车、偷一辆。99% 的人都明白不能选第三种，因为偷车的代价远高于收益。但许多投资者恰恰选择了投资里的「偷车」：频繁买入卖出，试图在衰退前清仓、繁荣前抄底。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>费用，而非罚款</h2><span class="en">FEE NOT FINE</span></div><div class="tbwrap"><table><thead><tr><th>高回报背后的代价（历史数据）</th><th>数字</th></tr></thead><tbody><tr><td>道琼斯指数年均收益率（1950—2019，含股息）</td><td>约 11%</td></tr><tr><td>网飞股价涨幅（2002—2018）与其低于历史最高点的交易日占比</td><td>上涨 350 多倍；94% 的交易日低于历史最高点</td></tr><tr><td>怪物饮料股价涨幅（1995—2018）与其低于历史最高点的时间占比</td><td>暴涨 3 190 倍；95% 的时间低于历史最高点</td></tr><tr><td>晨星统计的 112 只战术性共同基金中风险调整后跑赢 60/40 组合的</td><td>仅 9 只</td></tr><tr><td>普通股票型基金投资者比基金本身年均少赚（频繁买卖所致）</td><td>0.5 个百分点</td></tr></tbody></table></div><p class="prose">具有讽刺意味的是，试图规避代价的投资者反而付出了更高的成本。通用电气就是「免单幻觉」的标本：前 CEO 杰克·韦尔奇是「数字魔术师」——分析师预期每股收益 0.25 美元，他无论业务状况如何总能让收益达到 0.26 美元，甚至将未来季度的利润提前计入当前季度。</p><p class="prose">韦尔奇时代股东似乎无须为收益付出代价，但账单终究会到来——房地美和房利美也在 2000 年代初故意少报数十亿美元当期利润，制造业绩平稳的假象，最终双双破产。</p><div class="aband"><q><b>把市场波动视为应支付的费用而非罚款，是培养理性投资心态的关键。</b>只有这样，你才能在市场的起伏中坚持足够长的时间，最终获得长期的投资收益。</q><cite>——第15章</cite></div><p class="prose">类比很直白：迪士尼乐园的门票是 100 美元，2020 年超过 1 800 万人愿意为此买单，很少有人觉得这笔钱是一种惩罚。波动性和不确定性，就是你为获得比「低价游乐园」（储蓄和债券）更高收益所要支付的入场费。没人能保证这笔入场费总是物超所值——有时候你兴致勃勃地去了迪士尼，结果却遇上了下雨。</p><p class="prose">但如果你始终把它看作罚款，你就永远无法真正体会其中的魔力。认清代价，然后付出。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>第16章 · 今天你应该为谷歌的股票支付多少钱</h2><span class="en">DIFFERENT GAMES</span></div><p class="prose">互联网泡沫使美国家庭财富缩水 6.2 万亿美元，房地产泡沫又让财富蒸发 8 万亿美元以上。把泡沫归咎于贪婪太粗糙了——回到第 1 章的观点：没有人真的对金钱失去理智。豪泽尔给出的解释常被忽略：投资者往往会在无意间效仿那些其实与自己情况不同的其他投资者来进行理财。不妨问自己：今天你应该为谷歌的股票支付多少钱？</p><p class="prose">答案取决于「你」是谁：</p><div class="tbwrap"><table><thead><tr><th>你是谁</th><th>「合理价格」的依据</th></tr></thead><tbody><tr><td>30 年的长期投资者</td><td>对谷歌未来 30 年现金流折现的审慎分析</td></tr><tr><td>计划 10 年内套现</td><td>科技行业未来 10 年的前景与管理层能否兑现战略愿景</td></tr><tr><td>准备 1 年内卖出</td><td>当前产品的销售周期，以及市场是否可能进入熊市</td></tr><tr><td>日内交易者</td><td>合理价格其实无所谓——只希望在午餐前通过价格波动赚取几美元利润</td></tr></tbody></table></div><p class="prose">1999 年，许多人看着雅虎的股价说：这太疯狂了！市值是营收的无数倍。但当时持有雅虎股票的很多投资者只打算短期持有——对他们来说支付极高的价格反而是合理的。</p><p class="prose">泡沫的形成并不完全是因为非理性地参与长期投资，更多时候是人们理性地转向短期交易，追逐自我强化的上涨动能：1999 年普通共同基金的年换手率高达 120%，也就是说他们最多只考虑未来 10 个月的情况。真正的破坏发生在两种游戏交错时——以思科为例：</p><p class="prose">1999 年思科股价上涨 300% 达每股 60 美元，市值高达 6 000 亿美元。经济学家马尔基尔指出，按这一估值推算，思科的增长速度意味着它将在 20 年内超过整个美国经济的规模。实际上极少有人认为思科真值这么多钱——那更多是日内交易者的狂欢。</p><p class="prose">但如果你是 1999 年的一名长期投资者，60 美元就是你唯一可以买入的价格。你没有意识到，决定股票边际价格的那些交易者玩的是截然不同的游戏：他们打算在当天结束前卖出，而你计划长期持有。两类投资者彼此毫无察觉，却在同一个市场上奔跑——当路径交会时，总有人受到伤害。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>明确你正在参与的是哪一种游戏</h2><span class="en">KNOW YOUR GAME</span></div><p class="prose">同样的逻辑不只在市场，也在消费：我们能看到别人花在汽车、房产、服饰和度假上的钱，却看不到他们背后的目标、焦虑和理想。一位立志成为知名律所合伙人的年轻律师需要维持得体形象，而一个可以穿运动裤工作的写作者完全没有这种需求——但当他的消费行为影响到我的期望时，我就走上了一条可能通往失望的道路。</p><p class="prose">每当财经评论员在 CNBC 上说「你应该买这只股票」时，请记住，他们并不了解你是谁——你是一个为了好玩而交易的青少年，一位预算有限的年长遗孀，还是一名急于在季度末改善账面业绩的对冲基金经理？假定这三类人该买同一只股票，这简直荒谬。</p><p class="prose">在金钱问题上，没什么比明晰自己的投资期限、不被玩着不同游戏的人的行为所左右更重要。豪泽尔多年前写下了一条「投资宣言」：</p><div class="aband"><q>「<b>我是一个被动投资者，对于世界创造实际经济增长的能力充满信心，并相信在未来30年，这种增长将体现在我的投资收益之中。</b>」</q><cite>——第16章 · 作者的投资宣言</cite></div><p class="prose">它看似老套，但一旦把这一使命写下来你就会发现：今年市场表现如何、明年是否会发生经济衰退，都属于自己根本没有参与的「游戏」——因此不会关注，也不会被影响。在金钱问题上，没什么比明晰自己的投资期限更重要的事情了。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>三章自测</h2><span class="en">CHECKLIST</span></div><div class="check" data-k="psy06-1"><p class="ct">读完这三章，试着问自己</p><label><input type="checkbox"><span>我承认自己 10 年后的目标可能与今天不同，计划里留了调整的余地</span></label><label><input type="checkbox"><span>我定期检查自己是否被沉没成本拖着走——一份工作、一只股票或一个目标</span></label><label><input type="checkbox"><span>我把最近一次账面亏损理解为入场费，而不是我做错了事的罚款</span></label><label><input type="checkbox"><span>我能说清自己持有每一项资产的投资期限，以及它为什么适合我</span></label><label><input type="checkbox"><span>我写下了自己的投资宣言，并能用它过滤掉无关的市场噪音</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜摩根·豪泽尔《金钱心理学》（全新增订版，中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第2部分｜变化·免费午餐·选股</span><a href="../05-意外事件与容错空间/index.html">← 意外事件·容错空间</a><a href="../07-悲观故事与灵活信念/index.html">悲观·故事·信念 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='psy-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

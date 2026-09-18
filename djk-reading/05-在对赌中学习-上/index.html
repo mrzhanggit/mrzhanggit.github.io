@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三章·在对赌中学习（上） · 运气与技能的区分｜对赌 精读</title>
+<meta name="description" content="一手 7 和 2 敢弃掉一对 A 的希腊人尼克输了很多钱，却从未质疑过自己的策略——他只差一步：把结果分拣为「运气」还是「技能」。本章拆解这道回溯分析难题：世界不会帮我们把结果与原因联系起来。">
+<style>
+:root{
+  --paper:#F5F1E9;      /* 象牙纸底 */
+  --paper-2:#E9E2D3;    /* 象牙深一档 */
+  --card:#FCFAF3;
+  --ink:#26201E;        /* 主墨 */
+  --ink-2:#4A3B36;
+  --ink-deep:#120B0A;   /* 夜牌桌绒黑（hero 底） */
+  --gold:#B08A3A;       /* 筹码金（强调 · 赌桌筹码） */
+  --gold-b:#C9A45C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#7E2A33;   /* 赌桌绒红（警示/accent） */
+  --teal:#4A5E70;       /* 冷灰蓝（对照 · 理性与正轨） */
+  --tx:#2B2422;
+  --tx-2:#5A504A;
+  --tx-3:#8A817A;
+  --line:rgba(38,32,30,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,30,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3B36 0%,var(--ink-deep) 62%);
+  color:#F0E9DC;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,164,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,164,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,164,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(126,42,51,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5EFE6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,164,92,.34);color:rgba(242,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(126,42,51,.6);background:rgba(126,42,51,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,rgba(178,90,99,.30) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,164,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1E9D9;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,164,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1E9D9;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,233,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,32,30,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(126,42,51,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(126,42,51,.1);color:var(--cinnabar);border:1px solid rgba(126,42,51,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,116,110,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(126,42,51,.55);border-radius:8px;
+  background:rgba(126,42,51,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,42,51,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(126,42,51,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,241,233,.94);
+  border-bottom:1px solid rgba(38,32,30,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,30,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3B36;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,30,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,30,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A817A;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../04-赌一把-下/index.html">← 赌一把？（下）</a><a href="../06-在对赌中学习-下/index.html">在对赌中学习（下） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">运</div>
+  <div class="stamp ">归因</div>
+  <h1>在对赌中学习（上） · 运气与技能的区分</h1>
+  <p class="sub">一手 7 和 2 敢弃掉一对 A 的希腊人尼克输了很多钱，却从未质疑过自己的策略——他只差一步：把结果分拣为「运气」还是「技能」。本章拆解这道回溯分析难题：世界不会帮我们把结果与原因联系起来。</p>
+  <div class="meta"><span>第三章</span>
+    <span class="k">运气与技能</span>
+    <span>正文 12,762 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>希腊人尼克</a><a href="#s3" data-t="s3"><span class="cn">叁</span>结果即反馈</a><a href="#s4" data-t="s4"><span class="cn">肆</span>运气与技能</a><a href="#s5" data-t="s5"><span class="cn">伍</span>健康甜点</a><a href="#s6" data-t="s6"><span class="cn">陸</span>自利性偏差</a><a href="#s7" data-t="s7"><span class="cn">柒</span>非此即彼</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇主线：经验是必要条件却不是充分条件——先看不学习者，再拆学习循环的两处堵点</p><p class="thesis"><b>希腊人尼克</b>拒绝从对赌结果中学习；<b>回溯分析</b>的困难在于未来是大数据转储（咳嗽的病因不止一种）；<b>自利性偏差</b>让区分错误变得可预见——坏事归运气、好事归技能；<b>非此即彼思维</b>是这两股力量的共同燃料。</p><div class="chain"><div class="node"><div class="n">反面教材</div><div><p class="tt">希腊人尼克</p><p class="dd">起手牌两张 A 反而是最差的牌（「他们总是以为你拿到了两张A」）；很少赢牌，从未改策略</p></div></div><div class="node"><div class="n">堵点一</div><div><p class="tt">回溯困难</p><p class="dd">同一症状多种病因：乔与简的销售差异、健康甜点与肥胖——结果不会告诉我们哪些是错、哪些是功劳</p></div></div><div class="node"><div class="n">堵点二</div><div><p class="tt">自利性偏差</p><p class="dd">保险单上的静止卡车与逼近的电线杆；「如果不是因为运气，每一次我都会赢」</p></div></div><div class="node"><div class="n">放大器</div><div><p class="tt">间歇强化</p><p class="dd">斯金纳的老鼠：平均每十次一粒食物——不确定性让按压行为持续数千次</p></div></div><div class="node"><div class="n">镜子</div><div><p class="tt">哈哈镜</p><p class="dd">好结果时技能无限放大，坏结果时技能被隐藏、运气被展现为庞然大物</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>希腊人尼克与水晶酒吧</h2><span class="en">GREEK NICK</span></div><p class="prose">1992 年，蒙大拿州哥伦布镇（人口 1 200 人），杜克每天开车 80 英里往返比林斯市中心水晶酒吧的地下室牌桌——叼着烟卷的农场主、牛仔帽檐上的烟雾，让人以为这是 1952 年。牌桌上有位常客：街对面连锁酒店的总经理，来自希腊，于是被称作<b>希腊人尼克</b>。</p><p class="prose">他有一套不同寻常的信念：起手牌两张 A——牌桌上能拿到的最好的两张牌——其实是最差的牌。</p><div class="aband"><q>他们总是以为你拿到了两张A。所以拿到那样的牌你就完了。</q><cite>——希腊人尼克</cite></div><p class="prose">按这套逻辑，最好的起手牌反而是最弱的两张：一张 7 和一张不同花色的 2。他总是一张 7 一张 2 地打，偶尔运气好也赢牌，甚至会在第一圈下注时把一对 A 牌面朝上扔掉。他很少赢牌，却从未改变策略——输了牌就责怪运气不好，却从不怨天尤人。杜克计算着每天到达的时间，以便在他下午上场时和他打牌。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>结局：被送回去了</h4><span class="ar">▶</span></div><div class="cb"><div class="in">「哦，他被送回去了。」——「送回去？」——「是的，回希腊了。他被驱逐出境了。」别人推测他要么破产、要么偷了酒店的钱、要么因每天占用上班时间打牌而丢了工作签证。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>教训：他忽视了眼前的学习机会</h4><span class="ar">▶</span></div><div class="cb"><div class="in">杜克能肯定的是：希腊人尼克因为错误信念而输了很多钱——更准确地说，因为他忽视了许多针对失败决策的反馈。扑克本是理想的学习环境：下注后立即得到回应，几分钟内真金白银地赢或输。但他落得身无分文，因为他没有辨认出那些出现在眼前的学习机会。</div></div></div></div><p class="prose">为什么打牌多年的希腊人尼克无法从错误中吸取教训？答案是：<b>经验是成为专家的必要条件，但仅仅依靠经验是不够的</b>。经验可以成为高效的老师，但只有一小部分学生留心倾听。在给出解决方案之前，先看问题：是什么在系统地阻碍我们从经验中学习？</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>结果即反馈：未来对我们咳嗽</h2><span class="en">OUTCOMES AS FEEDBACK</span></div><p class="prose">我们不能仅仅指望通过「吸收」经验来学习。赫胥黎说得透彻——</p><div class="aband"><q>经验不在于一个人经历了什么，而在于他如何有效利用他的经历。</q><cite>——阿道司·赫胥黎</cite></div><p class="prose">任何决定都是在赌一个可能实现的未来。熬夜看球的结果可能是迟到挨训，也可能准时醒来；去得梅因可能遇到一生所爱，也可能两天后付 15 000 美元终止赌局。结果展开后我们面临另一个决定：<b>为什么事情会以这种方式发生？</p><p class="prose"></b>这是一次投注——赌对了归因，数据就能反馈回信念形成，形成学习循环；赌错了，学习的就不是该学的东西。</p><p class="prose">难在哪里？任何单一结果都可能由多种原因发生。患者咳嗽，医生必须从病毒、细菌、癌症、精神紊乱等多种病因中追溯——症状大致相同，误诊却可能致命，所以医生需要多年经验。</p><div class="aband"><q>当未来对我们咳嗽的时候，同样也很难确定原因。</q><cite>——第三章</cite></div><p class="prose">公司里的两名销售人员：一月，乔从同一客户拿到 1 000 美元订单；八月，简拿到 10 000 美元。是简更优秀？二月产品线更新？四月低价对手破产？我们无法穿越时空把乔和简调换位置做对照试验——而公司如何区分这一结果，直接影响员工培训、产品定价和产品开发。</p><p class="prose">扑克亦然：没人跟注时无人亮牌，赢的人是手气好还是打得好？<b>世界不会帮我们把结果与原因联系起来。</b></p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>运气与技能：结果的初步分拣</h2><span class="en">LUCK vs SKILL</span></div><div class="duo"><div class="colL"><h4>技能</h4><ul><li>再次做出同样决定会产生相同结果</li><li>改变决定可能导致不同结果</li><li>决策质量是影响事情发展的主要因素</li><li>在我们的控制范围之内</li><li>彰显我们的能力</li></ul></div><div class="colR"><h4>运气</h4><ul><li>其他人的行为、天气或基因等无法控制的因素</li><li>决策对事情的发展没有起到很大作用</li><li>突然刮来的一阵大风、击中喷水头</li><li>在我们控制范围之外</li><li>不在我们的掌握之中</li></ul></div></div><p class="prose">高尔夫新手或罗里·麦克罗伊开球后球落在哪里，都是技能与运气的合成：球杆选择、姿势、挥杆是技能；大风、被叫名字、草皮还是喷水头、年龄与基因是运气。减肥可能源于锻炼（技能）或新陈代谢突变（运气）；考试成绩差可能因为没学习（技能）或老师心情不好（运气）。</p><p class="prose">对任何结果，我们都面临一个<b>初步的分拣决策</b>：该结果赌的是「运气」还是「技能」？希腊人尼克正是在这一点上犯了错误。</p><p class="prose">像外野手持球狂奔时必须立即决定投向截球手、跑垒手身后还是前进中的跑垒手——我们对「投掷」也在下注：投向技能（能学到东西的经验）或运气（无法获益的经验）。做到了，就能接近任何「更___」的目标：更好、更聪明、更健康、更快乐、更富有。但模棱两可让这次分拣在实践中并非易事。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>回溯分析的困难：健康甜点现象</h2><span class="en">SNACKWELL&#x27;S PHENOMENON</span></div><p class="prose">20 世纪 90 年代，数百万人紧跟健康甜点(SnackWell)潮流：纳贝斯克把「恶魔蛋糕」推广成主导产品，押在一个今天看来声名狼藉的信念上——<b>使人发胖的不是糖，而是脂肪</b>。绿色包装给人如菠菜般「健康」的感觉，消费者把健康赌注押在甜点上：可以整盒摄取糖分十足的健康甜点，因为糖不是敌人，脂肪才是。</p><p class="prose">结果低脂热潮期间肥胖症显著增长——波伦称之为「健康甜点现象」：人们越来越多地消费某些含有较低有害成分的商品。</p><p class="prose">难的是当时找不出原因：体重增加该归入「技能」（对错误健康信念的反馈），还是「运气」（新陈代谢缓慢）？归入运气，人们将继续吃健康甜点。相同的体重增加可以来自健康甜点、奥利奥饼干，或扁豆和羽衣甘蓝——三个都胖了的人怎么确定原因？现在回头看一目了然，只因我们受益于最近 20 年的新研究；当年的牌面仍然处于隐藏状态。</p><p class="prose">不确定性还会拖慢学习速度。斯金纳的经典实验：固定奖励（每按压十次杠杆一粒食物）下老鼠学得快、撤奖后行为立刻停止；可一旦改为<b>间歇性强化</b>（平均每十次一粒，可能下次就有、也可能三十次没有），撤奖后按压行为要持续到数千次才停。</p><p class="prose">老虎机正是运行在这种变量收益系统上——尽管它是最糟糕的赌局之一，赌场里总是人满为患。</p><div class="aband"><q>我赌再多按一次就会得到吃的……刚才我只是运气不好而已……那都是我应得的</q><cite>——第三章（杜克对老鼠思路的想象）</cite></div><p class="prose">最后一个事实：结果的产生很少纯粹因为技巧或运气。并非每个醉驾者都会翻车——路面状况与其他车辆位置起了作用；清醒驾过绿灯毫发无伤，也有运气成分——没人闯红灯撞我们、路上没有冰、车胎没爆。结果几乎从不 100% 来自运气或技巧，正如我们几乎从不会 100% 地错误或正确。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>如果不是因为运气，每一次我都会赢</h2><span class="en">SELF-SERVING BIAS</span></div><p class="prose">对错误的区分并不是随机的。先驱海德(Fritz Heider)说，我们像科学家一样研究自己的结果，但只是「天真的科学家」——寻找能自圆其说且符合自身愿望的理由：</p><div class="aband"><q>这通常是一个使人自我感觉良好的理由，它令我们满意，并且富有一种归因赋予的附加效力。</q><cite>——弗里茨·海德</cite></div><div class="tbwrap"><table><thead><tr><th>汽车保险单上的事故原因</th><th>自欺水平</th></tr></thead><tbody><tr><td>「我与对面驶来的一辆静止的卡车相撞。」</td><td>静止的卡车撞我</td></tr><tr><td>「一名步行者撞到了我的车，然后钻到车底去了。」</td><td>行人主动钻车底</td></tr><tr><td>「那家伙在路上跑来跑去，我左右闪避了好几次才撞上他的。」</td><td>我已经尽力了</td></tr><tr><td>「电线杆不断向我逼近，当我试图躲避时它就撞上了我的车。」</td><td>电线杆有责任</td></tr></tbody></table></div><p class="prose">斯坦福的麦考恩据此统计：75% 的受害者将自己受伤的责任归咎于他人，多车事故中 91% 指责别人，单车事故中竟有 37% 也能找到别人身上的原因。冯·诺依曼在普林斯顿被认为是恐怖的司机——他撞车后的解释是：右侧的树木以 60 英里时速井然有序地逐个掠过，<b>其中一棵突然窜出来挡住了去路。砰！</b></p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>菲尔·赫尔穆特：电视上的自白</h4><span class="ar">▶</span></div><div class="cb"><div class="in">世界扑克系列赛最大赢家（十四条冠军手链）被淘汰后对着 ESPN 镜头说：「如果不是因为运气，每一次我都会赢。」——这句话在扑克界成为传奇，甚至催生了音乐剧里的一首歌。它等于说：如果扑克没有运气（即他玩的是象棋），高超技巧将战无不胜；所有负面结果都是运气，所有积极结果都是卓越技能。扑克玩家惊讶的不是内容，而是他竟在电视上大声说出来。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>克里斯蒂：一分钟内的完美切换</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2016 年艾奥瓦初选辩论，克里斯蒂攻击希拉里「拒绝对任何坏结果承担责任……如果是个好结果，她一定会争先恐后地把功劳往自己身上揽」。几分钟前他自己刚提供过竞品示例：桥门丑闻「已有三种不同的调查可以证明我对此事一无所知」，而新泽西 15 年来最高的就业率「是因为我们落实了保守政策」——迅速从「那个坏结果不是我的错」切换到「听听我取得的好成绩」。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>资深律师与小学生</h4><span class="ar">▶</span></div><div class="cb"><div class="in">一位诉讼律师对证人证词的分析永远如出一辙：证词有利——「我给证人做了如此充分的准备」；证词危及案子——「那家伙不听我的话」。学龄儿童的家长同样熟悉：「老师不喜欢我。其他的同学都没有考好。不信你可以随便跟任何人打听！」</div></div></div></div><p class="prose">杜克承认自己也未能幸免：曾因赢钱沾沾自喜，也曾因输钱抱怨运气——这是一种本能的驱使，且我们明确知道它是视错觉也仍会看到它。<b>自利性偏差对我们从经验中学习的能力有着直接和显著的影响</b>：它深度嵌入、顽固，了解它出现的原因是制定改善策略的第一步。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>非此即彼的思维依旧顽固</h2><span class="en">BLACK AND WHITE</span></div><p class="prose">被不确定的现实剥去颜色的非黑即白思维，是动机性推理和自利性偏差的共同驱动力：如果选择不是 100% 正确就是 100% 错误，与信念相左的信息就必须经历一次彻底的降级——于是我们选择忽视或诋毁它。</p><p class="prose">两种偏见合起来像一面<b>哈哈镜</b>：好结果时把技能作用无限放大，坏结果时把技能隐藏起来、把运气展现为庞然大物。</p><p class="prose">当自我形象受到威胁，我们会把导致结果的决策区分为 100% 或 0：正确或错误、技能或运气、我们的责任或不可控因素——不留任何余地。这直接影响我们对未来发展的判断能力。</p><p class="prose">破局的思路有三条：停止坚持自我，放弃把积极生活叙述视为必需品；或者仍驾驭积极叙述，但在评估运气与技能时更加客观开放；又或者——找一个完全不需要应对自利性偏差的<b>变通方案</b>，彻底绕过这些障碍。这正是接下来两篇要做的事。</p><div class="check" data-k="djk-05"><p class="ct">自 测</p><label><input type="checkbox"><span>我能说出经验与专家之间的差距：识别学习机会并正确归因</span></label><label><input type="checkbox"><span>我对结果做过「运气还是技能」的初步分拣，而不是直接定性对错</span></label><label><input type="checkbox"><span>我识别过自己的健康甜点时刻：低有害成分不等于健康</span></label><label><input type="checkbox"><span>我在坏事发生后检查过「是不是又要怪运气」的第一反应</span></label><label><input type="checkbox"><span>我愿意把 100%/0 的判断换成带百分比的灰色地带</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">体例</span><span class="nd"><b>章末注释错位｜</b>导出源把斯金纳实验出处（P087.）、冯·诺依曼驾驶轶事来源（P092.）、约吉·贝拉语录考（P100.）、道金斯相关文献（P107.）、巴甫洛夫研究（P110.）、米克尔森 100 次 3 英尺推杆练习等章末注释段错位到章首，已如实收录骨架；本页不展开。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安妮·杜克《对赌：信息不足时如何做出高明决策》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三章｜在对赌中学习（上）</span><a href="../04-赌一把-下/index.html">← 赌一把？（下）</a><a href="../06-在对赌中学习-下/index.html">在对赌中学习（下） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='djk-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

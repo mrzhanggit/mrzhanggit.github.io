@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第六章·心理时间旅行历险（下） · 情景规划与反向回顾｜对赌 精读</title>
+<meta name="description" content="过去的你阻止现在的你做蠢事，叫尤利西斯合约；对「成功」与「失败」两种未来都做侦察，叫反向回顾与预先检查；而事后偏见是概率思维的死敌——它拿电锯把树上所有没发生的树枝锯掉。">
+<style>
+:root{
+  --paper:#F5F1E9;      /* 象牙纸底 */
+  --paper-2:#E9E2D3;    /* 象牙深一档 */
+  --card:#FCFAF3;
+  --ink:#26201E;        /* 主墨 */
+  --ink-2:#4A3B36;
+  --ink-deep:#120B0A;   /* 夜牌桌绒黑（hero 底） */
+  --gold:#B08A3A;       /* 筹码金（强调 · 赌桌筹码） */
+  --gold-b:#C9A45C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#7E2A33;   /* 赌桌绒红（警示/accent） */
+  --teal:#4A5E70;       /* 冷灰蓝（对照 · 理性与正轨） */
+  --tx:#2B2422;
+  --tx-2:#5A504A;
+  --tx-3:#8A817A;
+  --line:rgba(38,32,30,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,30,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3B36 0%,var(--ink-deep) 62%);
+  color:#F0E9DC;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,164,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,164,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,164,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(126,42,51,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5EFE6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,164,92,.34);color:rgba(242,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(126,42,51,.6);background:rgba(126,42,51,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,rgba(178,90,99,.30) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,164,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1E9D9;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,164,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1E9D9;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,233,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,32,30,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(126,42,51,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(126,42,51,.1);color:var(--cinnabar);border:1px solid rgba(126,42,51,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,116,110,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(126,42,51,.55);border-radius:8px;
+  background:rgba(126,42,51,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,42,51,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(126,42,51,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,241,233,.94);
+  border-bottom:1px solid rgba(38,32,30,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,30,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3B36;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,30,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,30,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A817A;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../09-心理时间旅行-上/index.html">← 心理时间旅行（上）</a><a href="../11-卷末-致谢与说明/index.html">卷末·致谢与说明 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">树</div>
+  <div class="stamp ">侦察</div>
+  <h1>心理时间旅行历险（下） · 情景规划与反向回顾</h1>
+  <p class="sub">过去的你阻止现在的你做蠢事，叫尤利西斯合约；对「成功」与「失败」两种未来都做侦察，叫反向回顾与预先检查；而事后偏见是概率思维的死敌——它拿电锯把树上所有没发生的树枝锯掉。</p>
+  <div class="meta"><span>第六章</span>
+    <span class="k">情景规划</span>
+    <span>正文 17,117 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>尤利西斯合约</a><a href="#s3" data-t="s3"><span class="cn">叁</span>决策脏话罐</a><a href="#s4" data-t="s4"><span class="cn">肆</span>侦察</a><a href="#s5" data-t="s5"><span class="cn">伍</span>实践案例</a><a href="#s6" data-t="s6"><span class="cn">陸</span>正负空间</a><a href="#s7" data-t="s7"><span class="cn">柒</span>电锯</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇主线：从预先承诺到全面侦察——时间旅行的工具箱与最后一课</p><p class="thesis"><b>尤利西斯合约</b>用过去的自己约束现在的自己；<b>决策脏话罐</b>把「我早就知道」变成付费信号；<b>情景规划</b>像海豹突击队一样侦察未来；<b>反向回顾+预先检查</b>覆盖正面与负面空间；<b>树木学</b>收束全书——别让事后偏见砍掉决策树。</p><div class="chain"><div class="node"><div class="n">绑定</div><div><p class="tt">塞壬岛</p><p class="dd">奥德修斯让船员绑他于桅杆、蜡封己耳——利用过去的我们阻止现在的我们做蠢事</p></div></div><div class="node"><div class="n">拦截</div><div><p class="tt">决策脏话罐</p><p class="dd">「我知道」「总是」「错误」……说出即投币，触发决策中断</p></div></div><div class="node"><div class="n">侦察</div><div><p class="tt">情景规划</p><p class="dd">诺曼底与突袭行动式的准备：列出结果范围、猜测每种概率——20%～80% 也强于放弃</p></div></div><div class="node"><div class="n">双向</div><div><p class="tt">正负空间</p><p class="dd">反向回顾是啦啦队队长，预先检查是观众中的起哄者——概率相加必须 100%</p></div></div><div class="node"><div class="n">敌戒</div><div><p class="tt">电锯</p><p class="dd">结果发生后我们锯掉所有未发生的树枝，2%～3% 事后变成 100%</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>尤利西斯合约：预先承诺</h2><span class="en">ULYSSES CONTRACT</span></div><p class="prose">奥德修斯的船靠近塞壬岛：所有听过塞壬歌声的水手都会不由自主地驶向海岛撞上岩石滩。于是他让船员把他绑在桅杆上、用蜂蜡塞住他们自己的耳朵——水手安全行船，他也能在不危及船只的情况下欣赏歌声。</p><p class="prose"><b>利用过去的我们阻止现在的我们做出蠢事，就是尤利西斯合约</b>（荷马译名用奥德修斯，策略名用的是英雄的古罗马名字尤利西斯）。最简单的例子：去酒吧前叫好拼车——过去的你料到将来的你可能酒后认为自己能开车，事先捆住你的双手、取走车钥匙。</p><p class="prose">合约多数用于<b>提升约束</b>（防非理性冲动），但也可以<b>降低约束</b>：想健康饮食，就预先把健康零食装进包里，降低做好决策所需的努力。约束程度从禁止肉体执行到仅作提示不等，但都会触发一种<b>决策中断</b>——在我们想违背合约时，停下来想一想。</p><div class="grid g3"><div class="card num"><div class="idx">和解</div><h3>律师与客户</h3><p class="cp">谈判前与客户预先确认可接受的最低和解金额（或同意支付的最高金额），防止临场被情绪推着走。</p></div><div class="card num"><div class="idx">购房</div><h3>预算先行</h3><p class="cp">看中房屋容易感情用事——提前确定预算与愿意支付的最高金额，竞标时不至于措手不及。</p></div><div class="card num"><div class="idx">投资</div><h3>自动转账</h3><p class="cp">把收入的一部分自动转入养老金账户：想改变分配方式必须采取额外步骤，制造一个决策中断；投资顾问也提前与客户确认何种情况下买入、卖出、持有或压低头寸。</p></div></div><p class="prose">预先承诺并不完全束缚行动力——情绪化的决策仍可能发生，但概率显著降低。扔掉家里所有垃圾食品后，你仍可以开车或叫外卖吃到冰淇淋，只是要费更多周折；尤利西斯想让人松绑，也得指望船员真能无视他。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>决策脏话罐</h2><span class="en">DECISION SWEAR JAR</span></div><p class="prose">谁说脏话就往罐里投一美元——决策脏话罐把这一机制用在思维上：识别表明自己正偏离求真目标的语言与思维模式，说出即触发一个停下来思考的时刻。以下是可以投币的信号（示例清单，内容需因人而异）：</p><div class="tbwrap"><table><thead><tr><th>警示类别</th><th>触发语句示例</th></tr></thead><tbody><tr><td>肯定性错觉</td><td>「我知道」「我早就知道」「100%」「绝对不可能是真的」，以及「最佳/最差」「总是/永不」等绝对化表述</td></tr><tr><td>不理性的结果区分</td><td>「我无法相信我会如此不幸」「我发挥了我的巅峰水平」，以及对他人的「他们完全是罪有应得」「为什么他们总是如此幸运」</td></tr><tr><td>贬损他人</td><td>「白痴」、扑克中的「驴子」，以及「另一个典型的_____」式描述——把人一棍子打翻</td></tr><tr><td>违反普遍性</td><td>因不认可信使而否定信息，或因想法被确认就肯定信息来源（「枪痴」「流血的心脏」式的标签）</td></tr><tr><td>放大当下</td><td>「最糟糕的一天」「地狱般的一天」——把时间范围刻意夸张</td></tr><tr><td>动机推理</td><td>「传统智慧」「如果你问任何人」「你能证明这不是真的吗」「每一个人都赞同我的观点」</td></tr><tr><td>缺乏自我同情</td><td>「我应该知道的」「我怎么会这么笨」——自我批评应聚焦学习与校准，而非辱骂</td></tr><tr><td>「错误」一词</td><td>错误是一个结论而不是阐述——几乎没有事物的对错是 100% 或 0，任何否认不确定性的言论都意味着偏差严重的决策</td></tr></tbody></table></div><p class="prose">还有一条要留意：征求建议时加入自己的结论和信念、在听取意见之前先把结果告诉听众——这让顾问与你形成意识形态的利益冲突；以及用「不」或「但是……」回应别人的意见，而不是即兴表演式的「是的，而且……」。脏话罐是尤利西斯合约的简单形态：为未来的危险设计行动计划，或至少承诺自己花一点时间确认是否正在偏离求真务实。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>侦察：规划未来</h2><span class="en">SCOUTING</span></div><p class="prose">霸王行动是世界军事史上最大的海上入侵：如果天气耽搁怎么办？空降部队无法通信怎么办？伞兵偏离目标、海潮干扰登陆、部队无法会师怎么办？——所有这些都出了问题，但盟军统帅为尽可能多的潜在场景做了大量准备，诺曼底登陆仍然成功。</p><p class="prose">同理，击毙本·拉登的海豹突击队绝不会在对墙内状况一无所知时贸然行动：建筑布局、天气与时辰差异、在场人员、目标不在院落时的预案。</p><p class="prose">在下注之前仔细考虑未来：<b>先想象潜在未来的范围（情景规划），再努力猜测每一项未来事件的发生概率</b>。西尔弗如此描述——</p><div class="aband"><q>当面临高度不确定的情况时，军事单位和大型企业有时会采用一种叫作情景规划的实践。其目标是考虑未来将会以何种方式展现各种可能性以帮助指导长期规划和准备。</q><cite>——内特·西尔弗 · 2017 年 2 月</cite></div><p class="prose">人们常因「无法确定概率」而抵触猜测。但重要的是尝试本身：我们不（也许无法）知道精确概率，可<b>即使评估结果范围很宽——比如 20%～80%——也仍然强于放弃猜测</b>，因为任何尝试都会让我们偏离非黑即白的极端。</p><p class="prose">扑克玩家在下注前考虑对手可能弃牌、跟注、加注及各自的概率与可取性；最优秀的玩家还会跳出当前一手牌：此刻的行为会如何影响下一手牌的决策？</p><div class="tbwrap"><table><thead><tr><th>卡罗尔的决策树（最后 20 秒）</th><th>结果与概率</th></tr></thead><tbody><tr><td>下令冲锋</td><td>①触地得分（立即获胜）②丢球-漏接（立即失败，概率 1%～2%）③未达球门线 ④进攻犯规 ⑤防守犯规——仅剩两次战术机会</td></tr><tr><td>示意抛传</td><td>①触地得分（立即获胜）②丢球-截获（立即失败，概率仅 2%～3%）③抛传不完整 ④遭遇抱摔 ⑤进攻犯规 ⑥防守犯规——可制造三次战术机会</td></tr><tr><td>结论</td><td>选择三次而非两次得分机会的决策是完全合乎情理的——若没有对未来可能性的侦察，额外进攻机会的选项根本不会显现</td></tr></tbody></table></div><p class="prose">情景规划的额外收益：提醒我们未来本质上不确定；为不同结果预先制定应对战略而非被动反应；避免「毫无意义的遗憾（或过度的兴奋）」；并且——由于已分析过所有可能——让我们不易成为结果导向与事后偏见的牺牲品。团体里做情景规划效果更好：若两名成员对某结果的概率估计差距很大，正是让他们调换立场为对方辩护的好时机。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>情景规划的实践：课外全明星</h2><span class="en">EXPECTED VALUE</span></div><p class="prose">杜克曾协助全国性非营利组织「课外全明星」把情景规划纳入预算。确定每项拨款的预期价值只需最简单的情景规划：想象申请被批准或拒绝两种结果及各自概率——</p><div class="tbwrap"><table><thead><tr><th>拨款申请</th><th>成功概率</th><th>预期价值</th></tr></thead><tbody><tr><td>100 000 美元</td><td>25%</td><td>25 000 美元</td></tr><tr><td>200 000 美元</td><td>10%</td><td>20 000 美元</td></tr><tr><td>50 000 美元</td><td>70%</td><td>35 000 美元</td></tr><tr><td>结论</td><td>—</td><td>不经过概率思考会误以为 200 000 美元的拨款最有价值，而实际最有价值的是 50 000 美元那笔</td></tr></tbody></table></div><p class="prose">把概率纳入预算后，组织获得了立竿见影的好处：更高效多产的工作栈（按实际价值而非票面金额排序）、更贴合实际的预算、主动与审批机构接触以核验概率、用事后评估区分「哪些做法有效、哪些是运气」——并且因为事先做过评估，不再轻易成为事后偏见与结果导向的牺牲品。</p><p class="prose">此类流程可推广到任何销售团队：分配成交概率以确定优先级、规划预算、校准预测、保护组织。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>反向回顾与预先检查</h2><span class="en">BACKCAST &amp; PREMORTEM</span></div><p class="prose">「千里之行，始于足下」——但事实证明，就预见性思维而言，<b>站在终点向后看比从起点向前看更加有效</b>。《纽约客》那张著名的封面地图把第九大道画得纤毫毕现、而整个美国只是一条窄带——从当前位置展现未来时，眼前的事显得更重要，其余一切失去焦点。米切尔、拉索和彭宁顿 1989 年的实验证实了反向思考的威力：</p><div class="aband"><q>预期的后见之明——想象事件已经发生——会使人们在准确识别导致未来结果方面的能力提升30%</q><cite>——米切尔、拉索、彭宁顿 · 1989（转引自加里·克莱恩）</cite></div><p class="prose"><b>反向回顾</b>：想象自己手握头条为「我们成功了！」的报纸，再思考目标实现的过程。3 年内市场份额从 5% 提到 10% 的公司、设想庭审胜诉头条的律师、计划 6 个月减 20 磅（约 9 千克）的人，都从终点入手深入决策树——甚至能识别出必须发生的低概率事件，进而调整战略或认清目标过于远大。</p><p class="prose"><b>预先检查</b>（事前验尸）则假定消极的未来：头条是「我们失败了」。它与反向回顾互为补充——没有同时表现正面空间和负面空间，就无法创建完整的画面：<b>反向回顾是啦啦队队长，预先检查是观众中的起哄者</b>。想「赢」，就要提出最具创造性、相关性和可操作性的失败理由。</p><p class="prose">它也是默顿「有条理的怀疑性」的实践、充当自己的红色突击队的机会——异议者占有一席之地，持保留意见的人不会因坏结果而怨恨。</p><div class="tbwrap"><table><thead><tr><th>厄廷根「心理对照」研究</th><th>源文数据</th></tr></thead><tbody><tr><td>减肥计划的女性</td><td>对减肥有强烈积极设想的受试者，比持负面设想的受试者少减掉 24 磅（约 11 千克）</td></tr><tr><td>暗恋中的大学生</td><td>五个月后，沉迷于积极情景设想的小组成功发展关系的概率较小</td></tr><tr><td>其他领域</td><td>求职者、期中考试前的学生、髋关节置换手术患者——结果相同</td></tr></tbody></table></div><p class="prose">20 多年的研究反复发现：想象障碍的人更有可能成功。请记住，<b>正面和负面未来的发生概率相加必须达到 100%</b>——我们可以根据看到的负面空间体量，把正面空间压缩到更准确反映现实的程度。没有预先检查的反向回顾其实是时间贴现的一种形式：积极的未来让此刻感觉良好，而放弃这种即时满足能换来更准确的判断。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>树木学与事后偏见：让电锯歇一歇</h2><span class="en">TREE OF FUTURES</span></div><p class="prose">把时间看作一棵树：<b>树干是过去，树枝是潜在的未来</b>——粗枝是可能性较大的未来，细枝是可能性较小的未来，树干上部与树枝交汇处是现在。随着未来不断成为过去，「现在」这把电锯锯掉并清除了所有未能得出结果的树枝。</p><p class="prose">回头看只有那件已发生的事，于是它显得不可避免——即使是最细的树枝（威尔逊抛传被截获的概率仅 2%～3%）在成为树干的一部分时也会扩张：</p><div class="aband"><q>事后偏见，概率思维的死敌。</q><cite>——第六章</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>简茨诉康尼格拉食品公司：1.8 亿美元的判决</h4><span class="ar">▶</span></div><div class="cb"><div class="in">粮仓燃烧隐患未解，西侧公司工头为方便消防人员进出，让工人进入隧道移出工具，此时粮仓爆炸。陪审团判伤害赔偿与惩罚性赔偿共计 1.8 亿美元。伊斯特布鲁克法官在处理惩罚性赔偿时警告：没有证据显示命令移出工具时存在爆炸威胁——「判决似乎是事后偏见的结果——人们倾向于相信已经发生的事情是必然会发生的……如果（工头）事先认为有发生爆炸的可能性，那么他就是一个凶残的魔鬼；但是并没有此类证据。事后偏见不足以支持一项判决结果」。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>巴特曼与 CEO 的重访</h4><span class="ar">▶</span></div><div class="cb"><div class="in">若四万球迷都持法官式观点，巴特曼的命运将不同：触球只是未来的一个小树枝，小熊队的失败更是涉及一系列小概率变化的最细树枝。解雇总经理的 CEO 同样用电锯锯掉了所有树枝——他看不到公司曾经做出的一系列仔细、慎重的决策，只看到树干上已经发生的坏结果，于是说出「我应该早就知道」。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>2016 大选的树干</h4><span class="ar">▶</span></div><div class="cb"><div class="in">西尔弗给出的希拉里获胜概率介于 60%～70% 之间；特朗普获胜后，民调人员遭遇卡罗尔式命运。大选次日，克林顿的树枝被锯掉，只剩特朗普的树枝——「民意调查人员和调查过程怎么会如此盲目？」——这正是从树干上砍伐树枝的产物。</div></div></div></div><p class="prose">解法是把树枝捡回来：记录良好计划过程中创建的情景规划和决策树，事后才能准确设想「当时可能发生的情况」，成为更好的校准者。扑克的最后一课与全书同构——我们必须满足于对概率的评估与下注，习惯面对失败，从「每一次都正确」的不可能任务转向<b>通过校准信念，在不确定中逐步更准确、更客观地认识世界</b>。</p><p class="prose">生活也是一场漫长的比赛：即使做出了最好的投注决策，也可能面临很多失败的结果——但我们总有获胜的机会，即使失败，也能从中学到经验并期待下次做得更好。</p><div class="check" data-k="djk-10"><p class="ct">自 测</p><label><input type="checkbox"><span>我为某个「将来的自己」设过至少一道预先承诺（自动转账/预算上限/损失限额）</span></label><label><input type="checkbox"><span>我知道自己最常说的三句「脏话罐」语句，并练习过喊停</span></label><label><input type="checkbox"><span>我做决策前列过结果清单并给每种结果估过概率——哪怕 20%～80%</span></label><label><input type="checkbox"><span>我练过反向回顾与预先检查，让「我们成功了」与「我们失败了」并存</span></label><label><input type="checkbox"><span>结果出现后，我会先找回来被锯掉的树枝，再评价当时的决策</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">体例</span><span class="nd"><b>章末注释错位｜</b>导出源把西尔弗《特朗普总统任期的十四个版本》链接、奥姆斯特德与中央公园文献（P228.）、厄廷根 WOOP 心理对照应用（WoopMyLife.org，P231.）、伊斯特布鲁克法官判决报道等章末注释段错位到章首，已如实收录骨架；本页酌情引用其数据。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安妮·杜克《对赌：信息不足时如何做出高明决策》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第六章｜心理时间旅行（下）</span><a href="../09-心理时间旅行-上/index.html">← 心理时间旅行（上）</a><a href="../11-卷末-致谢与说明/index.html">卷末·致谢与说明 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='djk-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第1部分·复利的奥秘 · 致富靠进攻，守富靠防守｜金钱心理学 精读</title>
+<meta name="description" content="冰期的成因不是酷寒的冬季而是清凉的夏天；巴菲特的秘诀不是 22% 的收益率而是 75 年的时间。第 5 章则用利弗莫尔的悲剧说明：赚到钱是一回事，守住钱是另一回事。">
+<style>
+:root{
+  --paper:#F6F2EA;      /* 暖纸底 */
+  --paper-2:#E9E2D4;    /* 纸色深一档 */
+  --card:#FCF9F1;
+  --ink:#2A2420;        /* 石墨主墨（主色） */
+  --ink-2:#4A4138;
+  --ink-deep:#140E08;   /* 焰夜深棕（hero 底） */
+  --gold:#C46A2B;       /* 焰橙（强调 · 金钱与欲望的热度） */
+  --gold-b:#E09A5A;   
+  --gold-soft:rgba(196,106,43,.16);
+  --cinnabar:#A02B2B;   /* 警示深红（风险与陷阱） */
+  --teal:#46566B;       /* 石墨蓝（对照 · 理性与长期） */
+  --tx:#2E2823;
+  --tx-2:#4A4239;
+  --tx-3:#8A8074;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4138 0%,var(--ink-deep) 62%);
+  color:#F3EDE3;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,90,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,90,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,90,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5EFE5}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,233,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,90,.34);color:rgba(240,233,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,43,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0EAE0;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,90,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EBDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,90,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EBDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(238,231,219,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,43,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,43,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(138,128,116,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,43,.45);background:rgba(196,106,43,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(130,35,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,43,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,244,236,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4138;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,43,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8074;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-理智运气与知足/index.html">← 理智·运气·知足</a><a href="../03-尾部事件自由与豪车/index.html">尾部事件·自由·豪车 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">冰</div>
+  <div class="stamp ">复利</div>
+  <h1>复利的奥秘 · 致富靠进攻，守富靠防守</h1>
+  <p class="sub">冰期的成因不是酷寒的冬季而是清凉的夏天；巴菲特的秘诀不是 22% 的收益率而是 75 年的时间。第 5 章则用利弗莫尔的悲剧说明：赚到钱是一回事，守住钱是另一回事。</p>
+  <div class="meta"><span>第1部分</span>
+    <span class="k">时间与生存</span>
+    <span>正文 9,525 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>冰期启示</a><a href="#s3" data-t="s3"><span class="cn">叁</span>时间复利</a><a href="#s4" data-t="s4"><span class="cn">肆</span>反直觉</a><a href="#s5" data-t="s5"><span class="cn">伍</span>致富与守富</a><a href="#s6" data-t="s6"><span class="cn">陸</span>生存心态</a><a href="#s7" data-t="s7"><span class="cn">柒</span>三条心法</a><a href="#s8" data-t="s8"><span class="cn">捌</span>自测</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">两章互为表里：第 4 章讲时间如何放大财富，第 5 章讲生存如何保住时间</p><p class="thesis">复利的起点微小到不起眼——一个没能融化积雪的夏天、一个 10 岁就开始投资的孩子；复利的终点却荒诞到超乎想象——845 亿美元。但复利只在<b>你一直在场</b>时才生效，所以第 5 章把结论压缩成一个词：<b>生存</b>。致富靠进攻，守富靠防守。</p><div class="chain"><div class="node"><div class="n">冰期</div><div><p class="tt">清凉的夏天</p><p class="dd">米兰科维奇理论：冰期的起点是那个无法融化前一季积雪的夏季——无须巨大力量，也能带来惊人的结果</p></div></div><div class="node"><div class="n">复利</div><div><p class="tt">845 亿美元</p><p class="dd">巴菲特净资产中 842 亿来自 50 岁之后、815 亿来自 65 岁之后——真正秘诀是从 10 岁起持续投资近 75 年</p></div></div><div class="node"><div class="n">对照</div><div><p class="tt">巴菲特 vs 西蒙斯</p><p class="dd">西蒙斯年化 66% 是巴菲特 22% 的 3 倍，但 50 岁才起步，净资产反而少 75%</p></div></div><div class="node"><div class="n">反面</div><div><p class="tt">利弗莫尔</p><p class="dd">1929 年做空大赚相当于如今 30 多亿美元，4 年后深陷债务，最终结束自己的生命</p></div></div><div class="node"><div class="n">心法</div><div><p class="tt">生存</p><p class="dd">如果让我用一个词来概括金钱上的成功，那就是：生存——红杉资本莫里茨说：我们始终害怕倒闭</p></div></div><div class="node"><div class="n">性格</div><div><p class="tt">杠铃型人格</p><p class="dd">既对未来保持乐观，又对可能阻碍你抵达未来的种种风险保持高度警觉</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第4章 · 冰期的成因：一个不够清凉的夏天都没有</h2><span class="en">THE ICE AGE</span></div><p class="prose">直到 19 世纪，科学家才达成共识：地球曾多次被厚厚的冰层覆盖——不止一次，而是至少 5 次。要让整个地球冰封、解冻、再冰封，所需的能量之巨大令人难以想象，驱动它的必然是地球上最强大的力量。</p><p class="prose">20 世纪初，塞尔维亚科学家米兰科维奇给出了如今被广泛公认的答案：太阳和月球的引力微妙地影响着地球的运动轨迹及其相对太阳的倾斜角度，使两个半球接收到的太阳辐射量稍有增减。而真正的奥秘在于一个细节——俄罗斯气象学家克彭发现，真正导致冰期的并非酷寒的冬季，而是清凉的夏天：</p><p class="prose">冰期的起点，是那个无法融化前一季积雪的夏季。未融化的积雪成为下一年雪层堆积的基础，常年不化的积雪反射更多太阳光，进一步加剧降温——如此循环往复，短短几百年间，季节性的积雪层便可演变为覆盖大陆的冰盖。正如冰川学家格温·舒尔茨所说：</p><div class="aband"><q>「<b>导致冰盖形成的并不一定是雪量多少，而在于积雪——无论多少——能否存续。</b>」</q><cite>——第4章 · 引格温·舒尔茨</cite></div><div class="aband"><q><b>冰期给予我们的最大启示是：无须巨大力量，也能带来惊人的结果。</b></q><cite>——第4章</cite></div><p class="prose">如果某件事能够产生复利效应，哪怕只是微小的积累，也能为未来的增长提供动力；即使起点再渺小，最终的成果也可能超乎常理。财富的增长正是如此——这种违背逻辑的结果，常常让人低估了可能性的边界、增长的源头以及它能引领的方向。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>巴菲特的真正秘诀是时间</h2><span class="en">THE SECRET IS TIME</span></div><p class="prose">关于沃伦·巴菲特如何累积巨额财富，已有超过 2 000 本书专门论述，但极少有作品真正关注最简单的事实：他的财富不仅源于卓越的投资能力，更得益于他从孩童时期就开始投资。</p><p class="prose">豪泽尔撰写本书时，巴菲特净资产为 845 亿美元，其中 842 亿美元是在 50 岁之后积累的，815 亿美元更是在 65 岁、有资格领取社会保障金以后获得的。</p><div class="tbwrap"><table><thead><tr><th>思维实验</th><th>假设</th><th>结果</th></tr></thead><tbody><tr><td>真实的巴菲特</td><td>10 岁开始投资（30 岁时净资产已达 100 万美元），年化约 22%，持续近 75 年</td><td>净资产 845 亿美元</td></tr><tr><td>晚起步的巴菲特</td><td>30 岁（净资产仅 2.5 万美元）才开始，60 岁停止投资去打高尔夫、陪伴孙儿</td><td>只有 1 190 万美元——比实际数字少了 99.9%</td></tr><tr><td>对照：吉姆·西蒙斯</td><td>文艺复兴科技公司创始人，1988 年以来年化复合收益率高达 66%（巴菲特的 3 倍），但 50 岁才开启投资生涯</td><td>净资产 210 亿美元，比巴菲特少 75%</td></tr></tbody></table></div><div class="aband"><q><b>沃伦·巴菲特所有的财富成就，几乎都归因于他在青春期建立的财务基础，以及在高龄阶段持续进行投资的时间跨度。</b></q><cite>——第4章</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>复利为何总是被低估</h2><span class="en">COUNTERINTUITIVE</span></div><p class="prose">线性思维远比指数思维更容易理解：心算 8+8+8…（九个 8）几秒钟就能得出 72；但 8×8×8…（九个 8）恐怕脑袋都要炸了（答案是 134 217 728）。硬盘容量的历史把这种反直觉演得淋漓尽致：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>1950–1990 年</h4><p>IBM 3.5 MB 硬盘起步，40 年间容量共增加了 296 MB</p></div><div class="step"><div class="dot">2</div><h4>1999 年</h4><p>苹果 iMac 配备 6 GB 硬盘——剧变发生</p></div><div class="step"><div class="dot">3</div><h4>2003 年</h4><p>Power Mac 硬盘容量提升至 120 GB</p></div><div class="step"><div class="dot">4</div><h4>2011 年</h4><p>全球首款 4TB 硬盘问世</p></div><div class="step"><div class="dot">5</div><h4>2019 年</h4><p>100TB 硬盘上市——从 1990 年至今，存储容量暴增了 1 亿 MB</p></div></div><p class="prose">如果你是 1950 年代的技术乐观主义者，或许会预测未来硬盘容量能够扩大 1 000 倍；大胆一点，可能会猜测 10 000 倍。但几乎没人能预见「在有生之年，存储容量会扩大到 3 000 万倍」——而现实正是如此。2004 年，比尔·盖茨也曾质疑没人会需要 1GB 的 Gmail 邮箱容量。</p><p class="prose">市面上有 2 000 多本书剖析巴菲特的成功，但没有一本书的书名是《这个人已经持续投资了四分之三个世纪》；各种经济周期、交易策略的图书层出不穷，但最有分量的书恰恰应该叫《静下心来，耐心等待》——全书只应有一页，上面画着一张长期经济增长的趋势图。</p><div class="aband"><q>但真正明智的投资并不在于追逐最高收益率，因为那些超高收益往往只是一次性的偶然事件，难以复制。<b>真正的关键是获取足够好且可以长期坚持的收益——能够年复一年持续实现。</b>只有这样，复利的力量才会真正释放。</q><cite>——第4章</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>第5章 · 利弗莫尔与格尔曼斯基：同一枚硬币的两面</h2><span class="en">GETTING vs KEEPING</span></div><p class="prose">杰西·利弗莫尔 1877 年出生，在多数人还未意识到股票交易可以成为职业时已是专业交易员，30 岁时的财富经通胀调整后相当于现在的 1 亿美元。1929 年 10 月 29 日，他回到家时，妻子多萝西和孩子们含泪在门口迎接——关于华尔街投机者自杀的消息已广为流传。</p><p class="prose">他却站在原地困惑了几秒，然后告诉家人：凭借天才般的直觉与好运，他做空了市场。「你是说我们没有破产？」「没有，亲爱的，今天是我交易生涯中最辉煌的一天——我们现在富得流油，想干什么就干什么。」这一天他赚到了相当于如今 30 多亿美元的财富。</p><p class="prose">而就在利弗莫尔一家庆祝时，房地产开发商亚伯拉罕·格尔曼斯基正在纽约街头徘徊——他在 1920 年代末的股市暴涨中像几乎所有成功的纽约人一样大举押注，据知情者描述，他一边朝百老汇走去，一边将一卷股票行情纸带撕成碎片，撒在人行道上。据我们所知，这就是他的结局。同一场崩盘，让一个人跻身全球顶级富豪，毁掉了另一个人。</p><p class="prose">但故事还没完——时间快进 4 年，两个名字再次交汇：</p><div class="duo"><div class="colL"><h4>杰西·利弗莫尔：善赚不善守</h4><ul><li>1929 年做空大赚，成为世界上最富有的人之一</li><li>大赚后信心膨胀，下注越发大胆</li><li>最终深陷债务泥潭，所有财富在股票市场中化为乌有</li><li>1933 年失踪两天、后来回家，但人生轨迹已然改变，最终结束了自己的生命</li></ul></div><div class="colR"><h4>亚伯拉罕·格尔曼斯基：同样的教训</h4><ul><li>1920 年代繁荣期积累数百万美元财富</li><li>股市暴涨时大举押注</li><li>1929 年 10 月崩盘中失去一切</li><li>在华尔街证券交易所附近最后一次现身——他们都极善于积累财富，却同样不擅长守住财富</li></ul></div></div><div class="aband"><q><b>如果让我用一个词来概括金钱上的成功，那就是：生存。</b></q><cite>——第5章</cite></div><p class="prose">生存心态为何至关重要？首先，极少有收益值得你孤注一掷，以倾家荡产为代价去追逐；其次，复利只有在资产持续多年增长的前提下才显现威力——就像种下橡树，1 年几乎看不到变化，10 年能看到显著差异，50 年则能长成参天大树，但前提是挺过每个人都会经历的不可预知的波折和起伏。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>生存：巴菲特没做过什么</h2><span class="en">SURVIVAL MINDSET</span></div><p class="prose">红杉资本掌门人迈克尔·莫里茨被问及红杉为何能繁荣 40 年时回答：「我认为我们始终害怕倒闭。」追问之下他补充：我们始终假定明天不会和昨天一样，不能满足于现状，不能自满，不能认为昨日的成功就能带来明日的好运。这里的关键词不是「增长」，不是「智慧」，不是「洞察力」，而是能否长期坚持而不被淘汰。</p><p class="prose">我们可以花费数年研究巴菲特如何发现有潜力的企业、廉价的股票和卓越的管理者——这些都很难；而同样重要但更容易的，是指出他没有做过什么：</p><div class="grid g3"><div class="card num"><div class="idx">01</div><h3>没有盲目举债</h3><p class="cp">不借钱加杠杆，因此永远不会被迫在不利的时点卖出。</p></div><div class="card num"><div class="idx">02</div><h3>没有在 14 次经济衰退中恐慌抛售</h3><p class="cp">没有损害自己的商业信誉，也没有死守某一种策略、世界观或短暂的趋势。</p></div><div class="card num"><div class="idx">03</div><h3>没有依赖他人的资金</h3><p class="cp">通过上市公司来管理投资，意味着投资者无法随时撤资；也没有因过度劳累而退出或退休。</p></div></div><p class="prose">他生存了下来，正是生存带来了持久性——从 10 岁开始投资一直持续到现在——才让复利的奇迹得以实现。</p><p class="prose">反面的注脚是里克·格林：40 年前与巴菲特、芒格共同投资的第三位成员，一样聪明，却在 1973—1974 年经济低谷用保证金贷款杠杆投资，股市两年累计下跌近 70%，被迫以每股不到 40 美元把伯克希尔股票卖给了沃伦。巴菲特的评价一针见血：</p><div class="aband"><q>「<b>查理和我一直坚信我们终将非常富有。我们并不急于致富，我们知道这只是时间问题。里克和我们一样聪明，但他太急于成功了。</b>」</q><cite>——第5章 · 引沃伦·巴菲特</cite></div><div class="aband"><q>纳西姆·尼古拉斯·塔勒布这样总结：<b>「拥有优势和能够生存下来完全是两回事，前者必须以后者为前提。你要竭尽全力避免破产。」</b></q><cite>——第5章</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>章末三条：把生存心态落到实处</h2><span class="en">THREE RULES</span></div><p class="prose">第 5 章末尾，豪泽尔把生存心态归结为三条领悟——它们也是下一章「容错空间」的伏笔：</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>追求「不可击垮」，而非高额回报</h3><p class="cp">牛市持现金看起来很保守——1% 的现金收益率对着 10% 的股票收益率，那 9% 的差距每天都会困扰你。但如果这些现金能避免你在熊市里被迫抛售，它实际带来的收益远不止 1%，甚至可能是数倍：避免一次仓促且时机错误的抛售，往往比选中几十只大牛股对一生投资收益的贡献更大。</p></div><div class="card num"><div class="idx">二</div><h3>计划中最重要的部分，是为计划无法实现做好准备</h3><p class="cp">回顾过去 20 年：9·11 事件、近 1 000 万美国人因房地产泡沫破裂失去住房、金融危机造成约 900 万人失业、新冠疫情——任何计划在第一次遇到真实世界时都难以被原封不动地执行。好的计划主动留出容错空间，让你敢于说：市场年均 8% 当然最好，只有 4% 我也依然能够安然度日。</p></div><div class="card num"><div class="idx">三</div><h3>「杠铃型人格」：乐观 + 警觉</h3><p class="cp">过去 170 年美国人均国内生产总值增长了 20 倍，同期有 130 万美国人死于 9 场主要战争、33 次经济衰退累计持续 48 年、股市跌幅超 10% 至少 102 次、市值蒸发 1/3 至少 12 次——理性的乐观是相信长期趋势在你这边，同时对短期风险保持高度警觉。唯有在短期内保持适度的警惕，才能活得足够久，从而享受长期乐观带来的成果。</p></div></div><div class="aband"><q><b>有时候我觉得，投机者为学会避免自负而付出任何代价都不为过。许多聪明人的彻底失败，直接原因就是自满和自我膨胀。</b></q><cite>——第5章 · 引杰西·利弗莫尔</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>两章自测</h2><span class="en">CHECKLIST</span></div><div class="check" data-k="psy02-1"><p class="ct">读完这两章，试着问自己</p><label><input type="checkbox"><span>我的投资计划里，有没有「如果只有 4% 收益也能安然度日」的容错空间</span></label><label><input type="checkbox"><span>我持有现金的理由是明确的（防止被迫抛售），而不是纯粹的保守</span></label><label><input type="checkbox"><span>我能说出自己「没做过什么」的清单——不举债、不恐慌抛售、不死守单一策略</span></label><label><input type="checkbox"><span>我对收益率的追求没有超过对「在场时间」的追求</span></label><label><input type="checkbox"><span>我同时保持长期乐观与短期警觉，而不是在两者之间摇摆</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜摩根·豪泽尔《金钱心理学》（全新增订版，中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第1部分｜复利与守富</span><a href="../01-理智运气与知足/index.html">← 理智·运气·知足</a><a href="../03-尾部事件自由与豪车/index.html">尾部事件·自由·豪车 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='psy-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

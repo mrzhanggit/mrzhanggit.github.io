@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一章·生活是扑克，不是象棋（下） · 扑克与象棋之分｜对赌 精读</title>
+<meta name="description" content="两分钟一手、一次读秒最多 70 秒——扑克牌桌是研究决策的独特实验室。冯·诺依曼以扑克为基础创立博弈论；象棋里百战百胜的大师逻辑在扑克与生活中全部失效，「重新定义错误」成为必然。">
+<style>
+:root{
+  --paper:#F5F1E9;      /* 象牙纸底 */
+  --paper-2:#E9E2D3;    /* 象牙深一档 */
+  --card:#FCFAF3;
+  --ink:#26201E;        /* 主墨 */
+  --ink-2:#4A3B36;
+  --ink-deep:#120B0A;   /* 夜牌桌绒黑（hero 底） */
+  --gold:#B08A3A;       /* 筹码金（强调 · 赌桌筹码） */
+  --gold-b:#C9A45C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#7E2A33;   /* 赌桌绒红（警示/accent） */
+  --teal:#4A5E70;       /* 冷灰蓝（对照 · 理性与正轨） */
+  --tx:#2B2422;
+  --tx-2:#5A504A;
+  --tx-3:#8A817A;
+  --line:rgba(38,32,30,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,30,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3B36 0%,var(--ink-deep) 62%);
+  color:#F0E9DC;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,164,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,164,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,164,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(126,42,51,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5EFE6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,164,92,.34);color:rgba(242,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(126,42,51,.6);background:rgba(126,42,51,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,rgba(178,90,99,.30) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,164,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1E9D9;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,164,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1E9D9;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,233,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,32,30,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(126,42,51,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(126,42,51,.1);color:var(--cinnabar);border:1px solid rgba(126,42,51,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,116,110,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(126,42,51,.55);border-radius:8px;
+  background:rgba(126,42,51,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,42,51,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(126,42,51,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,241,233,.94);
+  border-bottom:1px solid rgba(38,32,30,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,30,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3B36;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,30,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,30,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A817A;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-生活是扑克-上/index.html">← 生活是扑克（上）</a><a href="../03-赌一把-上/index.html">赌一把？（上） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">弈</div>
+  <div class="stamp ">象棋</div>
+  <h1>生活是扑克，不是象棋（下） · 扑克与象棋之分</h1>
+  <p class="sub">两分钟一手、一次读秒最多 70 秒——扑克牌桌是研究决策的独特实验室。冯·诺依曼以扑克为基础创立博弈论；象棋里百战百胜的大师逻辑在扑克与生活中全部失效，「重新定义错误」成为必然。</p>
+  <div class="meta"><span>第一章</span>
+    <span class="k">不确定性</span>
+    <span>正文 12,675 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>两分钟警告</a><a href="#s3" data-t="s3"><span class="cn">叁</span>冯·诺依曼</a><a href="#s4" data-t="s4"><span class="cn">肆</span>扑克与象棋</a><a href="#s5" data-t="s5"><span class="cn">伍</span>致命智斗</a><a href="#s6" data-t="s6"><span class="cn">陸</span>我不确定</a><a href="#s7" data-t="s7"><span class="cn">柒</span>重新定义错误</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇主线：先看牌桌这间决策实验室，再借冯·诺依曼区分两种游戏，最后重新定义错误</p><p class="thesis"><b>两分钟警告</b>说清扑克的时间压力与执行力难题；<b>冯·诺依曼</b>告诉我们真实生活是「真正的博弈」——像扑克而非象棋；<b>公主新娘的毒酒</b>演示隐藏信息的杀伤力；<b>重新定义错误</b>收束：24% 概率的事件发生，不等于预测错了。</p><div class="chain"><div class="node"><div class="n">实验室</div><div><p class="tt">两分钟一手</p><p class="dd">每小时约 30 手、一手最多 20 个决定、读秒上限 70 秒、直接财务后果——反射思维必须执行审慎思维的最佳意图</p></div></div><div class="node"><div class="n">祖师</div><div><p class="tt">冯·诺依曼</p><p class="dd">以简易扑克为基础创立博弈论：真实的生活有虚张声势、欺诈策略，也有对对方意图的掂量</p></div></div><div class="node"><div class="n">对照</div><div><p class="tt">象棋≠扑克</p><p class="dd">象棋无隐藏信息、运气微乎其微；扑克信息不完整、限时、充满运气</p></div></div><div class="node"><div class="n">毒酒</div><div><p class="tt">维齐尼之死</p><p class="dd">两只酒杯都被下了毒——聪明人也会低估未知信息的数量和影响</p></div></div><div class="node"><div class="n">出路</div><div><p class="tt">重新定义错误</p><p class="dd">以概率为依据做决定却得出相反结果，不是错误，只是可预期的意外发生了</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>两分钟警告：牌桌这间决策实验室</h2><span class="en">TWO-MINUTE WARNING</span></div><p class="prose">第一章方法论的总纲只有一句：<b>让反射思维去执行审慎思维的最佳意图</b>。扑克玩家不需要知晓科学原理，却必须在高度压缩的时间框架内、对具有重大财务后果的问题做决策——扑克牌桌因此成为一间独特的、研究决策的实验室。</p><div class="tbwrap"><table><thead><tr><th>牌桌参数</th><th>源文数据</th></tr></thead><tbody><tr><td>每小时牌数</td><td>赌场牌室大约 30 手</td></tr><tr><td>一手牌耗时</td><td>平均约两分钟（含荷官收牌、洗牌、发牌）</td></tr><tr><td>一手决策量</td><td>至少一个决定（弃牌或打牌），有时多达 20 个</td></tr><tr><td>读秒规则</td><td>另一名玩家可以「读秒」，最多 70 秒额外思考时间</td></tr><tr><td>财务后果</td><td>锦标赛或高风险牌局中，一项决策的价值可能高于一套三室住宅的均价</td></tr></tbody></table></div><p class="prose">严格的游戏规则不允许玩家放慢进程深思熟虑，哪怕面临巨大财务后果。比赛结束后还要从混乱的决策与结果信息中吸取教训：<b>将运气与技能分离，将信号与干扰分离</b>，并严防结果导向。杜克强调，解决「如何执行」比天赋更重要——不懂得执行，天赋异禀的选手也只在运气最好的时候赚得盆满钵满，其他多数时候一败涂地。</p><div class="aband"><q>我们的目标是让反射思维去执行审慎思维的最佳意图。</q><cite>——第一章</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>奇爱博士：博弈论之父冯·诺依曼</h2><span class="en">VON NEUMANN</span></div><div class="prof"><p class="pn">约翰·冯·诺依曼(John von Neumann)</p><p class="pm">科学思想史上最伟大的人物之一 · 博弈论之父 · 顺带一提，他也是一名扑克玩家</p><dl><dt>最后十年的创举</dt><dd>曼哈顿计划关键作用、开创氢弹物理学、研发第一批计算机、计算轰炸机路线规划与目标选择的最佳方式、创造「相互保证毁灭」(MAD) 概念</dd><dt>博弈论奠基</dt><dd>与奥斯卡·莫根施特恩合著《博弈论与经济行为》(1944)，被波士顿公共图书馆列为「20世纪最有影响力的100本书籍」之一</dd><dt>学术辐射</dt><dd>至少 11 位与博弈论相关的诺贝尔经济学奖得主可以证实博弈论变革了经济学，包括他的学生约翰·纳什（《美丽心灵》）</dd><dt>流行文化</dt><dd>因口音、衣着与轮椅形象，被视为库布里克末日喜剧《奇爱博士》角色原型之一</dd></dl></div><p class="prose">为什么这本书要讲冯·诺依曼？因为在 BBC 纪录片《人类的攀升》里，象棋爱好者布伦诺斯基请他用象棋阐明博弈论，冯·诺依曼的回答定义了本书的立场——</p><div class="aband"><q>象棋不是博弈。象棋是一种定义明确的计算形式。你可能无法算出确切答案，但从理论上来说，一定会有解决的方案，即在任何局势下都存在着一套正确的下法。</q><cite>——冯·诺依曼 · 《人类的攀升》</cite></div><div class="aband"><q>真实的生活里面有虚张声势，有欺诈策略，也会去掂量对方将如何看待自己的意图。这就是我的博弈理论</q><cite>——冯·诺依曼 · 《人类的攀升》</cite></div><p class="prose">我们在商业、储蓄、消费、健康、养育子女、人际关系上的日常决策，都相当符合冯·诺依曼对「真正的博弈」的定义——涉及不确定性、风险和偶尔的欺诈，这些都是扑克的主要元素。<b>如果我们把现实生活决定当作象棋中的决定，麻烦就会随之而来。</b></p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>扑克与象棋：两种世界观</h2><span class="en">POKER vs CHESS</span></div><div class="duo"><div class="colL"><h4>象棋</h4><ul><li>没有隐藏的信息，所有棋子及变化一目了然</li><li>可依靠的运气成分微乎其微</li><li>失败一定是因为没有采取或没想到更好的走法</li><li>高手对低手几乎百战百胜——新手绝无可能战胜卡斯帕罗夫</li><li>结果与决策质量关联紧密，几乎没棋手会说「我打得非常好，只是手气太糟」</li></ul></div><div class="colR"><h4>扑克</h4><ul><li>信息不完整的限时决策游戏（与博弈论的定义非常接近）</li><li>有价值的信息都被隐藏，任何结果都有运气成分</li><li>每个关键时刻都做出最好决定仍可能输掉一手牌</li><li>新手可以在五分钟内学会规则并与一流玩家对赌获胜</li><li>更常见的是运气好而获胜、运气差而失败</li></ul></div></div><p class="prose">如果生活和象棋一样，你每一次闯红灯几乎都会发生事故（或至少收到罚单）；每一次卡罗尔下达类似抛传的口令都会赢得超级碗冠军。但生活与扑克更为相似：可能你闯了红灯却安全通过，可能你完全遵守交通规则却发生事故。信息不完整还干扰<b>对过往决策的学习</b>——对手不亮牌，你永远说不清赢下的那一手是打得好还是运气好。</p><div class="aband"><q>我们的生活质量是决策质量和运气的总和。</q><cite>——第一章</cite></div><p class="prose">象棋里几乎没有棋手会说「我在那局棋中被坑惨了」；扑克锦标赛间隙的走廊里全是这种话。所有不确定因素给了我们<b>欺骗自己和曲解信息的空间</b>：赢了牌就不再追究错误，决策正确却输牌时又把失败当作决策失误的证明。以结果为导向、凭少数几次结果评价决策，在象棋里还算合理的学习策略，在扑克和现实生活中行不通。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>一场致命的智斗：四次掷币与毒酒</h2><span class="en">THE BATTLE OF WITS</span></div><p class="prose">《公主新娘》里最著名的场景：恐怖海盗罗伯茨与绑架公主的维齐尼(Vizzini)进行生死智力较量——两杯酒之一被下了毒，维齐尼要通过「了解你的思维方式」推断毒药在哪只杯子里。他列举了一大堆令人眼花缭乱的原因，调换了杯子，看着维斯特雷先喝才安心饮下自己的酒，然后纵声狂笑——随即倒地暴毙。</p><div class="aband"><q>两只酒杯里都有毒。我花了两年的时间才获得对这种毒药的免疫力。</q><cite>——第一章（《公主新娘》场景）</cite></div><p class="prose">维齐尼自认无与伦比的天才——「柏拉图、亚里士多德和苏格拉底？他们都是蠢材」——但他和所有人一样，<b>低估了未知信息的数量和影响</b>。杜克用一道概率题复刻这个错误：有人说「我掷币时连续掷出了四次正面，这种情况发生的可能性有多大？</p><p class="prose">」听起来答案是现成的：0.50×0.50×0.50×0.50 = <b>6.25%</b>。但问题在于，我们是在不了解该枚硬币和抛币者的情况下得出的结论——这是双面、三面还是四面的硬币？是否经过加重处理？掷币者是不是能控制硬币落地的魔术师？</p><div class="tbwrap"><table><thead><tr><th>样本量</th><th>能说明什么</th></tr></thead><tbody><tr><td>四次掷币</td><td>什么也说明不了——硬币与抛币者的信息全然未知，维齐尼式的草率结论</td></tr><tr><td>一万次掷币</td><td>样本量足够，才能对硬币是否被动了手脚做出基本判断</td></tr></tbody></table></div><p class="prose">寻找人生课堂时我们犯同样的错误。生活太短暂，来不及从零碎经验中收集足够信息：3 年前买的房子以买入价 150% 售出，是精于买卖房产，还是市场处于极大上升趋势？2007—2009 年间，许多成功的炒房者不得不直面这些可能性。</p><div class="aband"><q>所以如果有人问你四次掷币的结果意味着什么，正确的答案是：“我不确定。”</q><cite>——第一章</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>「我不确定」：充分利用不确定性</h2><span class="en">I&#x27;M NOT SURE</span></div><p class="prose">人们不愿意说「我不知道」「我不确定」，认为这是含糊、无益甚至回避的表现；学校教育更把「不知道」标记为错误答案。但杜克说，<b>坦然接受「我不确定」是成为更好决策者的至关重要的一步</b>。</p><p class="prose">神经科学家法尔斯坦在《无知如何驱动科学》里指出：在科学中，「我不知道」不是失败，而是迈向启迪的必要步骤——他引用麦克斯韦的名言「完全自知的无知是每一次科学进步的序幕」。</p><div class="aband"><q>好的决策之所以好并不是因为它产生了好的结果。好的决策来自好的过程，而这个过程必定包括了准确表达我们自身知识状态的尝试。</q><cite>——第一章</cite></div><p class="prose">「我不确定」并不意味着没有客观事实——恰恰相反，承认不确定性是接近客观事实的首要步骤。优秀的扑克玩家和英明的决策者的共同之处：接受世界无常而不可预知，<b>弄清不确定的程度</b>，而不是专注于如何才能确定。</p><p class="prose">经验的优势是缩小可能性的范围——老练的审判律师强于新入行的律师——但无论是老将还是新手，都无法确定下一次翻牌的结果。</p><p class="prose">接受不确定性的两大好处：其一，它是对世界<b>更准确的描述</b>；其二，它让我们不易陷入<b>黑白思维</b>。</p><p class="prose">杜克打了个比方：医用体重秤的两根加重杆可以测到磅；如果秤上只有 50 磅和 500 磅两个刻度，你不是病态肥胖就是体重过轻——用如此糟糕的模型测体重显然不现实，而把世界歪曲成非此即彼的两个极端，正是给自己的决策装上了这台秤。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>重新定义错误：24% 不是 0</h2><span class="en">REDEFINING WRONG</span></div><p class="prose">慈善扑克锦标赛的决赛牌桌上，荷官杜克告诉观众：一名选手胜算 <b>76%</b>，另一名 <b>24%</b>。最后一张牌让 24% 的那位变成了赢家。欢呼声中有观众叫道：「安妮，你算错了！」——</p><div class="aband"><q>我说了，他的胜算是24%，而不是0。你需要清楚这24%意味着什么！</q><cite>——第一章</cite></div><p class="prose">几手牌后同样的事情再度上演：18% 的选手靠一张幸运牌赢了 82%。这一次，那位观众自己喊了出来——就在那一刻，他改变了对错误的定义。<b>当我们以发生概率为依据做出决定却得出相反的结果时，并不意味着我们是错误的，仅仅说明在一系列可预期的未来中发生了不可控制的意外。</b></p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>英国脱欧：赔率失衡 ≠ 博彩公司犯错</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2016 年 7 月公投结果令人大跌眼镜，但投注站为脱欧设置较高赔率并不代表它认为留欧会赢——博彩公司的目标是确保投注双方赌注数额相等、不承担结果风险，赔率反映的是市场对何为公平的最佳判断。瑞士银行首席策略分析师与律师德肖维茨「博彩公司搞错了」的说法，恰是以结果为导向。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>2016 大选：西尔弗的 30%～40%</h4><span class="ar">▶</span></div><div class="cb"><div class="in">内特·西尔弗从不断言希拉里一定当选——大选前一周他预测特朗普胜算为 30%～40%（胜算比在 2 比 1 和 3 比 2 之间）。发生概率为 30%～40% 的事件是经常发生的大概率事件。杜克说，批评者大概没经历过在一个对子上押下所有筹码却输给对方顺子的时刻。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>重新定义之后的四个「也许」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">也许最好决策出自一组平平无奇的选项；也许我们押注了概率极小但回报远超风险成本的机会，而机会没有降临；也许决定性的信息被隐藏；也许成功概率极高的道路只是运气不好。第二佳的选择并不是错误的选择——在对与错之间还有很大的灰色地带，更好的决策在于如何校准和调整。</div></div></div></div><p class="prose">重新定义错误还要求重新定义「正确」：如果坏结果不能说明我们错了，好结果同样不能说明我们对。这值得吗？答案是肯定的——卡尼曼和特沃斯基的损失规避研究告诉我们：如果胜利令人喜悦，那么失败就会令人加倍痛苦；赢 100 美元的开心与输 50 美元的失落持平。这意味着在情感上需要两个好结果才能平衡一个坏结果。</p><p class="prose">放下「正确」的良好感觉，换取摆脱「错误」的痛苦——这笔对赌，划算。</p><div class="check" data-k="djk-02"><p class="ct">自 测</p><label><input type="checkbox"><span>我能说出象棋与扑克的本质差别，并指出自己的生活更像哪一种</span></label><label><input type="checkbox"><span>我不再把「小样本成功」直接当成能力（炒房、四次掷币）</span></label><label><input type="checkbox"><span>我能把「我不知道」从负面框架换成中立框架</span></label><label><input type="checkbox"><span>看到小概率事件发生，我不再指责预测者「算错了」</span></label><label><input type="checkbox"><span>我愿意用放弃「正确」的良好感觉，来换取摆脱「错误」的痛苦</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">体例</span><span class="nd"><b>章末注释错位｜</b>导出源把冯·诺依曼资料来源（P016./P018.）、《公主新娘》台词出处（P022.）、脱欧与 2016 大选「错误」争议来源（P030.）等章末注释段错位到章首；其中 P030. 注明谷歌搜索「内特·西尔弗选举预测失败」会出现 465000 个结果。已如实收录骨架，本页不展开。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安妮·杜克《对赌：信息不足时如何做出高明决策》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一章｜生活是扑克（下）</span><a href="../01-生活是扑克-上/index.html">← 生活是扑克（上）</a><a href="../03-赌一把-上/index.html">赌一把？（上） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='djk-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
