@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第6章·国民收入的分配（中）· 利息、利润与地租｜经济学原理 精读</title>
+<meta name="description" content="利息是等待的报酬——中世纪对它的误解与马克思的循环论点先被清场；纯息之外，毛息裹着风险保险费与管理报酬；利润方面，管理报酬受替代原则支配，年利润率与周转利润率必须分清，而成功企业的报酬大半是准租——企业与雇工之间竟有休戚">
+<style>
+:root{
+  --paper:#F4F1E8;      /* 暖晨纸底 */
+  --paper-2:#E8E3D3;    /* 纸色深一档 */
+  --card:#FBF8EF;
+  --ink:#2E4A5A;        /* 晨蓝墨（主色） */
+  --ink-2:#3D5867;
+  --ink-deep:#0E1416;   /* 深夜晨蓝（hero 底） */
+  --gold:#B08A3A;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#C9A85C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#6E93A8;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#262B28;
+  --tx-2:#49524E;
+  --tx-3:#7B7F76;
+  --line:rgba(38,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E4A5A 0%,var(--ink-deep) 62%);
+  color:#F0EFE6;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,168,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,168,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,168,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F2EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,239,230,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,168,92,.34);color:rgba(240,239,230,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEDE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,168,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EFE0;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,168,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EFE0;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(235,236,228,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(110,147,168,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(110,147,168,.1);color:var(--teal);border:1px solid rgba(110,147,168,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,241,232,.94);
+  border-bottom:1px solid rgba(38,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3D5867;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../10-分配论上-分配概论与劳动工资/index.html">← 分配论（上）</a><a href="../12-分配论下-租佃与分配总论/index.html">分配论（下） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">息</div>
+  <div class="stamp ">利息</div>
+  <h1>国民收入的分配（中）· 利息、利润与地租</h1>
+  <p class="sub">利息是等待的报酬——中世纪对它的误解与马克思的循环论点先被清场；纯息之外，毛息裹着风险保险费与管理报酬；利润方面，管理报酬受替代原则支配，年利润率与周转利润率必须分清，而成功企业的报酬大半是准租——企业与雇工之间竟有休戚相关的关系。</p>
+  <div class="meta"><span>第6章</span>
+    <span class="k">纯息</span>
+    <span>正文 23,798 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>利息</a><a href="#s3" data-t="s3"><span class="cn">叁</span>旧投资</a><a href="#s4" data-t="s4"><span class="cn">肆</span>企业家</a><a href="#s5" data-t="s5"><span class="cn">伍</span>利润率</a><a href="#s6" data-t="s6"><span class="cn">陸</span>共同收入</a><a href="#s7" data-t="s7"><span class="cn">柒</span>掂一掂</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>当我们说利息只是资本的报酬，或者只是等待的报酬时，我们所指的利息是纯息，而一般人所指的利息除纯息外还包括其他因素，这种利息叫做毛息。</p><cite>——第五节 · 二</cite></div><div class="epi"><p>这些趋势是“看不见的”，但它们却能驾驭那些“看得见的”的进程。</p><cite>——第七节 · 六</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第6章中篇：资本获得利息，企业经营能力获得利润</p><p class="thesis">第五节清理利息理论的历史包袱——从高利贷到马克思——再区分<b>纯息</b>与<b>毛息</b>，并警告「利率」一词用在旧投资上意义非常受限制；第六、七节转向利润——企业家之间的生存竞争、<b>年利润率</b>与<b>周转利润率</b>之辨，最后落到企业与雇工的<b>共同收入</b>与分红制。</p><div class="chain"><div class="node"><div class="n">历史</div><div><p class="tt">利息之辨</p><p class="dd">亚里士多德说货币没有生产性；马克思的剩余学说则暗含循环论点——结论早已藏在前提里</p></div></div><div class="node"><div class="n">概念</div><div><p class="tt">纯息与毛息</p><p class="dd">毛息=纯息+风险保险费+管理报酬——竞争的趋势并不是使毛息趋于相等</p></div></div><div class="node"><div class="n">陷阱</div><div><p class="tt">旧投资的利率</p><p class="dd">资本一经投下，其价值是预期的未来纯收入（准租）折成现值之和</p></div></div><div class="node"><div class="n">竞争</div><div><p class="tt">企业家的生存斗争</p><p class="dd">替代原则使某种工业组织方法代替另一种——但首创者从发明中所得的报酬往往很少</p></div></div><div class="node"><div class="n">口径</div><div><p class="tt">两种利润率</p><p class="dd">年利润率与周转利润率必须分清——小企业主把工资算成利润，利润表面看要多些</p></div></div><div class="node"><div class="n">分配</div><div><p class="tt">共同收入与分红</p><p class="dd">企业与雇工之间有事实上的休戚相关；分红制是走向真正合作制的第一步</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>利息：从中世纪的高利贷到纯息</h2><span class="en">INTEREST</span></div><p class="prose">第五节先还历史的债：古代社会中借款的人一般都是贫苦又无依无靠的人，高利贷者往往残酷地行使自己的权力，使穷人陷入罗网——古代的圣贤、中世纪教会的神父因此常谴责放款取息。亚里士多德曾说过——</p><div class="aband"><q>货币没有生产性，放款取息就等于货币在非自然地使用。</q><cite>——第五节 · 一</cite></div><p class="prose">马歇尔反驳说：借款给人来买马和直接借马给人，实质上并没有区别——贷方牺牲了对一般商品支配权的使用，借方获得了它。而现代的批评则换了方向：有人认为利息的支付是对工人阶级间接的压迫——威廉·汤姆逊、洛贝尔图斯和马克思等人认为劳动总能创造出一种「剩余」。</p><div class="aband"><q>但是，这种全部剩余是劳动产品的假设，已经假定了他们最后要证明的东西，可是他们却没有证明；同时这个假设也是错误的。</q><cite>——第五节 · 一</cite></div><p class="prose">纺纱厂中的纱除去机器的耗损就是工人的劳动产品，这种说法并不对：纱是工人的劳动和雇主与所雇佣的经理的劳动以及所使用资本的劳动的产品，而资本本身又来自劳动和等待——因此，纱是各种劳动和等待的产品。</p><div class="aband"><q>洛贝尔图斯和马克思对苦难者的深切同情，永远都会博得我们的敬意，但他们认为的他们实际倡议的科学根据的那些东西，其实只不过是一系列的循环论点而已。</q><cite>——第五节 · 一</cite></div><p class="prose">概念澄清之后进入分析——</p><div class="aband"><q>当我们说利息只是资本的报酬，或者只是等待的报酬时，我们所指的利息是纯息，而一般人所指的利息除纯息外还包括其他因素，这种利息叫做毛息。</q><cite>——第五节 · 二</cite></div><p class="prose">商业上的抵押和信用组织越是处于低级萌芽阶段，追加因素越显得重要：中世纪王公借1000两白银也许承诺年终偿还1500两，而放款人宁愿有绝对把握收取1300两——名义利率为50%，实际利率却为30%。</p><div class="duo"><div class="colL"><h4>纯息</h4><ul><li>只是资本的报酬，或者只是等待的报酬</li><li>现时英国的纯息大约年息略低于3厘</li><li>对两种投资所贷资本的纯利率若稍有不同，就会引起资本的流动</li></ul></div><div class="colR"><h4>毛息</h4><ul><li>纯息之外还包括风险保险费与管理报酬</li><li>当铺商放款的利率一般为年息2分5厘或略高，其中很大一部分是管理这种棘手经营的报酬</li><li>竞争的趋势并不是使毛息趋于相等</li></ul></div></div><p class="prose">极端的事例：伦敦、巴黎有些专靠贷款给小菜贩为生的人，每天早上放款，到晚上货物售完以后按利率1分收回借款——</p><div class="aband"><q>但是专靠贷款给小菜贩是不能变成巨富的；因为没有人能够按照这种方式借出大量的款项。</q><cite>——第五节 · 二</cite></div><div class="aband"><q>所以，竞争的趋势并不是使毛息趋于相等；相反，放款人和借款人对借贷情况摸得越透，那么有的人比别的人按较低利率获得贷款的可能也越大。</q><cite>——第五节 · 二</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>旧投资的利率与货币购买力</h2><span class="en">OLD INVESTMENTS</span></div><p class="prose">来自总源的资金流入生产中的投资有两个流向：较小的一股是加在旧有资本上的新投资；较大的一股只是用来补偿已消耗的资本的投资——第二股的年流量，甚至在英国，大概也不会少于资本总量的1/4。于是「利率」一词用在旧有资本投资品上，意义非常受限制：</p><div class="aband"><q>我们应当说，如果在各工商业中新投资本所得的纯利率约为年利3厘，则各工商业旧有的投资的收入，若以33倍乘之（即用3厘利率），以收入还原为资本，则约等于70亿镑。</q><cite>——第五节 · 三</cite></div><p class="prose">因为资本一经投于改良土地、建造房屋、铁路和机器，那么该资本的价值是它预期的未来纯收入（或准租）折成现值之和；如果该资本在未来产生收益的能力下降，那么它的价值相应减少。</p><h3 class="h3">货币购买力的变动</h3><p class="prose">货币购买力的改变对贷款条件的影响在短期借贷市场上十分突出：假设某人借款100镑，约定年终偿还105镑；其间如果货币购买力提高10%（或物价降低10%），他必须出售年初曾花费他115镑10先令的商品才能还清——名义上付息5厘，实际上却付了1分5厘。反之，如果物价上涨使货币购买力降低10%——</p><div class="aband"><q>名义上他付息5厘，而实际上他却因借款而获得5.5%的收入。</q><cite>——第五节 · 四</cite></div><p class="prose">商业的繁荣和萧条交替出现的原因，和货币购买力的改变所引起的实际利率的改变密切相关：物价趋于上涨时人们争借货币、抢购物资，推波助澜；信用动摇和物价开始下跌时，人人都想脱手商品而保存价值日益增加的货币——</p><div class="aband"><q>因此，在长期内物价的下跌是以前物价下跌的结果。</q><cite>——第五节 · 四</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>利润：企业家的生存斗争</h2><span class="en">PROFITS OF BUSINESS</span></div><p class="prose">第六节转向利润：使用资本的经营能力的供给由三种因素构成——资本的供给、使用资本的经营能力的供给、把前两个因素结合起来的组织。上一节讨论的是第一个因素的报酬即利息；现在讨论第二、三个因素的报酬，即管理上的总报酬与纯经营收入。</p><div class="aband"><q>因为从总的原则上来看，替代原则（它只不过是适者生存这一规律的特殊的有限的应用）有使某种工业组织方法代替另一种方法的趋势，假如前一种方法能以较低的价格提供直接的即时服务。</q><cite>——第六节 · 一</cite></div><p class="prose">可以把企业家分成两类：第一类引用先进的企业方法，第二类则墨守成规。后一类对社会主要提供直接的服务，往往会获得可靠的充分报酬；但前一类的情况却不然——</p><div class="aband"><q>许多企业家的发明在长期内对世界有难以估计的价值，可是他们本人从自己的发明中所得的报酬却很少，甚至比弥尔顿从《失乐园》或米勒从《天使》中所得的报酬还要少。</q><cite>——第六节 · 一</cite></div><p class="prose">木匠变成很大的承包商后，替代原则时时都在发生作用：大雇主用自己的一小部分工作与经理和监工的大部分工作，来代替小雇主的全部工作。投标的竞争取决于二者的相对效率——小建筑商那种未分散的精力的效率，和忙而能干的大建筑商本身所提供的一小部分监督的效率。</p><p class="prose">使用借贷资本的企业家则另有一重劣势：当个人风险很大时（如从事一个新的电业方面的生意），运用借贷资本的人处于极其不利的地位，而利润率主要由自有资本者之间的竞争来决定。但在那些勇敢而不知疲倦的进取心可以迅速收到成效的工业中，后起之秀如鱼得水——正是由于他当机立断，巧于策划，使他在竞争过程中捷足先登。</p><p class="prose">股份公司提供了最好的比较样本：董事、经理和附属职员大多没有自己的资本，他们的报酬几乎是纯粹的劳动报酬。但股份公司常为内部摩擦和利害冲突所困扰——</p><div class="aband"><q>股份公司很少有私人企业所具有的那种创造性、主动性、目的一致以及行动的敏捷。</q><cite>——第六节 · 四</cite></div><p class="prose">现代企业经营方法一直被运用到利弊恰好相等的那一点上——</p><div class="aband"><q>换而言之，在某种特定场合，各种不同企业组织方法的有利的边际，不是某一线上的一点，而是使各种可能的企业组织彼此相接的一条不规则的界线。</q><cite>——第六节 · 五</cite></div><div class="aband"><q>因此，需要最迫切而报酬优厚的经营能力很少取决于“天赋”，而多半取决于获得此项能力所用的劳动与费用。</q><cite>——第六节 · 五</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>利润率之辨：大企业与小企业</h2><span class="en">RATES OF PROFIT</span></div><p class="prose">第七节从字面上的困难开始：小企业主所做的大部分工作，在大企业中由经理和监工分担——计算大企业的利润之前，经理和监工的工资必须从收入中减去，而小企业主的全部劳动报酬却算成他的利润。亚当·斯密早算过账：小商港的小杂货商以100镑的资本能赚40%或50%的利润，而大批发商以1万镑的资本很少能赚8%或10%——</p><div class="aband"><q>其中较大一部分表面上看来是利润，其实是隐藏在利润外衣下的工资。</q><cite>——第七节 · 一</cite></div><div class="aband"><q>有一种利润率是企业投资的年利润率（annual-rate of profits），而另一种利润率是资本每次周转（即每次销售总额等于资本）所得的利润率，或叫做周转利润率（rate of profits on the turnover）。</q><cite>——第七节 · 一</cite></div><p class="prose">分清口径之后，名义上的不等大部分消失：大企业往往能以较低廉的价格购买原材料，并能利用分工和机器的专业化等大规模生产——而小企业所占的唯一重要优势，是和消费者比较容易接近，并便于投消费者之所好。</p><div class="aband"><q>总的说来，我们可以作出结论：第一，大企业的利润率初看起来要高些，因为小企业的利润率和大企业比较以前，小企业通常算作利润的那一部分应当列入另一项；第二，即使经过这种修正以后，以通常方法计算的利润率一般随着企业规模的增长而减少。</q><cite>——第七节 · 一</cite></div><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>流动资本定繁重</h3><p class="cp">某企业所需要的管理工作的量大多取决于流动资本数量，而很少取决于固定资本数量——铁路、自来水、运河等股份公司的利润率偏低。</p></div><div class="card num"><div class="idx">二</div><h3>繁重者利高</h3><p class="cp">设固定资本与流动资本的比例不变，管理工作越繁重，那么利润率就越高——组织和计划新方法的心力与风险往往相伴而行。</p></div><div class="card num"><div class="idx">三</div><h3>个别厂商的利润递增</h3><p class="cp">特别精明强干的厂商使用的方法和机器优于竞争对手——他所增加的产量实质上不致使他的商品价格下降，而大规模生产的经济收益却几乎全部归他所有。</p></div><div class="card num"><div class="idx">四</div><h3>改良普及则利降</h3><p class="cp">如果改良为全行业所分沾，产品的价格将接近于只能提供正常利润率的那一点——某行业产品数量的比例增加，势必引起利润率的下降。</p></div></div><div class="tbwrap"><table><thead><tr><th>行业</th><th>周转利润率</th></tr></thead><tbody><tr><td>批发商（大宗股票交易）</td><td>少于1%，甚至只有1%的几分之几——但资本周转得很快</td></tr><tr><td>零售商（一般日用品）</td><td>往往只有5%或10%——销售额大、存货少、周转快</td></tr><tr><td>零售商（装饰品和化妆品）</td><td>几乎达100%——售得慢、存货多，遇到时尚变化只能亏本出售</td></tr><tr><td>鱼、水果、花草和蔬菜</td><td>利润率往往比装饰品的高利润率还要高</td></tr></tbody></table></div><div class="aband"><q>如事先没有议定价格，这就是一个诚实的人希望从订货收取的“公平”的周转利润率。</q><cite>——第七节 · 三</cite></div><div class="aband"><q>因此，全部正常利润都列入真正或长期的供给价格。</q><cite>——第七节 · 四</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>利润与其他报酬之辨、共同收入</h2><span class="en">COMMON INCOME</span></div><p class="prose">利润与普通报酬有三个区别。其一，企业家的利润首先受他的资本、他的劳动和他雇工的劳动的产品的价格变动的影响——</p><div class="aband"><q>因此，他的利润变动的幅度较大，而且一般在他们的工资变动之前。</q><cite>——第七节 · 五</cite></div><p class="prose">其二，计算行业平均利润时，必须从成功者的利润总额中减去失败者的损失总额，再以成功者和失败者的总人数除所余差额——</p><div class="aband"><q>我们决不能以成功者的人数除他们所获利润的总额，甚至也不能以成功者和失败者的人数除该利润总额。</q><cite>——第七节 · 五</cite></div><p class="prose">管理上的总报酬（利润超过利息的差额），平均计算很可能还不及一般人对成功者所估计的企业利润的1/2，而就某些带风险性的企业来看，还不及1/10。其三，对利润作与工资相同的准租分析时——</p><div class="aband"><q>因为对企业家的利润作同样的分析时，比例大小却有所不同，其中较大的部分是准租。</q><cite>——第七节 · 五</cite></div><p class="prose">同一行业中各类工人的利害也连在一起：该行业的共同繁荣决定了各阶层的特定资本和专门技能所得的收入；当收入总额不变时，任何一个阶层的收入增加，必然会使其他阶层的收入减少。从企业家的观点看，成功企业的报酬是三种报酬的总额——他的能力的报酬、他的生产设备及其他物质资本的报酬、他的商业信誉或企业组织和商业往来的报酬。</p><p class="prose">在某些情况下，几乎企业的全部收入都是准租——一种混合准租，可通过讨价还价习惯和公平观念分配给该行业中的各个人。一个熟悉企业人员和情况的主管职员，一旦离去，该企业所受的损失也许高过他的工薪数倍，而他在别处所能得的工薪尚不及原企业一半。</p><div class="aband"><q>通常使雇主和雇工的关系在经济上和道德上有所增进的方法就是分红制；当它被看做是趋于更高而且更难的真正合作制水平的第一步时，情形更是如此。</q><cite>——第七节 · 六</cite></div><p class="prose">工资谈判的上下限由此划定：在平均年限内，工资必须高得足以吸引青年人从事该行业——</p><div class="aband"><q>这就规定了工资的下限，资本与经营能力的供给相符合的必要性决定了工资的上限。</q><cite>——第七节 · 六</cite></div><p class="prose">而在该界限上究竟采取哪一点，只能由讨价还价来决定。工联和商业同盟表现出各种生动的事实，足以引起世人的注意，但其中未免有过分夸大的情形——运动的主流取决于正常分配和交换的趋势这一强大的暗流。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>掂一掂</h2><span class="en">RECAP</span></div><div class="chips"><span class="chip">纯息</span><span class="chip">毛息</span><span class="chip">风险保险费</span><span class="chip">管理报酬</span><span class="chip">准租</span><span class="chip">纯经营收入</span><span class="chip">年利润率</span><span class="chip">周转利润率</span><span class="chip">机遇价值</span><span class="chip">分红制</span></div><div class="check" data-k="11"><p class="ct">本篇过关自测</p><label><input type="checkbox"><span>能复述马克思剩余学说的问题所在：全部剩余是劳动产品的假设已假定了要证明的东西</span></label><label><input type="checkbox"><span>能区分纯息与毛息，并说明毛息中的风险保险费与管理报酬为何使毛息不趋于相等</span></label><label><input type="checkbox"><span>能解释为什么「利率」一词用在旧有资本投资品上意义非常受限制</span></label><label><input type="checkbox"><span>能举例说明货币购买力变动如何使名义利率与实际利率背离</span></label><label><input type="checkbox"><span>能区分年利润率与周转利润率，并说出大企业利润率口径修正后的两个结论</span></label><label><input type="checkbox"><span>能说明成功企业的报酬由哪三部分构成，以及为什么其中大部分是准租</span></label><div class="cf">已勾选 <b>0</b> / 6</div></div><details class="ext"><summary>延伸 · 下一篇</summary><div class="ex">利息与利润的来路已经讲清，分配论还剩最后一块土地——地租与租佃制度、分配的全景与进步对生活程度的影响，将在《分配论（下）· 租佃与分配总论》与《分配论（终）· 进步与生活程度》中收官。</div></details></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜阿尔弗雷德·马歇尔《经济学原理》（北京联合出版公司，章洞易 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第6章｜分配论（中）</span><a href="../10-分配论上-分配概论与劳动工资/index.html">← 分配论（上）</a><a href="../12-分配论下-租佃与分配总论/index.html">分配论（下） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='econ-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

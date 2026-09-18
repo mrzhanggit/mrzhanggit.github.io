@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分 专业人士的博弈·第6-7章 · 技术派与基本派的业绩审判｜漫步华尔街 精读</title>
+<meta name="description" content="第二部分第二篇，两章合审：第6章把技术分析送上审判席——抛硬币画出的股价图骗过了图表分析师；第7章把基本面分析师送上审判席——「乱七八糟的增长」与 90％ 输给基准的主动基金。审判终点是有效市场假说的三级形式。">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-技术分析与基本面分析/index.html">← 技术分析与基本面分析</a><a href="../07-组合理论与风险/index.html">组合理论与风险 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">判</div>
+  <div class="stamp s4">第6-7</div>
+  <h1>第6-7章 · 技术派与基本派的业绩审判</h1>
+  <p class="sub">第二部分第二篇，两章合审：第6章把技术分析送上审判席——抛硬币画出的股价图骗过了图表分析师；第7章把基本面分析师送上审判席——「乱七八糟的增长」与 90％ 输给基准的主动基金。审判终点是有效市场假说的三级形式。</p>
+  <div class="meta"><span>第二部分 专业人士的博弈</span>
+    <span class="k">业绩审判</span>
+    <span>正文 28,108 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>墙纸原理</a><a href="#s3" data-t="s3"><span class="cn">叁</span>随机漫步</a><a href="#s4" data-t="s4"><span class="cn">肆</span>精细策略</a><a href="#s5" data-t="s5"><span class="cn">伍</span>花哨理论</a><a href="#s6" data-t="s6"><span class="cn">陆</span>反击与启示</a><a href="#s7" data-t="s7"><span class="cn">柒</span>基本面开庭</a><a href="#s8" data-t="s8"><span class="cn">捌</span>五因</a><a href="#s9" data-t="s9"><span class="cn">玖</span>基金审判</a><a href="#s10" data-t="s10"><span class="cn">拾</span>三级有效</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>事物的本质很少呈现于表象之上，脱了脂的牛奶也可以假充护肤霜。</p><cite>——吉尔伯特与苏利文《皇家海军围裙号》</cite></div><div class="epi"><p>我怎能这么糊涂，竟信任那帮专家？！</p><cite>——约翰·F.肯尼迪 · 在猪湾事件之后如是说</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图：两场审判，一个被告席</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">业绩审判：技术派与基本派先后过堂</p><p class="thesis">第5章讲完了两派怎么玩，第6、7章让他们交出成绩单。<b>技术分析</b>被计算机彻底检验——连抛硬币画出的走势图都能骗过图表分析师；<b>基本面分析</b>则撞上「乱七八糟的增长」——过去的盈利增长预测不了未来。两场审判汇入同一结论：简单买入持有，不输给任何专业打法。</p><div class="chain"><div class="node"><div class="n">被告一</div><div><p class="tt">技术分析</p><p class="dd">墙纸原理与趋势论；抛硬币实验；五种精细策略全数失效；裙摆、超级碗、道指狗相继翻车</p></div></div><div class="node"><div class="n">判词一</div><div><p class="tt">弱式有效</p><p class="dd">从股价变动的历史中，找不到一贯战胜买入持有的有用信息</p></div></div><div class="node"><div class="n">被告二</div><div><p class="tt">基本面分析</p><p class="dd">预测盈利是分析师的立身之本，但「乱七八糟的增长」证明过去算不出未来</p></div></div><div class="node"><div class="n">五因</div><div><p class="tt">水晶球为何浑浊</p><p class="dd">随机事件；创造性会计；分析师出错；人才流失；利益冲突</p></div></div><div class="node"><div class="n">判词二</div><div><p class="tt">基金业绩</p><p class="dd">1970 年的 358 只基金，战胜指数 2 个百分点以上者一只手数得过来；20 年期逾 90％ 主动基金输给基准</p></div></div><div class="node"><div class="n">判词三</div><div><p class="tt">半强式与强式</p><p class="dd">公开信息、甚至可知信息都已在股价中反映；连格雷厄姆晚年也转向「有效市场」一派</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>破洞的鞋与墙纸原理</h2><span class="en">WALLPAPER</span></div><p class="prose">学生常问教授：「如果您果真那么厉害，为什么不富有呢？」这话拿去问技术分析师再合适不过——技术分析的目的完全是为了赚钱。可走近技术分析师仔细一瞅，常会看到<b>他们鞋子上有破洞，衬衫的领口也磨损了</b>。</p><p class="prose">马尔基尔说他从不认识什么成功的技术分析师，倒见过好几个折戟沉沙的；而且失败者从无一丝歉疚，坦率地说自己落魄只因犯下了「是人都会犯的错误——没有相信自己的图表」。他为此立下规矩：永远不和图表分析师一起吃饭，这不利于消化。</p><p class="prose">不过他们的分析文字倒「弥足珍贵」。某技术分析服务机构给出的建议如下，读者可自行品读：</p><div class="aband"><q>经过一段时间，能量重新积聚之后，大盘开始上扬，发出多头信号。尽管如此，支撑区特征尚未明显出现，且目前道指上方40点处存在一阻力区，因而，就此断言大盘将进一步展开多头行情，显然为时尚早。如果未来数周内底部支撑得到确认，且大盘突破旗形形态，则表明大盘将进一步上扬。万一底部被有效击穿，则中期下降趋势将会延续。就目前形势来看，投资者很可能持观望态度，等待趋势进一步明朗，同时，大盘很可能窄幅波动。</q><cite>——某技术分析服务机构的投资建议 · 第6章</cite></div><p class="prose">翻译过来大概率是：「如果大盘既不上涨，也不下跌，那将保持不变。」——即便是天气预报，也能做得比这更好。学术界看不上这一行当，原因有二：①支付交易成本和税金之后，技术分析法并不比买入持有更胜一筹；②技术分析法本身就容易让人挑刺儿。恰恰是计算机的发展，让学者可以把所有技术交易策略逐一检验。</p><p class="prose">技术分析的基本前提，是<b>「墙纸原理」</b>：试图依据过去的股价预测未来的股价，正如预测镜子后面的墙纸图案与镜子上方的完全相同。他们相信趋势——一直在上涨的股票将继续上涨。</p><p class="prose">但利用追溯至 20 世纪初的数据彻底检验的结果是：过去的股价变动并非可靠依据；即便趋势存在，其持续性也不够强，不足以让跟踪趋势的策略总能获利。至于「连续几天同向变动」的「持久模式」，其出现频率并不比你抛硬币时连续正面朝上的频率更高。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>究竟何为随机漫步</h2><span class="en">RANDOM WALK</span></div><p class="prose">很多人觉得「随机漫步」一派胡言——翻开金融版谁都能「看出模式」。马尔基尔让学生做了个实验：股价从 50 美元起，每天抛一次硬币，正面涨 0.5 美元、反面跌 0.5 美元，画出假想走势图。<b>图 6-1 就是其中一个学生的作品</b>——明显有「模式」：上涨、掉头、长期下跌、探底、再掀新一轮持续上涨。</p><p class="prose">他把另一张呈现「倒置头肩顶」向上突破完美形态的图拿给图表分析师朋友看，对方惊喜得如痴似狂：「这是哪家公司？」他大声叫道，「我们得立即买入，这个形态太经典了！毫无疑问，这只股票下周会上涨15个点！」——而那是纯粹的抛硬币结果。</p><p class="prose">股市并不完全符合数学家的理想模型：利好出现时投资者常常只是部分调整估计，缓慢调整加从众心理会形成一定程度的短期趋势；平均值也随盈利与股利的长期增长而长期上行——罗闻全与克雷格·麦金利为此合著了《华尔街上的非随机漫步》。</p><p class="prose">但别指望短期趋势提供必胜策略：股价有时还会反应过度、突然反转，趋势策略基金的收益常常低于平均，而利用依存关系要付出的交易成本和税金比可能的利润多得多。由此，随机漫步假说的<b>弱式有效形式</b>可准确表述如下：</p><div class="aband"><q>在管理投资组合时，投资者不可能从股价变动的历史中找到一贯战胜“买入持有”策略的任何有用信息。</q><cite>——第6章 · 随机漫步假说的弱式有效形式</cite></div><div class="aband"><q>技术分析与占星术别无二致，两者都貌似科学</q><cite>——理查德·匡特（马尔基尔的普林斯顿同事） · 第6章</cite></div><p class="prose">技术策略确实常常赚钱——但问题在于<b>对照剂</b>。检验新药要把服药组与吃糖丸的对照组比较；检验股市「实验」里，与技术策略对照的正是买入持有。过去 100 年间，买入持有大型指数成分股提供了大约 10％ 的年均收益率。</p><p class="prose">技术策略赚了钱不算本事，只有跑赢这个对照剂才算有效——时至今日，没有任何一种技术策略能始终如一地通过这一检验。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>五种更精细的技术策略，全数失效</h2><span class="en">FIVE SYSTEMS</span></div><p class="prose">技术分析师可能辩解说刚才的检验过于简单，未对技术分析的「丰富多样性」公正对待。遗憾的是，更精细复杂的策略也早已被科学检验了一遍——且结论呈现出惊人的一致性。</p><div class="tbwrap"><table><thead><tr><th>技术策略</th><th>玩法</th><th>检验结论</th></tr></thead><tbody><tr><td>「过滤」系统</td><td>股价自低点上涨 5％（或其他幅度）买入，自高点下跌 5％ 卖出甚至卖空；藏在经纪人钟爱的「止损指令」身后</td><td>过滤百分比放宽到 1％～50％、覆盖单只股票与股指的彻底检验：计入更高交易成本后，不能持续胜过买入持有</td></tr><tr><td>道氏理论</td><td>阻力与支撑之间的拔河赛：突破前高买入，跌穿前低卖出</td><td>卖出信号后的行情演变与买入信号后没什么两样；计入额外佣金后，实际还稍逊于买入持有</td></tr><tr><td>相对强弱系统</td><td>买入并持有跑赢大盘的股票，回避或卖空跑输的</td><td>25 年跨度检验：在考虑交易费用和税金之后，对投资者并无益处</td></tr><tr><td>量价系统</td><td>放量上涨是买方兴趣未满足，放量下跌是空头信号</td><td>买卖信号不包含任何预测未来股价的有用信息；频繁交易令成本与税金大增</td></tr><tr><td>识读技术形态</td><td>头肩顶击穿颈线卖出、三重底向上突破买入——计算机识别 548 只股票 5 年间 32 种流行形态</td><td>技术信号与其后的股价表现之间没有任何关系；支付成本后不比买入持有更好</td></tr></tbody></table></div><p class="prose">人类生而喜爱秩序，很难接受随机性——连体育运动也不放过。「勒布朗·詹姆斯手热得很！」几乎是篮球解说的口头禅，球员、教练、观众无一例外深信「手热」。</p><p class="prose">但心理学家研究小组对<b>费城76人队一个半赛季的每一次投篮</b>做了细致研究：相继投篮的结果之间不存在任何正相关，投中一球后下次不中的可能性，甚至比连续命中的可能性还略高一点；连续命中的次数，并不比抛硬币随机数据中连续相同的情况更多。凯尔特人队自由投篮记录与康奈尔大学的受控实验也证实了同一结论。</p><p class="prose">研究者推测，「手热」信念源于记忆偏差——连续命中比交替命中更容易被记住。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>其他几个帮你赔钱的技术理论</h2><span class="en">ODD THEORIES</span></div><div class="grid g3"><div class="card num"><div class="idx">理论1</div><h3>裙摆指标</h3><p class="cp">「牛市与裸膝」理论：女士裙摆上移是牛市，过膝则低迷。20 年代裙摆上移迎来大牛市、30 年代长裙伴随大崩盘，看似吻合；但 1946 年股市下挫早于 1947 年「新风貌」长裙，1968 年底暴跌时中长裙 1969 年才流行。1987 年崩盘前女士们恰好弃迷你裙改穿长裙——作者自嘲道，这下「我们知道股市走熊的真正元凶了」。如今《时尚》杂志说：下摆多长都没有问题。</p></div><div class="card num"><div class="idx">理论2</div><h3>超级碗指标</h3><p class="cp">NFC 球队赢超级碗预示牛市，AFC 球队赢则利空——有时失灵，但对的次数多得多。这最多说明把两件毫不相干的事情联系起来有时也可能。戴维·雷恩韦伯发现：与标普500指数最密切相关的指标，乃是<b>孟加拉国的黄油产量</b>。</p></div><div class="card num"><div class="idx">理论3</div><h3>道指狗</h3><p class="cp">每年买入道指 30 只成分股中股利收益率最高的 10 只「失宠股」。欧金斯在《战胜道指》公开此法，奥肖内西用 20 年代以来的数据测得每年多赚 2 个百分点以上。华尔街据此募了数十亿美元的基金——随后道指狗持续逊于大盘。欧金斯辩解说「这个策略变得太过流行了」，最终遭到自我毁灭。</p></div><div class="card num"><div class="idx">理论4</div><h3>1月效应</h3><p class="cp">1 月头两周小市值股票收益率异常丰厚，催生了《难以置信的1月效应》。但小市值股票买卖价差更大、流动性更小，交易成本高得多——要捡起 1 月「散落的零钱」代价太高，且效应并非年年可靠。</p></div><div class="card num"><div class="idx">理论5</div><h3>移动平均线与其他</h3><p class="cp">涨破 200 日均价买进、跌破卖出的系统，在计入交易成本后带不来超常回报；关注涨跌股票比率的「见顶指标」、卖空增加是多头信号的说法，都被彻底检验否定。至于「5月到来，卖股离开」——源文此句至句末截断，但作者的态度不难想见。</p></div><div class="card num"><div class="idx">大师</div><h3>预测大师与「投资思想家」</h3><p class="cp">高萨瑞莉用 13 种指标于 1987 年 10 月 13 日预测道指将下挫 500 点以上，未出一周言中——却也成了绝唱：她随后预测还有 200～400 点跌幅，错过大反弹，给出的解释依旧是「我没能相信自己的图表」。</p></div></div><div class="tbwrap"><table><thead><tr><th>贝尔斯城女士</th><th>自称与实况</th></tr></thead><tbody><tr><td>人设</td><td>平均年龄 70 岁的「祖母级人物」，誉为「我们这一代最伟大的投资思想家」，畅销书卖出 100 多万册，还与股市松饼食谱混搭</td></tr><tr><td>自称业绩</td><td>1995 年《贝尔斯城女士常识投资指南》声称 10 年年均回报率 23.9％，远超标普500指数的 14.9％</td></tr><tr><td>审计真相</td><td>把「投资俱乐部会员费」也算作投资回报；普华会计师事务所审计：真实年均回报率仅 9.1％——比大盘还低近 6 个百分点</td></tr></tbody></table></div><div class="aband"><q>谁若回首市场先知所做的预言，必将死于悔恨。</q><cite>——类似《圣经》的警句 · 第6章</cite></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>技术分析师的反击与对投资者的启示</h2><span class="en">REBUTTALS</span></div><p class="prose">技术分析师的反击中最常见的，是对数学的不信任：「市场并不是随机的，」他们抱怨说，「任何数学家都无法让我信服。</p><p class="prose">」回应是：即便某些时期股市受大众非理性行为控制，其表现很可能依然类似随机漫步——就像醉汉在空旷田野里踉跄而行，步伐不理性、不可预知；而公司的新闻接二连三地出现，必定是随机的——倘若一条新闻的出现依赖于前一条新闻，那它根本就不算什么新闻。</p><p class="prose">至于「总有某个策略在某段时段有效」：去赌场查看轮盘赌最新几百个数字的人，通常也「能找到模式」，最终却输得精光。若尝试足够多的选股标准，总会找到一条恰好起作用的——真正的问题是它在其他时段是否有效。</p><p class="prose">而即便找到能可靠预测的规律，它也<b>必然自取其败</b>：一旦「年底回升效应」人人皆知，人们就会在圣诞节前抢先买入，规律随即消失。「如果人们知道一只股票明天将上涨，你可以断定这只股票今天就会上涨。」</p><div class="tbwrap"><table><thead><tr><th>择时的代价</th><th>源文数据</th></tr></thead><tbody><tr><td>西布恩（密歇根大学）</td><td>为期 30 年的时段里，重大市场获利中 95％ 来自约 7500 个交易日中的 90 天——错过这仅占 1％ 多一点的日子，长期丰厚回报便一笔勾销</td></tr><tr><td>比里尼《交易大师》</td><td>1900 年将 1 美元投入道指、坚守买入持有，到 2013 年初升值为 290 美元；倘若错过每年中最好的 5 个交易日，到 2013 年价值将不足 1 美分</td></tr></tbody></table></div><p class="prose">对投资者的启示非常简单：股价过去的走势不可能有意义地预测未来；技术理论只是富了炮制者、营销者与经纪券商。用技术分析择时尤其危险——市场长期向上，持币观望可能错过迅猛回升。而且技术策略带来的是短期资本利得，缴税比买入持有更多、更早。简单买入并持有一个多样化投资组合，可节省投资费用、经纪佣金和税款。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>证券分析师果真是天眼通吗</h2><span class="en">FUNDAMENTALISTS</span></div><p class="prose">第7章扉页把证券分析师的成长史写成了一部变形记：从戴绿色遮光眼罩、手写得抽筋的统计师，到头等舱里的时髦明星——疫情期间甚至在网络会议室里穿起了针织毛衣。他们是研究股票的明星，也有人刻薄地窃窃私语。但真正的问题只有一个：<b>基本面分析究竟是否有用</b>。</p><p class="prose">华尔街说它威力强大、个人毫无机会；学术界则断言，被蒙住眼睛的猴子朝股票列表投掷飞镖选股，成功性也能与专业投资组合经理不相上下。</p><p class="prose">预测未来盈利是证券分析师安身立命的根本——《机构投资者》杂志说：「盈利是玩股票时最核心的问题，而且将永远如此。」他们的论证与图表分析师如出一辙：已被证实的盈利增长纪录，是判断未来增长的可靠指标。</p><p class="prose">而学术界给的评语是「得不到及格分」：知道 1980～1990 年的盈利增长率，丝毫无助于预测 1990～2000 年的增长。首次披露这一结论的英国研究，文章题目就叫<b>「乱七八糟的增长」</b>；普林斯顿与哈佛学者用同样方法研究美国公司，结论如出一辙。</p><p class="prose">IBM 的辉煌只是例外；宝丽莱、柯达、北电网络、施乐都曾持续高增长，直到有一天「屋顶坍塌」。20 世纪 90 年代繁荣期，也只有 1/8 的大公司实现了年年持续增长——<b>分析师不可能预测到连续的长期增长，因为这本来就不存在</b>。</p><p class="prose">分析师的天眼为何失灵？</p><p class="prose">专业判断的失准并非金融业独有——美国儿童健康协会调查纽约市 11 岁儿童 1000 名，其中 611 人已切除扁桃体；随后三群医生三轮复查，又分别建议 174 人、99 人、再查 116 人中相似比例的孩子切除；<b>经过三轮检查，只剩 65 名儿童未被建议手术——且是因为没有医生可请了</b>。</p><p class="prose">放射科医师有 30％ 的概率读不出 X 线摄片上清晰的肺病症状；精神病院的专业人员分辨不清心智健全者与病人。</p><p class="prose">马尔基尔归纳出证券分析师水晶球浑浊的 5 个因素：①随机事件的影响；②公司利用「创造性」会计编制靠不住的财报盈利；③分析师自身出错；④最佳分析师流向销售部门或转而管钱；⑤研究部门与投行部门之间的利益冲突。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>水晶球浑浊的五因</h2><span class="en">FIVE FACTORS</span></div><p class="prose"><b>因素①随机事件</b>：影响盈利前景的重要变化本质上不可预知——公用事业委员会的意外裁定、核心管理层变故、油井喷溢、恐怖袭击、价格战、自然灾害；生物技术行业的新药常常过不了三期临床试验。<b>因素②创造性会计</b>：利润表披露的部分引人关注，遮掩的地方却至关重要——安然只是「美艳泳装队列」的领头者。</p><p class="prose">《金牌制作人》里从演砸的剧中赚钱的桥段，与之相比根本不值一提。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>安然 × Quest：5 亿美元的空氣买卖</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2001 年 9 月，两家公司需要对外显示营业收入和利润仍在迅速增长，于是以虚夸的 <b>5 亿美元</b>价格互相交换光纤网络承载能力，各自都把这笔交易计为一次销售——利润膨胀，持续恶化的局面得到掩饰。实际上 Quest 的承载能力本已过剩，市场充斥过量光纤，定价毫无合理性。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>施乐、摩托罗拉、朗讯、北电</h4><span class="ar">▶</span></div><div class="cb"><div class="in">施乐许可欧洲、拉美和加拿大分公司把复印机租赁未来数年陆续到账的现金计为一次性收入，短期虚增利润；摩托罗拉、朗讯、北电向客户提供大量商业信用以抬升销售——很多应收账款后来变成呆账、坏账核销。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>养老金花招与「备考盈利」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">公司估计养老金融资过度便终止注资、利润就此抬高，2007 年股市急跌时才发现融资不足；更普遍的是报告「备考盈利」——「所有不良费用均未计入的盈利」，公司可以不受拘束地排除任何「特殊」「异常」「非经常性」费用，大幅虚增盈利。</div></div></div></div><p class="prose"><b>因素③分析师自身出错</b>：马尔基尔入行时模仿金属行业分析师路易重做分析——路易算出铜价每涨 10 美分使某制铜公司每股盈利增长 1 美元，预计铜价涨 1 美元便推荐买入。马尔基尔重算发现<b>路易搞错了小数点位置</b>：盈利只增长 10 美分。</p><p class="prose">路易的回应一本正经：「如果不改报告，我的推荐听上去会更有说服力。」整形外科医生克里泽尔在《巴伦》考察生物科技研报：5 家相互竞争的人造皮肤公司，分析师预测的市场份额<b>加总远远超过 100％</b>；对潜在市场规模的预测与实际烧伤患者人数毫无关系；结论是「显然，他们并不了解这个行业」。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>阿波罗集团：-80％</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2012 年初，拥有凤凰城大学的阿波罗集团备受华尔街宠爱，分析师大加赞赏其盈利潜力，对学生贷款违约率高企、毕业率低下、招聘欺压等报道置若罔闻——国会报告证实问题、监管收紧、入学人数急剧下滑，股价跌幅达 <b>80％</b>。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>通用电气：2017 年的「卓越投资价值」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2016 年末多数分析师将其评为「强烈推荐买入级」，称金融危机问题「都已被抛在身后」「未来的增长已有保证」；股价滞留 30 多美元、股利收益率高于 3％，「对于保守型投资者，这只股票代表着卓越的投资价值」。结果盈利继续下滑、股利拦腰削减、财务报表重编；2018 年 6 月被踢出道指，交易价 13 美元；2021 年逆向分拆，股东原持 8 股变为 1 股。</div></div></div></div><p class="prose"><b>因素④人才流失</b>：最优秀的分析师得到的报酬，往往不是因为做证券分析——他们扮演机构客户销售员，或升任投资组合经理；21 世纪头几年更多人转投对冲基金与私募股权，「直接管钱」更刺激、名声更响、报酬也高得多。</p><p class="prose"><b>因素⑤利益冲突</b>：佣金降至零后，券商的金矿只剩承销与财务顾问，分析师的薪资奖金部分取决于协助承销部门的作用，于是只能变成投行业务部门的利用工具。分析师传统上极少建议卖出——他说「买入」时可能意思是「持有」，说「持有」时可能在委婉表示「扔掉这破玩意儿，越快越好」。</p><p class="prose">布拉德·巴布尔研究了华尔街分析师「强烈推荐买入」的股票：这些股票<b>每月回报率比大盘少 3％</b>，而他们建议卖出的股票每月反而<b>比大盘高出 3.8％</b>。</p><p class="prose">达特茅斯与康奈尔的研究者发现，不从事投行业务的公司推荐的股票表现更好；投资者网站的研究显示，采纳券商分析师建议买入其主承销 IPO 的投资者，会损失 50％ 以上的资金。</p><p class="prose">丑闻之后虽有改观，但《萨班斯-奥克斯利法案》实施后利益冲突并未消失：2010 年英国石油深水地平线漏油事故后股价从 60 美元跌至 50 美元，34 位覆盖该股的分析师中 27 位评「买入级」、7 位「持有级」，<b>没有任何一位推荐卖出</b>——股价最终跌至 20 多美元，市值损失近 1000 亿美元；到 2018 年 1 月，漏油代价已膨胀至 650 亿美元且仍在增加。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>考察共同基金：分析师选出好股票了吗</h2><span class="en">MUTUAL FUNDS</span></div><p class="prose">「真要检验分析师的能耐，就看他推荐的股票有什么表现」——恰好共同基金的业绩记录可从公开渠道获得，而基金经理正是一群最优秀的分析师和投资组合经理。数项研究的证据再一致不过：<b>投资者靠投资共同基金所获得的回报，并不比买入持有无人管理的大型股票指数更好</b>；优异表现没有一以贯之的连续性，也无法提前预测。</p><p class="prose">20 世纪 70 年代排名前 20 的最佳基金，80 年代大大逊于行业平均；80 年代的最佳基金 90 年代业绩惨不忍睹；90 年代塞满网络股的顶级基金，在泡沫破裂后的 20 年里创下灾难性记录。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>ARK 创新基金：2020 与 2021</h4><span class="ar">▶</span></div><div class="cb"><div class="in">凯茜·伍德的 ARK 创新基金 2020 年价值增长一倍以上；2021 年标普500指数上涨 27％，ARK 却损失 23.5％。她辩称投资者仍收益领先——但 2020 年亮眼之前基金规模很小，新投资者恰在高收益后才涌入而亏钱；彭博 2022 年 3 月估计，持有该 ETF 的平均成本比市场价高出 50％ 以上。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>飞镖掷靶比赛</h4><span class="ar">▶</span></div><div class="cb"><div class="in">《华尔街日报》90 年代初启动的比赛：每月 4 位专家选股对阵 4 只飞镖。到 21 世纪初专家略领先——但若从选股见报当日（而非前一日）起算，飞镖还略胜一筹。《福布斯》记者的结论值得认真对待：「看起来运气加懒惰就能打败大脑。」</div></div></div></div><p class="prose">概率法则的解释最直观：1000 人抛硬币，500 人连续正面进入次轮，250 人、125 人、63 人、31 人、16 人……第七轮剩 8 人。此时人们聚拢过来瞻仰「掷币专家」，他们被誉为天才、被撰写传记、被急切求教——毕竟 1000 人中只有他们 8 人屡战屡胜。</p><p class="prose">比赛继续，终有人连抛 9 次、10 次正面朝上（源文此句至句末截断）。平均数的性质决定了必然有人超越它——正如那位声称能治鸡癌症的医生：33％ 显著好转、1/3 没变化，「恐怕剩下的 1/3 都跑掉了」。</p><p class="prose">标准普尔公司的年度报告显示：看向 20 年期时段，<b>超过 90％ 的主动管理型基金输给其基准指数</b>——无论股票市值大小、国内或国际，债券市场亦然。</p><p class="prose">马尔基尔又考察了 1970 年（他初写本书那年）的全部 358 只股票型基金：到 2017 年，280 只不复存在——业绩糟糕的基金往往被并入更好的基金以抹掉尴尬记录，幸存者全是表现较好者。即便如此，<b>实际战胜市场指数 2 个百分点以上者，一只手就数得过来</b>。</p><p class="prose">人寿保险、养老基金、慈善基金、银行信托等其他专业机构的业绩研究结论相同：专业投资机构作为群体，表现一直逊于涵盖范围广泛的大型指数。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>半强式与强式：大师们的最终转向</h2><span class="en">EMH FORMS</span></div><p class="prose">学术界的判断：在帮投资者获取高于市场平均的回报方面，基本面分析较技术分析毫无优越性可言。</p><p class="prose">围绕「基本面信息」的精确定义，有效市场理论分出两级：<b>半强式</b>认为任何公开信息都不能帮助分析师挑出低估的股票——资产负债表、利润表、股利等公开信息已在价格结构中反映；<b>强式</b>则断言关于一家公司任何已知的甚至可知的信息都已在股价中体现，连「内幕」信息也帮不了忙。</p><p class="prose">强式显然夸大其词——内森·罗斯柴尔德的信鸽带来滑铁卢获胜的最早消息，让他在股市赚了无数的钱；但今天信息高速公路远快于信鸽，公平披露政策要求公司迅速公开重大消息，内幕交易更已触犯法律。萨缪尔森对有效市场的情形做过总结：</p><div class="aband"><q>如果聪明的投资者总是“货比三家”，寻找很划算的股票价格，卖出他们认为将会被证明高估的股票，买入他们认为目前被低估的股票，那么，他们这样行动的结果将必然是当前的股票价格已将股票的前景在自身进行了折现。因此，对那些消极被动的投资者来说，他们自己若不主动寻找被低估或被高估的股票，呈现在他们面前的股价情况将是随便买入一只股票，较买入另外一只股票，基本上无所谓好坏。消极被动的投资者只需采取随机选股的策略，恐怕就能取得与使用任何其他选股方法一样的效果。</q><cite>——保罗·萨缪尔森（诺贝尔奖得主） · 第7章</cite></div><p class="prose">需要澄清的是：有效市场假说并<b>不认为股价总是正确的</b>——事实上，股价始终是错误的；假说只是表明，没有任何人确切知道股价是过高还是过低。市场如此有效，以致没有个体投资者能以足够快的速度买卖而从中获利；而实际信息的形成是随机的、不可预知的，无论研究过去的股价还是基本面信息，都无法预测它。</p><p class="prose">传奇人物本杰明·格雷厄姆——基本面证券分析之父——晚年也颇不情愿地下结论认为，人们再也不能依靠基本面分析获得出色的投资回报：</p><div class="aband"><q>我现在已不再提倡为找到更好的投资机会，去运用精细复杂的基本面分析技术。以前，比如说40年前，我和多德合著的《证券分析》首次出版的时候，进行细致的基本面分析还是一件很有意义的事情。但是时过境迁，情况已今非昔比……（现在）我怀疑，再投入大量时间和精力分析基本面信息，是否能够选出好股票，足以让做出的努力值得付出……我现在支持‘有效市场’这一派看法。</q><cite>——本杰明·格雷厄姆 1976 年接受《金融分析师杂志》采访 · 第7章</cite></div><p class="prose">彼得·林奇从麦哲伦基金退休后承认，多数投资者若投资指数基金而非主动管理型基金，财务境遇会更好；沃伦·巴菲特也赞同这一观点。两场审判至此闭庭：技术派与基本派殊途同归——远为可能的选择不是在大干草堆里找那根针，而是<b>买下整个大干草堆</b>：买下一只指数基金。</p><div class="check" data-k="wsw-06-check"><p class="ct">审判闭庭后，检视你的投资行为</p><label><input type="checkbox"><span>我不再依据股价过去的走势图决定买卖（墙纸原理已被检验否定）</span></label><label><input type="checkbox"><span>我明白技术策略赚钱不算本事——跑赢买入持有的对照剂才算</span></label><label><input type="checkbox"><span>我知道择时的代价：错过每年最好的 5 个交易日，290 美元会缩水到不足 1 美分</span></label><label><input type="checkbox"><span>我不盲信分析师的「强烈买入」——历史数据显示其月度跑输大盘 3％</span></label><label><input type="checkbox"><span>我接受：买下整个干草堆（指数基金），比在大干草堆里找针更可靠</span></label><div class="cf">两场审判的共同判词——已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下各句在导出源中不完整，均照录不补写：6.4.5 开篇「或许一些更为复杂的图形，如第5章的那些能够揭示股价的未来走向」疑有脱文；6.5.5 末句止于「你应该“5月到来，卖股离开”」；7.3.5 卖出建议句止于「卖掉特朗普泰姬玛哈尔赌场债券(Trump's Taj Mahal bonds)」；7.3.5 另一句止于「《萨班斯-奥克斯利法案》(Sarbanes-Oxley legislation)」；7.4 排名句止于「战胜了平均指数(beat the averages)」；7.4 抛硬币段止于「最终有参赛者连续9次、10次抛出后正面朝上」。</span></div><div class="note" id="n2"><span class="nn">插图剥离</span><span class="nd"><b>②｜</b>第6章正文原有插图 2 张（多为图表截图），已从正文剥离；图6-1「股价模式与随机抛掷硬币的结果」以文字转述，不引图。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜两派业绩审判</span><a href="../05-技术分析与基本面分析/index.html">← 技术分析与基本面分析</a><a href="../07-组合理论与风险/index.html">组合理论与风险 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

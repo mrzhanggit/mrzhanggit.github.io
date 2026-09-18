@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部分 股票及其价值·大众疯狂 · 从郁金香到南海泡沫｜漫步华尔街 精读</title>
+<meta name="description" content="第2章是三幕荒诞剧：荷兰郁金香球茎热、英国南海泡沫与密西西比狂潮、20 世纪 20 年代的华尔街溃败。每一幕的剧本都相同：贪婪泛滥 → 空中楼阁 → 金融万有引力定律。">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-坚实基础与空中楼阁/index.html">← 坚实基础与空中楼阁</a><a href="../03-投机泡沫60至90年代/index.html">投机泡沫60-90年代 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">狂</div>
+  <div class="stamp ">疯狂</div>
+  <h1>大众疯狂 · 从郁金香到南海泡沫</h1>
+  <p class="sub">第2章是三幕荒诞剧：荷兰郁金香球茎热、英国南海泡沫与密西西比狂潮、20 世纪 20 年代的华尔街溃败。每一幕的剧本都相同：贪婪泛滥 → 空中楼阁 → 金融万有引力定律。</p>
+  <div class="meta"><span>第一部分 股票及其价值</span>
+    <span class="k">投机泡沫</span>
+    <span>正文 10,950 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>郁金香</a><a href="#s3" data-t="s3"><span class="cn">叁</span>南海泡沫</a><a href="#s4" data-t="s4"><span class="cn">肆</span>华尔街溃败</a><a href="#s5" data-t="s5"><span class="cn">伍</span>小结</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>10月，是投机做股票特别危险的一个月份。其他特别危险的月份是：7月、1月、9月、4月、11月、5月、3月、6月、12月、8月和2月。</p><cite>——马克·吐温《傻瓜威尔逊》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">三幕荒诞剧，同一个剧本</p><p class="thesis">每出现一次壮观的经济热潮，最基本的特征都是<b>贪婪的欲望一时间恣意泛滥</b>：市场参与者把价值的坚实基础抛诸脑后，沉迷靠不住却令人兴奋的臆想。郁金香、南海、1929 年的华尔街——道具不同，剧本相同，结局都服从金融万有引力定律。</p><div class="chain"><div class="node"><div class="n">第一幕</div><div><p class="tt">郁金香球茎热</p><p class="dd">1634～1637 年的荷兰：奇异球以物易物，「要求选择权」加杠杆，1637 年 1 月价格 20 倍速上涨、2 月更快崩塌</p></div></div><div class="node"><div class="n">第二幕</div><div><p class="tt">南海泡沫</p><p class="dd">1720 年的伦敦：股价 130→1000 英镑，近 100 个「泡沫」项目招摇过市，牛顿也损失惨重</p></div></div><div class="node"><div class="n">插曲</div><div><p class="tt">密西西比公司</p><p class="dd">海峡对岸的约翰·劳：股价两年从 100 法郎涨到 2000 法郎，总市值一度超过全国金银价值总和的 80 倍</p></div></div><div class="node"><div class="n">第三幕</div><div><p class="tt">华尔街溃败</p><p class="dd">1929 年：联手做庄与卖空操纵，10 月 29 日成交量 1640 万股，到 1932 年多数蓝筹跌去 95％ 以上</p></div></div><div class="node"><div class="n">母题</div><div><p class="tt">博傻</p><p class="dd">投资者并非不知泡沫——他们信奉价格总会上涨、买家总会找到；这正是空中楼阁理论的现实版</p></div></div><div class="node"><div class="n">教训</div><div><p class="tt">记忆短暂</p><p class="dd">「为何记忆如此短暂？」——马尔基尔给不出解答，但历史一再重演</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>第一幕：郁金香球茎热</h2><span class="en">TULIPOMANIA</span></div><p class="prose">1593 年，一位新获任命的植物学教授把原产于土耳其的稀有植物从维也纳带到莱登，荷兰人为这种新品花卉着迷，却不肯按教授的价钱买单——于是一个窃贼夜闯教授家盗走球茎，以更低价格卖掉，赚头反而更大。</p><p class="prose">此后十年，郁金香成为广受欢迎但价格昂贵的花；花叶病让花瓣长出彩色条纹「烈焰」，感染病毒的球茎被称为<b>奇异球</b>，越奇异越昂贵。</p><p class="prose">大约 1634 年至 1637 年初，人们开始以物易物，拿土地、珠宝、家具换取球茎。查尔斯·麦基在《大癫狂》中记录了全民入局的程度：</p><div class="aband"><q>贵族、市民、农夫、机工、海员、男仆、女佣，甚至烟囱清扫工和老年女裁缝都不亦乐乎地涉猎其中。</q><cite>——查尔斯·麦基《大癫狂》· 转引自第2章</cite></div><div class="grid g2"><div class="card num"><div class="idx">杠杆</div><h3>要求选择权：17 世纪的看涨期权</h3><p class="cp">市价 100 荷兰盾的球茎，一份要求选择权只需付约 20 荷兰盾选择权费；球茎涨到 200 荷兰盾时行权再卖出，获利 80 荷兰盾——资金增值 3 倍，而直接买卖只能翻一倍。杠杆放大潜在回报，也放大潜在风险。</p></div><div class="card num"><div class="idx">代价</div><h3>一颗「洋葱」 = 一船船员一年口粮</h3><p class="cp">返航水手把富商柜台上误以为是洋葱的东西当作红鲱鱼佐料吃了——那是名贵的「永远的奥古斯都」球茎。富商翻脸不认人，以重罪起诉，让他在牢里待了好几个月。</p></div></div><p class="prose">修正主义史学家彼得·加伯认为 17 世纪荷兰球茎定价比通常认为的合理得多——「永远的奥古斯都」即便在热潮之前价格就已很高，崩盘后个别稀有球茎依然不菲。但马尔基尔指出加伯未能合理解释的关键事实：<b>1637 年 1 月球茎价格以 20 倍的速度上涨，而 2 月价格下降的速度却更快</b>。</p><p class="prose">政府以 10％ 合同面值解决合同执行的计划随价格跌破该标准而受挫，最终多数球茎卖价还不如普通洋葱。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>第二幕：南海泡沫与密西西比狂潮</h2><span class="en">SOUTH SEA BUBBLE</span></div><p class="prose">开场即悖论：一家「既无销售额又无盈利」、无人知道经营什么业务的新公司，却是 300 年前英国最热门的新股发行。</p><p class="prose">南海公司 1711 年宣告成立，承担近 1000 万英镑的政府借据债务（源文此处截断，见校勘①），原始玩法是把低价吃进的政府借据按面额换成 100 英镑股票；董事中无一人有南美洲贸易经验，贩运奴隶的船也因奴隶死亡率极高而无利可图——但他们在伦敦租下豪宅、摆上 30 个镀金铆钉的西班牙座椅，深谙树立形象的艺术。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>1719 年：股价 130 英镑</h4><p>海峡对岸，约翰·劳的密西西比公司股价两年内从 100 法郎涨到 2000 法郎，「百万富翁」一词应运而生；法国密西西比公司总市值一度超过全国金银价值总和的 80 倍。</p></div><div class="step"><div class="dot">2</div><h4>1720 年初：承诺接盘全部政府债务</h4><p>南海公司董事主动提出为金额达 3100 万英镑的全部政府债务提供融资；法案提交议会讨论时，股价立即从 130 英镑涨到 300 英镑——促成法案的支持者（包括乔治一世的情妇及其「侄女」们）都免费获赠股票。</p></div><div class="step"><div class="dot">3</div><h4>1720 年 4 月～6 月：三轮增发</h4><p>4 月 12 日以每股 300 英镑发行新股（首付 60 英镑，余款分八次付清），连国王也认购了总价 10 万英镑的股票；随后 400 英镑、550 英镑、6 月 15 日再增发（首付 10％），股价直抵 800 英镑；上议院半数议员和下议院过半数议员签署通过方案。最后，股价飙升至 1000 英镑。</p></div><div class="step"><div class="dot">4</div><h4>1720 年夏：自己人先跑</h4><p>南海公司的董事和高管意识到股价与公司实际前景已无任何关联，在当年夏天将手中股票抛售一空。消息泄露，股价如开闸之水激流直下，恐慌占据市场。</p></div></div><p class="prose">南海公司已不能满足所有想与自己的金钱分离的傻瓜的需求。近 100 个融资项目推向市场：建造抵御海盗的船舶、促进英国马匹繁殖、从事人类毛发交易、为私生子建立医院、从铅中提取银、从黄瓜中提取阳光，甚至生产永动轮。最佳创意奖属于一位佚名人士——「该公司从事一项极具优势的事业，但无人知晓是什么事业」。</p><p class="prose">早晨 9 点名册一打开，5 个小时之内就有 1000 位投资者递出自己的钱；发起人当即关门大吉，动身前往欧洲大陆，从此人间蒸发。</p><div class="aband"><q>我可以计算天体的运动，却算不出人们的疯狂程度。</q><cite>——艾萨克·牛顿 · 据报道，南海泡沫中损失惨重者之一</cite></div><p class="prose">一盒印满泡沫公司讽刺漫画的「南海」扑克牌宣告热潮近尾声；1720 年 8 月南海股价被董事亲手刺破的小孔引来滔天洪水。英国国会随后通过《泡沫法案》，禁止公司发行任何股票凭证——此后长达一个多世纪，英国市场上的股票凭证相对较少。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">骗局</span><h4>「最佳创意奖」：无人知晓的事业</h4><span class="ar">▶</span></div><div class="cb"><div class="in">一位佚名发起人宣称「该公司从事一项极具优势的事业，但无人知晓是什么事业」——名册一开，5 小时内就有 1000 位投资者递上钱财；发起人当即关门大吉，动身前往欧洲大陆，从此人间蒸发。</div></div></div><div class="case"><div class="ch"><span class="tag mid">荒诞</span><h4>近 100 个融资项目大赏</h4><span class="ar">▶</span></div><div class="cb"><div class="in">建造抵御海盗的船舶、促进英国马匹繁殖、从事人类毛发交易、为私生子建立医院、从铅中提取银、从黄瓜中提取阳光，甚至生产永动轮——南海泡沫顶峰，满足「想与自己的金钱分离的傻瓜」的项目源源不断。</div></div></div></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>第三幕：1929 年华尔街溃败</h2><span class="en">THE CRASH OF 1929</span></div><p class="prose">更成熟的现代能否免俗？20 世纪 20 年代的美国给出了答案。1928 年，投机股市变成一项全民消遣：从 1928 年 3 月初到 1929 年 9 月初，股市涨幅竟与 1923～1928 年初整个期间相等，大型工业公司的股价有时每天上涨 10％ 或 15％。</p><p class="prose">融资买入股票（保证金交易）的融资额由 1921 年的 10 亿美元增至 1929 年的近 90 亿美元——尽管 1929 年通过保证金交易持股的只有约 100 万人，股市投机却成了文化中心。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>联手做庄</h4><p>庄主悄悄吸筹、拉拢做市商窥看「本子」上的限价指令，再让团伙成员对敲——哈斯卡以 40 美元卖出 200 股给西德尼，西德尼以 40.125 美元卖回，循环放大到 1000 股，制造交投活跃假象；配合媒体利好，等大众入场便「拔掉浴缸塞子，悄然放水」。有庄家曾在短短 4 天内把美国无线电公司股价拉升 61％。</p></div><div class="step"><div class="dot">2</div><h4>自家老板卖空</h4><p>大通银行头儿艾伯特·威金 1929 年 7 月卖空 42000 余股本行股票（卖出当前非你所有的股票，期望以后以更低价格购回），11 月平仓净赚数百万美元——利益冲突并未给他带来什么麻烦。</p></div><div class="step"><div class="dot">3</div><h4>9 月 3 日：顶峰</h4><p>股市平均指数达到此后 25 年未被突破的高点。9 月 5 日「巴布森崩盘」：财务顾问巴布森在金融午餐会上重申「崩盘迟早会来临」，纸带引用后市场大幅跳水——美国电话电报公司跌 6 个点、西屋电气跌 7 个点、美国钢铁跌 9 个点。</p></div><div class="step"><div class="dot">4</div><h4>10 月：崩盘</h4><p>10 月 21 日成交量陡增至 600 万余股，收盘后近 1 小时 40 分钟自动报价机才记录完最后一笔；10 月 24 日「黑色星期四」成交近 1300 万股，很多股票几小时内猛跌 40、50 个点；10 月 29 日星期二，NYSE 灾难最深重的一天，成交量 1640 万股。</p></div></div><div class="tbwrap"><table><thead><tr><th>1929 年秋天及其后</th><th>源文数据</th></tr></thead><tbody><tr><td>顶峰</td><td>1929 年 9 月 3 日，该高点此后 25 年一直未被突破</td></tr><tr><td>黑色星期四</td><td>1929 年 10 月 24 日，成交量接近 1300 万股，每笔交易可使价格下跌 5～10 美元</td></tr><tr><td>灾难之巅</td><td>1929 年 10 月 29 日，成交量 1640 万股（相当于 2018 年成千上万亿股的日成交量）</td></tr><tr><td>到 1932 年触底</td><td>除「没有风险」的美国电话电报公司只损失 75％ 市值外，大多数蓝筹股都跌去 95％ 以上</td></tr><tr><td>封闭式基金证据</td><td>1929 年 1～8 月一般封闭式基金按 50％ 溢价交易；高盛交易公司交易价是资产净值的两倍，三角大陆公司达资产净值的 256％</td></tr></tbody></table></div><p class="prose">崩盘前后的两句名言构成绝妙对照：费雪教授坚信股市已到达「永不跌落的高位平台」，甚至认为禁酒制度带来的生产效率提升尚未反映在股价中；胡佛总统则在黑色星期四次日断言美国工商业「处在健康而繁荣的基础之上」。</p><p class="prose">娱乐周刊《形形色色》以「华尔街溃败」为题做了最佳概括——投机狂潮死寂，数十亿美元市值连同数百万人的梦想灰飞烟灭，历史上最具灾难性的大萧条接踵而至。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>小结：为何记忆如此短暂</h2><span class="en">EPILOGUE</span></div><p class="prose">古斯塔夫·勒庞 1895 年在大众心理经典著作中写道：</p><div class="aband"><q>在群体中，积聚的是愚蠢，而不是让人明智的常识。</q><cite>——古斯塔夫·勒庞 · 转引自第2章扉页</cite></div><p class="prose">看来读过这本书的人并不多。纯粹依靠心理支撑而火箭般蹿升的市场行情，都已无可避免地屈服于金融万有引力定律：高不可攀的价格可能维持数年，但最终总会反转掉头向下，而且狂欢暴饮愈烈，宿醉愈深愈沉。至于「为何记忆如此短暂」——马尔基尔给不出恰当的解答，但他确信巴鲁克的话（源文该句在引出巴鲁克处截断，见校勘②）。</p><p class="prose">下一篇：泡沫并未止步于 1929——20 世纪 60～90 年代，机构投资者接过疯狂的接力棒。</p><div class="check" data-k="wsw-02-check"><p class="ct">三大泡沫过后，记下这三条</p><label><input type="checkbox"><span>我记住郁金香、南海与 1929 的共同点：故事越动人，接棒的傻瓜越少</span></label><label><input type="checkbox"><span>我能识别「一夜暴富」的融资项目——无论它包装成球茎、贸易垄断还是新技术</span></label><label><input type="checkbox"><span>我不相信「这次不一样」：金融万有引力定律从未被废除</span></label><label><input type="checkbox"><span>市场崩盘后我不再说「早知道」——投机致贫与储蓄致富的分岔口在欲望管理</span></label><div class="cf">历史 repeating 时的自我保护——已勾选 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下句子在导出源中戛然而止、后续缺失：2.2 节「该公司承担近1000万英镑的政府借据债务（government IOU」；2.3 节「正如卡尔文·柯立芝(Calvin Coolidge)」「约翰·布鲁克斯(John Brooks)在《戈尔康达往事》(Once in Golconda)」「他在大通股票上一直保持着净多头寸」。不补写。</span></div><div class="note" id="n2"><span class="nn">导出截断</span><span class="nd"><b>②｜</b>2.4 小结末句止于「但我确信伯纳德·巴鲁克(Bernard Baruch)」，其引语源文缺失——小结以残句形式照录。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部分｜大众疯狂</span><a href="../01-坚实基础与空中楼阁/index.html">← 坚实基础与空中楼阁</a><a href="../03-投机泡沫60至90年代/index.html">投机泡沫60-90年代 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

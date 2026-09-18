@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第1章·导论 · 经济学既研究财富，更研究人｜经济学原理 精读</title>
+<meta name="description" content="全书的学科宣言：经济学是对人类一般生活事务的研究；它用货币间接衡量动机，关注「穷人的祸根就是他们的贫困」，主张以「经济自由」替换「竞争」，并且研究的是一个实际存在的人，而不是抽象的「经济人」。">
+<style>
+:root{
+  --paper:#F4F1E8;      /* 暖晨纸底 */
+  --paper-2:#E8E3D3;    /* 纸色深一档 */
+  --card:#FBF8EF;
+  --ink:#2E4A5A;        /* 晨蓝墨（主色） */
+  --ink-2:#3D5867;
+  --ink-deep:#0E1416;   /* 深夜晨蓝（hero 底） */
+  --gold:#B08A3A;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#C9A85C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#6E93A8;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#262B28;
+  --tx-2:#49524E;
+  --tx-3:#7B7F76;
+  --line:rgba(38,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E4A5A 0%,var(--ink-deep) 62%);
+  color:#F0EFE6;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,168,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,168,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,168,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F2EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,239,230,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,168,92,.34);color:rgba(240,239,230,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEDE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,168,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EFE0;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,168,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EFE0;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(235,236,228,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(110,147,168,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(110,147,168,.1);color:var(--teal);border:1px solid rgba(110,147,168,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,241,232,.94);
+  border-bottom:1px solid rgba(38,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3D5867;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-卷首-序言与名家点评/index.html">← 卷首·序言与名家点评</a><a href="../02-基本概念/index.html">基本概念 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">人</div>
+  <div class="stamp ">导论</div>
+  <h1>导论 · 经济学既研究财富，更研究人</h1>
+  <p class="sub">全书的学科宣言：经济学是对人类一般生活事务的研究；它用货币间接衡量动机，关注「穷人的祸根就是他们的贫困」，主张以「经济自由」替换「竞争」，并且研究的是一个实际存在的人，而不是抽象的「经济人」。</p>
+  <div class="meta"><span>第1章</span>
+    <span class="k">经济学的实质</span>
+    <span>正文 28,191 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>贫困是否必然</a><a href="#s3" data-t="s3"><span class="cn">叁</span>经济自由</a><a href="#s4" data-t="s4"><span class="cn">肆</span>货币衡量动机</a><a href="#s5" data-t="s5"><span class="cn">伍</span>真实的人</a><a href="#s6" data-t="s6"><span class="cn">陸</span>市场的定义</a><a href="#s7" data-t="s7"><span class="cn">柒</span>规律与路线图</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>经济学不仅是一门研究财富的学问，也是一门研究人的学问，它主要研究影响人类日常生活事物方面最有力、最坚定的那些阻力和动机。</p><cite>——第1章 本章提要</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章做三件事：立学科对象、立研究方法、立全书路线图</p><p class="thesis">绪论把经济学定义为<b>对人的研究</b>——因为人的性格形成于他的日常工作之中；第一节交代这门学问的方法底牌：动机不可直接衡量，只能借货币的结果<b>间接衡量</b>；第二节给经济规律定位，并列出第三章到第六章的行军路线。</p><div class="chain"><div class="node"><div class="n">定义</div><div><p class="tt">研究人的学问</p><p class="dd">政治经济学或经济学是对人类一般生活事务的研究，是获取和使用物质必需品最密切部分的研究</p></div></div><div class="node"><div class="n">忧思</div><div><p class="tt">贫困是否必然</p><p class="dd">「下等阶级」是否必须存在？收入 30 镑与 150 镑的家庭有巨大差别——穷人的祸根就是他们的贫困</p></div></div><div class="node"><div class="n">正名</div><div><p class="tt">经济自由</p><p class="dd">「竞争」一词充满罪恶意味，近代产业的特点是精明而非自私；产业与企业的自由含义比较接近</p></div></div><div class="node"><div class="n">方法</div><div><p class="tt">货币衡量动机</p><p class="dd">经济学家不能直接衡量动机本身，只能间接地通过它的结果来衡量；同一先令对穷人比对富人为大</p></div></div><div class="node"><div class="n">对象</div><div><p class="tt">实际存在的人</p><p class="dd">不是抽象的或「经济的」人——有虚荣心，也会为家庭、邻人或国家而付出牺牲</p></div></div><div class="node"><div class="n">路线</div><div><p class="tt">第三章到第六章</p><p class="dd">需求及其满足 → 生产要素 → 需求与供给的一般理论 → 分配与交换</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>贫困是否必然</h2><span class="en">IS POVERTY NECESSARY</span></div><div class="aband"><q>政治经济学或经济学是对人类一般生活事务的研究，是对个人和社会活动中获取和使用物质必需品最密切的部分的研究。</q><cite>——本章绪论 · 一</cite></div><p class="prose">为什么说经济学更是对人的研究？因为<b>人的性格形成于他的日常工作以及由此获得物质资源的过程中</b>。经济的动机可能不如宗教的动机强烈，但它对人类生活的影响却更为广泛——一个人心情好时，他在大部分时间都会想关于谋生的事情。而收入的多少，可能比工作性质更能影响性格：</p><div class="tbwrap"><table><thead><tr><th>家庭年收入</th><th>源文描述</th></tr></thead><tbody><tr><td>1000 镑或 5000 镑</td><td>对于这个家庭的生活富足状况也许影响不大</td></tr><tr><td>150 镑</td><td>这个家庭可以获得维持美满生活的物质条件</td></tr><tr><td>30 镑</td><td>就不能获得这些条件；极端贫困的生活境况总会削弱人们的才能</td></tr></tbody></table></div><p class="prose">生活在贫民窟的人很少有寻求友谊的机会，不知道什么叫文雅和宁静，甚至也很少理解家庭生活和谐的意义；过度工作和教育不足、疲乏和忧郁、缺乏安静和没有空闲时间，使他们无法尽量发挥他们的智力。于是马歇尔写道——</p><div class="aband"><q>虽然有些苦难不是贫困的必然结果；但总的来说，“穷人的祸根就是他们的贫困”。</q><cite>——本章绪论 · 一</cite></div><p class="prose">亚里士多德认为奴隶制度天经地义；而 19 世纪工人阶级的不断进步，让他们燃起<b>贫困和愚昧可以逐渐被消灭</b>的希望。蒸汽机减少了费力和有害身体的工作，工资提高了，教育逐渐普及。</p><p class="prose">经济学并不能完全解答「贫困是否必然」——这个答案还要依靠人类本性的道德和政治的才能——但经济学范围之内的事实和推论将有助于这个问题的解答。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>为「竞争」正名：近代产业的特征</h2><span class="en">ECONOMIC FREEDOM</span></div><p class="prose">人们常说：近代产业与过去的区别在于它的竞争性。但马歇尔认为这种说法并不令人满意——竞争只是<b>比较次要的、甚至可以说是偶然的东西</b>。真正的特征是一组习惯：独立自主的选择方向并成为习惯；自力更生；谨慎而快捷的选择和判断；未雨绸缪和向既定目标前进的习惯。</p><div class="aband"><q>“竞争”这个名词充满了罪恶的意味，而且还具有某种自私自利和对别人的利益漠不关心的含义。诚然，以前的产业形式没有近代那些自私自利的特点，而也不包含近代的有意识的利人之心。近代产业的特点是精明而非自私。</q><cite>——本章绪论 · 三</cite></div><div class="duo"><div class="colL"><h4>竞争的建设性</h4><ul><li>竞争者的精力和智谋也许有利于社会</li><li>近代的贸易形式包含必须信任他人的习惯，以及抵制欺诈引诱的力量</li><li>对竞争的任何特殊表现必须保持中立态度</li></ul></div><div class="colR"><h4>竞争的破坏性</h4><ul><li>「限制竞争」往往掩盖了生产者中特权阶级的形成</li><li>他们利用联合力量，阻挠一个有能力的人进入这个行业</li><li>卑鄙形式的竞争简直就是可恨——但忽视人类的劣根性同样是愚蠢的</li></ul></div></div><p class="prose">结论是一个正名：我们需要一个不含有任何好的或者坏的道德意义的名词，来说明近代企业和产业的特征——较能自力更生的习惯、较有远见和较为审慎与自由的选择。</p><div class="aband"><q>没有一个名词能包含以上意义，但“产业与企业的自由”，或简言之，“经济自由”的含义比较接近。在没有真正合适的名词之前，它是可以被采用的。</q><cite>——本章绪论 · 三</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>经济学的实质：用货币衡量动机</h2><span class="en">MEASURING MOTIVES</span></div><div class="aband"><q>经济学家不能直接衡量动机的本身，而只能间接地通过它的结果来衡量。</q><cite>——第一节 · 一</cite></div><p class="prose">日常经营工作的最坚定的动机，是获得工作的物质报酬——工资的欲望。当一个人动机所产生的力量（不是动机本身）能用他为了得到某种满足<b>正要放弃的货币额</b>大概衡量，经济学就有了远胜其他研究人的学问的精确方法。但这种衡量有两大局限：</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>同额货币对不同的人代表不同的满足</h3><p class="cp">从每年收入都是 300 镑的两个人中各征 1 镑税，每人放弃的满足程度未必相等——但如果所取平均数足够多，各人的个人特性互相抵消，货币仍是比较好的衡量方法。</p></div><div class="card num"><div class="idx">二</div><h3>同一先令对穷人比对富人为大</h3><p class="cp">下雨时，每年 300 镑收入的职员坐车去上班，每年 100 镑收入的职员仍步行——穷人若用掉那笔车费，以后因缺少这笔钱而感受到的痛苦比富人更多。</p></div></div><p class="prose">而且，赚钱的欲望本身并不一定出于低等的动机。假如一个年轻人为了能自己负担进大学读书的费用而努力工作并尽量节省，这种渴望之心并不卑鄙——</p><div class="aband"><q>金钱是一般购买力，它只是一种达到各种目的——高等的和低等的，精神的和物质的——手段。</q><cite>——第一节 · 四</cite></div><p class="prose">对金钱的欲望并不排斥金钱以外的影响：家庭情感一般仍是<b>利他主义的一种纯粹的形式</b>，家庭关系本身具有一致性，其作用表现出很强的规律性。</p><p class="prose">经济学家乐于用统计表研究慈善捐款——也许能相当准确地预测家道小康的 10 万英国居民捐助给医院、教堂及传道会的捐款额；但大多数被责任感和对邻人之爱所激起的活动不能归纳为规律，经济学的方法不能用于这些活动，就是因为这个理由，而不是因为这些活动不是基于利己心。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>研究的是一个真实的人</h2><span class="en">A REAL MAN, NOT HOMO ECONOMICUS</span></div><p class="prose">习惯从哪里来？在日常生活中，人们并不预先考虑每一活动的结果；但当人们沿袭风俗习惯不加考虑就去做某事时，风俗习惯本身是<b>精密而细心地观察不同行为过程中的利害得失的产物</b>——人们一天工作完毕回家时会彼此谈论：「这样做不合适，那样做就好了」「这个或那个办法虽然省了一点麻烦或一点钱，但对别人是不公平的」。</p><p class="prose">以前的英国经济学家可能过于注重个人活动的动机；但正如一座教堂不仅是等于建成它的那些石头，<b>社会生活也不仅是它的各个成员的生活的总和</b>。经济学应该对财产共同所有以及共同追求重要目的的动机加大注意。于是有了那个著名的收束——</p><div class="aband"><q>经济学家所研究的是一个实际存在的人而不是一个抽象的或“经济的”人。</q><cite>——第一节 · 六</cite></div><p class="prose">这个人不是没有虚荣心和草率的作风，也不是不喜欢为做好工作而做好工作，或是不愿为他的家庭、邻人或国家而付出牺牲；总之，<b>他是一个为热爱高尚生活而热爱高尚生活的人</b>。</p><p class="prose">经济学家主要研究生活的某些方面——动机的作用十分有规律、能够预测、估计能用结果来证实的那些方面——这样，经济学家已将他们的工作建立在科学的基础上了。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>市场的定义与时空边界</h2><span class="en">MARKETS</span></div><p class="prose">绪论的后半段抢先处理了一个概念：市场。它不限于固定场所——伦敦的股票市场、小麦市场、煤炭市场各有固定场所，但交易者散布于全城或郊区仍能形成一个市场，只要他们借助于市集、集会、已公布的价单、邮政而相互取得密切联系。古尔诺的定义是本节的定盘星：</p><div class="aband"><q>经济学家所说的市场，并不是指任何一个特定的商品交易场所，而是指任何地区的全部，在这个地区中，买主与卖主彼此之间的往来是如此自由，以致相同的商品的价格有迅速相等的趋势。</q><cite>——本章绪论 · 二（引古尔诺）</cite></div><div class="tbwrap"><table><thead><tr><th>维度</th><th>源文要旨</th></tr></thead><tbody><tr><td>空间</td><td>电报、印刷机和蒸汽运输扩大影响范围；整个西方世界可看作股票证券和贵金属的市场</td></tr><tr><td>适销条件</td><td>普遍的需求、易于识别、经得起长途运输、耐久、价值比体积大得多——普通砖的市场几乎只限于砖窑附近</td></tr><tr><td>组织完善</td><td>有价证券和贵金属：某公司的一张股票或债券，同任何其他一张收益相同的股票或债券具有完全相同的价值</td></tr><tr><td>间接影响</td><td>即使偏僻的乡镇菜市场也极易被远方变动影响——绝大多数的市场处于世界市场与偏僻市场这两个极端的中间</td></tr><tr><td>时间</td><td>较短时期供给局限于现有存货；较长时期受生产成本影响；很长时期成本又受劳动和物质资料的生产成本影响</td></tr></tbody></table></div><p class="prose">市场越小越容易出现另一种价格：乡镇菜商可能联合起来制定<b>垄断价格</b>——与生产成本几乎毫无直接关系，而主要由对市场的负担能力的考虑所决定。这条线索将在第九篇的垄断理论中正式展开。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>经济规律，与全书的行军路线</h2><span class="en">LAWS &amp; THE ROUTE</span></div><div class="aband"><q>经济规律是对人类在一定条件下活动的倾向的叙述。</q><cite>——第二节 · 一</cite></div><p class="prose">经济规律的假设性比自然科学更难弄清，弄不清时危险也更大。经济学成为独立科学的理由：它主要研究人类活动中<b>最为可衡量的动机所支配的那一部分</b>。研究次序上，马歇尔坚持科学的目的首先是求得知识，其次才是解决实际问题——不应当直接根据用途来计划工作，而应把性质上相类似的所有事实和推论收集在一起。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>第三章 · 需求及其满足</h4><p>需求与消费的研究——过去被忽视，现在因李嘉图式「过于注重生产费用」之弊被纠正而日渐重要</p></div><div class="step"><div class="dot">2</div><h4>第四章 · 生产要素</h4><p>土地、劳动、资本与组织——人是生产的主要要素和唯一目标；在某种意义上生产要素只有两个，即大自然与人类</p></div><div class="step"><div class="dot">3</div><h4>第五章 · 需求与供给的一般理论</h4><p>关于供求关系的一般推论是价值的实际问题的基础，起到基本骨干的作用</p></div><div class="step"><div class="dot">4</div><h4>第六章 · 分配与交换</h4><p>国民收益按各种生产要素分配的中心问题——前四章为它铺平道路</p></div></div><p class="prose">第二节最后回答了一个名分问题：经济学虽受实际需要的极大影响，却尽可能避免讨论党派组织的紧急问题和政治策略——</p><div class="aband"><q>所以，它不是一种纯粹、实用的科学，而是一种艺术。所以，用“经济学”这个有广义含义的术语来命名比用“政治经济学”这个狭义的术语更合适。</q><cite>——第二节 · 四</cite></div><p class="prose">下一篇进入概念地基：财富、生产、消费、劳动与资本——第2章「基本概念」。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜阿尔弗雷德·马歇尔《经济学原理》（北京联合出版公司，章洞易 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第1章｜导论</span><a href="../00-卷首-序言与名家点评/index.html">← 卷首·序言与名家点评</a><a href="../02-基本概念/index.html">基本概念 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='econ-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

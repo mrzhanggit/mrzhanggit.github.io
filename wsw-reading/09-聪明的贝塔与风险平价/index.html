@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分 新投资技术·聪明的β、风险平价与ESG投资｜漫步华尔街 精读</title>
+<meta name="description" content="数千亿美元从主动管理型基金转向指数基金之后，一类新玩家宣称：无须挑股，用相对被动的规则化策略就能更可靠地获得良好回报。本章逐一检验三种新投资技术——聪明的β、风险平价、ESG 投资，结论依然是：指数核心不可替代。">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-行为金融学/index.html">← 行为金融学</a><a href="../10-随机漫步者健身手册/index.html">随机漫步者健身手册 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">聪</div>
+  <div class="stamp s4">聪明的β</div>
+  <h1>聪明的β、风险平价与ESG投资</h1>
+  <p class="sub">数千亿美元从主动管理型基金转向指数基金之后，一类新玩家宣称：无须挑股，用相对被动的规则化策略就能更可靠地获得良好回报。本章逐一检验三种新投资技术——聪明的β、风险平价、ESG 投资，结论依然是：指数核心不可替代。</p>
+  <div class="meta"><span>第三部分 新投资技术</span>
+    <span class="k">新策略三问</span>
+    <span>正文 17,236 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>聪明的β</a><a href="#s3" data-t="s3"><span class="cn">叁</span>四种因素</a><a href="#s4" data-t="s4"><span class="cn">肆</span>回测之坑</a><a href="#s5" data-t="s5"><span class="cn">伍</span>混合基金</a><a href="#s6" data-t="s6"><span class="cn">陆</span>判词</a><a href="#s7" data-t="s7"><span class="cn">柒</span>风险平价</a><a href="#s8" data-t="s8"><span class="cn">捌</span>ESG投资</a><a href="#s9" data-t="s9"><span class="cn">玖</span>最后评价</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>结果？嗨，哥们儿，我得到了很多结果。我知道几千种行不通的方法。</p><cite>——托马斯·爱迪生</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图：三问新投资技术</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">聪明的β、风险平价、ESG —— 逐项过堂</p><p class="thesis">有一类新型投资组合经理认为，要战胜市场无须成为会挑选股票的人：用<b>规则化的相对被动策略</b>就能更可靠地实现良好回报而不承担额外风险。三种策略各带「改善表现的隐含承诺」吸走数千亿美元——本章的任务是把承诺与记录对账。</p><div class="chain"><div class="node"><div class="n">概念</div><div><p class="tt">聪明的β</p><p class="dd">让组合向价值、规模、趋势、低β等「特色」倾斜，追求更高的夏普比率；与多因素模型一脉相承</p></div></div><div class="node"><div class="n">记录</div><div><p class="tt">四因素成绩</p><p class="dd">历史回测漂亮（价值溢价 4.0％、趋势溢价 9.1 个百分点），但截至 2022 年的 10 年，单一因素基金跑输或仅平指数</p></div></div><div class="node"><div class="n">实践</div><div><p class="tt">混合因素基金</p><p class="dd">DFA、RAFI、GSLC、等权重 RSP：费率低廉、业绩略胜同类，但十年间多因素基金甚至劣于单一因素基金</p></div></div><div class="node"><div class="n">杠杆</div><div><p class="tt">风险平价</p><p class="dd">对安全资产加杠杆：债券收益翻倍风险翻倍；桥水全天候基金 15 年真实收益未胜先锋平衡型指数基金</p></div></div><div class="node"><div class="n">伦理</div><div><p class="tt">ESG 投资</p><p class="dd">评级机构互相打架（相关系数 0.61），「漂绿」盛行；无证据支持长期跑赢，善果不易获得</p></div></div><div class="node"><div class="n">结论</div><div><p class="tt">指数核心</p><p class="dd">没有任何一只基金可以替代以大型指数为基础、多样化程度很高的指数化核心投资</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>何为「聪明的β」：把夏普比率做高</h2><span class="en">SMART BETA</span></div><p class="prose">「聪明的β」并没有被广泛接受的统一定义。多数人心中的版本是：用<b>相对被动的、以规则为依据</b>的策略，在不高于整体股市指数基金风险的前提下争取额外收益。</p><p class="prose">纯粹指数化投资按市值分配权重，自 1927 年以来股票年回报（含股利与股价上涨）比美国国债大约高出 <b>7 个百分点</b>——但 2000 年 3 月～2009 年 3 月这 9 年间股票价格实际上出现了下跌，长时段表现不理想必须照单全收。</p><p class="prose">聪明的β投资者的主张是：市值权重并非最优，让组合向某个「特色」倾斜——价值型或增长型、大市值或小市值、趋势强或弱——可以找到更好的风险收益平衡。</p><p class="prose">衡量工具是夏普首创的<b>夏普比率</b>：分子是超过无风险利率（通常指 3 个月期美国国债利率）的超额收益率，分母是收益率标准差。策略 A 产生 10％ 额外收益率、波动率 20％，策略 B 同样收益、波动率 30％——A 更受偏爱，每单位风险收益率更高。</p><p class="prose">聪明的β与第9章的多因素模型一脉相承，常被称为<b>基于不同因素进行的投资</b>：如果 β 不能完全衡量风险，那么各种倾斜便可以被解释为额外风险因素——向小市值倾斜，就是在赌小公司的风险溢价能带来收益增加。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>四种美味特色：价值、规模、趋势、低β</h2><span class="en">FOUR FACTORS</span></div><div class="grid g2"><div class="card num"><div class="idx">因素1</div><h3>价值胜出</h3><p class="cp">多德与格雷厄姆 1934 年的宣言：随时间推移「价值」终会胜出——找低市盈率、低市净率的股票。这与行为金融学吻合：投资者过度自信、为增长股支付过高价格。马尔基尔自己也同情此法（GARP：以合理价格购买增长型股票）。但低市盈率可能说明财务困境的风险已在股价中体现——2009 年花旗、美银的股价大大低于账面净值，看起来很可能被政府接管。1927～2020 年价值因素（HML）年风险溢价 <b>4.0％</b>，夏普比率 0.34。</p></div><div class="card num"><div class="idx">因素2</div><h3>小便是好</h3><p class="cp">伊博森研究：自 1926 年以来美国小型公司股票收益率比大型公司高出约 <b>2 个百分点</b>。法玛-弗伦奇十分位划分：市值最小的 10％ 收益率最高、最大的 10％ 最低，且同样的 β 水平上小公司表现更好。但要记住：小市值股票风险更高——规模是「应以额外收益而非定价无效性补偿」的风险因素。</p></div><div class="card num"><div class="idx">因素3</div><h3>市场中存在一些趋势</h3><p class="cp">短持有期内上涨之后续涨可能性稍大（从众追涨效应、盈利消息反应迟缓），长持有期则均值回归。用不包括最近一个月的近 12 个月收益率衡量，做多最强、做空最差：1927～2020 年 90 余年产生 <b>9.1 个百分点</b>的风险溢价和 <b>0.59</b> 的夏普比率。但很难将其解释为风险——「趋势崩溃」时市场最爱的股票遭遇惩罚性反转。</p></div><div class="card num"><div class="idx">因素4</div><h3>低β值股票收益等于高β值</h3><p class="cp">第9章已证 β 与收益没什么关系：高 β 股票并未产生 CAPM 假定的更高收益。既然低 β 股票波动小、收益不差，持有低 β 组合便可提高夏普比率；再用保证金融资把 β 翻倍（每 1 美元市值自有 50 美分），收益与风险同步翻倍——这正是「风险平价」的基础。此外，「盈利能力」与「公司品质」是另外两个常用因素。</p></div></div><p class="prose">注意所有因素测量的共同假设：做多趋势最强、市净率最低、市值最小的股票，并做空相反一端——<b>交易成本、税收与其他实施成本一概不计</b>。这正是问题开始的地方。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>会出现什么问题：从回测到真金白银</h2><span class="en">CATCHES</span></div><p class="prose">回测里的四个因素都产生过很好的风险调整后收益，但实践中有三道坎：<b>其一</b>，多空双仓策略涉及相当大的交易成本，平仓一次卖空操作的买券成本可能很高。</p><p class="prose"><b>其二</b>，若因素收益源自参与者的行为错误而非风险补偿，随时间推移会被套利交易消除——资金流入低 β 产品时尤其如此，因素溢价在为人理解并广泛传播之后趋于减少。</p><p class="prose"><b>其三</b>，真金白银的成绩单并不漂亮：把四类单一因素基金与先锋整体股市指数基金（VTSAX）比较（截至 2022 年的 10 年间），<b>趋势型略优于整体市场，价值型、小市值和低波动性皆劣于整体市场</b>；所有单一因素基金都经历过长期劣于整体市场的状况，风险调整后收益也没有显著提高。</p><div class="tbwrap"><table><thead><tr><th>单一因素基金（截至2022年的10年）</th><th>与 VTSAX 整体股市指数基金比较</th></tr></thead><tbody><tr><td>趋势型（如 AQR 的 AMOMX）</td><td>略优于整体市场</td></tr><tr><td>价值型（如先锋 VVIAX，追踪 CRSP 美国大市值价值指数）</td><td>较为逊色</td></tr><tr><td>小市值（如先锋 VSMAX）</td><td>较为逊色</td></tr><tr><td>低波动性（SPLV，只买波动性低的股票）</td><td>较为逊色</td></tr><tr><td>风险调整后收益</td><td>一直没有显著提高——聪明的β并非更胜一筹的投资方式</td></tr></tbody></table></div><p class="prose">混合因素策略理论上更优：因素之间相关系数通常很低甚至为负（趋势与 β、价值、规模负相关），价值倾斜失灵时趋势倾斜往往增强收益。</p><p class="prose">伯克金与斯威德罗在四个因素上各投 25％（β、规模、价值、趋势），模拟出<b>低得引人注目的波动性与高得多的夏普比率</b>；再加「盈利能力」与「公司品质」还可提高夏普比率，代价是平均收益更低。但别忘两条脚注：模拟未计入任何管理费或交易成本，且各部分都是多空双仓组合（源文此句句末截断）。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>实践中的混合基金：DFA、RAFI、GSLC 与等权重</h2><span class="en">IN PRACTICE</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>DFA 基金管理公司</h4><span class="ar">▶</span></div><div class="cb"><div class="in">20 世纪 80 年代初成立，用法玛-弗伦奇规模与价值两因素设计组合，再向近期价格强势、盈利增长强劲的股票倾斜增强收益；2021 年管理资产远超 6500 亿美元。成本低廉、业绩略胜同类「聪明的β」基金，并直言不讳：任何额外收益都代表对额外风险的适当补偿。截至 2022 年的一二十年，价值股严重落后时它同样难看。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>RAFI 基本面指数基金</h4><span class="ar">▶</span></div><div class="cb"><div class="in">罗伯特·阿诺特认为市值权重法总让你超持被高估的增长股，于是按盈利、资产等经济指标定权重——本质上是向价值与小市值倾斜的多因素组合。2009 年重仓低市净率大型银行交出极出色答卷，但那是深陷困境、可能被国有化的银行——风险极大。</div></div></div><div class="case"><div class="ch"><span class="tag mid">中性</span><h4>高盛 GSLC 与等权重 RSP</h4><span class="ar">▶</span></div><div class="cb"><div class="in">高盛 2015 年发行 GSLC，靠价值、趋势、品质、低波动四因素构建，费率仅 9 个基点（0.09％），为聪明的β基金中最低。Invesco 等权重标普500（RSP）给每只股票五百分之一的权重——既增小公司又增价值公司权重；但它没有税收优势：调仓须卖出涨得最多的股票。</div></div></div></div><p class="prose">多因素基金的长期记录一直显示其有前途——得益于因素间低相关或负相关，有些基金带来一定收益提升、夏普比率接近大型股市指数。然而矛盾的是，<b>截至 2022 年的十年间，多因素基金的表现甚至劣于单一因素基金</b>；调仓产生应税资本利得，税收优势也可能稍逊。</p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>对投资者有何意义：小心被夹住</h2><span class="en">VERDICT</span></div><p class="prose">聪明的β依赖某种类型的主动管理——不挑单只股票，而是向历史上已显出高于市场收益的因素倾斜；好处是费率远低于传统主动基金。坏处是记录时好时坏：多因素 ETF 十年未产生超额收益，税收优势也不如不需定期调仓的市值权重基金。</p><p class="prose">即便在获得超额收益或更有利夏普比率的时段，也应把超额收益解读为<b>承担一组不同风险的回报</b>——聪明的β可能并不代表一种更好的「捕鼠夹子」，投资者应该警惕，不要让自己被<b>风险更大的捕鼠夹子</b>给夹住了。</p><p class="prose">策略公布后广为人知便常失效——依赖误定价的策略尤其如此；若确想赌某些风险因素未来更优，前提是你的组合核心由按市值加权、跟踪大型指数的指数基金构成。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>风险平价：给安全资产加杠杆</h2><span class="en">RISK PARITY</span></div><p class="prose">瑞·达利欧在桥水开发出名为<b>全天候基金</b>的风险平价产品。桥水文化声名在外：所有会议录音录像、雇员卡片公开展示自身不足、公开批评被称为「公开执行的绞刑」、还要求把鬣狗猎杀幼年牛羚视为同事相处的行动蓝图——几年内三分之一雇员离开，有雇员向康涅狄格州人权委员会投诉桥水是一只「装满恐惧和胁迫的鼎镬」。</p><p class="prose">联邦调查局前局长科米（桥水前雇员）的证词颇为传神：</p><div class="aband"><q>我一生中只在这种陌生的实地调查中受到过‘盘问’。我出庭作过证，我多次向美国总统做过简要汇报，我在美国最高法院的法官面前争论过，而我却在桥水公司受到过盘问。桥水最不讲情面。</q><cite>——詹姆斯·科米 · 第11章</cite></div><div class="aband"><q>他是一个精明的混蛋。</q><cite>——詹姆斯·科米评瑞·达利欧 · 第11章</cite></div><p class="prose">抛开文化，风险平价的证据基础是：相对安全的资产收益常高于其风险所要求的水平，高风险资产反而定价过高——就像赛马场，人们对最不可能获胜的赛马过度押注（每场都押最冷门的马约输 40％），对最受追捧的赛马投注过低（每场都押热门约输 5％）。</p><p class="prose">落到资产上：法玛-弗伦奇已证高 β 不带来更高收益，于是以保证金融资买入低 β 资产、把组合 β 提到市场水平，便可能获得<b>高于市场组合的收益率</b>。</p><p class="prose">债券同样适用：90 年间（截至 2022 年）债券平均收益 5.9％、股票 10.3％，债券波动率约为股票的一半（股票收益率标准差 2％，债券不足 1％）；2007～2016 年以 50％ 保证金融资买入债券，投资收益翻倍、风险也翻倍（假设每 100 美元投资中融资 50 美元的成本为零）。</p><p class="prose">对照传统 60/40 组合更能看清问题：60/40 看似谨慎，<b>其波动性约 90％ 来自股票那 60％ 的仓位</b>，2008 年危机之年丧失了超过 25％ 的持仓市值；机会轨迹上 60/40 的位置接近全股票端，而从无风险利率引出的直线与轨迹相切处，才是股票与债券的风险平价组合。</p><p class="prose">实践中全天候基金纳入房地产、大宗商品、防通胀国债等多资产类别，对不同经济情况做出不同反应——「全天候」由此得名。</p><p class="prose">但纰漏同样清晰：风险平价在 2008 危机后渐受欢迎，靠的是 1980 年代初至 2020 年债券出类拔萃的风险调整后收益——彼时美国国债收益率达两位数，2020 年 10 年期国债收益率已不足 1％；若利率回升至正常水平，债券价格下跌、收益进一步下降。</p><p class="prose">杠杆是潜在危险的工具：不加杠杆者可以持有下跌债券等反弹，加杠杆者可能在急剧下跌中<b>被迫清盘、把浮亏变为永久亏损</b>。真实成绩单：桥水全天候（12％策略）基金 2006 年 7 月～2021 年 7 月<b>未产生较先锋平衡型指数基金更高的收益率，夏普比率也更低</b>。</p><p class="prose">结论留有余地：杠杆可放入投资者工具箱，对持有广泛多样化组合、能承受杠杆风险的高净值投资者，风险平价值得一小席之地——用杠杆增收益，比把组合集中在高收益资产上更为有效。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>ESG投资：善果是不易获得的</h2><span class="en">ESG</span></div><p class="prose">ESG 投资让组合管理人清晰思考上市公司对环境和社会的影响、以及公司治理是否遵循最佳惯例，运动箴言是那句常被认为源自富兰克林的「人行善事，便有善果」。</p><p class="prose">贝莱德（2021 年管理资产近 10 万亿美元）明确宣称可持续发展型投资能提升收益；彭博行业研究预测到 2025 年 ESG 资金将超过 50 万亿美元——占全球管理型基金资产估计值的三分之一以上。</p><p class="prose">问题在于：不同评估机构的分值差异巨大——麻省理工学院研究发现<b>机构间相关系数平均仅 0.61，有些低至 0.42</b>；而标普与穆迪信用评级的相关系数超过 0.99。</p><p class="prose">同一公司在不同机构眼里判若两人：苹果被路孚特评为 73/100，标普全球只给 23/100（接近 22 家同行最低）；Sustainalytics 认为苹果治理是最优之列，MSCI 则把它的治理评分排在同类倒数第二。电力行业的埃克西尔能源是碳足迹之最还是首家承诺 2050 年无碳生产的风电领头羊？</p><p class="prose">取决于你问谁。</p><p class="prose">规模最大的 ESG 基金头部持仓里赫然是 Alphabet、Meta、维萨、万事达——这些公司都受到应有的公众争议：侵犯隐私、收取高得离谱的利息。</p><p class="prose">ESG 流行还催生<b>「漂绿」</b>：一家航空公司宣称横贯大陆航线平均碳排放低于对手，依据是「每位旅客碳排放量」——只因它用座位更紧凑的大型飞机，仿佛把温度计从华氏改成摄氏就不会全球变暖。业绩层面：2020 年疫情油价暴跌、科技股飙升，ESG 基金表现优秀；2021 年石油股跻身市场最优，风向逆转。</p><p class="prose"><b>没有任何令人信服的研究表明 ESG 投资提供一贯胜出的长期收益</b>；这类基金多样化不足、风险更大、费率更高。亚当斯与斯韦德罗的最全面调查指出：ESG 需求推高「绿色环保」股价、压低其长期必要收益率——短期收益的实现以损失长期收益为代价（源文此段有一句疑脱否定字，存疑照录，见篇末校勘）。</p><p class="prose">至于 ESG 能否改变世界：降低碳排放最有效的办法是改激励机制——征收碳税或拍卖可交易污染许可证；出售排放权优于赠送排放权。</p><p class="prose">管理资产最多的 4 只 ESG ETF（ESGU、USSG、SUSL、DSL）中只有 DSL 有长期记录，且截至 2022 年的 10 年<b>逊于 VTSAX 指数基金</b>——在试图「人行善事，便有善果」的过程中，你可能两样目标都不能实现。</p><p class="prose">真要投 ESG：核心仍是低成本指数基金，再小额配置与你的伦理目标相符的主题基金，并认真核查持仓——尽职调查最为重要。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>最后评价：指数核心不可替代</h2><span class="en">FINAL WORD</span></div><p class="prose">三问三答收束：聪明的β果真聪明吗——策略依赖主动倾斜，费率虽低，但十年记录显示它并非更好的捕鼠夹子；风险平价是否风险太大——杠杆在利率正常化与市场风暴面前可能致命，全天候基金 15 年真实成绩未胜平衡型指数；ESG 能既行善又有善果吗——评级混乱、漂绿横行、长期收益无证据。</p><p class="prose">高净值投资者不妨审慎地把多因素基金或风险平价组合添入组合，所有投资者也可以加入一两只可持续发展基金——但前提是成本低廉、税务影响可与组合其他部分抵消。</p><p class="prose"><b>以大型指数为跟踪对象的整体股市指数基金，应当成为每个人投资组合的核心部分</b>；没有任何一只基金可以替代以大型指数为基础、多样化程度很高的指数化核心投资。</p><div class="check" data-k="wsw-09-check"><p class="ct">面对新投资技术的三个问句</p><label><input type="checkbox"><span>我看到「因素溢价」的历史回测时，会先问交易成本、税收与多空假设是否计入</span></label><label><input type="checkbox"><span>我明白超额收益可能只是承担另一组风险的回报，而不是更好的捕鼠夹子</span></label><label><input type="checkbox"><span>我懂得杠杆的双刃：跌市里被迫清盘会把浮亏变成永久亏损</span></label><label><input type="checkbox"><span>我看 ESG 基金时核对过具体持仓，而不是只信名称与评级</span></label><label><input type="checkbox"><span>我的组合核心，依然是按市值加权、跟踪大型指数的低成本指数基金</span></label><div class="cf">三问过后，核心依旧——已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下各句在导出源中不完整，均照录不补写：11.2.7 段5 止于「多空双仓投资组合」句末缺标点；11.5.2 段2 止于「也会让其风险翻一倍」句末缺标点；11.5.3 段5 止于「股票和债券风险平价投资组合」句末缺标点。表11-1、表11-2、表11-3、表11-4、表11-5 在源文中仅存标题（表11-4 存脚注①「假设每100美元的投资之中融资50美元的成本为零」），正文数据以文字转述。</span></div><div class="note" id="n2"><span class="nn">源文存疑</span><span class="nd"><b>②｜</b>11.6 段8「但有毫不含糊的证据表明，可持续发展型投资会提升长期投资收益」一句，与其上下文（短期收益以损失长期收益为代价、应接受更低长期收益）语义相悖，疑脱否定词，存疑照录，精读中按上下文语义转述。</span></div><div class="note" id="n3"><span class="nn">插图剥离</span><span class="nd"><b>③｜</b>本篇源行段含插图 14 张（多为图表截图），已从正文剥离；图11-1（风险平价与60/40投资组合之比较）以文字转述，不引图。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜聪明的β与风险平价</span><a href="../08-行为金融学/index.html">← 行为金融学</a><a href="../10-随机漫步者健身手册/index.html">随机漫步者健身手册 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

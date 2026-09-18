@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分 专业人士的博弈·技术分析与基本面分析 · 两种方法论｜漫步华尔街 精读</title>
+<meta name="description" content="第二部分开篇：技术分析是空中楼阁理论的实操版，基本面分析是坚实基础理论的实操版。第5章讲清两派怎么玩——四条估值规则、三条警示，以及各自动态失灵的理由。">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../04-21世纪超级泡沫/index.html">← 21世纪超级泡沫</a><a href="../06-技术派与基本派业绩审判/index.html">两派业绩审判 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">析</div>
+  <div class="stamp s3">方法论</div>
+  <h1>技术分析与基本面分析 · 两种方法论</h1>
+  <p class="sub">第二部分开篇：技术分析是空中楼阁理论的实操版，基本面分析是坚实基础理论的实操版。第5章讲清两派怎么玩——四条估值规则、三条警示，以及各自动态失灵的理由。</p>
+  <div class="meta"><span>第二部分 专业人士的博弈</span>
+    <span class="k">两种分析</span>
+    <span>正文 14,744 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>两派对照</a><a href="#s3" data-t="s3"><span class="cn">叁</span>图表语言</a><a href="#s4" data-t="s4"><span class="cn">肆</span>图表派死穴</a><a href="#s5" data-t="s5"><span class="cn">伍</span>估值四规则</a><a href="#s6" data-t="s6"><span class="cn">陆</span>三条警示</a><a href="#s7" data-t="s7"><span class="cn">柒</span>实战三规则</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>百闻不如一见。</p><cite>——中国谚语</cite></div><div class="epi"><p>最了不起的天赋莫过于能估测事物的真实价值。</p><cite>——拉罗什福科《道德箴言录》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">城里最大的游戏：两套方法论，各带死穴上场</p><p class="thesis">每个交易日都有总市值达数千亿美元的股票在交易，专业分析师参与的这个游戏被称为<b>「城里最大的游戏」</b>。技术分析把股市当 90％ 的心理博弈，基本面分析把股市当 90％ 的逻辑推演——第二部分的任务，就是审判两派的成绩单。</p><div class="chain"><div class="node"><div class="n">图谱派</div><div><p class="tt">技术分析</p><p class="dd">绘制并解读图表：趋势、阻力位、支撑位、头肩顶；10％ 靠逻辑、90％ 靠心理</p></div></div><div class="node"><div class="n">估值派</div><div><p class="tt">基本面分析</p><p class="dd">估计内在价值：90％ 靠逻辑、10％ 靠心理；90％ 的华尔街证券分析师自认属于此派</p></div></div><div class="node"><div class="n">规则</div><div><p class="tt">估值四规则</p><p class="dd">增长率越高、股利越多、风险越低、利率越低 → 越愿付高价</p></div></div><div class="node"><div class="n">警示</div><div><p class="tt">三条警示</p><p class="dd">未来无法证明；用不确定的信息算不出精确值；市场对增长的出价此一时彼一时</p></div></div><div class="node"><div class="n">死穴</div><div><p class="tt">动态失灵</p><p class="dd">技术方法人人使用便失效；内在价值可随计算者意愿改写</p></div></div><div class="node"><div class="n">合流</div><div><p class="tt">三条实战规则</p><p class="dd">买持续增长、买低市盈率增长股、找能建空中楼阁的故事</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>两派的世界观</h2><span class="en">TWO SCHOOLS</span></div><p class="prose">两派的方法各与其信奉的定价理论对应：<b>技术分析</b>是预测股票买卖时机的方法，信奉空中楼阁理论；<b>基本面分析</b>应用坚实基础理论的信条挑选个股。图表分析师认为股市只有 10％ 可从逻辑角度思考，其余 90％ 应从心理层面分析；基本面分析师恰好相反——90％ 逻辑、10％ 心理。</p><div class="duo"><div class="colL"><h4>图表分析师</h4><ul><li>第一原则：所有基本面信息已自动反映在以往价格之中</li><li>第二原则：股价倾向于沿趋势运动</li><li>可以不了解公司经营什么业务，「倒碗」形对微软和对可口可乐意义完全一样</li><li>很多图表分析师甚至懒得看报、不查金融网站</li></ul></div><div class="colR"><h4>基本面分析师</h4><ul><li>力图确定股票的内在价值（坚实基础价值）</li><li>价值取决于资产、盈利与股利预期增长率、利率水平与风险</li><li>内在价值高于市价就建议买入，认为市场终会准确反映真正价值</li><li>很多华尔街分析师认为做图表分析师有失尊严、缺乏专业水准</li></ul></div></div><p class="prose">图表分析师中的极端者是早期图表分析师约翰·迈吉：在斯普林菲尔德的小办公室里用木板把窗户封得严严实实，「当我进入办公室的时候，我就把整个世界都关在了外面」——不可能因为阳光明媚就说「买进」，也不可能因为刮风下雨就说「卖出」。</p><p class="prose">如今的图表分析师已改名「技术分析师」，用电脑调出成交量、200 日移动均线、相对强弱等数百个指标，带着孩童摆弄电动火车玩具一般的满足和兴奋。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>图表的语言：趋势、阻力与支撑</h2><span class="en">CHARTS</span></div><p class="prose">绘图本身再容易不过：垂线底端是当日最低价、顶端最高价，短横线表示收盘价，图底再画一条垂线表示成交量。股价运行模式对图表分析师的意义，好比 X 线摄片对外科医生。</p><p class="prose">他们首先寻觅<b>趋势</b>——用两条线连接所有最高点与最低点，造出一条「通道」；股价涨到 24 美元便陷入困境的情形叫<b>阻力位</b>；发出见顶信号的模式叫<b>头肩顶形态</b>——股价一旦「刺穿颈线」，便清脆而响亮地发出卖出信号。</p><p class="prose">支撑位与阻力位的心理学根基，是人们总记着以前买股票的买价：假设某股在 50 美元左右盘桓很久后跌到 40 美元，当股价涨回 50 美元时，套牢者会急不可耐地抛空以求不赔不赚——50 美元便成了「阻力区」；反过来，错失良机的投资者会在股价跌回低点时迫不及待买入，支撑区因而越跌越结实。</p><p class="prose">先前的阻力区一旦被突破，就会变成新的支撑区——这是图表分析师眼中的多头信号。</p><p class="prose">从实际操作看，图表分析师是短线交易者而非长线投资者：征兆有利就买进，凶兆出现便卖出，「他对待股票的轻率态度，就好像某些人和异性打情骂俏」，取得的成绩只是成功的进进出出，并不给人以幸福和满足的长相厮守。术语清单同样花哨：双底、突破、背离底部、稳步盘升、展开大行情、创出新高、买入高潮。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>图表分析法为何可能不管用</h2><span class="en">WHY CHARTS FAIL</span></div><p class="prose">图表分析师自己往往也答不出「为什么图表分析法就该奏效」。</p><p class="prose">最有道理的三个解释：一是从众本能使趋势自我延续，股价上涨本身就是自我实现的预言；二是基本面信息可能存在不平等的获取途径——内部人先买、亲戚朋友跟进、机构重仓、最后轮到「像你我这样可怜的懒虫」，于是消息利好时股价逐渐上涨；三是投资者对新信息最初常常反应不足，「意外盈利」后的调整不完全，当前股价势头得以保持一段时间。</p><p class="prose">但驳斥它的理由同样锋利：<b>其一</b>，图表分析师在趋势确立后才买入、趋势被打破后才卖出，剧烈反转常常突如其来，因而经常错失良机；<b>其二</b>，无论什么技术，用的人越多价值越小——若人人见到信号同时行动，任何买卖信号都将毫无价值；<b>其三</b>，交易者会预测技术信号何时出现并提前应对，预测得越早越不确定。</p><p class="prose">最有力的驳斥来自利润最大化的内在逻辑：假设 Universal Polymers 公司的研究员山姆发现的新工艺有望使盈利和股价翻一番，股价将从 20 美元涨到 40 美元——那么山姆和亲戚朋友会持续买入，「这个过程也许不消几分钟便告结束」。如果有人知道明天股价会涨到 40 美元，今天股价就会涨到 40 美元。</p><p class="prose">市场很可能存在一种非常有效的机制。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">人物</span><h4>约翰·迈吉的封窗办公室</h4><span class="ar">▶</span></div><div class="cb"><div class="in">早期图表分析师迈吉在斯普林菲尔德的小办公室里用木板把窗户封得严严实实——不因阳光明媚说买进，也不因刮风下雨说卖出；他要把整个世界都关在外面，只看图表。</div></div></div><div class="case"><div class="ch"><span class="tag mid">思想实验</span><h4>山姆的新工艺</h4><span class="ar">▶</span></div><div class="cb"><div class="in">Universal Polymers 的研究员山姆发现新工艺有望使盈利和股价翻一番，股价将从 20 美元涨到 40 美元——山姆和亲戚朋友会持续买入，这个过程也许不消几分钟便告结束。</div></div></div></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>基本面分析：估值的四条规则</h2><span class="en">FOUR RULES</span></div><p class="prose">基本面分析师最重要的工作是估计公司未来的盈利流和股利流——股票的价值就是预计投资者未来从该股票中获得的所有现金流的现值。证券分析师必须是没有神灵启示的预言家：研究历史记录、评判利润表与资产负债表、实地走访管理团队。</p><p class="prose">格雷厄姆在《聪明的投资者》里挖苦道，分析师让人想起《彭赞斯的海盗》里那位博学多才的少将——「当他说到直角三角形斜边的平方时，会讲出那么多令人开心的相关故事」。四个基本决定因素构成四条规则。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>规则1：预期增长率</h4><p>股利增长率和盈利增长率越高，理性投资者应愿意支付越高的价格。复合增长让 10 加 10 等于 21——100 美元按 10％ 复利两年是 121 美元；72 法则：利率除以 72 即钱翻倍的年数（15％ → 4.8 年）。推论：超常增长率预期持续时间越长，应支付的价格越高。</p></div><div class="step"><div class="dot">2</div><h4>规则2：预期股利支付率</h4><p>在其他条件相同的情况下，一家公司发放的现金股利占其盈利的比例越高，理性投资者应愿意为其股票支付越高的价格——预期增长率相同的两只股票，持有股利支付率高的，财务状况更好。</p></div><div class="step"><div class="dot">3</div><h4>规则3：风险程度</h4><p>股票风险越低，理性投资者应愿意支付越高的价格。强生波动性极小（大盘跌 20％ 通常只跌 10％），获评适合鳏寡孤独者的股票；Salesforce.com 历史波动性大（大盘跌 20％ 时典型下挫 30％ 以上），持有它无异于参与赌博。</p></div><div class="step"><div class="dot">4</div><h4>规则4：市场利率水平</h4><p>市场利率越低，理性投资者应愿意为股票支付越高的价格。20 世纪 80 年代初优质公司债券收益率飙升到接近 15％，资金大量流向债市、股市大幅下跌；1987 年利率大幅上升，10 月 19 日便出现股市大崩盘。</p></div></div><p class="prose">增长的神话也有算术上限：若全美人口和加利福尼亚州人口都以各自最近的增长率继续增长，到 2045 年就会有 120％ 的全美人口居住在加利福尼亚州。公司亦然——100 万美元盈利的公司增长 10 万即达 10％，1 亿基数的公司却需增加 1000 万才能做到同样的增长率。</p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>三条重要警示</h2><span class="en">CAVEATS</span></div><div class="grid g3"><div class="card num"><div class="idx">警示1</div><h3>预期无法证明</h3><p class="cp">预测未来盈利和股利是风险极大的差事：2008 年投资者预测多数公司增长平平；互联网泡沫期间却深信高速增长的新时代铁板钉钉。戈德温说得好：「预测是很难做的——尤其是关于未来的预测。」</p></div><div class="card num"><div class="idx">警示2</div><h3>不确定的信息算不出精确值</h3><p class="cp">算出的「价值」比市价低一点，就悄悄把增长期从 10 年改成 11 年——任何特定的「价值」总可以通过增长率和增长期限的某个组合计算得到。股票的现值完全可以随计算者的意愿而改变；谁也不知道一只股票的市盈率该是多少倍才适当。</p></div><div class="card num"><div class="idx">警示3</div><h3>市场对增长的出价会变</h3><p class="cp">60 年代初和 70 年代市场愿为增长付出极高价钱；80 年代后期高增长股市盈率只稍高一点；2000 年初纳斯达克 100 指数成分股市盈率又达三位数。把任何一年的估值关系当作市场常态来使用都是极其危险的。</p></div></div><p class="prose">基本面分析同样有三个潜在缺陷：分析师获得的信息和所做的分析可能不正确；对「内在价值」的估计值可能不正确；股票价格可能不会向内在价值的估计值收敛——市场或许会采取让所有股票市盈率下调的方式矫正自身的「错误」，而不是抬高你看好的那只股票。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>合流：综合使用的三条规则</h2><span class="en">THREE RULES</span></div><div class="ladder"><div class="step"><div class="dot">1</div><h4>规则1：只买盈利增长预期能连续五年以上超过平均水平的公司</h4><p>超乎寻常的长期盈利增长率，是促成多数股票投资获得成功的唯一最重要的因素——谷歌、网飞等表现真正杰出的股票均属增长型股票。买入盈利开始快速增长的公司，便有机会赢得双重好处：盈利和市盈率都可能提高。</p></div><div class="step"><div class="dot">2</div><h4>规则2：千万不能为一只股票付出超过其坚实基础价值的价格</h4><p>以合理市盈率买入增长股，若预测正确可获双重好处（每股 1 美元盈利、7.5 美元市价的股票，盈利翻倍且市盈率升到 15 倍时值 30 美元——赚 3 倍）；若市盈率已远高于市场平均水平而增长未兑现，双重好处就变成双重打击。彼得·林奇的法子：计算市盈率与增长率之比，只买比值小的——增长率 50％、市盈率 25 倍（1:2）远优于增长率 20％、市盈率 20 倍（1:1）。</p></div><div class="step"><div class="dot">3</div><h4>规则3：寻找投资者可在其预期增长故事之上建立空中楼阁的股票</h4><p>投资者都是感性动物，受贪婪、赌性、希冀和恐惧驱使。要扪心自问：手里的股票，其故事是否能引起大众的喜爱？能从故事中生发出富有感染力的梦想吗？投资者能在故事之上建立空中楼阁——真正坐落在某个坚实基础之上的空中楼阁吗？</p></div></div><div class="aband"><q>寻觅低市盈率的增长型股票。如果增长性变成现实，常常会带来双重好处——盈利和市盈率均会上升，从而使投资者获得不菲的投资收益。同时，要小心提防市盈率很高的股票，因其未来增长性已被贴现。如果增长性未变成现实，这会带来双重的重大损失——盈利和市盈率均会下降。</q><cite>——第5章 · 规则一二的总结</cite></div><p class="prose">这些规则看起来非常合理，但重要的问题是它们能否真正发挥作用——毕竟还有很多其他人也在玩这个游戏。接下来两章就是业绩审判：第6章问技术分析能否奏效，第7章查基本面分析师的成绩单。</p><div class="check" data-k="wsw-05-check"><p class="ct">选股前，过一遍这两派的账</p><label><input type="checkbox"><span>我知道自己属于哪一派：信心理博弈还是信现金流折现</span></label><label><input type="checkbox"><span>我用 72 法则算过复合增长：利率除以 72 就是钱翻倍的年数</span></label><label><input type="checkbox"><span>我提醒过自己：任何「内在价值」都可通过调整增长率与期限凑出来</span></label><label><input type="checkbox"><span>我看重市盈率与增长率之比，而不是单看市盈率高低</span></label><label><input type="checkbox"><span>我能说出我持仓股票的「故事」——以及它是否真能引来大众</span></label><div class="cf">规则建立在估值原则之上——已勾选 <b>0</b> / 5</div></div><div class="tbwrap"><table><thead><tr><th>候选股票</th><th>增长率</th><th>市盈率</th><th>市盈率增长率之比（彼得·林奇）</th></tr></thead><tbody><tr><td>股票 A</td><td>50％</td><td>25 倍</td><td>1:2 —— 相对增长前景便宜，可买</td></tr><tr><td>股票 B</td><td>20％</td><td>20 倍</td><td>1:1 —— 相对增长前景偏贵，回避</td></tr></tbody></table></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下句子在导出源中不完整：扉页投资经理句末尾悬置「“亚当·斯密”」；5.2 迈吉引文句止于《股市趋势技术分析》；5.2 头肩顶段止于「德古拉伯爵(Count Dracula)」；5.6 开篇施韦德《客户的游艇在哪里》故事被截断；5.4 规则4前股票须「提供低廉的价格」句末缺后续标点。均照录不补写。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜技术分析与基本面分析</span><a href="../04-21世纪超级泡沫/index.html">← 21世纪超级泡沫</a><a href="../06-技术派与基本派业绩审判/index.html">两派业绩审判 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

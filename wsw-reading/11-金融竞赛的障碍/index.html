@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第四部分 实务指南·金融竞赛的障碍 · 收益从何而来｜漫步华尔街 精读</title>
+<meta name="description" content="你无法预测下个月或来年的市场走势——无人能做到；但你可以学会估测长期收益率的合理范围，让投资计划适应自己的理财需要。本章拆解股票与债券收益率的决定因素，并用四个时代（1947～2009）逐一验证，最后给出 2022 年初">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../10-随机漫步者健身手册/index.html">← 随机漫步者健身手册</a><a href="../12-生命周期投资指南/index.html">生命周期投资指南 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">率</div>
+  <div class="stamp s4">金融竞赛</div>
+  <h1>金融竞赛的障碍 · 收益从何而来</h1>
+  <p class="sub">你无法预测下个月或来年的市场走势——无人能做到；但你可以学会估测长期收益率的合理范围，让投资计划适应自己的理财需要。本章拆解股票与债券收益率的决定因素，并用四个时代（1947～2009）逐一验证，最后给出 2022 年初的保守预测。</p>
+  <div class="meta"><span>第四部分 实务指南</span>
+    <span class="k">收益率来源</span>
+    <span>正文 11,235 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>决定因素</a><a href="#s3" data-t="s3"><span class="cn">叁</span>四个时代</a><a href="#s4" data-t="s4"><span class="cn">肆</span>时代一二</a><a href="#s5" data-t="s5"><span class="cn">伍</span>时代三四</a><a href="#s6" data-t="s6"><span class="cn">陆</span>未来预测</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>正确了解过去的人往往不会对现在持有悲观的看法。</p><cite>——托马斯·B.麦考利《英格兰史》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图：收益从何而来</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">金融赌注登记经纪人：改善赔率，而非预测走势</p><p class="thesis">股票和债券的价格水平决定财富净值，其波动不在你的控制范围内——但<b>长期收益率的构成因素可以被拆解、被估测</b>。读罢本章你不会知道下个月的走势，却能切合实际地预测长期收益率，把投资计划钉在现实的地基上。</p><div class="chain"><div class="node"><div class="n">公式</div><div><p class="tt">股票长期收益率</p><p class="dd">＝初始股利收益率＋增长率（长期）；短中期还要加上估值关系（市盈率）的变化</p></div></div><div class="node"><div class="n">验证</div><div><p class="tt">1926～2018</p><p class="dd">年均约 10％ ≈ 5％ 股利收益率 ＋ 5％ 盈利与股利长期增长率</p></div></div><div class="node"><div class="n">黑马</div><div><p class="tt">通货膨胀</p><p class="dd">通胀率由 0 升至 5％，要求 5％ 实际收益的债券利率须涨到 10％——价格下跌，老持有人遭资本损失</p></div></div><div class="node"><div class="n">时代</div><div><p class="tt">四个时代</p><p class="dd">舒适安逸（1947～1968）→ 焦虑不安（1969～1981）→ 精神焕发（1982～2000）→ 感到幻灭（2000.4～2009.3）</p></div></div><div class="node"><div class="n">预测</div><div><p class="tt">2022 年初</p><p class="dd">债券：公司债约 3.5％、10 年期国债约 2.5％；股票：1.3％ 股利收益率 ＋ 4.7％ 增长 ≈ 6％</p></div></div><div class="node"><div class="n">戒律</div><div><p class="tt">别戴后视镜</p><p class="dd">不要按过去的收益率简单预测未来——未来一段时间内，我们很可能处在收益率很低的市场环境里</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>什么因素决定了股票和债券的收益</h2><span class="en">DETERMINANTS</span></div><p class="prose">从长期看，股票收益取决于两个关键因素：<b>购买时的股利收益率</b>与<b>盈利和股利的未来增长率</b>。永久持有股票的投资者，其股票价值等于未来股利流的现值——明天收到的 1 美元不如今天在手的 1 美元值钱。于是有了那个非常简单、对个股与市场整体都适用的公式：</p><div class="tbwrap"><table><thead><tr><th>收益率决定因素</th><th>公式与历史验证</th></tr></thead><tbody><tr><td>股票长期收益率</td><td>＝初始股利收益率＋增长率。1926～2018 年年均约 10％＝期初约 5％ 的股利收益率＋约 5％ 的盈利与股利长期增长率</td></tr><tr><td>股票短期收益率</td><td>再叠加估值关系变化——市盈率（或股价对股利的倍数）的升降。2000 年 3 月市盈率远超 30 倍、股价对股利倍数超 80；1982 年市盈率仅 8 倍、倍数 17</td></tr><tr><td>债券长期收益率</td><td>约等于购买时的到期收益率；若未持有至到期，收益率便取决于市场利率（源文此句至此截断）</td></tr><tr><td>通货膨胀（黑马）</td><td>债券以 5％ 收益率交易、通胀由 0 升至 5％：要求 5％ 实际收益则利率须涨到 10％——债券价格下跌，老持有人遭资本损失。除防通胀国债持有者外，通胀是所有债券投资者的死敌</td></tr></tbody></table></div><p class="prose">两个实证案例把估值变化的威力算得明明白白。<b>1968～1982 年</b>：期初股利收益率 3％、盈利与股利年增 6％，若估值不变本可产生 9％ 年收益率——实际年均只有 5.5％，市盈率大幅下降斫去了 3.5 个百分点。</p><p class="prose"><b>2000 年 4 月起「失落的十年」</b>：股利收益率已跌到 1.2％、股利年增 5.8％，本可产生 7％ 收益率——市盈率暴跌使收益率再被斫去 13.5 个百分点，结果每年平均<b>损失</b> 6.5％。</p><p class="prose">至于股利与回购：税法让已实现长期资本利得的税率远低于股利的最高收入税率，资本利得税可延迟缴纳、遗赠时甚至全免，公司因此更愿回购；但管理层鼓吹回购也出于自身利益——他们的收入很大部分来自股票期权，回购是抬升盈利、股价与期权价值的简单途径。</p><div class="grid g3"><div class="card num"><div class="idx">因素1</div><h3>初始股利收益率</h3><p class="cp">股票买入时的股利收益率，是长期收益率的第一块基石：1926 年 1 月 1 日市场整体约 5％，2000 年 4 月仅 1.2％，2009 年低谷回升至近 3％。</p></div><div class="card num"><div class="idx">因素2</div><h3>盈利与股利增长率</h3><p class="cp">长期增长的引擎：1926～2018 年约 5％；对个股而言，盈利开始快速增长意味着盈利与市盈率可能双双上升的双重好处。</p></div><div class="card num"><div class="idx">因素3</div><h3>估值关系的变化</h3><p class="cp">短期收益的主导者：市盈率从 8 倍升到 30 倍造就精神焕发的时代，从 30 多倍跌回则制造了失落的十年。</p></div></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>金融市场收益率的四个时代</h2><span class="en">FOUR ERAS</span></div><p class="prose">1947～2009 年，股市收益有四次大幅波动，债券收益率的四个时代正巧与之相一致（表 13-1 划分，年均收益率以正文转述）。</p><div class="tbwrap"><table><thead><tr><th>时代</th><th>区间</th><th>特征</th><th>投资者境况</th></tr></thead><tbody><tr><td>① 舒适安逸</td><td>1947～1968</td><td>战后经济增长；股利收益率 5％ 起步、盈利与股利以 6.5％～7％ 增长，市盈率由约 12 倍升至 18 倍以上</td><td>股票极高（剔除通胀后依然）；债券名义收益率低于 2％、实际收益为负——利率被钉在 2.5％ 以内为战争筹便宜钱，1951 年放开后又遭资本损失</td></tr><tr><td>② 焦虑不安</td><td>1969～1981</td><td>越战、石油与粮食冲击、两位数通胀；沃尔克极端紧缩后两位数失业率</td><td>股票与债券名义收益皆低，按 7.8％ 通胀算实际收益为负；黄金、收藏品、房地产却给出两位数收益</td></tr><tr><td>③ 精神焕发</td><td>1982～2000</td><td>婴儿潮一代老成持重、和平与无通胀繁荣；期初股利收益率近 6％、市盈率由 8 倍升至 30 倍</td><td>股票与债券前所未有的丰厚利润；黄金石油等实物资产负收益；一生只能一遇的天赐良机</td></tr><tr><td>④ 感到幻灭</td><td>2000.4～2009.3</td><td>网络股泡沫破裂＋房地产泡沫破裂摧毁抵押贷款支持证券价值</td><td>有史以来最糟糕的十年（失落的十年）；市盈率下跌、股利收益率上升；债券正收益——用债券多样化者减轻了痛苦</td></tr></tbody></table></div><p class="prose">收益率决定因素在此框架下清晰可查——股票三因素：①购买时的初始股利收益率；②盈利增长率；③市盈率（或股价对股利的倍数）角度的估值变化。债券两因素：①初始到期收益率；②市场利率变化及由此导致的未到期债券价格变化。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>舒适安逸与焦虑不安：通胀是那匹黑马</h2><span class="en">ERAS 1-2</span></div><p class="prose">战后消费者狂热地搬出短期储蓄庆祝和平，创造了伴有些许通胀的迷你繁荣；但大萧条记忆犹新，经济学家忧心忡忡。衰退与萧条的区别，由杜鲁门总统一句话界定——1947 年初股利收益率异常高达 5％、市盈率徘徊在 12 倍——悲观给股票投资者留足了安全垫，随后便是舒适安逸的岁月。</p><div class="aband"><q>你失去工作的时候是衰退，我失去工作的时候才叫萧条。</q><cite>——哈里·杜鲁门总统 · 第13章</cite></div><p class="prose">焦虑不安的时代由通胀主导：60 年代中期通胀率只比 1％ 高一点；越陷越深的越南战争带来「太多货币追逐太少商品」的需求拉动型通胀（4％～4.5％）。</p><p class="prose">1973～1974 年 OPEC 制造石油人为短缺、北美歉收与苏联及撒哈拉以南非洲的灾难性收成带来真正的食品短缺、连秘鲁凤尾鱼捕获量也神秘消失——通胀升到 6.5％。1978～1979 年政策错误叠加石油再涨 125％——80 年代初通胀率超过 10％。</p><p class="prose">沃尔克的极端紧缩杀灭了通胀病毒，经济却几乎瘫痪：20 世纪 30 年代以来最剧烈的滑坡、两位数失业率。</p><p class="prose">债券的灾难好理解：1968 年 30 年期长期债券到期收益率约 6％，足以抵御时下 3％ 的通胀；实际通胀却几乎达到 8％，正实际收益被完全抹去，利率上行又添资本损失——70 年代谁还愿意持有 6％ 收益率的债券？只能亏本卖出。</p><p class="prose">股票的糟糕才真正令人吃惊——按理说股票代表对真实资产的索取权，应随价格水平上升而升值——就像那个第一次逛艺术博物馆的小男孩，被告知一幅著名的抽象派画作上画的应该是一匹马。</p><div class="aband"><q>是吗，如果它应该是一匹马，那为什么却不是呢？</q><cite>——小男孩逛艺术博物馆之问 · 第13章</cite></div><p class="prose">流行的解释（通胀是使公司外壳完好却摧毁利润命脉的「财务中子弹」）站不住脚：1969～1981 年利润加速增长、盈利增长率升到 8％，轻松超过通胀率，股利增长率也接近通胀率。<b>真正的原因是市盈率崩溃</b>——标准普尔指数市盈率几乎被削掉 2/3，投资者甘愿为 1 美元股利和盈利支付的价格大幅下滑。</p><p class="prose">马尔基尔的判词：投资者并非不理性——<b>他们只是吓着了</b>。</p><p class="prose">谁也没想象过两位数失业与两位数通胀能同时出现；经济远没有想象中稳定，「股权证券」（或可说股权不安全证券）于是被要求更高的风险补偿，市场通过压低市盈率给出更高的未来收益——同样的调整，让 60 年代末到 70 年代的持有人尝尽苦头，却为 1982 年的买家摆好了诱人的价格。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">冲击</span><h4>1973～1974：短缺的完美风暴</h4><span class="ar">▶</span></div><div class="cb"><div class="in">OPEC 制造石油人为短缺，大自然带来北美歉收与苏联、撒哈拉以南非洲的灾难性收成，连秘鲁凤尾鱼的捕获量也神秘消失——通胀率升到 6.5％，墨菲定律全面应验。</div></div></div><div class="case"><div class="ch"><span class="tag mid">转折</span><h4>1982 前夜：沃尔克的猛药</h4><span class="ar">▶</span></div><div class="cb"><div class="in">美联储在沃尔克领导下实施极端紧缩，杀灭通胀病毒的同时让经济几乎瘫痪——两位数通胀与两位数失业并存的痛苦，换来了 1982 年起资产价格的极端便宜。</div></div></div></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>精神焕发与感到幻灭：从 13％ 的预期到失落的十年</h2><span class="en">ERAS 3-4</span></div><p class="prose">1982 年初，债券市场已名誉扫地（《哗尔街日报》句止于此——源文字形如此）。马尔基尔用那个简单公式算出：<b>股票总体预期收益率在 13％ 以上</b>——股利收益率加盈利增长率，大大超过核心通胀率。</p><p class="prose">股票以异常低的市盈率出售、股价对股利的倍数低于平均、股价只是资产重置价值的一小部分——无怪乎 80 年代并购案频发：当在股市购买资产比直接采购更便宜时，公司自然倾向买其他公司的股权、回购自身股票。</p><p class="prose">随后的剧本尽人皆知：接近 6％ 的初始股利收益率加上市场心态由悲观转为亢奋，市盈率从 8 倍升到 30 倍、股利收益率降到 1％ 多一点——<b>估值变化把股票收益率从非同一般托举到令人惊奇</b>；债券 13％ 的初始收益率锁定两位数回报，通胀回落到 3％ 更让实际收益率远超长期平均。</p><p class="prose">然后是感到幻灭的时代——有史以来股票市场有案可查最糟糕的十年：网络股泡沫破裂，紧跟着令人难以承受的大熊市；房地产泡沫破裂又摧毁了抵押贷款支持证券，全球股市地动山摇。投资者再次得到提醒：<b>投资世界是一个风险很大的所在</b>。</p><p class="prose">市盈率下跌、股利收益率上升——这为下一个十年埋下了种子；这十年里用债券多样化的投资者倒是减轻了痛苦。</p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>2009～2022 与未来收益的障碍</h2><span class="en">OUTLOOK</span></div><p class="prose">2009 年低谷，标普500市盈率不足周期性衰退盈利的 15 倍、股利收益率升至近 3％——又一个低起点。</p><p class="prose">此后盈利两位数增长、股利收益率下降与市盈率上升助推股价：<b>到 2022 年 1 月，股票产生 17.5％ 的年均收益率</b>（同期平均通胀 2.3％，真实收益率与精神焕发的时代不相上下）；债券收益率由 3％～4％ 跌到不足 2％，年均约 4％、比通胀高约 2 个百分点。</p><p class="prose">但若预计 21 世纪接下来的岁月还能如此丰厚，恐怕不切实际。2022 年初的保守预测：<b>债券</b>——优质公司债持有至到期约 3.5％、10 年期国债接近 2.5％（假设通胀不超美联储 2％ 的目标；若通胀像 2021～2022 年加速上升或利率上涨，债券收益将变为负值或更低）。</p><p class="prose"><b>股票</b>——标普500股利收益率不足 1.3％，加长期约 4.7％ 的盈利增长率，总体预期收益约每年 6％：比债券高，但大大低于 1926 年以来接近 10％ 的长期平均。</p><p class="prose">短期内的主导因素仍是估值变化。2022 年初经周期调整的市盈率（CAPE，用过去 10 年平均盈利计算，罗伯特·希勒网站可查）超过 35 倍——历史上仅 2000 年初高于此值；股利收益率不足 1.3％，远低于 4.5％ 的历史均值。</p><p class="prose">市场有一个具有预期作用的模式：<b>未来市场收益中多达 40％ 的波动性，可以根据市场整体的初始市盈率倍数预测出来</b>——CAPE 对预测未来 10 年收益率表现相当不错，证实未来多年的收益率预测值位于不高的个位数。当然，投资期限不足 10 年的话，谁也无法以任何准确度预测你会获得的收益率。</p><p class="prose">短期的极端例证是那个广播剧《我爱神秘之事》里的贪婪投资者：获准提前 24 小时看一眼载有股价的报纸，通宵忙碌计划次日低买高卖，却在报上偶然看到<b>自己死亡的讣告</b>——次日清晨，仆人发现他已撒手人寰。</p><p class="prose">幸运的是我们接触不到来自未来的报纸。这里提供的保守长期收益率估计值，是为进入 21 世纪后几十年制订投资计划所能做出的最合理估计。关键的一点：<b>不要戴着「后视镜」来投资</b>，不要按照过去的收益率简单地预测未来——在未来一段时间内，我们很可能将处在收益率很低的市场环境里。</p><div class="check" data-k="wsw-11-check"><p class="ct">估一估自己的长期赔率</p><label><input type="checkbox"><span>我会用「初始股利收益率＋增长率」估算股票的长期预期收益，而不是拿去年的收益率外推</span></label><label><input type="checkbox"><span>我明白未持有至到期的债券收益取决于利率走向，通胀是债券的死敌</span></label><label><input type="checkbox"><span>我知道自己买入时的市盈率水平：高起点估值意味着低未来收益</span></label><label><input type="checkbox"><span>我对未来十年的收益预期设在个位数，而不是过去十年的 17.5％</span></label><label><input type="checkbox"><span>我不戴后视镜投资——过去的高收益从来不是未来的保证</span></label><div class="cf">做自己的金融赌注登记经纪人——已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下各句在导出源中不完整，均照录不补写：13.1 段10 止于「大约等于债券购买时的到期收益率」句末缺标点；13.1 段11 止于「市场利率（债券收益率）」；13.4 段6 止于「债券的到期收益率涨得更高了」；13.4 段10 止于「克劳德·雷恩斯(Claude Rains)」（〈卡萨布兰卡〉雷恩斯警长台词未及引出）；13.4 段13 止于「从而应该获得更高的风险补偿」；13.5 段2 止于「《哗尔街日报》」。</span></div><div class="note" id="n2"><span class="nn">源文存疑</span><span class="nd"><b>②｜</b>13.5 段2「《哗尔街日报》」为源文字形，疑为「《华尔街日报》」之误且句子截断，存疑照录。</span></div><div class="note" id="n3"><span class="nn">表格与插图</span><span class="nd"><b>③｜</b>表13-1 至表13-5 在源文中仅存标题，各时代年均收益率以正文文字转述；本篇源行段含插图 10 张（多为图表截图），已从正文剥离，不引图。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第四部分｜金融竞赛的障碍</span><a href="../10-随机漫步者健身手册/index.html">← 随机漫步者健身手册</a><a href="../12-生命周期投资指南/index.html">生命周期投资指南 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

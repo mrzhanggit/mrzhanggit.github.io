@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分 新投资技术·第8-9章 · 新投资技术：组合理论与风险｜漫步华尔街 精读</title>
+<meta name="description" content="第三部分开篇：学术界在抨击他人之余，也创立了自己的估值理论。第8章讲现代投资组合理论（MPT）——多样化如何在海岛经济体里消除风险；第9章讲资本资产定价模型（CAPM）——β 如何加冕又如何跌落神坛。">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../06-技术派与基本派业绩审判/index.html">← 两派业绩审判</a><a href="../08-行为金融学/index.html">行为金融学 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">险</div>
+  <div class="stamp s4">第8-9</div>
+  <h1>第8-9章 · 新投资技术：组合理论与风险</h1>
+  <p class="sub">第三部分开篇：学术界在抨击他人之余，也创立了自己的估值理论。第8章讲现代投资组合理论（MPT）——多样化如何在海岛经济体里消除风险；第9章讲资本资产定价模型（CAPM）——β 如何加冕又如何跌落神坛。</p>
+  <div class="meta"><span>第三部分 新投资技术</span>
+    <span class="k">组合与β</span>
+    <span>正文 19,323 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>风险定义</a><a href="#s3" data-t="s3"><span class="cn">叁</span>风险纪实</a><a href="#s4" data-t="s4"><span class="cn">肆</span>海岛经济体</a><a href="#s5" data-t="s5"><span class="cn">伍</span>多样化实践</a><a href="#s6" data-t="s6"><span class="cn">陆</span>β与系统风险</a><a href="#s7" data-t="s7"><span class="cn">柒</span>CAPM</a><a href="#s8" data-t="s8"><span class="cn">捌</span>β的记录</a><a href="#s9" data-t="s9"><span class="cn">玖</span>多因素模型</a><a href="#s10" data-t="s10"><span class="cn">拾</span>小结</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>那些实干家自以为不受任何学理的影响，却往往是某个已故经济学家的思想之奴隶；那些权威狂人自以为得天启示，其狂想实则源自若干年前的某个三流学者。</p><cite>——约翰·梅纳德·凯恩斯《就业、利息和货币通论》</cite></div><div class="epi"><p>用只在一半的时间里正确的理论指导实践，还不如用抛掷硬币的办法来得经济实惠。</p><cite>——乔治·J.施蒂格勒《价格理论》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图：学术界自己动手造理论</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">新投资技术：从多样化魔法到 β 的加冕与跌落</p><p class="thesis">审判完两派之后，学术界开始创立<b>属于自己的</b>股市估值理论。其中现代投资组合理论（MPT）已在华尔街得到广泛信奉；资本资产定价模型（CAPM）则把「承担何种风险才有回报」精确成一个希腊字母——β。本篇的终点是一个清醒的结论：不存在完美的风险测量方法，但多样化依然是强有力的投资策略。</p><div class="chain"><div class="node"><div class="n">定义</div><div><p class="tt">风险=离散度</p><p class="dd">投资风险是预期收益不能实现的可能性；测量工具是收益的方差或标准差</p></div></div><div class="node"><div class="n">魔法</div><div><p class="tt">现代投资组合理论</p><p class="dd">马科维茨（1990 年诺奖）：只要不完全正相关，组合就能降低风险——海岛经济体把风险完全消除</p></div></div><div class="node"><div class="n">实践</div><div><p class="tt">多样化红利</p><p class="dd">美国本土约 50 只股票降风险 60％ 以上；加入 18％ 外国股票风险更小、收益更高——近乎免费午餐</p></div></div><div class="node"><div class="n">加冕</div><div><p class="tt">β 与 CAPM</p><p class="dd">只有系统风险才能要求风险溢价；β=市场敏感度；夏普与马科维茨同年获奖</p></div></div><div class="node"><div class="n">跌落</div><div><p class="tt">β 的记录</p><p class="dd">法玛-弗伦奇 1963～1990 年十分位研究：收益率与 β 之间实质上不存在任何关系</p></div></div><div class="node"><div class="n">重建</div><div><p class="tt">多因素模型</p><p class="dd">套利定价理论：国民收入、利率、通胀率；法玛-弗伦奇三因素：β、规模、市净率</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>风险的定义：收益率的离散度</h2><span class="en">RISK DEFINED</span></div><p class="prose">风险是个难以捉摸的概念。《美国传统词典》把它定义为「遭受伤害或损失的可能性」：持有 2％ 的一年期国债几乎不存在损失可能；持有电力公司股票则可能遭遇股利削减与市价下跌。对投资者而言，<b>投资风险是指预期证券收益不能实现的可能性，尤其是所持证券价格下跌的可能性</b>。</p><p class="prose">学者一旦接受这个观点，测量风险自然就成了测量未来收益可能的离散程度——界定为收益的方差或标准差。</p><p class="prose">用一个标准例子把概念算出来：假设三种经济形势各占 1/3 概率，一只股票在无通胀高速增长、正常、滞胀三种情形下的总收益率分别为 30％、10％、－10％。</p><div class="tbwrap"><table><thead><tr><th>度量项目</th><th>计算与结果</th></tr></thead><tbody><tr><td>预期收益率</td><td>1/3×(0.30)+1/3×(0.10)+1/3×(-0.10)=0.10，即 10％</td></tr><tr><td>方差</td><td>1/3×(0.30-0.10)²+1/3×(0.10-0.10)²+1/3×(-0.10-0.10)²=0.0267</td></tr><tr><td>标准差</td><td>方差的平方根，本例等于 0.1634</td></tr><tr><td>经验法则</td><td>对大致对称的收益分布：2/3 的月收益率落在平均收益率±1 个标准差范围内，95％ 落在±2 个标准差范围内</td></tr></tbody></table></div><p class="prose">有人批评说：如果离散源于意外之喜——结果好于预期——任何脑瓜正常的投资者都不会说这是风险。确实只有<b>收益率下跌的可能性才构成风险</b>；但只要收益分布大致对称（超常收益与失望损失出现的可能性相当），离散度或方差就堪当测量风险之任。</p><p class="prose">单只股票的收益分布常常不对称，而充分多样化的投资组合收益率至少是大致对称的。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>风险纪实：1926～2020 年的长期数据</h2><span class="en">LONG RUN</span></div><p class="prose">金融领域记述最多的观点是：平均而言，投资者由于承担了更大风险，才获得了更多回报。最全面的一项研究考察了 <b>1926～2020 年</b>的股票、债券与短期国债数据，结论有三层：其一，长期看股票提供了相对丰厚的总收益率，显著超过长期债券、短期国债和通货膨胀率——股票提供正的实际收益率。</p><p class="prose">其二，股票收益率的变动性非常大——有的年份获利高达 50％ 以上（1933 年），有的年份几乎产生同样比例的损失（1931 年）。小型公司股票收益更高，但离散度也更大。</p><p class="prose">其三，风险并非纸面概念：1930～1932 年股市风雨如晦；20 世纪 70 年代早期收益率亦为负值；1987 年 10 月大型股市平均指数暴跌 1/3，是 20 世纪 30 年代至今股价短期内变化最剧烈的一次；21 世纪头 10 年与 2020 年疫情之初的记忆更是犹新。</p><p class="prose"><b>投资者从股票中获得超额收益，是因为付出了代价</b>。但风险可以利用一些方法来降低——这便引出现代投资组合理论。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>海岛经济体：多样化如何消除风险</h2><span class="en">ISLAND ECONOMY</span></div><p class="prose">投资组合理论的立论前提是：所有投资者都像马尔基尔的夫人一样——<b>厌恶风险</b>。理论创立者哈里·马科维茨 1950 年代在芝加哥大学写博士论文时做出这一贡献，1990 年获诺贝尔经济学奖；他教过书、在兰德公司设计过计算机语言，甚至管理过一家对冲基金。</p><p class="prose">他的发现是：<b>可将具有风险性的股票放进组合，使组合整体风险小于其中所有单只股票的风险</b>——这是对「多样化是降低风险的明智策略」这句老格言的严格数学证明。</p><p class="prose">数学晦涩，但核心思想一个例子就够：设想孤岛经济体只有两家企业——大型度假胜地与雨伞制造商。晴天里度假胜地生意兴隆、雨伞滞销；雨天里恰好相反。两企业的假想收益率如下。</p><div class="tbwrap"><table><thead><tr><th>企业</th><th>晴朗季节</th><th>雨水季节</th><th>预期收益率</th></tr></thead><tbody><tr><td>度假胜地</td><td>＋50％</td><td>－25％</td><td>12.5％</td></tr><tr><td>雨伞制造商</td><td>－25％</td><td>＋50％</td><td>12.5％</td></tr><tr><td>各投 1 美元的组合</td><td>总收益 25 美分（＋12.5％）</td><td>总收益 25 美分（＋12.5％）</td><td>12.5％，年年如此</td></tr></tbody></table></div><p class="prose">窍门在于两家公司收益率的<b>协方差为负数</b>（一家欢喜一家愁、完全负相关），多样化便把风险完全消除。现实没有这么便宜：多数公司的盈利同向变动——经济衰退时，失业的人既不买度假服务也不买雨伞——所以风险只能降低、无法清零。</p><p class="prose">但道理实用：把福特汽车与其轮胎供应商组合，协方差太高，几乎无益；把福特汽车与经济萧条地区的政府承包商组合（高失业期政府惯于向萧条地区发包），两家盈利不同向变动，风险便显著降低。马科维茨对投资者钱包的伟大贡献在于证明：<b>只要不是完全正相关，都可以潜在地降低风险</b>——相关系数并非必须是负数。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>福特汽车 × 轮胎供应商</h4><span class="ar">▶</span></div><div class="cb"><div class="in">福特销售额猛跌，从它那里采购的新型轮胎就会减少——两家公司收益率协方差极高（高度相关），把两者放进同一个组合，多样化几乎帮不上忙。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>福特汽车 × 萧条区政府承包商</h4><span class="ar">▶</span></div><div class="cb"><div class="in">高失业时期政府惯于向萧条地区提供承包合同：福特盈利下滑时，承包商的生意反而可能增加——两家盈利不同向变动，协方差极小甚至为负，组合风险显著降低。</div></div></div></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>投资实践中的多样化：50 只股票与 18％ 外国股</h2><span class="en">DIVERSIFY</span></div><p class="prose">多样化过了某一点便不再是魔杖吗？存在这一点。对美国「恐外症患者」，最优持股数是 <b>50 只规模相当且充分多样化的美国本土股票</b>（50 只石油类或 50 只电力事业类不算数），整个风险可降低 <b>60％ 以上</b>——再增加持股，风险不再降低多少。</p><p class="prose">对具有全球思维的投资者，黄金组合数也是约 50 只，但保护更厚：外国经济变动并不总与美国步调一致（油价上涨利好印度尼西亚与中东产油国、原材料涨价利好澳大利亚和巴西），国际性多样化组合往往比纯美国组合风险更小。</p><p class="prose">1970～2019 年 50 年间，MSCI EAFE（海外发达国家股票）年均收益率略高于标普500指数，但波动更大；两指数收益率相关系数仅 0.5 左右。</p><p class="prose">于是出现一个看似矛盾的结果：<b>向美国组合中加入少量风险更高的外国股票，组合总风险反而降低</b>——日本汽车股的收益会抵消美国汽车股的损失，反之亦然，正是这种对冲降低了总体波动性。</p><p class="prose">研究表明，风险最小的组合由 <b>18％ 外国股票＋82％ 美国股票</b>构成，且收益还有提高趋势——国际性多样化提供了近乎<b>免费午餐</b>的好处。</p><p class="prose">诚然，21 世纪以来相关系数已上升——「在金融恐慌期间，唯一上涨的东西只有资产类别之间的相关系数」：2007～2009 年全球信贷危机与 2020 年疫情之初，所有市场不约而同下挫，投资者无处藏身。</p><p class="prose">但市场远非完全相关，广泛多样化依然降低波动性：21 世纪头十年是美国股市「失落的十年」，标普500蚀本，而大型新兴市场指数却给了很好的收益。安全的债券同样有价值：即使在 2008 年股市剧烈下跌期间，巴克莱资本大型债券指数仍录得 <b>5.2％</b> 的投资收益，让资金在金融危机期间有了一个藏身之地。</p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>β：系统风险的数字描述</h2><span class="en">BETA</span></div><p class="prose">多样化不能消除所有风险——第9章扉页说得很直白：虽然多样化在虚构的海岛经济体中消除了所有风险，但现实中的股票价格往往齐涨共跌、同喜同悲。</p><p class="prose">夏普、林特纳与布莱克三位学者把风险一分为二：<b>系统风险</b>（市场风险）源于股价变动性这一基本特征、以及所有股票随大市起伏的倾向；<b>非系统风险</b>（特有风险）源于特定公司的特有因素——罢工、发现新产品、会计欺诈、财务人员贪污公款等。</p><div class="aband"><q>时尚β——测量风险新方法！</q><cite>——《机构投资者》杂志封面文章标题 · 20世纪70年代初</cite></div><p class="prose"><b>β 就是对系统风险的数字描述</b>：把市场指数的 β 设为 1；某股 β=2，市场涨 10％ 它往往涨 20％；β=0.5，市场涨跌 10％ 它往往只动 5％。β 高的叫激进型投资品，β 低的贴保守型标签。</p><p class="prose">系统风险无法通过多样化消除——即便买入整体股市指数，收益率仍随市场大幅波动；非系统风险则可以在组合中被互补性收益变动冲抵：选定 30 只股票可消除大量非系统风险，60 只广泛多样化的股票（平均 β=1）基本上与市场同起同伏；若平均 β=1.5，60 只股票的组合波动性会比市场高出 50％。</p><p class="prose">CAPM 的关键一步由此推出：<b>非系统风险可以通过充分适当的多样化轻而易举地消除，投资者没有理由为此获得额外补偿——获得补偿的仅为系统风险部分</b>。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>资本资产定价模型：只有系统风险才要价</h2><span class="en">CAPM</span></div><p class="prose">CAPM 背后的逻辑用一个思想实验就能说清：组 1 与组 2 各有 60 只股票，β 值都是 1；组 1 的每只股票额外受气候变化、汇率变动、自然灾害等特有因素影响，总风险显著更高；组 2 的特有风险很低。</p><p class="prose">旧理论说组 1 收益应更高（有风险就有回报）；CAPM 说<b>两个组合的收益应该相等</b>——60 只股票的组合里非系统风险已基本抵消（一场意外天灾被一次汇率的有利变动抵消），剩下的只有 β=1 给定的系统风险。</p><p class="prose">若组 1 真能提供更高收益，理性投资者会争相买入推高其股价、抛售组 2 拉低其股价，直到两组预期收益相等、无人再能因承担非系统风险获得溢价为止。</p><div class="tbwrap"><table><thead><tr><th>组别</th><th>β 值</th><th>特有风险</th><th>总风险</th><th>CAPM 判定的预期收益</th></tr></thead><tbody><tr><td>组 1（60 只）</td><td>1</td><td>高（气候、汇率、自然灾害）</td><td>高</td><td>与组 2 相等</td></tr><tr><td>组 2（60 只）</td><td>1</td><td>低</td><td>低</td><td>与组 1 相等</td></tr></tbody></table></div><p class="prose">落到操作层面：β=0 的组合（如政府担保的银行储蓄存单）获得无风险利率；β=1 的大型指数基金获得市场平均收益率——长期超过无风险利率，但某些时期会低得多，投资者须承受重大损失，这正是风险的含义。</p><p class="prose">调整 β 便可调节预期收益：一半资金放存单、一半买指数基金，组合平均 β=0.5，收益介于两者之间——用图 9-2 的公式直接算：收益率=0.10+0.5×(0.15-0.10)=0.125，即 12.5％。</p><p class="prose">β 一度风靡：券商开展 β 测量服务，投资咨询机构提供 β 估计值，连数学水平不超过多位数除法的资金管理人，也「带着统计学博士才有的激情，整天翻来覆去地说β」。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>让我们看一下记录：β 真的管用吗</h2><span class="en">BETA ON TRIAL</span></div><p class="prose">《亨利四世》里格兰道尔夸口：「我可以召唤幽深之处的魂灵。」郝茨勃答道：「是吗？我也行，谁都能做到，」他不为所动，「可你真的去接它们时，它们会来吗？」对市场，谁都可以提出理论；CAPM 不过是其中一个。真正的问题是：<b>它管用吗？</p><p class="prose"></b>1992 年法玛与弗伦奇按 1963～1990 年的 β 值把所有交易的股票分成十分位：β 最低的 10％ 到 β 最高的 10％。研究结果令人吃惊——<b>这些组合的收益率与 β 值之间，实质上不存在任何关系</b>。马尔基尔在共同基金上发现同样结果。</p><p class="prose">财经媒体纷纷以「β之死」「拜拜了β」「β败退」为题发文。</p><p class="prose">但马尔基尔认为「说 β 已彻底死亡的报道来得过早了」，理由有三：<b>其一</b>，稳定的收益更可取——若钻井采油的收益率与无风险国债完全一样，只有为赌而赌的人才会去采油；数万亿美元的衍生证券市场的存在本身就证明投资者在乎波动。</p><p class="prose">β 作为相对波动性的测量，确实抓住了风险的某些方面，对预测未来相对波动性表现相当不错。</p><p class="prose"><b>其二</b>，理查德·罗尔指出，精确测量 β 实际上可能无法办到——标普500并不是「市场」：市场还包括成千上万只其他美股、外国股票，以及债券、房地产、大宗商品，乃至每个人都拥有的最重要资产——由教育、工作和人生经验构筑的<b>人力资本</b>。</p><p class="prose">乔根纳森与王震宇发现，若把指数重新界定成包括人力资本、并允许 β 随经济周期波动，对 CAPM 的支持就非常强了。</p><p class="prose"><b>其三</b>，即便 β 与收益长期相关性不大，它仍可作投资管理工具：若低 β 股票确实提供不逊于高 β 股票的收益，投资者便可挖掘低 β 股票，以少得多的风险获得有吸引力的收益；想冒更大险的人则可对低 β 组合做保证金交易。</p><p class="prose">但有一点非常清楚：<b>β 值并非大脑替代品</b>，不能当作未来长期收益的简单预测工具。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>更优的风险测量：套利定价理论与三因素模型</h2><span class="en">APT &amp; FFM</span></div><p class="prose">CAPM 最正确的观点——只有多样化不能消除的风险才应获得补偿——被斯蒂芬·罗斯的<b>套利定价理论（APT）</b>继承；它的新意在承认系统性因素过于复杂，单一 β 可能无法反映。国民收入、利率、通货膨胀率这三个变量的变动，都会对证券收益产生系统性影响。</p><div class="grid g3"><div class="card num"><div class="idx">因素1</div><h3>国民收入的变动</h3><p class="cp">映射个人收入的变动，证券收益与薪资收入之间的系统性关系会重大影响个人行为：福特工厂的工人持有福特股票风险特别大——遭到解雇与股票收益下跌可能同时发生。</p></div><div class="card num"><div class="idx">因素2</div><h3>利率的变动</h3><p class="cp">利率上升时股价往往受打击；易受利率上升冲击的股票更富有风险。与固定收益投资品同向变动的股票无助于降低债券组合的风险——对重仓债券的机构投资者尤其重要。</p></div><div class="card num"><div class="idx">因素3</div><h3>通货膨胀率的变动</h3><p class="cp">通胀上升推高利率、压低部分行业利润率（公用事业费率提高常滞后于成本上升），却可能让自然资源行业股票受益——单靠 β 测不出这些关系。</p></div></div><p class="prose">法玛-弗伦奇三因素模型走得更远：除 β 之外，加入<b>公司规模</b>（小公司在经济衰退期更难撑持，对 GDP 波动可能有更多系统风险）与<b>市净率</b>（市净率低的股票在某种程度上有「财务困难」）。2009 年初大型银行股票都以很低市净率交易时，很难说投资者不认为它们有破产倒闭的风险。</p><p class="prose">三因素模型之后又衍生出更多因素：<b>盈利能力</b>与<b>公司品质</b>（盈利稳定、经营与财务杠杆率低）虽不算风险标准，却能有力预测阶段性收益；<b>股价运行势能</b>——价格表现相对较强的股票继续产生良好收益的趋势——同样有用。</p><p class="prose">几乎所有多样化组合的收益差异都可以用这些因素解释，多因素模型已被广泛用于衡量投资表现和设计「聪明的β」组合（第11章）。</p><div class="tbwrap"><table><thead><tr><th>法玛-弗伦奇衡量风险的三因素</th><th>含义</th></tr></thead><tbody><tr><td>β</td><td>资本资产定价模型的系统风险测量（对市场整体波动的敏感度）</td></tr><tr><td>规模因素</td><td>以市值衡量：相对而言小公司更有风险，衰退期更难撑持</td></tr><tr><td>市净率因素</td><td>市净率低的股票在某种程度上有「财务困难」——2009 年初的大型银行即为实例</td></tr></tbody></table></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>小结：没有完美的风险测量，也没有俊美的精灵</h2><span class="en">SUMMARY</span></div><p class="prose">第8、9章是一次资本市场现代理论的学术训练：股市能迅速根据新信息调整，技术分析与基本面分析似乎都不能产生持久收益——<b>要获得更高长期投资收益，唯一出路就是承担更多风险</b>。</p><p class="prose">但并不存在完美的风险测量方法：β 从表面看简单易懂，却与长期收益率关系不符理论、单只股票的 β 值长期不稳定、且对测量所用的市场指数非常敏感。股票收益对市场波动、利率与通胀变动、国民收入变动乃至汇率波动都可能敏感；市净率较低、规模较小的股票会带来更高收益，盈利能力与股价趋势也发挥作用。</p><p class="prose"><b>神奇而完美的风险测量方法依然不为我们所掌握</b>——千万别把 β 或任何测量方法当作评估风险、确定预测未来收益的捷径。</p><p class="prose">资本监护信托基金的罗伯特·柯比最喜欢用一则寓言提醒这一点——养老院门廊上的矮小老妇人遇上小精灵，获准实现三个愿望：第一个，摇椅变成纯金的；第二个，自己变成年轻貌美的未婚女子；第三个，把猫变成年轻英俊的王子。一眨眼王子出现，转过脸问老妇人：「你把我阉了，现在不觉得后悔吗？」</p><div class="check" data-k="wsw-07-check"><p class="ct">用组合理论检视你的持仓</p><label><input type="checkbox"><span>我大致知道自己组合的波动性（标准差）量级，而不是只看收益率</span></label><label><input type="checkbox"><span>我的持仓里存在真正不同向变动的资产——而不是 50 只同一行业的股票</span></label><label><input type="checkbox"><span>我持有一定比例的国际股票与债券，享受多样化这块「近乎免费午餐」</span></label><label><input type="checkbox"><span>我不把 β 或任何单一指标当作预测未来收益的大脑替代品</span></label><label><input type="checkbox"><span>我明白：要更高长期收益，唯一出路是承担更多（系统）风险</span></label><div class="cf">新投资技术的精华与它的边界——已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下各句在导出源中不完整，均照录不补写：9.2 「其投资组合的平均β值将是0.5」句末缺标点；9.3 段末止于「来信者仅署名为“造诣精深的量化师”」；9.2 表9-2 仅存标题与脚注②公式，表格主体未导出。</span></div><div class="note" id="n2"><span class="nn">插图剥离</span><span class="nd"><b>②｜</b>本篇源行段含插图 21 张（P3扉页 1 张、第8章 8 张、第9章 12 张，多为图表截图），已从正文剥离；图8-1（多样化带来的益处）、图9-1（多样化如何降低风险）、图9-2（CAPM 风险与收益关系）、图9-3（法玛-弗伦奇研究结果）均以文字转述，不引图。表8-3（相关系数与多样化降低风险的程度）在源文中亦仅存标题，按正文文字转述结论。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜组合理论与风险</span><a href="../06-技术派与基本派业绩审判/index.html">← 两派业绩审判</a><a href="../08-行为金融学/index.html">行为金融学 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

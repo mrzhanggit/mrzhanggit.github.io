@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第4章·生产要素（下）· 大规模生产与企业管理｜经济学原理 精读</title>
+<meta name="description" content="规模生产的技术、机械与原材料三大经济；企业像生物一样生长、壮大、停滞、衰朽；理想的企业家要有双重的才能——商人的判断与雇主的领导；最后以代表性企业收束全章：大自然的作用表现出报酬递减的倾向，人类的作用则表现出报酬递增的倾">
+<style>
+:root{
+  --paper:#F4F1E8;      /* 暖晨纸底 */
+  --paper-2:#E8E3D3;    /* 纸色深一档 */
+  --card:#FBF8EF;
+  --ink:#2E4A5A;        /* 晨蓝墨（主色） */
+  --ink-2:#3D5867;
+  --ink-deep:#0E1416;   /* 深夜晨蓝（hero 底） */
+  --gold:#B08A3A;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#C9A85C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#6E93A8;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#262B28;
+  --tx-2:#49524E;
+  --tx-3:#7B7F76;
+  --line:rgba(38,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E4A5A 0%,var(--ink-deep) 62%);
+  color:#F0EFE6;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,168,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,168,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,168,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F2EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,239,230,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,168,92,.34);color:rgba(240,239,230,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEDE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,168,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EFE0;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,168,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EFE0;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(235,236,228,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(110,147,168,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(110,147,168,.1);color:var(--teal);border:1px solid rgba(110,147,168,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,241,232,.94);
+  border-bottom:1px solid rgba(38,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3D5867;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-生产要素中-财富增长与工业组织/index.html">← 生产要素（中）</a><a href="../07-均衡价值论上-暂时与正常均衡/index.html">均衡价值论（上） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">厂</div>
+  <div class="stamp ">企业</div>
+  <h1>生产要素（下）· 大规模生产与企业管理</h1>
+  <p class="sub">规模生产的技术、机械与原材料三大经济；企业像生物一样生长、壮大、停滞、衰朽；理想的企业家要有双重的才能——商人的判断与雇主的领导；最后以代表性企业收束全章：大自然的作用表现出报酬递减的倾向，人类的作用则表现出报酬递增的倾向。</p>
+  <div class="meta"><span>第4章</span>
+    <span class="k">代表性企业</span>
+    <span>正文 21,216 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>大规模生产</a><a href="#s3" data-t="s3"><span class="cn">叁</span>企业兴衰</a><a href="#s4" data-t="s4"><span class="cn">肆</span>企业家</a><a href="#s5" data-t="s5"><span class="cn">伍</span>组织形态</a><a href="#s6" data-t="s6"><span class="cn">陸</span>代表性企业</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>换言之，我们可以概括地说，大自然在生产上所起到的作用表现出报酬递减的倾向，而人类所起到的作用则表现出报酬递增的倾向。</p><cite>——第十二节 · 二</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第4章的终章：企业如何长大，企业家需要什么，报酬如何转向递增</p><p class="thesis">第十节铺陈<b>大规模生产</b>的利益与企业兴衰的循环；第十一节拆解<b>企业管理</b>——从手工业者到企业家、合伙、股份公司与合作社；第十二节造出全书的关键道具<b>代表性企业</b>，让报酬递增与报酬递减两股力量正面相抵。</p><div class="chain"><div class="node"><div class="n">规模</div><div><p class="tt">三大经济</p><p class="dd">技术的经济性、机械的经济性和原材料的经济性——最后一项正在迅速失去重要性</p></div></div><div class="node"><div class="n">宿命</div><div><p class="tt">有限的垄断</p><p class="dd">企业循环壮大，但很高的价格会导致新的竞争者出现；大企业旺盛的生命力极少能维持很久</p></div></div><div class="node"><div class="n">人才</div><div><p class="tt">双重能力</p><p class="dd">承担全部经营风险的雇主，其实是为社会履行两种完全不同的职务：商人的透彻了解与雇主的天然领导力</p></div></div><div class="node"><div class="n">形态</div><div><p class="tt">合伙与股份</p><p class="dd">股份公司对具有经营管理的天才而没有继承任何物质资本的人，提供了很大的机会</p></div></div><div class="node"><div class="n">合作</div><div><p class="tt">合作社的窘境</p><p class="dd">被雇用者本身通常不是他们自己的工头和经理的最好主人——斥责所引起的妒忌和愤怒像轴承中混在油里的沙子</p></div></div><div class="node"><div class="n">收束</div><div><p class="tt">代表性企业</p><p class="dd">已具有相当长的历史和一定程度的成功、以正常的能力来经营的企业——用它衡量内部与外部经济</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>大规模生产：三大经济与小制造商的翻盘</h2><span class="en">LARGE-SCALE PRODUCTION</span></div><p class="prose">大规模生产的利益在工业上表现得最为清楚——<b>工业具有自由选择地点的能力</b>就是工业的规模优势的最好例证。规模生产的主要优势有三：技术的经济性、机械的经济性和原材料的经济性，但与其他两项相比，最后一项正在迅速失去重要性：在近代英国的任何工业部门中，除了农业和家庭烹饪之外，原材料的浪费已不多见。</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>技术的经济性</h3><p class="cp">当 100 套家具或衣服必须按照完全相同的式样来下料时，值得花费大量的心思来计划如何把木板或衣料裁开而只浪费少量碎料——一种计划可以用于许多工作，它就能被很好而认真地执行。</p></div><div class="card num"><div class="idx">二</div><h3>机械的经济性</h3><p class="cp">大工厂中有许多为一种小用途而专门制造的高价机器；小制造商必然要用手工或不完善的机械来生产许多东西，虽然他知道使用专业机械能做得质优而价廉。</p></div><div class="card num"><div class="idx">三</div><h3>采购与销售</h3><p class="cp">大企业大量采购原材料因而价格低廉；大量销售因而免除麻烦；能花费巨额的广告费——同一工业许多企业合并为卡特尔的主要原因之一，就是极有组织地采购和销售所带来的节约。</p></div></div><p class="prose">但近代知识的发展反而有利于小制造商：在关于商业知识的一切事情上，<b>外部经济性正不断增大其重要性</b>——报纸以及所有的行业和专业的出版物不断为他收集消息；商业秘密总体上减少了，方法上最重要的改良很难长时间保守秘密。</p><p class="prose">小制造商在进步的竞赛中虽然不能领先，如果有时间和能力利用近代的各种便利来获得知识的话，也不一定很落后。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>企业的宿命：循环与有限的垄断</h2><span class="en">RISE &amp; FALL</span></div><p class="prose">一个大企业的成长像滚雪球：产品成倍增加且能以与原价相差不多的价格出售，利润就增长一倍以上；这提高他对银行家的信用，使他进一步扩大规模，获得更大的经济性和更大的利润——如此循环不已。</p><p class="prose">倘若才能始终适应，他也许会把本地区这一行业的全部生产量集中到手中，甚至拓展到很远，达到一种<b>有限的垄断</b>——受到以下原因限制的垄断：很高的价格会导致新的竞争者出现。</p><p class="prose">但远远没到这一步，进步就会因为他对努力工作的爱好有所衰退而停止。</p><p class="prose">而真正的天然刹车是销售：在大规模生产的经济性具有头等重要性的行业中，大多数行业的产品<b>销路困难</b>——单一而一致能大量批发的产品（如钢轨或花布）生产能成为例行工作，但报酬递增倾向强大的商品大体上是特殊的产品，只能慢慢地被公众所接受，<b>生产也许很快增加其经济性，但销售却非如此</b>。于是——</p><div class="aband"><q>一个企业如果失去使它能发达的非凡的活力，就会很快衰落，大企业旺盛的生命力极少能维持很久。</q><cite>——第十节 · 三</cite></div><p class="prose">零售业是同一戏剧的另一幕：大商店有较好的购货条件、更大的技术经济性；但小店主曾长期以送货上门、适应嗜好和赊欠的方便取胜。变化的天平倾向了大商店——赊欠习惯正在消失；宝贵的时间使人们宁愿花几分钟从价目表中列出一张很长的订货单；电车和地铁使人能方便地到大中心商店去。</p><p class="prose">不过小店主在小型修理行业和易坏食品的销售上仍保持相当好的经营收入；而许多有巨额资本的企业宁愿设立许多小商店而不愿设立一个大商店——<b>分店的经理专心招待消费者，他可能成为小店主的可怕的劲敌</b>。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>理想的工业家：双重的能力</h2><span class="en">THE EMPLOYER</span></div><p class="prose">在近代的大部分经营中，生产与销售分离，商人「冒着」或「承担」经营的风险：他们收集工作所需要的资本和劳动；他们安排或「计划」一切的经营，并监督它的细小事情。而承担全部经营风险的雇主，其实是<b>为社会履行两种完全不同的职务，而且要有双重的能力</b>。</p><div class="aband"><q>首先，以他作为商人和生产组织者的作用而论，他必须透彻了解自己行业的情况。他必须有能力预测生产和消费的广泛变动，而且要有能力知道供给一种新商品以满足实际需要的机会在哪里。</q><cite>——第十一节 · 三</cite></div><div class="aband"><q>但是，以他作为雇主的作用而论，他必须是一个天生的领导者。他必须有能力选择助手并充分信任他们；必须有能力使他们关心经营和信任他，以发挥他们内在的进取心和创造力；同时，他自己对一切事务实行总体把握，并保持主要经营计划的井井有条和前后一致。</q><cite>——第十一节 · 三</cite></div><p class="prose">成为一个理想的雇主所需的能力非常之大和如此之多，很少有人能在很大程度上兼有这些能力——有些人的成功全靠他的高尚品格，而有些人的成功，则是由于他们机智和意志坚定。</p><p class="prose">但资本的民主化在帮忙：顺利创办企业所需的资本数额不断增大，而<b>自己不想使用资本的人所拥有的资本数额却增长得更快</b>——银行家急于把资本借给经营能力和信用都很可靠的人。</p><div class="tbwrap"><table><thead><tr><th>经营才能供给价格的三个因素</th><th>价格名称</th></tr></thead><tbody><tr><td>资本的供给价格</td><td>利息</td></tr><tr><td>经营才能和精力的供给价格</td><td>纯经营收入</td></tr><tr><td>把适当的经营才能与必需的资本结合在一起的那种组织的供给价格</td><td>与第二个因素合在一起称总经营收入</td></tr></tbody></table></div><p class="prose">两种力量——使能干的商人所掌握的资本增加的力量，与使能力较差的商人手中的资本损失的力量——产生一个一致性的结果：<b>商人才能的大小与他们所经营的企业的大小之间存在着一致性</b>。在近代英国，运用资本的经营才能的供给，通常能适应对它的需求，因而就有相当明确的供给价格。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>组织形态：合伙、股份公司、合作社</h2><span class="en">FORMS OF BUSINESS</span></div><div class="tbwrap"><table><thead><tr><th>形态</th><th>优势</th><th>弱点</th></tr></thead><tbody><tr><td>私人合伙</td><td>非常有力而非常有弹性——从最能干的雇工中提拔合伙人；采购与工厂管理可明确分工</td><td>股票未经一切有关的人的许可不能转让</td></tr><tr><td>股份公司</td><td>有很大的弹性，能无限制地扩充；对有经营管理天才而没有继承任何物质资本的人提供很大的机会</td><td>承担主要风险的股东对企业缺乏充分了解，几乎无法发现经理的欺诈、徇私或敷衍</td></tr><tr><td>国有企业</td><td>有远大的前途</td><td>纳税人一般还不能对它们加以有效的控制；经营技术和组织上的创造性思想极其罕见</td></tr><tr><td>合作社</td><td>社员是他们自己的经理和工头的雇主与主人；管理细节的松懈最有可能被他们查出来</td><td>以人类本性的现状而论，被雇用者通常不是他们自己的工头和经理的最好主人</td></tr></tbody></table></div><div class="aband"><q>合作制度的目的在于避免上述两种企业管理方法的弊端。</q><cite>——第十一节 · 六</cite></div><p class="prose">合作社的弊病被马歇尔描写得极其生动：用手工操作的人会低估筹划经营的最高级工作的强度，因为这种工作的报酬与其他地方所能得到的差不多一样高，他们容易心生怨恨——<b>斥责所引起的妒忌和愤怒，容易产生像复杂机器的轴承中混在油里的沙子的作用</b>：通常在表面上看不出来。</p><p class="prose">因此合作制度很少得以全部实行；它的部分应用除了在工人所消费的商品零售方面之外，还没有获得显著的成功。不过世界「不过刚刚开始着手于合作运动的高级工作」。</p><p class="prose">工人的上升通道在两代人之间完成：普通工人如果有能力，一般就可变为工头，由工头就可升为经理，并可与他的雇主合伙经营——但<b>完全的地位提高通常在两代中完成得较多，很少在一代之中就能完成</b>；对整个社会而言，这也许较好。</p><p class="prose">上世纪初很多工人升到雇主地位，但他们往往很粗暴专横，他们的子弟往往骄傲、挥霍和放纵；而工头和监工的子弟受过很好的训练，「如果他们获得财富，他们就会很好地加以利用」。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>代表性企业：报酬递增与递减的交汇</h2><span class="en">THE REPRESENTATIVE FIRM</span></div><p class="prose">研究一种商品的正常生产费用，需要研究<b>在那个总生产量之下一个代表性生产者的费用</b>。选谁？不能选新生产者——他在许多不利的条件下经营，一时不得不满足于很少的利润或没有利润；也不能选那个因非常持久的能力和好运气而已有很大经营规模和井井有条的大工厂的企业——它比一切竞争者都有优势。</p><div class="aband"><q>我们的代表性企业必须是这样一个企业：它已具有相当长的历史和一定程度的成功，它是以正常的能力来经营的，它能正常地获得属于那个总生产量的外部经济性和内部经济性。</q><cite>——第十二节 · 二</cite></div><p class="prose">两条一般论断：任何产品的总生产量之增加，一般会增大这样一个代表性企业的规模，因而增加它所有的内部经济性；总生产量的增加，常会增加它所获得的外部经济性，因而使它能花费较以前为少的劳动和代价来制造产品。于是两股力量的对峙有了舞台——</p><div class="tbwrap"><table><thead><tr><th>例证</th><th>源文判断</th></tr></thead><tbody><tr><td>小麦和羊毛（古老国家，不能自由进口）</td><td>报酬递减倾向差不多完全占有优势</td></tr><tr><td>面粉业和毛毯业（规模已非常大）</td><td>总生产量的增加带来若干新的经济，但不多——新经济是新发明的结果，而不是组织改进的结果</td></tr><tr><td>毛毯业稍有发展的国家</td><td>总产量增加所减少的制造上的困难与所增大的原材料生产上的困难恰好相等——报酬不变</td></tr><tr><td>精致的工业部门与近代运输业</td><td>原材料费用无足轻重，几乎无法抵抗报酬递增定律所起的作用</td></tr></tbody></table></div><div class="aband"><q>报酬递增定律可说明如下：劳动和资本的增加导致组织的改进，组织的改进增大劳动和资本的使用效率。</q><cite>——第十二节 · 二</cite></div><p class="prose">尾章回到人口与福利：具有一定程度的强大力量和精神的民族，其共同效率的增加在比例上可以超过其人口的增长——因为人口的增加能使他们获得专业技能和专业机械、地方性工业和大规模生产等许多不同的经济。</p><p class="prose">但有两个条件：<b>首先是农产品供给充分；其次人口过多不会因为缺乏新鲜空气和阳光，以及对青年的健康和愉快的娱乐而受到损害。</b>第4章到此收官。下一篇进入全书的中枢——需求、供给与价值的一般关系。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜阿尔弗雷德·马歇尔《经济学原理》（北京联合出版公司，章洞易 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第4章｜生产要素（下）</span><a href="../05-生产要素中-财富增长与工业组织/index.html">← 生产要素（中）</a><a href="../07-均衡价值论上-暂时与正常均衡/index.html">均衡价值论（上） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='econ-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

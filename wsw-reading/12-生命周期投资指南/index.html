@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第四部分 实务指南·生命周期投资指南｜漫步华尔街 精读</title>
+<meta name="description" content="你一生中最重要的投资决策，可能是如何平衡资产类别——罗杰·伊博森测算：总收益中 90％ 以上取决于选什么资产类别及其占比，选哪些具体股票或基金的决定不到 10％。本章给出资产配置五项原则、三条一般准则，以及一份随年龄调整">
+<style>
+:root{
+  --paper:#F4F2EC;      /* 纸底 */
+  --paper-2:#E9E5DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#232B33;        /* 主墨 */
+  --ink-2:#35506B;
+  --ink-deep:#0D1420;   /* 午夜行情蓝（hero 底） */
+  --gold:#35506B;       /* 证券深蓝（强调 · 牛市主线） */
+  --gold-b:#7391B0;
+  --gold-soft:rgba(53,80,107,.16);
+  --cinnabar:#A63528;   /* 暴跌红（警示 · 泡沫与崩溃） */
+  --teal:#B08A3A;       /* 铜牛金（对照 · 牛市与长期主义） */
+  --tx:#232B33;
+  --tx-2:#3E5368;
+  --tx-3:#6E7B87;
+  --line:rgba(35,43,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(35,43,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35506B 0%,var(--ink-deep) 62%);
+  color:#EAF0F5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(115,145,176,.42)}
+.hero::after{inset:22px;border:1px solid rgba(115,145,176,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(115,145,176,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F4F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(115,145,176,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,80,107,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(115,145,176,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E9EDF2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(115,145,176,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E9EDF2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,80,107,.5);box-shadow:0 4px 18px rgba(35,43,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,80,107,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,80,107,.45);background:rgba(53,80,107,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(150,45,35,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,80,107,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,236,.94);
+  border-bottom:1px solid rgba(35,43,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(35,43,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35506B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,80,107,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(35,43,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(35,43,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#707C88;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../11-金融竞赛的障碍/index.html">← 金融竞赛的障碍</a><a href="../13-三种步伐与跋/index.html">三种步伐·跋与附录 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">生</div>
+  <div class="stamp s4">生命周期</div>
+  <h1>生命周期投资指南</h1>
+  <p class="sub">你一生中最重要的投资决策，可能是如何平衡资产类别——罗杰·伊博森测算：总收益中 90％ 以上取决于选什么资产类别及其占比，选哪些具体股票或基金的决定不到 10％。本章给出资产配置五项原则、三条一般准则，以及一份随年龄调整的生命周期投资指南。</p>
+  <div class="meta"><span>第四部分 实务指南</span>
+    <span class="k">资产配置</span>
+    <span>正文 16,950 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">贰</span>五项原则</a><a href="#s3" data-t="s3"><span class="cn">叁</span>持有期限</a><a href="#s4" data-t="s4"><span class="cn">肆</span>定投</a><a href="#s5" data-t="s5"><span class="cn">伍</span>再平衡</a><a href="#s6" data-t="s6"><span class="cn">陆</span>三个案例</a><a href="#s7" data-t="s7"><span class="cn">柒</span>投资指南</a><a href="#s8" data-t="s8"><span class="cn">捌</span>退休管理</a><a href="#s9" data-t="s9"><span class="cn">玖</span>提款策略</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>人这一生有两种时候不应该投机，一种是承担不起的时候，另一种是承担得起的时候。</p><cite>——马克·吐温《赤道环游记》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图：按生命周期配置资产</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">生命周期投资指南：年龄决定打法</p><p class="thesis">34 岁的人与 64 岁的人都在存退休金，却该用不同的金融工具：年轻者可以用工资弥补风险带来的损失，年长者必须约束风险。<b>你最重要的投资决策不是挑哪只股票，而是股票、债券、房地产、货币市场证券各占多少权重</b>——这一决策决定了总收益的 90％ 以上。</p><div class="chain"><div class="node"><div class="n">原则</div><div><p class="tt">五项原则</p><p class="dd">风险与收益相关；持有期越长波动越小；定投降险；重新调整权重降险增收益；区分风险态度与风险承受能力</p></div></div><div class="node"><div class="n">时间</div><div><p class="tt">持有期限</p><p class="dd">一年里股票可能 +52％ 也可能 −37％；但 25 年时段全部产生 10％ 以上收益——捂得越久，股票份额应越高</p></div></div><div class="node"><div class="n">纪律</div><div><p class="tt">定投与再平衡</p><p class="dd">每月等额定投捡便宜（53200 美元变 146 万美元）；每年调回 60:40 等于雇了一个「低买高卖」的小精灵</p></div></div><div class="node"><div class="n">自知</div><div><p class="tt">三个案例</p><p class="dd">64 岁孀妇、26 岁MBA、43 岁通用汽车工长——承受能力取决于非投资性收入；永远不要承担与主要收入来源相同的风险</p></div></div><div class="node"><div class="n">指南</div><div><p class="tt">生命周期配置</p><p class="dd">20 多岁激进（重股＋新兴市场）；55 岁转收入导向；年近七旬仍保 40％ 股票＋15％ REIT 抗通胀</p></div></div><div class="node"><div class="n">退休</div><div><p class="tt">3.5％ 解决方案</p><p class="dd">组合预期收益 5％ − 通胀 1.5％ ＝ 每年只花 3.5％；514286 美元本金可支撑每月 1500 美元直到 100 岁</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">贰</span><h2>资产配置五项原则</h2><span class="en">FIVE PRINCIPLES</span></div><div class="ladder"><div class="step"><div class="dot">1</div><h4>原则①：历史表明，风险与收益相关</h4><p>增加投资回报只能通过承担更大风险——投资管理方面再没有比这更重要的教训。伊博森估计自 1790 年以来股票年复合收益率超过 8％；自 1926 年以来大型公司股票年回报超过 10％。华盛顿若从总统第一笔工资中存下 1 美元投入股票，到 2021 年其继承人中的百万富翁将多出 50 倍以上。但每十年中约有三年总收益率为负——天下没有免费午餐。</p></div><div class="step"><div class="dot">2</div><h4>原则②：实际风险取决于持有期限</h4><p>持有期限越长，投资收益的波动性越小。30 年期美国政府债券到 2022 年收益率已降至 3％——只有此后 30 年持有才能确保拿到 3％；一年后被迫卖出，可能收益为 0 甚至大幅亏损。你的年龄与「定力」，决定一切具体投资计划蕴含的风险大小。</p></div><div class="step"><div class="dot">3</div><h4>原则③：定期等额平均成本投资法</h4><p>虽有争议，但可作为降低股票和债券投资风险的有用方法——按月或按季投入固定金额，确保你不会在股价暂时过高时一次性买入整个组合（下节详算）。</p></div><div class="step"><div class="dot">4</div><h4>原则④：重新调整资产类别权重</h4><p>对股票、债券等资产比例加以调整，使之回到与你的年龄及风险态度相匹配的比例——可以降低风险，某些情况下还能提高投资收益。</p></div><div class="step"><div class="dot">5</div><h4>原则⑤：区分风险态度与风险承受能力</h4><p>你承担得起的风险取决于总体财务状况——包括收入类型和收入来源，但不包括投资性收入。「吃得好抑或睡得香」测量表上的位置，要和你的钱包一起看。</p></div></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>持有期限：时间是波动的稀释剂</h2><span class="en">TIME HORIZON</span></div><p class="prose">90 年里长期政府债券平均年收益率 5.7％，但很多单个年份实际收益为负——高均值来自其间显著更高的利率水平。股票同理：<b>1950～2020 年持有多样化股票组合平均年收益约 10％</b>，可单年波动惊人——一年可能超过 52％，另一年亏损可能达到 37％。</p><p class="prose">资金只能投资一年的话，1 年期美国国债或政府担保的 1 年期定存就是最好的选择。</p><p class="prose">但把持有期拉长到 25 年，情形截然不同：<b>图 14-1 涉及的全部 25 年时段内，股票投资都产生了 10％ 以上的收益率</b>；即便碰上自 1950 年起最糟糕的 25 年时段，预期长期收益率也只下降约 4 个百分点。</p><p class="prose">二三十年的时段里股票显然是赢家（表 14-2「股票战胜债券的概率」）——这正支持「年纪较轻的人应持有更大比例的股票」。当然，长期持有并非没有风险：持有期长，组合终值的变动性会上升，也有过十年股票总体收益接近于零的情形。</p><p class="prose">而年长者应渐趋保守的最重要原因，是他们赚取劳动收入的年限越来越短——股市收益为负的时期里，没有薪金收入可供依赖，行情反转会直接影响生活水准。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>定期等额平均成本投资法：捡便宜的纪律</h2><span class="en">DCA</span></div><p class="prose">名称花哨，本质朴素：长期按相同间隔期把固定金额投入（比如每月买共同基金份额）。表 14-3 的假想演算最直观——两种情形都每年投 1000 美元、共投 5000 美元：</p><div class="tbwrap"><table><thead><tr><th>市场情形</th><th>走势</th><th>最终价值</th><th>结果</th></tr></thead><tbody><tr><td>情形一：波动型</td><td>下跌→急剧上涨→第 5 年跌回起点</td><td>6048 美元</td><td>收益 1048 美元，非常可观——尽管股市回到原点</td></tr><tr><td>情形二：单边上涨</td><td>逐年上涨、累计涨幅 40％</td><td>5915 美元</td><td>市场大涨，收益反而不如波动市——低价时买到了更多份额</td></tr></tbody></table></div><div class="aband"><q>有一个小测试。如果你计划终身吃汉堡包，并且你不是一个肉牛养殖商，那么你会希望牛肉价格更高还是更低？同样的道理，如果你打算买一辆车，而你又不是汽车制造商，那么你喜欢汽车价格较高还是较低？显然，这些问题都不言而喻。</q><cite>——沃伦·巴菲特谈投资者为何应喜欢股价下跌 · 第14章</cite></div><p class="prose">期末考试：未来 5 年你是净储蓄者，你希望股价更高还是更低？很多投资者答错——股价上涨他们欢欣鼓舞，其实高兴的是自己即将购买的「汉堡」涨价了。</p><p class="prose">真实案例（表 14-4）：1978 年 1 月 1 日首期投入 500 美元、随后每月投入 100 美元购买先锋500指数基金，投入共不足 53200 美元，<b>最终价值超过 1460000 美元</b>。</p><p class="prose">定投不是万全之策：2008 年那样的惩罚性大熊市里它照样躲不过；关键是即便在最暗无天日的时候也要有现金、有信心继续投——中断「自动导航」，你就丧失了在份额以很低价格抛售时捡便宜的机会。若攒一大笔钱（如遗产），此法未必适合。</p><p class="prose">可保留一小笔储备金（先投货币基金），市场急剧下跌后趁机额外买入——最严重的市场恐慌与最病态的投机性暴涨一样，都是没有根据的；就股市整体而言，<b>牛顿万有引力定律总是以相反的方式演绎：下跌后必然会涨回来</b>（虽然这未必适用于个股）。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>重新调整资产权重：一个可信的小精灵</h2><span class="en">REBALANCING</span></div><p class="prose">设定 60％ 股票＋40％ 债券的目标比例，一年后股价大涨、债券下跌，组合变成 70:30——风险更大的配置。再平衡策略要求你卖出一些股票、买入一些债券，把比例调回 60:40。</p><p class="prose">表 14-5 显示（1996 年 1 月～2017 年 12 月，每年调整一次，股票用罗素3000指数基金、债券用巴克莱整体债市指数基金代表，不考虑纳税）：<b>波动性变得更小，也带来了更高的收益率</b>。</p><p class="prose">「炼金术」的原理就藏在行情里：1999 年末史无前例的泡沫中，投资者卖出足量股票、买入足量债券，恢复初始比例——恰好卖在顶部附近；2002 年末熊市底部（债市已产生很大正收益），股票份额大低于 60％、债券大高于 40％——卖出债券、买入股票；2008 年底再度如法炮制。</p><p class="prose"><b>我们都希望有个小精灵能可靠地告诉我们如何「低买高卖」，而对资产权重进行系统性调整的策略，不啻拥有一个那样可信的精灵。</b></p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>风险态度 ≠ 风险承受能力：三个案例</h2><span class="en">THREE CASES</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">保守</span><h4>米尔德莱德·G.：64 岁新寡</h4><span class="ar">▶</span></div><div class="cb"><div class="in">关节炎恶化不得不放弃注册护士工作；房子有未付清的抵押贷款、每月还款不小；全部生活来源是社保福利金、一份 25 万美元保单的收益，以及已故丈夫留下的 5 万美元小公司股票组合。她既没有平均预期寿命，也没有体力挣组合之外的收入——需要安全、能产生足够收入的组合：债券、股利丰厚的股票、房地产投资信托指数基金份额；风险较大的增长型小公司股票无论多便宜，都不属于她的组合。</div></div></div><div class="case"><div class="ch"><span class="tag mid">激进</span><h4>蒂芬尼·B.：26 岁斯坦福 MBA</h4><span class="ar">▶</span></div><div class="cb"><div class="in">刚入美国银行培训计划，从祖母遗产中继承 5 万美元，目标是攒出买房钱与退休资金。既有平均预期寿命，又有面对损失仍能维持生活水准的挣钱能力——可以大胆构建激进型组合，偏向高风险高收益端。米尔德莱德那类小公司股票，对她远比对孀妇合适。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>卡尔·P.：43 岁通用汽车工长</h4><span class="ar">▶</span></div><div class="cb"><div class="in">年收入 7 万多美元，妻子琼推销雅芳年收入 1.25 万，4 个孩子等着上大学；通过公司薪资储蓄计划定期买入通用汽车股票，已积累 21.9 万美元——收入和投资全绑在通用汽车身上。2009 年通用汽车宣布破产：卡尔既丢了工作，又折了投资组合。安然雇员的教训如出一辙——<b>在你的投资组合中，永远不要承担与你的主要收入来源相同的风险</b>。</div></div></div></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>三条一般准则与生命周期投资指南</h2><span class="en">LIFE-CYCLE GUIDE</span></div><p class="prose"><b>准则①特定需要必须由专用资产提供资金</b>：一年后要付 3 万美元首付，这笔钱就投 1 年期定存这类安全证券；未来 3～6 年的学费，用到期日相匹配的零息债券或几份定存。</p><p class="prose"><b>准则②认清自己的风险忍受度</b>：理财计划与其说是科学，不如说是艺术——2008 年股市几乎暴跌 50％、2020 年 2～3 月一个月内下跌三分之一（含单日暴跌 13％），你睡得着吗？惊慌失措就削减股票比例。<b>准则③坚持不懈地储蓄，无论数目多小</b>：每周存 23 美元行吗？</p><p class="prose">为难的话每周 11.5 美元行吗？只要持之以恒、还有很多年可工作，一大笔退休资金便可轻而易举地积累起来（表 14-6：初始 500 美元＋每月 100 美元投入先锋股票指数基金，股利与资本利得自动再投资；每月只能存 50 美元就把表中数字除以 2）。</p><p class="prose">指南本身（图 14-2）：犹太教法典《塔木德》里以撒拉比说，人应永远把财富分成三部分——1/3 买土地、1/3 做生意、1/3 放手头作流动资金。</p><p class="prose">这配置颇有道理，但现代工具可以做得更好：<b>20 多岁</b>——激进型组合，权重很大的股票加高比例外国股票（含风险较高的新兴市场股票），国际多样化还能降低风险、分享世界经济增长。<b>年岁渐增</b>——削减风险较大的投资，增持债券及利率超低时期的债券替代品（股利增长型股票）、增加付丰厚红利的 REIT。</p><p class="prose"><b>年届 55</b>——考虑向退休过渡，转向收入导向型配置，股票更趋保守、更关注收入而更少着眼增长。<b>退休之后</b>——高比例持有多种债券。</p><p class="prose">旧经验法则说债券比例应与年龄相等，但平均预期寿命已大为提高——<b>即便年近七旬，仍建议保有 40％ 的一般股票和 15％ 的房地产权益（REIT）</b>，以带来收入增长、抵御通货膨胀。</p><p class="prose">就多数人而言，组合应使用涵盖范围广泛的整体股市指数基金而非个股：一是多数人资本不足以适当多样化，二是年轻人靠逐月积累，共同基金是极佳载体——务必选「以资产净值出售」的低成本基金；最高税收等级且住高税率州者，退休金计划之外应用免税货币基金与只投本州债券的债券型基金。嫌每年调整麻烦？</p><p class="prose"><b>生命周期基金（目标日期基金）</b>会自动再平衡并随年龄转向安全配置：2025 年你 40 岁、计划 70 岁退休，就买「目标到期日 2055 年」的基金；先锋、富达、美国世纪、普信均有提供——买前查清手续费，收费低意味着口袋里会有更多的钱。</p><div class="grid g3"><div class="card num"><div class="idx">准则1</div><h3>专用资产</h3><p class="cp">一年后要用的 3 万美元首付就投 1 年期定存；未来几年的学费用到期日匹配的零息债券或定存——特定需要由特定资产供养。</p></div><div class="card num"><div class="idx">准则2</div><h3>风险忍受度</h3><p class="cp">2008 年跌 50％、2020 年一个月跌 1/3 时你睡得着吗？答案是削减股票比例的依据——理财计划是艺术，不是公式。</p></div><div class="card num"><div class="idx">准则3</div><h3>坚持储蓄</h3><p class="cp">每周 23 美元或 11.5 美元，通过薪资储蓄计划或 401(k) 持之以恒——很多年后它就是一大笔退休资金。</p></div></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>退休之后：年金化，还是继续持有</h2><span class="en">RETIREMENT</span></div><p class="prose">现实并不轻松：婴儿潮一代每天有 1 万多人达到 65 岁（延续至 2030 年），预计将有 100 余万人活到 100 岁以上；一个 65 岁的人平均预期寿命还有约 20 年，而一半退休人士会活得更久。</p><p class="prose">可一般美国家庭银行里没多少钱、信用卡债务不少；拥有退休金账户的美国人只占一半，财富最少的四分之一人口中仅 11％ 有一份储蓄/退休金计划；55～64 岁者平均 30.8 万美元的退休储蓄金，恐怕不足以替代其 15％ 以上的家庭收入。</p><p class="prose">选择只有两个：开始严肃认真地储蓄，或者——把那句不太吉利的话留给亨尼·扬曼（源文止于人名）。已备好储蓄的人面对两个基本选择：<b>全部或部分年金化</b>，或<b>继续持有组合、按比例提用</b>。</p><p class="prose">年金是「长寿保险」：向保险公司付一笔钱，换取一直支付到你死亡的定期款项。科幻作家斯特金说过定律——</p><div class="aband"><q>你所听到或读到的一切东西，有95％都是毫无用处的垃圾。</q><cite>——西奥多·斯特金（斯特金定律） · 第14章</cite></div><p class="prose">投资世界应验了这条定律，而关于年金的错误信息占比更接近 99％——友好的销售员说年金是唯一合理办法，许多理财顾问又说「买年金就是让钱打水漂」。</p><p class="prose">数字说话（2022 年初，100 万美元保费）：<b>65 岁男性终身固定年金每年约 61250 美元</b>；65 岁夫妇联合生存年金每年约 51500 美元；显性通胀挂钩年金初始支付每年只有约 4 万美元；20 年保证支付期让 70 岁男性接受每年支付金额减少超过 20％。</p><p class="prose">年金的优点是独一无二的——活多久保险公司养多久，厌恶风险者应考虑把部分甚至全部储蓄投入；但有四个缺点要掂量：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>缺点①与遗赠动机不相符</h4><p>年金持有人亡故时不留下任何资金——想给孩子、亲戚或慈善机构留钱的人，不应把全部储蓄年金化。</p></div><div class="step"><div class="dot">2</div><h4>缺点②消费路径不易改变</h4><p>夫妇刚签完联合人寿年金，双双患上不治之症、时日无多，想完成周游世界的梦想——年金化让他们无法灵活改变消费路径。</p></div><div class="step"><div class="dot">3</div><h4>缺点③成本可能很高</h4><p>尤其是保险推销员销售的年金：管理费、其他费用之外还有销售佣金——有些年金可能成为绩效非常糟糕的投资。</p></div><div class="step"><div class="dot">4</div><h4>缺点④税收上可能没有优势</h4><p>可变年金把可享税收优势的资本利得变成了按较高税率纳税的一般收入；部分年金化也不能抵消退休金账户的法定最低提款义务。</p></div></div><p class="prose">马尔基尔的看法：至少将部分储蓄投入年金通常很有意义——这是确保你不会活得比收入供养你的时间更长的<b>唯一无风险办法</b>；选信誉卓著公司提供的低成本、无销售佣金的年金，上网货比三家。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>继续持有投资组合：3.5％ 解决方案</h2><span class="en">3.5% RULE</span></div><p class="prose">对愿意继续掌控资产的人，前版建议的「4％ 解决方案」已收紧为 <b>3.5％ 解决方案</b>：每年花费不超过资产总值的 3.5％，即使活到 100 岁也不太可能把钱花光，还可能给继承人留下一笔购买力相当的遗产。</p><p class="prose">按此规则，<b>需要 514286 美元的储蓄</b>，才能在退休后每月获得 1500 美元（每年 1.8 万美元）的收入。</p><p class="prose">数字的由来：第13章预期股票长期收益率约 6％、多样化债券组合约 4％，半股半债的平衡型组合约 5％；扣除 1.5％ 的通胀增长需求，每年可消费 3.5％——若通胀为美联储目标的 2％，3％ 的消费比例恐怕更合适。为什么要保守？</p><p class="prose">65 岁退休恰逢 2008～2009 年那样跌约 50％ 的熊市，若每年按 6％ 提款，储蓄可能不到 10 年枯竭；每年只提 3.5％，活到 100 岁也用不光。</p><p class="prose">三点补充：<b>其一</b>，不要按每年年初组合市值的 3.5％ 消费（市场波动会让消费忽高忽低）——按最初退休储蓄金的 3.5％ 起步，之后每年按 1.5％ 增长，收入更平稳。</p><p class="prose"><b>其二</b>，股利加利息很可能不够 3.5％，就从权重过大的资产里卖——股票大涨把 50:50 变成 60:40 时，从股票那部分提出额外资金，既调整了配置又拿到了消费收入（即便不需要提款，也建议每年再平衡一次）。</p><p class="prose"><b>其三</b>，尽可能延长缴税时间——先花应税账户（股利利息已缴过税），再花延迟纳税资产，罗斯 IRA 留到最后：它没有法定最低提款限额，传给继承人无须缴纳收入税。</p><p class="prose">最后一句提醒很马尔基尔：若你年届 80、每年只提取 4％ 而组合还在增值——要么你深信医疗科技发现了长生不老药，要么你该考虑松一松钱袋、多加消费了。</p><div class="check" data-k="wsw-12-check"><p class="ct">对号入座你的生命周期</p><label><input type="checkbox"><span>我的组合比例与年龄匹配，而不是照搬别人的配置</span></label><label><input type="checkbox"><span>我在用定期等额投资法（或有专门的储备金在暴跌后加仓），并且从不中断</span></label><label><input type="checkbox"><span>我每年至少重新调整一次资产权重——让小精灵替我低买高卖</span></label><label><input type="checkbox"><span>我的投资组合里没有与主要收入来源相同的风险敞口</span></label><label><input type="checkbox"><span>我对退休提款按 3.5％ 规划，从最初本金起步、每年按 1.5％ 增长</span></label><div class="cf">90％ 的收益来自资产配置——已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出截断</span><span class="nd"><b>①｜</b>以下各句在导出源中不完整，均照录不补写：14.1.2 段7 止于「你才有理由确信你能获得股票可以提供的高收益率」句末缺标点；14.1.4 段2 止于「表14-5显示了在截至2017年12月的22年」；14.5 段1 止于「亨尼·扬曼(Henny Youngman)」；14.7 段1 止于「曾建议你使用“4％解决方案”」（据下文可知前版建议 4％，本版收紧为 3.5％）。</span></div><div class="note" id="n2"><span class="nn">表格与插图</span><span class="nd"><b>②｜</b>表14-1 至表14-6 与图14-1、图14-2 在源文中仅存标题（或标题＋注释），关键数据以正文文字转述：表14-1 资料来源 Ibbotson, Duff&amp;Phelps SBBI；图14-1 注明实心椭圆点代表各时段年均收益率；表14-5 注明 22 年间每年重新调整一次、波动性更小且收益率更高（脚注①收益率标准差、②股票由罗素3000指数基金代表、债券由巴克莱整体债市指数基金代表，不考虑纳税）；表14-4 资料来源先锋集团。本篇源行段含插图 30 张，已从正文剥离，不引图。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜伯顿·马尔基尔《漫步华尔街》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第四部分｜生命周期投资指南</span><a href="../11-金融竞赛的障碍/index.html">← 金融竞赛的障碍</a><a href="../13-三种步伐与跋/index.html">三种步伐·跋与附录 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wsw-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

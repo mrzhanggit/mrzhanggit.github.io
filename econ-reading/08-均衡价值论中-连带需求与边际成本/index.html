@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第5章·需求、供给与价值的一般关系（中）· 连带需求与边际成本｜经济学原理 精读</title>
+<meta name="description" content="没有一样东西的需求不受其他东西的需求的影响：派生需求定律、连带供给与复合供给；纯产品与边际使用的概念登场，准租初露端倪；第九节转向土地——耕作边际、稀有地租与级差地租、谷物税的转嫁，处处提防循环推理。">
+<style>
+:root{
+  --paper:#F4F1E8;      /* 暖晨纸底 */
+  --paper-2:#E8E3D3;    /* 纸色深一档 */
+  --card:#FBF8EF;
+  --ink:#2E4A5A;        /* 晨蓝墨（主色） */
+  --ink-2:#3D5867;
+  --ink-deep:#0E1416;   /* 深夜晨蓝（hero 底） */
+  --gold:#B08A3A;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#C9A85C;
+  --gold-soft:rgba(176,138,58,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#6E93A8;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#262B28;
+  --tx-2:#49524E;
+  --tx-3:#7B7F76;
+  --line:rgba(38,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E4A5A 0%,var(--ink-deep) 62%);
+  color:#F0EFE6;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(201,168,92,.42)}
+.hero::after{inset:22px;border:1px solid rgba(201,168,92,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(201,168,92,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F2EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,239,230,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(201,168,92,.34);color:rgba(240,239,230,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,58,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEDE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(201,168,92,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EFE0;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(201,168,92,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EFE0;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(235,236,228,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(176,138,58,.5);box-shadow:0 4px 18px rgba(38,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(176,138,58,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(110,147,168,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(110,147,168,.1);color:var(--teal);border:1px solid rgba(110,147,168,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(176,138,58,.45);background:rgba(176,138,58,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(176,138,58,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,241,232,.94);
+  border-bottom:1px solid rgba(38,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3D5867;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(176,138,58,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-均衡价值论上-暂时与正常均衡/index.html">← 均衡价值论（上）</a><a href="../09-均衡价值论下-报酬递增与垄断/index.html">均衡价值论（下） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">衍</div>
+  <div class="stamp ">连带</div>
+  <h1>需求、供给与价值的一般关系（中）· 连带需求与边际成本</h1>
+  <p class="sub">没有一样东西的需求不受其他东西的需求的影响：派生需求定律、连带供给与复合供给；纯产品与边际使用的概念登场，准租初露端倪；第九节转向土地——耕作边际、稀有地租与级差地租、谷物税的转嫁，处处提防循环推理。</p>
+  <div class="meta"><span>第5章</span>
+    <span class="k">派生需求</span>
+    <span>正文 21,529 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>派生需求</a><a href="#s3" data-t="s3"><span class="cn">叁</span>连带供给</a><a href="#s4" data-t="s4"><span class="cn">肆</span>费用分担</a><a href="#s5" data-t="s5"><span class="cn">伍</span>纯产品</a><a href="#s6" data-t="s6"><span class="cn">陸</span>耕作边际</a><a href="#s7" data-t="s7"><span class="cn">柒</span>掂一掂</a>
+    
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>正因为要求我们同时记住许多事情，经济学永远不会成为一门简单的科学。</p><cite>——第七节 · 一</cite></div><div class="epi"><p>地租数量不是一个起决定作用的因素，地租是投于土地的资本和劳动所得的总收益超过它们在和耕作边际一样不利的条件下所得的总收益的差价。</p><cite>——第九节 · 一</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第5章中篇：从派生需求到边际成本，从连带供给到地租的边界</p><p class="thesis">第五节编织商品之间的<b>错综复杂关系</b>——连带需求、复合需求、连带供给、复合供给四件工具；第六节处理混合企业的费用分担、风险保险与再生产成本；第七、八节定义<b>纯产品</b>并借租税转嫁预演地租问题；第九节抵达<b>耕作边际</b>，给出地租的完整定义。</p><div class="chain"><div class="node"><div class="n">需求</div><div><p class="tt">派生需求定律</p><p class="dd">对生产要素的需求从成品需求中派生——用需求价格减去其他要素的供给价格总额即可求出</p></div></div><div class="node"><div class="n">网络</div><div><p class="tt">连带与复合</p><p class="dd">连带需求（面粉机与烘炉）、复合需求、连带供给（牛肉与牛皮）、复合供给——商品之间彼此牵连</p></div></div><div class="node"><div class="n">费用</div><div><p class="tt">销售与风险</p><p class="dd">推销成本与风险保险费如何在部门间分摊；风险保险费求出平均数后不可再单独计入，否则重复计算</p></div></div><div class="node"><div class="n">概念</div><div><p class="tt">纯产品</p><p class="dd">额外使用任何一种要素带来的总产值纯增益——企业家靠久经训练的本能估计它</p></div></div><div class="node"><div class="n">预演</div><div><p class="tt">租税转嫁</p><p class="dd">税向前转嫁给消费者、向后转嫁给生产者；借此说明稀有地租与级差地租</p></div></div><div class="node"><div class="n">土地</div><div><p class="tt">耕作边际</p><p class="dd">边际上的生产成本集中了决定农产品价格的那些原因——它并不决定价格，但汇总了原因</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>连带需求与派生需求定律</h2><span class="en">DERIVED DEMAND</span></div><p class="prose">面包直接满足人的需求，这叫做直接需求；面粉机和烘炉间接满足人的需求，这叫做间接需求——对原材料和其他生产资料的需求，是从借助它们而生产出来的那些可以直接使用的产品的需求中派生出来的。对房屋的直接需求，也引起对建筑劳动、砖、石料和木材等的连带需求。</p><p class="prose">建筑业劳资纠纷是派生需求的经典例解：假设新房屋需求的一般条件不变、其他要素的供给条件也不变，泥瓦匠劳动供给的暂时减少将使建筑量相应减少；已减少的房屋数量的需求价格将比以前提高——假设泥瓦匠的劳动是不可缺少的，此剩余就是泥瓦匠劳动价格可能增加的界限。</p><div class="aband"><q>就某商品的各种不同数量来说，对用于生产该商品的任何要素所提供的价格是以那个价格的超额量为限，此差额是该商品数量能找到买主的价格减去生产它所用的其他相应要素的供给价格总和。</q><cite>——第五节 · 一</cite></div><div class="aband"><q>某商品的任何生产要素的需求表可以从该商品的需求表中求出来，方法是从该商品的各种不同数量的需求价格中减去其他相应要素一定数量的供给价格总额。</q><cite>——第五节 · 一</cite></div><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>要素近乎必要</h3><p class="cp">这种要素是生产该商品所必要的或几乎是必要的，因为按合适的价格买不到适当的代用品。</p></div><div class="card num"><div class="idx">二</div><h3>成品需求弹性小</h3><p class="cp">该商品是需求弹性很小的商品，供给的减少将使消费者宁愿出更高的价格而不愿买不到它。</p></div><div class="card num"><div class="idx">三</div><h3>要素占比很小</h3><p class="cp">泥瓦匠的工资只占一幢房屋的建筑费用总额的一小部分，即使工资增加50%，对造价也只能增加一个很小的比例，从而对需求的影响极小。</p></div><div class="card num"><div class="idx">四</div><h3>其他要素可让利</h3><p class="cp">即使需求量略有减少，也会使其他生产要素的供给价格大幅下降，从而增加用来给该要素支付高价的差额。</p></div></div><p class="prose">上述4个条件是独立的，而最后3个条件的结果是累积性的。但应用到现实生活时要记住：如果一种生产要素的供给受到干扰，其他要素的供给也多半要受干扰；雇主的报酬一般起着缓冲作用——损失首先落在雇主肩上，但通过解雇工人和降低工资，他们最终把大部分损失转嫁到其他生产要素上。</p><p class="prose">复合需求把局部需求的加总推广到生产必需品上：几乎各种原材料和几乎各种劳动都被应用在许多不同的工业部门，从每种商品的直接需求中可以求出任何一种东西的派生需求；这些派生需求彼此竞争，但在产品供给的关系上又相互合作，「合成」包含一定总需求的供给量。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>连带供给、复合供给与商品间的关系</h2><span class="en">JOINT SUPPLY</span></div><div class="tbwrap"><table><thead><tr><th>概念</th><th>含义</th></tr></thead><tbody><tr><td>连带需求</td><td>面粉机和烘炉的服务共同联结在成品面包中的需求——对辅助品的需求来自它们共同生产的成品</td></tr><tr><td>复合需求</td><td>多种用途互相竞争的派生需求——各种原材料和劳动「分配在它的各种不同的用途上」</td></tr><tr><td>连带供给</td><td>并存于同一来源、不易独自生产的产品——如牛肉与牛皮、小麦与麦草</td></tr><tr><td>复合供给</td><td>几种互相竞争的途径共同满足一种需求——「复合」成满足需求的总供给</td></tr></tbody></table></div><p class="prose">连带产品二者同时生产所用的成本和单独生产其中一个所用的成本完全相等的情况十分罕见：如果麦草不值钱，农户就会更加努力使麦穗长得大；外国羊毛的进口曾使英国羊改良品种，甚至不惜以降低毛的质量为代价。只有当同一生产过程所产的两种东西之一不值钱且剔除无须费用时，才无法确定各自的供给价格。</p><p class="prose">诸商品之间的关系错综复杂：过去用木炭炼铁时，铁的价格在某种程度上决定皮革的价格——英国炼铁者对橡制木炭的需求维持着橡树生产，而对某种东西的过度需求可能破坏它的供给来源；几年前羊普遍缺少的一个原因，就是对羊羔肉的过度需求。</p><p class="prose">连带产品的比例还会随技术而变：棉花和棉籽油是连带产品，棉籽油加工技术的改进是最近棉价下降的主要原因；麦草在加工工业中找到了许多新用途，以前美国西部通常被焚毁的麦草由此获得了价值，还有阻止小麦边际生产成本上升的趋势。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>销售成本、风险保险与再生产成本</h2><span class="en">COST ALLOCATION</span></div><p class="prose">混合企业的各部门如何适当分担生产费用——特别是补充成本——是第六节的主题：某企业的一个部门的产品在另一个部门往往被当做原材料使用，要确定两个部门的相对赢利只有用精密的复式簿记制度，但实际上更普遍的是靠主观猜测作出概算。</p><p class="prose">船主的例子给出一般原理：某企业连带产品的相对比例，必须调节得使各产品的边际生产费用等于此产品的边际需求价格——每船货物的载运量趋于均衡，在均衡点上该数量的需求价格恰够补偿它的运费，这种运费不仅要包括直接成本，而且要包括企业在长期内因运输而直接或间接引起的全部补充成本。</p><p class="prose">企业总费用有两个因素需要特别注意在不同部门之间的分配——推销成本和风险保险费。厂商经常引为上策的是把商品中的某一种当做宣传其他商品的手段：把性质基本一致、消费非常普遍的商品列作第一类少摊费用，把买主想得多的是投其所好而不是低价的那类商品多摊费用。</p><p class="prose">如果某种商品的生产遵循报酬递增规律，这种生产很容易被少数几家大厂操纵，商品的价格就很难有一种真正的正常水平——它多半取决于那些争取扩大势力范围的竞争对手之间的斗争。而住在当地的生产者在许多行业中仍省下大部分推销成本，时间是站在生产方法更加经济的生产者一边的。</p><h3 class="h3">风险保险：勿把保险费算两次</h3><p class="prose">厂商付的火险和海上损失保险费属于补充成本，但没有一种保险能防止大多数企业的风险。就大部分企业风险而论，每个厂商都必须充作它自己的保险事务所：大船主求出顺利航行和不顺利航行的平均数，这些风险的保险费一旦求出平均数，就不能当做单独项目再列入生产成本——否则保险费就会被重复计算。</p><div class="aband"><q>具有一种传奇因素的风险性行业往往人满为患，导致它的平均报酬比无险可冒时还要低些。</q><cite>——第六节 · 二</cite></div><p class="prose">凯雷曾建议用价值和再生产成本的关系来讨论价值，但就正常价值而论，这种建议并没有意义——正常生产成本和正常再生产成本是可以互换的词语。炼铁业改进之后，旧船的价格也许小于船的再生产成本；但这只说明市场价值与两种成本的差价可以不同，并没有推翻正常分析的立场。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>边际成本、纯产品与租税转嫁</h2><span class="en">MARGINAL COST &amp; NET PRODUCT</span></div><p class="prose">第七、八节研究产品的边际成本及其价值的关系，以及边际成本和生产它们所使用的土地、机器等生产工具的价值的关系。必须时刻牢记：任何东西的市场价值可以大大高于或低于其正常生产成本，某特定生产者的边际成本在任何时候都可能和正常条件下的边际成本毫不相干。</p><div class="aband"><q>在有关世界商业的讨论中，可以而且必须忽略这些相互关系。但是任何称得起是彻底的研究，都不能避而不谈对这些关系的周密考察。正因为要求我们同时记住许多事情，经济学永远不会成为一门简单的科学。</q><cite>——第七节 · 一</cite></div><p class="prose">替代原理的又一例解：在现代世界中，几乎所有的生产资料都要经过雇主和企业家的手，他们对所用生产要素支付的价格总额，照例小于对可用作替代品的要素所必须支付的价格总额——否则他们就会着手用比较廉价的措施或生产过程加以替代。这一论点与几条日常俗语相合——</p><div class="aband"><q>上述论点和日常生活中的俗语相合，如“凡事都有找到自己归宿的趋势”，“大多数人之所得，几乎等于他们之所值”，又如“假使某人比另一个人多赚一倍，这说明他的工作也多一倍”，又如“只要机器能提供廉价的劳动，机器将代替手工劳动”。</q><cite>——第七节 · 二</cite></div><p class="prose">它起作用时或许受到习惯或法律的限制、职业制度或工会章程的限制，或因创业精神减弱而受阻，但总是贯穿在现代世界的全部经济措施之中。田间作业中马力与蒸汽力的选择就是一例：蒸汽力的应用势必扩大到再多使用一点也不会带来纯收益的程度——在那个边际上，二者无差异地被加以使用。</p><div class="aband"><q>他尽量估计额外使用任何一种要素会带来多少纯产品（即他的总产值的纯增益）；所谓纯是指减去由于这种变动而可能间接引起的任何额外费用，再加上随之而来的任何节约。他力图把各种要素使用到这样一个边际，在这个边际它的纯产品不再超过他必须支付的价格。</q><cite>——第七节 · 三</cite></div><p class="prose">啤酒的例子说明纯产品如何计量：由于增加蛇麻的分量而啤酒所能得到的额外价格，就是决定蛇麻需求价格的典型因素；啤酒所具有的额外价值就是蛇麻的边际纯产品价值。但纯产品价值多半是产品质量的提高或产品价值的一般增益，而不是可以和其余产品分开的一个确定的部分。</p><p class="prose">任何生产要素的过分使用都会引起报酬递减——但这与古典学派的报酬递减定律并不尽相同：后者主要应用在所有的主要粮食作物上，断言该国农业总投资的增加将会引起一般农产品的报酬递减；前者只是资源分配不当的结果。把耕得很好的土地耕过许多遍却不施肥而引起的递减，与国家农业投资增加引起的报酬递减趋势毫不相干。</p><div class="aband"><q>凡是被正确地看成是‘自由’资本或‘流动’资本或新投资的利息的东西，被当做旧投资的一种租（即准租）时更加正确些。不过，在流动资本和在某些特殊生产部门中所‘沉淀的’资本之间以及在新旧投资之间，不存在着严格的界限。</q><cite>——第七节 · 五</cite></div><h3 class="h3">借租税转嫁预演地租问题</h3><div class="aband"><q>如果将一种税加在某些人生产出来又销售给其他人的商品或服务的任何一种东西上。那么，这种税有使生产缩减的趋势。这将使大部分租税负担向前转嫁给消费者，小部分向后转嫁给供应这些生产者生产必需品的那些人身上。</q><cite>——第八节 · 一</cite></div><p class="prose">地租现象非常复杂，所以马歇尔借租税的转嫁来说明价值问题：税会「向前」离开原材料和生产工具的生产者，向最终的消费者转嫁；或按相反方向「向后」转嫁。从某种意义上说，所有的地租都是稀有地租也都是级差地租——但用「级差」和「稀有」的方法计算地租，并不以劣等生产要素的存在为转移。</p><div class="aband"><q>劣等土地或其他生产要素的存在有提高优等要素租金的趋势这一观点不仅是错误的，而且还违背真理。</q><cite>——第八节 · 二</cite></div><div class="duo"><div class="colL"><h4>稀有地租</h4><ul><li>把每块陨石充分使用到能被有利使用的程度</li><li>发挥作用的价格由使用总量的自然稀缺性与对那些使用的需求的关系来决定</li><li>剩余总额或地租最容易被看作是这种稀有价格和陨石使用费总额之差</li></ul></div><div class="colR"><h4>级差地租</h4><ul><li>看作总价值超过假设所有用途都像边际用途那样无利可图时总价值的级差差额</li><li>按优等陨石的边际使用即可作出有利于较有利用途的级差比较</li><li>无须假设劣等陨石或劣等土地存在</li></ul></div></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>土地与农产品：地租的边界</h2><span class="en">MARGINAL CULTIVATION</span></div><p class="prose">现在从泛泛的讨论转向土地。假定一场不预计持续很久的战争使英国部分粮食供应中断：英国人会用收效很快的额外资本和劳动来增加农业生产；但对战时收不到成效的那些改良的决策影响极小——得自永久性改良的收入提供了一种超过主要成本的剩余，在短期内可看成是取决于产品价格的准租金。</p><div class="aband"><q>地租数量不是一个起决定作用的因素，地租是投于土地的资本和劳动所得的总收益超过它们在和耕作边际一样不利的条件下所得的总收益的差价。</q><cite>——第九节 · 一</cite></div><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>产量与边际由供求定</h3><p class="cp">农业产量和耕作边际由供求的一般情况决定——需求是消费农产品的人口数目及其需求强度和支付能力，供给是可用土地的面积和肥力以及准备耕种的人数和资金；生产成本、需求强度、生产边际和价格相互制约，并不导致循环论。</p></div><div class="card num"><div class="idx">二</div><h3>地租参与出售</h3><p class="cp">作为地租的那部分产品当然也在市场上出售，对价格的作用和产品任何其他部分完全一样；但地租本身是由土地的肥度、农产品的价格和耕作边际来决定的。</p></div><div class="card num"><div class="idx">三</div><h3>谨防循环推理</h3><p class="cp">如果计算不属于边际的那部分产品的生产成本时也计算地租费，并用它说明农产品价格的决定，推理就成为循环的——完全是一种结果的东西被算作造成这种结果的那些东西的部分原因。</p></div><div class="card num"><div class="idx">四</div><h3>边际成本汇总原因</h3><p class="cp">在一般供求情况的支配下，资本和劳动有利应用的边际上的生产成本，是全部农产品的价格呈现出和它一致趋势的那种成本；它并不决定价格，但是它集中了决定价格的那些原因。</p></div></div><p class="prose">土地的稀有价值如何出现？如果每个村民都有一眼井，用多少就可以抽多少，井中的水就没有市场价值；但假如发生干旱，浅井水竭，那些井中有水的人就能向用水户每桶收取水费——最后，每个井中有水的人可能认为井是一个永久的收入源泉。新开发国家的土地价值也是这样生长出来的。</p><p class="prose">早先到的移民所行使的并不是一种专有权：他的冒险也许成功，土地的价值很快提供一种超过他用在土地上的开支的正常报酬的大量剩余，正像一个满载而归的渔民所捕的鱼——但其中除了冒险所需要的报酬外是没有剩余的，他的精力和运气曾给他带来格外高的报酬。</p><p class="prose">从生产者个人的角度来看，土地不过是资本的一种特殊形式：农户比较的是多用一些从土地上所得到的纯产品，还是把这笔资本用在其他用途。但从社会的角度来看却有这样的区别——他使用农场不是增加了别人对农场的使用，而是取代了这种使用；而人造的设备能按照有效需求的变动不断地增加或减少。</p><h3 class="h3">谷物税的转嫁</h3><p class="prose">对「谷物」征收一种永久性租税：农户会尽力使消费者至少负担一部分，但索取价格的任何上涨都会减少需求。如果靠近边际生产量的只是少量的谷物，消费者所负担的税实属有限，而超过生产费用的价值剩余势必大幅下降；如果靠近耕作边际的是大量的谷物，租税有使生产大大缩减的趋势，价格上涨又会阻止这种缩减。</p><div class="aband"><q>更正确的说法也许是把土地的这部分年价值叫做“公有价值”，而把由土地持有者的劳动和支出所创造的那部分价值叫做“私有价值”。</q><cite>——第九节 · 三</cite></div><div class="aband"><q>对土地公有价值所课的税，不会大大减少精耕土地的诱惑力，也不会减少建筑农场用房的诱惑。</q><cite>——第九节 · 三</cite></div><p class="prose">因此这种税不能从土地所有者那里转嫁出去：它不会大大减少商品粮的供给，也不会提高农产品的价格。但土地的「原始价值」或「内在价值」大多是人为的结果——附近工业人口的增长可能使灌木林地具有很高的价值，虽然所有者把它原封未动地搁在一边。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>掂一掂</h2><span class="en">RECAP</span></div><div class="chips"><span class="chip">直接需求</span><span class="chip">派生需求</span><span class="chip">连带需求</span><span class="chip">复合需求</span><span class="chip">连带供给</span><span class="chip">复合供给</span><span class="chip">纯产品</span><span class="chip">准租</span><span class="chip">稀有地租</span><span class="chip">级差地租</span><span class="chip">耕作边际</span><span class="chip">公有价值</span></div><div class="check" data-k="08"><p class="ct">本篇过关自测</p><label><input type="checkbox"><span>能写出派生需求定律：用成品的需求价格减去其他要素的供给价格总额，求出某要素的需求表</span></label><label><input type="checkbox"><span>能列出供给减少大幅提高某要素价格的四个条件，并说明后三个条件的结果是累积性的</span></label><label><input type="checkbox"><span>能区分连带需求、复合需求、连带供给、复合供给四组概念并各举一例</span></label><label><input type="checkbox"><span>能说明风险保险费为什么求出平均数后不可再单独计入成本，否则就是重复计算</span></label><label><input type="checkbox"><span>能给出纯产品的定义，并说明它与「任何要素的过分使用引起报酬递减」的关系</span></label><label><input type="checkbox"><span>能复述地租的定义，并解释为什么用非边际产品的生产成本（含地租）说明价格是循环推理</span></label><div class="cf">已勾选 <b>0</b> / 6</div></div><details class="ext"><summary>延伸 · 下一篇</summary><div class="ex">边际成本与地租的边界已经划清，还剩最后一块拼图——报酬递增与供给条件变动下的长期价格，以及垄断理论，将在下一篇《均衡价值论（下）· 报酬递增与垄断》收官第5章。</div></details></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜阿尔弗雷德·马歇尔《经济学原理》（北京联合出版公司，章洞易 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第5章｜均衡价值论（中）</span><a href="../07-均衡价值论上-暂时与正常均衡/index.html">← 均衡价值论（上）</a><a href="../09-均衡价值论下-报酬递增与垄断/index.html">均衡价值论（下） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='econ-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
