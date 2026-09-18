@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第14—15章·身份认同 · 尝试新事物｜富有的习惯 精读</title>
+<meta name="description" content="第 14 章警告：当财务目标和信念成为你身份认同的一部分，金钱就从工具变成了主宰——节俭惯性、FIRE 执念、芒格的「数万亿」之憾都是例证。第 15 章给出解药：像克里克做科研一样花钱——大量尝试，严格筛选，宽进严出。">
+<style>
+:root{
+  --paper:#F4F2E8;      /* 旧纸底 */
+  --paper-2:#E8E5D5;    /* 纸色深一档 */
+  --card:#FBFAF2;
+  --ink:#1F2B22;        /* 旧钞墨（主色） */
+  --ink-2:#3D5245;      /* 墨绿浅一档 */
+  --ink-deep:#0C1410;   /* 暗夜墨绿（hero 底） */
+  --gold:#3D6B4F;       /* 旧钞绿（强调 · 纸币与静默复利） */
+  --gold-b:#7FA98C;     /* 高亮绿（钞面浮纹） */
+  --gold-soft:rgba(61,107,79,.14);
+  --cinnabar:#9C4A2F;   /* 锈红（警示 · 贪婪与烧钱） */
+  --teal:#B08A3A;       /* 赭金（对照 · 富裕与长久） */
+  --tx:#232B26;
+  --tx-2:#3E4A42;
+  --tx-3:#77807A;
+  --line:rgba(31,43,34,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,43,34,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3D5245 0%,var(--ink-deep) 62%);
+  color:#EDF1EC;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(127,169,140,.42)}
+.hero::after{inset:22px;border:1px solid rgba(127,169,140,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(127,169,140,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(156,74,47,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F4F0}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,241,236,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(127,169,140,.34);color:rgba(237,241,236,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(156,74,47,.6);background:rgba(156,74,47,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(61,107,79,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFEA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(127,169,140,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EFF0E4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(127,169,140,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EFF0E4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,233,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(61,107,79,.5);box-shadow:0 4px 18px rgba(31,43,34,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(61,107,79,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(156,74,47,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(156,74,47,.1);color:var(--cinnabar);border:1px solid rgba(156,74,47,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,132,124,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(61,107,79,.45);background:rgba(61,107,79,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(156,74,47,.55);border-radius:8px;
+  background:rgba(156,74,47,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(138,62,40,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(156,74,47,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(61,107,79,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,232,.94);
+  border-bottom:1px solid rgba(31,43,34,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,43,34,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3D5245;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(61,107,79,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,43,34,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,43,34,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../06-独立债务与静默复利/index.html">← 独立·债务·复利</a><a href="../08-孩子电子表格与小额开销/index.html">孩子与开销 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">试</div>
+  <div class="stamp ">尝试</div>
+  <h1>身份认同 · 尝试新事物</h1>
+  <p class="sub">第 14 章警告：当财务目标和信念成为你身份认同的一部分，金钱就从工具变成了主宰——节俭惯性、FIRE 执念、芒格的「数万亿」之憾都是例证。第 15 章给出解药：像克里克做科研一样花钱——大量尝试，严格筛选，宽进严出。</p>
+  <div class="meta"><span>第14—15章</span>
+    <span class="k">宽进严出</span>
+    <span>正文 9,949 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>被金钱定义</a><a href="#s3" data-t="s3"><span class="cn">叁</span>节俭惯性</a><a href="#s4" data-t="s4"><span class="cn">肆</span>两种家庭</a><a href="#s5" data-t="s5"><span class="cn">伍</span>两条防线</a><a href="#s6" data-t="s6"><span class="cn">陸</span>宽进严出</a><a href="#s7" data-t="s7"><span class="cn">柒</span>四个要点</a><a href="#s8" data-t="s8"><span class="cn">捌</span>收束</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>富人、穷人、投资者、储蓄者……当你被金钱定义时，你就被金钱掌控了。</p><cite>——第 14 章 · 身份认同</cite></div><div class="epi"><p>单调让时间加速，多样性让时间变慢。</p><cite>——第 15 章 · 尝试新事物</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">两章一剂药方：先拆掉标签，再装上筛选器</p><p class="thesis">第 14 章指出金钱失控的常见路径：<b>财务信念成为身份认同</b>——「我是一个储蓄者」「我是一个有钱人」，标签越贴越多，人就被越捆越紧。第 15 章给出松动标签的办法：<b>宽进严出</b>——在预算内尽可能多地尝试花钱方式，无情砍掉无效的项目，就像克里克靠「做减法」拿诺贝尔奖。</p><div class="chain"><div class="node"><div class="n">警句</div><div><p class="tt">被金钱定义</p><p class="dd">奥莱利：金钱就像公路旅行中的汽油——你不想耗尽它，但你的目的也不是参观加油站</p></div></div><div class="node"><div class="n">陷阱</div><div><p class="tt">节俭惯性</p><p class="dd">一辈子的储蓄习惯无法过渡到合理的消费阶段——拒绝承认已实现目标，可能和从未实现一样糟糕</p></div></div><div class="node"><div class="n">反例</div><div><p class="tt">芒格之憾</p><p class="dd">「我本可以拥有数万亿而不是现在的数十亿美元」——金钱与身份捆绑，赢家也难自由</p></div></div><div class="node"><div class="n">正例</div><div><p class="tt">亿万富翁之子</p><p class="dd">「金钱从未成为我们身份认同的一部分」——父母教的是：爱彼此，做好的雇主，做好的公民</p></div></div><div class="node"><div class="n">方法</div><div><p class="tt">宽进严出</p><p class="dd">克里克：我的秘诀就是知道如何做减法——大量输入，严格筛选，花钱同理</p></div></div><div class="node"><div class="n">收益</div><div><p class="tt">多样性的礼物</p><p class="dd">单调让时间加速，多样性让时间变慢——尝试新事物本身就是价值</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第 14 章 · 当金钱成为身份</h2><span class="en">CHAPTER 14</span></div><p class="prose">让金钱停止作为工具、而成为主宰的最常见方式之一，就是你的财务目标和信念成为你身份认同的一部分。豪泽尔自己的身份是父亲、丈夫、儿子、朋友——如果金钱能增强这些东西，那很好，但他绝不希望金钱成为其中之一。投资者保罗·格雷厄姆的名言只有六个字：少给自己贴标签。</p><div class="aband"><q>你不想在旅途中耗尽汽油，但你的目的也不是参观加油站。</q><cite>——第 14 章 · 引蒂姆·奥莱利</cite></div><div class="aband"><q>你给自己贴的标签越多，它们就越让你显得愚蠢。</q><cite>——第 14 章 · 引保罗·格雷厄姆</cite></div><p class="prose">原因是：你无法清晰地思考任何已成为自己身份一部分的事物——而身份认同重要到，人们常常会不惜一切代价去捍卫它们。达尔文早就注意到，有些动物特征（吸引捕食者的孔雀羽毛、阻碍机动性的大鹿角）明显妨碍生存却依然存在，因为它们对生殖成功有益。</p><p class="prose">金钱习惯也一样：一旦长久养成一个明智的习惯，当情况变化、需要做不同选择时，你却可能视而不见。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>第 14 章 · 最常见的财务身份：「我是一个储蓄者」</h2><span class="en">FRUGALITY</span></div><p class="prose">豪泽尔分享了一个最常见的财务身份——「我是一个储蓄者」。这听起来无害，甚至是好特质；但许多财务规划师会告诉你，他们最大的挑战之一是让客户在退休后花钱，哪怕是适当的、保守的金额。他称之为：</p><div class="aband"><q>当一个人一辈子良好的储蓄习惯无法过渡到合理的消费阶段时，就会发生这种情况。</q><cite>——第 14 章 · 节俭惯性</cite></div><p class="prose">许多人真正想从金钱中获得的，是能够不再为金钱操心的能力。但当存钱成为人格中根深蒂固的一部分，这个最终目标就崩溃了——你很难摆脱对金钱的关注，因为这种关注本身就是你身份认同的重要组成部分。如果你永远无法摆脱储蓄体系、退休后仍坚持严格的储蓄计划，那还算是成功吗？</p><div class="aband"><q>拒绝承认你已经实现了目标，可能和从未实现目标一样糟糕。</q><cite>——第 14 章</cite></div><p class="prose">投资领域同样如此：人们给自己贴上「价值投资者」「交易员」「科技投资者」的标签，这些标签可能阻止你看到全局、发现其他机会。FIRE 运动（财务独立，提前退休）尤其典型——财务独立值得称赞，但这个目标可能深深烙印在追随者的身份认同中，以至于辞掉可能喜欢的工作、损害社交生活，最终走向无聊空虚。</p><p class="prose">到那时该问问：谁在掌控？</p><div class="aband"><q>在那个时候，谁在掌控？是你，还是你对某种财务哲学的忠诚？</q><cite>——第 14 章</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>第 14 章 · 亿万富翁之子与芒格之憾</h2><span class="en">IDENTITY</span></div><p class="prose">豪泽尔遇到过一个父母是亿万富翁的人——40 多岁，多处豪宅、私人飞机、司机管家，金钱能买到的一切应有尽有。但见面后他惊讶地发现：这个人如此普通、脚踏实地、谦逊、真诚、平易近人。问及父母如何做到，答案出奇简单：</p><div class="aband"><q>金钱从未成为我们身份认同的一部分。</q><cite>——第 14 章 · 亿万富翁之子</cite></div><p class="prose">什么才是他们身份认同的一部分？「爱彼此，做好的雇主，做好的公民。这就是我们谈论的，也是我们评判他人的标准。」他的补充一针见血：孩子被宠坏，通常不是父母买了很多东西，而是父母教导孩子——拥有比别人更多的东西会让你比他们更优秀。</p><p class="prose">而被宠坏的孩子的父母往往相信这一点，因为赚钱、拥有金钱和花钱是他们身份认同中不可或缺的一部分；他们照镜子时，看到的就是金钱、金钱、金钱。即便是查理·芒格——20 世纪最精明、最理性的金融思想家之一——似乎也未能免俗。2023 年去世前不久，他对 CNBC 采访者说：</p><div class="aband"><q>我本可以拥有数万亿而不是现在的数十亿美元。</q><cite>——第 14 章 · 查理·芒格</cite></div><p class="prose">你可以从很多方面解读这句话——作为职业资金管理人，金钱与他的身份绑定也许无法避免。但想想一个拥有同样心态的普通人：你已经取得财务成功，可以退休、做任何想做的事，却只想着本可以赚更多、存更多、投更多。这样的人太多了。所以豪泽尔把问题逼到墙角：</p><div class="aband"><q>它是你的工具，还是你的主人？是它在为你服务，还是你在为它服务？</q><cite>——第 14 章</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>第 14 章 · 防止金钱渗透身份的两条防线</h2><span class="en">TWO DEFENSES</span></div><p class="prose">为了防止金钱以有害的方式渗透你的身份认同，豪泽尔给出两条防线。第一条：重视改变想法、改变生活方式、调整开支，以及尝试新事物的能力。Visa 创始人迪伊·霍克的话是它的注脚：</p><div class="aband"><q>一种信念，除非变得绝对化，否则并不危险。</q><cite>——第 14 章 · 引迪伊·霍克</cite></div><p class="prose">豪泽尔喜欢「内在流动」这个概念——当世界变化、你自身发生改变或得到新信息时，能够迅速放弃先前信念和策略的能力。许多人所谓的「坚定信念」，实际上是对可能改变他们想法的事实的故意忽视。「坚定信念，但不过分执着」通常很有帮助：他如今坚信为未来储蓄，但将来想享受所储蓄的财富时，将乐于放弃这种策略。</p><div class="aband"><q>想要追求超出独立和幸福所需的金钱，只是一种会计爱好罢了。</q><cite>——第 14 章</cite></div><p class="prose">第二条防线：认识到真正的独立思考是什么样子。它的定义出人意料——</p><div class="aband"><q>你对一个主题的信念，无法从你对另一个主题的信念中预测出来。</q><cite>——第 14 章 · 独立思考的定义</cite></div><p class="prose">如果你告诉别人你的薪水，对方就能准确猜出你花在汽车、房屋、衣服和度假上的钱，那你大概率只是在按社会灌输的方式花钱。豪泽尔认识的最善于利用金钱的人，消费习惯是「不一致的」：这方面花很多、那方面花很少；珍视这个，对那个毫不在意——他们是独立的思考者，强迫金钱为他们服务，而不是被金钱掌控。</p><div class="aband"><q>金钱永远应该是助力你实现自身价值的工具，而不是目标本身。</q><cite>——第 14 章</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>第 15 章 · 宽进严出</h2><span class="en">CHAPTER 15</span></div><p class="prose">DNA 双螺旋结构的发现者弗朗西斯·克里克曾被问及如何才能获得诺贝尔奖，他回答：「哦，这很简单。我的秘诀就是知道如何做减法。」爱因斯坦也说过，他的主要科学才能在于能从成千上万的论文和实验中筛选出少数重要的内容，然后忽略其他一切。这个策略完美适用于寻找你愿意为之花钱的东西。</p><p class="prose">豪泽尔先从选书讲起：他的阅读策略是「宽进严出」——尽可能多地开始阅读，完整读完的只是少数。英文书籍有 400 多万种在售，如果只选你确定会喜欢的书，你就会错过许多可能改变你生活的书。而大多数书不需要读到最后，但有些书却能出人意料地改变你的生活——所以你需要两样东西：大量的输入和严格的筛选。马克·吐温说得绝对：</p><div class="aband"><q>不读好书的人，与不能读书的人相比，没有任何优势。</q><cite>——第 15 章 · 引马克·吐温</cite></div><p class="prose">筛选器要严格一点，当断则断，不留情面：一本你投入 10 分钟后仍然不感兴趣的书，很难有好的结局。自从实施这个策略，豪泽尔发现了许多从未想过会喜欢的书——他从不喜欢小说，直到尝试了 10 本才找到爱不释手的一本。领悟是：在尝试之前，你很难知道自己会喜欢什么。</p><p class="prose">花钱也一样——那么多种不同的花钱方式，对一个人理所当然，对另一个人可能丧心病狂。作家拉米特·塞西的建议他非常喜欢：你应该在热爱的事物上尽情挥霍，只要你无情地砍掉那些你不喜欢的事物——塞西喜欢衣服但不是汽车爱好者，所以他穿得像个富人，开车却显得很拮据。</p><div class="aband"><q>宽进严出。</q><cite>——第 15 章</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>第 15 章 · 寻找热情所在的四个要点</h2><span class="en">FOUR NOTES</span></div><p class="prose">在寻找你的热情所在的过程中，有四点至关重要：</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>找不到热情，可能是金钱束缚了你</h3><p class="cp">遇到一个说「我不喜欢任何食物」的人，你会立刻发现他没尝试过足够多的食物。金钱也可能如此——他们应该继续尝试拓宽选择范围。</p></div><div class="card num"><div class="idx">二</div><h3>别默认社会告诉你该喜欢什么</h3><p class="cp">高价通常出现在品牌产品上，而品牌传递的不是质量，是一致性——安德伍德罐头肉用「魔鬼的品牌」标志重建了信任，成为美国第一个联邦商标。你未必是为品质买单，而是为一致性买单。</p></div><div class="card num"><div class="idx">三</div><h3>学会迅速拒绝，比知道买什么更重要</h3><p class="cp">知道何时拒绝不符合你个性的花钱方式，是理财领域最被忽视的技能之一。你越是容易受广告影响，你对自己的生活就越不满意。</p></div><div class="card num"><div class="idx">四</div><h3>尝试新事物本身就有价值</h3><p class="cp">对时间流逝的感知，取决于一段时间内新奇回忆的数量。花钱尝试从未试过的新体验，即使不适合你，那些记忆和知识也比日复一日的重复更令人兴奋。</p></div></div><div class="aband"><q>那些说金钱买不到幸福的人，是因为他们还没有找到自己的热情所在。</q><cite>——第 15 章 · 改写《抢钱大作战》台词</cite></div><div class="aband"><q>你未必是为品质买单，而是为一致性买单。</q><cite>——第 15 章</cite></div><p class="prose">塔勒布有一句关于财富的妙语，豪泽尔把它推到花钱上：当你拒绝的消费比你真正购买的东西更让你心动时，你就是足够明智的。进化这世界上最强大的力量，正是通过淘汰无效的事物来施教——宽泛的漏斗，只有配备严格的筛选机制才有效：</p><div class="aband"><q>当你拒绝的钱比你接受的钱更香甜时，你就是富有的。</q><cite>——第 15 章 · 引纳西姆·塔勒布</cite></div><p class="prose">安东尼·德·梅洛为多样性补上最后一个注脚——</p><div class="aband"><q>如果你学会享受一千种花朵的芬芳，你就不会执着于一种，也不会在得不到它时感到痛苦。</q><cite>——第 15 章 · 引安东尼·德·梅洛</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>收束 · 松动的标签，长出的个性</h2><span class="en">EPILOGUE</span></div><p class="prose">两章合读是一组相反相成的动作：第 14 章拆标签——少给自己贴标签，保持内在流动，让财务信念不与身份捆绑；第 15 章装筛选器——大量尝试、无情砍舍，用排除法找到真正让你快乐的花钱方式。拆掉的是「我是一个……」，长出来的是你自己的个性。下一篇，豪泽尔转向一个更柔软也更沉重的话题：你的财富和你的孩子。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文注释</span><span class="nd"><b>尾注｜</b>第 14 章 6 条、第 15 章 5 条尾注（含编者注「1 英里 ≈ 1.6 千米」），均为英文文献与媒体报道，本篇保留正文编号标记，条目不逐字抄录。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜摩根·豪泽尔《金钱的艺术》（袁希 译，中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第14—15章｜身份与尝试</span><a href="../06-独立债务与静默复利/index.html">← 独立·债务·复利</a><a href="../08-孩子电子表格与小额开销/index.html">孩子与开销 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='art-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

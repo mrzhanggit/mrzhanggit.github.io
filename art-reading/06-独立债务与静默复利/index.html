@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第11—13章·独立的财富 · 社交债务 · 静默复利｜富有的习惯 精读</title>
+<meta name="description" content="第 11 章提出「没有独立的财富，是一种独特的贫困」，并给出 0—15 级的独立光谱；第 12 章拆解看不见的「社交债务」——从毒枭的皮草大衣到彩票中奖者的隐私；第 13 章给出解药：静默复利，最快的致富之道是慢慢来。">
+<style>
+:root{
+  --paper:#F4F2E8;      /* 旧纸底 */
+  --paper-2:#E8E5D5;    /* 纸色深一档 */
+  --card:#FBFAF2;
+  --ink:#1F2B22;        /* 旧钞墨（主色） */
+  --ink-2:#3D5245;      /* 墨绿浅一档 */
+  --ink-deep:#0C1410;   /* 暗夜墨绿（hero 底） */
+  --gold:#3D6B4F;       /* 旧钞绿（强调 · 纸币与静默复利） */
+  --gold-b:#7FA98C;     /* 高亮绿（钞面浮纹） */
+  --gold-soft:rgba(61,107,79,.14);
+  --cinnabar:#9C4A2F;   /* 锈红（警示 · 贪婪与烧钱） */
+  --teal:#B08A3A;       /* 赭金（对照 · 富裕与长久） */
+  --tx:#232B26;
+  --tx-2:#3E4A42;
+  --tx-3:#77807A;
+  --line:rgba(31,43,34,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,43,34,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3D5245 0%,var(--ink-deep) 62%);
+  color:#EDF1EC;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(127,169,140,.42)}
+.hero::after{inset:22px;border:1px solid rgba(127,169,140,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(127,169,140,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(156,74,47,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F1F4F0}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,241,236,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(127,169,140,.34);color:rgba(237,241,236,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(156,74,47,.6);background:rgba(156,74,47,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(61,107,79,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFEA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(127,169,140,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EFF0E4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(127,169,140,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EFF0E4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,233,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(61,107,79,.5);box-shadow:0 4px 18px rgba(31,43,34,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(61,107,79,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(156,74,47,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(156,74,47,.1);color:var(--cinnabar);border:1px solid rgba(156,74,47,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,132,124,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(61,107,79,.45);background:rgba(61,107,79,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(156,74,47,.55);border-radius:8px;
+  background:rgba(156,74,47,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(138,62,40,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(156,74,47,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(61,107,79,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,232,.94);
+  border-bottom:1px solid rgba(31,43,34,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,43,34,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3D5245;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(61,107,79,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,43,34,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,43,34,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-风险遗憾与看看他们/index.html">← 风险与遗憾</a><a href="../07-身份认同与尝试新事物/index.html">身份与尝试 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">独</div>
+  <div class="stamp ">独立</div>
+  <h1>独立的财富 · 社交债务 · 静默复利</h1>
+  <p class="sub">第 11 章提出「没有独立的财富，是一种独特的贫困」，并给出 0—15 级的独立光谱；第 12 章拆解看不见的「社交债务」——从毒枭的皮草大衣到彩票中奖者的隐私；第 13 章给出解药：静默复利，最快的致富之道是慢慢来。</p>
+  <div class="meta"><span>第11—13章</span>
+    <span class="k">静默复利</span>
+    <span>正文 12,213 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>独立即富有</a><a href="#s3" data-t="s3"><span class="cn">叁</span>两个运动员</a><a href="#s4" data-t="s4"><span class="cn">肆</span>独立光谱</a><a href="#s5" data-t="s5"><span class="cn">伍</span>社交债务</a><a href="#s6" data-t="s6"><span class="cn">陸</span>富有且匿名</a><a href="#s7" data-t="s7"><span class="cn">柒</span>静默复利</a><a href="#s8" data-t="s8"><span class="cn">捌</span>收束</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>独立，才是真正的富有。</p><cite>——第 11 章 · 没有独立的财富是一种特殊形式的贫困</cite></div><div class="epi"><p>最快的致富之道，是慢慢来。</p><cite>——第 13 章 · 静默复利</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">三章一组：独立是什么、谁在偷走它、如何攒出它</p><p class="thesis">第 11 章把储蓄重新定义为<b>购买独立</b>——每一分没花掉的钱都是一张「兑换券」；第 12 章指出独立最大的隐形杀手是<b>社交债务</b>：消费方式改变他人看法时产生的无形负担；第 13 章的解法朴素得惊人——<b>静默复利</b>：不吹嘘、不攀比、不为他人表演，让财富按自己的节奏生长。</p><div class="chain"><div class="node"><div class="n">命题</div><div><p class="tt">独立=富有</p><p class="dd">未曾花掉的钱买到的是自由、独立，以及按自己意愿支配时间的能力</p></div></div><div class="node"><div class="n">对照</div><div><p class="tt">两个运动员</p><p class="dd">沃克 12 个赛季赚 1.08 亿美元却负债 1270 万破产；厄舍尔拿联盟最低薪却存下大部分，如今是 MIT 教授</p></div></div><div class="node"><div class="n">工具</div><div><p class="tt">独立光谱</p><p class="dd">第 0 级到第 15 级——独立不是非黑即白，每一分储蓄都让你向上攀升一点</p></div></div><div class="node"><div class="n">暗债</div><div><p class="tt">社交债务</p><p class="dd">毒枭卢卡斯一件 5 万美元的皮草大衣招来 70 年监禁——消费改变他人对你的看法时，无形负担就产生了</p></div></div><div class="node"><div class="n">理想</div><div><p class="tt">富有且匿名</p><p class="dd">80 亿美元的家族在谷歌上什么都搜不到——没有社交债务，或许是最宝贵的资产</p></div></div><div class="node"><div class="n">解法</div><div><p class="tt">静默复利</p><p class="dd">老子：道常无为，而无不为——速度吸引所有注意力，缓慢却拥有所有力量</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第 11 章 · 独立才是真正的富有</h2><span class="en">CHAPTER 11</span></div><p class="prose">第 11 章的出发点是一个朴素的观察：豪泽尔最敬佩的人，不一定是那些最富有或最成功的人——他们几乎总是最自由的、最能掌控自己生活的人。他花了一段时间才明白：曾经「富有」对他意味着许多炫目的玩具，而现在它意味着不必匆忙、能与家人共度时光、掌控自己的日程，以及思想上的独立。</p><p class="prose">他还有一个与直觉相悖的观点：世上没有所谓的「未曾花掉的钱」——你赚到的每一分钱最终都会被花掉，储蓄的每一分钱，都为未来的选择买下了一张「兑换券」。</p><div class="aband"><q>我将每一分储蓄都视为通往更高程度财务独立的门票，这才是我的真正目标。</q><cite>——第 11 章</cite></div><p class="prose">如果将 500 美元存入银行账户，他便认为自己购买了 500 美元的独立——这与买一台 500 美元的电视机几乎没有区别，钱都被「花掉」了，只是花在了不同的东西上。对他而言，独立拥有最高的投资收益率，远超花钱购买的任何其他东西；在「独立」这件事上，他花钱从不吝啬，尤其是为掌控自己的时间表——「没有预算上限」。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>第 11 章 · 两个运动员的故事</h2><span class="en">TWO ATHLETES</span></div><p class="prose">安托万·沃克在 NBA 打了 12 个赛季，赚了 <b>1.08 亿美元</b>——相当于每天进账 2.5 万美元。1999 年签下 6 年合同时，球队总裁说他「这辈子再也不用为钱发愁了」。他也深以为然。</p><p class="prose">而在他 2015 年说「我以为我这辈子都不用愁了」时，那已是申请破产 5 年之后：六七辆车、供养 30 位亲朋好友的工资单、给母亲买的有 10 间浴室的房子、赌场里输掉的数百万美元。破产法官面前的最终账单：负债 <b>1270 万美元</b>，资产仅 430 万美元。</p><p class="prose">约翰·厄舍尔则是另一个极端。他是乌鸦队 2014 年第五轮秀，打了三个赛季，整个橄榄球生涯的收入比沃克每 11 周赚的还少——大约 60 万美元，接近联盟最低工资。但他将绝大部分薪水存了起来，理由朴素得动人：</p><div class="aband"><q>我很感激我能赚到这些钱。我不是亿万富翁，但我已经达到了财务稳定的程度。我再也不用为钱发愁了。</q><cite>——第 11 章 · 约翰·厄舍尔</cite></div><p class="prose">他 2017 年退役后重返校园攻读博士学位，如今是麻省理工学院的教授——关键是，他本可以做任何他想做的事情。豪泽尔说他并非要「少学沃克，多学厄舍尔」，两者只是极端；但有个问题值得回答：他们的生活，你更欣赏谁？</p><p class="prose">大多数人选厄舍尔——不是因为他钱多钱少，而是因为沃克失去了对自己生活的掌控，他的决定都由破产法官来决定；而厄舍尔始终掌控着自己的生活，他的人生画布由自己描绘。塔勒布一语道破：</p><div class="aband"><q>重要的不是一个人拥有什么或没拥有什么，而是他害怕失去什么。你拥有的越多，你就越脆弱。</q><cite>——第 11 章 · 引纳西姆·塔勒布</cite></div><p class="prose">写这一章的当天早上，豪泽尔还在报纸上读到一位曾经身家数亿美元的首席执行官被银行家清算资产——卖掉游艇和房子、被公司解雇。一个财富处于顶尖十万分之一的人，却比许多穷人拥有更少的财务独立性。结论只有一句话：</p><div class="aband"><q>没有独立的财富，是一种独特的贫困。</q><cite>——第 11 章</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>第 11 章 · 独立光谱：第 0 级到第 15 级</h2><span class="en">SPECTRUM</span></div><p class="prose">有人嘲笑财务独立是信托基金继承人的专属，还有朋友拒绝存钱：「存 50 美元又能有什么用呢？」豪泽尔想打破的正是这种心态——财务独立并非非黑即白，它存在于一个光谱之中。他给出了 0—15 级的划分，请在这份清单中找到自己的位置：</p><div class="tbwrap"><table><thead><tr><th>级别</th><th>源文定义（上）</th></tr></thead><tbody><tr><td>第0级</td><td>完全依赖陌生人的善意——乞丐与寻求政府救助的首席执行官，对财务方向完全失控</td></tr><tr><td>第1级</td><td>完全依赖希望你成功的人——由父母供养的孩子，向明知你无法偿还的朋友借钱</td></tr><tr><td>第2级</td><td>能为他人创造价值、部分养活自己，仍依赖外部支持——依赖父母的年轻人、靠政府援助或养老金的劳动者</td></tr><tr><td>第3级</td><td>能完全养活自己，但价值微不足道且易被取代——可支付账单，但老板或客户掌控着你的未来</td></tr><tr><td>第4级</td><td>有足够储蓄应对日常问题——小医疗费、取暖费、孩子的新裤子，都不会击垮你</td></tr><tr><td>第5级</td><td>有足够储蓄应对更大的不可预见问题——车坏了、壁挂炉坏了，你都没问题</td></tr><tr><td>第6级</td><td>有退休与教育储蓄、避免信用卡债务——可以预见未来，乐观且安心</td></tr><tr><td>第7级</td><td>能选择工作、对糟糕的老板说「不，我不干了」——对大多数人来说美好而现实的目标</td></tr></tbody></table></div><div class="tbwrap"><table><thead><tr><th>级别</th><th>源文定义（下）</th></tr></thead><tbody><tr><td>第8级</td><td>对社会经济地位足够满意，不再需要向陌生人炫耀——思想与人格独立的开端</td></tr><tr><td>第9级</td><td>能避免大部分债务（车贷、学贷甚至房贷）——不再问「利率是多少」，而是问「这会让我付出多少独立性」</td></tr><tr><td>第10级</td><td>很少有现实经济状况能让你的家人跌回第5级以下——第一个真正财务独立的阶段</td></tr><tr><td>第11级</td><td>利息与股息等被动收入覆盖生活开支的很大一部分——对生活方式的欲望可以比任何资产增长得更快</td></tr><tr><td>第12级</td><td>投资回报足以覆盖远超预期寿命的基本开支——不再依赖为他人工作，可随心选择是否工作</td></tr><tr><td>第13级</td><td>资产覆盖基本开支以上，还有剩余留给家人或慈善——小心不必要的消费膨胀，它会像重力一样拖垮独立性</td></tr><tr><td>第14级</td><td>能随心做想做的事、说想说的话，不担心他人意见相左——但善良和文明同样重要</td></tr><tr><td>第15级</td><td>每天醒来都能随心支配时间，社交债务与实际债务都无法束缚你的选择——「你已经赢得了这场游戏」</td></tr></tbody></table></div><p class="prose">无论你处于哪个位置，也无论你渴望达到多高，关键都在于认识到独立是一个光谱：</p><div class="aband"><q>每一分储蓄的积累，每一次的开支缩减，都会让你在这个独立光谱上向上攀升一点，你的生活也会因此改善一点。</q><cite>——第 11 章</cite></div><p class="prose">诀窍在于，将每一分储蓄都视为主动购买的无形资产，即使它没有收据——你购买的是随心所欲做想做的事的能力，以及在想要的时间，与想陪伴的人共度时光的能力。太多人不去追求独立，只因为觉得遥不可及；而事实上，无论收入水平如何，人们都可以提升自己的独立光谱。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>第 12 章 · 社交债务</h2><span class="en">CHAPTER 12</span></div><p class="prose">弗兰克·卢卡斯，20 世纪 70 年代纽约的毒枭，毒品帝国每日进账百万美元。他能长期逍遥法外，很大程度上得益于低调的生活方式。但傲慢终究找上门来——眼见其他小毒贩招摇度日，他按捺不住了：「我不能容忍那些收入远不如我的人，却自以为是地主宰着世界。</p><p class="prose">」1971 年 3 月 8 日，阿里对弗雷泽的「世纪之战」上，他身披价值 <b>5 万美元</b>（今约百万美元）的南美栗鼠绒皮大衣坐在最佳席位，比辛纳屈和副总统还靠前——「这是我有生以来第一次，真正渴望炫耀一番。」陌生人排队合影、媒体疯狂，当然，也包括纽约市警察局：</p><div class="aband"><q>我来参加这场拳赛时，还是个无名小卒；离开时，却已成了警方重点关注的对象。</q><cite>——第 12 章 · 弗兰克·卢卡斯</cite></div><p class="prose">他被判处 70 年监禁。卢卡斯是罪犯，但他付出的代价属于一个适用于每个人的概念——<b>社交债务</b>：当你的消费方式影响了他人对你的看法时产生的一种无形负担。它可能源于他人的嫉妒，可能是你突然觉得自己高人一等，甚至可能只是生活方式升级后内心不断膨胀的欲望。它常常隐藏在生活的表象之下，因此更具危险性。</p><p class="prose">药理学的阿恩特-舒尔茨规则说：任何物质，小剂量是刺激，中等剂量是抑制，大剂量则致命。金钱的运作方式异曲同工——每个人都有一个「理想」的净资产，当金钱不再带来快乐、反而成为社交负担时，你就到了临界点，而这个点远比想象的低。</p><p class="prose">彩票中奖者的故事是极端注脚：1985 年一位亚当斯女士四个月内中了两笔共 530 万美元，随后发现「我无论走到哪里都会被人认出来」。中奖金额可以精确到一分一毫，但失去隐私的代价如何衡量？</p><p class="prose">泰格·伍兹热爱潜水，因为水下是世界上唯一没有人认出他、也没有人向他索取任何东西的地方——这种社交负担不会出现在任何电子表格上。</p><div class="aband"><q>金钱有一个容易被忽视的问题：资产易于衡量，而负债却可能深藏不露。</q><cite>——第 12 章</cite></div><div class="aband"><q>一件东西的成本，就是我所说的生命，为了它，生命必须立即或长远地被交换。</q><cite>——第 12 章 · 引亨利·戴维·梭罗</cite></div><p class="prose">豪泽尔曾与一群 NBA 新秀交流如何避免「20 多岁赚得盆满钵满、30 岁破产」的悲剧。一位球员说，破产最常见的原因不是珠宝和汽车，而是社交债务——当你从小生活贫困、然后在 22 岁赚到 1000 万美元时，那笔钱就不再仅仅属于你：那是妈妈的钱、爸爸的钱、奶奶的钱、表兄弟姐妹的钱。</p><p class="prose">真正让球员破产的，是为素未谋面却觉得有义务帮助的远房表亲购买普通住宅。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>第 12 章 · 富有且匿名</h2><span class="en">RICH &amp; ANON</span></div><p class="prose">社交债务也来自你自身膨胀的欲望。火车上的「静音车厢」是个绝妙比喻：当你对安静抱有期望，就会对最微小的噪声异常敏感。买了更好的车，你开始无法忍受它变脏，被人剐蹭会气得发疯；买了一栋好房子，你会开始梦想更好的房子——因为你所比较的群体，随着你买的每一栋新房子而改变。</p><p class="prose">生活方式每提高一个档次，都伴随着社会义务、他人的评判以及自身期望的转变，这些都是非常真实的负债。</p><div class="aband"><q>财富就像变色龙，一旦你将它们握在手中，它们就会从美好的幻想变成沉重的责任。</q><cite>——第 12 章 · 引肯特·纳尔本</cite></div><div class="aband"><q>关键在于，一旦金钱从一种让你获得幸福的工具，转变为他人衡量你的标准，你就已经输掉了这场游戏。</q><cite>——第 12 章</cite></div><p class="prose">豪泽尔曾为一个价值 <b>80 亿美元</b>的家族提供咨询。在谷歌上搜索他们的名字——什么都没有：没有《福布斯》榜单，没有盛大晚会照片，没有维基百科页面。这并非偶然，而是刻意为之。他们过着最令人惊叹的生活，却几乎没有社交债务：完全的自由、隐私和独立；谨慎选择朋友，匿名捐赠金钱。</p><p class="prose">这让人想起纳瓦尔·拉维坎特的话：</p><div class="aband"><q>最好的状态是富有且匿名。</q><cite>——第 12 章 · 引纳瓦尔·拉维坎特</cite></div><p class="prose">普通人如何避免社交债务、做到富有且匿名？豪泽尔的策略叫「静默复利」——那是第 13 章的内容。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>第 13 章 · 静默复利的五个含义</h2><span class="en">CHAPTER 13</span></div><p class="prose">第 13 章开篇引老子：「道常无为，而无不为。」巨杉、巍峨高山——大自然最令人叹为观止的奇迹悄无声息地进行着，生长几乎从不可见，但假以时日，成果惊艳无比。每隔几年就会出现「草根」逆袭的故事：没有受过教育、从事低薪工作，却通过几十年的复利积累了数千万美元。</p><p class="prose">他们的超能力朴素至极——从不吹嘘，从不炫耀，从不与人攀比，整个财务世界都局限在家庭范围之内。金钱有两种用途：作为工具改善生活（静默而私密），或作为标尺与人比较（喧嚣而表演性）。静默复利对豪泽尔意味着五件事：</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>强调内在标尺而非外在标尺</h3><p class="cp">常问自己：如果除了我和我的家人，没有人能看到这个结果，我也不将它与他人成功的表象比较，我是否还会满意？在社会比较游戏中你不可能获胜——停止游戏，注意力就会转向内在。</p></div><div class="card num"><div class="idx">二</div><h3>接受人与人之间的差异</h3><p class="cp">美国作家莫利说：成功只有一种，即能够以自己的方式度过一生。许多财务错误都源于试图模仿与你不同的人——谨慎选择你请教、仰慕、交往的人。</p></div><div class="card num"><div class="idx">三</div><h3>注重个人独立而非社会攀比</h3><p class="cp">默默做事，你就会以最好的方式变得「自私」——用金钱改善自己的生活，而不是试图影响他人对你生活的看法。</p></div><div class="card num"><div class="idx">四</div><h3>来得快的财富也是易逝的财富</h3><p class="cp">你积累财富的速度，就是你失去财富的半衰期。来得容易的钱往往花得也容易——「老钱」寻求税务庇护，「新钱」追逐兰博基尼。</p></div><div class="card num"><div class="idx">五</div><h3>最快的致富之道，是慢慢来</h3><p class="cp">停止为他人表演，注意力自然投向更远的未来——由此培养出最强大的财务技能：耐力。你知道长寿和长期坚持才是金融真正的魔力。</p></div></div><div class="aband"><q>成功只有一种，即能够以自己的方式度过一生。</q><cite>——第 13 章 · 引克里斯托弗·莫利</cite></div><div class="aband"><q>速度吸引了所有注意力，但缓慢却拥有所有力量。</q><cite>——第 13 章</cite></div><p class="prose">投资中的长期财富成功，在于能够承受可控的波动——只有当你更关心在波动中生存下来，而不是因为被波动击中而显得愚蠢时，你的投资策略才具备韧性。与其试图比别人更聪明，不如默默地进行一项长期押注，相信事情会随着时间的推移慢慢变好。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>收束 · 不急不躁，成就万物</h2><span class="en">EPILOGUE</span></div><p class="prose">三章合起来是一条完整的链：储蓄买独立，独立防社交债务，静默复利攒出两者。第 13 章的收尾只有一句话，与老子那句遥相呼应：</p><div class="aband"><q>你不急不躁，却能成就万物。</q><cite>——第 13 章</cite></div><p class="prose">章末豪泽尔抛出下一个问题：当你照镜子时，映入眼帘的全是金钱，会发生什么？——下一篇，我们谈身份认同：钱如何悄悄变成「你是谁」。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文注释</span><span class="nd"><b>尾注｜</b>第 11 章 6 条、第 12 章 3 条尾注，均为英文文献与媒体报道（含《损失 1.08 亿美元的沃克》与 1993 年《纽约时报》彩票中奖者报道），本篇保留正文编号标记，条目不逐字抄录。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜摩根·豪泽尔《金钱的艺术》（袁希 译，中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第11—13章｜独立·债务·复利</span><a href="../05-风险遗憾与看看他们/index.html">← 风险与遗憾</a><a href="../07-身份认同与尝试新事物/index.html">身份与尝试 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='art-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
