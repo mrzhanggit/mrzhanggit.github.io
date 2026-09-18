@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第八章·第八课 · 开始行动｜富爸爸穷爸爸 精读</title>
+<meta name="description" content="秘鲁的金矿工人说：金矿到处都是，但大部分人没有经过相应的培训，所以发现不了它们。本课就是那份「培训清单」——十个步骤，每一步背后都有一种力量。">
+<style>
+:root{
+  --paper:#F5F2F0;      /* 暖灰纸底 */
+  --paper-2:#E9E3E7;    /* 纸色深一档 */
+  --card:#FDFBFD;
+  --ink:#2A2333;        /* 紫袍墨（主色） */
+  --ink-2:#463B5B;
+  --ink-deep:#120D1A;   /* 深夜紫袍（hero 底） */
+  --gold:#B8862B;       /* 金币（强调 · 资产与复利） */
+  --gold-b:#D8AC52;
+  --gold-soft:rgba(184,134,43,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 负债与恐惧） */
+  --teal:#6B4E93;       /* 紫袍（对照 · 资产与成长） */
+  --tx:#2E2739;
+  --tx-2:#4B4160;
+  --tx-3:#80778F;
+  --line:rgba(42,35,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,35,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#463B5B 0%,var(--ink-deep) 62%);
+  color:#EFEAF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(216,172,82,.42)}
+.hero::after{inset:22px;border:1px solid rgba(216,172,82,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(216,172,82,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F2EEF7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,232,242,.78)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(216,172,82,.34);color:rgba(237,232,242,.84);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(184,134,43,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EDE9F3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(216,172,82,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F1ECE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(216,172,82,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F1ECE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(234,229,238,.72);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(184,134,43,.5);box-shadow:0 4px 18px rgba(42,35,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(184,134,43,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(107,78,147,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(107,78,147,.1);color:var(--teal);border:1px solid rgba(107,78,147,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(184,134,43,.45);background:rgba(184,134,43,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(184,134,43,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,244,246,.95);
+  border-bottom:1px solid rgba(42,35,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,35,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#463B5B;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(184,134,43,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,35,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,35,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#857C93;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-第七课-克服困难/index.html">← 第七课·克服困难</a><a href="../10-第九课与结束语/index.html">第九课·还想要更多吗 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">行</div>
+  <div class="stamp s3">第八课</div>
+  <h1>第八课 · 开始行动</h1>
+  <p class="sub">秘鲁的金矿工人说：金矿到处都是，但大部分人没有经过相应的培训，所以发现不了它们。本课就是那份「培训清单」——十个步骤，每一步背后都有一种力量。</p>
+  <div class="meta"><span>第八章</span>
+    <span class="k">十个步骤</span>
+    <span>正文 14,154 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>十个步骤</a><a href="#s3" data-t="s3"><span class="cn">叁</span>精神与选择</a><a href="#s4" data-t="s4"><span class="cn">肆</span>关系与模式</a><a href="#s5" data-t="s5"><span class="cn">伍</span>自律与建议</a><a href="#s6" data-t="s6"><span class="cn">陸</span>给予者·奢侈品·英雄</a><a href="#s7" data-t="s7"><span class="cn">柒</span>先予后取</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本课是全书的行动手册：10 个步骤 × 10 种力量</p><p class="thesis">每个人都拥有理财天赋，问题是它一直<b>处于休眠状态</b>——我们的文化教导我们为金钱而工作，却没教我们如何让金钱为我们工作。对不属于那 90% 的人，清崎给出他一直照做的 10 个步骤。</p><div class="chain"><div class="node"><div class="n">起手</div><div><p class="tt">金矿工人</p><p class="dd">工作了 45 年的金矿工人对找新矿充满信心——金矿到处都是，缺的是发现它们的培训</p></div></div><div class="node"><div class="n">发动机</div><div><p class="tt">精神与选择</p><p class="dd">找一个超现实的理由（想要与不想要的结合体）；每天做出选择——每挣到一美元，就得到一次选择的机会</p></div></div><div class="node"><div class="n">加速器</div><div><p class="tt">关系与模式</p><p class="dd">慎重地选择朋友——不听贫穷的或胆小的人的话；掌握一种模式，再学一种新的</p></div></div><div class="node"><div class="n">底盘</div><div><p class="tt">自律与建议</p><p class="dd">首先支付自己（最难掌握）；给经纪人优厚的报酬——好建议创造财富</p></div></div><div class="node"><div class="n">引擎</div><div><p class="tt">给予与专注</p><p class="dd">做「印第安给予者」问「多久收回投资」；用资产来购买奢侈品</p></div></div><div class="node"><div class="n">导航</div><div><p class="tt">英雄与给予</p><p class="dd">对英雄的崇拜——模仿是一条很好的学习途径；先予后取——如果你想获得，就要先给予</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>唤醒理财天赋的十个步骤</h2><span class="en">TEN STEPS</span></div><p class="prose">金矿到处都是，但大部分人没有经过相应的培训，所以发现不了它们——对房地产项目，清崎出去跑一天就能发现四五桩潜在的生意，而一般人即使去同一个地区也可能空手而归。差别不在运气，在<b>开发自己的理财天赋</b>。以下十步，他强调这是行动清单而非知识清单：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>1. 找一个超现实的理由——精神的力量</h4><p>「想要」与「不想要」的结合体：不想一生耗在工作上、不想父辈们渴望的郊区房子；想自由自在地周游世界、想金钱为我工作</p></div><div class="step"><div class="dot">2</div><h4>2. 每天做出选择——选择的力量</h4><p>每挣到一美元就得到一次选择机会；首先投资于教育——90% 的人购买电视机，只有约 10% 的人购买商业方面的书</p></div><div class="step"><div class="dot">3</div><h4>3. 慎重地选择朋友——关系的力量</h4><p>不把理财状况作为择友标准，但特意交有钱的朋友——目标不是他们的钱财，而是他们得以致富的知识</p></div><div class="step"><div class="dot">4</div><h4>4. 掌握一种模式，然后再学习一种新的——快速学习的力量</h4><p>「你学习什么，就会成为什么样的人」；为金钱工作是穴居时代的模式，早已过时</p></div><div class="step"><div class="dot">5</div><h4>5. 首先支付自己——自律的力量</h4><p>能否自律是将富人、穷人和中产阶级区分开来的首要因素；10 个步骤中最难掌握的一个</p></div><div class="step"><div class="dot">6</div><h4>6. 给你的经纪人以优厚的报酬——好建议的力量</h4><p>经纪人是你在市场上的「眼睛」和「耳朵」；穷人为糟糕的服务付 15%～20% 小费，却不愿付 3%～7% 的佣金</p></div><div class="step"><div class="dot">7</div><h4>7. 做一个「印第安给予者」——无私的力量</h4><p>老练投资者的首要问题：「我多久才能收回投资？」——收回成本后的资产是「白捡便宜」</p></div><div class="step"><div class="dot">8</div><h4>8. 用资产来购买奢侈品——专注的力量</h4><p>用消费的欲望来激发并利用理财天赋去投资，而不是贷款买奢侈品</p></div><div class="step"><div class="dot">9</div><h4>9. 对英雄的崇拜——神话的力量</h4><p>像小时候模仿棒球明星那样模仿巴菲特、林奇和罗杰斯——「如果他们能做到，那么我也能」</p></div><div class="step"><div class="dot">10</div><h4>10. 先予后取——给予的力量</h4><p>当你感到手头「有点紧」时，首先要想到给予：金钱、微笑、爱情还是友谊都是如此</p></div></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>精神的理由，每天的选择</h2><span class="en">REASON &amp; CHOICE</span></div><p class="prose">一位梦想参加奥运会的女运动员每天早上 4 点起床游 3 小时泳，支撑她的答案只有一句：「是爱的力量使我克服重重困难、甘于牺牲。」清崎想 40 岁实现财务自由，实际 47 岁才做到——<b>如果促使你前进的动力不够强大，前行道路上的严酷现实就会使你退缩</b>。</p><p class="prose">第二步把宏大目标落到每天：从理财角度说，我们每挣到一美元，就得到了一次选择自己是成为富人、穷人还是中产阶级的机会。这些常见说法——「我对金钱不感兴趣」「我爱人掌握财权」——共同的问题在于阻碍人们思考两件事：<b>时间</b>（你最珍贵的资产）与<b>学习</b>（正因为没有钱，就更要去学习）。</p><p class="prose">他的做法是首先投资于教育：1973 年一个只花 385 美元的 3 天研讨班，帮助他挣回至少 200 万美元；他听过某位投资大师的音频，把完全不同意的一段 5 分钟录音重听至少 20 遍——直到豁然开朗。</p><div class="aband"><q>有胆量不随大流才能致富。</q><cite>——第八章 · 开始行动</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>选朋友，换模式</h2><span class="en">FRIENDS &amp; PATTERNS</span></div><p class="prose">第三步的忠告很扎眼：不要听贫穷的或是胆小的人的话——他们过的是「小鸡」式的生活，涉及金钱时「天就要塌下来了」。聪明的投资者两方专家的话都要听、保持开放心态，但<b>最困难的是坚持自己的选择而不盲目从众</b>：一项大宗交易登上投资杂志首页时，此刻入场往往为时已晚。</p><p class="prose">就像冲浪者说的——「总会有新的浪头过来」；明智的投资者懂得利润在购买时就已确定，而不是在出售时获得的。</p><p class="prose">第四步处理模式：大多数人只知道一个挣钱模式——为金钱工作（起床、上班、挣钱、支付账单、平衡支票簿、购买共同基金，然后再去工作）。如果厌倦了或钱不够多，很简单，<b>改变你的挣钱模式</b>。他 26 岁参加「如何购买破产的房地产」周末研讨班，在为施乐工作的 3 年里用业余时间实践，赚取了数百万美元。</p><p class="prose">在今天这个快速变化的社会，「问题在于你学得有多快，这种技能是无价之宝」。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>首先支付自己，优厚支付顾问</h2><span class="en">DISCIPLINE</span></div><p class="prose">第五步是十个步骤里最难掌握的。「首先支付自己」出自《富爸爸巴比伦最富有的人》，数百万人会熟练复述，却鲜有人照做——哪怕现金流远低于应付账单，清崎仍然首先支付自己，任会计师惊恐尖叫。两条谨记：不要背上数额过大的债务包袱，保持低支出；资金短缺时，<b>让压力去发挥作用，而不要动用你的储蓄或资本</b>。</p><div class="aband"><q>如果你控制不了自己，就别想着致富。</q><cite>——第八章 · 开始行动</cite></div><p class="prose">第六步是它的镜像：给专业人士优厚的报酬。他乐意见到经纪人赚到很多钱，「因为这通常意味着我赚到了更多钱」。9 000 美元买进一块闲置地皮立即以 2.5 万美元卖出，还能马上去买一辆保时捷——好经纪人为他节省的时间又变成了钱。考察专业人士时他只看一件事：他们<b>自己</b>拥有多少财产或股票。</p><p class="prose">他有一位会计师，职业是会计，事业却是房地产。</p><div class="aband"><q>致富，并不以牺牲舒适为代价地支付账单。</q><cite>——第八章 · 开始行动</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>收回投资、买车的圈套与英雄</h2><span class="en">GIVER &amp; HERO</span></div><p class="prose">第七步的名字来自一次文化误读：印第安人送毯子给受冻的白人，却期待归还——「印第安给予者」提醒投资者，天下没有白送的东西。</p><p class="prose">老练投资者的首要问题是「我多久才能收回投资」：他以 5 万美元现金买下银行要价 6 万美元的没收房产，出租给冬季来的「雪候鸟」，<b>大约 3 年收回投资</b>，此后每月的现金收入都是「白捡的」。</p><p class="prose">他的胜率并不高——平均每 10 项投资，2～3 项赢利、5～6 项不赚不赔、2～3 项亏本，但损失始终限制在可承担的范围内。</p><p class="prose">第八步是一个著名的教育实验：朋友 16 岁的儿子想买车，父亲给了他 3 000 美元——但不能直接买车，只能买卖股票，等它增值到 6 000 美元再用挣到的钱买车。孩子很快把挣到的钱全赔光了，却从此如饥似渴地读《华尔街日报》。「我想这是我花在他的教育上效果最好的 3 000 美元。</p><p class="prose">」清崎给出一个 distribution：年初给 100 个人每人 1 万美元，年底<b>有 80 个人分文不剩，16 个人增值 5%～10%，只有 4 个人将 1 万美元增值到 2 万美元至数百万美元</b>。</p><div class="aband"><q>轻松的道路往往会越走越艰难，而艰难的道路往往会越走越轻松。</q><cite>——第八章 · 开始行动</cite></div><p class="prose">第九步回到童年：珍藏棒球卡、模仿威利·梅斯的击球动作——长大后他把同样的热情投向巴菲特、彼得·林奇和吉姆·罗杰斯，跟着巴菲特的选择投资、读他能找到的一切文章。英雄人物不仅激励了我们，还会使难题看起来容易一些。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>第十步：先予后取</h2><span class="en">GIVE FIRST</span></div><p class="prose">两个爸爸都是老师，但在金钱的付出上方向相反：穷爸爸常说「要是有多余的钱就会捐助给别人」，可他很少有结余；富爸爸即使缺钱，还是会向教堂或慈善机构捐钱。他的法则朴素而反直觉——<b>「如果你想获得，就要先给予。」</b>我想要钱，所以我给别人钱，然后又成倍地收回钱；我想做销售，所以我帮助其他人卖东西。</p><div class="aband"><q>上帝不需要得到，但人类需要付出</q><cite>——第八章 · 开始行动</cite></div><p class="prose">他甚至转述富爸爸的一句惊人之语：「穷人比富人更贪婪」——因为富有的人才能提供别人想要的东西。抱柴火坐在寒夜里的人冲大火炉喊「你什么时候给我温暖，我就什么时候给你添柴火」，形象概括了这种颠倒。清崎的版本温和一些：<b>你的世界就是你的一面镜子</b>——每当人们没有向他微笑时，他就先笑着问好。</p><p class="prose">真诚地教那些想学习的人，自己就学到更多；本课结束，全书也只剩下最后一问：还想要更多吗？</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜罗伯特·清崎《富爸爸穷爸爸》（四川人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第八章｜第八课·开始行动</span><a href="../08-第七课-克服困难/index.html">← 第七课·克服困难</a><a href="../10-第九课与结束语/index.html">第九课·还想要更多吗 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='rfd-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

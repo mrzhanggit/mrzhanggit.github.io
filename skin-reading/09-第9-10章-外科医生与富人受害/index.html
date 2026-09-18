@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第六卷 再探代理人问题·第9-10章 · 外科医生看起来应该不像外科医生 / 只有富人受害｜非对称风险 精读</title>
+<meta name="description" content="屠夫长相的医生反而是最优选，房价昂贵的米其林是一场复杂烹调实验——两章合读：筛选机制如何穿透表象，富人又是如何被复杂化收割的。">
+<style>
+:root{
+  --paper:#F3F2EE;      /* 玄武纸底 */
+  --paper-2:#E9E7E0;    /* 纸色深一档 */
+  --card:#FBFAF7;
+  --ink:#212A30;        /* 玄武主墨 */
+  --ink-2:#47555F;
+  --ink-deep:#0B1114;   /* 玄武深空（hero 底） */
+  --gold:#47555F;       /* 玄武灰蓝（强调 · 风险共担） */
+  --gold-b:#7A8E99;
+  --gold-soft:rgba(71,85,95,.16);
+  --cinnabar:#A63528;   /* 风险红（警示 · 非对称性） */
+  --teal:#3E6B5E;       /* 铜绿（对照 · 对称与正轨） */
+  --tx:#2A343B;
+  --tx-2:#46525C;
+  --tx-3:#76828C;
+  --line:rgba(33,42,48,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,42,48,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#47555F 0%,var(--ink-deep) 62%);
+  color:#E7ECEF;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(122,142,153,.42)}
+.hero::after{inset:22px;border:1px solid rgba(122,142,153,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(122,142,153,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F3F4}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,238,240,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(122,142,153,.34);color:rgba(232,238,240,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(71,85,95,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E7ECEF;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(122,142,153,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EAEDEA;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(122,142,153,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EAEDEA;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(71,85,95,.5);box-shadow:0 4px 18px rgba(33,42,48,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(71,85,95,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(71,85,95,.45);background:rgba(71,85,95,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(71,85,95,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,242,238,.94);
+  border-bottom:1px solid rgba(33,42,48,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,42,48,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#47555F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(71,85,95,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,42,48,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,42,48,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A8E99;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「第9-10章·外科医生」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-第8章-一个叫林迪的专家/index.html">← 第8章·林迪</a><a href="../10-第11-12章-行胜于言/index.html">第11-12章·行胜于言 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">相</div>
+  <div class="stamp ">筛选</div>
+  <h1>第9-10章 · 外科医生看起来应该不像外科医生 / 只有富人受害</h1>
+  <p class="sub">屠夫长相的医生反而是最优选，房价昂贵的米其林是一场复杂烹调实验——两章合读：筛选机制如何穿透表象，富人又是如何被复杂化收割的。</p>
+  <div class="meta"><span>第六卷 再探代理人问题</span>
+    <span class="k">绿色木材谬误</span>
+    <span>正文 11,984 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>屠夫医生</a><a href="#s3" data-t="s3"><span class="cn">叁</span>绿色木材</a><a href="#s4" data-t="s4"><span class="cn">肆</span>仪式与装饰</a><a href="#s5" data-t="s5"><span class="cn">伍</span>黄金大米</a><a href="#s6" data-t="s6"><span class="cn">陸</span>指标与文凭</a><a href="#s7" data-t="s7"><span class="cn">柒</span>金杯奉鸩</a><a href="#s8" data-t="s8"><span class="cn">捌</span>豪宅与偏好</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>时间和现实联手帮我们过滤掉了那些能力不足的人，而时间和现实并不在乎长相。</p><cite>——第9章 · 看上去是块儿料</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇两章合读：筛选机制（第9章）与富人的靶子效应（第10章）</p><p class="thesis">第9章从两位外科医生候选人的选择讲起：<b>当一项事业脱离“风险共担”而缺乏筛选机制时，它就充满了形象逼真、演技超群的人</b>——绿色木材谬误、万圣节主教、黄金大米都是同一种病。第10章转向受害者：<b>人们一旦有钱，就会抛弃自己原来在“风险共担”中的经验机制</b>——毒酒放在金杯里，豪宅静得像殡仪馆。</p><div class="chain"><div class="node"><div class="n">选择题</div><div><p class="tt">屠夫医生</p><p class="dd">看起来不像干这行却能干很久的人，一定用医术扭转了第一印象——否则早被淘汰</p></div></div><div class="node"><div class="n">谬误</div><div><p class="tt">绿色木材</p><p class="dd">把“绿色木材”当成漆成绿色的木材照样发财——知道细节的人反而破产</p></div></div><div class="node"><div class="n">仪式</div><div><p class="tt">万圣节主教</p><p class="dd">没有排场和典礼，知识分子就只能夸夸其谈——唯科学主义看上去比科学更像科学</p></div></div><div class="node"><div class="n">干预</div><div><p class="tt">黄金大米</p><p class="dd">西红柿成本近 80%~85% 源于运输仓储浪费——最简单的方案是修物流，不是转基因</p></div></div><div class="node"><div class="n">毒酒</div><div><p class="tt">金杯</p><p class="dd">小偷不会光顾穷人——毒酒总是放在金杯里，因为更容易让人喝下去</p></div></div><div class="node"><div class="n">豪宅</div><div><p class="tt">殡仪馆</p><p class="dd">傍晚的豪宅画廊有葬礼般的感觉——财富若使你的选择变少，你肯定走错路了</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>看上去是块儿料</h2><span class="en">SURGEON</span></div><p class="prose">两位外科医生候选人：第一位银丝边框眼镜、身材匀称、银发整齐，办公室显眼处摆着常春藤文凭——导演会选他演外科医生。第二位像屠夫：身材肥胖、谈吐粗俗、衬衫松垮、金牙、浓重纽约口音，墙上没有文凭。塔勒布选<b>屠夫</b>，而且如果两位候选人都像电影明星，他就坚持把屠夫列为第三选项。逻辑：</p><p class="prose">如果一个人看起来不像是干这一行的，却又在这一行干了很长时间，说明他需要比别人克服更多的困难——病人以貌取人的天然倾向带给他的不信任感——<b>他一定是用卓越的医术扭转了不利的第一印象，否则早就被淘汰了</b>。我们应该感谢“风险共担”：时间和现实联手过滤掉了能力不足的人，而时间和现实并不在乎长相。</p><p class="prose">反例是等级森严、依赖标准化「工作评估」的机构：大公司总裁不仅长得像电影里的总裁，说话内容和腔调也同电影一样——所以记住：<b>公司高管和企业家不是一回事，高管应该看起来像演员</b>。里根不足为奇；奥巴马比演员演得还好。</p><p class="prose">《邻家的百万富翁》多次提到：一个人的外表和他的财富是互补的——<b>一个人如果很有钱，那么他看起来一定不像你想象中的富人</b>。塔勒布先辈村庄里一位过着简朴生活的邻居，去世时留下了 <b>1 亿美元</b>遗产——是人们原先估计的 100 倍。</p><p class="prose">反向推论同样成立：<b>老练的小偷看起来都不像小偷，看起来像小偷的家伙都已经在监狱里了。</b>挑书也一样：作者照片站在一大排书架前、系宽领带、抱肘沉思状——算了吧。总原则：</p><div class="aband"><q>当一项事业因脱离“风险共担”而缺乏筛选机制的时候，这项事业里就充满了形象逼真、满嘴术语、演技超群和熟悉细节的人，而他们对这项事业的核心其实一无所知。</q><cite>——看上去是块儿料</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>绿色木材谬误</h2><span class="en">GREEN LUMBER</span></div><p class="prose">拉丁谚语说「别以为好看的苹果会更好吃」，广为人知的版本是「会发光的并不都是金子」——消费者花了半个世纪才明白，却仍会被外形吸引。交易行当的两条黄金法则：永远不要雇用西装笔挺的交易员；以及——</p><div class="aband"><q>怎样才能雇到一个成功的交易员？一是他有过硬可信的交易记录，二是你完全理解不了这些交易的细节。</q><cite>——绿色木材谬误</cite></div><p class="prose"><b>「绿色木材谬误」</b>：有个人专做木材生意，一直以为自己卖的「绿色木材」(Green Lumber) 是被漆成绿色的木材，其实那是指新近砍伐还没有干的木材——他根本不知道自己卖的是什么就糊里糊涂地发了财；讲述这个故事、知道所有细节的人却破产了。</p><p class="prose"><b>一个人需要知道的信息和他能够理解的信息，往往是不相匹配的</b>——想去了解的细节，会把注意力从价格形成机制上引开。那些表述得清晰准确、连傻子都能理解的信息，恰恰就是傻子们的陷阱。</p><p class="prose">泰瑞的投资课实验印证了这一点：两位演讲者，一位西装定制、阐述恢宏，学生一边倒认为他更成功——其实他在投资界相当于排队领救济金的失业者；另一位像屠夫医生、连自己都显得困惑——至少是亿万富翁。吉米·鲍尔斯（布鲁克林出身的辍学交易员）开会时的介绍是：「我们先做了这个，然后做了那个，哼哼哈嘿！利润就来了。</p><p class="prose">」没人听懂，但只要持续盈利，高管根本不在意。塔勒布 20 岁出头就懂了：<b>如果一个人说的话很容易被人理解，那么他一定是在吹牛。</b>文学同理：科莱特教西默农少用未完成虚拟式、少提和风杜鹃和天空——后来读梅格雷探长在巴黎的雨里站了几个小时，你会感觉自己的鞋子也湿了。</p><p class="prose"><b>商业计划书</b>是同一谬误的创业版：「认为创业成功从一份成功的商业计划书开始，科学发现始于科研经费——这是完全错误的。如果你想让一个笨蛋上当受骗，商业计划书是你的好帮手。」微软、苹果、脸书网、谷歌都由全身心投入“风险共担”的企业家靠自己的盈利发展壮大。</p><p class="prose"><b>你可以用钱买一家好公司，但你无法用钱创立一家好公司；你可以用钱买一项科研成果，但你无法用钱获得一项科学发现。</b></p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>万圣节主教与快刀斩乱结</h2><span class="en">CEREMONY</span></div><p class="prose">社会科学期刊的反馈只关乎格式和措辞，不关乎内容——一个只有经历长期投资生涯才能总结出的思想，用自己的语言表达出来时，旁人很难理解。于是：</p><div class="aband"><q>永远不要雇用一个搞学术研究的人，除非你只想让他写论文和参加考试。</q><cite>——万圣节主教</cite></div><p class="prose">但仪式背后有自身逻辑。在地中海传统文化圈里，在“风险共担”中投入最多的人赢得尊重；而历史上知识分子待在社会顶层的反例——印度的婆罗门、凯尔特人的德鲁伊教、埃及的书吏、中国一度推崇的文人、战后的法国——都建立了复杂的程序和庄严的仪式来维护阶层的神秘性。</p><p class="prose">希腊东正教的主教若踩着滑板车就不成其为主教：<b>装饰本身没有错，但你只能把装饰当成点缀</b>——不过在科学研究和投资领域，千万不要有任何装饰。对比句一针见血：</p><div class="aband"><q>就像那个衣冠楚楚开着法拉利跑车的人，看起来比那个蓬头垢面的亿万富翁更有钱一样，唯科学主义看上去比科学更像科学。</q><cite>——万圣节主教</cite></div><div class="aband"><q>真正有知识的人应该看起来不像一个知识分子。</q><cite>——万圣节主教</cite></div><p class="prose"><b>快刀斩乱「结」</b>：亚历山大大帝在戈尔迪乌姆见到车轭上解不开的绳结，神谕说解开它就能统治亚细亚——他后退两步说神谕并不在意这个结是怎么解开的，拔剑劈成两半。没有哪个「成功的」学者会这么做。医学界的白知用了很长时间才明白：解决头疼的最好办法是阿司匹林或睡个好觉，而不是听起来更「科学」的脑部手术。</p><p class="prose">而那些被训练去寻找复杂方案的人没有动机探索简单方案——<b>他们靠制造复杂方案谋生</b>；当方案的制定者和方案本身都没有参与过“风险共担”时，原来的问题只会更复杂。所以：<b>重大问题的解决方案应该直击问题本身。</b></p><p class="prose"><b>生活中的过度智能化</b>：理查德·道金斯认为棒球接球手「就好像已经解出了描写棒球运动轨迹的微分方程」——实验表明错了：接球手依赖经验，始终盯住球、调整跑速以使视线和球的角度保持恒定。我们并不具备解方程的计算能力；理性的作用是<b>拔掉经验和迷信中有害东西的毒牙</b>，而不是取代经验。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>黄金大米：复杂方案如何收割</h2><span class="en">GOLDEN RICE</span></div><p class="prose">发展中国家的营养失衡，合作伙伴班杨和诺曼把原因归结为一件朴素的事：<b>运输系统的效率不高</b>——我们在运输、仓储和批发等流通环节浪费了 1/3 以上的食物；西红柿的成本中有将近 <b>80%~85%</b> 源于运输、仓储和浪费，来自农民生产环节的成本很低。</p><p class="prose">最简单的办法是提高食物配送系统的效率，而不是研发新的转基因作物。但「技术狂」们有标准化的五步剧本：秀出饥饿儿童的照片占领道德制高点；把一切批评说成阻止拯救孩子的阴谋；提出貌似有科技含量（其实有利可图）的方案并做好隔离；招募异常憎恨「不科学」的记者和傻瓜；掀起抹黑运动，专抹没有钱、经不起抹黑的研究者。</p><p class="prose">塔勒布与同事展示黄金大米的缺陷：转基因物种是修改和加工基因获得的新物种，与自农耕时代就有的杂交不是一回事，跳过了复杂性系统研究——<b>从 20 层楼摔下去和从椅子上摔下去的风险等级是不同的</b>；转基因作物没做过彻底的风险评估，支持它的统计学论文存在缺陷；更简单的方案被扣上「反科学」的帽子——「我们为什么不直接为那里的孩子提供大米和维生素？</p><p class="prose">毕竟我们自己喝的是牛奶加咖啡，而不是喝含有牛奶成分的转基因咖啡啊！」而且大量杀虫剂破坏了土壤中的微生物和细菌，给环境带来巨大的隐含风险。结局：由于少数派主导规则，转基因作物最终没有得到大规模推广——<b>是一小部分聪明又顽固的人坚决不肯妥协的结果</b>。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>补偿、教育与健身房</h2><span class="en">METRICS</span></div><p class="prose"><b>补偿</b>：只要一个人是由他人评判而不是由事实评判，事情就会扭曲。《黑天鹅》里塔勒布被要求填写「盈利天数占总交易天数百分比」的评估表——这种表格鼓励稳定盈利，代价是风险被隐藏、累积到黑天鹅事件。想想吧：<b>玩 6 次俄罗斯轮盘赌能赢 5 次，这种情况真的很好吗？</p><p class="prose"></b>一个银行连续 100 个季度保持盈利，接下来的一个季度把前面赚的全赔光了。他当着大佬们的面把表格撕了。评估表格让你不再由最终结果评判，结果是你变得世故老成圆滑——「别人一看就觉得你像电影里的交易员」。</p><p class="prose"><b>教育是奢侈品消费</b>：常春藤名校正成为亚洲新富心中的终极奢侈品——哈佛就像一个路易威登的包或卡地亚的表。中产阶级的积蓄被转移给官僚、房地产开发商和一些根本不应存在的学科的终身教授。</p><p class="prose">巨额学生贷款最后自动落入各种收租者的口袋——<b>靠一张体面的大学文凭才能出人头地，无异于绑架一个年轻人的前途，然后对其父母进行敲诈勒索。</b>有证据表明：社会进步并非由高水平教育机构推动；恰恰相反，一个国家的教育水平是由居民财富水平决定的。</p><p class="prose"><b>文凭的经验</b>：在同样技能条件下，把应聘者的教育背景倒序排列，雇用文凭最差的人——光环越少，战胜的困难越多，还能达到同样水平就一定是厉害角色（而且没上过哈佛的人在现实生活中更容易相处）。</p><p class="prose">数学学位很少依赖学校声誉，排名前 10 的标准可以放宽到前 2 000 名学校；而金融之类低质量学术领域的论文，就必须看作者能否发在著名期刊上。</p><p class="prose"><b>真正的健身房看起来不像健身房</b>：昂贵的器材花哨复杂、五颜六色像宇宙飞船装备——但看起来像科学的东西通常是唯科学主义而不是科学。专门设备只针对几块特定肌肉，训练出的肌肉「仅在设备上有用，在现实生活中没有用处」；<b>最简单的杠铃是唯一能让你锻炼全身肌肉的器材，也是最简单和最便宜的</b>。</p><p class="prose">让林迪说了算：<b>举重训练至少已经有 2 500 年的历史了。</b>豪华酒店的宣传册光彩夺目地展示器械和果汁，甚至还有游泳池——却没有杠铃。记住两句：健身房应该看起来不像健身房；大部分肌肉力量的增长源于每组锻炼最后阶段的竭尽全力。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>只有富人受害：金杯奉鸩</h2><span class="en">GOLDEN CUP</span></div><p class="prose">第10章章旨：<b>推销员就是老板。如何喝下这杯毒酒。广告与操纵。周日晚上豪宅里静得让人害怕。</b>核心机制：人们一旦有钱，就会抛弃自己原来在“风险共担”中的经验机制——无法控制自己的偏好，取而代之的是别人推荐的偏好。</p><p class="prose">有钱人的偏好被想从中牟利的人操纵着，而这些人在交易中不会受到不良影响；又由于贫富差距悬殊，<b>没有哪个有钱人会哭诉自己是「受害者」</b>。</p><p class="prose">米其林三星的晚餐是一系列精致复杂的小菜，「像是在参观博物馆，旁边还有一个做作的专业人员跟你讲解你自己无法想到的美学体验」——刚尝到一道合口味的菜就得上下一道，没有机会多吃一口自己喜欢的。他饿着离开了。</p><p class="prose">若让他选，他宁愿去经受时间考验的希腊小酒馆，花相当于三星账单 <b>5%</b> 的价钱吃一顿可口的饭菜——这违反了林迪效应：<b>西西里每个祖母做出来的饭都是不一样的，一点儿细微的差别就能让饭菜更可口。</b>塞内加悲剧中梯厄斯忒斯的哀叹是本节的钥匙：小偷不会光顾穷人——</p><div class="aband"><q>毒酒总是放在金杯而不是普通杯子里——因为放在金杯里更容易让人喝下去。</q><cite>——金杯奉鸩</cite></div><p class="prose"><b>把事情搞复杂，就能轻易地骗到富人的钱。</b>于是有了更多的财务顾问、饮食顾问、健身教练、生活设计师、睡眠顾问、呼吸专家。认知扭曲的例子：汉堡的口感其实比菲力牛排好——因为牛肉脂肪含量更高——但人们宁愿相信牛排更好吃，因为牛排要贵得多。</p><p class="prose">大型晚宴也别去了：你会被困在座位上两个小时，左边是堪萨斯城房地产开发商的妻子（刚去过尼泊尔），右边是华盛顿说客的老婆（刚结束巴厘岛假期）。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>大型殡仪馆与进步的非线性</h2><span class="en">MAUSOLEUM</span></div><p class="prose">一旦有了很多钱，人们就会在无形压力下搬出关系融洽的街区，搬入超大、毫无人情味的寂静豪宅——<b>傍晚时分，豪宅的画廊里有一种葬礼般的感觉，只是没有安魂曲而已。</p><p class="prose"></b>过去的大豪宅挤满了仆人、管家、厨师、穷亲戚、马夫甚至私人音乐教师；现在没有人会因为你住在大宅子里感到寂寞而来安慰你，因为很少有人意识到星期天的晚上那里是如此悲凉。法尔儒纳早就写道：「当罗马还是一个小村庄的时候，人们很容易爱上它，而当它变成一个大帝国以后，就不那么招人喜爱了。</p><p class="prose">」所以有些富人看起来不像富人——他们明白搬到大房子只会带来精神负担，仍然住在原来的房子里。判断标准：</p><div class="aband"><q>如果财富使你的选择变少了，而不是选择更多更丰富，那么你肯定已经走错路了。</q><cite>——大型殡仪馆</cite></div><p class="prose"><b>聊天的艺术</b>：有了钱还想拥有朋友，就一定要隐瞒富有；同样重要的是，还要隐藏博学——只有当人们不试图攀比和超越对方时，他们才会成为朋友。卡斯蒂廖内在《廷臣论》中写道：「人们需要平等，起码在聊天的时候应该保持平等，否则任何谈话都难以为继。</p><p class="prose">」一个和谐友爱的社区，就是一个消除了竞争机制和等级制度的空间集合——奥斯特朗姆的群体研究也提到群体或部落会消除内部竞争。</p><p class="prose"><b>进步的非线性</b>收束全篇：复杂程序带来经济学家所说的「负效用」——社会总财富和 GDP 的增长超过某一水平之后，人的效用函数呈<b>倒 U 型曲线</b>，越增长、受的伤害越多；只有当你摆脱了别人构建好并推销给你的偏好和选择，负效用才能被检测到。</p><p class="prose">所以只要社会越来越富裕，就会有人向你推销一些你不需要的东西——包括超过效用曲线临界点的东西，它们对生活只会产生负面作用。下一篇：第11-12章，行胜于言——用行动重新定义威胁与真相。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文注</span><span class="nd"><b>第六卷扉｜</b>第六卷扉页段仅有「# 第六卷」「# 再探代理人问题」两个标题与 3 幅插图，无正文。</span></div><div class="note" id="n2"><span class="nn">源文注</span><span class="nd"><b>绿色木材｜</b>「绿色木材谬误」源文自注出自《反脆弱》的介绍；Green Lumber 指新近砍伐尚未干燥的木材，而非漆成绿色的木材。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜纳西姆·尼古拉斯·塔勒布《非对称风险》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第六卷｜第9-10章·外科医生</span><a href="../08-第8章-一个叫林迪的专家/index.html">← 第8章·林迪</a><a href="../10-第11-12章-行胜于言/index.html">第11-12章·行胜于言 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ask-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

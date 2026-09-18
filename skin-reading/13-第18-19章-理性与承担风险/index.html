@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第八卷 风险和理性·第18-19章 · 如何对理性保持理性 / 承担风险的逻辑｜非对称风险 精读</title>
+<meta name="description" content="100 个人各去赌场一次与 1 个人去赌场 100 次是两回事——全书核心章合读：集合概率与时间概率、爆仓与遍历性，以及林迪的 32 条否定式格言。">
+<style>
+:root{
+  --paper:#F3F2EE;      /* 玄武纸底 */
+  --paper-2:#E9E7E0;    /* 纸色深一档 */
+  --card:#FBFAF7;
+  --ink:#212A30;        /* 玄武主墨 */
+  --ink-2:#47555F;
+  --ink-deep:#0B1114;   /* 玄武深空（hero 底） */
+  --gold:#47555F;       /* 玄武灰蓝（强调 · 风险共担） */
+  --gold-b:#7A8E99;
+  --gold-soft:rgba(71,85,95,.16);
+  --cinnabar:#A63528;   /* 风险红（警示 · 非对称性） */
+  --teal:#3E6B5E;       /* 铜绿（对照 · 对称与正轨） */
+  --tx:#2A343B;
+  --tx-2:#46525C;
+  --tx-3:#76828C;
+  --line:rgba(33,42,48,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,42,48,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#47555F 0%,var(--ink-deep) 62%);
+  color:#E7ECEF;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(122,142,153,.42)}
+.hero::after{inset:22px;border:1px solid rgba(122,142,153,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(122,142,153,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F3F4}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,238,240,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(122,142,153,.34);color:rgba(232,238,240,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(71,85,95,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E7ECEF;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(122,142,153,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EAEDEA;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(122,142,153,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EAEDEA;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(71,85,95,.5);box-shadow:0 4px 18px rgba(33,42,48,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(71,85,95,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(71,85,95,.45);background:rgba(71,85,95,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(71,85,95,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,242,238,.94);
+  border-bottom:1px solid rgba(33,42,48,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,42,48,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#47555F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(71,85,95,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,42,48,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,42,48,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A8E99;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「第9-10章·外科医生」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../12-第15-17章-宗教信仰与风险共担/index.html">← 第15-17章·宗教信仰</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">生</div>
+  <div class="stamp ">生存</div>
+  <h1>第18-19章 · 如何对理性保持理性 / 承担风险的逻辑</h1>
+  <p class="sub">100 个人各去赌场一次与 1 个人去赌场 100 次是两回事——全书核心章合读：集合概率与时间概率、爆仓与遍历性，以及林迪的 32 条否定式格言。</p>
+  <div class="meta"><span>第八卷 风险和理性</span>
+    <span class="k">遍历性</span>
+    <span>正文 13,692 字</span>
+    <span>11 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>视觉欺骗</a><a href="#s3" data-t="s3"><span class="cn">叁</span>生存优先</a><a href="#s4" data-t="s4"><span class="cn">肆</span>显示偏好</a><a href="#s5" data-t="s5"><span class="cn">伍</span>宗教功能</a><a href="#s6" data-t="s6"><span class="cn">陸</span>奉之则生</a><a href="#s7" data-t="s7"><span class="cn">柒</span>遍历性</a><a href="#s8" data-t="s8"><span class="cn">捌</span>重复风险</a><a href="#s9" data-t="s9"><span class="cn">玖</span>个体与集体</a><a href="#s10" data-t="s10"><span class="cn">拾</span>重申理性</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>林迪告别</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>没有厨房的餐厅。来自坟墓的科学。不要按左图射击钢琴家。理性的商人。</p><cite>——第18章 · 章首</cite></div><div class="epi"><p>核心章节总是放在最后。两次下注。你知道自己的“爆仓点”吗？你是谁？希腊人总是对的。</p><cite>——第19章 · 章首</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇两章合读：对理性保持理性（第18章）与承担风险的逻辑（第19章）</p><p class="thesis">第18章重装「理性」：<b>理性只涉及一个人的行为，而不是他的信仰</b>——唯一能在实践中严格定义的理性是「奉之则生」。第19章是全书核心：<b>集合概率与时间概率的混淆是社会科学的致命缺陷</b>——100 个人各赌一次的胜率，救不了 1 个人连赌 100 次的命运。</p><div class="chain"><div class="node"><div class="n">工具</div><div><p class="tt">信仰</p><p class="dd">信仰对人生的意义和视觉的作用相似——是生存工具，不是测量仪器</p></div></div><div class="node"><div class="n">铁律</div><div><p class="tt">生存优先</p><p class="dd">先有生存，然后才有真理和科学——你必须活着才能从事科学研究</p></div></div><div class="node"><div class="n">判据</div><div><p class="tt">显示偏好</p><p class="dd">观察他们花钱买了什么，而不是问他们怎么想</p></div></div><div class="node"><div class="n">分野</div><div><p class="tt">爆仓</p><p class="dd">一旦存在爆仓的可能性，成本收益分析就变得毫无意义</p></div></div><div class="node"><div class="n">勇气</div><div><p class="tt">层级牺牲</p><p class="dd">为更高层级的利益而牺牲自己——勇气与审慎是一回事</p></div></div><div class="node"><div class="n">终点</div><div><p class="tt">理性定义</p><p class="dd">理性就是避免系统性毁灭——没有“风险共担”就一事无成</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>视觉欺骗：信仰是生存工具</h2><span class="en">OPTICS</span></div><p class="prose">先从一个玩笑开始：公共游泳池的真正功能，是让中产阶级毫无顾虑地穿上泳装参加社交活动；纽约餐厅的使命也不只是饭菜——赚钱的把戏是把超级托斯卡纳葡萄酒一杯一杯地高价卖给你（这套模式在沙特阿拉伯行不通）。<b>所以考虑宗教与古代迷信时，应该关注它们在当时的社会发挥什么作用，而不是把关注点局限在「信仰」这个概念上。</p><p class="prose"></b>在现实生活中，信仰是做事的方法，而非最终的结果。</p><p class="prose">信仰对人生的意义和视觉的作用相似：<b>眼睛并不是为捕获电磁波而设计的传感器，它的职责不是以科学研究为目的把事物精准地呈现给你——眼睛是你非常有用的生存工具。</p><p class="prose"></b>视觉器官会犯错——扭曲，为了让我们精确地采取行动，补偿这种扭曲是必需的：希腊和罗马的建筑师故意把柱子向内倾斜，留下柱子是直的印象；帕特农神庙的地板是弯曲的，这样才能看起来是直的；柱间距不均匀，这样才能看起来像接受检阅的俄罗斯方阵一样整齐。难道有人会向希腊旅游部门投诉柱子不直吗？</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>遍历性优先：先有生存</h2><span class="en">SURVIVAL FIRST</span></div><p class="prose">扭曲同样存在于信仰领域——引导人们相信圣诞老人只会使他们更幸福，而不会造成伤害；<b>保有迷信并非不理性</b>。有时候人们只能用扭曲事实的夸张方法来描述某些尾部风险，否则他将无法生存：只要稍有不慎，你的名字就会从社保体系中无可逆转地被划掉。下面这句话道出了本书剩余部分的主旨：</p><div class="aband"><q>先有生存，然后才有真理和科学。</q><cite>——遍历性优先</cite></div><p class="prose">你并不需要用科学来谋生，但你必须活着才能从事科学研究。祖母说「活着比什么都强」；霍布斯说：</p><div class="aband"><q>生存第一，哲学其次。</q><cite>——遍历性优先</cite></div><div class="aband"><q>要赚钱，你首先得活得长。</q><cite>——遍历性优先</cite></div><p class="prose">最后一句是巴菲特的至理名言——这些都是亲身参与“风险共担”的人总结出来的吉光片羽。我们这些真正冒过险的人，比通过教科书学习模糊的伪理性主义的人更深刻地理解什么是理性。严格地说，这里涉及<b>遍历性问题</b>：要实现完全的遍历性，就不能有吸收壁，也不能有实质性的不可逆性。</p><p class="prose">而「生存」的层级很重要：我只有一个有限生命，我的生存不如那些有着近似无限生命的事物的生存来得重要，比如人类和地球——<b>事物越是「系统化」，生存就变得越重要。</p><p class="prose"></b>引导塔勒布思考的三位思想家：认知科学家赫伯·西蒙（「有限理性」——我们不可能像计算机一样准确分析所有信息，在进化压力下我们产生了捷径和扭曲）、心理学家格尔德·吉仁泽（很多看似不合逻辑的决定背后，有着深层次的生物学动机）、数学家肯·宾默尔（「理性」这个词的很多用法是没有意义的）。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>显示偏好：观察行动，不问想法</h2><span class="en">REVEALED PREFERENCE</span></div><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>用信仰评判一个人是不科学的。</span></label><label><input type="checkbox"><span>信仰无所谓是否理性，理性只存在于行动之中。</span></label><label><input type="checkbox"><span>只有站在进化的角度上，才能评判一个行动是否理性。</span></label><div class="cf">已勾选 <b>0</b> / 3</div></div><p class="prose"><b>显示偏好</b>的理论（源于保罗·萨缪尔森，或者可能是闪米特众神）说：<b>只通过询问，你永远都不会知道人们真正在想些什么、下一步打算做些什么，因为他们自己都不知道</b>——重要的是观察他们花钱买了什么，而不是问他们对某商品怎么「想」。这个道理讲的就是“风险共担”。</p><p class="prose">现在心理学家也明白了：实验要求对象在测试中使用真金白银，观察他们如何花掉这些钱。但还有很多心理学家不理解显示偏好，仍然奢谈理性——<b>他们仍然在评判人的信仰而不是行为。</b></p><p class="prose">「信仰只是……廉价的空谈」——完整理解这句话的语境：<b>当问题停留在思考层面的时候，思考过程需要有一定程度的扭曲，这样才能产生解决问题的动力。</p><p class="prose"></b>而且由于存在「偏差与方差互补机制」，你经常「犯错误」反而可能得到更好的结果——就像练习射击时故意偏离一点瞄准的目标，命中率反而会提高；如果某些错误的代价较小，主动去犯这些错误反而是理性的做法，因为错误会带来新发现：<b>一个没有错误的世界就不会有盘尼西林、化疗……甚至可能没有人类。</p><p class="prose"></b>这就是塔勒布反对由政府决定哪些是正确的原因——只有造物主知道，前提是各物种都要置身于“风险共担”中参与大自然的进化选择。图2（偏差与方差的区别）的要义：得州对射时你宁可做有系统性偏差但更接近靶心的左图射手；面临危险时，<b>修正偏差比缩小方差容易得多</b>——飞机设计师要尽可能降低各部件性能的方差。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>宗教为何存在：尾部风险管理体系</h2><span class="en">WHY RELIGION</span></div><p class="prose"><b>宗教之所以存在，是为了建立尾部风险管理体系，并将管控风险的知识传给下一代</b>——宗教仪轨和教义很容易被人们理解、传授和执行，帮助部落增强抵抗风险的能力。尽管大自然存在尾部风险，但人类仍然顽强地生存了下来，我们今天的生存不可能是随机产生的结果。</p><p class="prose">回想一下，我们一直倡导“风险共担”，而不是「沙盘推演」——我们只关注别人做什么，以及他们是否全身心投入。</p><p class="prose">贾雷德·戴蒙德讨论过巴布亚新几内亚居民的「建设性偏执」：迷信教导他们不要在一棵死树下睡觉——是迷信也好，对概率的深刻理解也好，<b>只要你不在一棵容易被风刮倒的死树下睡觉，你就不容易被它砸中，其他都不重要。</p><p class="prose"></b>而如果你梦想让人们用概率做更好的决定：90% 以上从事决策研究的心理学家（包括卡斯·桑斯坦和理查德·塞勒）对概率一无所知，并试图阻止我们天然形成的偏执——但偏执也许是一种有效的风险防控手段。</p><p class="prose">所以<b>我们不能一面赞美希腊立柱偏斜带来的视觉美感，一面又去批评别人迷信</b>——那些看似迷信的偏执可能还曾经在历史上挽救过我们的祖先。请再回忆一下第3章的内容：集体理性可能恰恰来自个人偏见。</p><p class="prose">那么如何区分信仰的成色？一条原则：</p><div class="aband"><q>装饰性的信仰和其他信仰之间的差异，就在于后者将被付诸行动。</q><cite>——“嘴炮”，廉价的“嘴炮”</cite></div><div class="aband"><q>你愿意为一个事物承担多大的风险，揭示了你对该事物的信任程度。</q><cite>——“嘴炮”，廉价的“嘴炮”</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>林迪怎么说：奉之则生</h2><span class="en">LINDY RATIONALITY</span></div><p class="prose">「理性」的现代观念形成于启蒙运动以后那段狂飙突进的时期——当时的人们认为自己很快就能掌握整个世界的运行规律，并假定世界没有随机性、万事万物之间没有任何互动。塔勒布发现唯一能够在实践中用数学方法严格定义的「理性」是：<b>奉之则生</b>。</p><div class="aband"><q>如果人们相信并遵循某个信念，并在此后的随机性考验中存活了下来，那么这个信念（及其对它的遵奉）就是理性的。</q><cite>——林迪怎么说？</cite></div><div class="aband"><q>任何妨碍个人、集体和部落生存的东西都是不理性的。</q><cite>——林迪怎么说？</cite></div><p class="prose">因此，迷信当中的预防性原则，恰恰是理性的风险管理措施。许多华丽的装饰并非肤浅——求助于最伟大的统计学家：时间，它会给你一个非常有用的工具——<b>生存函数</b>。</p><p class="prose">真正值得注意的重点不是信仰本身存在了多久（天主教会已有 24 个世纪，几乎是罗马帝国从不间断的化身），<b>关键是信仰某种宗教的人（或部落）活了多久</b>。想想教皇的竞争对手——犹太教：近 500 种饮食禁忌、四套餐具、两个水槽、肉类和乳制品不能接触，看起来毫无理性。</p><p class="prose">但犹太教饮食仪轨能持续几千年，<b>不是因为其理性，而是因为遵守这些仪轨的人都活下来了</b>——长期生存的部落产生凝聚力、建立信任感，对商业的萌发极有利；最重要的是，犹太人经历了艰难困苦之后幸存下来了。</p><div class="aband"><q>理性并不是那些可以用清晰的语言描述的因素，理性只有一个内涵：帮助生存，避免毁灭。</q><cite>——华丽中的朴素</cite></div><div class="aband"><q>事情的发生未必都是有起因的，但事物能幸存下来必定是有原因的。</q><cite>——华丽中的朴素</cite></div><p class="prose">理性就是风险管理。下一章就这一原则做最后的陈述。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>100 个人赌一次 vs 1 个人赌 100 次</h2><span class="en">ERGODICITY</span></div><p class="prose">思维游戏：100 个人某天携带固定数量的钱去赌场，有的赔有的赚——第 28 号赌徒爆仓了，第 29 号会受到影响吗？显然不会。统计出大约 1% 的赌徒爆仓，重复这个过程会得到相同的比值。第二个例子：假设你的<b>表弟</b>连续 100 天去赌场——</p><div class="aband"><q>无论你的表弟赌技多么高超，行事多么谨慎，你可以肯定的是只要他一直赌下去，就一定会爆仓。</q><cite>——承担风险的逻辑</cite></div><p class="prose"><b>100 个赌徒在 1 天时间里的成功概率，并不适用于你表弟在 100 天时间里的赌运。</b>前者称为集合概率，后者称为时间概率。</p><p class="prose">所以当你阅读金融学教授、投资大佬或当地银行根据市场长期回报提出的投资建议时，一定要格外小心：即使他们的预测是对的，个人也无法获得与市场相同的回报，除非他有源源不断的资金注入市场且不存在「爆仓点」。</p><p class="prose">混淆集合概率与时间概率的后果：本金减少后追不上指数上涨、即将退休、离婚迎娶邻居的老婆、阑尾炎手术后染上毒瘾——无论哪种情况，投资人的回报都会低于市场总体回报。</p><p class="prose">在风险行业生存下来的投资人都懂一条广为人知的原则（版本因人而异）：<b>「要想投资成功，你首先得活着。」塔勒布自己的版本是「如果一条河的平均深度为4英尺，就千万不要过河」。</b>爆仓不仅让人前功尽弃，而且会让人永远出局——在爆仓风险面前，成本收益分析变得微不足道。</p><p class="prose">彼得斯与盖尔曼（「夸克」的发现者、诺贝尔物理学奖得主）的论文让塔勒布确认：自从 250 多年前雅各布·伯努利给出不确定性条件下决策的方程以来，这个领域里几乎所有人都犯了混淆集合概率与时间概率的严重错误。为什么 250 年里没人意识到？<b>因为他们没有参加过“风险共担”。</b></p><p class="prose"><b>遍历性</b>：如果一个随机过程，其过往的历史概率不能适用于其未来的情景，那么这个随机过程就不具有遍历性——系统存在类似「叫停」的机制，一旦被吸收壁吸收，你就不能回到随机过程中继续游戏；由于不存在任何可逆性，我们称之为「爆仓」。<b>核心问题：一旦存在爆仓的可能性，成本收益分析就变得毫无意义。</p><p class="prose"></b>更极端的例子（《随机漫步的傻瓜》的核心案例）：俄罗斯轮盘赌单次获胜奖金 100 万美元，每 6 个人中 5 个人可以获胜——标准成本收益模型会得出 83.33% 的胜率、每次平均收益 83.33 万美元；<b>但如果你不停地玩这个游戏，最终的结局一定是躺在坟墓里，这时候你的预期收益还能作数吗？</b></p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>重复风险：小概率的累积</h2><span class="en">REPEATED RISK</span></div><p class="prose">在有「爆仓可能」和「重复风险」的情况下，「统计实验」苍白无力：如果有人声称「统计数据证明飞机是安全的」、置信度 98%，而实际情况与声称一致，<b>那么没有哪个经验丰富的飞行员能活着了。</b>心理学家通过单一个人的实验就认定人类有「偏执」或「风险厌恶」倾向，想当然地假设实验对象永远不会再遇到尾部风险。</p><p class="prose">抽一支香烟没有什么风险，却带来巨大的享受——但吸烟最终会导致死亡，起作用的不是一支香烟，而是每年很多包并连续很多年的累积影响：<b>不断地重复暴露在风险之中，无论多么小概率的危险，最终都会带来死亡。</b></p><p class="prose">每个看起来微不足道的风险，累积起来就会降低你的预期寿命：喜欢爬山、骑摩托、爱和流氓混在一起、驾驶小型私人飞机、喝苦艾酒、抽烟、星期四晚上玩跑酷——这些行为通常不会造成严重后果，<b>但集于一身且持之以恒的话，就不是那回事了</b>。人们对重复发生的低概率事件的担心并不是「偏执」，而是具有相当的合理性。</p><p class="prose">持续暴露在「小概率」风险之下的次数累积——即使爆仓风险的概率小到 1‱，在持续的、重复的过程中，爆仓概率最终会越来越接近 100%。</p><p class="prose">许多心理学论文的谬误在于：研究人员想当然地假设实验对象在实验之外不会遇到任何意外风险，而且永远不会。「损失厌恶」理论构造得并不严谨——你问实验对象「如果你有1%的可能会损失100美元，那么你愿意支付多少钱来规避这种风险呢？</p><p class="prose">」，你忽视了他面临的其他风险：车被剐蹭、投资组合赔钱、烘焙店被罚款、孩子有额外开销、被解雇、突染重病……<b>所有这些风险会加总起来，影响实验对象在测试中的态度</b>；生活中充满与「爆仓」风险有关的随机性，不能把这些因素和人的生活割裂开来。所谓「心理账户」也是同类错误。</p><div class="aband"><q>我始终认为风险厌恶情绪是不存在的，我们所观察到的所谓“追涨杀跌”行动，其实是为了活下来以便将来实现投资回报的遍历性，人们只是想尽力避免财务自杀，从而对尾部风险采取了特定的预防措施。</q><cite>——重复风险</cite></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>你是谁：个体、集体与勇气</h2><span class="en">WHO ARE YOU</span></div><p class="prose">现代教育和思想的缺陷之一，就是引导人们相信每个人都是独立的个体。塔勒布在研讨会上问 90 个人：「你认为在你身上发生的最糟糕的事情是什么？」88 个人回答「死亡」。接着问：「比起你自己的死亡，你、你的儿子、侄子、堂兄弟，你的猫、狗、长尾鹦鹉和仓鼠全都死亡，是不是更糟糕呢？</p><p class="prose">」都答「是」；再问全人类的死亡呢——毫无疑问更糟糕。<b>那他们怎么能信誓旦旦地说自己的死亡是最糟糕的事情呢？</b>只有对精神病患者来说，自身的死亡才是最糟糕的事情。很显然，个体的毁灭和集体的毁灭相比并不重要——<b>生态毁灭，对人类生存环境不可逆转的毁灭，才是值得所有人为之担忧的头等大事。</b></p><div class="aband"><q>个体生命结束以后会以其他形式再生，但是人类整体和生态系统一旦毁灭就无可逆转了。</q><cite>——你是一个怎样的人？</cite></div><p class="prose">用遍历性框架解释：俄罗斯轮盘赌中我的爆仓，对于我本人而言不是遍历性的，但对于系统而言是遍历性的——<b>要防止自己成为系统遍历性的牺牲品。</p><p class="prose"></b>每当谈及审慎原则，就有书呆子说「我们过马路还要承担风险呢」——行人过马路遭碾压的概率微之甚微（对每天过马路的人来说，要 <b>47 000 年</b>才发生一次），问题的关键不是个人死于交通事故的概率，而是<b>系统性风险一旦发生就会摧毁我们大家</b>。我的生命是有限的，但人类的生命是几近无限的。</p><p class="prose">整体系统的稳定性有赖于系统各部分的脆弱性（假设它们可再生、可替代）——只有当人类个体的生命较短（也较脆弱）的时候，人类才可能在代际间实现基因变异以适应环境变化，<b>以个体的脆弱性换取整体的强韧性。</b></p><p class="prose">那么勇气和审慎矛盾吗？亚里士多德《尼各马可伦理学》的美德包括节制、审慎和实践智慧——用胖子托尼的话说，它们其实是一回事儿。冒着生命危险救下一群溺水的孩子，即使付出自己的生命，也是为了更高层级的集体利益而牺牲了较低层级的自我利益。</p><p class="prose">在整个希腊世界的价值体系中（亚里士多德从荷马那里继承，经梭伦、伯里克利和修昔底德传承发扬）：</p><div class="aband"><q>勇气是为了更高层级的利益而牺牲自己。</q><cite>——勇气和审慎并不矛盾</cite></div><p class="prose"><b>自私的勇气从来就不是真正的勇气，因为自我保护是生物本能，谈不上是什么美德。</b>一个愚蠢的赌徒表现出来的是疯狂，而绝非勇气——尤其当他在用别人的钱冒险或者自己还有一大家子要养活的时候。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>重申理性：拥抱风险，拒绝爆仓</h2><span class="en">RISK, NOT RUIN</span></div><p class="prose">那些所谓的信仰通常极具说服力，可以使我们避免做出威胁系统生存的事情——<b>如果迷信是通往遍历性的必由之路，那么就继续迷信吧！</b>再看沃伦·巴菲特：他的成功从来不是依靠复杂的成本收益分析，而是建立了一个非常严格的筛选体系，只有通过筛选的项目才投资。</p><p class="prose">他说过：<b>成功人士和真正的成功人士之间的区别，就是后者几乎对所有投资机会说「不」。</b>我们的大脑必须习惯于对尾部风险说「不」——许多方法都可以赚钱，且完全不必触发尾部风险。</p><p class="prose">每当你听到有人说「我们必须要承担风险」，立刻就能判断这话绝对不是一个从市场波动中幸存下来的交易员说的——多半出自金融学教授或银行家之口，他们总是拿着别人的钱去冒险，而且结局大多是爆仓和毁灭。</p><p class="prose">但在有些情况下风险对我们更有利：<b>我们可以承担大量非尾部风险，以享受尾部收益。</b>波动并不一定代表风险，反之亦然——从长凳上跳下来可能对骨骼有好处，但从 21 层的高楼上跳下来就不是那么回事了。小的伤害可能是有益的，可将其视为波动；<b>大的伤害，尤其是不可逆转的伤害，则是我们始终要提防的风险。</p><p class="prose"></b>夸大和渲染市场波动造成的危害是危言耸听，但对尾部风险事件，无论怎么夸大和渲染都不过分——毕竟，风险和爆仓不是一回事。</p><p class="prose"><b>天真的实证主义</b>：「埃博拉病毒造成的死亡人数比在自己家的浴缸里淹死的人还要少」这类说法，祖母容易理解，半吊子学者反而难以理解。一条铁律：</p><div class="aband"><q>永远不要将倍增的、系统性的胖尾风险和不倍增的、特殊的薄尾风险相提并论。</q><cite>——天真的实证主义</cite></div><p class="prose">随机事件分两种类型：<b>平均斯坦</b>是薄尾的，受影响的个人不会再波及其他人；<b>极端斯坦</b>从定义上会对较大范围的人群造成影响。可倍增的风险（比如流行病）总是来自极端斯坦。</p><p class="prose">更专业的说法：来自平均斯坦的风险会受到切诺夫界的限制——在人口总数和浴缸数量不变的情况下，美国下一年度淹死在自家浴缸的人数翻倍的概率是几万亿分之一；但死于恐怖主义袭击的人数翻倍的概率就不能这样计算了（何况恐怖主义致死人数低正是因为人们提高了警戒）。</p><p class="prose">那些「和金·卡戴珊睡过的人比死于埃博拉病毒的人还要多」式的标题：<b>绝对不可能有 10 亿人与卡戴珊睡过，但埃博拉病毒因倍增效应造成 10 亿人死亡的概率却不一定是零。</b>毕竟，恐怖分子和你的浴缸不同——后者不会主动杀人。</p><p class="prose">概率论专家保罗·恩布雷希特研究的极值理论（塔勒布戏称这群研究者为「极端分子」）通过广义极值分布给「尾部」事件分类——越落在尾部区域的事件越清晰可见。</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>人们可能会喜欢风险，但肯定厌恶爆仓、破产和毁灭。</span></label><label><input type="checkbox"><span>如果一个策略有可能触发爆仓风险，那么无论多么大的收益都得不偿失。</span></label><label><input type="checkbox"><span>摧毁系统的风险和系统内部的波动是两个物种。</span></label><label><input type="checkbox"><span>你承担的每一个风险累积起来最终会导致你的预期寿命缩短。</span></label><label><input type="checkbox"><span>理性就是避免系统性毁灭。</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>林迪告诉了我什么：否定式格言</h2><span class="en">NEGATIVE ADVICE</span></div><p class="prose">旅程即将结束——这是不确定性系列丛书的第五本。塔勒布站在餐厅的镜子前，络腮胡已经变白；25 年前开始写这套书时，他用的还是纸和笔，胡子还没有变灰。林迪一直对他说，对某些事情，不必努力去证明、去解释、去总结——有一次他在餐厅无意中听到一个人说出了他的心里话：「事情本来就是这样的。</p><p class="prose">」接下来不做总结了，来听听林迪怎么说：</p><div class="aband"><q>当一个人胡子还是黑的时候，要注重推理，忽略结论；当他的胡子变灰的时候，要推理和结论并重；当他的胡子变白的时候，那就跳过推理，直接关注结论吧。</q><cite>——林迪告诉了我什么？</cite></div><p class="prose">最后，是一组长长的否定式格言：</p><p class="prose">不要没有力量的肌肉；<br>不要没有信任的友谊；<br>不要相信不承担责任的观点；<br>不要缺乏美感的变化；<br>不要没有价值观的阅历；<br>不要未拼尽全力的人生；<br>不要把资源和精力浪费在自己不渴望的事情上；</p><p class="prose">不要吃没有营养的食物；<br>不要没有相互奉献的爱情；<br>不要拥有了权力却抛弃了公平；<br>不要缺乏严谨调查的事实；<br>不要没有逻辑的统计；<br>不要没有证明的数学；<br>不要没有实践经验的老师；</p><p class="prose">不要冷若冰霜的礼貌；<br>不要无法付诸实施的理论；<br>不要没有真才实学的文凭；<br>不要没有打击能力的军事行动；<br>不要没有文明的进步；<br>不要没有相互投入的友谊；<br>不要遵奉美德却又不敢担当；</p><p class="prose">不要忽略概率的遍历性；<br>不要相信没有风险的财富机会；<br>不要辞藻华丽却又言之无物；<br>不要把问题搞得很复杂却又没有思想深度；<br>不要忽略决策的非对称性；<br>不要以为质疑会阻碍科学进步；<br>不要缺乏宽容的宗教。</p><p class="prose">最后也是最重要的一条，也是全书的落点：</p><div class="aband"><q>没有“风险共担”就一事无成。</q><cite>——林迪告诉了我什么？</cite></div><p class="prose">「感谢您读完本书。」——源文后记只有两段话：本章内容是在 2016 年写的，曾在网上披露部分内容，「从读者的反应来看，我发现“白知”在阅读本章内容时很难区分讽刺意义与字面意义」；接下来不再进行讽刺，回到「白知」一直深深误解的经济不平等问题上来。</p><p class="prose">至此，14 篇精读全部收官——愿你带着「奉之则生」的法则回到自己的“风险共担”中去。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文注</span><span class="nd"><b>第八卷扉｜</b>第八卷扉页仅有「# 第八卷」「# 风险和理性」两个标题与 3 幅插图，无正文。</span></div><div class="note" id="n2"><span class="nn">源文注</span><span class="nd"><b>插图剥离｜</b>第18章插图 2 张、第19章插图 4 张，解析时已从正文剥离；图2（偏差与方差）、图3（大世界/小世界）、图4（赌场）、图5（个人与集体）的图注文字保留在源文中，本篇已将图注要点融入正文。</span></div><div class="note" id="n3"><span class="nn">源文注</span><span class="nd"><b>后记｜</b>源文后记仅 2 段（2016 年写作说明与讽刺提示），系书籍原始体例，本篇在收官小节照录。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜纳西姆·尼古拉斯·塔勒布《非对称风险》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第八卷｜第18-19章·理性与风险</span><a href="../12-第15-17章-宗教信仰与风险共担/index.html">← 第15-17章·宗教信仰</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ask-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

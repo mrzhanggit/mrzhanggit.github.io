@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一卷·绪论（上） · 安泰俄斯之死与对称性｜非对称风险 精读</title>
+<meta name="description" content="绪论立起全书骨架：四个主题、一台「狗屎探测仪」、干涉主义者的三重缺陷、罗伯特·鲁宾的勾当，以及从汉谟拉比法典到胖子托尼的对称性简史。">
+<style>
+:root{
+  --paper:#F3F2EE;      /* 玄武纸底 */
+  --paper-2:#E9E7E0;    /* 纸色深一档 */
+  --card:#FBFAF7;
+  --ink:#212A30;        /* 玄武主墨 */
+  --ink-2:#47555F;
+  --ink-deep:#0B1114;   /* 玄武深空（hero 底） */
+  --gold:#47555F;       /* 玄武灰蓝（强调 · 风险共担） */
+  --gold-b:#7A8E99;
+  --gold-soft:rgba(71,85,95,.16);
+  --cinnabar:#A63528;   /* 风险红（警示 · 非对称性） */
+  --teal:#3E6B5E;       /* 铜绿（对照 · 对称与正轨） */
+  --tx:#2A343B;
+  --tx-2:#46525C;
+  --tx-3:#76828C;
+  --line:rgba(33,42,48,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,42,48,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#47555F 0%,var(--ink-deep) 62%);
+  color:#E7ECEF;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(122,142,153,.42)}
+.hero::after{inset:22px;border:1px solid rgba(122,142,153,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(122,142,153,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F3F4}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,238,240,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(122,142,153,.34);color:rgba(232,238,240,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(71,85,95,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E7ECEF;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(122,142,153,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EAEDEA;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(122,142,153,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EAEDEA;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(71,85,95,.5);box-shadow:0 4px 18px rgba(33,42,48,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(71,85,95,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(71,85,95,.45);background:rgba(71,85,95,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(71,85,95,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,242,238,.94);
+  border-bottom:1px solid rgba(33,42,48,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,42,48,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#47555F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(71,85,95,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,42,48,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,42,48,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A8E99;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「第9-10章·外科医生」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-开场-推荐序与译序/index.html">← 开场·推荐序与译序</a><a href="../02-绪论-不确定性的共同基因/index.html">绪论（下） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">衡</div>
+  <div class="stamp ">绪论</div>
+  <h1>绪论（上） · 安泰俄斯之死与对称性</h1>
+  <p class="sub">绪论立起全书骨架：四个主题、一台「狗屎探测仪」、干涉主义者的三重缺陷、罗伯特·鲁宾的勾当，以及从汉谟拉比法典到胖子托尼的对称性简史。</p>
+  <div class="meta"><span>第一卷</span>
+    <span class="k">风险共担</span>
+    <span>正文 26,046 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>四个主题</a><a href="#s3" data-t="s3"><span class="cn">叁</span>安泰俄斯</a><a href="#s4" data-t="s4"><span class="cn">肆</span>干涉主义</a><a href="#s5" data-t="s5"><span class="cn">伍</span>鲁宾的勾当</a><a href="#s6" data-t="s6"><span class="cn">陸</span>对称性简史</a><a href="#s7" data-t="s7"><span class="cn">柒</span>骗子与傻子</a><a href="#s8" data-t="s8"><span class="cn">捌</span>现代主义</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>你永远无法说服一个人他错了，只有现实才能教育他。</p><cite>——绪论 · 学会做减法</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书的立论：从神话到法典，从干涉主义到对称性</p><p class="thesis">塔勒布先交代本书的<b>四个主题</b>与「狗屎探测仪」；再用<b>安泰俄斯之死</b>立起核心隐喻——把知识举离实践的大地；然后以利比亚、伊拉克的「政权更迭」展示<b>干涉主义者的三重缺陷</b>；接着把 2008 年金融危机命名为<b>罗伯特·鲁宾的勾当</b>；最后用一整段对称性简史（汉谟拉比 → 银律 → 康德 → 胖子托尼）收束：<b>将灵魂投入“风险共担”</b>。</p><div class="chain"><div class="node"><div class="n">立题</div><div><p class="tt">四个主题</p><p class="dd">知识的不确定性 / 人类事务的对称性 / 交易中的信息共享 / 现实世界中的理性</p></div></div><div class="node"><div class="n">神话</div><div><p class="tt">安泰俄斯</p><p class="dd">巨人的力量来自大地母亲；赫拉克勒斯把他举离地面，然后杀死了他——知识脱离实践即死</p></div></div><div class="node"><div class="n">现实</div><div><p class="tt">利比亚</p><p class="dd">「赶走独裁者」之后是奴隶市场：干涉主义者只考虑静止状态、低维度、无反作用意识</p></div></div><div class="node"><div class="n">金融</div><div><p class="tt">鲁宾的勾当</p><p class="dd">银行没事儿时大把赚钱，出事儿时怪“黑天鹅”——风险转嫁给普通纳税人</p></div></div><div class="node"><div class="n">法典</div><div><p class="tt">汉谟拉比</p><p class="dd">3 800 年前的对称性：建筑师造的房子塌了压死人，建筑师偿命——反制尾部风险</p></div></div><div class="node"><div class="n">收束</div><div><p class="tt">灵魂投入</p><p class="dd">得到的荣耀和付出的承诺是一体的；不能为言论承担后果，等于什么都没说</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>绪论导言：四个主题与一台探测仪</h2><span class="en">INTRO</span></div><p class="prose">开篇先定位：本书是塔勒布戏称为<b>「投资协奏曲」</b>的「不确定性」系列的一部分，但读起来更像一本论文集，而不是你平时熟悉的那种无聊的畅销书（他特意补了一句：附录部分的数学推导可能真的有点儿无聊）。</p><div class="grid g2"><div class="card num"><div class="idx">壹</div><h3>知识的不确定性以及可靠性</h3><p class="cp">用具体实践和科学分析两种方法获得的知识是有区别的——通俗地说，就是嗅出哪些所谓的知识其实是“狗屎”。</p></div><div class="card num"><div class="idx">貳</div><h3>人类事务的对称性原则</h3><p class="cp">包括公平、正义、责任感、互惠性——如果想获得回报，你就必须承担风险，而不是让别人替你承担损失。</p></div><div class="card num"><div class="idx">叁</div><h3>交易中的信息共享</h3><p class="cp">当你要在一辆车上花掉大部分积蓄时，你面对的二手车推销员应该告诉你哪些信息？</p></div><div class="card num"><div class="idx">肆</div><h3>复杂系统以及现实世界中的理性</h3><p class="cp">现实世界中的理性并不是《纽约客》杂志编辑使用的一阶函数模型，而是广泛且深入地存在于你生活中的数据。</p></div></div><p class="prose">第一个主题被具象化为一台<b>「狗屎探测仪」</b>：找出理论和实践的差异、伪科学和真正专业知识的差异、学术象牙塔和现实世界的差异。塔勒布特意强调：这不是行为金融学里的动机与后果问题，而是<b>对称性</b>——如果有什么东西搞砸了，那么你得承受一部分伤害，付出一部分代价。听众的检验标准只有一句：</p><div class="aband"><q>别告诉我为什么，你只要告诉我你自己买什么股票就行了</q><cite>——绪论导言 · 听众的检验标准</cite></div><p class="prose">在<b>「一个更准确的书名」</b>一节里，塔勒布坦白他考虑过「暴露在游戏中的另一面：被忽略的非对称性及其后果」——更准确但更无趣。他给读者的阅读建议是：不要过多纠结概念本身，要靠直觉去感受那些平时被忽略的非对称性；并且谨记一条法则——实践出真知，实践是获得真理和获悉真相的唯一途径。</p><div class="chips"><span class="chip">采取行动还是坐而论道</span><span class="chip">发表承担责任还是澄清动机</span><span class="chip">追求荣誉还是在意名声</span><span class="chip">真材实料还是花哨包装</span><span class="chip">动手创作还是编辑加工</span><span class="chip">为爱而生还是为钱而活</span><span class="chip">全身心投入还是口头表态</span><span class="chip">集体主义还是个人主义</span></div><p class="prose">这面短语墙是他列举的「分歧」清单节选——从奥马哈还是华盛顿，到考文垂还是布鲁塞尔，最后落在最关键的问题：集体主义还是个人主义。他说，从中抽取几对关系做对比研究，读者就能理解为什么不同事物之间会有超越自身的广泛联系。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>安泰俄斯之死：知识与实践</h2><span class="en">ANTAEUS</span></div><p class="prose">本章的章旨只有三句话：<b>不要离妈妈太远。谁是大军阀？罗伯特·鲁宾和他的勾当。车祸现场般糟糕的系统。</b>然后是神话：安泰俄斯是大地女神盖亚和海神波塞冬的儿子，强迫路人与他摔跤，把受害者摁倒在地压死，用死者的头骨为父亲建神殿。</p><p class="prose">他不可战胜——只要不离开大地；赫拉克勒斯把他举过头顶，使之脱离大地母亲，然后杀死了他。</p><p class="prose">请把安泰俄斯想象成<b>「知识」</b>，把他的大地母亲想象成<b>「实践」</b>。脱离实践的知识就像被托举到空中的安泰俄斯一样虚弱得不堪一击。你必须做到风险共担，才能理解这个市场：付出代价，承担后果，无论输赢都得接受——就像皮肤直接接触粗糙的地面时，你会有擦伤的痛感，这就是你实践的代价。</p><div class="aband"><q>Pathemata mathemata</q><cite>——希腊谚语 · 直译为：在痛苦中学习</cite></div><p class="prose">学习知识必然是痛苦的，因为你只有在痛苦的实践中才能学到东西。塔勒布补上《反脆弱》里的观察：大多数我们本以为是大学学者发明出来的「知识」，其实是能工巧匠在实践中摸索出来的，学者们的贡献仅限于记载和署名。通过摸索、试错和亲历得到的知识，比通过推理、记忆和学习得到的更宝贵、更可靠、也更高明。</p><div class="aband"><q>那些不承担风险的人根本不应该参与决策。</q><cite>——玩人丧德 · 干预的首要原则「不造成伤害」（primum non nocere）</cite></div><p class="prose">在<b>「玩人丧德」</b>一节，他把不肯亲历风险的知识分子比作不吸取教训的飞行员——这样的飞行员最后会葬身于百慕大三角海底，不再威胁其他人的生命；从某种意义上讲，他比干涉主义者还多承担了一些责任，并为此付出了代价。</p><p class="prose">而「知识分子」这个称号被他加在那些从不为建议的后果承担责任的人头上：他们谈论「民主」，实际上却鼓励「斩首」行动——民主对他们来说只是研究生院学到的一个概念。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>今天的利比亚：干涉主义的三重缺陷</h2><span class="en">LIBYA</span></div><p class="prose">假设安泰俄斯的故事是真的——数千年后，在他统治过的土地上，一场旨在<b>「赶走独裁者」</b>的政权更迭之后，出现的是奴隶市场：从撒哈拉沙漠边缘抓来的极度贫困的人，在停车场上被卖给出价最高的买家。造成这一切的人，恰恰也是 2003 年主张入侵伊拉克的那批人。</p><p class="prose">美国的逻辑荒诞到塔勒布要用医学来反衬：如果按同样的逻辑，医生为了提高患者的胆固醇水平，可以注射「适量的」癌细胞，然后在患者死后宣称打了一场胜仗。但医生不会这么做——因为医学是一门实践的科学，有实践经验的医生不仅对人体的复杂性保持敬畏，而且秉承数千年来形成的医德操守。</p><div class="tbwrap"><table><thead><tr><th>缺陷</th><th>源文表述</th></tr></thead><tbody><tr><td>只看静止状态</td><td>他们只考虑静止的状态，而不考虑动态的机制——连蒙古的牧羊人、马德里的侍应生和旧金山的修车匠都知道做事要考虑第二、第三、第四乃至第N个步骤</td></tr><tr><td>低维度思考</td><td>无法区分“统一整体”与“单一表现”：身体是多维度的统一整体，胆固醇水平只是某个单一维度的表征；在情况不明时触碰复杂系统，需要的不是勇气而是鲁莽</td></tr><tr><td>不预知反作用</td><td>只想到了采取什么行动，而没有想到行动本身会有反作用；无法预知被攻击的对象会因为干预而产生怎样的变革</td></tr></tbody></table></div><p class="prose">在<b>「古之军阀亦有道矣」</b>一节，塔勒布给出历史的对照面：几乎所有古代军阀本身就是真刀真枪上战场的战士。罗马皇帝朱利安战死于波斯边境——穿透他胸膛的波斯长矛证明了这个皇帝曾亲自在前线作战；君士坦丁十一世脱去紫袍与部下一起战至城破。</p><p class="prose">他做过统计并确信：<b>只有不到 1/3 的罗马皇帝死在了自己的床上</b>，大多数不是死于对外征战，就是死于宫廷政变。</p><div class="aband"><q>即使在当今世界，君主的合法性仍然依赖于“皇室和贵族为国家承担风险”的社会契约。</q><cite>——古之军阀亦有道矣</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>罗伯特·鲁宾的勾当与学会做减法</h2><span class="en">RUBIN TRADE</span></div><p class="prose">官僚体系的问题被一句话点破：<b>在一个由官僚、而不是贵族主导的体系中，一个人的行为和他本来需要为此承担的后果被轻易地分开了。</b>解药是分权——让那些不为自己的决策承担后果的人只能做一些影响较小的决策。因为一个「风险后果」和「责任权力」不匹配的系统会慢慢积累不平衡，并最终垮掉。</p><p class="prose">2008 年金融危机就是这种非对称风险的累积爆发：银行家用只在论文中才能成立的风险模型包装爆炸性资产并从中获利；危机爆发后，又援引《黑天鹅》里的不可预见事件为自己辩解，并保留危机前的巨额收入。这就是<b>「罗伯特·鲁宾的勾当」</b>。</p><p class="prose">细节值得逐条看：鲁宾在危机爆发前 10 年里从花旗银行收获超过 <b>1.2 亿美元</b>报酬；银行陷入破产危机时，政府用纳税人的钱把银行救了回来，而他根本没有掏过自己的钱。替他承担风险和损失的，是西班牙语女教师、公立学校的文员、罐头厂的主管、素食营养顾问和地方助理检察官的秘书。</p><p class="prose">最糟糕的后果是——公众把腐败和任人唯亲归罪于放任自由的市场，而事实恰恰相反。</p><div class="aband"><q>银行没事儿的时候，他大把赚钱；银行出事儿的时候，他说这事儿要怪“黑天鹅”。</q><cite>——罗伯特·鲁宾的勾当</cite></div><p class="prose"><b>「学会做减法」</b>一节被塔勒布称为整本书的重点：干涉主义案例展现了缺少风险共担机制造成的伦理和认知双重影响——干涉主义者从不吸取教训，因为他们不是自己错误的受害者。于是有了那条贯穿全书的减法原则：</p><div class="aband"><q>你永远无法说服一个人他错了，只有现实才能教育他。</q><cite>——学会做减法</cite></div><p class="prose">他紧接着补了两层递进：现实并不在乎对错和输赢，<b>生存才是最重要的</b>；而这个社会上有能力把问题解释得头头是道的人越来越多，凭借亲身经历真正理解问题的人却越来越少。生物学意义上的学习靠代际筛选——参与“风险共担”就是参与进化过程——所以：</p><div class="aband"><q>没有“风险共担”，就没有进化。</q><cite>——学会做减法</cite></div><p class="prose">系统的进化模式与人类不同：交通变得更安全并不是因为人类从错误中学到了什么，而是因为系统本身淘汰了犯错误的人——许多不称职的飞行员现在躺在大西洋海底，许多爱冒险的司机现在躺在绿树环绕的安静墓地里。总结只有一句：</p><div class="aband"><q>“风险共担”用淘汰傲慢自大者的办法，约束了人类的傲慢自大倾向。</q><cite>——学会做减法</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>对称性：从汉谟拉比到胖子托尼</h2><span class="en">SYMMETRY</span></div><p class="prose">「对称性」一节的章旨自嘲又俏皮：<b>由超级专家来评判专家。娼妓、良家妇女和业余演员。法国人与汉谟拉比。大仲马永远是个例外。</b>正文则从一句大判断开始：古往今来，人类的任何一条法律、任何一项教谕，都是基于「对称性」原则——我们试图纠正不平衡或弥补非对称性。</p><p class="prose">约 3 800 年前，汉谟拉比把 282 条法令镌刻在石碑上放置于古巴比伦中心，让识字的人读给不识字的人听。它的核心思想是在人与人的交往中建立对称关系，防止有人转嫁隐藏的<b>「尾部风险」</b>——概率极低、落在钟形分布两端的事件。</p><p class="prose">塔勒布还讽刺道：罗伯特·鲁宾玩的勾当已经约有 3 800 年历史了，反制这种非对称风险的规则也约有 3 800 年了。</p><div class="aband"><q>如果建筑师建造的房子倒塌了，并导致房屋主人死亡，那么建造房子的建筑师应该被处死。</q><cite>——《汉谟拉比法典》 · 今藏巴黎卢浮宫</cite></div><p class="prose">其中的道理与金融交易员相通：建筑师（或交易员）隐藏风险的最佳地点就是不为人知的「角落」。一位爱酗酒的英国银行家的职业建议是原话样本——「我只发放长期贷款，等贷款快要到期的时候，我就远远地离开」：他每 5 年换一个国家，每 10 年换一任妻子，每 12 年换一家银行。</p><p class="prose">直到 2008 年，瑞典才成为第一个追讨表现不佳的银行家已到手巨额报酬的国家。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>同态复仇</h4><p>《汉谟拉比法典》的“以眼还眼”是比喻而非字面——你不必真的挖掉一个人的眼睛，法令并没有它看起来那么呆板</p></div><div class="step"><div class="dot">2</div><h4>金律</h4><p>以你想被对待的方式去对待他人——《利未记》简直就像是抹了蜂蜜的《汉谟拉比法典》</p></div><div class="step"><div class="dot">3</div><h4>银律</h4><p>己所不欲勿施于人——比金律更牢不可破：它告诫你管好自己的事情，不要替他人决定什么对他有利</p></div><div class="step"><div class="dot">4</div><h4>康德道德律</h4><p>表1最右一栏的规则——但塔勒布选择跳过康德那些极端复杂的方法，因为太复杂的事情在现实世界中往往存在大问题</p></div><div class="step"><div class="dot">5</div><h4>伊索克拉底</h4><p>公元前 5 世纪的雅典演说家：一个国家应当依照银律中“己所不欲勿施于人”的原则去对待其他国家</p></div></div><div class="duo"><div class="colL"><h4>金律的盲区</h4><ul><li>可能把你单方面误以为对对方有利的事情强加给对方</li><li>相对于判断什么是有利的，我们更清楚什么是不利的</li><li>让理发师在原来头发的基础上剪短一些，远比尝试新发型靠谱</li></ul></div><div class="colR"><h4>银律的对称</h4><ul><li>伊索克拉底：你认为比你强大的国家应该如何同你打交道，你就用同样的方法去和比你弱小的国家打交道</li><li>尤吉·贝拉：我去参加别人的葬礼，别人才会来参加我的</li><li>《宪法》第一修正案：你拥有宗教信仰的自由，只要你也允许我拥有</li></ul></div></div><div class="aband"><q>普世性的行为在书本上是伟大的，但在实际中是灾难性的。</q><cite>——摒弃普世主义</cite></div><p class="prose">康德的普世主义之所以危险，是因为人类是具有领地属性且注重实际的动物：相对于普世的、抽象的、逻辑的道理，人们更倾向于个人的、具体的和感性的事物。人们把具体事物转化为抽象概念的过程中，通常会遗失其中最关键的部分——具体事物所特有的生命和灵魂。其结果必然是一团糟。</p><p class="prose">而新泽西州的<b>胖子托尼</b>把对称性翻译成人话：别对人扔垃圾，但也别让人朝你扔垃圾。</p><div class="aband"><q>首先要友好地对待你遇到的每个人，但是如果有人试图对你来硬的，你就得给他点儿颜色看看。</q><cite>——从康德到胖子托尼</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>骗子、傻子与显性偏好</h2><span class="en">FOOLS &amp; FRAUDS</span></div><p class="prose">在不确定性问题上总有两种人：一种是被随机性愚弄的<b>傻子</b>——错误地把成功归因于技能而非运气，甘愿冒无知的风险；另一种是利用随机性牟利的<b>骗子</b>——纯粹为了钱把风险转移给其他人。经济学家谈到「风险共担」时往往只关注第二种，但现实中傻子实在太多，而且他们根本意识不到自己的愚蠢。</p><div class="aband"><q>不要听从那些以咨询谋生的人给你的建议，除非他们会为自己提供的错误咨询接受惩罚。</q><cite>——骗子、傻子或两者兼具 · 银律的另一种表达</cite></div><p class="prose">保险领域的代理人问题由此展开：你比任何保险公司都更清楚自己的健康状况，于是可能有动机在别人知晓你患病之前赶紧买保险——这会让那个倒霉的西班牙语女教师今后支付更高的保险费。而在「一生难得一次」的买卖（买房买车）里，供应商不指望你成为回头客，利益无法与长期合作绑定，他就可能对你隐瞒关键信息。</p><p class="prose"><b>「随意掩盖和故意披露」</b>一节给出行动优先的立场。胖子托尼的座右铭——你并非想要赢得一场争论，你真正想要赢得的是一场胜利。经济学建立在人的「显性偏好」之上：人的想法和实际行动并无多大关联，而行为是具体的、可测量的。订婚的人最懂这一点：一颗昂贵的钻石胜过千言万语的誓言。</p><div class="aband"><q>相比于理解，我们更善于行动。</q><cite>——随意掩盖和故意披露</cite></div><p class="prose">对预测的态度同样做减法：我认识一些预测错误但是赚了钱的人，也认识一些预测准确但是输了钱的人——重要的不是你预测准了多少次，而是在预测准确的那一次里你真正赚到了多少钱。风险往往是非线性的：农夫受益于降雨，但降雨演变成洪水，受益就变成了受损。所以——</p><div class="aband"><q>忘掉那些预测吧！</q><cite>——随意掩盖和故意披露</cite></div><div class="aband"><q>停留在语言层面的预言和投资者所需要的预见毫不相干。</q><cite>——随意掩盖和故意披露</cite></div><p class="prose">本篇末尾是对<b>理性的重定义</b>：时间是伟大的智者，它通过“风险共担”塑造理性。在一个符合“风险共担”的系统中，自我牺牲是关键理念——目的是确保集体或者更高层级的个体能够存活下去。用胖子托尼的话说，「赢的人说什么都对」；但塔勒布把粗话翻译成原则——</p><div class="aband"><q>所谓理性就是首先保证自己所在的集体生存更长时间。</q><cite>——随意掩盖和故意披露</cite></div><p class="prose">他还特意叮嘱<b>不要把“风险共担”教条化</b>：如果后果不严重，完全可以忽略它。要关注的是那些大权在握的人——他们的言论会导致严重后果，如果不必负责，结果就会很糟糕。而普通人在生活中遇到的绝大部分人（面包师、修鞋匠、管道工、出租车司机、牙科助理……）都会为自己的错误决策承担后果、付出代价。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>现代主义的副作用与灵魂投入</h2><span class="en">MODERNISM</span></div><p class="prose">塔勒布宣布与近一个半世纪的<b>现代主义</b>分道扬镳——它是一种「唯智论」：认为行为与结果可以分离、理论与实践可以割裂、一套严格的等级制度就能用程序化方法解决复杂系统的问题。</p><p class="prose">它的姊妹是<b>唯科学论</b>：在根本不需要数学的地方使用数学，抛弃经过亿万次高强度考验的自然方法，转而依赖可能连再版和统计验证都经不起的「同行评议」期刊。</p><div class="aband"><q>说的人应该去做，做的人应该来说。</q><cite>——现代主义</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>聚光灯下的演讲者</h4><span class="ar">▶</span></div><div class="cb"><div class="in">舞台灯光照在眼睛上使注意力不能集中——但演讲者大多没意识到，因为真正的原因是：做大型演讲的演讲者不干灯光工作，而灯光工程师又不做大型演讲。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>纽约北线轻轨的搁板</h4><span class="ar">▶</span></div><div class="cb"><div class="in">整修后的车厢更现代化，还装了充电插座；但墙上原本能放咖啡杯的小搁板被设计师改得稍微倾斜了一些——再也没法放杯子了。设计者要么从不坐地铁，要么坐地铁时从不边喝咖啡边读书。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>设计师震撼设计师</h4><span class="ar">▶</span></div><div class="cb"><div class="in">设计和建筑行业的严峻问题：设计师试图用作品震撼其他设计者，而不是取悦真正的用户。城市规划专家从未在社区居住过，犯同样的错误时影响范围更大。</div></div></div></div><p class="prose">专业化带来系统性副作用：<b>劳动和劳动成果相分离</b>。相反，“风险共担”实现了简单化——那种解决问题、赢得胜利的「至简之道」。只会用复杂方法解决问题的人不喜欢简单的办法；如果评价体系依据的是大家对他工作的感受而非结果，他就有足够动机把工作复杂化，好显得很忙、很努力、很敬业。</p><div class="aband"><q>由缺乏实战经验和务实精神的人设计出来的系统会越来越复杂，直至崩溃。</q><cite>——简单化</cite></div><div class="aband"><q>不亲历“风险共担”的人，不懂得“大道至简”。</q><cite>——简单化</cite></div><p class="prose"><b>「我就是个笨蛋！」</b>是塔勒布的自供：当他不参与“风险共担”时就会变成笨蛋。他的概率知识不是来自书本或好奇心，而是来自市场交易中的兴奋感和荷尔蒙刺激——就像你为了救一个孩子徒手举起一辆汽车，事后力量仍然存在于体内。在紧张和专注的环境下学到的东西会永远属于你。</p><p class="prose">这也是他反对传统教育体系的原因：它完全是一个「任由书呆子制造更多书呆子」的体系。</p><div class="duo"><div class="colL"><h4>监管措施</h4><ul><li>限制个人自由，且带来另一种形式的掠夺：雇用优秀律师的人可以把监管体系玩弄于股掌之中</li><li>“请神容易送神难”——即使法规荒谬透顶，体制内受益者的压力也会让它不断膨胀</li><li>商人借保护性监管和行业门槛获利：监管套利违背了监管的初衷</li></ul></div><div class="colR"><h4>法律体系</h4><ul><li>把“风险共担”置于《合同法》保护下：未能履约的一方受到法律惩罚</li><li>英美普通法经过多年实践和反复试错，自下而上确立了权利与义务对等的原则</li><li>公司污染社区？邻居可以起诉，律师早早备好文件，结案的巨额费用足够震慑</li></ul></div></div><p class="prose">他并非反对一切监管：环境破坏这类隐含尾部风险需要很长时间才显现，仍需要监管——<b>只有在无法进行有效法律诉讼的情况下，才考虑监管</b>。而在本篇的最后，塔勒布把全书核心压缩成荣耀与承诺的一体两面：</p><div class="aband"><q>如果你不能为自己的言论承担后果，那么你等于什么都没说。</q><cite>——将灵魂投入“风险共担”</cite></div><p class="prose">勇于承担风险事件的后果，不仅是人和机器的区别，而且是将人区分成不同等级的依据。尊严就是有些事情你永远都不会去做，无论报酬多么诱人——普希金和伽罗瓦宁可从容赴死也不像懦夫一样活着。还有一种尊严是手工匠人的：他们不会卖次品，在达到内心艺术标准之前不会对产品质量妥协，因为这里有他们的灵魂。</p><div class="aband"><q>手工匠人将自己的灵魂置于工作之中。</q><cite>——手工匠人</cite></div><div class="grid g2"><div class="card"><div class="idx">创业</div><h3>对创业者的警告</h3><p class="cp">创业者是社会的英雄，他们为其他人承担了失败的代价。但只想把公司卖个好价钱的人不是真正的创业者——能够创立好公司的人和能把公司卖出好价钱的人，是两种完全不同的人。</p></div><div class="card"><div class="idx">护照</div><h3>公民身份是一种荣誉</h3><p class="cp">塔勒布把美国护照视作对这个国家的承诺：许多人嘲笑他的决定，因为拿塞浦路斯或马耳他身份可以缴更少的税——但这是他应该承担而不能回避的义务，这就是他的“风险共担”。</p></div><div class="card"><div class="idx">读书</div><h3>英雄不是书虫</h3><p class="cp">你从教授身上学到的主要是如何成为一名教授。要学勇气与坚忍，去读塞内加、恺撒或马可·奥勒留的原著，读亲历者自己的著作——实在不行，就自己凭着勇气去实践探索。</p></div><div class="card"><div class="idx">鞋匠</div><h3>全球化的另一面</h3><p class="cp">韦斯切斯特县的鞋匠只想好好做一名鞋匠，不会把工作分包给中国工厂——剥夺人们所从事的职业是残忍的，人们希望自己的工作中有自己的灵魂。</p></div></div><div class="aband"><q>你在书本中学到的勇气并不会使你变得勇敢，就像吃牛肉不会让你变得像牛那样蠢一样，两者是一个道理。</q><cite>——英雄不是书虫</cite></div><p class="prose">全篇以一个历史故事收尾：荷兰画作《冈比西斯的审判》取材于希罗多德记载的腐败波斯法官西桑尼——国王下令将他活活剥皮；画中正是西桑尼的儿子继承父业，坐在铺着他父亲之皮的大法官座椅上。执法者如果以身试法，就得按照“风险共担”的规则，让自己<b>「以身正法」</b>。下一篇：绪论（下），不确定性的共同基因。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文注</span><span class="nd"><b>表1｜</b>源文仅有「表1　对称性规则的演进」的图注与「资料来源：来源于塔勒布和桑迪斯，2016年整理」一行，表格本体未随导出携带；本篇据上下文以阶梯形式复述规则演进线索，不补造表格数据。</span></div><div class="note" id="n2"><span class="nn">源文注</span><span class="nd"><b>扉页｜</b>第一卷扉页段仅有「# 第一卷」标题与一幅插图，无正文。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜纳西姆·尼古拉斯·塔勒布《非对称风险》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一卷｜绪论（上）</span><a href="../00-开场-推荐序与译序/index.html">← 开场·推荐序与译序</a><a href="../02-绪论-不确定性的共同基因/index.html">绪论（下） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ask-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

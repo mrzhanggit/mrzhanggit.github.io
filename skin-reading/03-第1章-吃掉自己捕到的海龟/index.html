@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二卷 初探代理人问题·第1章 · 为什么每个人都必须吃掉自己捕到的海龟｜非对称风险 精读</title>
+<meta name="description" content="从「白鞋」投资银行的黑鞋子销售员，到罗得岛的粮食船、瓦·萨夫拉的定价、五美元股票的十美分加价，再到医院里的考核指标——第1章把「你如果抓到海龟，最好就自己吃掉它」讲成了一部交易伦理史。">
+<style>
+:root{
+  --paper:#F3F2EE;      /* 玄武纸底 */
+  --paper-2:#E9E7E0;    /* 纸色深一档 */
+  --card:#FBFAF7;
+  --ink:#212A30;        /* 玄武主墨 */
+  --ink-2:#47555F;
+  --ink-deep:#0B1114;   /* 玄武深空（hero 底） */
+  --gold:#47555F;       /* 玄武灰蓝（强调 · 风险共担） */
+  --gold-b:#7A8E99;
+  --gold-soft:rgba(71,85,95,.16);
+  --cinnabar:#A63528;   /* 风险红（警示 · 非对称性） */
+  --teal:#3E6B5E;       /* 铜绿（对照 · 对称与正轨） */
+  --tx:#2A343B;
+  --tx-2:#46525C;
+  --tx-3:#76828C;
+  --line:rgba(33,42,48,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,42,48,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#47555F 0%,var(--ink-deep) 62%);
+  color:#E7ECEF;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(122,142,153,.42)}
+.hero::after{inset:22px;border:1px solid rgba(122,142,153,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(122,142,153,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F0F3F4}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,238,240,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(122,142,153,.34);color:rgba(232,238,240,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(71,85,95,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E7ECEF;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(122,142,153,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EAEDEA;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(122,142,153,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EAEDEA;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(71,85,95,.5);box-shadow:0 4px 18px rgba(33,42,48,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(71,85,95,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(71,85,95,.45);background:rgba(71,85,95,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(71,85,95,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,242,238,.94);
+  border-bottom:1px solid rgba(33,42,48,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,42,48,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#47555F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(71,85,95,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,42,48,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,42,48,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A8E99;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「第9-10章·外科医生」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-绪论-不确定性的共同基因/index.html">← 绪论（下）</a><a href="../04-第2章-最不宽容者获胜/index.html">第2章·最不宽容者 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">龟</div>
+  <div class="stamp ">海龟</div>
+  <h1>第1章 · 为什么每个人都必须吃掉自己捕到的海龟</h1>
+  <p class="sub">从「白鞋」投资银行的黑鞋子销售员，到罗得岛的粮食船、瓦·萨夫拉的定价、五美元股票的十美分加价，再到医院里的考核指标——第1章把「你如果抓到海龟，最好就自己吃掉它」讲成了一部交易伦理史。</p>
+  <div class="meta"><span>第二卷 初探代理人问题</span>
+    <span class="k">代理人问题</span>
+    <span>正文 11,825 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>新客户</a><a href="#s3" data-t="s3"><span class="cn">叁</span>罗得岛</a><a href="#s4" data-t="s4"><span class="cn">肆</span>三种方案</a><a href="#s5" data-t="s5"><span class="cn">伍</span>适用规模</a><a href="#s6" data-t="s6"><span class="cn">陸</span>一条船</a><a href="#s7" data-t="s7"><span class="cn">柒</span>就医案例</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>你如果抓到海龟，最好就自己吃掉它。</p><cite>——古老的谚语 · 第1章章首</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书第一正章：代理人问题的完整解剖</p><p class="thesis">章旨是四组词：<b>海龟的味道。新客户在哪儿？伊斯兰教教义与非对称性。域外人和其他人。</b>塔勒布从一封求职信讲起，穿过「白鞋」银行的黑鞋子销售员，抵达罗得岛粮食船上两千年前的斯多葛派之争——卖方该披露多少信息？答案由安提帕特、加拉尔原则与瓦·萨夫拉共同给出：<b>披露包括自己动机在内的全部信息</b>；再用「适用规模」和就医案例收尾。</p><div class="chain"><div class="node"><div class="n">谚语</div><div><p class="tt">吃掉海龟</p><p class="dd">你如果抓到海龟，最好就自己吃掉它——获利者必须与风险同席</p></div></div><div class="node"><div class="n">推销</div><div><p class="tt">伪装建议</p><p class="dd">给你提建议的人自己也会获利，而不利后果只伤害你——问一句「你自己是否参与其中？」</p></div></div><div class="node"><div class="n">古案</div><div><p class="tt">罗得岛</p><p class="dd">明知大批粮船将至，要不要先把粮食高价卖给岛上居民？第欧根尼与安提帕特之争</p></div></div><div class="node"><div class="n">法度</div><div><p class="tt">加拉尔</p><p class="dd">伊斯兰教法：交易中不能由一方享受确定性的结果，而由另一方承担不确定性的结果</p></div></div><div class="node"><div class="n">尺度</div><div><p class="tt">适用规模</p><p class="dd">道德自其诞生之日起就基于“本地化”的社会关系——普世主义在这里碰壁</p></div></div><div class="node"><div class="n">医案</div><div><p class="tt">考核指标</p><p class="dd">5 年存活率迫使医生选择次优方案：把风险从自身转移给病人、从现在转移到将来</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>每天都有新客户</h2><span class="en">NEW FOOLS</span></div><p class="prose">开篇是塔勒布自称「幼稚带给我的教训」：</p><div class="aband"><q>那些给你提供建议告诉你哪些事情会对你有利的人，不会告诉你的是，他也会从这件事情中获利，而且这件事情的不利后果只会伤害你。</q><cite>——每天都有新客户</cite></div><p class="prose">这些建议通常都是不请自来的——隐含的非对称性使得任何不利后果都只作用在你身上：这些人要么想向你推销什么，要么想让你娶他的女儿或雇用他的女婿。</p><p class="prose">他随即自曝一段亲身经历：一封应聘讲座助理的求职信列了约十个问题，把「一切对我有利」说得头头是道；六年后，正是这个人国家里的税务部门给他发来一封信，而对方的回应只有草率一句——「我又不是你的税务代理人」。</p><p class="prose">作为交易员的对策朴素得惊人：对打电话向你推销产品的人，直接问他们——</p><div class="aband"><q>你自己是否参与其中？</q><cite>——每天都有新客户 · 对付推销者的问句</cite></div><p class="prose">然后是全书最生动的行业黑话场景：塔勒布曾供职的美国「白鞋」投资银行（合伙人们穿白鞋打高尔夫）培育职业道德与专业素养；但绝大多数金融机构的销售员穿的是<b>黑色鞋子</b>，他们的工作是「去库存」——把公司不需要的证券卖给「买方」客户。</p><p class="prose">急于抛售的证券提成越高；销售员点菜单上最贵的酒，几千美元的晚餐很快换来巨大回报。一位经验丰富的销售员向他坦承：请一个平时只能在新泽西州郊区百货商店买衣服的普通人喝一瓶价值 2 000 美元的红酒，接下来几个月就能「为我所用」——从他身上至少获利 10 万美元。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">反方</span><h4>劳斯莱斯上的顶级销售员</h4><span class="ar">▶</span></div><div class="cb"><div class="in">被问「如果客户最终发现他们的自身利益受损，那么他们会不会不高兴？」他回答：要榨干，而不是惹怒他们。还补了一句——要记住，每天都会有新客户诞生。</div></div></div><div class="case"><div class="ch"><span class="tag mid">正方</span><h4>罗马人的鉴定术</h4><span class="ar">▶</span></div><div class="cb"><div class="in">罗马人早就洞悉了这一点：如果一个人拼命赞美某商品，那么他一定急于卖掉它。</div></div></div></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>罗得岛粮食的价格</h2><span class="en">RHODES</span></div><p class="prose">结论先行：<b>把「推销产品」伪装成「提供建议」是不道德的</b>。你可以提供建议，也可以销售产品（比如用广告宣传），但两者必须严格区分。剩下的相关问题只有一句：卖方应该向买方披露多少信息呢？</p><p class="prose">这个问题可追溯到两位斯多葛派哲学家的争论：来自巴比伦的<b>第欧根尼</b>和他的学生、来自塔尔苏斯的<b>安提帕特</b>（后者站在更高的道德层次上意识到非对称信息对交易的影响）。</p><p class="prose">西塞罗在《论责任》中转述了思想实验——短缺和饥荒导致罗得岛粮价高涨，有人从亚历山大港运来一大船粮食；他明知还有许多货船满载粮食正驶往罗得岛，他应当向岛民披露这一信息吗？</p><p class="prose">交易员的回答是本能的：「什么？大批货船马上要到港了？赶紧出货！」——尽快把粮食卖给当地人，而且不要告诉他们。但注意一个关键区分：正直的交易员不会对其他交易员下此毒手，这是行业禁忌，后果是被同行永久驱逐。</p><p class="prose">可如果抛售的对象是「域外人」——一台冰冷的电脑、一个谁也不知道是谁的可怜笨蛋——这种行为在某种程度上就被允许了。我们与某些人之间存在情感联系，与另外一些人只是交易关系：两种关系之间有一堵道德的高墙，就像我们保护家养的动物，却对蟑螂毫无怜悯之心。</p><div class="duo"><div class="colL"><h4>第欧根尼</h4><ul><li>卖方应当依据《民法》，尽可能多地向买方披露信息</li><li>义务止于法律划定的边界</li></ul></div><div class="colR"><h4>安提帕特（塔勒布站此边）</h4><ul><li>披露义务不仅限于法律范畴，而应该披露所有信息</li><li>使得交易达成时，买卖双方所知晓的信息是一致的</li><li>使交易可以不分时间、地点、情形以及交易者而达成</li></ul></div></div><div class="aband"><q>道德的要求往往比法律的规定更牢固更可靠——从长远来看，法律应逐渐向道德看齐，而不是相反。</q><cite>——罗得岛粮食的价格</cite></div><div class="aband"><q>法律易改，道德难移。</q><cite>——罗得岛粮食的价格</cite></div><p class="prose">他补上一条行业反常识：投资银行的大部分工作是与各种监管制度周旋、发现法律漏洞——而且与常识相悖，<b>监管的法规越多，投资银行就越容易赚钱</b>。美国《民法》因消费者保护运动加入了信息披露条款，内幕信息的规定也成为美国《证券法》的强制要求，而欧洲在很长时间里没有类似规定。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>三种道德方案：安提帕特、加拉尔与瓦·萨夫拉</h2><span class="en">THREE ANSWERS</span></div><p class="prose"><b>伊斯兰教法</b>被塔勒布称作「一座有关交易对称性思想的博物馆」——它融汇了希腊罗马的法律、腓尼基人的贸易规则、巴比伦的立法体系以及阿拉伯部落的商业习俗，部分保留了早已失传的古代地中海司法实践。其核心是<b>加拉尔（Gharar）原则</b>：</p><div class="aband"><q>交易中不能由一方享受确定性的结果，而由另一方承担不确定性的结果。</q><cite>——不确定性中的公平性问题 · 加拉尔原则</cite></div><p class="prose">加拉尔原则的精细之处在于不确定性的强弱：销售明知已变质的葡萄酒违反加拉尔——因为变质是一方已知的确切事实；而隐瞒其他船只信息的粮食商人没有违反——因为除了真主，没有人能提前知道未来价格，他所掌握的信息尚不足以明确其他船只到港后的粮价。但它不如安提帕特原则那样向弱势一方提供强保护。</p><p class="prose"><b>犹太教</b>的方案走得更远：不仅披露商品的全部信息，还要披露卖方的全部真实想法。中世纪拉比拉什（Rashi）讲了 3 世纪巴比伦学者瓦·萨夫拉的故事——他在市场出售货物，安静做祷告时一位买家出价，他默不作声，买家以为被拒绝便抬高价格；萨夫拉却拒绝高价，坚持按最初出价成交。</p><p class="prose">塔勒布做交易员时常遇到同样情境：他出价 5 美元，销售员「勾兑」后以 5.1 美元成交，这额外的 10 美分让他浑身不自在——万一客户后来发现当初的要价其实是 5 美元呢？那点羞愧感既得不到补偿，也无法消除。</p><div class="aband"><q>从道义上来看，并没有这样的要求，但是为了免除自己的内疚和负罪感，最好的办法就是向买家披露包括自己动机在内的全部信息。</q><cite>——瓦·萨夫拉和“域外人”</cite></div><p class="prose">但故事没说的是：如果买家是「域外人」怎么办？我们的亲情、友情和羞愧感似乎都不适用。塔勒布搬出老朋友尼采——</p><div class="aband"><q>那些同情关心陌生人的人，对自己的亲友却冷酷无情。</q><cite>——瓦·萨夫拉和“域外人” · 尼采</cite></div><p class="prose">整天关心远在天边、素不相识的人，亲友就或多或少受到冷落——尼采认为这违背人性。顺带一提，胖子托尼说，只要听说某句话是尼采说的，他就绝不争辩。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>自己人和外面人：道德的适用规模</h2><span class="en">SCALE</span></div><p class="prose">把「域外人」排除在道德体系之外并非小事——因为任何道德观念都有一个适用范围：<b>国家不是放大版的城市，城市不是放大版的家庭，地球村更不是放大版的村庄。</p><p class="prose"></b>雅典的言论自由和民主仅适用于公民，奴隶和外国人不在此列；狄奥多西法典规定与「野蛮人」通婚的罗马公民将丧失公民权利；犹太人以血缘远近定亲疏——所有人都是我的兄弟，但有些兄弟比其他兄弟更亲近。</p><p class="prose">证据链一路铺到今天：自由公民类似「权力俱乐部」会员，用限制规模和对外封闭来提高福祉与凝聚力——基督教时代以前的黎凡特甚至有「葬礼俱乐部」，会员平摊丧葬费并参加彼此的葬礼。今天罗马的吉卜赛人对族人与外族人（他们称之为「帕约斯」）适用两套规则。</p><p class="prose">人类学家大卫·格雷伯观察到，即使在以贪婪自私著称的高盛，由于合伙人体系的存在，其内部竟然像共产主义社会。</p><p class="prose">由此推出政治哲学：<b>一旦「我们」的概念被扩大到超出个体所熟悉和接受的范围，就会变成一个空泛的概念</b>——集体内部原有的凝聚力丧失，个体开始为私利而争斗。所以他提倡政治体系以城市为基础再逐步联合（瑞士模式的由小及大），反对设计庞大国家方案再套到每个小城市。</p><p class="prose">物理学家亚尼尔·班杨的比喻一针见血：「扎紧篱笆才有好邻居。」</p><div class="aband"><q>道德自其诞生之日起，就基于“本地化”的社会关系。</q><cite>——自己人和外面人</cite></div><p class="prose">强行把什叶派、基督徒以及逊尼派拉在一起，绕着篝火齐唱《昆巴亚》，注定失败——干涉主义者最愚蠢之处就是总谴责别人秉持「教派」观念，却意识不到这是人们固有的「部落」归属感。而每个人都有类似经验：<b>你和住在隔壁寝室的同学的关系，总是比和自己同寝室的室友要好。</p><p class="prose"></b>他所参与的“风险共担”都发生在家族、社区、部落或者兄弟会等「一定规模」的人群中，但绝对不是全体地球人。</p><p class="prose"><b>奥斯特朗姆的「集体悖论」</b>给出了理论支点：公共土地上，集体成员都想避免过度放牧，个体却都想多占——「大锅饭」的烦恼；但私有产权也绝非万能。奥斯特朗姆的贡献是发现了<b>最佳团体规模</b>：团体人数等于或略低于这个规模时，人们愿意做出自我牺牲、捍卫集体利益，集体和个体的行为都井然有序。</p><p class="prose">在群体里，人们分享某些特定的东西，但绝不会分享所有的东西。于是有了本书对群体的正式定义：</p><div class="aband"><q>“风险共担”对群体的定义是：某空间内存在一种机制，即别人会以你对待他们的方式对待你；该空间内还普遍存在一个规范，即个体奉行银律之“己所不欲勿施于人”的戒条来对待他人。</q><cite>——“我们”的最佳规模</cite></div><p class="prose">格拉汉兄弟的俏皮话则解构了乱贴政治标签的行为——同一个人，在不同层面可以是自由主义者、共和党人、民主党人、社会主义者。而瑞士政治之所以运行良好，并不是因为建立了问责制，也不是因为人口恰好达到最佳规模，而是<b>治理机制把政客们置于“风险共担”之中</b>。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>所有人在一条船上</h2><span class="en">SYNKYNDINEO</span></div><p class="prose">希腊语有一种专门的词 <b>Synkyndineo</b>（风险共担），作为「风险转移」的反义词，意思是「共同承担风险」——这是海商法的原则之一。《使徒行传》记载圣徒保罗搭乘货船遇风暴，「留下足够的口粮之后，他们把剩余的粮食扔到海里，以减轻船的重量」。</p><p class="prose">扔下去的是某个商人的货物，但船上所有商人都会平摊这个损失，不让他独自承担——这遵循的是至少可追溯到公元前 800 年的罗得岛法律。</p><div class="aband"><q>援引罗得岛海事法的规定，为减轻船舶重量而抛弃商品造成的损失必须由全体受益者共同承担。</q><cite>——所有人在一条船上 · 《查士丁尼法典》</cite></div><p class="prose">同样的机制适用于穿越沙漠的商队：途中有商品被盗或不慎丢失，所有同行商人分担损失，不让失主一人承担。</p><p class="prose">Synkyndineo 被古籍大师阿曼德译成拉丁语 compericlitor——英语化就是 <b>compericlity</b>；它的反义词，也就是罗伯特·鲁宾玩的风险转移勾当，应该叫 <b>incompericlity</b>。</p><p class="prose">电视上的尴尬一幕把这个原则拉回媒体行业：圆桌讨论微软股票，轮到塔勒布，他说——我并不持有微软的股票，也不持有该股的空头，所以对微软的股票我无话可说。在场记者面面相觑：他们只知道回避利益冲突的原则，却从没想过<b>不能谈论自己没有的股票</b>。</p><p class="prose">对某一股票「评头论足」有两种情形：出于自己的喜好买入然后评论（相当于主动披露持股），或对自己根本不知道的东西发言。</p><div class="aband"><q>如果一个人承受着某一股票下跌的风险，那么在充分披露其持股信息的情况下，他鼓吹这只股票的投资价值也无可厚非。</q><cite>——对别人的书评头论足</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>短暂的就医经历</h2><span class="en">DOCTORS</span></div><p class="prose">本章收尾于医院。医生并不存在安泰俄斯那样的问题——但<b>法律体系和监管措施，很可能将医生置于错误的“风险共担”之中</b>。问题出在考核标准：每种量化考核都可能演变成数字游戏。</p><p class="prose">比如用癌症病人的 5 年存活率考核医院——激光手术精度高，但 5 年存活率指标不如放疗；放疗会在随后周期诱发新肿瘤，使 20 年存活率反而低于激光手术。考核 5 年而不是 20 年，就激励医生倾向放疗。</p><div class="aband"><q>医生很可能根据自己的考核指标，而不是病人的实际情况，决定给病人实施“次优方案”来转移自己面临的不确定性。</q><cite>——短暂的就医经历</cite></div><p class="prose">更危险的是防御性治疗。被诊断为糖尿病或高血压的潜在高危人群，有 90% 的指标接近正常人而不是接近患者（风险呈强非线性）；但医生迫于诉讼压力仍会开他汀类药物——如果病人在就医几周后死亡，医生会因「没有及时开药」被起诉，尽管这类药物是否有效尚存疑问、长期副作用尚不明确。</p><p class="prose">对病征不明显的人使用长期副作用不明的药物弊大于利：<b>与其说是预防病人的健康风险，不如说是预防医生的法律风险。</b>这与罗伯特·鲁宾转移风险的把戏如出一辙——推迟风险的发生，并使它在表面上看起来不存在。</p><p class="prose">塔勒布在《反脆弱》提出过解法：病得不重时不接受治疗，确诊重病（尾部风险）时才寻求医学帮助。但制药公司的动机恰恰相反——「病得不重的人」远多于「身患重病的人」，且预期寿命更长、可能长期服药；重病患者吃药时间短，而死人根本不吃药。</p><p class="prose">不过总的来说，医生和病人都是亲身参与“风险共担”的。<b>监管者没有参与其中，他们才是医疗体系运转不畅的罪魁祸首</b>——在任何一个行业、任何一项事业、任何一个历史时期中，监管者从来都是灾难的根源。下一篇：第2章「最不宽容者获胜」——顽固少数派如何主导整个市场。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文注</span><span class="nd"><b>第二卷扉｜</b>第二卷扉页段仅有「# 第二卷」「# 初探代理人问题」两个标题与 7 幅插图，无正文。</span></div><div class="note" id="n2"><span class="nn">源文注</span><span class="nd"><b>加拉尔｜</b>源文在「伊斯兰教的法律确定了“加拉尔”」处段落结束，加拉尔原则的完整表述见于其后「交易中不能由一方享受确定性的结果……」独立段；本篇按源文原样收录，不补接。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜纳西姆·尼古拉斯·塔勒布《非对称风险》（中信出版集团）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二卷｜第1章·海龟</span><a href="../02-绪论-不确定性的共同基因/index.html">← 绪论（下）</a><a href="../04-第2章-最不宽容者获胜/index.html">第2章·最不宽容者 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ask-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
