@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·第7章 · 穷人为什么穷｜稀缺 精读</title>
+<meta name="description" content="无能可以导致贫穷，贫穷也可以导致无能。穷人的稀缺心态是导致无能的主要原因——穷人不仅缺钱，更缺带宽。">
+<style>
+:root{
+  --paper:#F4F0E8;      /* 紧缩纸底 */
+  --paper-2:#E7E0D2;    /* 纸色深一档 */
+  --card:#FBF8F2;
+  --ink:#26201C;        /* 紧缩墨（主色） */
+  --ink-2:#3E352E;
+  --ink-deep:#100B08;   /* 紧缩深夜（hero 底） */
+  --gold:#7A3B2E;       /* 紧缩红棕（强调 · 管窥与带宽） */
+  --gold-b:#B0765F;
+  --gold-soft:rgba(122,59,46,.16);
+  --cinnabar:#9A5B26;   /* 警示琥珀（稀缺借用的代价） */
+  --teal:#4A5E70;       /* 带宽蓝（对照 · 富足与余闲） */
+  --tx:#2B241E;
+  --tx-2:#4A4038;
+  --tx-3:#837A70;
+  --line:rgba(38,32,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E352E 0%,var(--ink-deep) 62%);
+  color:#F0EBE4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(176,118,95,.42)}
+.hero::after{inset:22px;border:1px solid rgba(176,118,95,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(176,118,95,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,91,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(176,118,95,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,91,38,.6);background:rgba(154,91,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(122,59,46,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEAE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(176,118,95,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(176,118,95,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(122,59,46,.5);box-shadow:0 4px 18px rgba(38,32,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(122,59,46,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(154,91,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,91,38,.1);color:var(--cinnabar);border:1px solid rgba(154,91,38,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(122,59,46,.45);background:rgba(122,59,46,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,91,38,.55);border-radius:8px;
+  background:rgba(154,91,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,72,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,91,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(122,59,46,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,242,234,.94);
+  border-bottom:1px solid rgba(38,32,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E352E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(122,59,46,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8177;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../06-稀缺陷阱/index.html">← 第6章·稀缺陷阱</a><a href="../08-如何让穷人摆脱贫穷/index.html">第8章·让穷人摆脱贫穷 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">穷</div>
+  <div class="stamp s3">缺带宽</div>
+  <h1>第7章 · 穷人为什么穷</h1>
+  <p class="sub">无能可以导致贫穷，贫穷也可以导致无能。穷人的稀缺心态是导致无能的主要原因——穷人不仅缺钱，更缺带宽。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">强制性稀缺</span>
+    <span>正文 12,105 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>强制性稀缺</a><a href="#s3" data-t="s3"><span class="cn">叁</span>最后一公里</a><a href="#s4" data-t="s4"><span class="cn">肆</span>因果反转</a><a href="#s5" data-t="s5"><span class="cn">伍</span>空管员研究</a><a href="#s6" data-t="s6"><span class="cn">陸</span>缺钱缺带宽</a><a href="#s7" data-t="s7"><span class="cn">柒</span>智力下降</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>在批评别人之前，你首先要穿上他的鞋子走上一里地。这样，当你批评他时，就是穿着他的鞋子站在了离他一里远的地方。</p><cite>——杰克·汉迪｜《周六夜现场》节目作家</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章论证链：从避而不谈的问题，到带宽这一单一解释</p><p class="thesis">医学已经把糖尿病变成可控疾病，患者却只在 50%～75% 的时间服药；除草能让收入增加 20%～30%，农民却不去做。这些“最后一公里”的失败有一个共同根源：<b>带宽负担</b>。空管员白天管多少架飞机，能预测当晚他做家长的水平——穷人的“领空”里，永远飞着房租、贷款与账单。</p><div class="chain"><div class="node"><div class="n">事实</div><div><p class="tt">最后的踊跃与跌跤</p><p class="dd">每天有 22000 名儿童因贫穷而死亡——贫穷是最为普遍、最为重要的稀缺形式</p></div></div><div class="node"><div class="n">差别</div><div><p class="tt">强制性稀缺</p><p class="dd">忙碌人士可以少接工作，穷人无法“逃开贫穷去休假”</p></div></div><div class="node"><div class="n">现象</div><div><p class="tt">最后一公里</p><p class="dd">不服药、不除草、不称职的家长——最不起眼的一小步上跌了跤</p></div></div><div class="node"><div class="n">反转</div><div><p class="tt">因果双向</p><p class="dd">无能可以导致贫穷，贫穷也可以导致无能——后者才是被忽略的方向</p></div></div><div class="node"><div class="n">证据</div><div><p class="tt">空管员研究</p><p class="dd">根据当天空中飞机的数量，就能预测当晚养育子女的水平</p></div></div><div class="node"><div class="n">机制</div><div><p class="tt">缺钱又缺带宽</p><p class="dd">睡眠被侵占、前瞻记忆失灵、工作成效降低——智力随带宽下降</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>贫穷：极端形式的强制性稀缺</h2><span class="en">COMPELLED SCARCITY</span></div><div class="aband"><q>无能可以导致贫穷，贫穷也可以导致无能。</q><cite>——第7章·章首导语</cite></div><p class="prose">贫穷的深度与广度令人震惊：联合国儿童基金会估计，<b>每天都有 22000 名儿童因贫穷而死亡</b>；近 10 亿儿童是文盲，不会写自己的名字；全世界约有一半儿童的生活水平在全球贫困线以下；约 16 亿儿童的生活环境中没有供电。</p><p class="prose">就算在美国，也有几乎 50% 的儿童在某些特定时候领取过食物补贴，15% 的家庭在一年中的某个时间段连糊口都成问题。</p><p class="prose">各种稀缺元素相同（管窥、借用、余闲缺乏、带宽负担），表现却因环境而异——贫穷的独特之处在于<b>缺乏自由裁定能力</b>：富裕的专业人士少接些工作就不那么忙了；游客可以决定“下次再去看罗马竞技场”；节食者可以休息几天；繁忙之人可以去休假。但<b>人们无法逃开贫穷去休假</b>。</p><p class="prose">穿衣、远离疾病、为孩子买一两件廉价玩具，这些最基本的欲望都很难抛开不顾。而且金钱只能单向兑换：有钱的家长可以请育儿嫂、叫外卖、雇园丁来缓解时间稀缺；反过来，多工作几个小时只能带来有限的额外收入，却让你更忙碌疲惫。没钱，就意味着没时间；没钱，就意味着更难开展社交——</p><div class="aband"><q>贫穷，就意味着在那些决定生活方方面面的事物上，你都处于稀缺状态。</q><cite>——第7章</cite></div><p class="prose">当然，绝对贫穷与相对贫穷从心理上能否对比尚无有力证据——室内卫生间对 19 世纪的人是奢侈品，对自给自足的农民是太过奢侈，对生活在新泽西州的美国人则是生活必需品。而在本书的讨论中，两者都是贫穷的表现形式。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>“最后一公里”问题</h2><span class="en">LAST MILE</span></div><p class="prose">全世界约有 2.85 亿人身患糖尿病，这种疾病已在人类的管控范围之内——定期口服或注射用药就能预防伤害。但糖尿病患者<b>仅会在 50%～75% 的时间服药</b>。几十年的医疗研究把致命性疾病转化成了可控疾病，我们却在“最后一公里”、最不起眼的一小步上跌了跤。</p><p class="prose">艾滋病的抗反转录病毒药物、肺结核的直接观察疗法（专门的工作人员每天上门监督服药）都重复着同一规律——在有些国家，我们提供不了肺结核治疗，不是因为药片昂贵（不过是廉价的抗生素），而是因为直接观察疗法的成本实在太高。</p><p class="prose">一项又一项伟大的医疗成就，就是因为人们不遵从医嘱而不能充分发挥效用——<b>而穷人不服药的频率最高</b>。</p><p class="prose">农业同样如此：除草不需要专业技能或设备，只需要勤劳肯干。但据估计，非洲某些地区因不除草损失的产量至少占总产量的 <b>28%</b>，亚洲不受控制的杂草生长占了稻米总产量的 <b>50%</b>。</p><p class="prose">就算产量只提高 10%，因为除草不花钱也不占土地，收入就能增加 <b>20%～30%</b>——许多农民还是做不到定期除草。育儿研究则显示：穷人做家长时更加不称职——对孩子更严厉、更无法从一而终、情感上更疏离，更容易将怒气发泄在孩子身上，前一天因一件事训斥孩子，第二天又因相反的事责备他们。</p><p class="prose">再加上更肥胖、不储蓄、不打疫苗、不爱洗手——为什么穷人会无能到如此地步，而且以如此多样的方式表现出来？</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>无能导致贫穷，还是贫穷导致无能</h2><span class="en">CAUSALITY REVERSED</span></div><p class="prose">直觉的第一反应是质疑理解：药太贵了？太忙了？成长环境使然？——但享受医疗补助计划的美国穷人不需要为医药花一分钱，还是做不到按医嘱服药；农村的穷人说两次收获之间时间充裕，但就是不想去除草。第二反应是质疑事实本身：也许只是旁观者的偏见。</p><p class="prose">书内「稀缺实验室」的“汉娜实验”证明偏见真实存在：同一段女孩答题的视频，拿到“穷人家庭”材料的实验对象会找出更多失误、评判更差。但绝大多数数据由客观研究人员搜集、结论常常与研究初衷相悖，且证据的广度与深度摆在那里——偏见解释不了。</p><p class="prose">剩下的解释有两条：其一，无能导致贫困（能力差的人做出错误选择，最终变穷）；其二，反过来——</p><div class="aband"><q>贫困，也就是稀缺心态，是导致无能的原因。</q><cite>——第7章·稀缺实验室</cite></div><p class="prose">本章的任务，就是为这第二个方向给出证据。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>大脑自由才能成为合格家长</h2><span class="en">AIR TRAFFIC CONTROLLERS</span></div><p class="prose">以空管员为对象的研究给出了漂亮的证据：他们有些日子空中飞机很多（天气糟糕、延误排长队），认知负荷极高；有些日子节奏慢下来，脑子里没装那么多“飞机”。研究发现，<b>根据某一天空中飞机的数量，就可以预测当晚空管员养育子女的水平</b>——飞机越多，为人父母的水平越低。</p><p class="prose">同一位空管员轻松工作一天后，会表现出“中产阶级”的样子；辛苦工作一天后，就会落入“贫困人民”的队伍。</p><p class="prose">养育建议中最重要的一条是<b>始终如一</b>：家长的说法和行动前后不统一，孩子面对新事物就很难，容易焦虑。但始终如一需要持续的关注、不断的努力以及坚定不移的信念——良好的教养水平需要足够的带宽、复杂的决策能力和自我牺牲精神。带宽减少时，这些事情的难度就会加倍。</p><p class="prose">最近的研究补充了证据：贫穷的家长每月领取食品补贴，但每个月末还是会陷入没钱买食物的困境——经济学家丽莎·杰内蒂安发现，<b>月末时段正是孩子们在学校里最容易犯事被管教的时候</b>。</p><div class="aband"><q>若想成为一位合格的家长，需要许多方面的能力，但最重要的是大脑的自由。而自由的大脑，对于穷人来说，仿佛是无法企及的奢侈品。</q><cite>——第7章</cite></div><p class="prose">穷人自有自己“领空”里需要管制的“飞机”：周旋于房租、贷款、迟还的账单之间，还要算着日子等待下一笔收入。他们的带宽在管理稀缺的过程中已经用尽了——旁观者如果不了解空管员白天忙成什么样，肯定会认为这位家长缺乏教养能力。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>穷人缺钱又缺带宽</h2><span class="en">NO MONEY, NO BANDWIDTH</span></div><p class="prose">带宽负担最直接的受害者是<b>前瞻记忆</b>(prospective memory)——那些你计划要记住的事情：给医生打电话、在截止日期前还账单。它们必须存在于你的大脑中，带宽一旦减少就会被忽略。</p><p class="prose">穷人忘记吃药的问题就此不难理解：记忆并不会以人们想象的方式工作——没人会忘记吃止疼药，因为疼痛会一直提醒；但糖尿病是“沉默”的，后果不会立即被察觉。</p><div class="grid g3"><div class="card"><h3>工作成效</h3><p class="cp">所有类型的工作都需要工作记忆——同时使几部分信息在大脑中保持鲜活的能力。贫穷会为工作记忆加上负担：最需要用劳动换取薪水的穷人，生产力却承受着最为沉重的负担。</p></div><div class="card"><h3>吸收新信息</h3><p class="cp">公共健康项目要靠穷人吸收新信息才能实现——健康饮食、戒烟、产前护理、艾滋病筛查。想让某人吸收新信息，就必须让其拥有相关工作记忆；收入和课堂表现的相关性，可以用带宽负担来解释。</p></div><div class="card"><h3>自我控制</h3><p class="cp">经济压力较大的烟民更不容易戒烟成功；穷人会更肥胖——一项研究发现，低收入女性搬迁到收入水平较高的小区后，极度肥胖和患糖尿病的比率都会大幅下降，压力减轻无疑是最关键的。</p></div></div><p class="prose">书内「稀缺实验室」把矛头指向睡眠：38 位擅长睡觉的人被要求尽快入睡，其中了解到“小睡之后要做演讲”的一组，入睡难度大得多、质量也差得多。</p><p class="prose">睡眠不足的后果是灾难性的：美国陆军发现缺乏睡眠会令士兵向自己的队伍射击；1989 年埃克森·瓦尔迪兹号油轮在阿拉斯加州失事，原因很可能就是船员睡眠不足；每晚仅睡 4～6 个小时持续两周后，工作表现所受的影响<b>相当于连续两天晚上不睡觉</b>。</p><p class="prose">而睡眠不足会进一步危及带宽——这可能是稀缺对带宽造成负担的最有害的方式。</p><p class="prose">关键的结论是：穷人最缺的就是带宽，而这种短缺<b>并不能从生理上找原因</b>，与营养不良或幼年压力阻碍大脑发育无关——它是由眼下为糊口而产生的认知超载所导致的。随着收入的增加，认知能力也会相应增加；农民的带宽，在用农作物换来钞票时就能得以恢复。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>带宽负担导致智力下降</h2><span class="en">IQ DROPS</span></div><p class="prose">把证据合拢：第 2 章商场研究中的低收入群体根本算不上真正的贫穷，带宽负担却已相当于 IQ 成绩的 13～14 分；印度收获研究的效应是 IQ 9～10 分，对执行控制力的影响更大。</p><p class="prose">从标准 IQ 分类上看，这种影响可以将你的智商从“正常”升级到“高级”，也可以从“正常”降级到“低级”，甚至降到“缺陷级”的边缘——而且印度农村的穷人与新泽西商场里的低收入购物者有着太多不同，却在很多方面拥有同样的带宽负担。</p><p class="prose">带宽解释的吸引力在于它的<b>整体性</b>：对穷人无能的惯常解释都是零碎的——不除草归因文化水平，不服药归因害怕副作用，家长不合格归因缺乏养育知识。而带宽这一单一的基础机制，能跨越行为、时间和地理位置的藩篱，解释所有这些不同的实证事实。</p><p class="prose">疾病、噪声和营养不良也不再仅仅是痛苦的根源，同时也是带宽负担的额外表现形式；连“穷人缺乏基础技能”都要重新审视——任何形式的技能习得都需要带宽。</p><div class="aband"><q>穷人的无能，其主要原因就在于贫穷本身。只要生存于贫困之中，我们所有人都会变得无能。</q><cite>——第7章</cite></div><p class="prose">想对贫困人群有更深入的了解，就请想象自己的思想总是在别处游离的状态：晚上睡不好，很难想清楚事情，很难自我控制，心不在焉、烦躁不安——而且这些情形每天都会发生。贫困在给人们带来物质挑战的同时，也会带来心智上的挑战。</p><p class="prose">研究贫困问题时，我们既要了解人们的物质条件，也要了解他们的带宽情况——他们缺乏的不仅是金钱，还有带宽。</p><div class="tbwrap"><table><thead><tr><th>带宽负担的证据链</th><th>源文数据</th></tr></thead><tbody><tr><td>商场研究</td><td>低收入群体的带宽负担相当于 IQ 成绩下降 13～14 分——而他们根本算不上真正的贫穷</td></tr><tr><td>印度收获研究</td><td>同一蔗农收获前后对比：IQ 9～10 分，对执行控制力的影响更大</td></tr><tr><td>空管员研究</td><td>根据某一天空中飞机的数量，就可以预测当晚空管员养育子女的水平</td></tr><tr><td>睡眠实验</td><td>38 位受试者中，了解到“小睡之后要做演讲”的一组入睡难度大得多、质量也差得多</td></tr></tbody></table></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">故事</span><h4>最后一公里</h4><span class="ar">▶</span></div><div class="cb"><div class="in">全世界约有 2.85 亿人身患糖尿病，定期口服或注射用药就能预防伤害——但患者仅会在 50%～75% 的时间服药。农业同样如此：非洲某些地区因不除草损失的产量至少占总产量的 28%，亚洲不受控制的杂草生长占了稻米总产量的 50%。</div></div></div><div class="case"><div class="ch"><span class="tag mid">结论</span><h4>双向因果</h4><span class="ar">▶</span></div><div class="cb"><div class="in">第一种解释是无能导致贫困；本章给出反方向的证据——贫困，也就是稀缺心态，是导致无能的原因。带宽这一单一的基础机制，能跨越行为、时间和地理位置的藩篱，解释所有这些不同的实证事实。</div></div></div></div><div class="check" data-k="p7-selftest"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能说出贫穷的独特之处：缺乏自由裁定能力</span></label><label><input type="checkbox"><span>我能举出“最后一公里”的两个例子（服药、除草）</span></label><label><input type="checkbox"><span>我记得带宽负担的量化：IQ 13～14 分与 9～10 分</span></label><label><input type="checkbox"><span>我能解释技能培训为何收效有限：任何形式的技能习得都需要带宽</span></label><div class="cf">已确认 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">排印</span><span class="nd"><b>1｜</b>源文「稀缺实验室」专栏内残留孤立英文刊头行 SCARCITY（8 字符），为专栏标头，parse 阶段已按刊头剥离。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜塞德希尔·穆来纳森 / 埃尔德·沙菲尔《稀缺：我们是如何陷入贫穷与忙碌的》（浙江人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜第7章·穷人为什么穷</span><a href="../06-稀缺陷阱/index.html">← 第6章·稀缺陷阱</a><a href="../08-如何让穷人摆脱贫穷/index.html">第8章·让穷人摆脱贫穷 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='sc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

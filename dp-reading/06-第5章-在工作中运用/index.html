@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第5章·在工作中运用刻意练习原则 · 王牌训练计划｜刻意练习 精读</title>
+<meta name="description" content="1968 年，美国海军飞行员的胜率跌到 50%。王牌飞行员学校用「模拟空战 + 战斗报告会」把胜率推到每损失 1 架击落 12.5 架——这一章讲的就是这套方法如何搬进办公室与医院。">
+<style>
+:root{
+  --paper:#F5F1EA;      /* 纸底 */
+  --paper-2:#E9E2D4;    /* 纸色深一档 */
+  --card:#FBF8F1;
+  --ink:#2B211A;        /* 胡桃主墨 */
+  --ink-2:#4A3A2C;
+  --ink-deep:#150F09;   /* 深夜胡桃（hero 底） */
+  --gold:#6E4B2A;       /* 胡桃棕（强调 · 练习与精进） */
+  --gold-b:#A87D4F;
+  --gold-soft:rgba(110,75,42,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 天真的练习） */
+  --teal:#3E6B5E;       /* 松绿（对照 · 成长与正轨） */
+  --tx:#33281F;
+  --tx-2:#5A4B3C;
+  --tx-3:#8A7D6E;
+  --line:rgba(43,33,26,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,33,26,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3A2C 0%,var(--ink-deep) 62%);
+  color:#F2EBE0;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(168,125,79,.42)}
+.hero::after{inset:22px;border:1px solid rgba(168,125,79,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(168,125,79,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F0E6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,224,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(168,125,79,.34);color:rgba(242,235,224,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(110,75,42,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(168,125,79,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EBDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(168,125,79,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EBDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,232,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(110,75,42,.5);box-shadow:0 4px 18px rgba(43,33,26,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(110,75,42,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(110,75,42,.45);background:rgba(110,75,42,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(110,75,42,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(43,33,26,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,33,26,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3A2C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(110,75,42,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,33,26,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,33,26,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7D6E;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-第4章-黄金标准/index.html">← 黄金标准</a><a href="../07-第6章-在生活中运用/index.html">在生活中运用 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">用</div>
+  <div class="stamp ">实战</div>
+  <h1>在工作中运用刻意练习原则 · 王牌训练计划</h1>
+  <p class="sub">1968 年，美国海军飞行员的胜率跌到 50%。王牌飞行员学校用「模拟空战 + 战斗报告会」把胜率推到每损失 1 架击落 12.5 架——这一章讲的就是这套方法如何搬进办公室与医院。</p>
+  <div class="meta"><span>第5章</span>
+    <span class="k">边干边学</span>
+    <span>正文 31,148 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>Top Gun</a><a href="#s3" data-t="s3"><span class="cn">叁</span>错误思想</a><a href="#s4" data-t="s4"><span class="cn">肆</span>边干边学</a><a href="#s5" data-t="s5"><span class="cn">伍</span>医学改造</a><a href="#s6" data-t="s6"><span class="cn">陸</span>知识vs技能</a><a href="#s7" data-t="s7"><span class="cn">柒</span>谁是专家</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇的主线：把王牌飞行员的训练逻辑，搬进职场与医学</p><p class="thesis">第 5 章回答一个问题：对已经受过训练、正在工作的人，怎样继续提高？答案是<b>王牌训练计划</b>式的结构——模拟实战、即时反馈、反复迭代。它先拆掉职场里流行的<b>三种错误思想</b>，给出<b>边干边学</b>的改造法，再用医学界的教训与改进（放射科、腹腔镜手术）说明：<b>问题不是怎样传授知识，而是怎样改进技能</b>。</p><div class="chain"><div class="node"><div class="n">危机</div><div><p class="tt">1968 越战</p><p class="dd">海军飞行员胜率跌到 50%，发射 50 多枚空空导弹无一中的</p></div></div><div class="node"><div class="n">方案</div><div><p class="tt">Top Gun</p><p class="dd">红军假扮敌军模拟空战 + 降落后「战斗报告会」毫不留情地考问</p></div></div><div class="node"><div class="n">战果</div><div><p class="tt">12.5 : 1</p><p class="dd">1970–72 年海军每损失 1 架平均击落 12.5 架；海湾战争击落 33 架仅损失 1 架</p></div></div><div class="node"><div class="n">迁移</div><div><p class="tt">边干边学</p><p class="dd">蓝色兔子冰激凌公司把销售会议变成角色扮演训练，两回合视频复盘</p></div></div><div class="node"><div class="n">教训</div><div><p class="tt">医学界</p><p class="dd">工作 20 年的医生绩效不升反降——讲座式继续教育几乎无效</p></div></div><div class="node"><div class="n">改造</div><div><p class="tt">技能优先</p><p class="dd">照片库训练放射科医生、视频决策点训练外科医生——正确的问题是“怎样改进技能”</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>王牌训练计划</h2><span class="en">TOP GUN</span></div><p class="prose">1968 年，越南战争正酣。此前三年，美军飞行员对北越米格战机一直保持 2/3 的胜率；但 1968 年前 5 个月，海军飞行员的胜率降到 <b>50%</b>（击落 9 架、损失 10 架），当年夏天发射 50 多枚空空导弹<b>无一中的</b>。</p><p class="prose">海军建设了著名的“王牌飞行员学校”(Top Gun school)。</p><p class="prose">计划的核心结构：海军挑选最优秀的飞行员担任教官，假扮北越飞行员（“红军”），使用苏联战术；学员（“蓝军”）是最优秀的学生飞行员。双方不装导弹子弹，只装照相机和雷达记录。教官会赢得模拟空战——而且每隔几星期就有新班级加入，教官越练越强，新班级头几天通常遭到惨痛失败。</p><p class="prose"><b>但没关系</b>：一旦降落，马上召开“战斗报告会”——</p><div class="aband"><q>你在空中的时候注意到了什么？你采取了什么行动？为什么选择采取那些行动？你犯了些什么错误？可以怎样改变？</q><cite>——第5章</cite></div><p class="prose">教官必要时取出影像与雷达数据准确复盘，提出改进建议；第二天把前一天的教训应用回实战。渐渐地，学生学会了自己问自己这些问题，把学到的东西内化于心。效果惊人——</p><div class="tbwrap"><table><thead><tr><th>王牌训练计划的战果</th><th>数据</th></tr></thead><tbody><tr><td>1968 年（计划诞生前）</td><td>海军胜率 50%，与损失战机数打平</td></tr><tr><td>1970–1972 年（训练后三年）</td><td>每损失 1 架飞机，平均击落 <b>12.5 架</b>北越战斗机</td></tr><tr><td>整个越战平均</td><td>每 5 次与敌机遭遇击落 1 架 → 1972 年每次遭遇平均击落 1.04 架</td></tr><tr><td>第一次海湾战争（7 个月）</td><td>击落 33 架敌方战机，仅损失 1 架——空战史上最具压倒性的胜利之一</td></tr></tbody></table></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>拒绝三种错误思想</h2><span class="en">THREE MYTHS</span></div><p class="prose">企业咨询顾问阿特·图若克(Art Turock)把刻意练习整合进公司领导者训练。他传递的信息从思维开始：组织中绩效的提高，第一步是摒弃“一切照旧”的做法——辨认并拒绝三种流行的错误思想。听到有人说出“我不能”或“我不是”，他会像橄榄球教练抗议判罚那样抛出一面红色挑战旗，请对方重新评估自己。</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>「能力受基因限制」</h3><p class="cp">表现为各种“我不是很有创造力”“我不擅长和数字打交道”。事实：在着重发展的领域中，人人都可以通过正确的训练大幅度提高——我们可以塑造自己的潜力。</p></div><div class="card num"><div class="idx">二</div><h3>「做够了时间自然更擅长」</h3><p class="cp">以完全相同的方式一而再再而三地做某件事情，并不是提高绩效的秘诀——它会使人们停下前进的脚步，并且缓慢地下滑。</p></div><div class="card num"><div class="idx">三</div><h3>「只要足够努力就会优秀」</h3><p class="cp">管理、销售、团队合作全是专业化的技能——除非运用专门用于提升那些特定技能的练习方法，否则加倍努力，也无法让你有更大的进步。</p></div></div><div class="aband"><q>如果你没有进步，并不是因为你缺少天赋，而是因为你没有用正确的方法练习。</q><cite>——第5章</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>边干边学：把会议变成训练</h2><span class="en">LEARNING BY DOING</span></div><p class="prose">商界人士很忙，挤不出练习时间——他们不像钢琴家或运动员，表演时间短、练习时间长。于是阿特着手把正常的商业活动<b>转变</b>成练习机会。例如公司里的幻灯片演示：演讲者选择一项特定技能（讲有趣的故事、即兴讲解、减少对幻灯片的依赖），要求大家在演示期间着重关注；观众做笔记，之后提供反馈。</p><p class="prose">一次效果甚微，但经常进行，员工就能稳定地提高各种技能。</p><p class="prose">最生动的案例是蓝色兔子冰激凌公司：区域销售经理向一位同事做演示，后者假装是账目上的主要买家；演示结束后其他经理提供反馈；第二天再做一次、再获反馈——<b>两个回合都用视频记录</b>。等到区域销售经理给真正的客户作演示时，他的技能已经得到了磨炼和提高。</p><p class="prose">练习最终变成了日常工作的一部分，养成一种与杰出人物非常相似的心态：总是不停地练习，在日常的工作和生活中磨砺技能。</p><p class="prose">艾利克森给出的检验清单——一种方法是否与刻意练习原则相一致：它是不是逼着人们走出舒适区？有没有提供关于绩效和表现的即时反馈？有没有辨别出本领域最杰出人物？有没有确定是什么因素将杰出人物与其他人区分开来？训练是不是针对杰出人物所拥有的特定技能？如果全是肯定的，它至少很可能有效。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>用王牌方法训练医生：反馈的困境与解法</h2><span class="en">MEDICINE</span></div><p class="prose">医学界集中暴露了缺反馈的问题。放射科医生解读乳房 X 射线照片：每 1000 张照片中只有 4～8 例癌症有望被发现，而他们很少被告知活体组织切片检查结果，甚至不知道患者一年后是否真的患癌——<b>难以获得有效反馈，限制了技能提高的幅度</b>。</p><p class="prose">2014 年一项覆盖 50 万张照片、124 名放射科医生的研究发现：从业年限、每年诊断数量等背景因素，都与诊断准确性关系不大。</p><p class="prose">艾利克森 2003 年在医学院协会年会上提议：建立已知答案的数字化照片库，编写简单程序让医生做诊断并获得即时反馈——错误时显示相似照片加强训练，如同音乐导师针对薄弱指法布置系列练习。</p><p class="prose">澳大利亚已建成类似图片库；纽约摩根士丹利儿童医院用 234 个儿童脚踝伤害病例训练住院医生：起初诊断时对时错，10 多次试验后定期反馈的效果显现，诊断准确性开始稳定提高。</p><p class="prose">外科领域的应用同样精彩。劳伦斯·韦(Lawrence Way)的研究发现，腹腔镜胆囊手术中几乎所有的胆管损伤都源于“<b>视觉错觉</b>”——外科医生把身体部位弄错，想摘除胆囊管却切除了胆总管，而且太相信错觉，发现异常也不怀疑。改进办法：播放手术视频，到决策点停下来问“你接下来会怎么做？</p><p class="prose">”“你在这里看到了什么？”，在屏幕上画线回答，获得即时反馈，纠正错误，再进入更难的病例——数十轮数百轮训练，直到创建有效的心理表征。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>Top Gun：降落后的战斗报告会</h4><span class="ar">▶</span></div><div class="cb"><div class="in">模拟空战 + 毫不留情的复盘 + 第二天把教训用回实战——每损失 1 架平均击落 12.5 架。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>工作 20 年的放射科医生</h4><span class="ar">▶</span></div><div class="cb"><div class="in">从业年限、每年诊断数量都与诊断准确性关系不大——没有反馈的重复经验，甚至带不来进步。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>维克斯：8000 名患者的证据</h4><span class="ar">▶</span></div><div class="cb"><div class="in">手术提供即时反馈，经验因此能累积成技能：1500～2000 台后，复发率的下降才到达终点。</div></div></div></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>知识与技能：传统医学教育的失败</h2><span class="en">KNOWLEDGE VS SKILL</span></div><p class="prose">王牌训练方法的含蓄主题是<b>着重强调动手做</b>——底线是你能做什么，而不是你知道什么。传统路径恰恰相反：未来的医生从医学院毕业时已花了 15 年接受教育，但几乎所有教育都聚焦于提供知识。</p><p class="prose">2005 年哈佛医学院的评审报告显示：20 多项研究中几乎每一项里，医生的绩效都随时间推移越来越差，或最多保持不变；62 项研究中只有 2 项里的医生越老越好。护士群体同样如此。</p><p class="prose">医生们并非不努力——仅在 2015 年 8 月，心脏内科一个专科就有 21 场医学会议。但戴夫·戴维斯(Dave Davis)的研究发现：最有效的干预是含互动因子的（角色扮演、讨论小组、案例分析、实习培训），效率最低的是“说教式”聆听讲座——可悲的是，那是迄今为止最常见的形式。</p><p class="prose">挪威团队更新研究后结论相同：没有哪种继续教育对改进复杂行为是有效的。</p><p class="prose">医学界流传着可追溯至 20 世纪初期外科先驱威廉·霍尔斯特德(William Halsted)的说法：“看一场，做一场，教一场。</p><p class="prose">”这在 80–90 年代被腹腔镜手术击穿：有经验的外科医生的学习曲线与实习医生相比，掌握新手术、减少并发症的速度<b>并没有差别</b>——旧经验带不来优势，新技能必须通过独立操作来培养。</p><div class="aband"><q>在专业的或商业的背景中涉及提高绩效和表现时，正确的问题是“我们怎样改进相关的技能”，而不是“我们怎样传授相关的知识”。</q><cite>——第5章</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>辨认谁是专家：8000 名前列腺癌患者的证据</h2><span class="en">WHO IS EXPERT</span></div><p class="prose">改进技能的第一步是辨别专家。2007 年，安德鲁·维克斯(Andrew Vickers)团队研究了近 8000 位前列腺癌患者：手术在 1987～2003 年由 72 位外科医生在四个医疗中心完成。以术后癌症复发率为客观指标，结果触目惊心——</p><div class="tbwrap"><table><thead><tr><th>外科医生经验</th><th>病人五年内癌症复发率</th></tr></thead><tbody><tr><td>只做过 10 台前列腺切除手术</td><td>17.9%</td></tr><tr><td>做过 250 台</td><td>10.7%</td></tr><tr><td>经验不足者 vs 经验丰富者</td><td>复发比例几乎是<b>两倍</b>之多</td></tr><tr><td>复发的下降终点</td><td>做到 1500～2000 台手术后不再下降；简单病例基本能完美防止复发，复杂病例可防止 70%</td></tr></tbody></table></div><p class="prose">外科之所以能随经验精进，是因为它能提供<b>即时反馈</b>：术中出血马上暴露，术后护理仔细监测，切除组织可做实验室分析验证“干净的边缘”。</p><p class="prose">而乳房 X 射线照片的研究里，经历过放射学专科训练的医生仅仅上岗几个月，便达到未受专科训练者花三年才发展出的技能水平——我们有理由假设，精心设计的训练计划也可能有相同的效果。世界上最杰出医生的医术背后，潜藏的主要因素是<b>高质量的心理表征</b>——这将是医学中的刻意练习要去训练的东西。</p><div class="check" data-k="dp-ch5"><p class="ct">对 照 清 单</p><label><input type="checkbox"><span>我不相信「只要足够努力就会优秀」这类错误思想</span></label><label><input type="checkbox"><span>我的日常工作里有模拟实战与即时反馈的环节</span></label><label><input type="checkbox"><span>我练的是技能，不只是知识——动手做，而不只是听课</span></label><label><input type="checkbox"><span>我能说出本领域最杰出人物与普通从业者的具体差别</span></label><label><input type="checkbox"><span>我在为自己设计带反馈的练习，而不只是重复劳动</span></label><div class="cf">勾中 3 条以上，你已经在工作中刻意练习——第 6 章把镜头转回生活。 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">说明</span><span class="nd"><b>源文｜</b>第 5 章正文夹有多段英文尾注段（微信读书导出残留），精读正文未收录；中文内容与源文逐段逐字符一致，未发现截断。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安德斯·艾利克森、罗伯特·普尔《刻意练习：如何从新手到大师》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第5章｜在工作中运用</span><a href="../05-第4章-黄金标准/index.html">← 黄金标准</a><a href="../07-第6章-在生活中运用/index.html">在生活中运用 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='dp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

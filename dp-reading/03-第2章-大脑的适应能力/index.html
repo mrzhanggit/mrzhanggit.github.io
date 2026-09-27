@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第2章·大脑的适应能力 · 伦敦出租车司机的海马体｜刻意练习 精读</title>
+<meta name="description" content="练肌肉能照镜子看效果，练大脑却看不到酸痛——本章用出租车司机、盲文读者与音乐家的大脑扫描证明：训练真的会改变大脑结构，而机制与肌肉的生长惊人地相似。">
+<style>
+:root{
+  --paper:#F5F1EA;      /* 纸底 */
+  --paper-2:#E9E2D4;    /* 纸色深一档 */
+  --card:#FBF8F1;
+  --ink:#2B211A;        /* 胡桃主墨 */
+  --ink-2:#4A3A2C;
+  --ink-deep:#150F09;   /* 深夜胡桃（hero 底） */
+  --gold:#6E4B2A;       /* 胡桃棕（强调 · 练习与精进） */
+  --gold-b:#A87D4F;
+  --gold-soft:rgba(110,75,42,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 天真的练习） */
+  --teal:#3E6B5E;       /* 松绿（对照 · 成长与正轨） */
+  --tx:#33281F;
+  --tx-2:#5A4B3C;
+  --tx-3:#8A7D6E;
+  --line:rgba(43,33,26,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,33,26,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3A2C 0%,var(--ink-deep) 62%);
+  color:#F2EBE0;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(168,125,79,.42)}
+.hero::after{inset:22px;border:1px solid rgba(168,125,79,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(168,125,79,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F0E6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,224,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(168,125,79,.34);color:rgba(242,235,224,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(110,75,42,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(168,125,79,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EBDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(168,125,79,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EBDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,232,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(110,75,42,.5);box-shadow:0 4px 18px rgba(43,33,26,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(110,75,42,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(110,75,42,.45);background:rgba(110,75,42,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(110,75,42,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(43,33,26,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,33,26,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3A2C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(110,75,42,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,33,26,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,33,26,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7D6E;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-第1章-有目的的练习/index.html">← 有目的的练习</a><a href="../04-第3章-心理表征/index.html">心理表征 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">脑</div>
+  <div class="stamp ">重塑</div>
+  <h1>大脑的适应能力 · 伦敦出租车司机的海马体</h1>
+  <p class="sub">练肌肉能照镜子看效果，练大脑却看不到酸痛——本章用出租车司机、盲文读者与音乐家的大脑扫描证明：训练真的会改变大脑结构，而机制与肌肉的生长惊人地相似。</p>
+  <div class="meta"><span>第2章</span>
+    <span class="k">体内平衡</span>
+    <span>正文 24,740 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>最难的测试</a><a href="#s3" data-t="s3"><span class="cn">叁</span>海马体研究</a><a href="#s4" data-t="s4"><span class="cn">肆</span>适应能力</a><a href="#s5" data-t="s5"><span class="cn">伍</span>体内平衡</a><a href="#s6" data-t="s6"><span class="cn">陸</span>练习塑脑</a><a href="#s7" data-t="s7"><span class="cn">柒</span>三个细节</a><a href="#s8" data-t="s8"><span class="cn">捌</span>构筑潜能</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇的主线：大脑像肌肉一样越练越大——但要懂得它生长的机制</p><p class="thesis">第 2 章为「练习」找到生理学地基：<b>马圭尔的研究</b>证明伦敦出租车司机的海马体后部随执业年限增大，而且<i>训练之后才增大</i>；机制是<b>体内平衡</b>——身体偏爱稳定，被迫超出舒适区后通过改变来重建稳定；随后一组研究证明<b>练习改变大脑结构</b>；最后落到三个细节（折弯幼枝效应、训练的代价、不进则退）与全章结论：<b>潜能可以被构筑</b>。</p><div class="chain"><div class="node"><div class="n">谜题</div><div><p class="tt">最难的测试</p><p class="dd">「知识」：查令十字街 9.6 千米半径内约 2.5 万条街道，约一半人被淘汰</p></div></div><div class="node"><div class="n">证据</div><div><p class="tt">海马体后部</p><p class="dd">16 位司机 vs 50 位普通人：司机海马体后部更大，开得越久越大</p></div></div><div class="node"><div class="n">对照</div><div><p class="tt">公交车司机</p><p class="dd">同样开车多年但只走固定线路——海马体后部明显更小：关键在导航而非开车</p></div></div><div class="node"><div class="n">机制</div><div><p class="tt">体内平衡</p><p class="dd">身体偏爱稳定性；超出补偿界限才被迫改变——强到足以建立新的舒适区</p></div></div><div class="node"><div class="n">推广</div><div><p class="tt">音乐与盲文</p><p class="dd">弦乐家左手控制区膨胀、盲文读者指尖区域重叠、老花眼训练后不戴眼镜读报</p></div></div><div class="node"><div class="n">结论</div><div><p class="tt">构筑潜能</p><p class="dd">刻意练习不只是发掘潜能，而是构筑潜能——挑战体内平衡，走出舒适区</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>世界上最难的测试</h2><span class="en">THE KNOWLEDGE</span></div><p class="prose">世界上几乎没有哪座城市可以像伦敦那样使 GPS 系统陷入混乱：主干道相互形成奇怪的夹角、呈曲线状弯曲，单行道与环形交叉路随处可见，泰晤士河把市中心让十几座桥梁跨过，还有古怪的编号系统。</p><p class="prose">伦敦约有 <b>2.5 万名</b>出租车司机，他们有令人震惊的能力——你说不清那家帽子店的名字没关系，只要记得隔壁是卖纸杯蛋糕的面包房，出租车就跟自动导航似的把你载到门前。</p><p class="prose">想获得许可，必须通过被称为「知识」的一系列测试——一直被人们认为是世界上最难的测试：对以查令十字街为圆心约 <b>9.6 千米</b>半径内的区域有全面了解，那里大约有 <b>2.5 万条街道</b>。</p><p class="prose">候选人要花数年时间，借助摩托车实地走完指导手册中 <b>320 回合</b>的清单，在起点终点周边约 400 米范围内闲逛、记下建筑物。测试时主考官给出两个地点，候选人要说出精确位置、最佳线路，再依次说出沿途每一条街道的名字——到最后，大约一半甚至更多的候选人被淘汰。</p><p class="prose">由此产生的记忆力和导航技能，让伦敦大学学院的神经系统科学家埃莉诺·马圭尔(Eleanor Maguire)着迷——她对出租车司机进行了迄今为止最深入的研究。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>大脑就像肌肉，越练越大</h2><span class="en">THE HIPPOCAMPUS</span></div><p class="prose">2000 年，马圭尔用核磁共振成像观察 16 位出租车司机的大脑，与 50 位年龄相仿的普通男性对比，特别观察了海马体——大脑中涉及记忆发展、形状像海马的部位。结果：出租车司机大脑中海马体的<b>后部</b>比其他实验对象更大，而且当出租车司机的时间越长，海马体后部也就越大。</p><p class="prose">几年后的对比研究更说明问题：公共汽车司机也在伦敦开了好几年车，但只反复走一条线路——他们的海马体后部明显更小。差别不在开车，而在<b>导航技能</b>。</p><p class="prose">但这个结论还有个漏洞：也许是天生海马体后部更大的人更容易通过测试呢？马圭尔的解答简单而有说服力——追踪观察。她招募了刚接受培训的 79 名申请者（全部男性）和 31 名年龄相仿的控制组成员，先扫描：两组的海马体后部大小<b>并无差别</b>。四年后再看：79 人中 41 人获得许可，38 人被淘汰或放弃。</p><div class="tbwrap"><table><thead><tr><th>四年后三组人的海马体后部</th><th>扫描结果</th></tr></thead><tbody><tr><td>获许可的出租车司机（41 人）</td><td>体积明显更大——熟练掌握伦敦地理，负责空间导航</td></tr><tr><td>未通过/放弃的受训者（38 人）</td><td>与控制组几乎相差无几</td></tr><tr><td>从未受训的控制组（31 人）</td><td>没有变化</td></tr></tbody></table></div><p class="prose">这也许是证明人类大脑为响应密集训练而发展和改变的最引人关注的证据。2011 年成果发表时，含义已经很清晰：你可以把伦敦出租车司机的海马体后部想象成健美运动员经过高强度训练后的胳膊和肩膀——同样“膨胀”，但其中充满的是<b>脑组织</b>，而不是肌肉纤维。</p><div class="aband"><q>大脑的结构与运行都会为了应对各种不同的心理训练而改变，很大程度上像你的肌肉和心血管系统响应体育锻炼那样。</q><cite>——第2章</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>身体与大脑：近乎无限的适应能力</h2><span class="en">ADAPTATION</span></div><p class="prose">在马圭尔之前，大多数科学家断然否认这类研究成果：成年人的大脑“布线”已相当固定，学习只不过是发挥遗传潜能的方式——像电脑载入软件，最终效果总受 RAM 和 CPU 的限制。</p><p class="prose">而身体上的适应能力一直更容易辨别：俯卧撑——普通人 40～50 个就很不错，但 1980 年一位日本人创下连续 <b>10507 个</b>的纪录；1993 年一位美国人在 21小时21分钟内做完 <b>46001 个</b>，至今未被打破。</p><p class="prose">引体向上——2014 年一位捷克人在 12 小时内做了 <b>4654 个</b>。</p><p class="prose">从马圭尔以及其他学者的研究成果中，我们了解到，大脑的适应能力与我们身体的适应能力非常相似，不但程度相近，而且类别相差无几。最早的观察来自盲人与聋哑人的大脑：视觉皮层没有闲置，而是<b>重新布线</b>去解读指尖触摸到的盲文凸点。</p><p class="prose">更惊人的是熟练盲文读者的实验——他们用食指读图案、中指判断空间、无名指追踪行数，大脑中负责这三个指头的部位增大到<b>彼此重叠</b>：触觉格外敏感，却分不清碰的是哪一个指头。</p><div class="aband"><q>如果你足够多地练习做某件事情，你的大脑会改变某些神经元的用途，以帮助完成那件任务。</q><cite>——第2章</cite></div><p class="prose">最贴近生活的应用是 2012 年发布的老花眼研究：50 岁上下、难以聚焦的志愿者每周 3 次、每次 30 分钟观察低对比度的小图片，连续 3 个月。结束时他们能阅读比训练开始时小了 <b>60%</b> 的文字，每位研究对象都改进了视力，甚至能不戴眼镜读报了——而他们的眼睛还是老样子，晶状体依然缺乏伸缩性。</p><p class="prose">改变发生在大脑中解读视觉信号的部位：研究人员认为，训练教会了大脑对图片“<b>去模糊</b>”。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>走出舒适区：体内平衡的机制</h2><span class="en">HOMEOSTASIS</span></div><p class="prose">为什么身体与大脑有如此强大的适应能力？讽刺的是，它全都源于这样一个事实：<b>单个的细胞和组织在尽最大的努力使一切保持相同</b>。人类身体偏爱稳定性——稳定的体温、血压、心率、血糖、PH 值、体重，技术术语叫“<b>体内平衡</b>(homeostasis)”。</p><p class="prose">锻炼会让心率加快、暴饮暴食会让体重增加，但这些变化通常是暂时的，身体最终会回到原来的模样。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>第一步：舒服的锻炼不改变什么</h4><p>只要体育锻炼并非费力到让体内平衡机制无法正常运行，它基本上不会引起身体上的生理变化——从身体的角度来看，它没有理由改变。</p></div><div class="step"><div class="dot">2</div><h4>第二步：超出界限，细胞被迫响应</h4><p>持续而有力的锻炼让身体超出体内平衡能够补偿的界限：细胞处在异常状态下，通过升高 DNA 中的不同基因来响应——打开或提升各种生物化学系统，改变细胞的行为。</p></div><div class="step"><div class="dot">3</div><h4>第三步：重建体内平衡＝变强</h4><p>老鼠实验：肌肉负荷突增时 112 种不同的基因打开，最终肌肉强化到足以应对负荷——变得足够强壮，以建立<b>新的</b>舒适区。</p></div><div class="step"><div class="dot">4</div><h4>第四步：陷阱——改变会停止</h4><p>一旦补偿已发生，身体就能轻松应对以前艰难的锻炼，再度感到舒服。要使改变不断进行下去，你必须不断地加码：跑得更远、更快、爬坡跑。</p></div></div><p class="prose">这就是体育锻炼制造身体变化的一般模式，也是大脑改变的模式——只是成年人大脑中的细胞一般并不分裂组成新细胞（海马体是少数例外），大脑的顺应方式是<b>重新布线</b>：强化或弱化神经元之间的连接、增加新连接或摒弃旧连接，髓鞘形成甚至可以使神经脉冲的速度提高 10 倍之多。于是得到这条重要的分寸感：</p><div class="aband"><q>大脑对于处在舒适区之外却离得并不太远的“甜蜜点”上的挑战，改变最为迅速。</q><cite>——第2章</cite></div><p class="prose">反过来，一下子推得太猛、远远离开舒适区，可能受伤，反而阻碍提高；在过长的时间内过分地逼迫自己，可能导致倦怠和学习低效。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>练习改变大脑结构</h2><span class="en">REWIRED BY PRACTICE</span></div><p class="prose">最有名的证据发表在 1995 年的《科学》(Science)期刊上。心理学家爱德华·陶布(Edward Taub)与四位德国科学家招募了六位小提琴演奏家、两位大提琴演奏家和一位吉他演奏家（全都不是左撇子），与六位非音乐家对比。</p><p class="prose">弦乐演奏对<b>左手手指</b>的控制要求超常：来回滑动、快速切换、精确落位、颤音——而右手只是握弓或拨弦。脑磁波描记器的结果：音乐家大脑中控制左手的区域明显大得多，控制手指的大脑区域已经侵占了通常专门用于控制手掌的区域；而且<b>开始演奏的时间越早，膨胀越明显</b>。控制右手手指的区域则毫无差别。</p><p class="prose">此后 20 年的研究不断补充：音乐家的小脑更大（训练越久越大）；躯体感觉区、顶上区、前运动皮层中拥有更多脑灰质。不止音乐——滑翔机飞行员、竞技跳水运动员的大脑同样随训练改变。从纯智力技能到纯体格技能，结果一致：长期的训练，使大脑中与特定技能相关的部位发生了改变。</p><div class="cases"><div class="case"><div class="ch"><span class="tag good">正面</span><h4>弦乐演奏家：左手控制区膨胀</h4><span class="ar">▶</span></div><div class="cb"><div class="in">脑磁图显示音乐家控制左手手指的大脑区域明显更大，开始演奏越早膨胀越明显；控制右手的区域毫无差别——训练哪里，大脑就改变哪里。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>数学家：顶下小叶更多脑灰质</h4><span class="ar">▶</span></div><div class="cb"><div class="in">从事数学研究工作时间越长的数学家，顶下小叶的脑灰质越多——那是大量数学思考的结果，而不是天生就如此。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>不用则退：宇航员与司机</h4><span class="ar">▶</span></div><div class="cb"><div class="in">由训练引起的改变需要保持：宇航员回地球后难以正常行走；停止导航训练的出租车司机，海马体后部的脑灰质也在缩回。</div></div></div></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>三个重要细节</h2><span class="en">THREE CAVEATS</span></div><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>折弯幼枝效应</h3><p class="cp">年轻人（儿童和青少年）的大脑比成年人的更具适应能力，幼年时期的练习实际可以塑造后来的发育路线。成年钢琴家脑中更多的脑白质，完全由儿童时期经常练习所致——孩子越早开始练钢琴，长大后脑白质越多。</p></div><div class="card num"><div class="idx">二</div><h3>训练要付出代价</h3><p class="cp">超常发展某项技能，另一些领域可能出现退化：获许可的出租车司机在“记住伦敦地标”上远超常人，但在延迟 30 分钟记住复杂图案的标准空间记忆测试上，反而比从未受训者<b>差得多</b>。</p></div><div class="card num"><div class="idx">三</div><h3>不进则退</h3><p class="cp">由训练引起的认知和生理变化需要继续保持，如果停止训练，它们便开始消失。宇航员回地球后难以正常行走；停止导航训练的出租车司机，海马体后部的脑灰质也在缩回。</p></div></div><div class="aband"><q>由训练引起的认知和生理变化需要继续保持。如果停止训练，它们便开始消失。</q><cite>——第2章</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>潜能可以被构筑</h2><span class="en">BUILD POTENTIAL</span></div><p class="prose">一旦以这种方式理解大脑和身体的适应能力，便开始以完全不同的视角思考人类的潜力。大多数人的身体能力处于相当低的水平——不能 5 分钟跑 1.5 千米、不能把棒球打到 90 多米——大部分人做不到，并不是因为不具备能力，而是因为<b>满足于在舒适区中生活</b>，生活在“足够好”的世界中。</p><p class="prose">心理活动同理：从写报告到驾驶汽车，从教课到经营组织，一旦抵达那个界限，我们很少迫使自己超出“足够好”的范围。</p><p class="prose">传统学习方法与刻意练习之间存在着一种关键的差别：传统方法并不是专门用于挑战体内平衡的——它假设学习只是发挥你的内在潜力，而不用走出舒适区太远。</p><div class="aband"><q>对于刻意练习，我们的目标不仅仅是发掘自己的潜能，而且要构筑它，以便从前不可能做到的事情变得可能做到。</q><cite>——第2章</cite></div><p class="prose">这要求挑战体内平衡——走出你的舒适区，并迫使你的大脑或身体来适应。一旦你做到这一点，学习便不再只是执行某些遗传命运的方式；它变成了一种控制你自己命运的方式。那么下一个问题来了：当我们立志当一位音乐家、数学家、出租车司机或者外科医生时，大脑的改变有一个共同的主题——它叫<b>心理表征</b>，下一章见。</p><div class="check" data-k="dp-ch2"><p class="ct">对 照 清 单</p><label><input type="checkbox"><span>我知道大脑像肌肉：足够强度的训练会让它重新布线</span></label><label><input type="checkbox"><span>我的练习处在「甜蜜点」——舒适区之外但不推得太猛</span></label><label><input type="checkbox"><span>我警惕「足够好」陷阱：不在舒适区里原地踏步</span></label><label><input type="checkbox"><span>我明白技能会退化——停止练习，改变就开始消失</span></label><label><input type="checkbox"><span>我把练习当作构筑潜能，而不是发掘潜能</span></label><div class="cf">勾中 3 条以上，你已经相信大脑可以被塑造——第 3 章看它究竟改变了什么。 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">说明</span><span class="nd"><b>源文｜</b>第 2 章正文夹有多段英文尾注段（微信读书导出残留），精读正文未收录；中文内容与源文逐段逐字符一致，未发现截断。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安德斯·艾利克森、罗伯特·普尔《刻意练习：如何从新手到大师》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第2章｜大脑的适应能力</span><a href="../02-第1章-有目的的练习/index.html">← 有目的的练习</a><a href="../04-第3章-心理表征/index.html">心理表征 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='dp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

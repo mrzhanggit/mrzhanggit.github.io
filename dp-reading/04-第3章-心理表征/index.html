@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第3章·心理表征 · 大师与新手之间的真正差距｜刻意练习 精读</title>
+<meta name="description" content="盲棋大师看不到棋盘却游刃有余；新手和大师看同一个棋盘，看到的却不是同一个东西。本章给出全书的枢纽概念：心理表征——一种绕开短时记忆局限、保存在长时记忆中的结构。">
+<style>
+:root{
+  --paper:#F5F1EA;      /* 纸底 */
+  --paper-2:#E9E2D4;    /* 纸色深一档 */
+  --card:#FBF8F1;
+  --ink:#2B211A;        /* 胡桃主墨 */
+  --ink-2:#4A3A2C;
+  --ink-deep:#150F09;   /* 深夜胡桃（hero 底） */
+  --gold:#6E4B2A;       /* 胡桃棕（强调 · 练习与精进） */
+  --gold-b:#A87D4F;
+  --gold-soft:rgba(110,75,42,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 天真的练习） */
+  --teal:#3E6B5E;       /* 松绿（对照 · 成长与正轨） */
+  --tx:#33281F;
+  --tx-2:#5A4B3C;
+  --tx-3:#8A7D6E;
+  --line:rgba(43,33,26,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,33,26,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3A2C 0%,var(--ink-deep) 62%);
+  color:#F2EBE0;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(168,125,79,.42)}
+.hero::after{inset:22px;border:1px solid rgba(168,125,79,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(168,125,79,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F0E6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,224,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(168,125,79,.34);color:rgba(242,235,224,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(110,75,42,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(168,125,79,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EBDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(168,125,79,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EBDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,232,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(110,75,42,.5);box-shadow:0 4px 18px rgba(43,33,26,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(110,75,42,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(110,75,42,.45);background:rgba(110,75,42,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(110,75,42,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(43,33,26,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,33,26,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3A2C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(110,75,42,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,33,26,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,33,26,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7D6E;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../03-第2章-大脑的适应能力/index.html">← 大脑的适应能力</a><a href="../05-第4章-黄金标准/index.html">黄金标准 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">象</div>
+  <div class="stamp ">表征</div>
+  <h1>心理表征 · 大师与新手之间的真正差距</h1>
+  <p class="sub">盲棋大师看不到棋盘却游刃有余；新手和大师看同一个棋盘，看到的却不是同一个东西。本章给出全书的枢纽概念：心理表征——一种绕开短时记忆局限、保存在长时记忆中的结构。</p>
+  <div class="meta"><span>第3章</span>
+    <span class="k">心理表征</span>
+    <span>正文 29,563 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>盲棋大师</a><a href="#s3" data-t="s3"><span class="cn">叁</span>数据块</a><a href="#s4" data-t="s4"><span class="cn">肆</span>定义</a><a href="#s5" data-t="s5"><span class="cn">伍</span>杰出表现</a><a href="#s6" data-t="s6"><span class="cn">陸</span>找规律</a><a href="#s7" data-t="s7"><span class="cn">柒</span>医学谜题</a><a href="#s8" data-t="s8"><span class="cn">捌</span>写书方法</a><a href="#s9" data-t="s9"><span class="cn">玖</span>高效学习</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书的枢纽：上一章问「大脑改变了什么」，本章给出答案</p><p class="thesis">第 3 章以<b>阿廖欣盲棋</b>开场，引出大师记忆力的秘密——<b>数据块</b>与<b>心理表征</b>；给出定义后，用五章篇幅列举它的五大用途：<b>找出规律、解释信息、组织信息、制订计划、高效学习</b>；最后收束为一个良性循环——技能磨炼表征，表征反过来磨炼技能。</p><div class="chain"><div class="node"><div class="n">奇观</div><div><p class="tt">盲棋比赛</p><p class="dd">26 盘棋、832 个棋子、1664 个方格全凭记忆——阿廖欣赢 17 盘</p></div></div><div class="node"><div class="n">实验</div><div><p class="tt">棋盘记忆</p><p class="dd">真棋局大师记住约 2/3 棋子；棋子乱摆时大师只比新手强一点——记忆依赖背景</p></div></div><div class="node"><div class="n">存量</div><div><p class="tt">5 万数据块</p><p class="dd">打谱十年积累的棋子规律，按层级整理存入长时记忆</p></div></div><div class="node"><div class="n">定义</div><div><p class="tt">心理表征</p><p class="dd">信息预先存在的模式，用于迅速处理大量信息、回避短时记忆的局限</p></div></div><div class="node"><div class="n">用途</div><div><p class="tt">五大功能</p><p class="dd">找规律（足球/攀岩）、解释（阅读）、组织（医学诊断）、计划（写作/手术）、学习（音乐）</p></div></div><div class="node"><div class="n">循环</div><div><p class="tt">良性循环</p><p class="dd">技能越娴熟→表征越好→练习越有效→技能更娴熟——一边爬楼梯一边搭新阶梯</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>偶然的盲棋大师</h2><span class="en">BLINDFOLD CHESS</span></div><p class="prose">1924 年 4 月 27 日，纽约阿拉玛克酒店：俄罗斯特级大师亚历山大·阿廖欣(Alexander Alekhine)背对 26 个棋盘，同时迎战当地 26 位最优秀的棋手。累计 <b>26 盘棋、832 个棋子、1664 个方格</b>，不能做笔记。</p><p class="prose">表演赛持续超过 12 个小时——他赢了 17 盘，输了 5 盘，和了 4 盘。目前的盲棋纪录由德国的马克·朗(Marc Lang)在 2011 年创造：同时对弈 46 位对手，赢 25 盘、输 2 盘、和 19 盘。</p><p class="prose">有趣的是，阿廖欣一生中的绝大多数训练并非专门针对盲棋，而只是为了提高棋艺。7 岁学棋、10 岁参赛，他习惯把研究的棋招写在纸上带到学校，在脑海中解开——在数学课上猛然站起来的那次，他解的不是作业：「是的！我把马让给对方吃，用象去进攻……最后，白棋赢了！</p><p class="prose">」监狱与伤病让他在无事可做时靠盲棋打发时间，1927 年他击败卡帕布兰卡成为世界冠军，而盲棋始终只是副产品。</p><p class="prose">观察盲棋发展的整个历史便会发现，大多数盲棋棋手都不经意之间培养了卓越的盲棋技能——他们致力于成为国际象棋大师，几乎没有为下盲棋付出额外的努力。</p><div class="aband"><q>但如果你更深入地观察就会发现，这种关联实际上是一条线索，它指向一些特定的心理过程。正是这些过程将国际象棋生手与大师区分开来，并且使大师们拥有了令人难以置信的能力来分析棋子的位置，并将注意力集中在最佳招法上。</q><cite>——第3章</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>大师比新手强在哪里：5 万个数据块</h2><span class="en">CHUNKS</span></div><p class="prose">20 世纪 70 年代初期，艾利克森的导师赫伯特·西蒙(Herbert Simon)与比尔·蔡斯摆出两个棋盘做实验：一个是别人真正下出来的棋局，一个只是混乱摆放的棋子。测试国际象棋大师、中等水平棋手和新手。</p><div class="tbwrap"><table><thead><tr><th>实验组</th><th>看真棋局 5 分钟后</th><th>看随意摆放的棋子</th></tr></thead><tbody><tr><td>国际象棋大师</td><td>记住约 2/3 棋子的位置</td><td>只能记住两三个棋子——优势<b>消失</b></td></tr><tr><td>中等水平棋手</td><td>介于两者之间</td><td>同样只有两三个</td></tr><tr><td>新手</td><td>约 4 个棋子</td><td>约 2 个棋子</td></tr></tbody></table></div><p class="prose">关键结论：大师并没有培养令人不可思议的记忆力来记住单个棋子——他们的记忆<b>取决于背景</b>，只针对正常棋局中出现的棋子位置。语言记忆里同样如此：把「前面的、以至于、肚子、花生、他的、咕咕叫了……</p><p class="prose">」打乱顺序，普通人只能记住前六个词；组成「他前面的那个女人在吃花生，花生太香了，以至于他的肚子不由得咕咕叫了起来」，大多数人就能记住大部分内容——意义辅助记忆。</p><p class="prose">这种能力的来源是<b>打谱</b>：花无数个小时研究大师下过的棋局，深入分析位置、预测招法、复盘漏算。研究表明，用来进行这种分析所花的时间，而不是与其他对手对弈时所花的时间，是对棋手水平高低的<b>唯一最重要的指示符</b>——通常要花十年之久才能达到大师级。</p><p class="prose">比尔·蔡斯和赫伯特·西蒙把这些棋子规律称为“<b>数据块</b>”。</p><div class="aband"><q>西蒙估计，到一位棋手训练成国际象棋大师的时候，他已经积累了5万个这样的“数据块”了。</q><cite>——第3章</cite></div><p class="prose">这些数据块按层级整理——低水平的一组、中等水平的一组、高水平的一组，类似公司里的组织结构：个人隶属于团队，团队隶属于部门，部门隶属于公司。越是复杂的棋局，调动的子力越多，子力之间的相互配合也越复杂。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>心理表征是什么</h2><span class="en">MENTAL REPRESENTATION</span></div><p class="prose">国际象棋大师处理棋子位置的方式，就是<b>心理表征</b>的一个例子。</p><p class="prose">它不只是国际象棋大师的专利——我们每个人都经常运用：一提到蒙娜丽莎，很多人马上便会在脑海中“看到”那幅著名油画；听到“狗”这个词，不必搜索记忆便能想起关于狗的各种细节——这是随着你花时间和狗一块玩，所有信息被整合进一个由“狗”来表征的全面概念的结果。</p><p class="prose">心理表征有两个值得注意的特点。其一，它不只是编码位置：大师看到进行中的棋局，马上便能感到哪一方占优势、棋局会朝哪个方向发展、下一步的招法是什么。其二，它既能着眼全局，又能聚焦细节——</p><div class="aband"><q>一方面，心理表征使大师着眼于全局来观察，看到“一片森林”，这是新手无法做到的；另一方面，心理表征还使大师可以在必要时把注意力集中在具体的招法上，观察“一棵树”。</q><cite>——第3章</cite></div><p class="prose">定义：心理表征是一种与我们大脑正在思考的某个物体、某个观点、某些信息或者其他任何事物相对应的心理结构，或具体或抽象。</p><div class="aband"><q>这些表征是信息预先存在的模式（比如事实、图片、规则、关系，等等），这些模式保存在长时记忆之中，可以用于有效且快速地顺应某些类型的局面。</q><cite>——第3章</cite></div><p class="prose">所有心理表征有一个共同点：尽管短时记忆存在局限，但它们使得人们可以迅速地处理大量信息——人们甚至可以把心理表征定义为一个概念式的结构，设计用于<b>回避短时记忆施加在心理加工上的一般局限</b>。</p><p class="prose">还有一个重要事实：它们都是“行业或领域特定的”——史蒂夫·法隆记数字的表征帮不了别的记忆；跳水运动员的表征放到篮球中将毫无用处。你不是单纯地训练成运动员，你训练，是为了有目的地当一名体操运动员、短跑选手或游泳选手。</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>找出规律</h3><p class="cp">足球场上的跑动网络、攀岩把手的抓握分组——杰出人物看到“一片森林”，其他人只看见一棵树。</p></div><div class="card num"><div class="idx">二</div><h3>解释与组织</h3><p class="cp">决定你能否读懂一篇足球新闻的，不是智商，而是你对这项运动有多了解——新信息被组织进已有的结构。</p></div><div class="card num"><div class="idx">三</div><h3>制订计划</h3><p class="cp">外科医生术前想象整个手术，作者写书先形成全书的心理表征——表征越好，计划越高效。</p></div><div class="card num"><div class="idx">四</div><h3>高效学习</h3><p class="cp">能敏锐察觉自己所犯错误的学生，练习进步得最快——那正是表征有效程度的直接体现。</p></div><div class="card num"><div class="idx">五</div><h3>回避短时记忆局限</h3><p class="cp">大师记住 2/3 棋子靠的不是记忆力，而是 5 万个按层级整理的数据块——意义辅助记忆。</p></div></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>心理表征铸就杰出表现</h2><span class="en">EXPERT PERFORMANCE</span></div><p class="prose">将杰出人物与其他人区别开来的因素，正是前者心理表征的<b>质量与数量</b>。职业棒球击球员能持续击中时速可能超过 144 千米的来球——他们的视力与常人无异，反应也不会比常人快，只是拥有了一系列心理表征：只要看到投球手的胳膊开始动，便非常清楚地知道这个球是快球、旋转球还是曲线球，根本不必进行任何刻意的计算。</p><p class="prose">我们其他人由于没有接受过相应训练，只能眼睁睁看着球飞进接球手的手套。</p><div class="aband"><q>将杰出人物和我们其他人区分开来的主要因素是：他们经过年复一年的练习，已经改变了大脑中的神经回路，以创建高度专业化的心理表征。</q><cite>——第3章</cite></div><p class="prose">这回答了上一章结尾的问题——刻意练习之中，大脑究竟是什么发生了变化：年复一年的练习改变神经回路，创建高度专业化的心理表征，这些表征反过来使令人难以置信的记忆、规律的识别、问题的解决成为可能。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>找出规律与预测未来</h2><span class="en">PATTERNS</span></div><p class="prose">几乎在每一个行业或领域，杰出表现的标志是能在一系列事物中找出规律——这些事物在无法创建高效心理表征的人们看来，可能是随机或令人困惑的。杰出人物能够看到“一片森林”，而其他所有人却只看见“一棵树”。足球场上，没经验的人看到 11 位球员乱作一团，懂球的人看到的却是有规律、持续变化的跑动网络。</p><p class="prose">艾利克森与同事对足球运动员做过实验：让球员观看真实比赛视频，当某个球员<b>刚刚接到球</b>时突然按下暂停键，问他下一步会做什么——自己带球、起脚射门，还是传给队友？结果：球员在足球领域越是成就卓越，预测就越准确；回忆最后一帧画面中球员位置时，更优秀的球员再次胜出。</p><p class="prose">最成功的橄榄球四分卫，通常是那些在视频室里待得最久的球员——能够比别人快 1/10 秒做出正确决策，可能就意味着赢与输的差别。</p><p class="prose">规律识别甚至可以是无意识的。2014 年一项关于室内攀岩的研究发现：有经验的攀岩者根据需要的抓握类型来辨别每个把手——需要皱褶抓握的把手自动构成一个组——就像你看到贵宾狗和大丹狗时马上知道它们都是犬科，而无须对自己说“那两种都是狗”。大脑甚至直接给双手发送准备信号。</p><div class="aband"><q>经验丰富的攀岩者使用心理表征来自动分析把手的能力，使他们能更快地攀岩，而且掉落的概率也更低。因此，更好的心理表征，带来了更加杰出的表现。</q><cite>——第3章</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>解释信息与组织信息：一桩医学谜题</h2><span class="en">DIAGNOSIS</span></div><p class="prose">心理表征的重要好处在于帮助处理信息：理解、解读、保存、组织、分析并用它来决策。读到这里的你我都是阅读的“专家”——C-A-T 三个字母放一起变成“猫”，是心理表征把字母组合模式与发音、与那种发出“喵喵”叫声的动物联系了起来。</p><p class="prose">而决定你能否读懂一篇足球新闻的关键因素，不是智商，而是<b>你对这项体育运动有多了解</b>——已有心理结构的人把新信息变成不间断的故事，迅速转移进长时记忆。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">谜题</span><h4>39 岁男警官：耳朵痛如刀割，右眼瞳孔比左眼小</h4><span class="ar">▶</span></div><div class="cb"><div class="in">《纽约时报》“像医生那样思考”专栏的真实案例：曾被诊断为感染，抗生素一度有效，两个月后复发且失效。200 多人给出答案，只有少数几位读者正确解答。</div></div></div><div class="case"><div class="ch"><span class="tag mid">弯路</span><h4>急诊与眼科都止步于局部症状</h4><span class="ar">▶</span></div><div class="cb"><div class="in">医学院学生与经验不足的医生往往把症状与熟悉的特定医疗状况关联，马上得出诊断结论——他们没能提出多种选择，忽略了瞳孔变化这个“看似无关”的事实。</div></div></div><div class="case"><div class="ch"><span class="tag mid">解谜</span><h4>专科医生的心理表征：把线索放进更大的整体</h4><span class="ar">▶</span></div><div class="cb"><div class="in">神经-眼科医生立刻意识到瞳孔小是霍纳氏综合征的症状（眼睛背后的神经受损），然后围绕“耳痛+霍纳氏综合征”提出各种可能：中风？带状疱疹？最终锁定颈总动脉壁撕裂——追问病史：举重物+剧烈头痛。MRI 验证后采取稀释血液治疗。</div></div></div></div><div class="aband"><q>成功诊断的关键并不只是拥有必要的医学知识，而是能够将这种知识组织起来，以便提出可能的诊断结果，并聚焦于最有可能的诊断结果。</q><cite>——第3章</cite></div><p class="prose">即使像保险销售这样的平常事情也是这个道理：对 150 位保险代理人的研究发现，极为成功的代理人更了解产品固然重要，但更重要的是他们有更复杂和综合的“知识结构”——事先想好了更多的“如果……那么……”句式，因此能在任何特定场合更迅速准确地想出该怎么推销。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>心理表征有助于制订计划：写这本书的两次转向</h2><span class="en">WRITING</span></div><p class="prose">攀岩前观察整堵墙、外科医生术前想象整个手术——表征越好，计划越高效。写作是最普遍的例子。六年级学生的典型回答：“我的脑海中有许多的观点，我把它们写下来，直到全部写下为止。”这种写法被称为“<b>知识陈述</b>(knowledge telling)”——把脑海中浮现的观点一一告诉读者。</p><p class="prose">而本书的两位作者走的是完全不同的路：先回答「希望读者学到什么」以形成对全书最初的大致心理表征，再做选择、逐步完善表征——为什么 A 主题放在 B 之前、C 主题又放在 B 之后，都有清晰的逻辑。</p><p class="prose">更有意思的是<b>调整</b>：当文稿代理人埃莉丝·切尼和她的同事难以清晰地理解刻意练习时，作者被迫重新思考——把原本当作“许多方面之一”的心理表征，提升为全书的核心特点。</p><p class="prose">研究人员把这种写作称为“<b>知识转换</b>(knowledge transforming)”：写作的过程改变并增加了作者在写作开始时拥有的知识。</p><div class="aband"><q>杰出人物运用心理表征来提高技能水平，监测并评估自己的技能水平，在必要时调整心理表征，使之更加有效。</q><cite>——第3章</cite></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>心理表征有助于高效学习：短号女生与萨克斯管男孩</h2><span class="en">FEEDBACK LOOP</span></div><p class="prose">心理表征不只是学习的结果，还能反过来帮助学习。澳大利亚心理学家麦克赫森和伦威克研究 7～9 岁孩子的日常练习：计算第一次与第二次练习同一作品时的错误数量，以改进程度衡量练习的有效性——结果差距惊人。</p><div class="tbwrap"><table><thead><tr><th>两位学生</th><th>首次弹奏错误率</th><th>第二次纠正比例</th></tr></thead><tbody><tr><td>演奏短号的女生（犯错最多者）</td><td>平均每分钟 11 次错误</td><td>仍达第一次的 <b>70%</b>——每 10 次错误只注意到并纠正 3 次</td></tr><tr><td>演奏萨克斯管的男孩（最优秀者）</td><td>平均每分钟仅 1.4 次错误</td><td>只占第一次的 <b>20%</b>——每 10 次错误纠正 8 次</td></tr></tbody></table></div><p class="prose">格外引人注目的是：萨克斯管男孩犯的错误本就少得多，改进空间小了许多，纠正比例却更高。所有学生都有端正的态度、有志提高，研究者总结：差别最有可能取决于他们<b>能多敏锐地察觉自己所犯的错误</b>——也就是对音乐作品的心理表征有多有效。英国一项对 3000 多名音乐学校学生的研究支持了同样的结论。</p><div class="aband"><q>你的技能越娴熟，创建的心理表征就越好；而心理表征越好，就越能有效地练习，以磨炼技能。</q><cite>——第3章</cite></div><p class="prose">国际知名钢琴家加布里埃拉·因瑞赫(Gabriela Imreh)练巴赫《意大利协奏曲》第三乐章的 30 多个小时被完整追踪：第一眼看乐谱便创建“艺术形象”（脑海中听音乐），确定指法、标记“令人印象深刻的转折点”和“昂贵的标记”，以同时做到自动演奏与临场自然。</p><p class="prose">体育运动同理——磨砺技能改善表征，改善表征有助于磨砺技能，有点类似鸡和蛋，实则不然：</p><div class="aband"><q>这类似于你一边攀爬楼梯，一边搭建新的阶梯。你攀爬的每一步阶梯，都让你来到了需要搭建新阶梯的地方。</q><cite>——第3章</cite></div><div class="check" data-k="dp-ch3"><p class="ct">对 照 清 单</p><label><input type="checkbox"><span>我理解心理表征：保存在长时记忆中、回避短时记忆局限的模式</span></label><label><input type="checkbox"><span>我的表征是行业特定的——换领域要重建，不能照搬</span></label><label><input type="checkbox"><span>我能既看「一片森林」也看「一棵树」：全局与细节切换</span></label><label><input type="checkbox"><span>我练习后能敏锐察觉自己犯了什么错（想想短号女生）</span></label><label><input type="checkbox"><span>我在一边爬楼梯一边搭新阶梯：技能与表征互相成就</span></label><div class="cf">勾中 3 条以上，你已经握住全书的枢纽概念——第 4 章给出黄金标准的完整定义。 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>源文｜</b>「心理表征是什么」一节中讲解称呼用法的段落（“……但其实并不是这样，比如先生、女士、博士等称呼”）在导出源中戛然而止。本篇如实跳过该残句，不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>源文｜</b>「制订计划」一节中关于写作者访谈的段落（“……问到他在写文章时采用了什么方法时，他是这样回答的：”）在导出源中戛然而止，回答内容缺失。本篇如实跳过，不补写。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安德斯·艾利克森、罗伯特·普尔《刻意练习：如何从新手到大师》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第3章｜心理表征</span><a href="../03-第2章-大脑的适应能力/index.html">← 大脑的适应能力</a><a href="../05-第4章-黄金标准/index.html">黄金标准 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='dp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

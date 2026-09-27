@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第9章·用刻意练习创造全新的世界 · 成为「练习人」｜刻意练习 精读</title>
+<meta name="description" content="诺贝尔奖得主卡尔·韦曼让两位从没教过课的研究生去教大一物理——一周之后，学生的成绩是传统课堂的 2.5 倍。全书最后一章：当刻意练习离开实验室和训练场，走进课堂与人生，会发生什么。">
+<style>
+:root{
+  --paper:#F5F1EA;      /* 纸底 */
+  --paper-2:#E9E2D4;    /* 纸色深一档 */
+  --card:#FBF8F1;
+  --ink:#2B211A;        /* 胡桃主墨 */
+  --ink-2:#4A3A2C;
+  --ink-deep:#150F09;   /* 深夜胡桃（hero 底） */
+  --gold:#6E4B2A;       /* 胡桃棕（强调 · 练习与精进） */
+  --gold-b:#A87D4F;
+  --gold-soft:rgba(110,75,42,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 天真的练习） */
+  --teal:#3E6B5E;       /* 松绿（对照 · 成长与正轨） */
+  --tx:#33281F;
+  --tx-2:#5A4B3C;
+  --tx-3:#8A7D6E;
+  --line:rgba(43,33,26,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(43,33,26,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A3A2C 0%,var(--ink-deep) 62%);
+  color:#F2EBE0;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(168,125,79,.42)}
+.hero::after{inset:22px;border:1px solid rgba(168,125,79,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(168,125,79,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F0E6}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(242,235,224,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(168,125,79,.34);color:rgba(242,235,224,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(110,75,42,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0E9DC;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(168,125,79,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EBDD;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(168,125,79,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EBDD;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(240,232,220,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(110,75,42,.5);box-shadow:0 4px 18px rgba(43,33,26,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(110,75,42,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(62,107,94,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(62,107,94,.1);color:var(--teal);border:1px solid rgba(62,107,94,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(110,75,42,.45);background:rgba(110,75,42,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(110,75,42,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(247,243,234,.94);
+  border-bottom:1px solid rgba(43,33,26,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(43,33,26,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A3A2C;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(110,75,42,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(43,33,26,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(43,33,26,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7D6E;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../10-第8章-怎样解释天生才华-下/index.html">← 怎样解释天生才华（下）</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">新</div>
+  <div class="stamp s4">全新世界</div>
+  <h1>用刻意练习创造全新的世界 · 成为「练习人」</h1>
+  <p class="sub">诺贝尔奖得主卡尔·韦曼让两位从没教过课的研究生去教大一物理——一周之后，学生的成绩是传统课堂的 2.5 倍。全书最后一章：当刻意练习离开实验室和训练场，走进课堂与人生，会发生什么。</p>
+  <div class="meta"><span>第9章</span>
+    <span class="k">练习人</span>
+    <span>正文 13,488 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>物理课实验</a><a href="#s3" data-t="s3"><span class="cn">叁</span>运动训练</a><a href="#s4" data-t="s4"><span class="cn">肆</span>教育革命</a><a href="#s5" data-t="s5"><span class="cn">伍</span>表征的力量</a><a href="#s6" data-t="s6"><span class="cn">陸</span>练习人</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇的主线：刻意练习走出实验室——教物理、改训练、变教育、塑人生</p><p class="thesis">末章回答「然后呢」。韦曼的物理课证明：用刻意练习原则重新设计教学，效果是<b>教学干预中见过的最大效果</b>（效应值 2.5）；运动与教育的改造才刚刚开始，潜力巨大；而对个人，刻意练习指向一个身份的转变——从「知识人」到<b>「练习人」</b>：人一生能够通过练习来掌握自己的命运。</p><div class="chain"><div class="node"><div class="n">实验</div><div><p class="tt">韦曼物理课</p><p class="dd">传统课堂平均 41 分，刻意练习课堂 74 分；效应值 2.5 个标准差</p></div></div><div class="node"><div class="n">推广</div><div><p class="tt">运动训练</p><p class="dd">几乎没有运动员得到个性化指导；心理表征无人评估——潜力巨大</p></div></div><div class="node"><div class="n">革命</div><div><p class="tt">教育</p><p class="dd">目标是技能而不是知识；确定学生应当能做什么，知识随之而来</p></div></div><div class="node"><div class="n">关键</div><div><p class="tt">心理表征</p><p class="dd">帮学生在至少一个领域建起表征——他由此理解所有领域的卓越</p></div></div><div class="node"><div class="n">未来</div><div><p class="tt">全新的世界</p><p class="dd">一半从业人员的技能达到今天最优秀 5% 的水平，意味着什么</p></div></div><div class="node"><div class="n">身份</div><div><p class="tt">练习人</p><p class="dd">智人 → 知识人 → 练习人：通过练习掌握自己的命运</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>用刻意练习原则教物理</h2><span class="en">THE PHYSICS CLASS</span></div><p class="prose">2001 年诺贝尔物理学奖得主卡尔·韦曼后来决定谋求第二职业：改进大学的科学教育。他在英属哥伦比亚大学选了传统教学的堡垒做实验——一门 <b>850 名学生</b>的大一核心物理课，由教学技能广受认可的资深教授用标准方法授课（每周三次 50 分钟幻灯片讲座 + 家庭作业 + 助教辅导）。</p><p class="prose">第 12 周讲电磁波：一个班照常由教授授课；另一个班交给德斯劳里尔斯和谢卢——<b>一位博士后和一位研究生，此前都没有上课的经历</b>。实验前两个班已反复核对：期中平均分、标准化测试、出勤率、参与度全部一样。</p><p class="prose">新课堂的目的不是灌输知识，而是<b>让学生练习像物理学家那样思考</b>：课前读三四页课本并完成在线判断题；课上分组回答“课堂问题”（在线作答、答案即时发给老师），小组探讨后由老师公布标准答案并阐述；再配“主动学习任务”——各自写下答案交给老师，老师指出错误；助教在各组间走动答疑。</p><p class="prose">整个设计就是刻意练习本身：走出舒适区但不推得太远、即时反馈、反复接触概念。</p><div class="tbwrap"><table><thead><tr><th>第 12 周结束时的测试结果</th><th>数据</th></tr></thead><tbody><tr><td>传统课堂平均得分</td><td>41%</td></tr><tr><td>刻意练习课堂平均得分</td><td><b>74%</b>（随机猜测可得 23%）</td></tr><tr><td>扣除猜测后的真实掌握</td><td>传统约 24% vs 刻意练习约 66%——正确回答的问题个数超过 <b>2.5 倍</b></td></tr><tr><td>效应值</td><td><b>2.5 个标准差</b>：其他新教学方法一般不到 1.0，此前最大纪录 2.0（靠一对一辅导实现）</td></tr><tr><td>推广</td><td>实验后几年，该大学近 100 个科学与数学班跟进，总招生人数超过 3 万人</td></tr></tbody></table></div><p class="prose">特别值得咀嚼的是授课者的身份：实现 2.5 效应值的，是两位从没教过课的年轻人——方法比资历重要。在参与度上，刻意练习课堂也几乎是传统课堂的两倍；学生随时获得即时反馈，同伴与老师帮他们澄清谬误。</p><p class="prose">有意思的对照是：传统课堂的教授观摩之后，也在自己的课上用了许多相同的课堂问题——但只用来<b>显示多少学生答对</b>，不用来引发讨论。工具相同，原则不同，结果天差地别。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>改变运动训练</h2><span class="en">SPORTS TRAINING</span></div><p class="prose">刻意练习的第一个推广方向是世界级运动员。艾利克森与全职运动员和教练交谈时总是感到震惊：<b>他们从来没有花时间辨别自己在哪些方面还可以改进，然后设计针对性的训练</b>——团体项目的大部分训练在团体中进行，并没有搞清每一位运动员应当着重练些什么。</p><p class="prose">更几乎无人去了解杰出运动员运用的<b>心理表征</b>：一流运动员中的大多数人甚至不知道，自己的想法与那些成就不那么杰出的运动员之间有何不同。</p><p class="prose">他见过许多渴望了解刻意练习的教练：2014 年春天与 NFL 费城老鹰队的所有教练交谈，发现即使他们意识到有效心理表征的重要性，也没有做太多来帮表现不突出的运动员改进表征——相反，教练们通常觉得，<b>挑选那些已经获得有效心理表征的运动员可能更容易一些</b>。</p><p class="prose">2011 年访问曼城足球俱乐部时也探讨了类似问题。与游泳教练罗德·哈维里罗克的合作则发现：几乎没有哪些较低和中等水平的游泳运动员得到过个性化的指导，或者说刻意练习。</p><p class="prose">结论：通过聚焦于个性化训练，以及对运动员的心理表征进行评估等方法来谋求进步，显然有着巨大的潜力——这块阵地还几乎无人耕种。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>改变教育与学习</h2><span class="en">EDUCATION</span></div><div class="aband"><q>教育触动每一个人，而刻意练习能够以无数种方式，革命性地改变人们的学习。</q><cite>——第9章</cite></div><p class="prose">更大的场域是教育。刻意练习与传统方法的核心差别，仍是第 5 章那个问题：<b>强调你可以做什么，而不是你知道什么</b>。刻意练习全都是关于技能的；知识本身绝不是学习的目的——但练习技能的过程会“重拾”大量知识。</p><p class="prose">若把事实、概念和法则当作孤立信息塞进长时记忆，学生解题时还得同时记住这些互不联系的信息；而一旦内化为心理表征的组成部分，它们就成为相互联系的模式，背景和意义随之而来。</p><div class="aband"><q>在准备课程计划时，确定某位学生应当能够做什么，远比确定该学生应当知道些什么有效得多。因为确定了前者，后者也就随之而来。</q><cite>——第9章</cite></div><p class="prose">韦曼团队把学生应能做的事情整理成列表，再转换成一系列特定的学习目标：将课程分解成一系列步骤，每次掌握一个，掌握了再转入下一个——关键差别在于着重<b>理解每个步骤必备的心理表征</b>，确保学生在学习下一步之前已创建适当的表征。这正是“跳跃数学”课程成功的关键要素。</p><p class="prose">最有益的学习目标，是那些帮学生创建有效心理表征的目标：物理学生在定量问题上几乎与专家同样出色，但在“为什么夏天热而冬天冷”这类定性问题上远不如专家——概念理解，就是好的心理表征的基础。</p><p class="prose">反证触目惊心：除了科学教师，<b>大多数人无法正确解释是什么引起四季更替</b>——哈佛大学开学典礼的视频里，一批刚毕业的学生自信满满地解释“夏季离太阳更近”，完全错误（北半球夏季时南半球是冬季；真正原因是地轴倾斜）。关键不是哈佛毕业生无知，而是科学教学几乎没有让学生创建清晰思考物理现象所需的表征。</p><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>传统课堂：知识陈述</h4><span class="ar">▶</span></div><div class="cb"><div class="in">「我的脑海中有许多的观点，我把它们写下来，直到全部写下为止」——把孤立的信息塞进长时记忆，用时还得同时记住它们。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>韦曼课堂：知识转换</h4><span class="ar">▶</span></div><div class="cb"><div class="in">课前预习 + 分组课堂问题 + 主动学习任务 + 即时反馈——目标是技能，让学生练习像物理学家那样思考。</div></div></div></div><div class="ladder"><div class="step"><div class="dot">1</div><h4>第一步：辨认学生应当学会做些什么</h4><p>目标应当是技能，而不是知识——先和以传统方法教课的老师们交流，确定学习结束时应具备怎样的技能水平。</p></div><div class="step"><div class="dot">2</div><h4>第二步：观察专家，描绘心理表征</h4><p>注意观察熟练掌握该项技能的专家是怎样做的，尽可能了解他们运用的心理表征，并帮助学生创建类似的表征。</p></div><div class="step"><div class="dot">3</div><h4>第三步：逐步教授，推出舒适区但不推得太远</h4><p>每个步骤的设计都把学生推出舒适区；问题不是能轻松回答的，也不至于完全不会——要花费一番工夫来思考。</p></div><div class="step"><div class="dot">4</div><h4>第四步：反复做 + 即时反馈</h4><p>一旦学生做得不对，马上便有人告诉他们，并指出纠正的办法——反馈有的来自小组同伴，有的来自老师。</p></div><div class="step"><div class="dot">5</div><h4>第五步：让表征在循环中长出来</h4><p>学生创建自己的心理表征，是通过经常地试验、失败、获得反馈、再试验——诸如此类的循环实现的。</p></div></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>帮每个学生建起心理表征</h2><span class="en">MENTAL MODELS FOR ALL</span></div><p class="prose">教育中还有一层不那么明显的应用：<b>帮助儿童和青少年至少在某一领域创建详尽的心理表征</b>。</p><p class="prose">建起表征的孩子获得的好处是能自由地探索那种技能，不需要别人的帮助——音乐学生为曲子的结构、融合与变化形成清楚的表征后，可以自己即兴表演和探索，不再需要导师指引每一条路；学术上也一样，许多成功的科学家和作家都是这样在很小的时候就开始了自己的职业生涯。</p><p class="prose">最佳方法是提供可以复制和学习的模型——正如富兰克林复写《观察家》的文章：他们需要不断尝试和失败，但那些模型也要告诉他们，成功可能是什么样子的。</p><p class="prose">更深的价值在于<b>举一反三</b>：大部分人从未在任何领域达到足够高的技能水平，因此从未像杰出人物那样感受过心理表征的力量，也从未真正理解达到这种水平需要什么——不只是花时间，还需要高质量的练习。</p><div class="aband"><q>一旦学生懂得了在某个领域中要达到那种足够高的技能水平必须要做些什么，那么他们至少从原则上理解了在其他领域追求卓越也需要做些什么。</q><cite>——第9章</cite></div><p class="prose">这正是某个领域的专家通常也欣赏其他领域专家的原因：研究型物理学家更容易理解成为技能娴熟的小提琴家需要做些什么，芭蕾舞女演员也能更好地理解成为高超的画家要付出多大牺牲。</p><p class="prose">我们的学校应当让所有学生有机会在某些领域产生这样的体验——只有那样，学生们才会懂得什么是可能的，也会懂得，要使自己的梦想成真，需要付出怎样的努力。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>创造全新的世界，成为“练习人”</h2><span class="en">PRACTICING MAN</span></div><p class="prose">全书收束于一个颠覆：最杰出的人物占据那些地位，<b>并不是因为天生具有某种才能，而是通过年复一年的练习，充分利用人类的身体与大脑的适应能力</b>。只是意识到还不够——我们需要给人们提供必要的工具，去掌控自身的潜力。</p><p class="prose">想象那个新世界：医生、老师、工程师、飞行员、程序员都像钢琴家、国际象棋大师那样磨砺技能；一半从业人员的技能水平和业务素质，和今天最优秀的 5% 一样突出——这对医疗保健、教育体系、技术领域意味着什么？</p><p class="prose">对个人，好处也可能无穷无尽：磨砺自身能力时获得巨大的满足和快乐，总遇到新的挑战和机会，永远不会感到厌倦——表演顺利时那种毫不费力的感觉，类似于“心流”(flow) 的心理状态。</p><div class="grid g2"><div class="card"><h3>直立人 / 能人</h3><p class="cp">直立行走的人、能制作和使用石器工具的“巧手人”——以身体特征与技能命名祖先。</p></div><div class="card"><h3>智人 = “知识人”</h3><p class="cp">Homo sapiens：我们认为自己获取了大量知识，与祖先有着明显区别。</p></div><div class="card"><h3>“练习人”(practicing man)</h3><p class="cp">审视我们自身的一种更好方式：人在一生之中能够通过练习来掌握自己的命运，使得人生充满各种可能。</p></div><div class="card"><h3>为什么来得正是时候</h3><p class="cp">世界正以越来越快的步伐变迁：今天刚入职场的人要预期换两三次工作；刚出生的孩子将来做什么工作，没人知道——但改变的步伐不会放慢。除了不断学习新技能，别无选择。</p></div></div><div class="aband"><q>所谓“练习人”，是反映人在一生之中能够通过练习来掌握自己的命运，使得人生充满各种可能。</q><cite>——第9章</cite></div><p class="prose">艾利克森甚至说：<b>当我们在提高自己时，我们才最像是人类</b>——和其他任何动物不同，我们可以有意识地改造自己，以我们选择的方式来提高自己。受益最大的是后代子孙：我们能给孩子们留下的最重要礼物，是对他们能力的巨大信心——相信他们能够一次又一次地重新塑造自己，而且不会沦为某种熟悉的天才论的人质。</p><div class="aband"><q>我们需要发出这样的信息：你可以掌控自己的潜力。</q><cite>——第9章</cite></div><div class="check" data-k="dp-ch9"><p class="ct">对 照 清 单</p><label><input type="checkbox"><span>我为自己设定的是技能目标，而不是知识清单</span></label><label><input type="checkbox"><span>我了解所在领域杰出人物的心理表征，并有意模仿构建</span></label><label><input type="checkbox"><span>我给孩子的礼物是「能力的信心」，而不是天赋判定</span></label><label><input type="checkbox"><span>我接受「不断学习新技能」是这个时代的基本生存方式</span></label><label><input type="checkbox"><span>我愿意至少在一个领域练到足够高，去体验表征的力量</span></label><label><input type="checkbox"><span>我相信并实践：你可以掌控自己的潜力</span></label><div class="cf">勾中 5 条以上——你已经是一名“练习人”。全书精读到此结束，剩下的是把它过成日常。 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">说明</span><span class="nd"><b>源文｜</b>第 9 章正文夹有多段英文尾注段（微信读书导出残留），精读正文未收录；中文内容与源文逐段逐字符一致，未发现截断。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜安德斯·艾利克森、罗伯特·普尔《刻意练习：如何从新手到大师》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第9章｜创造全新的世界</span><a href="../10-第8章-怎样解释天生才华-下/index.html">← 怎样解释天生才华（下）</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='dp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

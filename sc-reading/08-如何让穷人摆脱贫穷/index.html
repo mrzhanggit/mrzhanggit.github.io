@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分·第8章 · 如何让穷人摆脱贫穷｜稀缺 精读</title>
+<meta name="description" content="失误在所难免，灾难却并非如此。穷人的失误不是缺少积极性，而是缺少带宽——所以要包容不当行为、让警报更早、用节省带宽的方法做教育。">
+<style>
+:root{
+  --paper:#F4F0E8;      /* 紧缩纸底 */
+  --paper-2:#E7E0D2;    /* 纸色深一档 */
+  --card:#FBF8F2;
+  --ink:#26201C;        /* 紧缩墨（主色） */
+  --ink-2:#3E352E;
+  --ink-deep:#100B08;   /* 紧缩深夜（hero 底） */
+  --gold:#7A3B2E;       /* 紧缩红棕（强调 · 管窥与带宽） */
+  --gold-b:#B0765F;
+  --gold-soft:rgba(122,59,46,.16);
+  --cinnabar:#9A5B26;   /* 警示琥珀（稀缺借用的代价） */
+  --teal:#4A5E70;       /* 带宽蓝（对照 · 富足与余闲） */
+  --tx:#2B241E;
+  --tx-2:#4A4038;
+  --tx-3:#837A70;
+  --line:rgba(38,32,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E352E 0%,var(--ink-deep) 62%);
+  color:#F0EBE4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(176,118,95,.42)}
+.hero::after{inset:22px;border:1px solid rgba(176,118,95,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(176,118,95,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,91,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(176,118,95,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,91,38,.6);background:rgba(154,91,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(122,59,46,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEAE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(176,118,95,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(176,118,95,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(122,59,46,.5);box-shadow:0 4px 18px rgba(38,32,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(122,59,46,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(154,91,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,91,38,.1);color:var(--cinnabar);border:1px solid rgba(154,91,38,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(122,59,46,.45);background:rgba(122,59,46,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,91,38,.55);border-radius:8px;
+  background:rgba(154,91,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,72,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,91,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(122,59,46,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,242,234,.94);
+  border-bottom:1px solid rgba(38,32,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E352E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(122,59,46,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8177;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-穷人为什么穷/index.html">← 第7章·穷人为什么穷</a><a href="../09-如何解决组织中的时间稀缺/index.html">第9章·组织时间稀缺 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">扶</div>
+  <div class="stamp ">扶贫</div>
+  <h1>第8章 · 如何让穷人摆脱贫穷</h1>
+  <p class="sub">失误在所难免，灾难却并非如此。穷人的失误不是缺少积极性，而是缺少带宽——所以要包容不当行为、让警报更早、用节省带宽的方法做教育。</p>
+  <div class="meta"><span>第三部分</span>
+    <span class="k">带宽构建</span>
+    <span>正文 12,322 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>驾驶舱隐喻</a><a href="#s3" data-t="s3"><span class="cn">叁</span>包容失误</a><a href="#s4" data-t="s4"><span class="cn">肆</span>警报更早</a><a href="#s5" data-t="s5"><span class="cn">伍</span>带宽教育</a><a href="#s6" data-t="s6"><span class="cn">陸</span>构建带宽</a><a href="#s7" data-t="s7"><span class="cn">柒</span>长期项目</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章论证链：别再训练飞行员，去改造驾驶舱</p><p class="thesis">二战时 B-17 轰炸机频发起轮事故——问题不在飞行员粗心，而在<b>机轮控制杆和侧翼控制杆紧挨在一起</b>。同理，穷人的失误不源于缺少积极性，而源于缺少带宽。于是对策有了三条：<b>包容失误</b>、<b>让警报更早</b>、<b>节省带宽的教育</b>——而带宽本身，是可以被构建起来的。</p><div class="chain"><div class="node"><div class="n">隐喻</div><div><p class="tt">起轮事故</p><p class="dd">查帕尼斯中尉在着陆变速杆末端装了个小橡皮圈——用触摸分辨控制杆</p></div></div><div class="node"><div class="n">原则一</div><div><p class="tt">包容失误</p><p class="dd">模块化课程交错开课：错过一堂课，转去参加“迟”一两周的并行课程</p></div></div><div class="node"><div class="n">原则二</div><div><p class="tt">警报更早</p><p class="dd">一生 5 年的救济上限是最后的截止日期——定期提醒、频繁节点才进得了管子</p></div></div><div class="node"><div class="n">原则三</div><div><p class="tt">节省带宽</p><p class="dd">经验法则课程 vs 标准会计课：淡季收入上涨 25%</p></div></div><div class="node"><div class="n">升级</div><div><p class="tt">构建带宽</p><p class="dd">日托服务还不带宽；10 美元极短期贷款需求巨大；100 美元换心灵平静</p></div></div><div class="node"><div class="n">收束</div><div><p class="tt">长期项目</p><p class="dd">问题可能不出在扶助内容，而在提供扶助的方法</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>起轮事故：改造驾驶舱</h2><span class="en">WHEELS-UP CRASH</span></div><p class="prose">二战期间，美国军方为“起轮事故”(Wheels-up Crash)头疼不已：飞行员降落后收起侧翼时，误将轮子收起——飞机在陆地上滑行时收起轮子，可一点儿也不好玩。军方请来心理学专家阿方斯·查帕尼斯中尉：飞行员太疲劳？太早放松警惕？培训出了岔子？</p><p class="prose">很快一条线索浮出水面：<b>问题只出在驾驶 B-17 和 B-25 轰炸机的飞行员身上</b>，运输机飞行员不会犯这种错误。</p><p class="prose">查帕尼斯决定不再从飞行员的大脑中找原因，而是去看驾驶舱：轰炸机的机轮控制杆和侧翼控制杆紧挨在一起，看上去根本就是一模一样。此前的军方关注点一直在培训和警觉上，着重培养不会出错的“优秀飞行员”；但无论你如何培训、如何甄选，飞行员还是会犯错——尤其是让他们置身于容易使之犯糊涂的驾驶舱内。</p><p class="prose"><b>失误在所难免，灾难却并非如此</b>：查帕尼斯在着陆变速杆末端安装了一个小橡皮圈，飞行员通过触摸就能分辨控制杆；测高仪旁的低海拔警示灯能提醒飞行员：低空是有意为之，而非无心之失。如今飞机安全性的提升，不仅因为机翼和发动机更优质，也因为我们对人为失误有了更好的掌控。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>包容穷人的不当行为</h2><span class="en">FORGIVE ERRORS</span></div><div class="aband"><q>这些失误的不可避免，不是因为他们缺少积极性，而是因为缺少带宽。因此，我们要包容穷人的不当行为。我们要设计有效的预警机制，让穷人提早为未来做准备。所以，为穷人提供的培训要简单实用——节省带宽的教育方法才是好方法。</q><cite>——第8章·章首导语</cite></div><p class="prose">许多分析人士同样对穷人的失当行为困惑不解：培训项目总有人旷课退课；小额信贷客户宁愿拿贷款去“救火”也不投资高回报产品；疫苗接种收效甚微。作者在一个福利就业项目中做顾问时看到：反复告知要着正装，人们还是穿着不合时宜的衣服露面；简历错别字一大堆；面试两手空空，甚至连安排好的面试都不参加。</p><p class="prose">项目设计者假定问题出在服务对象身上——缺乏理解能力和动力——却不去“驾驶舱”内找原因。</p><p class="prose">以培训为例：学员满脑子都是烦心事儿和心力交瘁时，错过一堂课会怎样？下一节课的难度变大——线性设计的课程把前一堂课作为基础，不容失误，单凭一己之力无法跟上进程，于是中途退课成了“最佳选择”。</p><p class="prose">书内「稀缺实验室」还原了这条滑落之路：报名计算机课程的人被房租、账单、女儿的生日派对击垮，落下一堂课，再去时能听懂的更少，最终退课等财务问题解决——“这个课程不仅无法包容你的失误，反而将你表现出的这些可以预见的错误进一步放大了”。</p><p class="prose">解决办法是把“驾驶舱”重新设计：将课程转换成模块化单元、不同时间段交错开课——错过一堂课，转去参加“迟”一两周的并行课程；错过整个模块，等下一轮重学。结业时间推迟，但学员能真正学到知识。</p><p class="prose">要强调：<b>对失误的包容并不能取代个人责任</b>，它确保穷人在勇于承担责任时拥有提升的空间，使机会与努力和环境保持对等——带宽负担不可避免地让人犯小过失，而包容能确保这些小过失不让努力付之东流。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>让“警报”来得更早些</h2><span class="en">EARLY WARNING</span></div><p class="prose">美国为福利救济设定了上限：如今<b>每人一生中总共只能享受 5 年的福利救济</b>。理论上，有了限制就产生了稀缺，能让人更好地管理资源。但缺陷在于：限制期限较长，就像很久之后的截止日期，只有临近时才产生紧迫感——对抱着管窥心态的人来说，几年后的期限落在“管子”视野之外。</p><p class="prose">等人们想到，为时已晚，慌了手脚——从某种角度看，这是所有方案中最不理想的一种：<b>既是一种惩罚，也没有起到任何激励作用</b>。</p><p class="prose">利用管窥心态反而能让限制更有效：其一，定期发送剩余月份的提醒，把遥远的问题主动推入管子；其二，改变限制的结构——频繁的节点式截止日期比单一的远期截止日期影响更大，可以制造范围更小、更频繁的限制（给定的几年期限内只有固定数量的月份，而非一生总年份），并在超越时<b>降低金额而非彻底停发</b>。</p><p class="prose">激励机制同理：落在“管子”视野之外的激励不太可能发挥作用。在印度拉贾斯坦邦农村地区的研究显示，<b>只要以一千克扁豆作为奖励，就能很有效地吸引人们前来接种疫苗</b>——对产生管窥心态的人来说，一两个月后支付的奖励远不如现在就支付；几年后才能领取的储蓄补贴，等于把储蓄划归“重要而非紧急”之列，被无限期地忽略。</p><p class="prose">为了让激励机制发生作用，人们必须在管子中看到它。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>节省带宽的教育方法才是好方法</h2><span class="en">TEACH WITH LESS BANDWIDTH</span></div><p class="prose">有条件式现金补贴(conditional cash)越来越流行：救济金额取决于受助人表现的“良好品行”。</p><p class="prose">研究显示它能起作用——但许多本可以加入的人没有积极回应，因为奖励在未来、品行要求在当下，而<b>每一个额外的动机，都会成为带宽的负担</b>：带孩子去体检有奖金，但预约、记住时间、腾出时间、强迫孩子，每一步都需要带宽。我们设计贫困救助计划时想到了穷人缺钱，却没有想到<b>穷人除了缺钱以外，还缺带宽</b>。</p><p class="prose">教育也一样：我们对待教育的方式，就好像穷人受教育不会为此付出代价一样——带宽需要付出高额成本：要么受教育者不专心、努力白费，要么专心受教育却承受带宽负担。</p><p class="prose">经济学家安托瓦内特·施格尔与多米尼加小额信贷机构 ADOPEM 的合作给出了范本。客户们账簿错误百出，标准解法是财务知识培训——但施格尔（麻省理工学院金融学教授）看到那套世界通用的教程后的第一反应是：我的天呐！太乏味了！完成需要几周，内容偏重传统会计技能：记账、存货管理、应收账应付账、利润和投资。</p><p class="prose">她转而研究当地最优秀的创业人士的理财方法——他们没学过复杂会计，与失败者之间的区别只是一件事情：<b>遵从经验法则</b>。</p><p class="prose">比如把现金收入放进收银机、给自己发固定薪金，把家里的钱和生意上的钱分开（有些女老板把两沓钞票分别放在胸罩的左右罩杯里）——称不上复式记账法，但十分简单有效，既节约带宽又保留记账的绝大部分好处。施格尔以此设计了一套时长很短、容易理解的课程：学员出勤率大幅上升，结束时非常激动，许多人愿意自掏腰包上课。</p><p class="prose">课后的跟进调查带来实际利益：</p><div class="aband"><q>平均来看，上过经验法则课程的小微企业主，他们的淡季收入上涨了25%；而传统的财务知识培训，则对实际收入没有任何影响。</q><cite>——第8章</cite></div><p class="prose">结论一句话：<b>节约带宽能带来高额回报。</b></p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>带宽可以构建</h2><span class="en">BUILDING BANDWIDTH</span></div><p class="prose">想象一位同时打两份工的单亲母亲：日托服务关门太早，只好请母亲帮忙，为两个孩子分别安排放学路线，工作时间还随主管排班变动。</p><p class="prose">为她介绍一家高额补贴的日托机构，得到的不只是时间和金钱——更重要的是，<b>我们会将这部分带宽统统还给你</b>：认知负担减轻后，执行控制力和自我控制力改善，养育子女的方法和态度提升，专注力、工作质量与选择关注的能力都随之提高。</p><p class="prose">在育儿方面提供协助的意义远远超越了帮助本身，因为这种帮助能<b>构建起带宽这种最深层次的人力资本</b>。专家只评估“母亲们是否工作更长时间”，未免太过短浅。</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>金融支持要“急性”</h3><p class="cp">穷人最需要的是为解决紧急需要而快速借还的小额现金（为孩子买校服这类消费），而实际提供的却是谨慎缓慢的中高额贷款——所以信誉很高的小额信贷机构敞开大门，他们还是更愿意找私营放贷人。作者与印度 KGFS 测试的极短期小额贷款产品显示，人们对平均不到 10 美元的贷款有着大量需求。</p></div><div class="card num"><div class="idx">二</div><h3>稳定收入与预警</h3><p class="cp">对贫困农民来说，牛生病引起的收入减少就足以将他拖入稀缺陷阱；在美国，工作时长不稳定（这周 50 小时、下周 30 小时）可能比失业更可怕。可预见的突发事件（每年都要买肥料）也可以提前提供缓冲——甚至利用管窥心态，把救火贷款的高额费用顺手存起来。</p></div></div><p class="prose">更理想的方法是预防救火：比如开发一款金融产品，把农民收获时的一次性收入储蓄起来平摊到每个月，转换成月收入。</p><p class="prose">针对带宽的研究显示，就连“在正确的时候给予现金支持”这样简单易行的办法都会带来相当可观的利益——如果方法正确、时机得当，<b>100 美元就能为之换来心灵上的平静</b>，而心灵上的平静能让人避免犯下代价高昂的错误。马拉维的一个现金补助项目显示，现金支持能为低收入成员<b>减少 40% 的心理负担</b>。</p><p class="prose">这需要我们全新定义扶贫政策：不再把教育、医疗、财务和子女养育分开来看——所有这些因素都是带宽容量的一部分；日托提供的不只是日托，适时金融产品也远非未雨绸缪，它们都能释放带宽、提高智商、强化自我控制力，甚至改善睡眠质量。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>扶贫是个长期项目</h2><span class="en">A LONG HAUL</span></div><p class="prose">与贫困问题的斗争历来艰苦：社会安全保障让人一次次回归救济；培训项目效果一般；改善居住环境（数千户家庭迁入较高收入社区的美国实验）能减压、提高生活质量，却改变不了贫困的内在规律；小额信贷影响积极但难以单独变革逻辑；教育风生水起，回报有限。作者无意批评——贫困是非常棘手的难题，就算有限的成效也值得社会投入。</p><p class="prose">关键在于：也许问题并不出在扶助的内容上，<b>而在于提供扶助的方法</b>——就像二战时的轰炸机驾驶舱，更优质的设计需要把稀缺心理中的专注力和带宽问题等根本性见解囊括进来。</p><p class="prose">（源文校勘：本篇源文在「扶贫是个长期项目」小节末尾将本章开头的“起轮事故”四段全文重复了一遍，本站已在 s2 收录一次，此处不再重复。）</p><div class="tbwrap"><table><thead><tr><th>包容失误的设计</th><th>源文做法</th></tr></thead><tbody><tr><td>起轮事故</td><td>机轮控制杆与侧翼控制杆紧挨在一起、看上去一模一样——解法是改造驾驶舱，而非培训更优秀的飞行员</td></tr><tr><td>培训课程</td><td>线性设计不容失误，中途退课成“最佳选择”→改为模块化单元、不同时间段交错开课，错过可转“迟”一两周的并行课程</td></tr><tr><td>福利救济</td><td>“每人一生中总共只能享受 5 年的福利救济”远期截止日期对管窥心态者无效→定期提醒剩余月份、制造更频繁的节点式限制</td></tr><tr><td>疫苗接种</td><td>落在“管子”视野之外的激励不起作用→以一千克扁豆作为当下奖励，即可有效吸引人们前来接种</td></tr><tr><td>金融教育</td><td>世界通用的财务教程乏味难懂→施格尔设计极简规则（现金放收银机、给自己发固定薪金），节约带宽又保留记账的大部分好处</td></tr></tbody></table></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">故事</span><h4>起轮事故</h4><span class="ar">▶</span></div><div class="cb"><div class="in">二战期间美国军方的“起轮事故”(Wheels-up Crash)：飞行员降落后收起侧翼时误将轮子收起。查帕尼斯中尉不再从飞行员的大脑中找原因，而是去看驾驶舱——机轮控制杆和侧翼控制杆紧挨在一起，看上去一模一样。改造驾驶舱后事故消失：与其培训不出错的“优秀飞行员”，不如设计能包容失误的系统。</div></div></div><div class="case"><div class="ch"><span class="tag mid">方案</span><h4>模块化课程</h4><span class="ar">▶</span></div><div class="cb"><div class="in">福利就业项目的学员满脑子烦心事儿时，错过一堂课，线性设计的课程就再也跟不上，中途退课成了“最佳选择”。解法是把课程转换成模块化单元、不同时间段交错开课——错过一堂课，转去参加“迟”一两周的并行课程；结业时间推迟，但学员能真正学到知识。</div></div></div><div class="case"><div class="ch"><span class="tag mid">方案</span><h4>一千克扁豆</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在印度拉贾斯坦邦农村地区的研究显示，只要以一千克扁豆作为奖励，就能很有效地吸引人们前来接种疫苗——对产生管窥心态的人来说，当下的小奖励远胜未来的大奖励。</div></div></div></div><div class="check" data-k="p8-selftest"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能用“驾驶舱”比喻解释包容失误的设计思路</span></label><label><input type="checkbox"><span>我能说出两种让“警报”更早的方法：定期提醒与节点式截止日期</span></label><label><input type="checkbox"><span>我知道带宽是可以构建的资源</span></label><label><input type="checkbox"><span>我能举例说明什么是节省带宽的教育</span></label><div class="cf">已确认 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文重复</span><span class="nd"><b>1｜</b>第8章「扶贫是个长期项目」小节末尾 4 段（起轮事故与查帕尼斯中尉的故事）与本篇章导语段逐字重复，为导出源自身现象，照录不计入新内容。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜塞德希尔·穆来纳森 / 埃尔德·沙菲尔《稀缺：我们是如何陷入贫穷与忙碌的》（浙江人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜第8章·让穷人摆脱贫穷</span><a href="../07-穷人为什么穷/index.html">← 第7章·穷人为什么穷</a><a href="../09-如何解决组织中的时间稀缺/index.html">第9章·组织时间稀缺 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='sc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

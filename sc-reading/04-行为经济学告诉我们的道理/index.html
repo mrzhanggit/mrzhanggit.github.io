@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·第4章 · 行为经济学告诉我们的道理｜稀缺 精读</title>
+<meta name="description" content="1 美元的价值，在穷人眼中和富人眼中是不一样的。知觉是相对的，价值判断依赖环境——而穷人拥有内化的衡量尺度，反而更接近“经济人”。">
+<style>
+:root{
+  --paper:#F4F0E8;      /* 紧缩纸底 */
+  --paper-2:#E7E0D2;    /* 纸色深一档 */
+  --card:#FBF8F2;
+  --ink:#26201C;        /* 紧缩墨（主色） */
+  --ink-2:#3E352E;
+  --ink-deep:#100B08;   /* 紧缩深夜（hero 底） */
+  --gold:#7A3B2E;       /* 紧缩红棕（强调 · 管窥与带宽） */
+  --gold-b:#B0765F;
+  --gold-soft:rgba(122,59,46,.16);
+  --cinnabar:#9A5B26;   /* 警示琥珀（稀缺借用的代价） */
+  --teal:#4A5E70;       /* 带宽蓝（对照 · 富足与余闲） */
+  --tx:#2B241E;
+  --tx-2:#4A4038;
+  --tx-3:#837A70;
+  --line:rgba(38,32,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E352E 0%,var(--ink-deep) 62%);
+  color:#F0EBE4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(176,118,95,.42)}
+.hero::after{inset:22px;border:1px solid rgba(176,118,95,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(176,118,95,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,91,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(176,118,95,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,91,38,.6);background:rgba(154,91,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(122,59,46,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEAE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(176,118,95,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(176,118,95,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(122,59,46,.5);box-shadow:0 4px 18px rgba(38,32,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(122,59,46,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(154,91,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,91,38,.1);color:var(--cinnabar);border:1px solid rgba(154,91,38,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(122,59,46,.45);background:rgba(122,59,46,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,91,38,.55);border-radius:8px;
+  background:rgba(154,91,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,72,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,91,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(122,59,46,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,242,234,.94);
+  border-bottom:1px solid rgba(38,32,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E352E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(122,59,46,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8177;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../03-装箱余闲和权衡式思维/index.html">← 第3章·装箱与余闲</a><a href="../05-借用与短视/index.html">第5章·借用与短视 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">价</div>
+  <div class="stamp ">识解</div>
+  <h1>第4章 · 行为经济学告诉我们的道理</h1>
+  <p class="sub">1 美元的价值，在穷人眼中和富人眼中是不一样的。知觉是相对的，价值判断依赖环境——而穷人拥有内化的衡量尺度，反而更接近“经济人”。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">机会成本</span>
+    <span>正文 12,502 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>金奈故事</a><a href="#s3" data-t="s3"><span class="cn">叁</span>50美元实验</a><a href="#s4" data-t="s4"><span class="cn">肆</span>知觉相对性</a><a href="#s5" data-t="s5"><span class="cn">伍</span>1美元价值</a><a href="#s6" data-t="s6"><span class="cn">陸</span>识解</a><a href="#s7" data-t="s7"><span class="cn">柒</span>机会成本</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章论证链：稀缺是行为经济学经典偏见的解药</p><p class="thesis">行为经济学的经典结论说：<b>人们对货币价值的衡量是相对的</b>——买 100 美元的 DVD 愿为省 35 美元绕路，买 1000 美元的笔记本就不愿。而稀缺把这个结论冲淡甚至推翻：穷人靠<b>内化的衡量尺度</b>判断价值，不受环境左右。因为专注，所以专业；因为专业，所以有了管窥之见。</p><div class="chain"><div class="node"><div class="n">故事</div><div><p class="tt">金奈三轮车</p><p class="dd">100 卢比砍到 60 卢比不肯上车，宁在 37 摄氏度烈日下多等 10 分钟</p></div></div><div class="node"><div class="n">偏见</div><div><p class="tt">50 美元的缩水</p><p class="dd">普林斯顿旅客：价格从 100 升到 1000 美元，愿为省 50 美元赶路者从 54% 降到 17%</p></div></div><div class="node"><div class="n">倒置</div><div><p class="tt">慈善食堂</p><p class="dd">没钱的人对此无动于衷：76%→73%→87%——稀缺对规律发挥倒置作用</p></div></div><div class="node"><div class="n">原理</div><div><p class="tt">知觉相对性</p><p class="dd">韦伯：正好能感觉到的变化相对背景恒定约 1/30——感知价值同理</p></div></div><div class="node"><div class="n">专家</div><div><p class="tt">穷人是估价专家</p><p class="dd">出租车起步价，穷人答对人数是富人的 3 倍——而富人打车频率高得多</p></div></div><div class="node"><div class="n">收束</div><div><p class="tt">机会成本</p><p class="dd">季票问题 78% 的职业经济学家答错——身陷贫穷让人更懂经济学</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>金奈的三轮车：1 美元的两种眼光</h2><span class="en">CHENNAI AUTO-RICKSHAW</span></div><div class="aband"><q>1美元的价值，在穷人眼中和富人眼中是不一样的。环境条件会影响富人对1美元的价值判断。当穷人在评估1美元的价值时，会用上大脑中内化的衡量标准，而不会依赖环境进行判断。穷人是金钱价值方面的专家，他们更接近于“经济人”。</q><cite>——第4章·章首导语</cite></div><p class="prose">故事发生在印度金奈城郊：湿热、灰尘、37 摄氏度高温（印度南部夏季的高温需要进行温度更正）。等了 10 分钟才来的电动三轮车开价 100 卢比（正常约 40 卢比，即 80 美分），砍到 60 卢比后一口咬定。</p><p class="prose">博士生亚历克斯拒绝上车——“还会有三轮车路过的，咱们再等会儿”——于是两人在烈日下又干巴巴地等了 10 分钟，最终以 40 卢比成交。塞德希尔暗自发誓今后一定要带个靠谱点的博士生出差。</p><p class="prose">亚历克斯的理由是纯粹的金钱角度：“让我多给钱没问题，但不能多出50%！”他宁愿在烈日和尘土中多等 10 分钟，也不愿意多支付 50% 的费用。但换个场景：如果塞德希尔提出，让亚历克斯穿着衣服蒸 10 分钟桑拿、听震耳欲聋的喇叭声、时不时挨一把土，报酬 50 美分——他多半会连导师都换掉。而这两个权衡并无差异。</p><p class="prose">为几十卢比计较的司机问：这点小钱对外国人来说连根毛都不是！司机说的没错，但又不对——人们就是会在某些时候表现得好像小钱很重要一样。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>50 美元，在穷人和富人眼中价值不一</h2><span class="en">$50 EXPERIMENT</span></div><p class="prose">经典实验先行：为省 35 美元绕路 30 分钟，买 100 美元的 DVD 播放机时大多数人愿意绕路，买 1000 美元的笔记本电脑时就不愿意了——时间与金钱的兑换率在经济学模型中应是恒定的，在这里却浮动极大：通过计算隐含价值，一小时的价值从 <b>5.64 美元</b>（3 美元一支的钢笔）到 <b>1364 美元</b>（3 万美元一辆的汽车）不等。</p><p class="prose">我们所谓的节俭存在一个违背常理的推论——在小物件上连几毛几分钱都会计较，在大物件上却挥金如土。</p><div class="tbwrap"><table><thead><tr><th>省 50 美元赶赴另一家店</th><th>电器 100 美元</th><th>电器 500 美元</th><th>电器 1000 美元</th></tr></thead><tbody><tr><td>普林斯顿火车站旅客（有钱）</td><td>54%</td><td>39%</td><td>17%</td></tr><tr><td>特伦顿慈善食堂食客（没钱）</td><td>76%</td><td>73%</td><td>87%</td></tr></tbody></table></div><p class="prose">对绝大多数人来说，从 100 美元里省 50 美元相当于打了 5 折，从 1000 美元里省 50 美元只有九五折。但慈善食堂的食客们——来到这里的人年龄、性别、种族各不相同，共同点是<b>没钱</b>——却对这种变化无动于衷，价格越贵反而越愿意赶路。那么，稀缺为何会对这一规律发挥倒置作用？</p><p class="prose">答案要从知觉的相对性讲起。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>知觉的相对性：从韦伯到专家</h2><span class="en">RELATIVE PERCEPTION</span></div><p class="prose">实验心理学奠基人恩斯特·韦伯发现：“正好能感觉到的变化”相对于背景重量的比例是恒定的——约 <b>1/30</b>：举着 1.5 千克的重物，需要至少增加约 0.05 千克才能察觉；举着 15 千克，则要增加约 0.5 千克。认知具有高度的相对性——人眼并非曝光表。</p><p class="prose">而经验与专业技能能让我们摆脱这一限制：接受过 11～23 年正规音乐培训的音乐家，弹奏的音程越长，出错的比例越小，判断力更接近<b>绝对标准</b>；经验丰富的酒保倒酒时，判断力不会受酒瓶高度的影响。</p><p class="prose"><b>稀缺也会迫使我们成为专家——装箱专家。</b>在没有余闲时，我们深谙行李箱中每一寸空间的价值：穷人珍视每一元钱的价值，日理万机的人珍视每一个小时的价值，节食者珍视每一卡路里的价值。</p><p class="prose">超市门口的调查是活证据：富裕的采购者答不上刚买的高露洁牙膏多少钱，低收入购物者却对一切消费心中有数；问波士顿旅客出租车计价表起步价，富人中只有 <b>12%</b> 给出正确答案，不那么富有的人答对人数是富人的 <b>3 倍</b>——而事实上富人打车的频率要多得多。</p><div class="grid g3"><div class="card"><h3>看得见与看不见的税</h3><p class="cp">消费税显示在价签上，销售税只在收银台出现。明处的消费税变化，穷人与富人的吸烟量都会下降；藏于暗处的销售税变化，只有低收入消费者会回应——他们同等看待两种税。</p></div><div class="card"><h3>大件商品附加费</h3><p class="cp">穷顾客假定大包装更省钱，实际 25% 的品牌商品存在某种形式的大件商品附加费——《消费者报告》称之为“消费品的卑鄙伎俩”。而低收入社区的超市较少玩这种花招：当消费者在意每一元钱时，商家很难榨出油水。</p></div><div class="card"><h3>内化的尺度</h3><p class="cp">需求的压力始终存在于穷人心中，挥之不去，造就了内化尺度。如同音乐家准确掌握节奏，他们不像普通人那样容易受背景环境影响——慈善食堂的食客不会像亚历克斯那样被环境偏见带偏。</p></div></div><p class="prose">研究中，穷人表现得更加“理性”，更贴近理性的经济学理想，更接近“经济人”。稀缺的概念已经冲淡甚至推翻了行为经济学“货币价值衡量是相对的”这一经典结论——事实上，稀缺也改变了许多其他结论。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>1 美元的真正价值：比较基准的陷阱</h2><span class="en">TRUE WORTH</span></div><p class="prose">念本科时，塞德希尔纠结要不要买 70 美元的随身听。他构建了一套自己的衡量标准：以常吃的 Taco Bell 豆沙馅玉米煎饼为标尺——他思考的不是存下 70 美元现金还是买随身听，而是“他是想要随身听还是买78个豆沙馅玉米煎饼的问题”。为什么需要构建基准？</p><p class="prose">因为<b>余闲的存在</b>：资源充裕意味着不需要做权衡，我们感觉不到自己需要放弃任何东西——这种感觉很愉快，在做决策时却是障碍。</p><p class="prose">但玉米煎饼基准很快露馅：他已经吃够了煎饼，不买随身听也不会额外多吃 78 个。专家建议的“时间价格”同样误导——80 美元的冰激凌机相当于多工作 4 个小时，可你不买东西也不会少工作几个小时。收益递减原则也在作祟：花 40 美元吃一顿大餐的愉悦，无法与“最后花出去的 40 美元”相提并论。</p><p class="prose">在稀缺状态下进行权衡，就像是鱼和熊掌两个都想要一样——由于现实中我们并不会进行太多真正的权衡，<b>权衡不过是被虚构出来的</b>。</p><p class="prose">这种理解上的模糊令人更容易落入操控：度假时给酒店房间升级，对比房租显得微不足道，对比甜点就是一大笔钱；资助非洲儿童“每天只需几分钱”。还要区分<b>节俭与稀缺</b>：节俭之人对金钱怀有保证富余的责任感，思考的是价格是否“优惠”；穷人则要随时权衡，思考的是要放弃什么。</p><p class="prose">节俭的亚历克斯根据环境确定三轮车“合理”价格，廉价且前后不统一地出售自己的时间——他很节俭，但并不贫穷。行为学专家朋友对 3 美元的白兰地松露巧克力纠结半天——6 块士力架？一杯红酒？省下 49 美元卫星电视费？——最后不得不承认：“我不知道这块巧克力买得值不值。”充裕的资源使得我们不那么容易了解金钱的价值。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>识解：大脑如何利用环境线索</h2><span class="en">CONSTRUAL</span></div><div class="aband"><q>识解(Construal)　在认知过程中，大脑会利用大量的环境线索去理解视觉数据。</q><cite>——第4章·黑体定义</cite></div><p class="prose">泰德·阿德尔森的方块阴影错觉图是最佳演示：方块 A 看起来比方块 B 深得多，实际上两者灰度完全相同——拿一张纸盖住图、只留两个洞，就能看到颜色一致。视觉系统会利用背景线索为物体赋予意义：方块 B 位于圆柱体的阴影中，眼睛便针对阴影进行修正，让它看起来颜色更浅。<b>感知颜色与感知距离一样，取决于背景环境。</p><p class="prose">感知价值也是同理。</b></p><p class="prose">理查德·塞勒的沙滩啤酒实验是价值的错觉图：朋友可以去买啤酒——从简陋的小超市，或从高档的度假酒店。富有的实验对象在高档酒店场景中愿意为同一瓶啤酒支付更高价格——一瓶啤酒就是一瓶啤酒，无论来自哪里都同样解渴。</p><p class="prose">穷人的支付价格高低与富人接近，关键在于<b>价格更统一</b>：他们不会为环境所动，依赖自身对金钱价值的内化衡量尺度做判断。</p><p class="prose">由此掌握了“推翻”传统行为经济学结论的秘诀——心理账户也在此列：汽油涨价时人们表现得好像在“汽油”上变穷了，尽管完全可以从饼干或高尔夫球里省钱；2000 美元退税与 2000 美元股票收益被划入“意外之财”和“退休账户”，消费倾向因此不同。相反，穷人则不太会表现出这种行为。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>机会成本：连经济学家都答错的题</h2><span class="en">OPPORTUNITY COST</span></div><p class="prose">季票问题：8 场比赛的季票 160 美元（单场 30 美元），赛季只剩最后一场，门票已被炒到 75 美元。观看这场比赛的成本是多少——75 美元（门票现价），还是 20 美元（购票时所付）？经济学家的答案是 75 美元：不观看就能卖掉门票换得 75 美元，这就是<b>机会成本</b>。</p><p class="prose">富人答不对这道题，许多人甚至选择 0 美元——拥有余闲时，就算卖掉门票，你也不会用换来的钱去买什么尚未购买的东西。穷人则更倾向于认为成本是 75 美元——他们的答案更接近经济学的理想情况。</p><div class="aband"><q>我实在不敢相信这是真的，78%的经济学家都答错了！这并不是什么难题，也没有玩花招。机会成本是经济学的核心思想，回答问题的经济学家们是全世界最优秀的，其中许多人都在大学里教授经济学入门课程，但他们却没有给出正确答案。</q><cite>——第4章·引经济学家亚历克斯·塔巴罗克</cite></div><p class="prose">2005 年，经济学家保罗·费拉罗和劳拉·泰勒向 200 多位职业经济学家提出了这个问题。他们收入颇丰、余闲充裕，不习惯面对日常的小权衡，自然不会计算小钱的机会成本——以教科书的标尺看他们答错了，以人们的惯常行为方式看他们答“对”了。我们不妨这样理解：</p><div class="aband"><q>身陷贫穷会让人比职业经济学家更懂经济学。</q><cite>——第4章</cite></div><p class="prose">行为经济学诞生于实证观察——人们不考虑机会成本、购买意愿轻易动摇。但经济学的本意是遵从稀缺的内在逻辑的，它的预测对真正拥有稀缺心态的人更加准确。这并不是说穷人永远更理性，而是说穷人拥有一种特殊技能：<b>更善于维持当下的生计</b>，能让 1 美元发挥更大的价值。</p><p class="prose">因为专注，所以拥有专业技能；因为专业，所以有了管窥之见；因为管窥，所以产生了一系列负面后果。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">实验</span><h4>50 美元的两种算法</h4><span class="ar">▶</span></div><div class="cb"><div class="in">为省 50 美元赶赴另一家店：普林斯顿火车站的旅客买 100 美元的 DVD 播放机时愿意绕路，买 1000 美元的笔记本电脑时就不愿意了；特伦顿慈善食堂的食客对两者同样无所谓——“价格越高越要去便宜那家”的规律，只属于有钱人。</div></div></div><div class="case"><div class="ch"><span class="tag mid">故事</span><h4>玉米煎饼的标尺</h4><span class="ar">▶</span></div><div class="cb"><div class="in">念本科时的塞德希尔纠结要不要买 70 美元的随身听，自建了一套标尺：以常吃的 Taco Bell 豆沙馅玉米煎饼衡量——问题变成“他是想要随身听还是买78个豆沙馅玉米煎饼”。基准很快露馅：不买随身听，也不会额外多吃 78 个煎饼。</div></div></div><div class="case"><div class="ch"><span class="tag mid">问句</span><h4>连经济学家都答错的题</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2005 年，经济学家保罗·费拉罗和劳拉·泰勒向 200 多位职业经济学家提出季票的机会成本问题。他们收入颇丰、余闲充裕，不习惯面对日常的小权衡——以教科书的标尺看他们答错了，以人们的惯常行为方式看他们答“对”了。</div></div></div></div><div class="check" data-k="p4-selftest"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能解释韦伯的发现：可察觉变化与背景重量的比例恒定（约 1/30）</span></label><label><input type="checkbox"><span>我能举例说明识解：方块阴影错觉、沙滩啤酒实验</span></label><label><input type="checkbox"><span>我知道穷人为什么对 50 美元的折扣“无动于衷”：他们的金钱缺口是绝对的</span></label><label><input type="checkbox"><span>我能纠正“时间价格”的误导：不买东西也不会少工作几个小时</span></label><div class="cf">已确认 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">存疑</span><span class="nd"><b>1｜</b>源文行文夹杂原书编者问句「（你是否也经常落入这种圈套？）」，为原书排版语，照录保留。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜塞德希尔·穆来纳森 / 埃尔德·沙菲尔《稀缺：我们是如何陷入贫穷与忙碌的》（浙江人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜第4章·行为经济学</span><a href="../03-装箱余闲和权衡式思维/index.html">← 第3章·装箱与余闲</a><a href="../05-借用与短视/index.html">第5章·借用与短视 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='sc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

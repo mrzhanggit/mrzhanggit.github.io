@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·第6章 · 稀缺陷阱｜稀缺 精读</title>
+<meta name="description" content="杂耍，太多的“最后关头”让人持续从一项紧要任务转移到另一项紧要任务。稀缺陷阱源于人们将可预期事件当作突如其来的事件处理——逃离它的唯一方法是余闲与缓冲机制。">
+<style>
+:root{
+  --paper:#F4F0E8;      /* 紧缩纸底 */
+  --paper-2:#E7E0D2;    /* 纸色深一档 */
+  --card:#FBF8F2;
+  --ink:#26201C;        /* 紧缩墨（主色） */
+  --ink-2:#3E352E;
+  --ink-deep:#100B08;   /* 紧缩深夜（hero 底） */
+  --gold:#7A3B2E;       /* 紧缩红棕（强调 · 管窥与带宽） */
+  --gold-b:#B0765F;
+  --gold-soft:rgba(122,59,46,.16);
+  --cinnabar:#9A5B26;   /* 警示琥珀（稀缺借用的代价） */
+  --teal:#4A5E70;       /* 带宽蓝（对照 · 富足与余闲） */
+  --tx:#2B241E;
+  --tx-2:#4A4038;
+  --tx-3:#837A70;
+  --line:rgba(38,32,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E352E 0%,var(--ink-deep) 62%);
+  color:#F0EBE4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(176,118,95,.42)}
+.hero::after{inset:22px;border:1px solid rgba(176,118,95,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(176,118,95,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,91,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(176,118,95,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,91,38,.6);background:rgba(154,91,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(122,59,46,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEAE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(176,118,95,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(176,118,95,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(122,59,46,.5);box-shadow:0 4px 18px rgba(38,32,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(122,59,46,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(154,91,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,91,38,.1);color:var(--cinnabar);border:1px solid rgba(154,91,38,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(122,59,46,.45);background:rgba(122,59,46,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,91,38,.55);border-radius:8px;
+  background:rgba(154,91,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,72,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,91,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(122,59,46,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,242,234,.94);
+  border-bottom:1px solid rgba(38,32,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E352E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(122,59,46,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8177;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-借用与短视/index.html">← 第5章·借用与短视</a><a href="../07-穷人为什么穷/index.html">第7章·穷人为什么穷 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">阱</div>
+  <div class="stamp ">陷阱</div>
+  <h1>第6章 · 稀缺陷阱</h1>
+  <p class="sub">杂耍，太多的“最后关头”让人持续从一项紧要任务转移到另一项紧要任务。稀缺陷阱源于人们将可预期事件当作突如其来的事件处理——逃离它的唯一方法是余闲与缓冲机制。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">稀缺陷阱</span>
+    <span>正文 16,321 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>街头小贩</a><a href="#s3" data-t="s3"><span class="cn">叁</span>落后一步</a><a href="#s4" data-t="s4"><span class="cn">肆</span>杂耍</a><a href="#s5" data-t="s5"><span class="cn">伍</span>逃离之难</a><a href="#s6" data-t="s6"><span class="cn">陸</span>现金补给</a><a href="#s7" data-t="s7"><span class="cn">柒</span>缓冲机制</a><a href="#s8" data-t="s8"><span class="cn">捌</span>贫穷始于富足</a><a href="#s9" data-t="s9"><span class="cn">玖</span>社交稀缺</a><a href="#s10" data-t="s10"><span class="cn">拾</span>改变心态</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>如果你有时间，每个地方就都会在步行距离之内。</p><cite>——史蒂夫·赖特（Steven Wright）</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章论证链：陷阱如何形成、为何难逃、怎样掉回去</p><p class="thesis">克延比都市场的小贩每天借 1000 卢比、付 5% 的日息，只需每天省 5 卢比，<b>50 天</b>就能无债一身轻——但典型的街头小贩已经借贷达九年半之久。研究者帮数百名小贩还清所有债务，一年后他们的债务量重新等同于控制组。根源不是钱不够，而是<b>余闲的缺乏</b>：一场婚礼红包就足以把他们推回管窥。</p><div class="chain"><div class="node"><div class="n">案例</div><div><p class="tt">街头小贩</p><p class="dd">每天 5% 利息吞掉 100 卢比利润的一半——50 天可翻身，却借贷九年半</p></div></div><div class="node"><div class="n">结构</div><div><p class="tt">落后一步</p><p class="dd">奥斯卡永远在写上周的作业、还上季度的贷款——资源相同，感受迥异</p></div></div><div class="node"><div class="n">状态</div><div><p class="tt">杂耍</p><p class="dd">学费和买种子竟成“紧急事务”——可预期事件被当作突发事件处理</p></div></div><div class="node"><div class="n">难逃</div><div><p class="tt">计划没带宽</p><p class="dd">制订计划重要但不紧急；持续抵御诱惑会耗尽意志力</p></div></div><div class="node"><div class="n">实验</div><div><p class="tt">现金补给</p><p class="dd">还清债务后收入翻番，一年后债务量等同控制组——缺的是余闲</p></div></div><div class="node"><div class="n">出路</div><div><p class="tt">缓冲机制</p><p class="dd">低成本贷款、活期储蓄、保险——保护我们免于再次跌落陷阱</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>克延比都市场：最有意思的利息</h2><span class="en">KOYAMBEDU MARKET</span></div><p class="prose">印度金奈的克延比都蔬菜市场占地约 243 亩、坐拥 2500 家店铺，数万名顾客像高峰时段的地铁般拥挤。黎明前，小贩们来到市场：一张毯子，兜售蔬菜、水果或鲜花。商业模式很简单——清晨进货 1000 卢比（20 美元），当天卖完收入 1100 卢比，总利润 100 卢比（2 美元多一点）。</p><p class="prose">问题在于：65% 的小贩没有自己的 1000 卢比，要靠借钱，<b>每天的利息是 5%</b>——总利润的一半用来支付利息。</p><p class="prose">解法看似触手可及：每位小贩都有一小笔可自由支配的余闲（买杯茶、买点零食）。假设每天省下 5 卢比去进货，就可以每天少借 5 卢比——由于每天 5% 的复利，<b>只消 50 天</b>就可以免于 1000 卢比的借贷，之后每天的收入翻番。</p><p class="prose">不到两个月让穷人收入翻番的“社会福利项目”，美好得让人难以置信——但小贩们无法加以利用，在我们提取的样本中，典型的街头小贩<b>已经借贷达九年半之久</b>。他们落入了稀缺陷阱：</p><div class="aband"><q>稀缺陷阱(scarcity trap)　就是某人的行为有助于稀缺形成的一种情况。</q><cite>——第6章·黑体定义</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>落后一步：菲力克斯与奥斯卡</h2><span class="en">ONE STEP BEHIND</span></div><div class="duo"><div class="colL"><h4>菲力克斯 · 踩着节奏</h4><ul><li>周末作业按时交，很忙但心态放松</li><li>写作业时课程内容记忆清晰</li><li>农民版：用存款买种子肥料，收入为下一季投资</li></ul></div><div class="colR"><h4>奥斯卡 · 永远差一步</h4><ul><li>花更多时间写作业，却经常迟交、心烦意乱</li><li>要多花时间回忆上周讲了什么，再与今天区分</li><li>农民版：借钱进货养家，收入用来偿还上季度的贷款</li></ul></div></div><p class="prose">两人资源完全相同：作业量和时间相同、土地面积和收入相同。区别只在部署资源的方式——奥斯卡落后了一步。稀缺陷阱并不限于实物资源的短缺，它的根源在于<b>对资源的错误利用</b>，从而出现了实际的短缺。</p><p class="prose">看到借钱的学生奥斯卡，我们会想“他太累了，要放慢脚步”；明白稀缺陷阱的逻辑后，正确的评价反而是：奥斯卡的努力还不够——他用更多的时间写作业，完成量却没比菲力克斯多。一直靠借贷维生的人，许多收入都用在偿还贷款上；一直赶不上进度的人，许多时间都用来追赶早就应该完成的工作。</p><p class="prose">对稀缺进行放大的行为，就像复利一样，会使最初的稀缺变本加厉。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>停不下来的杂耍</h2><span class="en">JUGGLING</span></div><p class="prose">杂耍的证据来自印度泰米尔纳德邦的珠宝借贷研究：银行提供年利率 13% 的珠宝贷款，客户却更愿意找当地放贷人借年利率高达 70% 的钱——因为紧要关头，放贷人周末也开门，而银行只有工作日和星期六半天。</p><p class="prose">深挖“紧急事务”的清单更令人费解：排名第 3 位的是医疗费用，还算合理；排名第 2 位和第 1 位的竟是<b>学费和购买种子的费用</b>——这些明明是可以提早预期的事，有些“医疗费”甚至是白内障、生孩子这类早有计划的手术。为什么人们对待例行的预定事件就好像对待突发事件一样？</p><p class="prose">答案就是杂耍：当有了管窥心态时，我们只能局部地、暂时性地解决问题，同时抛起许多球时，目光只能集中在即将落入手中的那个球上。杂耍时，你从管子中只能看到即将落下的球，忽视空中的其他几个球——当它们“突然”降落时，就成了新的“震惊”。用旁观者的眼光看，你早就知道球快要落下来了。</p><p class="prose">一次又一次的应急心态，最终织成一张由各种承诺构成的大网：《穷人的投资组合》的详细研究显示，平均来讲穷人会使用 <b>10 款</b>完全不同的金融产品；在孟加拉国，一种短期零利率贷款产品一年间有 <b>42 户家庭使用了 300 多次</b>。</p><p class="prose">杂耍并不一定由时间紧迫造成：收获临近时正是农民杂耍最频繁的时候——上一笔收入用光、流体智力表现更低、执行控制力减弱，而此时他们除了等待庄稼成熟整天无所事事。<b>杂耍并不是因时间不够用而心烦意乱，而是因为人们的大脑中装了太多需要做的事情</b>——大部分带宽都用来为抛向空中尚未坠落的球而焦虑。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>为什么逃不出陷阱</h2><span class="en">WHY TRAPPED</span></div><p class="prose">逃离稀缺陷阱，首先需要制订计划，而计划重要但不紧急——正是管窥心态让我们忽略的那类事。做计划需要退后一步审视生活，杂耍却让我们始终处于当下；对未来进行计划需要带宽，而稀缺正是带宽的沉重负担。小贩们每天反复琢磨进什么货、卖得慢不慢、要不要为节日备货——这些想法成为实实在在的重负。</p><p class="prose">再加上计划的真正复杂度（先偿还哪笔债？能不能买从长远看省钱的商品？）与执行之难（面对诱惑很难拒绝），杂耍还会把推掉的事再抛回来——年检罚单横空飞来，你再一次回到稀缺陷阱的底部。</p><p class="prose">最隐蔽的敌人是警醒的不可持续性：逃离稀缺陷阱需要的不是偶尔表现出来的警醒，而是<b>持续、永恒的警醒</b>——一种在任何时间里都能抵御所有诱惑的能力。而没有证据显示意志力会随着经历困难次数的增加而提升。研究显示，在我们不断进行自我控制时，自我控制力很可能会被消耗掉——</p><p class="prose">书内「稀缺实验室」的实验是意志力=肌肉的注脚：让节食者进入满是薯片、彩虹糖、巧克力和咸味花生豆的房间完成任务，之后可以吃冰激凌——坐在食物旁边、一直抵御诱惑的那组，吃掉的冰激凌量比远离零食诱惑的另一组<b>多得多</b>。如果某个人需要持续地抵御诱惑，那么他的意志力就会被耗尽，想要逃离稀缺陷阱就会变得更难。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>问题的根源：还清债务之后</h2><span class="en">DEBT RELIEF</span></div><p class="prose">稀缺陷阱最令人辛酸之处，是它让人相信只要再多一点资源就能逃脱——“如果我再多那么一点点时间”、“如果我拥有买水果的钱”。作者与经济学家迪恩·卡兰合作，针对数百名小贩做了实验：为其中一半人还清所有债务，一夜之间把他们从借债者变成有能力存钱的人——他们的收入翻番了。</p><p class="prose">惯常解释有三种：没有地方存钱（银行拒绝服务、现金易被偷）、缺乏长远目光、不理解复利。数据驳斥了全部：最初几个月，无债一身轻的小贩们没有重归债务——他们没有随意花掉现金，没有换成耐用品保存，也没有再次借债；他们似乎完全理解落后一步的高昂成本。</p><p class="prose">但到了一年结束之时，他们<b>所有人累积的债务量都等同于没有得到现金帮助的控制组</b>——一个接一个地掉了回去，就好像有一只无形的大手将他们推了回去。</p><div class="aband"><q>稀缺造就了一种心态，而这种心态会令稀缺长存。</q><cite>——第6章</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>余闲，应对突发事件的利器</h2><span class="en">BUFFER</span></div><p class="prose">核心在于余闲的缺乏。拿到资助的小贩每天仍要靠不到两美元维持生计——亲戚结婚要给红包这样的意外，就会让资金周转困难。身负债务时，他只能权衡、放弃、羞愧；手头尚有余钱时，管窥心态下的“轻松”办法是动用应急现金买礼物——“目前，我考虑不了那么多”，这些顾虑全部落在管子之外。</p><p class="prose">就这样，存款最先被牺牲，他逐渐掉回稀缺陷阱。小贩们自己也报告：突发事件就是重新开始借贷的导火索。</p><p class="prose">换成时间更能感同身受：让日理万机的人获赠一份时间礼物——过期未完成的任务凭空消失。他会在一段时间内保持积极状态，但最终还是会跌上一跤：一项重大工作中的突发问题、因病休假，让他突然之间又落后一步。<b>任何一点小小的不稳定都会威胁到生存于稀缺陷阱边缘的人，因为他们没有足够的余闲去吸收这些不稳定因素。</p><p class="prose"></b>社会底层的生活是无常的：好几份临时工、按小时计价、随时可能失业；车子坏掉或家人生病就是一道难关。</p><p class="prose">所以作者强调：就算在许多日子里都能享受余闲，真正重要的还是那些忍耐稀缺的日子。要远离稀缺陷阱，仅拥有比寻常欲望更多的资源是不够的——要拥有<b>足够的余闲（或其他一些机制）</b>，以应对任何时候都可能突然出现的重大事件。</p><p class="prose">帮助小贩的方法未必是给更多的钱：低成本贷款、只在紧急时使用的活期储蓄账户、针对突发事件的保险——这些缓冲机制的好处远比预期的大：不仅能风险管理，还能保护我们免于再次跌落到稀缺陷阱之中。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>贫穷始于富足</h2><span class="en">POVERTY BEGINS IN ABUNDANCE</span></div><p class="prose">既然知道自己生存于动荡之中，为什么不在宽裕的日子里存钱？小贩们的问题远在突发事件发生之前就已存在，<b>稀缺陷阱的种子早在资源相对充裕的阶段就已经被种下了</b>。赶工的人都经历过：截止日期过去，爬到陷阱边缘喘口气——谢天谢地可以放松了——几周之后想不明白时间都去哪儿了，再一次加班加点。</p><p class="prose">你的稀缺，来自资源相对充裕阶段所犯下的错误。</p><p class="prose">资源充裕阶段，我们太过松懈：第 2 章的收获研究里，农民们本可以通过收获后更好地管理金钱避免收获前的穷困——这是关于金钱充裕时浪费行为的问题。数十年的研究还显示，恰恰在资源最充裕的时期，我们尤其容易犯拖延的毛病：将需要做的事情搁置起来，把本应存下的金钱挥霍出去。</p><p class="prose">富人和穷人一样都会拖延——区别是富人拥有余闲，不会受到什么打击；而穷人和忙碌之人余闲太少，一遇到突发事件就会立刻落回稀缺陷阱之中。远离陷阱需要的不是充裕的资源，而是<b>足够充裕</b>的资源：就算乱花钱、一拖再拖，仍有足够的余闲去应对绝大部分突发事件。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>孤独就是社交稀缺</h2><span class="en">SOCIAL SCARCITY</span></div><p class="prose">想象一个刚到陌生城市的人：谁也不认识，约会网站上定下一次约会，却越临近越紧张，整晚琢磨接下来要说什么、笑话好不好笑，根本没法听对方讲话——噩梦一场。他的行为会让孤独一直延续，但这陷阱与众不同：没有借用，也谈不上缓冲机制——问题源自<b>太过专注于自身的稀缺</b>。</p><p class="prose">书内「稀缺实验室」用录音实验揭示了机制：孤独者自我描述的录音被评价为比其他人无趣得多——但他们不知道有人会倾听的那个版本，有趣程度和普通人相仿。孤独者的问题不在于本身无趣，而在于<b>在自认为重要的事情上发挥失常</b>。发挥失常的机制是倒转的 U 型弧线：关注度过低表现变弱，过高同样被削弱。</p><p class="prose">职业运动员的例子最直观——布鲁斯·鲍文在 2002 到 2003 赛季自由投篮命中率只有 40%，而难度大得多、距离远得多的三分球命中率有 44%：三分球没时间思考，自由投篮却给了他太多思考时间。</p><p class="prose">越尽力不去想一件事，就越是会想到它——心理学家称之为“矛盾历程”(ironic process)：请实验对象不去想“白熊”时，他们反而想不到什么别的东西。</p><p class="prose">节食者同理：抵御冲动的最简单办法是让冲动夭折于摇篮中，而节食造成的热量稀缺，转而又牢牢将甜点摆在大脑最明显的位置——一项研究指出，<b>刚刚吃过巧克力的节食者，心里想到食物的概率更大</b>：生理上拥有了更多热量，心理上的权衡却进一步加剧。节食很难，正是因为节食令我们将专注力放在了那些本想避免的事物上。</p><p class="prose">稀缺锁定注意力的关键特征，成了一种阻碍。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>改变心态，逃离的唯一希望</h2><span class="en">CHANGE THE MINDSET</span></div><p class="prose">穷会一直穷下去，孤独者形单影只，繁忙之人永远日理万机，节食者的计划总是失败——如果这种说法太残酷，另一种观点更残酷：穷人缺乏技能、孤独者不受欢迎、节食者缺乏意志力，稀缺是深层次个人问题所引发的后果，很难改变。</p><div class="aband"><q>稀缺并非个人特质，而是自身创造的环境条件所引发的结果，而这些条件是可以进行管理的。</q><cite>——第6章</cite></div><p class="prose">相比之下，稀缺心态是环境造就的结果，更有可能通过一些措施来加以改变。我们越是深入了解稀缺在大脑中的发展历程，就越有可能找到办法去避免稀缺陷阱，或至少去减轻稀缺陷阱的影响程度——这正是第三部分的出发点。</p><div class="tbwrap"><table><thead><tr><th>稀缺陷阱</th><th>源文要点</th></tr></thead><tbody><tr><td>定义</td><td>稀缺陷阱(scarcity trap)　就是某人的行为有助于稀缺形成的一种情况。</td></tr><tr><td>典型案例</td><td>印度克延比都市场的小贩：清晨以 1000 卢比进货，靠 5% 日息的借贷周转，收入的一半交给利息</td></tr><tr><td>逃离难点</td><td>计划重要但不紧急；持续警醒不可持续；突发事件随时会来</td></tr><tr><td>根源</td><td>余闲的缺乏——贫穷始于富足，陷阱的种子在资源充裕阶段就已种下</td></tr></tbody></table></div><div class="grid g2"><div class="card"><h3>杂耍的机制</h3><p class="cp">抛起许多球时，目光只能集中在即将落入手中的那个球上——杂耍者从管子中只看到即将坠落的球，空中其他球被忽视；等它们“突然”降落，就成了新的紧急事件。杂耍不是时间不够用，而是大脑中装了太多需要权衡的事。</p></div><div class="card"><h3>孤独即社交稀缺</h3><p class="cp">孤独者自我描述的录音被评价为比其他人无趣得多——但他们不知道有人会倾听的版本，有趣程度和普通人相仿。问题不在于本身无趣，而在于在自认为重要的事情上发挥失常。</p></div></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">实验</span><h4>还清债务之后</h4><span class="ar">▶</span></div><div class="cb"><div class="in">作者与经济学家迪恩·卡兰为数百名小贩中的一半还清所有债务——一夜之间从借债状态变为无债一身轻。最初几个月他们并未重归债务：没有随意花钱，没有换成耐用品，也没有再次借债；但突发事件一来（比如亲戚结婚要给红包），资金周转立刻困难，又回到借贷循环。</div></div></div><div class="case"><div class="ch"><span class="tag mid">故事</span><h4>菲力克斯与奥斯卡</h4><span class="ar">▶</span></div><div class="cb"><div class="in">两人作业量和时间相同、土地面积和收入相同，区别只在部署资源的方式——奥斯卡落后了一步。稀缺陷阱并不限于实物资源的短缺：它的根源在于对资源的错误利用，从而出现了实际的短缺。</div></div></div></div><div class="check" data-k="p6-selftest"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能复述稀缺陷阱的黑体定义</span></label><label><input type="checkbox"><span>我能解释小贩为什么逃不出 5% 日息的借贷循环</span></label><label><input type="checkbox"><span>我知道持续警醒为什么不可持续：自我控制力会被消耗掉</span></label><label><input type="checkbox"><span>我能说明孤独如何构成一种社交稀缺</span></label><div class="cf">已确认 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">排印</span><span class="nd"><b>1｜</b>源文残留孤立图题行「图6—1　表现与关注度的关系」（对应插图已被剥离），本篇未收录该行。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜塞德希尔·穆来纳森 / 埃尔德·沙菲尔《稀缺：我们是如何陷入贫穷与忙碌的》（浙江人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜第6章·稀缺陷阱</span><a href="../05-借用与短视/index.html">← 第5章·借用与短视</a><a href="../07-穷人为什么穷/index.html">第7章·穷人为什么穷 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='sc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部分·第2章 · 带宽负担会降低人的智商｜稀缺 精读</title>
+<meta name="description" content="稀缺不是压力和忧虑：它通过内部干扰直接占用带宽，让人在流体智力与执行控制力两条战线上同时失守——同一个人，穷时就是会变笨、变冲动。">
+<style>
+:root{
+  --paper:#F4F0E8;      /* 紧缩纸底 */
+  --paper-2:#E7E0D2;    /* 纸色深一档 */
+  --card:#FBF8F2;
+  --ink:#26201C;        /* 紧缩墨（主色） */
+  --ink-2:#3E352E;
+  --ink-deep:#100B08;   /* 紧缩深夜（hero 底） */
+  --gold:#7A3B2E;       /* 紧缩红棕（强调 · 管窥与带宽） */
+  --gold-b:#B0765F;
+  --gold-soft:rgba(122,59,46,.16);
+  --cinnabar:#9A5B26;   /* 警示琥珀（稀缺借用的代价） */
+  --teal:#4A5E70;       /* 带宽蓝（对照 · 富足与余闲） */
+  --tx:#2B241E;
+  --tx-2:#4A4038;
+  --tx-3:#837A70;
+  --line:rgba(38,32,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E352E 0%,var(--ink-deep) 62%);
+  color:#F0EBE4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(176,118,95,.42)}
+.hero::after{inset:22px;border:1px solid rgba(176,118,95,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(176,118,95,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,91,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(176,118,95,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,91,38,.6);background:rgba(154,91,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(122,59,46,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEAE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(176,118,95,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(176,118,95,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(122,59,46,.5);box-shadow:0 4px 18px rgba(38,32,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(122,59,46,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(154,91,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,91,38,.1);color:var(--cinnabar);border:1px solid rgba(154,91,38,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(122,59,46,.45);background:rgba(122,59,46,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,91,38,.55);border-radius:8px;
+  background:rgba(154,91,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,72,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,91,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(122,59,46,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,242,234,.94);
+  border-bottom:1px solid rgba(38,32,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E352E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(122,59,46,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8177;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-专注的得与管窥的失/index.html">← 第1章·专注与管窥</a><a href="../03-装箱余闲和权衡式思维/index.html">第3章·装箱与余闲 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">带</div>
+  <div class="stamp ">带宽</div>
+  <h1>第2章 · 带宽负担会降低人的智商</h1>
+  <p class="sub">稀缺不是压力和忧虑：它通过内部干扰直接占用带宽，让人在流体智力与执行控制力两条战线上同时失守——同一个人，穷时就是会变笨、变冲动。</p>
+  <div class="meta"><span>第一部分</span>
+    <span class="k">流体智力</span>
+    <span>正文 20,415 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>三个故事</a><a href="#s3" data-t="s3"><span class="cn">叁</span>内部干扰</a><a href="#s4" data-t="s4"><span class="cn">肆</span>带宽定义</a><a href="#s5" data-t="s5"><span class="cn">伍</span>认知能力</a><a href="#s6" data-t="s6"><span class="cn">陸</span>执行控制力</a><a href="#s7" data-t="s7"><span class="cn">柒</span>蔗农实验</a><a href="#s8" data-t="s8"><span class="cn">捌</span>并非压力</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>那个时候我意识到，我生存在这个世界上，而只有一部分大脑处于工作状态。其中10%用在了学习上，10%用在了女儿身上，可能还有10%用在了处理家庭危机和疾病上，剩下的70%则一直在关注食物：一颗葡萄的卡路里含量，爆米花的吸收比例，如何用喝水的方法来让自己有饱足感。我那时想：“如果将这70%的大脑以更加明智的方式投入真实的世界中，我会有什么样的作为？”</p><cite>——纳塔莉·克兹｜《肥妞的歌唱》(The Fat Lady Sings) 作者</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章论证链：三个故事立假设，两组实验给证据，一片蔗田做实证</p><p class="thesis">铁道旁学校的学生因火车噪声在学业上<b>落后整整一年</b>——这是外部干扰；而稀缺制造的是更持久的<b>内部干扰</b>：思想中轰隆驶过的“火车”。带宽的两大元素——<b>认知能力</b>与<b>执行控制力</b>——都会被稀缺即时削弱：一道 3000 美元的假设题能让 IQ 表现跌落 13～14 分，印度蔗农在收获前的测验成绩显著低于收获后。</p><div class="chain"><div class="node"><div class="n">故事</div><div><p class="tt">三个失手的人</p><p class="dd">发火的家长、考砸的学生、怠慢客人的员工——问题不在当事人，而在稀缺</p></div></div><div class="node"><div class="n">机制</div><div><p class="tt">内部干扰</p><p class="dd">思想噪声比真火车更吵；稀缺通过自下而上的方式非自愿地俘获注意力</p></div></div><div class="node"><div class="n">带宽</div><div><p class="tt">两类元素</p><p class="dd">认知能力（流体智力）与执行控制力（计划、关注、抑制冲动）</p></div></div><div class="node"><div class="n">证据一</div><div><p class="tt">300 vs 3000</p><p class="dd">商场实验：假设修车费 3000 美元，低收入者 IQ 表现下降 13～14 分</p></div></div><div class="node"><div class="n">证据二</div><div><p class="tt">棉花糖与花朵</p><p class="dd">控制冲动测验：答对概率从 83% 掉到 63%——稀缺让人更冲动</p></div></div><div class="node"><div class="n">实证</div><div><p class="tt">印度蔗农</p><p class="dd">收获前比收获后多答对 25% 的差距、响应慢 11%、错误多 15%</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>三个小故事：失手的不只是当事人</h2><span class="en">THREE STORIES</span></div><p class="prose">章首的黑体论断只有一句：</p><div class="aband"><q>钱的问题会永远纠缠着穷人，而时间问题则会永远烦扰着忙碌之人。</q><cite>——第2章</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">故事1</span><h4>管窥会造就不合格的家长</h4><span class="ar">▶</span></div><div class="cb"><div class="in">最重要的大客户只给第二天时间听推介，你取消了所有会议——唯一推不掉的是女儿当晚的城市冠军杯垒球赛。比赛时你满脑子都是第二天要做的 PPT，心不在焉；女儿在比赛间歇偷瞄了你一眼，看出了你的心不在焉。球队赢了，庆祝掩盖了你的错误——但当晚的你，肯定算不上一位合格的家长。</div></div></div><div class="case"><div class="ch"><span class="tag mid">故事2</span><h4>没有余闲就无法应对突发事件</h4><span class="ar">▶</span></div><div class="cb"><div class="in">大学生约翰的两项奖学金突然被取消，一个月后就要交学费：能不能再贷到款？要不要向叔叔婶婶借钱？要不干脆转学？心事重重的他错过了学习小组聚会，考试时脑子乱轰轰，本来很简单的题也做错了——现在他既要为学费烦心，还要为考砸的考试郁闷。</div></div></div><div class="case"><div class="ch"><span class="tag mid">故事3</span><h4>表现不好都是带宽惹的祸</h4><span class="ar">▶</span></div><div class="cb"><div class="in">快餐店经理抱怨（低收入）员工不靠谱：大部分时间用来劝导他们友善待客，余下时间都在处理粗心错误——“客人点中号炸薯条时，按下‘炸薯条’那个键，就这么简单一个动作，真的有那么难吗？”他把原因归为不在乎工作、教育体制、缺乏管教。</div></div></div></div><p class="prose">三个故事与第1章的管窥恰好相反：讲的是人们<b>专注于与当下稀缺无关的事情</b>时出的错。核心假设是：对稀缺的专注是无意识的、非自愿的，稀缺意味着在人生的另一个角度上，我们的注意力更少，投入的心思也更少。带宽——对我们计算能力、关注能力、英明决策能力、坚持计划能力和抵制诱惑能力的衡量——正是被这样占用的。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>“噪声”干扰了我们的思想</h2><span class="en">INTERNAL NOISE</span></div><p class="prose">纽黑文市一所学校建在繁忙的铁道旁：只有一面朝向铁道。铁道一侧的六年级学生，比安静一侧的同年级学生在学业表现上<b>落后了整整一年</b>；市政府安装噪声隔离设备后，两侧学生的差距消失了。微量干扰即可产生巨大影响。</p><p class="prose">而稀缺制造的干扰更隐蔽——那些干扰我们的事物常常是我们自己产生的：想着按揭贷款的人坐在安静办公室里，思想中轰隆驶过的“火车”以更快频率造访，还会神不知鬼不觉地把你拉上车。</p><div class="aband"><q>内源性思考(internal thought)　即便在大脑中重复一连串数字这种小事也会对人的总体认知能力产生深远影响。</q><cite>——第2章·黑体定义</cite></div><p class="prose">稀缺通过<b>自下而上</b>的方式俘获注意力——注意力被很难为我们所控制的刺激所俘获，行为不再受意识控制。书内「稀缺实验室」给出了两个现象。</p><p class="prose">其一，红点出现前闪过蛋糕图片，节食者看到红点的概率就会降低，仿佛瞬间失明——心理学称之为“注意瞬脱”(attentional blink)，一切发生在不到一秒钟里，研究题目就叫《我看到的全部，只是蛋糕》。</p><p class="prose">其二，找词游戏里，节食者刚找过 DONUT（甜甜圈），就要用比其他人多 <b>30 秒</b>的时间才能找到 CLOUD——甜甜圈的影子像呼啸而过的火车，把注意力带走，这就是“前摄干扰”。</p><div class="aband"><q>前摄干扰(Proactive interference)　当我们心里想着其他事物时，就会将其置于思想的中心，而产生忽略行为。</q><cite>——第2章·黑体定义</cite></div><p class="prose">笔记本电脑同时播放音乐、下载文件、开着多个窗口，浏览就会从冲浪变成蠕动。稀缺对心智处理器产生同样的效应：它不断给大脑装载其他处理内容，留给当前任务的“心智”就变少了。由此引出本章的核心假设：稀缺会直接减少带宽——不是减少与生俱来的带宽容量，而是减少其<b>当下能用得上的容量</b>。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>带宽的两大元素</h2><span class="en">BANDWIDTH</span></div><p class="prose">带宽是把差异做了模糊化处理的通用说法——就像我们用“民主”或“亚原子粒子”表达思想而不深究细节。它指代心智功能中宽泛而彼此相关的两类元素，稀缺对两者都会产生影响：</p><div class="tbwrap"><table><thead><tr><th>元素</th><th>英文</th><th>源文定义</th></tr></thead><tbody><tr><td>认知能力</td><td>cognitive capacity</td><td>解决问题、获得信息、进行逻辑推理等能力背后的心理学机制；最突出的是“流体智力”——抽象思维和推理时，无须特定学习或体验即可解决问题的能力</td></tr><tr><td>执行控制力</td><td>executive control</td><td>作用存在于管理自身认知能力的过程中，包括计划、关注、发起并抑制行为和控制冲动等</td></tr></tbody></table></div><p class="prose">执行控制力像中央处理器，决定我们的专注力和转移注意力的能力、从记忆中提取信息的能力、同时处理多项任务的能力以及自我监督的能力。本章余下的任务，就是分别检验稀缺对这两类元素的削减。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>带宽负担 1：认知能力被拉低</h2><span class="en">COGNITIVE CAPACITY</span></div><p class="prose">测试工具是流体智力最显著的衡量标准——瑞文推理测验（开发于 20 世纪 30 年代）：无需任何关于世界的认识与正式学习背景，机械师与来自印度的农民在它面前无异。作者与研究生赵佳英在新泽西州商场里向路人发放试卷，一半人先回答一个假设性问题：车子坏了，维修费 300 美元，保险支付一半——决定是现在修还是再等等？</p><p class="prose">这是轻松还是艰难的决定？</p><p class="prose">按家庭收入分为富有与贫穷两组后：<b>300 美元</b>版本下，富人与穷人没有明显的统计学差异——富人与穷人一样聪明。而对另一半人只改动了一个数字：</p><div class="aband"><q>请想象一下，你的汽车出了问题，需要3000美元的昂贵维修费。你的保险能支付一半费用。你需要决定是现在就去修理，还是等一等，盼着车子能再多开一阵？你将如何做决定？从经济学角度讲，对你来说，这将是个轻松的决定，还是艰难的决定？</q><cite>——第2章·稀缺实验室</cite></div><p class="prose">3000 美元对富人不过轻而易举，对低收入者却是轩然大波：2011 年的一项调查显示，近半数美国人没有能力在 30 天内凑齐 2000 美元，就算急用也没有办法。信用卡刷爆、还款日逼近、要不要借工薪日贷款——一点小涟漪就能引起脑海中的轩然大波。</p><p class="prose">而这场轩然大波直接影响表现：贫穷的实验对象成绩差了很多，流体智力随之跌落。这个效果不是 3000 在数学上更具挑战性（非财务问题无此效应），也不是缺乏积极性（答题有酬劳，低收入者反而答得更差）。</p><div class="tbwrap"><table><thead><tr><th>参照系</th><th>源文数据</th></tr></thead><tbody><tr><td>效果量</td><td>相当于 IQ 评分中的 13 分和 14 分——按常用分类，13 分就能将智商从“普通”提升到“出众”</td></tr><tr><td>睡眠基准</td><td>彻夜不眠组在瑞文推理测验上成绩差许多；商场实验的成绩差距比睡眠实验更大</td></tr><tr><td>适用范围</td><td>区别不在穷人与富人之间，而是同一个人在不同条件下的差异：维修费不高时，穷人成绩与富人一样好</td></tr></tbody></table></div><p class="prose">关键在于：这和与生俱来的认知能力无关。正如电脑同时运行多个程序时中央处理器会降速，穷人此时表现更差，是因为<b>一部分带宽正在想着其他事情</b>。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>带宽负担 2：执行控制力失守</h2><span class="en">EXECUTIVE CONTROL</span></div><p class="prose">执行控制力的经典舞台是沃尔特·米歇尔 20 世纪 60 年代后期的棉花糖实验：四五岁的孩子面前放着一块棉花糖，忍到研究人员回来就能得到第二块。眼前的一块总是打败未来的两块。而成功抵制诱惑的孩子，靠的是<b>转移注意力</b>——不盯着棉花糖，而是想其他事情。</p><p class="prose">正如米歇尔所说：“一旦你意识到意志力不过是去学习如何控制注意力和想法时，就能开始提高自身的意志力了”。</p><div class="grid g2"><div class="card num"><div class="idx">一</div><h3>蛋糕与水果</h3><p class="cp">记住两位数的人多数选择水果；满脑子七位数的人选择蛋糕的概率高出 50%——蛋糕是冲动之下的选择。心智带宽用在重复数字上，制止吃蛋糕欲望的力量就减弱了。</p></div><div class="card num"><div class="idx">二</div><h3>鸡爪与粗话</h3><p class="cp">澳大利亚白人学生面对整只维持原貌的卤鸡爪：不用记数字的基本保持风度；记住 8 位数的那组就算极力压抑，也会情不自禁脱口而出粗俗之语。</p></div></div><p class="prose">作者在新泽西商场做的执行控制力测验同样分“难易”两类财务问题：屏幕上快速播放图案，看到心形按同侧键，看到花朵按另一侧——花朵要求你抑制“按同侧”的第一冲动。</p><p class="prose">结果：数额较小的财务问题下，穷人与富人成绩同步、错误次数基本相同；数额较大时，穷人的答对概率从 <b>83% 掉到 63%</b>——仅是轻轻触动一下稀缺的念头，人们就会突然间变得更加冲动。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>收割前后的印度蔗农</h2><span class="en">SUGARCANE FARMERS</span></div><p class="prose">商场实验毕竟以假设场景为基础。真正的考验是：没有研究人员设下“圈套”时，稀缺是否还是认知能力的累赘？穷人与富人之间健康、朋友圈、受教育程度差异太多，无法归因——而印度的甘蔗农提供了天然的对照：甘蔗采收分布在 4～5 个月间进行，左邻右舍的甘蔗田可能拥有完全不同的收获周期。</p><p class="prose">于是可以检测<b>同一位农民</b>在收获前（贫穷）与收获后（富足）的表现，且月份间并无系统性差异。</p><div class="tbwrap"><table><thead><tr><th>测量</th><th>收获前（贫穷）</th><th>收获后（富足）</th></tr></thead><tbody><tr><td>当铺</td><td>78% 的农民在收获前一个月当过东西</td><td>只有 4% 在收获后一个月当过东西</td></tr><tr><td>借钱</td><td>99% 的农民都借了钱</td><td>只有 13% 的农民借过钱</td></tr><tr><td>瑞文推理测验</td><td>——</td><td>收获后比收获前多答对 25% 的问题（约合 IQ 9 分或 10 分）</td></tr><tr><td>斯特鲁普测验</td><td>响应速度慢 11%，错误多 15%</td><td>——</td></tr></tbody></table></div><p class="prose">排除项也一一核查：不是营养不良（收获前并未穷到吃不上饭，省钱省在礼物而非食物上）；不是劳动强度（研究比收获提前 4 周，尚未开始采收准备）；也不是收成焦虑（甘蔗生长早在收获前几个月定型，收入已经可以准确估计）。</p><p class="prose">结论成立：<b>贫穷会成为心智的负担</b>——就算没人提醒稀缺的存在，贫穷状态也会削弱流体智力和执行控制力。如果在一位甘蔗农贫穷时遇到他，我们可能把他的局限归因于个人品质；但研究说明，这与他与生俱来的能力几乎无关。</p><p class="prose">同样的带宽负担也出现在其他形式的稀缺里：节食者满脑子都是食物，在多种认知测量中表现更差，而且不是卡路里缺乏造成的（体重未减轻的节食者同样如此）；孤独者在“双耳分听测验”中，超越自然本能把注意力从占优势的右耳转到左耳的能力更差——受损的带宽，更弱的执行控制力。</p><p class="prose">甚至被引导“预期自己会孤独”的人，瑞文测验成绩也会变差，脑部扫描显示负责执行控制区域的活力下降，面对巧克力曲奇吃得是其他人的两倍。就连《愤怒的蓝莓》里的“穷光蛋”玩家，玩完游戏后在“心形—花形”测验中的成绩也更差——太过专注，游戏结束时带宽负担反而更重。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>稀缺，完全不同于压力和忧虑</h2><span class="en">NOT JUST STRESS</span></div><p class="prose">稀缺不是唯一增加带宽负担的事物——与妻子吵一架，当天也会“迟钝”。但稀缺的特殊之处在于它是<b>几类重要关注点的聚合</b>：吵架可能在任何人身上发生，而金钱问题永远纠缠着穷人，时间问题永远烦扰着忙碌之人。什么都不缺的人，只有一部分会满腹心事；而所有经历着“稀缺”的人，每一位都会心事重重。</p><p class="prose">那这些现象是否只是在围绕“压力”打转？数据表明压力发挥了某些作用（收获后农民心率起伏明显降低），但压力不可能是主要驱动因素：有些研究发现压力会增强记忆力，甚至有压力下执行控制力提升的证据；而稀缺的效应是<b>即时的</b>——商场里只是提醒了一下金钱问题，立刻就影响了心智能力。</p><p class="prose">更重要的是，人们的表现呈现出增强（专注红利）与减弱（带宽负担）组合而成的特定规律，单凭焦虑和压力无法解释。带宽负担与专注红利、管窥之见同根同源——只盯着压力，就会忽略这些深层联系。</p><div class="aband"><q>稀缺会使人变笨，变得更加冲动。</q><cite>——第2章</cite></div><p class="prose">回到章首的三个故事：收银员不是粗心疏忽，而是心事重重——“这次我能不能迟些日子再还信用卡账单？”这种想法与附近轰隆驶过的火车一样吵闹。餐厅经理误判了员工，就像有人误判一台同时运行着许多程序的电脑“真慢”：我们与经理的不同之处，是了解到<b>所有人一旦身陷贫穷，其有效带宽都会变窄</b>。</p><p class="prose">问题的根源不在于当事人，而在于稀缺——稀缺让人不得不在流体智力和执行控制力被减弱的情况下，依靠更为有限的脑力勉强度日。</p><div class="check" data-k="p2-selftest"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能说出带宽的两种能力：认知能力与执行控制力</span></label><label><input type="checkbox"><span>我记得印度蔗农研究的量化结论：IQ 下降约 13 分</span></label><label><input type="checkbox"><span>我能解释为什么稀缺的效应是即时的，与压力不同</span></label><label><input type="checkbox"><span>我知道“所有人一旦身陷贫穷，其有效带宽都会变窄”</span></label><div class="cf">已确认 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">源文重复</span><span class="nd"><b>1｜</b>「流体智力」定义句等 3 处表述在不同小节重复出现（如“认知能力中最突出的就是‘流体智力’……”），为导出源自身现象，照录不重复收录。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜塞德希尔·穆来纳森 / 埃尔德·沙菲尔《稀缺：我们是如何陷入贫穷与忙碌的》（浙江人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部分｜第2章·带宽负担</span><a href="../01-专注的得与管窥的失/index.html">← 第1章·专注与管窥</a><a href="../03-装箱余闲和权衡式思维/index.html">第3章·装箱与余闲 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='sc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

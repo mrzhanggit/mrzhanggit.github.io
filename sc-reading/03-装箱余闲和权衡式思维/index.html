@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·第3章 · 装箱、余闲和权衡式思维｜稀缺 精读</title>
+<meta name="description" content="把东西装进行李箱，是对资源管理问题的最好比喻。小行李箱迫使我们权衡：装进一样东西，就要拿出另一样——稀缺的本质，就是没有余闲。">
+<style>
+:root{
+  --paper:#F4F0E8;      /* 紧缩纸底 */
+  --paper-2:#E7E0D2;    /* 纸色深一档 */
+  --card:#FBF8F2;
+  --ink:#26201C;        /* 紧缩墨（主色） */
+  --ink-2:#3E352E;
+  --ink-deep:#100B08;   /* 紧缩深夜（hero 底） */
+  --gold:#7A3B2E;       /* 紧缩红棕（强调 · 管窥与带宽） */
+  --gold-b:#B0765F;
+  --gold-soft:rgba(122,59,46,.16);
+  --cinnabar:#9A5B26;   /* 警示琥珀（稀缺借用的代价） */
+  --teal:#4A5E70;       /* 带宽蓝（对照 · 富足与余闲） */
+  --tx:#2B241E;
+  --tx-2:#4A4038;
+  --tx-3:#837A70;
+  --line:rgba(38,32,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(38,32,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3E352E 0%,var(--ink-deep) 62%);
+  color:#F0EBE4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(176,118,95,.42)}
+.hero::after{inset:22px;border:1px solid rgba(176,118,95,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(176,118,95,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(154,91,38,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(176,118,95,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(154,91,38,.6);background:rgba(154,91,38,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(122,59,46,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEAE3;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(176,118,95,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(176,118,95,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(122,59,46,.5);box-shadow:0 4px 18px rgba(38,32,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(122,59,46,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(74,94,112,.055)}
+.duo .colR{background:rgba(154,91,38,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(154,91,38,.1);color:var(--cinnabar);border:1px solid rgba(154,91,38,.28)}
+.case .tag.good{background:rgba(74,94,112,.1);color:var(--teal);border:1px solid rgba(74,94,112,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(122,59,46,.45);background:rgba(122,59,46,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(154,91,38,.55);border-radius:8px;
+  background:rgba(154,91,38,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(126,72,30,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(154,91,38,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(122,59,46,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(246,242,234,.94);
+  border-bottom:1px solid rgba(38,32,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(38,32,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3E352E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(122,59,46,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(38,32,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(38,32,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8177;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-带宽负担会降低人的智商/index.html">← 第2章·带宽负担</a><a href="../04-行为经济学告诉我们的道理/index.html">第4章·行为经济学 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">箱</div>
+  <div class="stamp ">余闲</div>
+  <h1>第3章 · 装箱、余闲和权衡式思维</h1>
+  <p class="sub">把东西装进行李箱，是对资源管理问题的最好比喻。小行李箱迫使我们权衡：装进一样东西，就要拿出另一样——稀缺的本质，就是没有余闲。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">权衡式思维</span>
+    <span>正文 13,800 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>装箱比喻</a><a href="#s3" data-t="s3"><span class="cn">叁</span>权衡式思维</a><a href="#s4" data-t="s4"><span class="cn">肆</span>余闲</a><a href="#s5" data-t="s5"><span class="cn">伍</span>穷蜜蜂富泥蜂</a><a href="#s6" data-t="s6"><span class="cn">陸</span>购买行为</a><a href="#s7" data-t="s7"><span class="cn">柒</span>犯错的空间</a><a href="#s8" data-t="s8"><span class="cn">捌</span>稀缺本质</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>房子不过是一堆东西上面加了个盖子。</p><cite>——乔治·卡林（George Carlin）</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章论证链：从装箱比喻到稀缺心理的核心</p><p class="thesis">大行李箱余闲充裕，装箱随心所欲；小行李箱步步权衡，满满当当。余闲的有无，决定了你是否陷入<b>权衡式思维</b>——蜜蜂用稀缺的蜂蜡筑出公差 2% 的完美蜂巢，泥蜂用充裕的泥巴马虎筑巢。余闲还提供隐藏功效：<b>犯错时的周转空间</b>。稀缺的本质，就是没有余闲。</p><div class="chain"><div class="node"><div class="n">比喻</div><div><p class="tt">两只行李箱</p><p class="dd">大箱子装余闲、小箱子装权衡——装箱方式被资源的多寡改写</p></div></div><div class="node"><div class="n">思维</div><div><p class="tt">权衡式思维</p><p class="dd">火车站调查：表现出权衡式思维的穷人几乎是富人的两倍（15∶8）</p></div></div><div class="node"><div class="n">概念</div><div><p class="tt">余闲</p><p class="dd">装箱时空间充裕产生的副产品——余闲替你埋了单</p></div></div><div class="node"><div class="n">自然</div><div><p class="tt">穷蜜蜂富泥蜂</p><p class="dd">1 千克蜂蜡需 8.07 千克蜂蜜——稀缺逼迫蜜蜂高效，泥巴纵容泥蜂粗心</p></div></div><div class="node"><div class="n">代价</div><div><p class="tt">犯错的空间</p><p class="dd">没有余闲时，同一个 200 美元的错误从可淡忘变成灾难</p></div></div><div class="node"><div class="n">本质</div><div><p class="tt">没有余闲</p><p class="dd">实际限制和权衡永远存在，但只有小行李箱让人感受到稀缺</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>两只行李箱：装箱方式的分野</h2><span class="en">PACKING</span></div><p class="prose">同样一次出差：大行李箱先装必需品，还有空地，于是顺手装进雨伞、毛衣、运动服和跑鞋——“说不定这次真的能抽空去锻炼一下呢”——心满意足地拉上拉链。小行李箱则完全不同：必需品刚放进去就满了，你把东西全拿出来重新布局，袜子和充电器塞进鞋子，皮带展开挤在侧壁——然后开始斟酌：毛衣要不要带？雨伞要不要带？</p><p class="prose">要不要冒着被雨淋的风险？</p><p class="prose">小行李箱迫使我们认清一个事实：装进一样东西的同时，就必须拿出另一样东西。大行李箱的主人在思考是否带上跑鞋时，只是在想他<b>需不需要</b>这双鞋；小行李箱的主人则在考虑，若想带上跑鞋，就需要<b>拿出</b>某样物品来腾出空间。其实无论行李箱大小都是限制，但只有小行李箱会令人觉得这是个问题。</p><p class="prose">我们每个人都有一个时间行李箱，都有一个金钱行李箱，有些人还有热量行李箱——稀缺会改变我们花每一分钱、度过每一个小时、吃掉每一份食物的方式。理解装箱方式的不同，是理解<b>稀缺创造稀缺</b>的关键。</p><div class="aband"><q>如果没有余闲存在，我们在装箱时就不得不进行权衡。可见，稀缺的本质就是没有余闲。</q><cite>——第3章·章首导语</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>权衡式思维：被稀缺引发的决策难题</h2><span class="en">TRADE-OFF THINKING</span></div><div class="aband"><q>一架现代重型轰炸机的成本是这样计算的：它相当于30多座城市的现代化砖砌学校；相当于两座发电站，每座能为拥有60000人的城镇供电；相当于两家设备精良的医院；相当于约80450米的水泥公路。我们为每架战斗机支付的费用，相当于1360万千克的小麦。我们为每艘驱逐舰建造的船坞，相当于8000多人的住所。</q><cite>——德怀特·艾森豪威尔</cite></div><p class="prose">餐厅里的“鸡尾酒问题”：平时不喝鸡尾酒的你被菜单上一款吸引——10 美元一杯，买不买？你会算时间、看朋友、想埋单方式，但你不会去想：<b>如果买了这杯酒，我会因此放弃购买其他什么东西？</b>从基础会计学来看，权衡无处不在——这 10 美元一定有个出处，哪怕出处是留给孩子的遗产。但它通常并不给人以这种感觉。</p><div class="aband"><q>权衡式思维(trade-off thinking)它是由稀缺所引发的一种思维方式。在稀缺状态下，因为所有没有被满足的需要俘获了我们的大脑，以致我们开始对之念念不忘，开始产生决策难题。</q><cite>——第3章·黑体定义</cite></div><p class="prose">节食者遇到同样的鸡尾酒问题时就不同了：10 美元的价码不构成权衡，但 300 卡路里的“热量价码”让人斟酌——这杯酒值不值得放弃甜点或明天早上的面包？只要开始节食，每个人都会成为精打细算的“卡路里会计”。10 美元对囊中羞涩之人的影响，与 300 卡路里对节食者的影响是一样的。</p><div class="tbwrap"><table><thead><tr><th>波士顿火车站调查</th><th>源文数据</th></tr></thead><tbody><tr><td>任务</td><td>设想购买一台电视机，列出所有考虑因素</td></tr><tr><td>权衡式思维的标志</td><td>主动道出“如果买下电视，我要放弃些什么”</td></tr><tr><td>结果</td><td>表现出权衡式思维的穷人几乎是富人的两倍（15∶8）</td></tr><tr><td>印度搅拌机</td><td>只有不到 30% 的富有实验对象提到权衡，超过 65% 的穷人产生权衡式思维</td></tr><tr><td>印度电视机</td><td>无论穷人还是富人都会表现出权衡式思维——取决于相对可支配金钱的物品大小</td></tr></tbody></table></div><p class="prose">是否联想到权衡，取决于物品相对可支配金钱的大小：搅拌机只引发一部分人的稀缺，电视机在印度对谁都可观。权衡式思维是稀缺引发的固有结果——缺钱时账单让权衡显而易见，赶工时待办事项凸显在大脑之中。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>余闲：装箱剩下的空间</h2><span class="en">SLACK</span></div><div class="aband"><q>余闲(slack)　就是我们在拥有很大空间，不存在稀缺心态时的产物，也是我们在资源丰富时进行资源管理的特定方式。</q><cite>——第3章·黑体定义</cite></div><p class="prose">余闲是装箱剩余下来的没有用上的可利用空间——不是刻意预留的空间，而是空间充裕产生的“副产品”。大行李箱的主人想再放一件东西，直接打开箱子扔进去就行，不需要重新整理。余闲的存在，令我们感觉不到权衡的存在：很有钱的人喝杯 10 美元的酒，就好像没花钱一样——<b>余闲替你埋了单</b>。</p><p class="prose">时间上的余闲同样熟悉：这周不太忙，你在两次会议之间留出 15 分钟休息，时间仿佛散落于房间四处的零钱，你却没有利用它们的紧迫感；同事说 10 点到 11 点之间打电话来，你把整整一个小时都划给这通 30 分钟的电话。金钱上的余闲则让高收入购物者不记账的比例达到普通人的两倍多——“没有必要记录，根本不差钱”。</p><p class="prose">财务规划师甚至直接假定客户拥有余闲，MSN 公司的理查德·詹金斯建议将资产的 10% 留置一旁，作为“乐趣资金”。</p><p class="prose">要区分余闲与保险式的预留：去机场只要 25 分钟也提前 45 分钟出发，那是为了应对突发事件的精心规划，属于计划之内——就像行李箱里为罗马采购留出的余地。余闲不是这个：它是充裕心态的结果，让你买房买车不用计较到 1 元钱，选度假产品只看心理价位。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>穷蜜蜂与富泥蜂</h2><span class="en">BEES &amp; WASPS</span></div><p class="prose">为什么穷人的余闲更少？大自然给出了答案。蜂巢是任何人工建筑都无法比拟的精致：1 千克蜂蜡需要 <b>8.07 千克</b>蜂蜜，采集这 8 千克多的蜂蜜，蜜蜂需要往返花丛 <b>9 万次</b>。</p><p class="prose">成品的巢壁角度精准的 120 度，形成完美的六边形；每层巢壁厚度不到 0.1 毫米，偏差仅在 0.002 毫米之内——公差 2%，而美国国家标准与技术研究所对建筑预制内层层压板宽度允许的公差是 10%。这一切在黑暗中、无监工的情况下完成。</p><p class="prose">泥蜂同样筑巢，原材料却是泥巴：巢室基本是柱状的，以不规则的方式用泥巴黏合，完全比不上蜂巢精美。差异就在稀缺——<b>泥巴充裕，蜂蜡稀缺</b>。蜂蜡像塞满东西的行李箱里的空间一样必须妥善利用，草草筑巢就是浪费；泥蜂则有能力享受余闲，可以粗心地筑巢，因为建筑材料实在太廉价了。</p><p class="prose">穷人和富人也有类似的体验：装箱所需的空间，对大行李箱的主人像泥巴一样廉价，对小行李箱的主人像蜂蜡一样昂贵——经济学家称之为<b>边际效用递减</b>：你拥有的越多，每一样额外增加的物品的价值就越低。大行李箱最终抛弃的是第 5 套换洗内衣这样重要性较低的物品；小行李箱在主人还没装完需要的东西时就满了。</p><p class="prose">更深一层是心理学因素：小行李箱的主人看着装不进去的重要物品会产生关注与焦虑，装箱这件事<b>俘获了他们的注意力</b>；大行李箱的主人停下时，说明剩下的东西确实没那么重要——装上也好，不装也罢。大行李箱的主人之所以产生余闲，正因为他们并不那么在意装箱这件事情。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>余闲心态下的购买行为</h2><span class="en">BUYING WITH SLACK</span></div><p class="prose">余闲都用来做什么了？打开厨房橱柜就知道：美国家庭普遍堆满多年没人碰过的汤包、果酱和罐头，食品研究人员称之为“橱柜遗弃品”(cabinet castaways)——据估计，从超市买回的 10 件物品中，就有一件成为橱柜遗弃品。</p><p class="prose">更夸张的是自助式仓库：每年人们花在租赁上的钱高达 <b>120 亿美元</b>，足有音乐类消费的 3 倍多，共占用 <b>1.86 亿平方米</b>——自助式仓储协会的结论是：“自助式仓库顶棚的面积可供所有美国人同时站于其上。”</p><p class="prose">因为余闲的存在，我们才可以随意购买这些最终被丢掉的物品：不会想到“我是否能常常用到这台榨汁机”，也不会问“我真的有机会穿上这双恨天高吗”——因为不存在权衡，所以只会想到“为什么不呢”。低效和浪费由此产生：原本一天可以工作 16 个小时，结果只做了 6 个小时的事情；用一周时间去完成一项两天就能完成的事。</p><p class="prose">但余闲并不仅仅意味着低效——书内「稀缺实验室」的讲座实验给出了余闲的另一项功能：</p><div class="tbwrap"><table><thead><tr><th>图书馆实验</th><th>设定</th><th>坚持去图书馆</th></tr></thead><tbody><tr><td>单选诱惑</td><td>作家讲座 vs 论文</td><td>60% 的学生坚持去图书馆</td></tr><tr><td>双选诱惑</td><td>讲座、外国电影 vs 论文</td><td>80% 的学生坚持去图书馆</td></tr></tbody></table></div><p class="prose">选择更多，坚持最初决定的人反而更多——因为做选择实在不容易，人们常常通过坚持最初的计划来避免选择的负担。余闲恰恰给了我们<b>不去做选择的权利</b>：金钱余闲让你两件衣服都买，时间余闲让你讲座和电影都去。与米尔顿·弗里德曼“自由选择”的理想相反，<b>余闲给了我们无须做选择的自由</b>。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>没有余闲时犯错，后果很严重</h2><span class="en">ROOM FOR ERROR</span></div><p class="prose">亚历克斯和本同时看上一件 200 美元的皮夹克——都不实用，正确的选择是掉头走开，但两人都向欲望屈服了。回到家，两人都想明白“真是花了冤枉钱”。区别在下一层：亚历克斯的现金很充裕，没过多久就淡忘了这个错误；本正缺钱——“现在我没有钱修车了。车子坏了我上班就会迟到，上班迟到就会……</p><p class="prose">”两人支付了同样的费用，但<b>同样的错误产生了不同的后果</b>：本必须挪用计划内的其他支出，而这些支出都是他认为必要的。</p><p class="prose">时间上同理。大四学生对毕业论文所需时间的预估平均是 <b>34 天</b>（最差情况 48 天），实际完成平均 <b>55 天</b>——这就是每个人都有可能经历的<b>计划谬误</b>，从经理人到制片人谁也逃不掉，连顶尖棋手都会给开局分配过多时间。</p><p class="prose">关键在于后果：不忙的人少了 10 个小时只是小麻烦，日历中四处散落的空闲随便改改就能找到；忙碌之人的日程像摇摇欲坠的积木塔，只能暂缓另一项工作去借时间——<b>而借了总是要还的</b>，随后一周将是更可怕的噩梦。</p><div class="aband"><q>诱惑负担是递减的，对于资产较少的人来说更为沉重</q><cite>——第3章·引经济学家阿比吉特·班纳吉</cite></div><p class="prose">书内「稀缺实验室」给出量化：经济学研究生丹·比约克格伦在印度尼西亚的调查显示，对最贫穷的人群，诱惑性商品（香烟、酒类等）的赋税高达 <b>10%</b>，随富有程度上升而降至消费总额的 <b>1%</b>——富人会在诱惑上花更多钱，但赋税比例更低。</p><p class="prose">而且稀缺还会改写“错误”的定义：当亚历克斯很有钱时，“为什么不买呢”甚至不算错误；而本必须抵制诱惑。财富会将诱惑转化为可以买到的奢侈品——同样一件商品，在你身无分文时是一个诱惑，在你不差钱时，不过就是随手的挥霍。</p><p class="prose">粒度问题则是最后的推演：野餐时，带水果的塞德希尔要为一个大西瓜费尽心思码放背包，带软糖的埃尔德随便一丢还有富余。物品的“粒度”(granularity)决定装箱的复杂程度——可支配资金越少，一部 iPod 占整月开销的比例越大，装箱难度越高；资金越多，决策越不容易引发直接后果。</p><p class="prose">从数学角度看，稀缺创造出了运筹学上难度更大的装箱问题——人们的大脑，正在被推入一个计算难度更大的环境。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>稀缺的本质就是没有余闲</h2><span class="en">THE ESSENCE</span></div><p class="prose">全书一开头对稀缺的定义是一种需求比资源多的<b>主观感受</b>——装箱概念令主观感受与实际限制的对比变得尖锐：行李箱不管有多大，体积都是固定不变的，实际限制和权衡永远存在；但只有小行李箱才让我们感受到稀缺的存在。大行李箱不仅给予更多空间，还消除了稀缺的感受——我们觉得自己拥有足够的空间，想不到要去做权衡。</p><div class="aband"><q>拥有余闲，我们就会拥有充裕的感受。余闲不仅仅意味着低效，更是一种奢侈的心理享受。</q><cite>——第3章</cite></div><p class="prose">余闲的概念深入到了稀缺心理的核心：充裕让我们购买更多的商品，也给予我们随意装箱的奢侈享受、不用动脑筋的奢侈享受以及犯了错误无所谓的奢侈享受。正如亨利·大卫·梭罗所说：<b>一个人的富有程度，与他所能舍弃之物的数量成正比</b>。</p><div class="grid g2"><div class="card"><h3>穷蜜蜂与富泥蜂</h3><p class="cp">1 千克蜂蜡需要 8.07 千克蜂蜜、往返花丛 9 万次——蜂蜡稀缺，蜜蜂筑出巢壁角度精准的 120 度完美六边形；泥巴充裕，泥蜂的巢室只是不规则黏合的柱状。装箱所需的空间，对大行李箱的主人像泥巴一样廉价，对小行李箱的主人像蜂蜡一样昂贵。</p></div><div class="card"><h3>橱柜遗弃品</h3><p class="cp">据估计，从超市买回的 10 件物品中，就有一件成为“橱柜遗弃品”(cabinet castaways)——余闲令我们感觉不到权衡，才会随手买下最终被丢掉的东西。低效与浪费是充裕的副产品。</p></div></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">故事</span><h4>一件 200 美元的皮夹克</h4><span class="ar">▶</span></div><div class="cb"><div class="in">亚历克斯和本同时看上一件不实用的 200 美元皮夹克，都向欲望屈服，回家后都想明白花了冤枉钱。区别在下一层：现金充裕的亚历克斯没过多久就淡忘了；正缺钱的本却要为此后的每一笔开销腾挪——同样的错误，稀缺让后果重得多。</div></div></div><div class="case"><div class="ch"><span class="tag mid">实验</span><h4>毕业论文的计划谬误</h4><span class="ar">▶</span></div><div class="cb"><div class="in">大四学生对毕业论文所需时间的预估平均是 34 天（最差情况 48 天），实际完成平均 55 天——计划谬误人人都有，从经理人到制片人谁也逃不掉；但没有余闲的人犯同样的错，代价是雪上加霜。</div></div></div></div><div class="check" data-k="p3-selftest"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>我能用大小行李箱的比喻向朋友解释余闲</span></label><label><input type="checkbox"><span>我能说出权衡式思维的触发条件：物品相对于可支配资源足够大</span></label><label><input type="checkbox"><span>我知道本章的结论：稀缺的本质就是没有余闲</span></label><label><input type="checkbox"><span>我能区分余闲与刻意预留（如提前 45 分钟出发去机场）</span></label><div class="cf">已确认 <b>0</b> / 4</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">排印</span><span class="nd"><b>1｜</b>源文题记署名作「George CarIin」（Carlin 中混入大写 I），疑为导出排印误，题记按正字法回改。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜塞德希尔·穆来纳森 / 埃尔德·沙菲尔《稀缺：我们是如何陷入贫穷与忙碌的》（浙江人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜第3章·装箱与余闲</span><a href="../02-带宽负担会降低人的智商/index.html">← 第2章·带宽负担</a><a href="../04-行为经济学告诉我们的道理/index.html">第4章·行为经济学 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='sc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
