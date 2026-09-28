@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 1·做一个多模型思考者 · 模型的 7 大用途｜模型思维 精读</title>
+<meta name="description" content="从芒格的「多个模型」宣言出发，佩奇给出智慧层次结构与模型的三大共同特征，再用金融危机与古巴导弹危机示范模型如何对话，最后摆开 7 大用途。">
+<style>
+:root{
+  --paper:#F4F3EE;      /* 羊皮纸底 */
+  --paper-2:#E7E4DB;    /* 羊皮纸深一档 */
+  --card:#FAF9F4;
+  --ink:#212936;        /* 主墨（深蓝墨） */
+  --ink-2:#2E3A4E;      /* 钴蓝次墨 */
+  --ink-deep:#0C1119;   /* 夜航蓝黑（hero 底） */
+  --gold:#35558A;       /* 钴蓝（强调 · 模型的理性骨架） */
+  --gold-b:#7B98C9;     /* 高亮钴蓝 */
+  --gold-soft:rgba(53,85,138,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 误用与陷阱） */
+  --teal:#C9A227;       /* 对照模型金（对照 · 多模型互补） */
+  --tx:#2A3140;
+  --tx-2:#455062;
+  --tx-3:#6E7B90;
+  --line:rgba(33,41,54,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,41,54,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E3A4E 0%,var(--ink-deep) 62%);
+  color:#E8EDF5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(123,152,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(123,152,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(123,152,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EEF2F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,237,245,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(123,152,201,.34);color:rgba(232,237,245,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,85,138,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(123,152,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EEF2F8;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(123,152,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EEF2F8;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(233,237,244,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,85,138,.5);box-shadow:0 4px 18px rgba(33,41,54,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,85,138,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(122,129,113,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,85,138,.45);background:rgba(53,85,138,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(146,58,36,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,85,138,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,243,238,.94);
+  border-bottom:1px solid rgba(33,41,54,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,41,54,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2E3A4E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,85,138,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,41,54,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,41,54,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#6E7B90;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-卷首-这本书是怎样写成的/index.html">← 卷首·成书与自测</a><a href="../02-多模型思维与人类行为建模/index.html">多模型与行为建模 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">智</div>
+  <div class="stamp s3">多模型</div>
+  <h1>做一个多模型思考者 · 模型的 7 大用途</h1>
+  <p class="sub">从芒格的「多个模型」宣言出发，佩奇给出智慧层次结构与模型的三大共同特征，再用金融危机与古巴导弹危机示范模型如何对话，最后摆开 7 大用途。</p>
+  <div class="meta"><span>Part 1</span>
+    <span class="k">智慧层次结构</span>
+    <span>正文 23,344 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>为何多模型</a><a href="#s3" data-t="s3"><span class="cn">叁</span>智慧阶梯</a><a href="#s4" data-t="s4"><span class="cn">肆</span>7 大用途</a><a href="#s5" data-t="s5"><span class="cn">伍</span>条件性</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>要想成为一个有智慧的人，你必须拥有多个模型。而且，你必须将你的经验，无论是间接的，还是直接的，都放到构成这些模型的网格上。</p><cite>——查理·芒格(Charlie Munger)</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书总纲：多模型宣言、智慧阶梯、模型对话、7 大用途</p><p class="thesis">Part 1 回答「为什么需要模型思维」。核心思想是：<b>多模型思维能够通过一系列不同的逻辑框架「生成」智慧</b>——不同的模型将不同的力量分别突显出来，见解相互重叠交织。所有模型都简化、都形式化、也都注定是错的，因此只凭一个方程解释复杂世界是狂妄自大；我们必须像医生开多种检查那样，让模型彼此对话。</p><div class="chain"><div class="node"><div class="n">宣言</div><div><p class="tt">多模型思维</p><p class="dd">掌握几十个来自多学科的模型，将经验放到这些模型的网格上——本书给出囚徒困境、逐底竞争、SIR 传染病模型等出发点</p></div></div><div class="node"><div class="n">阶梯</div><div><p class="tt">智慧层次结构</p><p class="dd">数据 → 信息 → 知识 → 智慧：智慧就是识别并应用相关知识的能力，而知识以模型的形式组织信息</p></div></div><div class="node"><div class="n">铁律</div><div><p class="tt">所有模型都是错的</p><p class="dd">统计学家乔治·博克斯的论断：模型必然简化，简化必然失真——所以单一模型必有盲点</p></div></div><div class="node"><div class="n">示范</div><div><p class="tt">让模型对话</p><p class="dd">罗闻全用 20 种解释评估 2008 年金融危机；艾利森用 3 个模型拆解古巴导弹危机</p></div></div><div class="node"><div class="n">用途</div><div><p class="tt">REDCAPE 红色披风</p><p class="dd">推理、解释、设计、交流、行动、预测、探索——7 大用途首字母连成「红色披风」，赋予多模型思维力量</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>大数据时代，为什么还需要模型</h2><span class="en">WHY MODELS</span></div><p class="prose">模型是<b>用数学公式和图表展现的形式化结构</b>，能帮我们理解世界。25 年前，讲模型的书主要供教授、研究生、金融分析师与精算师使用；今天，大数据让模型成了知识工作者的日常——用模型组织和解释数据的能力，已是商业策略家、城市规划师、经济学家、医疗专家等职业的「核心竞争力」。</p><p class="prose">但数据本身不是答案。数据显示，计件工资越高，工人生产的产品反而越少——用一个「薪酬取决于工作条件」的模型即可解释：工作条件越差，越难生产出产品，每单位产品的工资就越高。并不是更高的计件工资导致了更低的生产率，而是更糟糕的工作条件导致了这种结果。</p><p class="prose">所以这个时代恰恰是<b>多模型时代</b>：麦肯锡、德勤用模型制订商业策略，贝莱德、摩根大通用模型选投资，谷歌用预测分析模型评估超过 300 万求职者，盖茨基金会用流行病学模型设计疫苗接种策略，芝加哥小熊队靠模型选球员、定战术，在百年失败后赢得世界职业棒球联赛冠军。</p><p class="prose">更根本的理由是认知：没有模型，人会受各种认知偏差影响——对近期事件赋予过高权重、按「合理程度」分配概率、忽略各种基本比率。有证明表明，如果让模型与人面对面直接「竞争」，<b>模型将会胜出</b>。</p><p class="prose">所有模型有三个共同特征：<b>简化</b>（剥离不必要的细节）、<b>形式化</b>（给出精确定义，通常用数学公式）、以及<b>所有模型都是错误的</b>。模型把信念表示为世界状态的概率分布，把偏好表示为备选项之间的排序，从而创造易于处理的空间，让逻辑推理得以展开。</p><div class="aband"><q>逻辑本身就能解决问题，我们所要做的，就是观察它是如何做到的。</q><cite>——维特根斯坦《逻辑哲学论》，转引自第 1 章</cite></div><p class="prose">只用单个模型是狂妄自大：我们永远不应指望任何一个模型能准确预测 1 万年后的海平面上升，也不应指望它准确预测 10 个月后的失业率。既然如此，就要「管中窥豹需多管齐下」——这一思想至少可追溯至亚里士多德，而汤亭亭的表述更通透：</p><div class="aband"><q>我已经学会了如何让我的思想变得博大；因为宇宙很大，所以给悖论留下了存在的余地。</q><cite>——汤亭亭《女勇士》，转引自第 1 章</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>智慧层次结构：从数据到智慧</h2><span class="en">WISDOM HIERARCHY</span></div><p class="prose">T.S.艾略特曾问：「我们迷失于知识中的智慧到哪里去了？我们迷失于信息中的知识到哪里去了？」佩奇把它形式化为一个四层<b>智慧层次结构</b>（wisdom hierarchy）：</p><div class="tbwrap"><table><thead><tr><th>层级</th><th>含义</th><th>例子</th></tr></thead><tbody><tr><td>数据</td><td>原始的、未编码的事件、经历和现象，缺乏意义、组织或结构</td><td>落在你头上的雨；麦迪逊市国会大厦旁边周六市场上的鲜红辣椒和金黄玉米</td></tr><tr><td>信息</td><td>给数据命名并将数据归入相应的类别</td><td>佛蒙特州伯灵顿市和安大略湖的 7 月份总降水量；农民的总销售额</td></tr><tr><td>知识</td><td>对相关关系、因果关系和逻辑关系的理解，呈现为模型的形式</td><td>市场竞争的经济学模型、网络的社会学模型、化学键模型</td></tr><tr><td>智慧</td><td>识别和应用相关知识的能力，需要多模型思维</td><td>从箭袋中选出最优模型；对多个模型的预测求平均；让模型相互「对话」</td></tr></tbody></table></div><p class="prose">一个玩具级例子：一只毛绒玩具猎豹从 6 千米高的飞机上掉下来，着地时会造成多大伤害？<b>引力模型</b>的预测是它会撕裂汽车的顶棚；<b>自由降落速度模型</b>的预测则是最高时速 16 千米。要得到正确答案，需要信息（玩具的重量）、知识（自由降落速度模型）和智慧（选择正确的模型）。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">选对模型</span><h4>2008 年：甲骨文与冰岛克朗</h4><span class="ar">▶</span></div><div class="cb"><div class="in">2008 年 10 月 9 日，冰岛克朗自由落体般急剧贬值，甲骨文公司财务主管埃里克·鲍尔必须决定数十亿美元海外资产怎么办。他先考虑金融崩溃的<b>网络传染模型</b>，再考虑价格变化幅度与市场冲击相关的<b>供需模型</b>。冰岛当年 GDP 仅 120 亿美元，只相当于麦当劳 6 个月的销售收入。他选择了供需模型：「冰岛的经济规模比美国弗雷斯诺市还要小呢。回去工作吧，不用多管。」关键是：他没有先定行动再找模型辩护，而是评估了两个模型、选了更好的一个。</div></div></div><div class="case"><div class="ch"><span class="tag mid">罗闻全</span><h4>2008 年金融危机：20 种解释</h4><span class="ar">▶</span></div><div class="cb"><div class="in">外国投资过多、投行过度杠杆化、抵押贷款审批缺乏监督、金融工具太复杂……经济学家罗闻全用多模型思维评估了 20 种解释，发现每一种都有逻辑缺憾：投资者不会明知导致全球危机还为泡沫做贡献，所以泡沫严重程度一定出乎许多人意料；杠杆率自 2002 年以来虽在上升，却没比 1998 年高出很多；而雷曼兄弟 2008 年 9 月 15 日倒闭（资产超 6000 亿美元，美国历史最大破产案）说明政府并不会必定出手救助。</div></div></div><div class="case"><div class="ch"><span class="tag mid">艾利森</span><h4>1961 年古巴导弹危机：三个模型</h4><span class="ar">▶</span></div><div class="cb"><div class="in">《决策的本质》里，艾利森用三个模型拆解同一场危机——<b>理性行为者模型</b>：肯尼迪有核战争、入侵、封锁三种行动，按博弈树推演后选择封锁，揭示了核心策略逻辑；<b>组织过程模型</b>：解释苏联为何未能藏起导弹（缺乏组织能力）、美国为何选封锁（空军无法一次摧毁所有导弹）；<b>政府过程模型</b>：肯尼迪要与国会抗衡，赫鲁晓夫要维持政治基础，部署导弹是一种力量的宣示。来自组织过程模型的洞察力，改变了理性选择模型中的结果。</div></div></div></div><div class="aband"><q>我们应该从一开始就努力对同一组客观事实给出尽可能多的解释，并寄希望于时间。当时机成熟的时候，关于这场危机更细致和更一致的解释就会浮现出来。</q><cite>——罗闻全，转引自第 1 章</cite></div><p class="prose">他补上的第二句更可作为多模型方法的座右铭：<b>唯有通过收集多样化且往往相互矛盾的解释，我们才能最终实现对危机更完整的理解。</p><p class="prose"></b>多模型思维的成功还取决于一定程度的可分离性——分析金融危机时不必同时考虑组织过程模型；但复杂系统并非「乌龟驮乌龟」式的自相似，大脑在亚微米水平是分子，在神经元网络水平是网络，在功能系统水平是小脑——每个层级都需要不同的模型。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>模型的 7 大用途（REDCAPE）</h2><span class="en">REDCAPE</span></div><p class="prose">第 2 章先讲构建模型的三种方法，再展开 7 大用途。模型未必只是「对世界的简化」——它也可以是类比，或为探索思想而构造的虚拟世界。</p><div class="grid g3"><div class="card num"><div class="idx">方法 1</div><h3>具身法</h3><p class="cp">包括重要部分，对不必要的维度和属性要么剥离、要么整合考虑。生态沼泽模型、立法机构与交通系统模型、气候模型和大脑模型都是如此，更强调现实主义。</p></div><div class="card num"><div class="idx">方法 2</div><h3>类比法</h3><p class="cp">对现实进行类比与抽象：把犯罪传播类比为传染病，把政治立场类比为左-右连续线段上的选择。最直观的例子是「球形牛」——为估计牛皮面积假设牛是球形的。</p></div><div class="card num"><div class="idx">方法 3</div><h3>另类现实法</h3><p class="cp">有意不去表征现实，作为探索可能性的「演练场」，如「生命游戏」棋盘：它与现实不一致，却能加深对自组织、复杂性乃至生命本身的认识。</p></div></div><p class="prose">无论哪种方法，模型都必须<b>易于处理且便于交流</b>。奥卡姆剃刀原则说「如无必要，勿增实体」，爱因斯坦把它阐释为：事情应该力求尽可能简单，但是不可过于简单化。今天，解析方法搞不定的问题还可以求助计算方法——气候、大脑、森林火灾和交通模型都是这样建出来的。</p><p class="prose">7 大用途的首字母连成缩略词 <b>REDCAPE（红色披风）</b>：</p><div class="tbwrap"><table><thead><tr><th>用途</th><th>含义</th><th>本章代表案例</th></tr></thead><tbody><tr><td>推理 Reason</td><td>识别条件并推断逻辑含义</td><td>阿罗定理证明不存在满足全部合理条件的集体排序；友谊悖论——扎卡里空手道网络 34 人中 29 人拥有比自己更受欢迎的朋友</td></tr><tr><td>解释 Explain</td><td>为经验现象提供（可检验的）解释</td><td>S 形采用曲线；水和钻石悖论；1973 年伯克利分校录取中的辛普森悖论</td></tr><tr><td>设计 Design</td><td>选择制度、政策和规则的特征</td><td>1993 年加州理工学院经济学家设计的多轮频谱拍卖，30 年为美国联邦通信委员会筹集近 600 亿美元</td></tr><tr><td>交流 Communicate</td><td>将知识与理解联系起来</td><td>F=ma 的三个可测量量；18 世纪法国城市经济增长与《百科全书》订阅数的相关性远高于识字率</td></tr><tr><td>行动 Act</td><td>指导政策选择和战略行动</td><td>国际货币基金组织的网络模型显示 AIG 居网络中心，1820 亿美元救助为其他公司市值提供支持，贷款还带来 230 亿美元利润</td></tr><tr><td>预测 Predict</td><td>对未来和未知现象进行数值和分类预测</td><td>概率模型锁定法航 AF477 坠毁海域，一周内找到残骸；勒维耶按牛顿定律预测出海王星</td></tr><tr><td>探索 Explore</td><td>分析探索可能性和假说</td><td>如果公交车免费会怎样？如果拉马克是对的、获得性状可遗传呢？暂且丢开现实约束，激发创造力</td></tr></tbody></table></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>条件性：模型优于谚语之处</h2><span class="en">CONDITIONALITY</span></div><p class="prose">7 大用途背后有一条贯穿全书的主线：<b>从模型中得出的推论总是条件判断——如果条件 A 成立，那么可以得出结果 B。</b>谚语则相反：既然有「三个臭皮匠，赛过诸葛亮」，也会有「厨子多了烧坏汤」，意思相反的谚语可以共存，相反的定理却不会出现——两个定理若对最优行动看法不同，必定假设不同。</p><p class="prose">以管理名言「重要的事情先做」（大石头优先）为例。在<b>装箱问题</b>中，把所有东西按大小排好、逐一放进 50 厘米×50 厘米的箱子，「首次适应算法」证明相当有效——大石头优先确实不错。</p><p class="prose">但换成在国际空间站为若干研究项目分配空间：各项目对载荷重量、空间、动力、宇航员时间与认知能力各有要求，相互依赖的维度一多，「大石头优先」就被证明是相当糟糕的原则，更复杂的算法与市场机制会更好。</p><p class="prose">同一个模型也可以<b>一对多</b>地使用：2003 年 8 月 14 日，俄亥俄州托莱多市附近树木倒塌压断电线，监控软件故障又延误了重新配电，一天之内美国东北部和加拿大 5000 多万人停电；同年意大利与瑞士之间电线受风暴袭击，6000 万欧洲人无法用电。</p><p class="prose">把电网表示为网络的模型，既解释故障如何发生，又预测未来故障区域，还能指导在哪里增设线路、变压器和电源。一对多，正是「多模型理解复杂现象」这一中心主题的必要补充。</p><div class="aband"><q>人生的伟大目标，不在于知，而在于行。</q><cite>——弗朗西斯·培根，转引自第 2 章</cite></div><div class="check" data-k="redcape-01"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>能说出智慧层次结构的四层：数据 → 信息 → 知识 → 智慧，并各举一例</span></label><label><input type="checkbox"><span>能复述模型三个共同特征：简化、形式化、所有模型都是错误的</span></label><label><input type="checkbox"><span>能用「工作条件模型」解释「计件工资越高产量越低」的数据</span></label><label><input type="checkbox"><span>能拆出艾利森解释古巴导弹危机的三个模型，并说出它们各自揭示了什么</span></label><label><input type="checkbox"><span>能默写 REDCAPE 七个用途及各自一个案例</span></label><div class="cf">已掌握 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出说明</span><span class="nd"><b>1｜</b>源文的图 1-1（智慧层次结构）、图 2-1（友谊悖论）、图 2-2（金融机构的网络模型）与表 2-1（相互对立的谚语）在导出中仅为插图/表题，本页以文字、表格与卡片重排其内容；表 2-1 的谚语对列表源文未收正文，故不逐条列出。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜斯科特·佩奇《模型思维（新版）》（浙江科学技术出版社·湛庐，贾拥民 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">Part 1｜多模型思考者</span><a href="../00-卷首-这本书是怎样写成的/index.html">← 卷首·成书与自测</a><a href="../02-多模型思维与人类行为建模/index.html">多模型与行为建模 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mt-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

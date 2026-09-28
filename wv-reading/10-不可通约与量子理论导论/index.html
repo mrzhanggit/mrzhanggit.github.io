@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分·不可通约性与量子理论导论｜世界观 精读</title>
+<meta name="description" content="第25章追问：不同科学体系之间可以互相翻译吗；第26章为量子理论立规矩——把事实、数学与诠释分开，再让四个实验把常识搅乱。">
+<style>
+:root{
+  --paper:#F3F1EA;      /* 暖星纸底 */
+  --paper-2:#E9E5DB;    /* 纸色深一档 */
+  --card:#FCFBF6;
+  --ink:#1E2633;        /* 主墨（深空墨蓝） */
+  --ink-2:#2B3F66;
+  --ink-deep:#0A0F17;   /* 深空（hero 底） */
+  --gold:#2B3F66;       /* 深空蓝（强调 · 世界观拼图与范式更替） */
+  --gold-b:#6C7FA8;     /* 高亮蓝（辅助强调 · 星光） */
+  --gold-soft:rgba(43,63,102,.16);
+  --cinnabar:#A63528;   /* 行星红（警示 · 悖论与反常证据） */
+  --teal:#B08A3A;       /* 星图金（对照 · 新旧世界观并置） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(30,38,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(30,38,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2B3F66 0%,var(--ink-deep) 62%);
+  color:#E8EDF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(108,127,168,.42)}
+.hero::after{inset:22px;border:1px solid rgba(108,127,168,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(108,127,168,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF2F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(108,127,168,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(43,63,102,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(108,127,168,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E7EBF3;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(108,127,168,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E7EBF3;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(43,63,102,.5);box-shadow:0 4px 18px rgba(30,38,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(43,63,102,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(43,63,102,.45);background:rgba(43,63,102,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(43,63,102,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,241,234,.94);
+  border-bottom:1px solid rgba(30,38,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(30,38,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2B3F66;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(43,63,102,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(30,38,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(30,38,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../09-狭义与广义相对论/index.html">← 狭义与广义相对论</a><a href="../11-测量难题与EPR/index.html">测量难题与EPR →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">量</div>
+  <div class="stamp ">量子</div>
+  <h1>不可通约性与量子理论导论</h1>
+  <p class="sub">第25章追问：不同科学体系之间可以互相翻译吗；第26章为量子理论立规矩——把事实、数学与诠释分开，再让四个实验把常识搅乱。</p>
+  <div class="meta"><span>第三部分</span>
+    <span class="k">不可通约性</span>
+    <span>正文 25,270 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>重量实验</a><a href="#s3" data-t="s3"><span class="cn">叁</span>三种不可通约</a><a href="#s4" data-t="s4"><span class="cn">肆</span>进步之辩</a><a href="#s5" data-t="s5"><span class="cn">伍</span>三分法</a><a href="#s6" data-t="s6"><span class="cn">陸</span>四个实验</a><a href="#s7" data-t="s7"><span class="cn">柒</span>量子数学</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇一哲一物两章：先谈新旧科学体系能否互译，再进入量子事实与量子数学</p><p class="thesis"><b>第25章</b>是哲学插曲：牛顿「质量」与相对论「质量」可能<b>不可通约</b>——无法用新理论的术语精确表达旧理论的概念。两球同落实验复盘揭示隐藏前提；术语、方法论、「不同世界」三层不可通约性步步加深。<b>第26章</b>进入量子理论：先立三分法（量子事实 / 量子理论数学 / 诠释），四个实验表明<b>测量行为本身</b>决定了看到波效应还是粒子效应。</p><div class="chain"><div class="node"><div class="n">隔阂</div><div><p class="tt">不可通约性</p><p class="dd">「质量」在牛顿与相对论体系中环境不同、角色不同；概念只能借助同一体系内的其他术语来理解（库恩）</p></div></div><div class="node"><div class="n">复盘</div><div><p class="tt">两球同落实验</p><p class="dd">「亚里士多德大错特错」的经典实验藏着隐藏前提——重量保持不变；而亚里士多德的重量由场景决定</p></div></div><div class="node"><div class="n">三层</div><div><p class="tt">不可通约的深度</p><p class="dd">术语（dunamis/潜能概念网络）→方法论（火星运动问题「啪」地自动消失）→不同世界（绳石与钟摆：看到的不是解读不同，而是世界不同）</p></div></div><div class="node"><div class="n">出路</div><div><p class="tt">进步之辩</p><p class="dd">不可通约≠不可对比：正方形边与对角线照样可比；从工具主义有用性看，登月、探测车、GPS就是进步</p></div></div><div class="node"><div class="n">规矩</div><div><p class="tt">三分法</p><p class="dd">量子事实（无争议）/量子理论数学（80多年无错误预言）/诠释（哲学话题）——混为一谈是量子困惑之源</p></div></div><div class="node"><div class="n">实验</div><div><p class="tt">测量的怪角色</p><p class="dd">四个实验：有探测→粒子效应，没探测→波效应，拨动开关即可随心转换——「测量难题」登场</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第25章 · 从「重量」看不可通约</h2><span class="en">WEIGHT</span></div><p class="prose">「不可通约性」这个名词，跳出科学史和科学哲学领域可能并不为人熟知。以「质量」为例：有人认为它在牛顿物理学与相对论物理学中处于概念上不同的环境、扮演不同的角色，因此无法用新近物理学的术语精准表达牛顿的「质量」概念——这就是不可通约。德威特用「重量」概念做了一次深入复盘。</p><p class="prose">亚里士多德认为下落速度与重量成正比——两倍重量两倍速度。教科书常用「两球同落」实验证明他大错特错：天平称出两倍重量，同一高度同时下落，重物并没有以两倍速度下落。但这个实验有个<b>隐藏前提</b>：我们假定<b>物体的重量在下落时与在天平上时相同</b>。</p><p class="prose">在现代物理学中这个前提没有问题（自由落体时只是没有「视重」）。</p><p class="prose">但亚里士多德不会认同这个前提：在他的体系中<b>场景至关重要</b>——物体在天平上是一个场景，下落时是另一个场景，场景不同重量就不同。他的体系里也没有能扮演力、质量、加速度这类角色的概念。结论是：把自家体系里合理而自然的前提假设应用到其他体系时，必须非常谨慎——</p><div class="aband"><q>如果我们认为现代科学体系中的某个术语或概念出现在其他科学体系中时，含义和用法仍然保持不变，那就犯错误了，而且是非常严重的错误。</q><cite>——第25章 初步考察</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>术语、方法论与「不同世界」</h2><span class="en">INCOMMENSURABILITY</span></div><p class="prose">这个概念最早由古希腊数学家提出（4米与6米是可同测的，正方形边长与对角线则不可通约）；到20世纪末，经托马斯·库恩（1922—1996）与保罗·费耶阿本德（1924—1994）的研究，它成为科学哲学的核心话题。围绕亚里士多德与牛顿两个体系，可以看到三层虽有重叠但仍相互区别的论证：</p><div class="grid g2"><div class="card num"><div class="idx">其一</div><h3>术语的不可通约性</h3><p class="cp">亚里士多德的重量与他的 dunamis（潜能）概念紧密相联，潜能又与形式、运动的原因等核心观念相联。一个体系中的术语通常借助同一体系中的其他术语来定义（库恩）——概念网络一换，概念就无法得到合适的定义。</p></div><div class="card num"><div class="idx">其二</div><h3>方法论的不可通约性</h3><p class="cp">在「运动需要因素保持」的观点下，「寻找使运动产生并保持的因素」是亚里士多德体系的核心问题（《论动物运动》《论天》《物理学》）；惯性定律得到认可后，这些核心问题「啪」的一下自动消失——火星不需要任何保持运动的因素。</p></div><div class="card num"><div class="idx">其三</div><h3>不同世界不可通约性</h3><p class="cp">约1950年的纸牌实验：把红色花色换成黑色，人们仍看成常规的牌——我们看到了自己所希望看到的。绑着细绳摆动的石头：亚里士多德科学家看到的是试图回到天然位置的物体，牛顿科学家看到的是钟摆。</p></div><div class="card num"><div class="idx">分寸</div><h3>最具争议的一层</h3><p class="cp">第三类并不是说两个体系的科学家对世界的解读不同，而是说他们看到的是不同的世界——这是三类中最具争议、也最难找到强论据的一种。</p></div></div><div class="aband"><q>身处不同科学体系内的科学家是“在不同的世界里开展自己的研究”</q><cite>——库恩，1962，p.150（转引自第25章）</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>不可通约性与科学的进步</h2><span class="en">PROGRESS</span></div><p class="prose">最复杂的争议在于：不可通约性是否意味着无法说明科学取得了真正的进步？有人由此推出理论选择不是理性过程、任何有意义的科学进步都不存在——「科学线性发展、持续逼近真理」的进步观确实有问题：方法论的不可通约性使不同体系连要解答的核心问题都不同。</p><p class="prose">但不可通约<b>不等于</b>不能对比：正方形边长1米，对角线略短于边长的1.5倍——数学上不可通约，照样可以比较。科学上同理：从工具主义的有用性角度看，牛顿胜过亚里士多德（登月、火星探测车、国际空间站），相对论胜过牛顿（GPS全球定位系统地图和导航）。</p><p class="prose">不可通约性的存在，并没有让一切有意义的科学进步都变得不可能。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>第26章 · 事实、理论和诠释</h2><span class="en">TRIAD</span></div><p class="prose">转向量子理论。德威特先立规矩：任何非技术性讨论都必须区分三个命题——①<b>量子事实</b>：涉及电子、质子、光子等量子实体的经验事实；②<b>量子理论本身</b>：处于核心地位的数学部分，发现于20世纪20年代末期；③<b>对量子理论的诠释</b>：什么样的现实可以产生这些事实、并与量子理论数学保持一致。</p><p class="prose">混为一谈就会出问题：「量子理论表明西方科学和某些东方哲学在对宇宙的看法上，由于观点相同而融合了」「宇宙在持续分裂成多重平行宇宙」——这些只是一些诠释的观点；对理论的诠释和理论本身必须保持相互独立。另外，用「粒子」称呼量子实体只是标准做法，并不意味着回答了「量子实体究竟是什么性质」的问题。</p><p class="prose">量子事实非常出人意料，但<b>对事实本身不存在争议</b>，有争议的是如何诠释。而量子理论数学取得了巨大成功——</p><div class="aband"><q>在预言和解释方面，量子理论可以说是我们所遇到过的最成功的理论了。</q><cite>——第26章 事实、理论和诠释</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>四个实验：测量的怪角色</h2><span class="en">EXPERIMENTS</span></div><p class="prose">先明确两种可能的结果：若电子是<b>粒子</b>（离散物体，位置定义清晰），穿过双缝后相纸上应出现与缝对应的累积分布——「粒子效应」；若电子是<b>波</b>（在较大范围内传播，可叠加、可抵消），双缝分出两列波相互干涉，相纸上应出现交替的亮带和暗带——「波效应」。然后是四个标准实验：</p><div class="tbwrap"><table><thead><tr><th>实验</th><th>设置</th><th>结果</th></tr></thead><tbody><tr><td>实验1</td><td>电子枪向双缝障碍物发射电子，相纸记录落点</td><td>明确的波效应——暗带与亮带交替出现</td></tr><tr><td>实验2</td><td>保留实验1全部设置，只加上两个被动电子探测器（每缝一个）</td><td>明确的粒子效应——每次只有一个探测器启动；在探测器上装开关，拨动开关即可在波效应和粒子效应之间随心转换</td></tr><tr><td>实验3</td><td>光子枪+分束器+合束器+两面镜子+相纸，探测器关闭</td><td>明确的波效应，仿佛光子是波</td></tr><tr><td>实验4</td><td>保留实验3全部设置，探测器打开</td><td>同一时间只有一个探测器启动，相纸明确是粒子效应——几乎一模一样的设置，结果却完全不同</td></tr></tbody></table></div><p class="prose">预测实验结果的粗略指南：关心对量子实体的<b>第一次测量</b>发生在什么时候——测量之前把量子实体当波看，被探测时当粒子看。德威特随即声明：并不是说量子实体被探测时就真的是粒子、没被探测时就真的是波，他对到底发生了什么持不可知论态度。</p><div class="aband"><q>如果实验中有对量子实体的探测或测量，那么被探测到的似乎是粒子，也就是说，量子实体在被探测时似乎是粒子。</q><cite>——第26章 一些量子事实</cite></div><p class="prose">诡异之处在于：量子实体如何「知道」附近有探测器或其他测量设备？什么才真的能算是对量子实体的测量？这些极难回答的问题构成了<b>「测量难题」</b>——第27章的主角。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>量子理论数学：奇怪的是诠释</h2><span class="en">MATH</span></div><p class="prose">量子理论实际上是一种<b>「波」数学</b>，与处理保龄球之类离散物体的「粒子」数学相区别——这并不稀奇。真正细小的差异是：量子理论给出的通常是<b>概率性</b>预言（「在这个位置探测到电子的概率是多少」），而其他物理学分支给出的是确定的预言。</p><p class="prose">主要差异在<b>诠释</b>。数学实际上只是数学，与这个世界没有必然的固有联系：对下落保龄球的方程式如何「描绘」情形，存在广泛共识（这个部分代表保龄球、那个部分代表时间……</p><p class="prose">），这恰恰掩盖了我们其实是在进行诠释的事实；而<b>对如何把量子理论数学与这个世界联系起来，并不存在共识</b>——量子理论数学所展示的现实非常怪异。</p><p class="prose">更细的一瞥：一个量子系统的状态由它的<b>波函数</b>代表；每种可能的测量（位置、动量、自旋……）都与一个特定的波群组相关联；在群组中找到可组合产生波函数的成员，就能得出测量结果的概率预测。系统随时间的演变则由<b>薛定谔方程</b>预测——正如牛顿方程式控制下落的保龄球。</p><div class="aband"><q>量子理论数学一点都不奇怪，事实上奇怪的是对量子理论数学的诠释。</q><cite>——第26章 量子理论数学的描述性概述</cite></div><div class="aband"><q>我们有量子理论数学；我们有精通使用量子理论数学的专家；量子理论数学使我们可以做出非常准确和可信的预言。谁又能要求得更多呢？</q><cite>——第26章 量子理论数学的描述性概述</cite></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜理查德·德威特《世界观：现代人必须要懂的科学哲学和科学史（原书第3版）》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜不可通约与量子导论</span><a href="../09-狭义与广义相对论/index.html">← 狭义与广义相对论</a><a href="../11-测量难题与EPR/index.html">测量难题与EPR →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wv-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

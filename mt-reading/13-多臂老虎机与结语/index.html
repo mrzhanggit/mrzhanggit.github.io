@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>收束·多臂老虎机 · 崎岖景观 · 像芒格一样思考｜模型思维 精读</title>
+<meta name="description" content="在不确定中学会选择：探索与利用的权衡由吉廷斯指数定量化；在崎岖景观上攀登：适度的相互依赖制造更高的峰，却也让全局峰最难找到。最后，用多个模型直面阿片危机与经济不平等——所有模型都是错的，但这正是我们通过多个模型追求智慧的">
+<style>
+:root{
+  --paper:#F4F3EE;      /* 羊皮纸底 */
+  --paper-2:#E7E4DB;    /* 羊皮纸深一档 */
+  --card:#FAF9F4;
+  --ink:#212936;        /* 主墨（深蓝墨） */
+  --ink-2:#2E3A4E;      /* 钴蓝次墨 */
+  --ink-deep:#0C1119;   /* 夜航蓝黑（hero 底） */
+  --gold:#35558A;       /* 钴蓝（强调 · 模型的理性骨架） */
+  --gold-b:#7B98C9;     /* 高亮钴蓝 */
+  --gold-soft:rgba(53,85,138,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 误用与陷阱） */
+  --teal:#C9A227;       /* 对照模型金（对照 · 多模型互补） */
+  --tx:#2A3140;
+  --tx-2:#455062;
+  --tx-3:#6E7B90;
+  --line:rgba(33,41,54,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,41,54,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E3A4E 0%,var(--ink-deep) 62%);
+  color:#E8EDF5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(123,152,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(123,152,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(123,152,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EEF2F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,237,245,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(123,152,201,.34);color:rgba(232,237,245,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,85,138,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(123,152,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EEF2F8;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(123,152,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EEF2F8;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(233,237,244,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,85,138,.5);box-shadow:0 4px 18px rgba(33,41,54,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,85,138,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(122,129,113,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,85,138,.45);background:rgba(53,85,138,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(146,58,36,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,85,138,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,243,238,.94);
+  border-bottom:1px solid rgba(33,41,54,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,41,54,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2E3A4E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,85,138,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,41,54,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,41,54,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#6E7B90;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../12-机制设计信号与学习/index.html">← 机制设计信号学习</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">智</div>
+  <div class="stamp ">智慧</div>
+  <h1>多臂老虎机 · 崎岖景观 · 像芒格一样思考</h1>
+  <p class="sub">在不确定中学会选择：探索与利用的权衡由吉廷斯指数定量化；在崎岖景观上攀登：适度的相互依赖制造更高的峰，却也让全局峰最难找到。最后，用多个模型直面阿片危机与经济不平等——所有模型都是错的，但这正是我们通过多个模型追求智慧的动力。</p>
+  <div class="meta"><span>收束</span>
+    <span class="k">多模型思维</span>
+    <span>正文 27,461 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>多臂老虎机</a><a href="#s3" data-t="s3"><span class="cn">叁</span>崎岖景观</a><a href="#s4" data-t="s4"><span class="cn">肆</span>让模型入世</a><a href="#s5" data-t="s5"><span class="cn">伍</span>让智慧入世</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>当你费心去寻找时，就会发现令人惊奇的事情。</p><cite>——传为萨卡加维亚(Sacagawea)所说</cite></div><div class="epi"><p>一切都是复杂的；如果不是这样，那么生活、诗歌以及所有一切，都只会成为烦恼和负担。</p><cite>——华莱士·史蒂文斯</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇收束全书：不确定中的选择、崎岖上的攀登，与多模型的实际应用</p><p class="thesis">第 27 章<b>多臂老虎机问题</b>把不确定性加入学习模型：必须权衡<b>探索</b>（了解收益分布）与<b>利用</b>（选择迄今最佳）；<b>吉廷斯指数</b>等于假设按所知采取最优行动时全部未来收益的总和——500 美元确定收益会输给 10% 概率收益 1000 美元的风险臂（约 550 美元/期）。第 28 章<b>崎岖景观模型</b>揭示：属性间的相互依赖制造多峰景观，<b>全局峰的吸引盆最小、最不容易被找到</b>；NK 模型证明适度互动产生更高的全局峰（K=19 时局部峰值期望 0.6、全局峰约 0.75）。结语用多个模型剖析<b>阿片类药物滥用</b>（成瘾率 1%→2.5%，均衡成瘾者 2.2%→10%）与<b>经济不平等</b>（r>g、选择性婚配、持续不平等），示范像芒格一样思考。</p><div class="chain"><div class="node"><div class="n">权衡</div><div><p class="tt">多臂老虎机问题</p><p class="dd">烟囱公司 3 种推销话术、11 次尝试后面临抉择——探索与利用的权衡无处不在：药物试验、广告位置、技术路线</p></div></div><div class="node"><div class="n">指数</div><div><p class="tt">吉廷斯指数</p><p class="dd">只按期望收益行事会错：10% 概率 1000 美元的风险臂等价于每期约 550 美元，胜过确定的 500 美元——它在量化探索的价值</p></div></div><div class="node"><div class="n">山峰</div><div><p class="tt">崎岖景观</p><p class="dd">富士山景观容易攀登；沙发设计（厚垫配宽扶手、薄垫配窄扶手）产生双峰——梯度启发式会卡在局部高峰</p></div></div><div class="node"><div class="n">互动</div><div><p class="tt">NK 模型</p><p class="dd">N=20、K=19 时约 5 万个局部峰值、期望值 0.6，全局峰约 0.75 高于富士山的 2/3——适度相互依赖（K=3 或 4）最有利于单翻转算法</p></div></div><div class="node"><div class="n">入世</div><div><p class="tt">多模型应用</p><p class="dd">阿片危机用了 4 个模型（老虎机/马尔可夫/系统动力学/社会网络）；不平等用了 7 个以上——没有任何单一方程能解释一切</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>多臂老虎机：探索与利用</h2><span class="en">MULTI-ARMED BANDITS</span></div><p class="prose">把不确定性加入学习模型：各备选方案的奖励源于一个分布而非固定金额——药物试验、广告牌位置、技术路线、职业选择皆可建模为<b>多臂老虎机问题</b>。</p><p class="prose">烟囱清洁公司测试 3 种推销话术（笃定预约式、关心提问式、人性感动式）：11 次尝试后「关心提问式」成功率最高，但「笃定预约式」只试了一次——<b>利用（选迄今最佳）与探索（继续获取信息）必须善加权衡</b>。</p><p class="prose">两种启发式可供比较：<b>取样并择优</b>（每个方案先试 M 次再选平均收益最高者，M 可参考伯努利瓮模型与平方根规则）与<b>自适应探测率</b>（每方案先试 10 次，再按成功率比例分配 20 次、按成功率的平方分配下一阶段——80% 对 10% 时不会在差方案上浪费 100 次试验，接近时则继续试验）。</p><p class="prose">但过分执着的取样可能不道德：外科医生罗伯特·巴特莱特测试人工肺时发现其成功率远超其他方案，<b>继续测试将导致不必要的死亡</b>，于是停止试验让每位患者都用上人工肺——这也是最优规则：若某方案总能成功，就继续选择它。</p><p class="prose"><b>贝叶斯多臂老虎机问题</b>给决策者先验信念，最优行动按 4 步计算：算即时期望收益→更新信念→确定所有后续时期的最优行动→加总。结果就是<b>吉廷斯指数</b>——它量化了探索的价值。</p><p class="prose">例子：确定收益 500 美元 vs 10% 概率收益 1000 美元的风险臂——风险臂要么总付 1000、要么总付零，故其指数相当于每期约 550 美元，<b>反而是更好的选择</b>。</p><p class="prose">10 期两臂例子（A∈{0,80}、B∈{0,60,120}，各等概率）算得 B 的第一期指数更高；最优长期选择取决于第一期学到的结果。<b>我们更关心备选方案成为最优选择的概率，而非它的期望收益</b>——若行动没有风险且成本低，即便高收益行动概率很低也要努力探索。</p><div class="aband"><q>有一件事我确实特别擅长，那就是将网球击过网，打在界内。在这件事情上，我是最棒的。</q><cite>——塞雷娜·威廉姆斯(Serena Williams)，第 27 章题辞</cite></div><p class="prose">但绝大多数人不会去计算吉廷斯指数——部分原因是<b>没有把必要的数据保存下来</b>：直到最近医生才开始记录不同手术方法的效果（人工关节、心脏支架）。个人亦然：想知道晚餐前还是晚餐后散步更有利睡眠，就要跟踪记录睡眠状况。</p><p class="prose">心理学家塞思·罗伯茨探索了整整 12 年，发现自己<b>每天至少站立 8 小时</b>才可以改善睡眠状态，迎着早晨的阳光站立还能减轻上呼吸道感染症状。新技术已让收集睡眠、脉搏、体重与情绪数据变得非常方便。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>崎岖景观：山峰、吸引盆与 NK 模型</h2><span class="en">RUGGED LANDSCAPES</span></div><p class="prose"><b>适合度景观模型</b>把实体定义为属性的集合、每个属性集合映射到一个价值。土狼的尾巴长度：零长度适合度为零，随长度增加而上升，18 英寸左右最利平衡、20 英寸产生最大整体适合度——单峰的<b>富士山景观</b>，任何爬山算法都能找到山峰。</p><p class="prose">煤铲设计同构：面积太小是棍子、太大抬不起来——泰勒在 19 世纪 90 年代据此开创科学管理，福特、洛克菲勒与卡内基都是泰勒主义的贡献者。大规模生产效率大增，但在许多人看来也是<b>劳动的非人化过程</b>——这种分歧正是需要多个模型的提示。</p><p class="prose">当属性之间<b>相互作用</b>时，景观变得崎岖：设计沙发要决定坐垫厚度与扶手宽度——厚垫配宽扶手更美、薄垫配窄扶手更好，销售额的二维图有<b>两座山峰</b>。崎岖性导致对初始条件的敏感性与路径依赖，也带来结果的多样性。</p><p class="prose">在 5 座山峰的景观上，<b>梯度启发式</b>（爬山算法）会卡在局部高峰：每座峰都有各自的<b>吸引盆</b>，而全局高峰的吸引盆最小——随机起点时全局峰恰恰最不容易被找到。吸引盆还取决于启发式：「一直向右走」会产生不同的吸引盆。</p><p class="prose">要在崎岖景观中找到高峰，需要<b>多样性的启发式</b>：不同启发式找到不同峰值，再从中选优。</p><p class="prose"><b>NK 模型</b>把相互作用与崎岖性形式化：对象由 N 位二进制符号组成，每位贡献依赖于自身与 K 个其他位。</p><p class="prose">K=0 时属性独立——富士山景观，N=20 时全局最优期望值为 <b>2/3</b>；K=N−1 时每次翻转都让所有贡献重新随机——景观极其崎岖，N=20 时<b>局部峰值约 5 万个</b>，期望值约 0.6，而全局峰期望值略大于 <b>0.75</b>——<b>崎岖景观的局部峰低于富士山，全局峰却更高</b>。</p><p class="prose">单翻转算法下，人们一般更喜欢较小的 K 值（3 或 4）；但更复杂的算法（同时切换两三个属性）可以减少局部最优。背后的逻辑有二：组合数随组合元素平方、立方增长，创造更多有益互动；而适者生存只保留更好的组合——你不会见到「跑得很慢的脚＋味道鲜美的皮肉＋外表鲜艳的外表」的动物。</p><p class="prose">景观并非固定：<b>任何一个物种的适应，或任何一个企业策略的改变，都会改变和重组竞争对手的适合度景观</b>——空间竞争模型可重新解释为舞动景观上的运动模型；观察生态系统、政治领域与经济社会可知，竞争更常导致复杂的行动模式而非均衡，因为世界由能够操纵舞动景观的、自适应且有目的的行为者组成。</p><p class="prose">景观思维还重审了<b>专利制度</b>：博尔德林与莱文基于扩散模型反驳专利——有用产品会迅速传播并创造先发优势。崎岖景观模型则表明大多数困难问题有很多种可行方案，重大发明往往具有引人注目的同时性——<b>微积分由牛顿与莱布尼茨同时发明、电话由贝尔与格雷同时发明、自然选择理论由达尔文与华莱士同时发现</b>。</p><p class="prose">因此对许多人都能发现的想法，或许应授予更短期限、更宽松条件的专利，甚至不授予。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>让模型入世：阿片危机与经济不平等</h2><span class="en">MODELS IN THE WORLD</span></div><p class="prose">结语用多模型思维分析两大政策问题。2016 年美国医生开出<b>超过 2 亿张阿片类药物处方</b>（差不多每人一张），超过 10 万人死于相关服药过量，滥用者超过 1000 万、其中 200 余万人被归为使用障碍患者。</p><p class="prose"><b>四个模型</b>各给出关键直觉：<b>多臂老虎机</b>解释批准——临床试验证明疗效显著优于安慰剂，但成瘾率「不到 1%」的检验没考虑大处方（服药越久成瘾率越高，长期服药者超过 2.5%）。</p><p class="prose"><b>马尔可夫模型</b>（无痛/阿片/成瘾三态）显示成瘾率从 1% 提到 2.5%、恢复率从 10% 降到 5%，均衡成瘾者从 2.2% 升到 <b>10%</b>——若恢复概率降为 1%，比例将增至 35%。<b>系统动力学模型</b>刻画从镇痛到阿片再到海洛因的「流」。</p><p class="prose"><b>社会网络模型</b>解释农村地区使用量的聚类——阿片类药物通过个人关系销售、只向亲密朋友出售。</p><p class="prose"><b>经济不平等</b>则需要一整组模型（不应只用一个方程解释一切——杜鲁夫）。经验事实：顶层 0.1% 家庭的收入份额从 20 世纪 80 年代前不到 4% 上升到如今的 <b>10% 左右</b>，而全球极端贫困人口急剧下降——两者并不矛盾。</p><p class="prose"><b>技术-人力资本模型</b>（产出=AKαSβUγ）解释总体趋势：有利于受教育者的技术变革使 β 增大、γ 减少。<b>正反馈模型</b>解释尾部——2011 年企业家在美国 400 名最富有的人中占 70%，音乐下载实验显示信息与社会影响放大马太效应。</p><p class="prose"><b>空间投票模型</b>解释 CEO 薪酬——美国薪酬委员会由现任与前任 CEO 组成、相互「俘获」，2012 年财富 500 强 CEO 平均收入超 1000 万美元、约为工人的 <b>300 倍</b>（日本约 10 倍、欧加约 20 倍，德国董事会含工人成员）。</p><p class="prose"><b>皮凯蒂模型</b>：资本回报率 r 必定超过经济增长率 g——按 72 法则，工资年增 2%、资本年增 6%，36 年后资本收入即为工资的 8 倍、72 年达 <b>60 倍</b>。<b>选择性婚配模型</b>：门当户对的婚姻恶化家庭间不平等——若婚姻随机，基尼系数将减少 25%。</p><p class="prose"><b>马尔可夫流动性模型</b>：高收入者子女 60% 仍为高收入、仅 5% 落入低收入，但孙辈保持高收入的可能性已不足 43%（格雷戈里·克拉克用「撒切尔」姓氏追踪 1888 与 1917 年的平均收入佐证收入缺乏流动性）。</p><p class="prose"><b>杜鲁夫持续不平等模型</b>（谢林隔离＋局部多数的组合）：低收入社区教育支出少、溢出效应弱，形成<b>贫困陷阱</b>——无论能力如何都难走出。</p><div class="tbwrap"><table><thead><tr><th>不平等模型</th><th>机制</th><th>关键结论</th></tr></thead><tbody><tr><td>技术-人力资本（增长模型）</td><td>产出=AK^α S^β U^γ；工资取决于技能的相对供给与技术</td><td>解释总体趋势：偏向技能的技术变革 + 低技能供给增加 → 不平等加剧；但无法解释各收入阶层内部变差的扩大</td></tr><tr><td>优先连接（正反馈）</td><td>首个消费者随机选择，此后以概率 p 选零销量者、否则按现有销量比例选择</td><td>2011 年企业家占 400 富豪的 70%；更多联系→更多社会影响→马太效应</td></tr><tr><td>空间投票（CEO 薪酬）</td><td>薪酬委员会由 CEO 们组成，工资定在中间选民的偏好上</td><td>美国 CEO 薪酬约为工人 300 倍、德国仅约 20 倍——董事会组成解释跨国差异</td></tr><tr><td>皮凯蒂（资本租金）</td><td>r>g；资本家消费只占资本收入的很小一部分</td><td>72 法则：2% 对 6% 的年增速，72 年后资本家收入达工人的 60 倍；对法国与英国 300 年数据校准良好</td></tr><tr><td>选择性婚配（分类）</td><td>受教育程度越高越偏好同等学历伴侣；双高收入家庭增多</td><td>若婚姻随机，基尼系数衡量的收入不平等将减少 25%</td></tr><tr><td>马尔可夫（流动性）</td><td>高/中高/中低/低四类间的代际转移概率</td><td>高收入者子女 60% 仍高收入、5% 落入低收入；孙辈保持高收入的可能性不足 43%</td></tr><tr><td>持续不平等（杜鲁夫）</td><td>按收入分离居住＋教育溢出效应（谢林隔离＋局部多数）</td><td>贫困陷阱：低收入社区儿童教育机会少、溢出受益低——解释巨大的种族差距</td></tr></tbody></table></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>让智慧入世</h2><span class="en">WISDOM IN ACTION</span></div><p class="prose">多模型思维如何指导行动？预测金融崩溃的例子最有说服力：美联储依靠传统的经济模型（通货膨胀、失业、存货等滞后的国民核算数据）；复杂性学者多恩·法默主张基于网络实时数据创建第二类模型——<b>新模型不需要更准确</b>。</p><p class="prose">由于使用不同的数据、依赖不同的假设，它们将做出不同的预测，而由<b>多样性预测定理</b>，只要精度没有差很多，与现有模型相结合就会提高预测准确性——政策制定者将更有集体意识。</p><p class="prose">做商业决策同理：产品属性、发布时间、薪酬计划、供应链与销售预测都发生在复杂系统中，<b>任何一个模型都是错误的，多个模型将会带来更好的行动</b>。</p><p class="prose">当然，这无法保证成功：相关领域可能极其复杂，许多模型也许只能解释变差的一小部分；模型的简单性甚至可能成为失败的原因。</p><p class="prose">因此<b>我们必须保持谦卑，也必须保持好奇心</b>：继续构建新模型并改进现有模型——若某个模型遗漏了社会影响、正反馈或认知偏差，就构建包含这些假设的其他模型，从而分辨哪些属性在什么时候重要、重要程度有多高。<b>所有模型都是错的</b>，但这不会让我们泄气——恰恰相反，它是我们通过多个模型追求智慧的动力。</p><p class="prose">同时也要追求乐趣：我们做出假设、制定规则，然后运用逻辑——建模可以成为一场非常美丽的邂逅。我们要把这种智慧带入世界，并积极地利用它去改变世界。</p><div class="check" data-k="wisdom-13"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>能用烟囱公司例子说明探索-利用权衡，并说出取样并择优与自适应探测率两种启发式</span></label><label><input type="checkbox"><span>能解释为何 10% 概率收益 1000 美元的风险臂胜过确定的 500 美元（吉廷斯指数量化探索价值）</span></label><label><input type="checkbox"><span>能画出沙发设计的双峰景观，并解释吸引盆为何取决于启发式、全局峰为何最难找到</span></label><label><input type="checkbox"><span>能写出 NK 模型两个极端（K=0 期望 2/3、K=19 局部峰约 0.6/全局峰约 0.75）及「适度互动」的含义</span></label><label><input type="checkbox"><span>能用马尔可夫三态模型复述成瘾率 1%→2.5% 如何使均衡成瘾者翻逾四倍</span></label><label><input type="checkbox"><span>能列举不平等的至少四个模型及其结论（r>g 与 72 法则、选择性婚配 -25%、贫困陷阱等）</span></label><div class="cf">已掌握 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出说明</span><span class="nd"><b>1｜</b>第 27 章导出含 8 张插图、第 28 章含 20 张（图 28-1 富士山景观、图 28-2 五峰崎岖景观、图 28-3 吸引盆对比等）、结语含 18 张（阿片马尔可夫转移图、图 29-1 顶层 0.1% 收入份额、CEO 薪酬委员会构成等）；吉廷斯指数表达式、NK 价值函数、生产函数与各专栏公式在源文中以图片嵌入，本页照录文字结论与数值，公式与图示不重绘。译者后记（贾拥民，于杭州耑谷阁）随本篇源目录项收录，观点已化入本篇导语与收束节：模型思维的前提就是承认复杂性，多模型范式是复杂性的另一种表述。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜斯科特·佩奇《模型思维（新版）》（浙江科学技术出版社·湛庐，贾拥民 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">收束｜老虎机崎岖景观结语</span><a href="../12-机制设计信号与学习/index.html">← 机制设计信号学习</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mt-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

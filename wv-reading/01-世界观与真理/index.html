@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部分·世界观与真理 · 从拼图到符合论｜世界观 精读</title>
+<meta name="description" content="第1章用拼图比喻立起「世界观」概念，并以亚里士多德-牛顿两幅拼图的对峙开场；第2章追问「是什么使观点为真」，检验符合论与融贯论两大候选。">
+<style>
+:root{
+  --paper:#F3F1EA;      /* 暖星纸底 */
+  --paper-2:#E9E5DB;    /* 纸色深一档 */
+  --card:#FCFBF6;
+  --ink:#1E2633;        /* 主墨（深空墨蓝） */
+  --ink-2:#2B3F66;
+  --ink-deep:#0A0F17;   /* 深空（hero 底） */
+  --gold:#2B3F66;       /* 深空蓝（强调 · 世界观拼图与范式更替） */
+  --gold-b:#6C7FA8;     /* 高亮蓝（辅助强调 · 星光） */
+  --gold-soft:rgba(43,63,102,.16);
+  --cinnabar:#A63528;   /* 行星红（警示 · 悖论与反常证据） */
+  --teal:#B08A3A;       /* 星图金（对照 · 新旧世界观并置） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(30,38,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(30,38,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2B3F66 0%,var(--ink-deep) 62%);
+  color:#E8EDF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(108,127,168,.42)}
+.hero::after{inset:22px;border:1px solid rgba(108,127,168,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(108,127,168,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF2F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(108,127,168,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(43,63,102,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(108,127,168,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E7EBF3;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(108,127,168,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E7EBF3;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(43,63,102,.5);box-shadow:0 4px 18px rgba(30,38,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(43,63,102,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(43,63,102,.45);background:rgba(43,63,102,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(43,63,102,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,241,234,.94);
+  border-bottom:1px solid rgba(30,38,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(30,38,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2B3F66;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(43,63,102,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(30,38,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(30,38,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../00-开场-科学哲学之门/index.html">← 开场·科学哲学之门</a><a href="../02-经验事实与证实推理/index.html">经验事实与证实推理 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">观</div>
+  <div class="stamp ">拼图</div>
+  <h1>世界观与真理 · 从拼图到符合论</h1>
+  <p class="sub">第1章用拼图比喻立起「世界观」概念，并以亚里士多德-牛顿两幅拼图的对峙开场；第2章追问「是什么使观点为真」，检验符合论与融贯论两大候选。</p>
+  <div class="meta"><span>第一部分</span>
+    <span class="k">世界观拼图</span>
+    <span>正文 20,695 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>世界观概念</a><a href="#s3" data-t="s3"><span class="cn">叁</span>亚里士多德</a><a href="#s4" data-t="s4"><span class="cn">肆</span>牛顿世界观</a><a href="#s5" data-t="s5"><span class="cn">伍</span>证据与常识</a><a href="#s6" data-t="s6"><span class="cn">陸</span>符合论</a><a href="#s7" data-t="s7"><span class="cn">柒</span>符合论难题</a><a href="#s8" data-t="s8"><span class="cn">捌</span>融贯论</a><a href="#s9" data-t="s9"><span class="cn">玖</span>笛卡尔</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是第一部分的地基：先立「世界观」概念，再拷问「真理」</p><p class="thesis">第一部分扉页列出全部基础命题；<b>第1章</b>把世界观定义为一个观点体系——不同观点如拼图拼板般相互联结，并用亚里士多德世界观与牛顿世界观两幅拼图示范；<b>第2章</b>追问是什么使观点为真，检验<b>真理符合论</b>与<b>真理融贯论</b>，发现两者都留有难题。</p><div class="chain"><div class="node"><div class="n">概念</div><div><p class="tt">世界观 = 拼图</p><p class="dd">不是观点的随机集合，而是相互交织、相互联结、具有稳定性和一致性的观点体系</p></div></div><div class="node"><div class="n">样本A</div><div><p class="tt">亚里士多德世界观</p><p class="dd">公元前300年到公元1600年西方占统治地位的观点体系：地心、静止、五种基本元素、天然运动趋势</p></div></div><div class="node"><div class="n">样本B</div><div><p class="tt">牛顿世界观</p><p class="dd">以牛顿（1642—1727）及其同时代人的著作为基础：地球自转公转、外力决定运动、天上地下元素相同</p></div></div><div class="node"><div class="n">结构</div><div><p class="tt">核心与外围</p><p class="dd">外围拼板可替换而不动全局；「地球位于宇宙中心」这类核心拼板一动，几乎整幅拼图都要重拼</p></div></div><div class="node"><div class="n">真理I</div><div><p class="tt">符合论</p><p class="dd">观点为真 = 与独立、客观的现实相符合；但知觉表征论与《全面回忆》情境让我们无法确定现实真正的样子</p></div></div><div class="node"><div class="n">真理II</div><div><p class="tt">融贯论</p><p class="dd">观点为真 = 与整体观点集合连贯一致；个人主义版陷入相对主义，团体版又带来三大新问题</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>世界观：拼图，不是购物清单</h2><span class="en">WORLDVIEW</span></div><p class="prose">「世界观」在过去100多年里被广泛使用，却并没有一个标准定义。德威特给出自己的最简短描述：世界观指的是一个观点体系，其中不同观点如同拼图的一块块拼板一样相互联结。</p><div class="aband"><q>世界观并不是一些分离、独立、不相关的观点的集合，而是一个不同观点相互交织、相互关联、相互联结的体系。</q><cite>——第1章 世界观</cite></div><p class="prose">关键是「不是随机集合」这层意思。一种错误的理解是把亚里士多德的观点画成<b>购物清单</b>——物品排列随意、彼此没有特定关联；正确的画面是<b>拼图</b>：每一块拼板都是一个观点，以一种清晰、固定、相互关联、环环相扣的方式拼合在一起。</p><p class="prose">拼图比喻有两层推论。其一，拼板之间有内在联系：以「地球是宇宙中心」为例，它与「土元素向宇宙中心运动」「物体只有在外部运动来源下才会运动」「每种元素都有基本性质」等观点完美拼合，牵一发而动全身。其二，拼图有核心与外围之分——外围拼板可在不影响大局的情况下替换，核心拼板一换，几乎整幅拼图都要重拼。</p><div class="aband"><q>每一个观点拼合在一起组成一个各部分环环相扣、具有一致性的观点体系，这就是我在运用世界观这个概念时的核心理念。简言之，当我谈到世界观的时候，请想到拼图这个比喻。</q><cite>——第1章 世界观</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>亚里士多德的世界观：样例拼板</h2><span class="en">ARISTOTELIAN</span></div><p class="prose">亚里士多德世界观是<b>公元前300年到公元1600年</b>占统治地位的观点体系。注意，这个词不是特指亚里士多德本人的观点，而是指他去世后西方主流文化所共享、以他的观点为基础的体系。下面是源文列出的代表性观点（摘录）：</p><div class="tbwrap"><table><thead><tr><th>#</th><th>亚里士多德的观点（源文编号摘录）</th></tr></thead><tbody><tr><td>1</td><td>地球位于宇宙的中心，且是静止的——既不围绕其他天体运行，也不围绕自身轴线旋转</td></tr><tr><td>2</td><td>月球、其他行星和太阳都围绕地球运行，大约每24小时运行一圈</td></tr><tr><td>3</td><td>月下区（地球与月球之间，含地球）有四种基本元素：土、水、气和火；月上区物体由第五种元素「以太」构成</td></tr><tr><td>4</td><td>每种基本元素都有一个基本性质，并通过运行趋势表现出来</td></tr><tr><td>5</td><td>土元素向宇宙中心运动（所以石头垂直下落）；水元素同向但趋势更弱（所以水留在泥土上面）</td></tr><tr><td>6</td><td>气元素向土和水以上、火以下的区域运动（所以气泡从水下升起）；火元素远离宇宙中心（所以火向上燃烧）</td></tr><tr><td>7</td><td>以太有一种进行完美圆周运动的天然趋势（所以行星和恒星持续围绕宇宙中心做圆周运动）</td></tr><tr><td>8</td><td>月下区运动的物体自然趋于静止；静止的物体保持静止，除非有运动来源</td></tr></tbody></table></div><p class="prose">重点在于：这些观点<b>并非不同观点的随机集合</b>。每一条后来都被证明是错误的，但考虑到当时可以得到的数据，每一条又都很有根据——在亚里士多德的年代，最好的科学数据都强有力地表明地球位于宇宙中心。这不是异想天开的结果。</p><p class="prose">「地球位于宇宙中心」为什么是<b>核心观点</b>？不是因为亚里士多德对此深信不疑，而是因为它像拼图中心位置的拼板：若换成「太阳是宇宙中心」，那么「重量大的物体向宇宙中心运动」「每个物体都有基本性质」等大量相互联结的观点都要跟着换——这通常需要建立一个全新的观点拼图。</p><p class="prose">相比之下，「宇宙中有五大行星」就是典型的外围观点，就算出现第六大行星的证据也不伤大局。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>牛顿世界观：另一幅拼图</h2><span class="en">NEWTONIAN</span></div><p class="prose">17世纪早期，主要来自刚刚发明的<b>望远镜</b>的新证据表明地球围绕太阳运动。由于拼图的结构性，亚里士多德世界观无法只替换「地心」这一块拼板，于是最终形成了一个包含「地球运动」的新观点体系——<b>牛顿世界观</b>。</p><div class="duo"><div class="colL"><h4>亚里士多德世界观</h4><ul><li>地球静止，位于宇宙中心</li><li>月下区四种元素（土水气火），月上区由以太构成</li><li>运动由元素的天然趋势决定，运动物体自然趋于静止</li><li>月上区完美，天上物体与地上物体本质不同</li></ul></div><div class="colR"><h4>牛顿世界观</h4><ul><li>地球围绕自身轴线旋转，大约每24小时旋转一周</li><li>地球和行星沿椭圆形轨道围绕太阳运转</li><li>宇宙中基本元素的种类略多于100种</li><li>运动特征主要受外力（如重力）影响；描述地上运动的规律同样适用于行星和恒星</li></ul></div></div><p class="prose">两幅拼图各自都具有稳定性与一致性，但核心观点存在巨大差异。这次转变主要由17世纪早期的一系列新发现激发，是第二部分的主题；而最近几十年的新发现同样会改变<b>我们现有的</b>观点拼图——那是第三部分的主题。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>结语伏笔：证据与「常识」的真相</h2><span class="en">EVIDENCE</span></div><p class="prose">第1章结语埋下全书最重要的伏笔之一。德威特请读者自问：<b>「为什么我认为地球围绕太阳运转？我有什么证据？」</b>我们并没有感到自己在运动，也没有感到持续的强风吹过脸庞；望向窗外，地球看起来完全静止。我们没有直接证据——所谓直接证据，就像骑自行车时感受到运动、风吹与掠过物体那样。</p><p class="prose">我们的证据其实是这样的：试着认为地球不围绕太阳运转，你会发现这个观点无法与「老师告诉你的大部分都是真理」「权威书籍的内容是准确的」「专家不可能在基础问题上错得离谱」等其他观点拼合。换句话说——</p><div class="aband"><q>你用来支撑这个观点的证据与你的观点拼图紧密相联，也就是与你的世界观紧密相联。</q><cite>——第1章 结语</cite></div><p class="prose">「常识」也一样。地球看起来并不围绕太阳运转；扔出去的飞盘很快掉到地上停下来——在我们的日常生活里，没有什么东西会一直保持运动。牛顿世界观的观点之所以显得显而易见，只是因为我们从小被灌输了它们。</p><div class="aband"><q>简言之，从任何一个世界观自身的角度来看，这一世界观的观点都显而易见是正确的。所以，诸如「我们的基本观点看起来是正确的、看起来是常识性的、看起来显然是正确的」这类事实，都不是特别好的证据，不能证明这些观点是正确的。</q><cite>——第1章 结语</cite></div><p class="prose">由此引出贯穿全书的问题：亚里士多德世界观的每块拼板都曾将近2000年显得显然正确，最终整个拼图却被证明是错误的。<b>我们的拼图会不会也一样？</b>本书将在结尾处回到这个问题。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>第2章 · 真理符合论：与现实相符</h2><span class="en">CORRESPONDENCE</span></div><p class="prose">什么是真理？常见的循环回答是「事实是使观点为真的因素」，而事实又被定义为「为真的东西」——这没有建设性。德威特把问题精确化：<b>真的叙述有什么共同点使它们成为真的？</b>并提醒它与认识论问题（我们如何知道哪些观点为真）不同——「我们如何知道哪些树是橡树」与「是什么决定了一棵树是橡树」是两个问题。</p><div class="aband"><q>概括地说，根据真理符合论，决定一个真的观点为真的因素是这个观点与现实相符合，决定一个假的观点为假的因素是这个观点没能与现实相符合。</q><cite>——第2章 真理符合论</cite></div><p class="prose">这里的「现实」是关键词：不是你我所认为的现实，不是最优秀的科学家所认为的现实，也不是某个禅宗大师在顿悟之时所认为的现实，而是<b>「真的」现实</b>——完全客观、独立于我们，通常绝不取决于大多数人是如何认为的。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>符合论的难题：我们够不着现实</h2><span class="en">THE PROBLEM</span></div><p class="prose">符合论的问题出在<b>观点与现实的关系</b>上。起点是几乎人人都当作常识的<b>知觉表征论</b>：感官为我们提供外部世界各种物体的表征（对视觉来说，大致类似图画）。这个观点有个重要推论——我们每个人从某种意义上来说都是与这个世界隔绝的。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">论证</span><h4>评估表征的准确性</h4><span class="ar">▶</span></div><div class="cb"><div class="in">要评估一张恶魔塔照片是否准确，最直接的方法是亲赴怀俄明州，把照片跟实际的恶魔塔对比——<b>评估表征需要把表征与表征所代表的事物对比</b>。但萨拉想评估苹果的视觉表征时，她无法走出自己的意识：视觉、触觉、嗅觉全是表征，把视觉与触觉对比，只是在把一个表征与另一个表征对比——就像拿照片去对比恶魔塔的地形图，永远没有跟实物比。</div></div></div><div class="case"><div class="ch"><span class="tag mid">论证</span><h4>《全面回忆》情境</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在那部科幻电影设定里，付费即可把一段完全现实的旅行体验直接植入大脑，让人无法把它与现实区分。如果萨拉的感官体验是被植入的，她的意识经验将与正常情境<b>一模一样</b>——她根本没有办法确定自己身在哪种情境中。你此刻读到「这一页、这本书」，也可能是《全面回忆》情境的一部分。</div></div></div></div><div class="aband"><q>这个推论说明，我们根本没有办法评估感官给我们提供的表征是否准确，或者换句话说，我们没有办法确定现实到底是什么样子的。</q><cite>——第2章 真理符合论的问题和困惑</cite></div><p class="prose">德威特提醒不要误解：<b>结论不是「现实与我们所认为的完全不一样」</b>，而是「我们无法确定现实真正的样子」。这不是说符合论错了或不一致——它谈的是观点真假的决定因素，而上述论证谈的是认识论上我们能知道什么。但它确实解释了很多人认为符合论没有吸引力的主要原因之一。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>真理融贯论：连贯一致，及其代价</h2><span class="en">COHERENCE</span></div><div class="aband"><q>根据真理融贯论，决定一个观点为真的因素是这个观点与其他观点连贯一致或紧密结合。</q><cite>——第2章 真理融贯论</cite></div><p class="prose">融贯论可以用同一幅拼图比喻来说明：观点为真 = 能与整个观点拼图拼合；假观点就像一块拼不进去的拼板。但「把谁的观点算进拼图」产生出多种版本：<b>个人主义融贯论</b>（与某个人的其他观点一致即为真）与<b>团体融贯论</b>（如「以科学为基础的融贯论」，与西方科学家群体的观点集合一致）是截然不同的理论。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">难题</span><h4>史蒂夫的月亮派对</h4><span class="ar">▶</span></div><div class="cb"><div class="in">史蒂夫发自内心相信：月亮与地球的距离大于太阳与地球的距离，月亮上有人居住，常常有派对或狂欢盛宴（观点来自对宗教经文的严格字面解读）。按个人主义融贯论，这些观点与他自己的其他观点一致，因此<b>对他来说就是真的</b>——而且为真的程度与你的观点对你来说一样。这是一种极端的「一切皆有可能」的相对主义：没有办法说你的观点比史蒂夫的更真一些。</div></div></div><div class="case"><div class="ch"><span class="tag mid">难题</span><h4>被构陷的萨拉</h4><span class="ar">▶</span></div><div class="cb"><div class="in">假设萨拉被成功构陷了一项她没有犯过的罪行——群体成员都已确信她有罪。「萨拉有罪」可以与群体的其他观点拼合，按团体融贯论它就是真的；而萨拉本人「我没有犯罪」的观点反而拼不进去、是假的。真理论在这个案子里出现了倒退：「群体成员所共同秉持的一个观点居然是错误的」很难让人理解。</div></div></div><div class="case"><div class="ch"><span class="tag mid">难题</span><h4>边界与一致性</h4><span class="ar">▶</span></div><div class="cb"><div class="in">什么人算「西方科学家」？德威特的朋友吉姆拥有著名学术机构的物理学博士学位、在主流期刊发表文章，却发自内心认为地球是宇宙中心——他算不算群体一员？群体边界模糊，难以准确界定。更要命的是，任何由人组成的群体都常有成员彼此持相反观点，群体未必有一个具有一致性的观点拼图，而团体融贯论恰恰以此为前提。</div></div></div></div><p class="prose">小结：个人主义融贯论是一种极端的「一切皆有可能」的相对主义；团体融贯论避开了相对主义，却带来三大新问题（群体可能秉持错误观点、成员无法明确界定、群体未必有一致观点集合）。<b>不管是符合论还是融贯论，都无法提供让人完全满意的答案</b>——过去2000多年里人们没达成共识，也就不足为奇了。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>哲学思考：笛卡尔与我思</h2><span class="en">DESCARTES</span></div><p class="prose">既然无法确定现实真正的样子，一个自然的疑问是：<b>是否存在我们可以完全确定的事物？</b>最著名的探讨来自笛卡尔（1596—1650）的《第一哲学沉思录》。</p><p class="prose">他的目标是找到一个绝对确定的、可以在其之上进行知识构建的基础，方法是给确定性做一场<b>「邪恶骗子」测试</b>：假设存在一个全能的邪恶骗子，能把不存在的画面植入你的大脑——什么样的观点能连这种情境都扛得住？</p><p class="prose">「我面前有一张书桌」经不起测试，甚至「我有一个身体」也经不起。笛卡尔认为他找到了至少一个：每当想到「我活着，我存在」时，这句话一定是真的。</p><p class="prose">严格来说，「我思故我在」这个说法并未出现在《沉思录》中，但笛卡尔确实找到过一个可完全确定的观点——<b>至少作为一个思维主体存在</b>（圣奥古斯丁也曾表达过相似观点，不过现在一般与笛卡尔联系在一起）。</p><p class="prose">然而整个方案最终失败，原因简单得残酷：<b>这个基础太小了</b>。可以在其上构建全部知识的确定观点非常少（可能只有一个），人们无法在其上进行知识构建。探索值得一试，结论却只够确认「至少存在一个可以完全确定的观点」。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜理查德·德威特《世界观：现代人必须要懂的科学哲学和科学史（原书第3版）》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部分｜世界观与真理</span><a href="../00-开场-科学哲学之门/index.html">← 开场·科学哲学之门</a><a href="../02-经验事实与证实推理/index.html">经验事实与证实推理 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wv-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

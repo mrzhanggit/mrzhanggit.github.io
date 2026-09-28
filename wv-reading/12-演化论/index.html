@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分·演化论概述与对演化的思考｜世界观 精读</title>
+<meta name="description" content="第29章：自然选择与达尔文/华莱士的发现史；第30章：演化如何冲击宗教观念与道德直觉，以及囚徒困境、最后通牒博弈与催产素实验给出的经验数据。">
+<style>
+:root{
+  --paper:#F3F1EA;      /* 暖星纸底 */
+  --paper-2:#E9E5DB;    /* 纸色深一档 */
+  --card:#FCFBF6;
+  --ink:#1E2633;        /* 主墨（深空墨蓝） */
+  --ink-2:#2B3F66;
+  --ink-deep:#0A0F17;   /* 深空（hero 底） */
+  --gold:#2B3F66;       /* 深空蓝（强调 · 世界观拼图与范式更替） */
+  --gold-b:#6C7FA8;     /* 高亮蓝（辅助强调 · 星光） */
+  --gold-soft:rgba(43,63,102,.16);
+  --cinnabar:#A63528;   /* 行星红（警示 · 悖论与反常证据） */
+  --teal:#B08A3A;       /* 星图金（对照 · 新旧世界观并置） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(30,38,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(30,38,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2B3F66 0%,var(--ink-deep) 62%);
+  color:#E8EDF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(108,127,168,.42)}
+.hero::after{inset:22px;border:1px solid rgba(108,127,168,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(108,127,168,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF2F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(108,127,168,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(43,63,102,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(108,127,168,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E7EBF3;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(108,127,168,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E7EBF3;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(43,63,102,.5);box-shadow:0 4px 18px rgba(30,38,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(43,63,102,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(43,63,102,.45);background:rgba(43,63,102,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(43,63,102,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,241,234,.94);
+  border-bottom:1px solid rgba(30,38,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(30,38,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2B3F66;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(43,63,102,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(30,38,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(30,38,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../11-测量难题与EPR/index.html">← 测量难题与EPR</a><a href="../13-总结与注释书目/index.html">总结与注释书目 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">适</div>
+  <div class="stamp ">演化</div>
+  <h1>演化论概述与对演化的思考</h1>
+  <p class="sub">第29章：自然选择与达尔文/华莱士的发现史；第30章：演化如何冲击宗教观念与道德直觉，以及囚徒困境、最后通牒博弈与催产素实验给出的经验数据。</p>
+  <div class="meta"><span>第三部分</span>
+    <span class="k">演化论</span>
+    <span>正文 34,350 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>基本内容</a><a href="#s3" data-t="s3"><span class="cn">叁</span>误解与历史</a><a href="#s4" data-t="s4"><span class="cn">肆</span>宗教影响</a><a href="#s5" data-t="s5"><span class="cn">伍</span>道德伦理</a><a href="#s6" data-t="s6"><span class="cn">陸</span>经验研究</a><a href="#s7" data-t="s7"><span class="cn">柒</span>壮丽恢宏</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是第三部分的收官：演化论——最后一个要求我们重审世界观的重大理论</p><p class="thesis"><b>第29章</b>：演化=种群随时间变化；达尔文与华莱士各自独立发现其机制——<b>可遗传的变异 + 差分适合度</b>的组合，即自然选择。现代定义是「种群中等位基因频率随时间的变化」，且自然选择之外还有基因流动、突变、漂变。<b>第30章</b>：演化对宗教（能否为上帝留空间）、对道德（客观性感觉是错觉）、对行为科学（合作与利他的经验数据）的冲击。</p><div class="chain"><div class="node"><div class="n">机制</div><div><p class="tt">两个核心因素</p><p class="dd">可遗传的变异（差异可传代）+ 差分适合度（并非人人同等适于生存繁殖）→ 自然选择；时间够长即成新物种</p></div></div><div class="node"><div class="n">扩充</div><div><p class="tt">自然选择之外</p><p class="dd">基因流动（智人与尼安德特人杂交）、基因突变（DNA复制瑕疵/辐射）、基因漂变（纯随机：彩色球5代后红球归零）</p></div></div><div class="node"><div class="n">纠偏</div><div><p class="tt">最常见的误解</p><p class="dd">演化没有方向、没有目的——没有天生「更高级」的特征；「种群不是为了生存而适应，而是因为适应了才生存下来」</p></div></div><div class="node"><div class="n">历史</div><div><p class="tt">二十年与一封信</p><p class="dd">达尔文1840年前后已完成发现却藏稿20年；华莱士1858年疟疾高烧中独立悟出，把论文寄给达尔文——1858年伦敦会议首度公开，1859年《物种起源》</p></div></div><div class="node"><div class="n">冲击</div><div><p class="tt">宗教与伦理</p><p class="dd">「不能」派：蓝图与干涉都是超自然；霍特：过程神学里上帝是吸引宇宙走向的未来；鲁斯：道德客观性感觉是重要错觉</p></div></div><div class="node"><div class="n">数据</div><div><p class="tt">合作的演化</p><p class="dd">重复囚徒困境「以牙还牙」夺冠；最后通牒博弈跨文化拒绝过低提案；催产素大幅提高信任——利他与合作有演化根基</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第29章 · 演化论的基本内容</h2><span class="en">BASICS</span></div><p class="prose">达尔文时代广泛认可的观点：同一物种的个体拥有不变的基本特征、新物种不会出现——两者都被达尔文与华莱士各自推翻。他们独立发现了被达尔文命名为<b>「自然选择」</b>的过程，其两个核心因素：</p><div class="grid g2"><div class="card num"><div class="idx">因素一</div><h3>可遗传的变异</h3><p class="cp">种群中的个体之间存在差异，而且这些差异可以从这一代传递到下一代——如眼睛的颜色、头发的颜色等。</p></div><div class="card num"><div class="idx">因素二</div><h3>差分适合度</h3><p class="cp">并非每个个体都同等适于生存繁殖——鹿群面临食物与交配对象的匮乏、疾病意外与捕食者的威胁；某些特征更能帮助个体生存下来并繁殖后代。</p></div></div><p class="prose">两个因素组合（且造成差分适合度的特征恰好可遗传），自然选择就会出现——与动植物育种者的人工选择类似，但完全是自然过程：某些特征在后代中越来越普遍。时间足够长，种群可发生巨大变化乃至成为新物种——达尔文那部开创性著作因此题为<b>《物种起源》</b>。</p><p class="prose">现在，演化通常被定义为一个种群中<b>等位基因频率</b>随时间所发生的变化。</p><div class="tbwrap"><table><thead><tr><th>机制</th><th>如何带来演化</th></tr></thead><tbody><tr><td>基因流动</td><td>等位基因随个体或配子流动进种群：50000～100000年前现代人类与尼安德特人（30000～40000年前灭绝）同区域居住、通婚杂交，尼人基因变体由此进入我们的基因组</td></tr><tr><td>基因突变</td><td>DNA复制时出现瑕疵，或环境中化学物质、辐射等外因；很多突变中性，有些有益有些有害——通常与自然选择共同发挥作用</td></tr><tr><td>基因漂变</td><td>纯粹的随机抽样：100个彩色球（蓝60%、红30%、绿10%）每代随机选20个，5代后比例变为80%、0和20%——红球在第4代彻底消失</td></tr></tbody></table></div><p class="prose">漂变的程度与种群和样本大小相关：种群越小、样本越小，漂变越严重。两个子类型：<b>瓶颈效应</b>（自然灾害使幸存样本极小）与<b>奠基者效应</b>（一小部分个体迁居新地、不再与原种群交配）。自然选择与漂变各自贡献多大比例，至今仍存分歧。过去150年，演化论已由「现代综合论」整合为统一整体——</p><div class="aband"><q>如果不从演化的角度来思考，生物学的一切都是没有意义的</q><cite>——杜布赞斯基，1973（转引自第29章）</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>一个常见误解，与二十年、一封信</h2><span class="en">HISTORY</span></div><p class="prose">最普遍的误解：「如果演化论正确，为什么其他物种没有演化出大体积大脑、复杂语言、先进工具？」——这个问题预设了某些特征天生「更高级」。但演化中并不存在天生更好或更差的特征；想想过去大约200万年间出现过的6～15种人类物种（具体取决于物种划分标准），与我们有大致相同特征的亲缘物种<b>全都灭绝了</b>。</p><div class="aband"><q>演化从本质上说是一个毫无目标的、机械论的过程。</q><cite>——第29章 值得警惕的一点</cite></div><div class="aband"><q>种群不是为了生存而适应；相反，他们因为适应了才生存下来。</q><cite>——第29章 值得警惕的一点（德威特的遗传学教授语）</cite></div><p class="prose"><b>达尔文线：</b>19世纪30年代初随英国皇家海军小猎犬号进行了为期5年的环球航行，出发时抱着相当标准的信念（物种不变、无新物种等，几乎都根植于亚里士多德世界观）。</p><p class="prose">大量观察让他相信变异惊人、新物种确实会出现；19世纪30年代阅读马尔萨斯《人口论》（后代通常超过环境所能承载的数量），由此发现「生存竞争」——可遗传变异与差分适合度共同使种群随时间变化。</p><p class="prose">到大约1840年，达尔文已发现一个自然的、机械论的、没有神明参与的过程——却把它藏了起来：1844年写成近200页的手稿留给妻子，嘱其在自己意外去世时出版。从认识到核心组成部分到付诸出版，<b>相隔了20年</b>。其他人（最著名的是华莱士）可能也独立发现了这两个核心因素，但达尔文还有支撑它们的大量数据。</p><p class="prose"><b>华莱士线：</b>他没有殷实家族与社会关系，靠把标本寄回英国出售给收藏家维持生计；航行4年后返回途中船起火沉没，大部分标本与写满数据的笔记本尽失。</p><p class="prose">1855年他发表短论文主张新物种会出现（拼图的第一块）；1858年年初因疟疾高烧卧床时，突然想到「生存竞争」+变异可以对种群变化给出自然解释——与达尔文的用词完全相同。</p><p class="prose">华莱士把约20页的《论变种无限地偏离原始类型的趋势》寄给达尔文（只因达尔文有社交圈可转交著名人物）——达尔文的反应至少可以说是很苦恼：两人观点「特别相近，几乎无法区分」，而自己20年未曾发表。</p><p class="prose">1858年年末，经达尔文朋友安排，华莱士的论文、达尔文1844年的手稿与新写的一篇总述共同在伦敦一个科学协会的会议上发表——<b>演化论核心观点首次公开</b>。</p><p class="prose">1859年年末，《论通过自然选择的物种起源》出版——与牛顿《原理》一样是一部「漫长的论证」：第1章家养状况下的变异（人工选择，几乎无争议）、第2章自然状况下的变异、第3章生存斗争、第4章自然选择——到第4章结尾已令人信服。</p><p class="prose">该书异常畅销、再版6次；但「自然选择是演化机制」的观点在19世纪下半叶一直未获广泛认可（原因包括缺乏对遗传方式的理解、拉马克观点流行），直到孟德尔豌豆实验、1930年发表的重要证据、20世纪50年代DNA结构的发现等新发现证明：达尔文和华莱士从一开始就是正确的。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>第30章 · 演化与宗教：能否为上帝留空间</h2><span class="en">RELIGION</span></div><p class="prose">第一派学者（丹尼特、道金斯、威尔逊、温伯格等）：不能。「造物主上帝按详细蓝图规划宇宙（特别是人类的发展）」与生命的演化起源直接相悖；「上帝偶尔干涉一下演化过程，让它朝着确保人类出现的方向发展」也不行——「自然选择」的核心正是「自然」，允许超自然干涉，这个过程就不再是自然选择，而是<b>超自然选择</b>。</p><p class="prose">还须放弃「人类很特别」：人类只是上百万物种之一，并不比能在死皮碎屑上长时间生存的尘螨更高级。</p><p class="prose">现代神学家约翰·霍特：可以——但上帝概念必须实质性地改变。他接受演化论的「自然」部分是核心，接受不存在干涉宇宙运转的上帝、不存在蓝图般的规划、人类不是演化有意为之的产物；但他认为认真对待演化带来的改变都是积极的，称其为——</p><div class="aband"><q>上帝就是那个吸引着宇宙不断走向的未来</q><cite>——霍特（转引自第30章 对宗教的影响）</cite></div><p class="prose">霍特的思想源自怀特海的<b>过程哲学</b>（过程比物质实体更基础——世界不是静止实体的集合，而是持续演化的过程）与德·夏尔丹的<b>过程神学</b>（上帝不是独立于世界之外的代理人，而是宇宙基础过程的永恒参与者）。</p><p class="prose">演化需要秩序与随机性的适当平衡；宇宙大致朝某个方向发展（包括某种复杂智慧生命，不一定是人类），但完全按自然规律运转，上帝不干涉——只是吸引着它走向未来。</p><p class="prose">两派争论的焦点其实不是经验证据本身（双方都接受演化论），而是<b>经验证据是否唯一且起最终决定性作用的证据</b>——这与第17章伽利略与贝拉明的争论同构。当两方对「评价观点应使用什么标准」发生分歧，就是古老的「标准难题」：几乎无法通过理性论证说服任何一方。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>演化与道德：一种重要的错觉</h2><span class="en">MORALITY</span></div><p class="prose">道德判断伴随强烈的<b>「客观性感觉」</b>：听到强奸、谋杀或虐待儿童案件时的深深愤慨——我们感觉那些行为真的是错的、客观上不对。迈克尔·鲁斯与爱德华·威尔逊等学者认为：这种感觉之所以如此，是因为它提供了演化优势——被认为客观的判断有分量、能塑造行为；主观的好恶（如对冰激凌口味的偏爱）没有这种能力。</p><p class="prose">因此，客观性感觉是一种<b>错觉</b>——但很重要的错觉，被指出后也不会消失。类比：<b>红色属性</b>——红色不是物体的客观特征，而是我们的视觉系统演化出来的主观特征；但即使完全理解这一点，我们仍会继续认为某些物体是红色的。</p><p class="prose">道德同理：它与红色属性都是<b>真实的，但不是客观的</b>——若人类不曾存在，两者都不会存在；而人类确实存在，所以我们生来如此。</p><p class="prose">对规范伦理学的冲击：几世纪以来公认无法从「实然」表述推出「应然」表述（<b>自然主义谬误</b>）；演化解释是描述性的「实然」表述，似乎无法影响伦理学。</p><p class="prose">鲁斯等的回应：演化思考并没有告诉我们如何演绎推理出规范伦理学表述，它所做的是<b>解释</b>规范伦理学表述——为什么我们会有这些伦理倾向、它们过去如何具有优势、为什么令人产生客观的感觉。这意味着传统认知中的规范伦理学走到了尽头。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>经验研究：合作从自私中脱颖而出</h2><span class="en">EXPERIMENTS</span></div><p class="prose">演化看似向自私自利发展，合作与利他如何脱颖而出？最著名的研究是<b>重复的囚徒困境</b>：经典版本中，追求个人利益最大化的双方都会背叛，得到（3，3）——对共同利益来说最糟糕的结果；重复版本中，上百参与者带着彼此的互动历史进行上百次互动。</p><p class="prose">20世纪70年代末，罗伯特·阿克塞尔罗德请同行各写一个策略程序，在电脑模拟的大规模对抗比赛中竞技。</p><div class="grid g2"><div class="card num"><div class="idx">冠军</div><h3>以牙还牙（TfT）</h3><p class="cp">第一次互动总是合作，之后复制对方上一次的策略——绝不做第一个不合作的程序。第一次比赛夺冠，后续对抗中表现也很好。</p></div><div class="card num"><div class="idx">规律</div><h3>「好人」程序压倒性获胜</h3><p class="cp">绝不首先不合作的「好人」程序，在所有后续模拟研究中都击败「非好人」程序——尽管每个程序的目标都是让自身利益最大化。</p></div><div class="card num"><div class="idx">细节</div><h3>报复与原谅</h3><p class="cp">TfT会立即报复不合作者；第二次比赛（超过60个程序，TfT再胜）前15名中14个是好人程序；对模拟结果的分析还表明，加入某种「原谅」政策有助于打破报复循环。</p></div><div class="card num"><div class="idx">陷阱</div><h3>「超好人」的下场</h3><p class="cp">唯一跻身前15名的非好人程序（第8位）故意偶尔背叛以试探：对方若报复就回到合作，若不报复就加大对「超好人」程序的利用。</p></div></div><p class="prose"><b>最后通牒博弈</b>：提案者分10美元、回应者可拒绝（拒绝则两空）。纯自利预测是提案1美元、无论如何都接受。实际结果：最普遍的提案约为总金额的50%；<b>低于总金额30%的提案通常会被拒绝</b>——拒绝是牺牲自己收益的利他惩罚；自私行事者约占25%，永远是少数派。</p><p class="prose">跨文化研究（东印度尼西亚群岛的捕鲸部落、坦桑尼亚的游猎部落、智利和阿根廷南部的部落等）表明：利他惩罚是世界各地各种文化中的标准行为——根深蒂固到几乎肯定源自我们的演化历史。</p><p class="prose"><b>信任博弈</b>：给予者把部分钱分给分享者（实验组织者额外给分享者两倍），分享者可回分或独吞，给予者无法拒绝。结果：几乎没有给予者完全不信任，也几乎没有分享者完全自私。</p><p class="prose">更精彩的是生物化学层面：博弈前注射了<b>催产素</b>的给予者，信任程度急剧上升（愿意分给分享者的钱数大幅增多）——所有相关研究都强有力地表明，效果完全或几乎完全来自催产素对信任程度的影响。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>结语：生命如是之观，何等壮丽恢宏</h2><span class="en">EPILOGUE</span></div><div class="aband"><q>与生活在17世纪早期的前人一样，我们现在正处在一个需要对我们的整体世界观进行大幅改变的阶段。</q><cite>——第30章 结语</cite></div><p class="prose">相对论、量子理论与演化论，已使我们无法重拾过去的观点；虽然看清新世界观会是什么样子还为时尚早，但改变已在发生。德威特提醒：不必从消极角度看待演化——我们与每一种植物和动物，现存的或已灭绝的，都有亲缘关系；不管走到哪里，看到的动植物都是同一个大家族的一部分。这是一个很美妙的观点。</p><p class="prose">达尔文在1844年未发表的综述与1859年《物种起源》中，都用这段话作结：</p><div class="aband"><q>生命及其蕴含之力能，最初注入寥寥几个或单个类型之中；当这一行星按照固定的引力法则循环运行之时，无数最美丽与最奇异的类型，即是从如此简单的开端演化而来，并依然在演化之中；生命如是之观，何等壮丽恢宏。</q><cite>——达尔文（Darwin，1964，p.490；苗德岁译，译林出版社，2018，p.510）</cite></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜理查德·德威特《世界观：现代人必须要懂的科学哲学和科学史（原书第3版）》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜演化论</span><a href="../11-测量难题与EPR/index.html">← 测量难题与EPR</a><a href="../13-总结与注释书目/index.html">总结与注释书目 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wv-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

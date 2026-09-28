@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 2·空间竞争与享受竞争 · 博弈论模型｜模型思维 精读</title>
+<meta name="description" content="空间竞争模型用属性与理想点刻画选择：候选人趋近中位选民，二维之下却无不可击败的位置；博弈论模型让最优策略相互定义——随机化是硬币配对唯一的均衡，逆向归纳却推不出老练商家会打的真实商战。">
+<style>
+:root{
+  --paper:#F4F3EE;      /* 羊皮纸底 */
+  --paper-2:#E7E4DB;    /* 羊皮纸深一档 */
+  --card:#FAF9F4;
+  --ink:#212936;        /* 主墨（深蓝墨） */
+  --ink-2:#2E3A4E;      /* 钴蓝次墨 */
+  --ink-deep:#0C1119;   /* 夜航蓝黑（hero 底） */
+  --gold:#35558A;       /* 钴蓝（强调 · 模型的理性骨架） */
+  --gold-b:#7B98C9;     /* 高亮钴蓝 */
+  --gold-soft:rgba(53,85,138,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 误用与陷阱） */
+  --teal:#C9A227;       /* 对照模型金（对照 · 多模型互补） */
+  --tx:#2A3140;
+  --tx-2:#455062;
+  --tx-3:#6E7B90;
+  --line:rgba(33,41,54,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,41,54,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E3A4E 0%,var(--ink-deep) 62%);
+  color:#E8EDF5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(123,152,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(123,152,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(123,152,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EEF2F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,237,245,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(123,152,201,.34);color:rgba(232,237,245,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,85,138,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(123,152,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EEF2F8;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(123,152,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EEF2F8;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(233,237,244,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,85,138,.5);box-shadow:0 4px 18px rgba(33,41,54,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,85,138,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(122,129,113,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,85,138,.45);background:rgba(53,85,138,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(146,58,36,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,85,138,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,243,238,.94);
+  border-bottom:1px solid rgba(33,41,54,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,41,54,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2E3A4E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,85,138,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,41,54,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,41,54,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#6E7B90;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../09-系统动力学与阈值模型/index.html">← 系统动力学与阈值</a><a href="../11-合作与集体行动/index.html">合作与集体行动 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">弈</div>
+  <div class="stamp ">策略</div>
+  <h1>空间竞争与享受竞争 · 博弈论模型</h1>
+  <p class="sub">空间竞争模型用属性与理想点刻画选择：候选人趋近中位选民，二维之下却无不可击败的位置；博弈论模型让最优策略相互定义——随机化是硬币配对唯一的均衡，逆向归纳却推不出老练商家会打的真实商战。</p>
+  <div class="meta"><span>Part 2</span>
+    <span class="k">纳什均衡</span>
+    <span>正文 16,195 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>空间竞争</a><a href="#s3" data-t="s3"><span class="cn">叁</span>享受竞争</a><a href="#s4" data-t="s4"><span class="cn">肆</span>博弈论</a><a href="#s5" data-t="s5"><span class="cn">伍</span>零和与识别</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>我们的理论是，如果你需要用户来告诉你，你正在销售的是什么，那么你其实不知道你正在销售的是什么，而且这不可能给客户留下好的体验。</p><cite>——玛丽莎·梅耶尔(Marissa Mayer)</cite></div><div class="epi"><p>演绎推理是从最抽象到最不抽象的推理。它从一套公理开始，运用逻辑定律和数学规律来操纵，形成对世界的预测。</p><cite>——雷切尔·克罗松(Rachel Croson)</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇把「选择与对抗」放进空间与博弈：位置、策略与均衡</p><p class="thesis">第 20 章用属性定义备选项、用理想点定义消费者：<b>空间属性</b>（辣度、意识形态）没有最优值，<b>享受属性</b>（待机时间、价格）更多或更少总是更好。唐斯模型推出<b>中位投票者定理</b>——候选人趋同到中间选民；但二维之下普洛特证明了<b>无赢家结果</b>：任何位置都可能被击败。第 21 章博弈论以<b>纳什均衡</b>为核心：硬币配对博弈中双方随机化是唯一均衡；市场进入博弈用逆向归纳得子博弈完美均衡，重复博弈却引出<b>连锁店悖论</b>——最优行为未必是老练行为者的选择。</p><div class="chain"><div class="node"><div class="n">属性</div><div><p class="tt">空间竞争模型</p><p class="dd">霍特林海滩上的两个冰激凌小贩；距离可抽象为乳脂含量、意识形态——候选人有投票记录即可定位</p></div></div><div class="node"><div class="n">中位</div><div><p class="tt">中位投票者定理</p><p class="dd">自由派向中间移动即从 5 票变 7 票胜选；弱形式成立（趋向温和），强形式（完全趋同）不符经验</p></div></div><div class="node"><div class="n">维度</div><div><p class="tt">普洛特无赢家结果</p><p class="dd">一维解释 83% 选票、二维只加 4%；二维中位数可被「一左一右」的挑战者以 3 票优势击败——没有哪个位置保证获胜</p></div></div><div class="node"><div class="n">均衡</div><div><p class="tt">纳什均衡</p><p class="dd">硬币配对：双方 1/2 概率随机化；点球、发球、扑克虚张声势同理——任何非随机性都可能被对手利用</p></div></div><div class="node"><div class="n">悖论</div><div><p class="tt">连锁店悖论</p><p class="dd">逆向归纳下现有企业接受所有进入者；但建立「愿意竞争」的声誉可能更明智——必须挑战假设</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>空间竞争与唐斯模型</h2><span class="en">SPATIAL COMPETITION</span></div><p class="prose"><b>空间竞争模型</b>假设备选项由一组属性定义、消费者由理想点定义。霍特林的最早版本只有单一属性——地理位置：海滩上两个卖冰激凌的小贩，每个消费者从更近者处购买，分割点在两小贩中点。距离可以更抽象：两个小贩同在一处、只差乳脂含量，消费者的位置就是他们所喜欢的乳脂含量。</p><p class="prose"><b>唐斯模型</b>再把地理空间重新定义为从左到右的意识形态连续系统——A 是自由派候选人、B 是保守派候选人，圆圈是选民的意识形态理想点；候选人若有投票记录，其位置可设定为投票给保守派的时间百分比。实证研究据此发现美国两党平均理想点显著且不断加剧的极化，且主要归因于共和党的向右倾斜。</p><p class="prose">一般的空间竞争模型可以包括任意数量的属性：沙发有长度、宽度、深度、结构类型与装饰类型，效用等于常数项减去备选项与理想点之间的距离。两种巧克力棒用可可含量与含糖量表示，分割线是连接这两个产品的直线的垂直平分线；加入第三种产品再绘一条分割线，理想点空间被划分为 <b>沃罗诺伊邻域</b>。</p><p class="prose">应用到政治：假设候选人追求投票最大化，选民更喜欢立场与自己更接近者。自由派候选人向中间移动后从 5 票变 7 票、赢得选举；保守派同样有此动机——继续推下去，两个候选人应会趋同到同一点，这就是<b>中位投票者定理</b>。</p><p class="prose">它有强弱两种形势：<b>强形势</b>（各方都站到中间选民的理想点上）显然不符经验事实；<b>弱形势</b>（候选人有动机采取较温和立场）确会发生，但不会演变为「夺命狂奔」——意识形态坚定或依赖极端位置核心支持者的候选人对重新定位非常谨慎。</p><p class="prose">增加维度也会改变结论。一个维度可解释美国国会约 <b>83%</b> 的选票变化，第二个维度只增加 <b>4%</b>；但二维之下，唯一无法被打败的位置是二维中位数——前提是选民理想点满足<b>径向对称</b>（从中位数出发的每个方向上都不到一半）。</p><p class="prose">否则<b>二维中位数立场可以被击败</b>：挑战者在第一个问题上取偏左、第二个问题上取偏右，即以 3 票优势胜出——这就是<b>普洛特无赢家结果</b>，在两维或多维情况下都成立。一维模型揭示趋同动机，高维模型证明其局限：<b>不应预期均衡，应期待复杂性</b>——政客时而联盟、时而拆台，无休止地为选票竞争。</p><p class="prose">唐斯模型还能分析立法机关的三个策略性因素：<b>现状效应、控制议程的权力、否决权</b>。</p><p class="prose">三人委员会理想点为 40、60、80：现状为 80 时，理想点 40 的提案人只需让中间投票人觉得提案不比现状差即可通过；<b>现状为 70 时任何提案都无法击败现状</b>——若有三个拥有否决权的投票者（众议院、参议院、总统），70 左侧会被 80 处的投票者否决，80 右侧会被另外两人否决。</p><p class="prose">法案会朝有权者的理想点靠拢，但对权力过大的担忧，只需考察现状的代表性即可缓解。</p><div class="aband"><q>对于永恒徘徊的人类来说，它（意识形态）提供了一个立即可以安身的家园，所有人必须做的就是马上接受它。突然之间，一切都变得清晰了，生活呈现出了新的意义。所有的奥秘，所有悬而未解的问题，所有的焦虑和孤独感，全都消失了。当然，人们必定要为这个“廉租房”付出沉重的代价。这代价就是放弃自己的理性、良心和责任，因为这种意识形态最重要的一个方面就是向更高权威拱手献出自己的理性和良心。</q><cite>——瓦茨拉夫·哈维尔(Václav Havel)，转引自第 20 章</cite></div><p class="prose">哈维尔批评把人简化为意识形态光谱上的一个点。但即便批评成立，也不必放弃模型：可以赋予候选人一个<b>区间</b>来代表意识形态的不确定性，或构建意识形态时间序列——对最高法院大法官的研究表明，有些法官任职越久立场越自由。我们不应为了意识形态而放弃理性；<b>模型提供了更好的推理工具</b>。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>享受竞争、价格战与多个价值模型</h2><span class="en">HEDONIC COMPETITION</span></div><p class="prose"><b>享受竞争模型</b>的属性是质量、效率或价格——更多或更少总是更受欢迎，个体给不同维度赋予不同权重。用线性回归可推断商品属性的隐含价格：数千幢房子的售价与属性数据回归出每个属性的平均权重（以美元计），这就是<b>享受回归</b>。</p><p class="prose">游泳池这类有市场价格的属性可用于检验模型：回归显示其带来 15 万美元增值而建造成本仅 1.5 万美元，说明模型遗漏了属性；若增值只有 8000 美元，则可能无法收回加建成本。</p><p class="prose">通勤时间没有市场价格，回归给出的是隐含价格。由 6 栋假想房屋数据回归得：<b>价格（美元）= 100（平方英尺数）+ 20000（卧室个数）− 2000（通勤时间）</b>。</p><p class="prose">通勤时间每天省 1 分钟、20 年上班 4000 天即省 4000 分钟（60 多个小时），2000 美元相当于<b>每小时 30 美元</b>——人们为住得离上班地点更近所付的代价，「好像」是为免受 1 小时交通堵塞之苦而付出 30 美元。</p><p class="prose">现实选择多是混合型：薯条脆度是空间属性、价格是享受属性；企业偏好外向或内向的人格（空间），但都喜欢诚实正直（享受）。混合模型可分析市场进入：拟进入者先在属性空间中摆出 3 种现有巧克力棒，再调查消费者理想点分布，估计自己产品的沃罗诺伊邻域——<b>邻域消费者太少就不应期待热销</b>。</p><p class="prose">靴子设计师会发现没有一种绝缘靴用闪亮漆皮；待办事项应用的开发者会列出竞品功能、估计总需求。</p><p class="prose">降价即分割线的移动，关键在区分<b>拥挤的市场</b>（低维属性空间挤进大量产品）与<b>稀疏的市场</b>（竞争对手很少）：前者每种产品只有小小的沃罗诺伊邻域，后者邻域很大。</p><p class="prose">B 巧克力棒降价 10%（2 美元降到 1.8 美元）：稀疏市场中份额从 50% 提到 54%——销量只增 8%，销售收入反减 3%，<b>降价不是好主意</b>；拥挤市场（7 种巧克力棒）中份额从 15% 到 20%，5% 的增幅意味着 33% 的相对增长，销售收入增加 20%。</p><p class="prose"><b>拥挤市场中的价格竞争比稀疏市场影响更大</b>。因此增加新属性是好策略——让市场更稀疏、降低价格竞争烈度、带来更高利润；但每个成功的新属性（无绳立体声扬声器）背后都藏着多次失败尝试（比克公司命运多舛的一次性产品）。</p><div class="tbwrap"><table><thead><tr><th>价值模型</th><th>解释</th><th>适用</th></tr></thead><tbody><tr><td>享受模型</td><td>价值来自内在属性：五香熏牛肉三明治 = 黑麦面包、熏牛肉、瑞士奶酪、芥末、泡菜、洋葱的加权线性组合；更精细的可加交互项（配烤黑麦面包的熏牛肉更有价值）</td><td>三明治的价值很可能来自内在性质</td></tr><tr><td>协调模型</td><td>价格是社会建构的：戈雅画作的价值取决于别人相信它有那么高的价值；互动更新估价可实现局部收敛——最终价值取决于初始分布、社会网络与配对顺序</td><td>戈雅画作的价值在很大程度上是社会建构的——只要人们认为它有价值，它就有价值</td></tr><tr><td>预测模型</td><td>价格是对未来价值的预测：奥卡拉的土地、比特币或股票取决于人们将来愿意付多少钱；估值变化源于不同的预测模型</td><td>佛罗里达土地价格的估计可能取决于对未来房地产价值的预测</td></tr></tbody></table></div><p class="prose">三个模型没有哪个在所有情况下最好——<b>模型就像箭袋中的箭</b>。至于「偏好不变」这个可疑假设（若真如此，企业为何花钱改变消费者偏好？</p><p class="prose">），可以区分<b>基本偏好</b>（想得到什么：受欢迎、健康、成绩）与<b>工具偏好</b>（实现手段：喝水果奶昔）——看到奶昔糖分高的论文改喝饮用水，工具偏好变了，基本偏好没变。模型本身不是目的，只是构建思维的框架。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>博弈论：从零和到连锁店悖论</h2><span class="en">GAME THEORY</span></div><p class="prose">博弈论涵盖标准式博弈（离散行动中选择）、<b>序贯博弈</b>（按顺序行动）与<b>连续行动博弈</b>（任意尺度行动）。<b>硬币配对博弈</b>是 2×2 标准式零和博弈：行博弈参与者希望匹配、列博弈参与者不希望，双方收益总和为零。</p><p class="prose"><b>纳什均衡</b>是使每个参与者的策略在给定对方策略时最优的策略组合——这里唯一的均衡是双方都以相同概率随机化：行以 1/2 概率选正面，列无论选什么都得零收益，随机化即最优。</p><p class="prose">这对体育与牌局意义深远：点球大战前锋在左右之间随机选择、发球方随机选内外角、优秀扑克玩家<b>随机地虚张声势</b>——任何非随机性都可能被对手利用。</p><p class="prose"><b>最小化风险博弈</b>是非对称零和博弈：行博弈参与者有占优策略（采取安全行动），列博弈参与者没有——行冒险则列应冒险、行安全则列应安全。列通过考虑行的激励推断行必选安全，于是自己也选安全——这种一方为另一方排除最优策略的过程叫<b>迭代消除被占优策略</b>，双方都选安全即纳什均衡。</p><p class="prose"><b>序贯博弈</b>用博弈树表示：节点是行动时刻、边是可选行动，末端写收益。<b>市场进入博弈</b>中，拟进入者不进入则得零、现有企业得 5；进入则现有企业选择接受（收益降为 2）或发动商战（自己得零、进入者收益为负）。于是有两个纳什均衡：不进入+商战，进入+接受。</p><p class="prose">选择依靠细化准则<b>子博弈完美均衡</b>：用<b>逆向归纳法</b>从末端节点倒推——现有企业末端最优是接受，于是拟进入者最优是进入。</p><p class="prose">重复进行时更有趣：连锁企业在几十个城市有门店、面对一连串进入者。从最后一个市场逆向归纳——接受所有进入者是唯一的子博弈完美均衡。但现实中这可能不会发生：作为董事会成员，你会想通过竞争建立<b>愿意竞争的声誉</b>、阻止后续进入者。</p><p class="prose">博弈理论家称之为<b>连锁店悖论</b>——博弈论认为最优的行为，可能不是老练行为者在利害关系很大时的选择；这没有反驳博弈论，而是提醒我们<b>总是必须挑战假设</b>。</p><p class="prose"><b>努力博弈</b>是连续行动博弈：N 人各选以货币表达的努力水平去赢得价值 M 的奖励，获胜概率等于自己的努力除以总努力。均衡揭示：个人努力随奖金增多而增大；均衡状态下<b>总努力水平小于奖金的价值</b>；增加参与者人数——即便每人努力下降——总努力仍会增加。</p><p class="prose">这解释了为何吸引大量「参赛者」的课题竞标、建筑设计竞赛与征文比赛，反而可能产生水平不那么优异的赢家：人越多，个体努力越低。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>零和之辨与识别问题</h2><span class="en">ZERO-SUM &amp; IDENTIFICATION</span></div><p class="prose">零和博弈不包括互利的行动组合——一方之「益」等于另一方之「损」。但一个维度上的零和行动，在另一个维度上可能不是：重新安排预算在货币数量上零和，在幸福感上却可能正和或负和。</p><p class="prose">择校之争是绝佳案例：市场进入博弈揭示了学校改进质量的动力；但<b>只有产能过剩时学校才有动力提高质量</b>——1 万名学生、10 所各收 1000 人的学校，若所有学生以相同方式排名，最好的学校名额只能抽签，学生玩的是零和博弈；新建学校或改善现有学校，博弈才不再是零和。</p><p class="prose">两个模型都没给正确答案，但都产生了有用的见解。</p><p class="prose">人类行为的数据常见<b>聚类倾向</b>：优秀学生与优秀学生交友、有前科者与犯罪者交往，吸烟、健美、肥胖甚至幸福都会「聚类」。两个模型都可解释：<b>同伴效应模型</b>——朋友间进行协调博弈；<b>分类模型</b>——人们「迁移」到与自己相似的人附近。</p><p class="prose">只有数据快照时两者无法区分，这就是<b>识别问题</b>：</p><div class="tbwrap"><table><thead><tr><th>模型</th><th>机制</th><th>对四人小组（H 高分 / M 中等）的预测</th></tr></thead><tbody><tr><td>数据</td><td>学生等可能得 H 或 M，每人加入一个 4 人小团体</td><td>p({H,H,H,H})=p({M,M,M,M})=5/16，p({H,H,H,M})=p({M,M,M,H})=3/16，p({H,H,M,M})=0</td></tr><tr><td>同伴效应</td><td>随机小组中，与小组内所有其他人类型都相反的人会切换类型</td><td>初始 p({H,H,H,H})=1/16、p({H,H,H,M})=1/4、p({H,H,M,M})=6/16；{H,H,H,M} 变为 {H,H,H,H}，{H,H,M,M} 等概率变为 {H,H,H,M} 或 {M,M,M,H}</td></tr><tr><td>分类模型</td><td>随机小组中，与至少两个其他人的类型相反的人，与相反类型的人交换小组</td><td>{H,H,H,M} 变为 {H,H,H,H}、{M,M,M,H} 变为 {M,M,M,M}；{H,H,M,M} 等概率变为 {H,H,H,M} 或 {M,M,M,H}</td></tr></tbody></table></div><p class="prose">两个模型都与数据一致。某些情况可以推断：中西部人说「pop」、沿海人说「soda」，可放心归为同伴效应——很少有移居波士顿的人会把可口可乐称为「苏打水」。</p><p class="prose">但对利害更大的行为（学业成绩、滥用药物、肥胖、幸福），需要<b>时间序列数据</b>：分辨人们到底是在改变自己的行为（同伴效应），还是在更换朋友（分类效应）——许多情况下两个因素都有。</p><div class="check" data-k="game-10"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>能区分空间属性与享受属性，并画出两种巧克力棒的分割线与沃罗诺伊邻域</span></label><label><input type="checkbox"><span>能陈述中位投票者定理的强弱两种形势，以及普洛特无赢家结果为何推翻二维趋同</span></label><label><input type="checkbox"><span>能用委员会例子（理想点 40/60/80）说明现状效应、议程权力与否决权的边界</span></label><label><input type="checkbox"><span>能解释拥挤市场与稀疏市场中降价的不同后果（-3% 对 +20%）</span></label><label><input type="checkbox"><span>能写出硬币配对的随机化均衡、用逆向归纳求解市场进入博弈，并说出连锁店悖论为何挑战假设</span></label><label><input type="checkbox"><span>能说明同伴效应与分类模型的分布差异，以及何时需要时间序列数据完成识别</span></label><div class="cf">已掌握 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出说明</span><span class="nd"><b>1｜</b>第 20 章导出含 40 张插图（图 20-1 海滩冰激凌、图 20-2 意识形态极化、图 20-3/20-4 巧克力棒与沃罗诺伊邻域、图 20-5 至 20-8 政治定位与委员会系列、图 20-9 稀疏与拥挤市场）、第 21 章含 20 张（图 21-1 硬币配对、图 21-2 最小化风险、图 21-3 市场进入博弈树），空间竞争效用函数与努力博弈均衡表达式在源文中以图片嵌入；本页照录文字结论与数值，公式与图示不重绘。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜斯科特·佩奇《模型思维（新版）》（浙江科学技术出版社·湛庐，贾拥民 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">Part 2｜空间竞争与博弈论</span><a href="../09-系统动力学与阈值模型/index.html">← 系统动力学与阈值</a><a href="../11-合作与集体行动/index.html">合作与集体行动 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mt-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

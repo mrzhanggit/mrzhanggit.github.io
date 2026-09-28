@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 1·多模型思维 · 对人类行为者建模｜模型思维 精读</title>
+<meta name="description" content="第 3 章用孔多塞陪审团定理和多样性预测定理量化多模型的价值，再用分类模型与粒度分析划定边界；第 4 章直面最难的建模对象——人本身。">
+<style>
+:root{
+  --paper:#F4F3EE;      /* 羊皮纸底 */
+  --paper-2:#E7E4DB;    /* 羊皮纸深一档 */
+  --card:#FAF9F4;
+  --ink:#212936;        /* 主墨（深蓝墨） */
+  --ink-2:#2E3A4E;      /* 钴蓝次墨 */
+  --ink-deep:#0C1119;   /* 夜航蓝黑（hero 底） */
+  --gold:#35558A;       /* 钴蓝（强调 · 模型的理性骨架） */
+  --gold-b:#7B98C9;     /* 高亮钴蓝 */
+  --gold-soft:rgba(53,85,138,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 误用与陷阱） */
+  --teal:#C9A227;       /* 对照模型金（对照 · 多模型互补） */
+  --tx:#2A3140;
+  --tx-2:#455062;
+  --tx-3:#6E7B90;
+  --line:rgba(33,41,54,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,41,54,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E3A4E 0%,var(--ink-deep) 62%);
+  color:#E8EDF5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(123,152,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(123,152,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(123,152,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EEF2F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,237,245,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(123,152,201,.34);color:rgba(232,237,245,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,85,138,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(123,152,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EEF2F8;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(123,152,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EEF2F8;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(233,237,244,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,85,138,.5);box-shadow:0 4px 18px rgba(33,41,54,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,85,138,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(122,129,113,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,85,138,.45);background:rgba(53,85,138,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(146,58,36,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,85,138,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,243,238,.94);
+  border-bottom:1px solid rgba(33,41,54,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,41,54,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2E3A4E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,85,138,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,41,54,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,41,54,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#6E7B90;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-多模型思考者与七大用途/index.html">← 多模型思考者</a><a href="../03-正态分布与幂律分布/index.html">正态与幂律 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">衡</div>
+  <div class="stamp ">建模</div>
+  <h1>多模型思维 · 对人类行为者建模</h1>
+  <p class="sub">第 3 章用孔多塞陪审团定理和多样性预测定理量化多模型的价值，再用分类模型与粒度分析划定边界；第 4 章直面最难的建模对象——人本身。</p>
+  <div class="meta"><span>Part 1</span>
+    <span class="k">偏差-方差权衡</span>
+    <span>正文 25,712 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>两个定理</a><a href="#s3" data-t="s3"><span class="cn">叁</span>分类与粒度</a><a href="#s4" data-t="s4"><span class="cn">肆</span>一对多</a><a href="#s5" data-t="s5"><span class="cn">伍</span>对人建模</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>没有什么比现实主义更不真实了……细节令人困惑。只有通过选择、通过消除、通过强调，我们才能获得事物的真正意义。</p><cite>——乔治娅·奥·吉弗(Georgia O’Keeffe)</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇回答两个问题：多模型值不值？以及人怎么建模？</p><p class="thesis">第 3 章给出多模型思维的<b>可量化论据</b>：孔多塞陪审团定理证明多数投票比任何单一模型更准，多样性预测定理给出恒等式「多模型误差＝平均模型误差−模型预测的多样性」。但分类模型随即揭示：数据的维数限定了可用模型的数量——在实践中「许多」更接近 5 而不是 50。第 4 章转向<b>对人建模</b>：人是多样性的、易受社会影响的、容易出错的、有目的的、有适应能力且拥有主体性的——任何单一的人类行为模型都一定会出错。</p><div class="chain"><div class="node"><div class="n">定理</div><div><p class="tt">两个定理</p><p class="dd">孔多塞陪审团定理 + 多样性预测定理：只要模型多样且中等准确，集合就优于任何单个成员（群体的智慧）</p></div></div><div class="node"><div class="n">限度</div><div><p class="tt">分类模型</p><p class="dd">100 份贷款的两个属性只撑得起 7 个可能的模型——构建多个多样性模型的能力是有限的</p></div></div><div class="node"><div class="n">粒度</div><div><p class="tt">大模型还是小模型</p><p class="dd">预测宜用大模型，解释、推理、交流、探索宜用小模型；误差＝分类误差＋估值误差</p></div></div><div class="node"><div class="n">一对多</div><div><p class="tt">X^N 当模型</p><p class="dd">同一个幂公式解释超级油轮、BMI、大象的代谢率与女性 CEO 稀少之谜</p></div></div><div class="node"><div class="n">对象</div><div><p class="tt">对人建模</p><p class="dd">理性行为者是「黄金标准」还是「稻草人」取决于用途；行为落在零智能与完全理性之间</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>孔多塞陪审团定理与多样性预测定理</h2><span class="en">TWO THEOREMS</span></div><p class="prose"><b>孔多塞陪审团定理</b>：设总数为奇数的一组人（模型）将未知的世界状态分为真或假，每个人（模型）正确分类的概率为 p＞1/2，且相互独立——那么<b>多数投票正确的概率比任何人（模型）都更高；当模型数足够大时，多数投票的准确率将接近 100%</b>。</p><p class="prose">生态学家莱文斯把它说透了：用几个简化方法各不相同、但共享同一生物学假设的模型处理同一个问题，如果它们导致相似的结果，就得到了一个几乎不受模型细节影响的强定理。</p><div class="aband"><q>因此，我们的真理就是若干独立的谎言的交集。</q><cite>——理查德·莱文斯，转引自第 3 章</cite></div><p class="prose"><b>多样性预测定理</b>则适用于数值预测：多模型误差＝平均模型误差−模型预测的多样性。这是数学恒等式，总是成立。例：两个模型预测一部电影获 2 项与 8 项奥斯卡奖，平均预测为 5 项；若实际获 4 项，则两模型误差为 4 与 16，多模型误差仅 1，多样性等于 9——1 = 10 − 9。</p><p class="prose">原理在于<b>相反类型的误差（正负）会相互抵消</b>。</p><p class="prose">这正是「群体的智慧」的数学基础，也解释了计算机科学中集成方法成功的原因。但要小心：如果所有模型共享同一个偏差，平均值也包含那个偏差——多样性预测定理并不意味着任何不同模型的集合必定准确。单模型思考者不太可能准确预测到 2008 年金融危机那样的重大事件。</p><details class="ext"><summary>为什么这两个定理可能「夸大其词」</summary><div class="ex">定理假设可以构建<b>任意多</b>的独立且准确的模型。分类模型提供了微观基础，也暴露了极限：相关属性的数量限制了不同类别的数量，从而限制了有用模型的数量。若所有模型共享共同偏差，平均结果同样带偏——孔多塞的独立性假设在现实建模中很难满足。</div></details></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>分类模型：多模型的限度与粒度</h2><span class="en">CATEGORIZATION</span></div><p class="prose">分类模型把世界划分为一个个「箱子」：对象或状态由一组属性定义，模型按属性分入有限类别集 {S1，S2，…，Sn} 并给每个类别赋值。例：100 份学生贷款（一半按期还款、一半违约），已知两个属性——金额是否超 5 万美元、主修工科还是文科——可区分出 4 种类型的贷款。</p><p class="prose">问题来了：把 4 个类别映射为「按期还款 / 违约」两个结果，<b>最多只有 16 个模型</b>，其中每个模型都有一个完全相反的模型——因此最多只有 7 个可能在超过一半的情况下正确。<b>数据的维数限定了可以创建的模型数量</b>：我们无法创建 11 个独立模型，更不用说 77 个。</p><p class="prose">实证结果与推论一致。谷歌发现：仅用一位面试官评估求职者，录用高于平均水平雇员的概率从 50% 升到 74%；第二位面试官升到 81%，第三位 84%，第四位 86%——用 20 位面试官也只能提高到 90% 多一点。</p><p class="prose">对失业率、经济增长率和通货膨胀率的成千上万次预测同样如此：加入 1 位经济学家准确性提高约 8%，3 位约 15%，10 位约 19%；而最好的经济学家也只比平均水平高约 9%——<b>3 位随机选择出来的经济学家的表现就已优于最好的那位</b>。</p><p class="prose">至于粒度：模型的 7 大用途中有 4 种（推理、解释、交流、探索）要求简化——小模型更好；预测、设计和行动则可因高保真模型受益——有大数据就该用。</p><p class="prose">用 R2（解释变差的百分比）衡量：分类越细解释的变差越多，但把每个家庭分为一类就等于博尔赫斯笔下那张 1:1 的地图——毫无用处，而且会过度拟合、破坏对未来事件的预测。</p><div class="aband"><q>制图师协会决定制作一幅国家地图，它的大小与国家大小相同，而且一对一地将土地上的每一点都标记在地图上。但是，他们的后代不像他们的祖先这样喜欢研究制图，并认为这种巨大的地图毫无用处。</q><cite>——豪尔赫·路易斯·博尔赫斯，转引自第 3 章</cite></div><div class="duo"><div class="colL"><h4>分类误差（模型偏差）</h4><ul><li>类别越大，越可能把不同均值的家庭混入同一类别</li><li>随类别数量增加而减小</li><li>统计学家称为模型偏差</li></ul></div><div class="colR"><h4>估值误差（方差）</h4><ul><li>类别越小，对每个类别均值的估计越不准</li><li>随类别数量增加而增大（数据不足）</li><li>统计学家称为均值方差的增加</li></ul></div></div><p class="prose">两者相加就是<b>模型误差分解定理</b>：模型误差＝分类误差＋估值误差——统计学家称之为<b>偏差-方差权衡</b>。这正是「一个大模型还是多个小模型」的数学表述，选择取决于用途。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>一对多：把 X^N 用到极致</h2><span class="en">ONE MODEL, MANY USES</span></div><p class="prose">好在对多模型思维的需求可以被<b>一对多</b>平衡：流行病学模型可解释玉米良种扩散、Facebook 风行、犯罪传播与明星「吸粉」；信号传递模型可用于广告、婚姻、孔雀羽毛和保险费。</p><p class="prose">过去模型困在学科孤岛里，如今萨缪尔森用物理模型解释市场均衡、唐斯用冰激凌商店竞争模型解释政治候选人定位——把模型「释放」到新领域，靠的是创造力。一个最朴素的例子：把几何公式 X^N 当作模型。</p><div class="tbwrap"><table><thead><tr><th>应用</th><th>模型机制</th><th>结论</th></tr></thead><tbody><tr><td>超级油轮</td><td>长方体长为深与宽的 8 倍 S：表面积 34S2，体积 8S3；成本取决于表面积（钢材），收入取决于体积</td><td>体积/表面积 ≈ S/4，盈利能力随尺寸线性增长。诺克·耐维斯号表面积是 T2 油轮的 10 倍、体积 30 倍——之所以不造更大，是因为必须「挤」过苏伊士运河</td></tr><tr><td>身体质量指数</td><td>BMI＝体重/身高²；将人近似为「人体立方体」，体重＝H3×M，BMI＝H×M</td><td>模型暴露两个缺陷：BMI 随身高线性增长（身高本应与肥胖无关）；肌肉比脂肪重，越健美 BMI 越高</td></tr><tr><td>代谢率</td><td>小立方体的表面积/体积比远大于大立方体，散热能力随之不同</td><td>大象的代谢率为小鼠的 1/20——若与小鼠相同，大象每天要吃 6800 千克食物，体内热量无法散出，最终「热到冒烟，然后爆炸」</td></tr><tr><td>女性 CEO</td><td>升职建模为概率事件；假设 CEO 需升职 15 次，男性每次升职概率 50%、女性 40%</td><td>概率比为 (1.25)15=28.4——15 次「温和」偏差的复合解释了 2016 年财富 500 强女性 CEO 不到 5%；大学校长只需升职 3 次，故女性比例约 25%——层级越少，偏差累积越轻</td></tr></tbody></table></div><div class="aband"><q>我记得我的朋友约翰·冯·诺伊曼曾经说过，有4个参数，就可以拟合一头大象；有5个参数，就可以让大象摆动它的大鼻子了。</q><cite>——恩利克·费米对弗里曼·戴森的评论，转引自第 3 章</cite></div><p class="prose">这条冯·诺伊曼名言点破了过度拟合：参数越多拟合越好，但高阶项有很强的放大效应——10 只是 5 的两倍，10⁴ 却是 5⁴ 的 16 倍。</p><p class="prose">更巧妙的解法是<b>装袋法</b>（自举聚合法）：从原始数据抽出后放回地随机重抽，构建多个数据集、各拟合一个模型再求平均——用随机样本构建多样性，恰好应用了多样性预测定理背后的逻辑。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>对人建模：六大挑战与理性行为者</h2><span class="en">MODELING PEOPLE</span></div><p class="prose">第 4 章转向本书的核心问题：<b>应该怎样对人进行建模？</b>碳原子不多样、不违反物理定律、不根据经验改变行为、没有主体性；人却同时是多样性、易受社会影响、容易出错、有目的、有适应能力且拥有主体性的——社会科学家会讽刺说：如果电子可以思考，物理学就会面临非常大的困难。</p><p class="prose">方法上遵循<b>一致性和多样性</b>：或把人建模为理性行为者（给定收益或效用函数做出最优选择），或建模为基于规则的行为者（固定规则 / 适应性规则）。理性行为者模型要求偏好满足完备性、传递性、独立性和连续性。</p><p class="prose">采用它的理由有六：「似乎」最优（人和狗都能接住飞盘）、重复中学习、大「赌注」上认真思考、最优行为唯一可检验、内部一致性、以及作为认知能力的<b>基准上限</b>。</p><div class="grid g2"><div class="card"><div class="idx">偏差 1</div><h3>损失厌恶</h3><p class="cp">面对收益时风险厌恶、面对损失时风险偏好（前景理论）。人们更偏好肯定赢得 400 美元而非有机会赢 1000 美元的彩票；却更愿选可能损失 1000 美元的彩票，而不愿肯定损失 600 美元——医生在损失框架下也愿意冒更大风险。</p></div><div class="card"><div class="idx">偏差 2</div><h3>双曲贴现</h3><p class="cp">对近期的贴现远高于更远的未来（即时性偏差），导致时间不一致：20 年后多数人愿再等一天多拿 10000 美元。它可以解释巨额信用卡债务、不健康饮食，以及许多人无法为退休储蓄。</p></div></div><p class="prose">另一端是<b>固定规则</b>——理性是认知的上限，固定规则（如「零智能规则」：接受任何能带来更高收益的报价）则是下限。计算机实验发现，零智能交易者竟可在单边市场得到接近完全有效的结果：交易市场即便在买卖双方不理性的情况下也可以良好运行。</p><p class="prose">介于两者之间的是<b>适应性规则</b>，代表是「爱尔法鲁」酒吧问题：100 人各自决定是否去酒吧，超过 60 人到场则收益为 −1。给每人一组规则并按历史得分切换，模拟显示每个星期二约有 60 人到场——<b>没有任何中央计划者却实现了协调</b>。</p><p class="prose">模型会产生四种结果：均衡、周期、随机性或复杂性。若模型产生均衡而某人有更优行动可循——例如每天通勤 75 分钟的莱恩其实有一条 45 分钟的近路——那模型就有逻辑缺陷：人们会学习。</p><p class="prose">由此得到<b>卢卡斯批判</b>：政策或环境的变化会引起受影响者的行为反应，用过去行为数据估计的模型将不准确——扩建急诊设施缩短等待后，本来不会来的人也会来。</p><div class="aband"><q>时至今日，我们仍然无法说出哪一种人类行为理论是设定很成功并在各种环境下都通过了检验的。</q><cite>——埃莉诺·奥斯特罗姆，转引自第 4 章</cite></div><p class="prose">所以结论只能是谦卑的：如何对人建模没有固定不变的最优答案，应该往<b>构建更多模型</b>的方向试错。人既然被绑在逻辑一致性的「桅杆」上，就让我们以理性为基准、以零智能为下限、以适应性规则探索中间的巨大空间——最后一句提醒值得抄在页首：怎么能认为单一的人类行为模型不会出错呢？一定会。</p><div class="check" data-k="people-02"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>能默写多样性预测定理的恒等式，并算出奥斯卡预测例中的 1 = 10 − 9</span></label><label><input type="checkbox"><span>能解释为什么 100 份贷款、两个属性的数据最多只撑得起 7 个可用的分类模型</span></label><label><input type="checkbox"><span>能说出偏差-方差权衡对应「模型误差＝分类误差＋估值误差」</span></label><label><input type="checkbox"><span>能用 X^N 复述超级油轮、BMI、代谢率、女性 CEO 四个一对多应用</span></label><label><input type="checkbox"><span>能列举采用理性行为者模型的六个理由与人的六大建模挑战</span></label><div class="cf">已掌握 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出说明</span><span class="nd"><b>1｜</b>第 3 章导出含 24 张插图（图 3-1 超级油轮、图 3-2 膨胀的大象、意大利面图、4 幢平房示例等）、第 4 章含 9 张（图 4-1 微观-宏观循环等），公式多以图片形式嵌入导出文本，正文仅存文字描述；本页照录文字与数值，公式图示不重绘。</span></div><div class="note" id="n2"><span class="nn">导出瑕疵</span><span class="nd"><b>2｜</b>「前景理论：示例」小节中「备选方案Â」及「A和Â是等价的，B和」等条目在源文中即有字符残缺（Â 代符号与截断句），随段收录、不代补。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜斯科特·佩奇《模型思维（新版）》（浙江科学技术出版社·湛庐，贾拥民 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">Part 1｜多模型与行为建模</span><a href="../01-多模型思考者与七大用途/index.html">← 多模型思考者</a><a href="../03-正态分布与幂律分布/index.html">正态与幂律 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mt-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

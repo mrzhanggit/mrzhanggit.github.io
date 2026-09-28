@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Part 2·合作模型 · 与集体行动有关的问题｜模型思维 精读</title>
+<meta name="description" content="背叛是囚徒困境的占优策略，但重复、声誉、聚类与群体选择都能催生合作——针锋相对两度赢下锦标赛， clustering 让合作自我引导。而集体行动三问题（公共物品、拥塞、可再生资源）告诉我们：个人理性汇成集体非理性。">
+<style>
+:root{
+  --paper:#F4F3EE;      /* 羊皮纸底 */
+  --paper-2:#E7E4DB;    /* 羊皮纸深一档 */
+  --card:#FAF9F4;
+  --ink:#212936;        /* 主墨（深蓝墨） */
+  --ink-2:#2E3A4E;      /* 钴蓝次墨 */
+  --ink-deep:#0C1119;   /* 夜航蓝黑（hero 底） */
+  --gold:#35558A;       /* 钴蓝（强调 · 模型的理性骨架） */
+  --gold-b:#7B98C9;     /* 高亮钴蓝 */
+  --gold-soft:rgba(53,85,138,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 误用与陷阱） */
+  --teal:#C9A227;       /* 对照模型金（对照 · 多模型互补） */
+  --tx:#2A3140;
+  --tx-2:#455062;
+  --tx-3:#6E7B90;
+  --line:rgba(33,41,54,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(33,41,54,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2E3A4E 0%,var(--ink-deep) 62%);
+  color:#E8EDF5;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(123,152,201,.42)}
+.hero::after{inset:22px;border:1px solid rgba(123,152,201,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(123,152,201,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EEF2F8}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(232,237,245,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(123,152,201,.34);color:rgba(232,237,245,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(53,85,138,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EDF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(123,152,201,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EEF2F8;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(123,152,201,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EEF2F8;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(233,237,244,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(53,85,138,.5);box-shadow:0 4px 18px rgba(33,41,54,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(53,85,138,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(201,162,39,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(201,162,39,.1);color:var(--teal);border:1px solid rgba(201,162,39,.28)}
+.case .tag.mid{background:rgba(122,129,113,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(53,85,138,.45);background:rgba(53,85,138,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(146,58,36,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(53,85,138,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,243,238,.94);
+  border-bottom:1px solid rgba(33,41,54,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(33,41,54,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2E3A4E;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(53,85,138,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(33,41,54,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(33,41,54,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#6E7B90;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../10-空间竞争与博弈论/index.html">← 空间竞争与博弈论</a><a href="../12-机制设计信号与学习/index.html">机制设计信号学习 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">合</div>
+  <div class="stamp ">合作</div>
+  <h1>合作模型 · 与集体行动有关的问题</h1>
+  <p class="sub">背叛是囚徒困境的占优策略，但重复、声誉、聚类与群体选择都能催生合作——针锋相对两度赢下锦标赛， clustering 让合作自我引导。而集体行动三问题（公共物品、拥塞、可再生资源）告诉我们：个人理性汇成集体非理性。</p>
+  <div class="meta"><span>Part 2</span>
+    <span class="k">合作的涌现</span>
+    <span>正文 24,351 字</span>
+    <span>5 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>重复与声誉</a><a href="#s3" data-t="s3"><span class="cn">叁</span>合作的涌现</a><a href="#s4" data-t="s4"><span class="cn">肆</span>聚类与群体选择</a><a href="#s5" data-t="s5"><span class="cn">伍</span>集体行动</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>从来没有人因施舍而变得贫穷。</p><cite>——安妮·弗兰克(Anne Frank)</cite></div><div class="epi"><p>自从大约5万年前智人发展出了现代创造力、高效和狩猎技能以来，如何可持续地管理环境资源一直是一个非常困难的问题。</p><cite>——贾雷德·戴蒙德(Jared Diamond)</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇回答最难的跨学科问题：合作是怎么产生的？</p><p class="thesis">第 22 章从<b>囚徒困境</b>出发：背叛是占优策略，追求自身利益导致集体利益恶化。四种机制能促进合作——<b>重复</b>（冷酷触发在 P>2/3 时维持合作）、<b>声誉</b>（背叛被发现则遭所有人在未来背叛）、<b>局部聚类</b>（两个相邻合作者能扩展合作区域）、<b>群体选择</b>（合作者群体表现更好却内部受背叛者支配）。第 23 章把镜头转向<b>集体行动问题</b>——多人囚徒困境：公共物品均衡贡献仅 1/N、拥塞资源均衡使用者是最优的 2 倍、可再生资源过度开采必然崩溃。</p><div class="chain"><div class="node"><div class="n">困境</div><div><p class="tt">囚徒困境博弈</p><p class="dd">背叛是占优策略：军备竞赛、负面广告战、孔雀长尾；最早采用 ATM 的银行事后证明「背叛」——利润因竞争加剧而下降</p></div></div><div class="node"><div class="n">重复</div><div><p class="tt">冷酷触发与声誉</p><p class="dd">T>3R 时博弈须以超过 2/3 的概率重复；小城镇无人偷车、裂唇鱼的清洁程度是声誉标签——声誉扩散需要高聚类系数</p></div></div><div class="node"><div class="n">规则</div><div><p class="tt">针锋相对的胜利</p><p class="dd">C/D/GRIM/TFT/TROLL 五规则演化：背叛先盛、合作扎根；阿克塞尔罗德锦标赛 14 与 62 个策略中 TFT 两度胜出——合作、惩罚且宽容</p></div></div><div class="node"><div class="n">聚类</div><div><p class="tt">合作行动模型</p><p class="dd">单个合作者不能产生额外合作者，但两个相邻合作者可以；度数更低的网络更易自我引导——与声誉机制相反，答案依赖条件</p></div></div><div class="node"><div class="n">公地</div><div><p class="tt">集体行动三问题</p><p class="dd">公共物品均衡 PUBLIC=1/N；拥塞均衡使用者是最优 2 倍；再生率 25%、资源 100 单位时均衡开采每年 20 单位——越线即崩溃</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>囚徒困境：重复与声誉</h2><span class="en">PRISONER&#x27;S DILEMMA</span></div><p class="prose">两人被控共同犯罪，各自面临两难：都不认罪受轻罚、只有一人认罪则认罪者免罚而对方重罚、都认罪则各受较重惩罚。抽象为双人博弈后：<b>对每个博弈参与者来说，背叛都是占优策略</b>——但都背叛时收益低于都合作。<b>追求自身利益的行为导致了集体利益的恶化。</p><p class="prose"></b>它紧扣现实的激励：国家军备竞赛（背叛=造武器）、竞选负面广告战、雄孔雀的长尾（每只都有动力显得更强壮）；许多囚徒困境是事后才认识的——最早使用 ATM 机的银行利润大增，其他银行跟进后利润因竞争加剧而下降，事后看采用 ATM 就是「背叛」。</p><p class="prose">重复能维持理性者之间的合作。以<b>冷酷触发策略</b>（首次合作，对方一旦背叛则永远背叛——「永不饶恕」）为例：若继续博弈的概率 P 超过 (T−R)/T，冷酷触发就能维持合作；<b>若 T>3R，则博弈必须以超过 2/3 的概率重复</b>。</p><p class="prose">由此得到三条直观路径：增加合作奖励、让重复的可能性更大、减少背叛的诱惑；还有一条不那么直接的推论——<b>若参与者预期重复概率将跌破阈值，他们会在变化发生之前就停止合作</b>。但若博弈只重复有限次数（哪怕 3 次），逆向归纳会瓦解一切：最后一轮必背叛→倒数第二轮也背叛→唯一符合理性的策略是永远背叛。</p><p class="prose"><b>声誉机制</b>把两人博弈放进社区：每天随机配对博弈，背叛者留下坏名声、社区中任何人将来都不与他合作。用 PD 表示背叛且被发现的概率，维持合作的条件与重复博弈相同。</p><p class="prose">它要求所有个体要么彼此认识、要么能识别背叛者——<b>规模较小的社区更易实施</b>：美国北方小城镇冬季停车无人担心被偷，因为认识城里每个人。<b>实物标签</b>能把声誉变成公共信息：《红字》里海丝特·白兰的猩红色「A」；大海中的裂唇鱼若不尽职清除邻居的寄生虫，其清洁程度就是可见的声誉标签。</p><p class="prose">声誉扩散还依赖网络：度越大、超级传播者越多、信息传得越广；但若受害者与背叛者的其他邻居毫无联系，背叛便无人知晓——<b>网络必须具有很高的聚类系数</b>，而聚类系数正是社会资本的衡量指标。</p><div class="aband"><q>从来没有人因施舍而变得贫穷。</q><cite>——安妮·弗兰克(Anne Frank)，第 22 章题辞</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>五种规则与合作的涌现</h2><span class="en">EMERGENCE OF COOPERATION</span></div><p class="prose">放松理性假设，让博弈参与者直接遵循规则，并把平均成绩最低者淘汰——策略的效能取决于<b>种群中的策略分布</b>。</p><p class="prose">随机分配五种规则：始终合作(C)、始终背叛(D)、冷酷触发(GRIM)、<b>针锋相对</b>(TFT，首次合作、此后复制对方上一步)、<b>欺负好人</b>(TROLL，先背叛两次试探，对方不还手就永远背叛，还手则先补两次合作再转冷酷触发)。</p><p class="prose">研究表明：人口大多是合作者时始终背叛表现最佳；一旦始终合作者被剥削殆尽，始终背叛的表现就不如冷酷触发、欺负好人与针锋相对——<b>背叛策略先盛，合作随后扎根，这就是合作的涌现与演化</b>。</p><div class="tbwrap"><table><thead><tr><th>策略</th><th>规则</th><th>关键性质</th></tr></thead><tbody><tr><td>始终合作(C)</td><td>无条件合作</td><td>会被始终背叛与欺负好人无限剥削</td></tr><tr><td>始终背叛(D)</td><td>无条件背叛</td><td>对阵始终合作每轮得 4；对阵 TFT/GRIM 先得 4、此后每轮 2——平均 2+</td></tr><tr><td>冷酷触发(GRIM)</td><td>首次合作；对方背叛一次即永远背叛</td><td>能维持合作但<b>不宽容</b>：无法与欺负好人重启合作</td></tr><tr><td>针锋相对(TFT)</td><td>首次合作；此后复制对方上一步</td><td>与任何合作策略都能合作；<b>占优</b>始终合作与冷酷触发（能原谅欺负好人的背叛）</td></tr><tr><td>欺负好人(TROLL)</td><td>先背叛两次；对方不还手则永远背叛，还手则先合作两次再转冷酷触发</td><td>剥削老好人；遇到针锋相对仍能回到合作——双方平均收益略小于 3</td></tr></tbody></table></div><p class="prose">在后来成为经典的锦标赛中，罗伯特·阿克塞尔罗德邀请各领域学者提交重复囚徒困境策略：第一次 14 个策略中<b>针锋相对表现最佳</b>；第二次 62 个策略，<b>针锋相对再一次胜出</b>——它合作、会惩罚、同时也是宽容的。</p><p class="prose">但若博弈中出现随机误差，针锋相对就表现不佳：一次误差会引发背叛与合作交替的循环，双方同时误差则一直背叛到下一次误差——1983 年 9 月 1 日大韩航空 007 航班偏入苏联领空被 SU-15 击落、269 人遇难，双方都视对方为「背叛」，正是现实中的误差。</p><p class="prose">「<b>赢则坚持，输则改之</b>」策略在误差环境下更好：赢就坚持上一轮行动、输就换一种行动——它会回归合作。</p><p class="prose">必须区分四个层次：<b>合作自我维持</b>（所有人都合作时合作表现最好）、<b>合作的维持</b>（冷酷触发是重复博弈的纳什均衡）、<b>合作的出现或发展</b>（种群配对中合作策略平均表现更优）、<b>合作的自我引导</b>（从少数合作者出发生长出合作）。</p><p class="prose">数学推理表明<b>自我引导几乎不可能</b>：合作者比例接近零时其收益低于背叛者——要实现合作，需要一部分人从一开始就合作。要理解自我引导怎样才能发生，需要允许局部学习、进化和群体选择的更精细模型。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>聚类、群体选择与网络条件</h2><span class="en">CLUSTERING &amp; GROUP SELECTION</span></div><p class="prose"><b>合作行动模型</b>：N 人组成网络，合作者每次互动承担成本 C、让每个邻居获得收益 B，背叛无成本无收益；<b>合作优势比率 B/C</b> 刻画合作的潜在收益。网络使合作的自我引导成为可能：先部分填充随机网络（如 1/6 节点住人、其中 1/6 是合作者），空节点复制表现最好的邻居的类型。</p><p class="prose"><b>一个单独的合作者不能产生一个额外的合作者，但是两个相邻的合作者可以</b>——小小的合作聚类就能把合作扩展到空单元上。而且<b>度数更低的网络中合作的自我引导更容易实现</b>——这与声誉机制的结论相反（连接更多更利维持）。</p><p class="prose">多模型思维由此给出依赖条件的答案：合作靠老练者的声誉维持时，连接更多的网络更有利；合作在不成熟行为者（树木、蚂蚁）中自我引导时，连接较少的网络更能促进。</p><p class="prose"><b>群体选择</b>面临明显张力：考虑两个 10 人群体（收益 B=2、成本 C=1）——2 合作者 + 8 背叛者的群体中，背叛者绩效 4、合作者绩效 -7、群体平均 1.8；8 合作者 + 2 背叛者的群体中，背叛者绩效 16、合作者绩效 5、群体平均 7.2。</p><p class="prose"><b>在每个群体内部，背叛者对合作者有优势，但是表现更好的群体却必须包含更多的合作者</b>——个体选择有利于背叛，群体选择有利于合作。同样的张力遍及生态、社会、政治与经济：合作的树木个体生存条件更糟但生态系统更强；专注企业内技能的员工对自己不利但企业可能胜出。</p><div class="aband"><q>个体选择有利于背叛，但是群体选择却有利于合作。</q><cite>——第 22 章论群体选择的张力</cite></div><p class="prose">特劳森(Traulson)与诺瓦克(Nowak)的模型把两种选择内置：表现最好者被复制、群体过大一分为二、新群体的形成随机挤掉一个现有群体（弱形式的群体选择）。</p><p class="prose">结论：群体选择能增进合作，条件是<b>合作利益相对较大、最大群体规模相对于群体数量较小</b>——更多群体意味着更多竞争；最大群体规模越小，越能防止合作者群体被背叛者支配（限制个体选择的影响）：若 8 合作者 2 背叛者的群体扩张到 80 再分裂，背叛者比例会大得多；12 人即拆分则最坏也含 2/3 合作者。</p><p class="prose">应用到组织：按团队绩效分配奖金与机会，能诱导合作行为的出现。但必须考虑行动者的适应速度——树木适应慢，人类适应快：<b>不要对模型证明的特定条件过于自信，应坚持多模型思维，追问定性结论是否仍然成立</b>。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>集体行动：公共物品、拥塞与公地</h2><span class="en">COLLECTIVE ACTION</span></div><p class="prose"><b>集体行动问题</b>是自身利益与集体利益不一致的情况：机场行李传送带旁的推挤、了解议题的选民、团队合作中的搭便车，其本质是多人囚徒困境。</p><p class="prose">复活节岛的居民忙于建造莫埃，却没能合作管理好森林——1722 年欧洲探险家登岛时食物匮乏、人口只剩约 2000、超过 3 米的树木基本绝迹；格陵兰的温兰人揭草皮建房、在极地边缘放养，土地迅速贫瘠、文明崩溃。</p><p class="prose">这不是久远的过去才有的问题：公共教育、医疗、基础设施、司法与国防的核心都是集体行动问题，管理全球渔业与减少碳排放更是息息相关。</p><div class="tbwrap"><table><thead><tr><th>问题</th><th>结构</th><th>均衡 vs 最优</th><th>解法</th></tr></thead><tbody><tr><td>公共物品供应</td><td>非竞争性 + 非排他性：清洁空气、国防、知识——「卡拉已经用过了毕达哥拉斯定理，现在它永远消失啦」绝不可能发生</td><td>社会最优 PUBLIC=N（每人捐 100 美元）；<b>均衡 PUBLIC=1/N</b>（每人只捐 0.01 美元）；人口越大供给不足越加剧；利他参数 α 的一般解近似 α²——α=1/2 时贡献只有最优的 1/4</td><td>征税；蒂布特模型（按偏好选择社区）——但社会凝聚力下降、贫困社区公共物品进一步萎缩</td></tr><tr><td>拥塞</td><td>资源总量固定，使用者的收益随用户数量线性减少：效用(M)=B−θ×M；美国每年交通延误成本超 1000 亿美元，洛杉矶与华盛顿特区每年堵在路上的时间超 60 小时</td><td>纳什均衡下使用人数<b>恰好是社会最优的 2 倍</b>、无人能获益——建美丽公园可能不带来效用（均衡中拥挤不堪）；两个公园（大 3 倍）最优 M=N/2、均衡 M=N/4，太多人挤进大公园</td><td>配给、轮换（单双号限行）、抽签、入场费；伦敦收拥堵费；新加坡拍卖 10 年期许可证（售价常超普通汽车）并收费进入中央商务区</td></tr><tr><td>可再生资源开采</td><td>R(t+1)=(1+g)[R(t)−C(t)]：未来资源量取决于现在的用量，过度开采付出持久代价；增长率逐年变化</td><td>存在临界点：任何高于均衡开采率的开采率都导致<b>加速下降后的突然崩溃</b>——缓慢下降之后是急剧下降；再生率 25%、资源 100 单位时均衡开采每年 20 单位，20%–30% 随机增长率下约一半路径崩溃</td><td>监督与制裁、解决冲突的机制；渔业比养牛不确定性更高（鱼的数量只能按捕获量估算）——需要更严格的保护和更严密的监测</td></tr></tbody></table></div><p class="prose">可再生资源的教训最沉重：北大西洋鳕鱼捕捞业有 500 多年历史，最早到加拿大海岸的英国探险家讲述过「把一个篮子抛进海，就可以提起一篮子鳕鱼上来」的神话；然而到了 1992 年，加拿大政府不得不严令暂停鳕鱼捕捞。增长率变化的影响会随时间累积、不能相互抵消——<b>世上没有灵丹妙药</b>，必须随时调整开采水平。</p><p class="prose">集体行动问题在各个层面发生：家庭能顺利解决，国际组织却举步维艰——群体越小、越同质化、信息越透明，问题越容易解决。</p><p class="prose">埃莉诺·奥斯特罗姆研究数十年后发现，能有效解决集体行动问题的社群有共同特点：能够就<b>明确的界限</b>达成一致、同意<b>明确界定的规则</b>、授权实施<b>渐进式制裁</b>、拥有<b>解决纠纷的机制</b>，并严密监督各种偏离行为。</p><div class="check" data-k="coop-11"><p class="ct">本 篇 自 测</p><label><input type="checkbox"><span>能写出冷酷触发维持合作的条件（T>3R 需 P>2/3），并解释有限重复为何瓦解合作</span></label><label><input type="checkbox"><span>能说出声誉机制为何依赖小社区与高聚类系数，并举出裂唇鱼与红字的标签例子</span></label><label><input type="checkbox"><span>能区分 TFT、GRIM、TROLL 三种规则，并解释阿克塞尔罗德锦标赛 TFT 为何两度胜出</span></label><label><input type="checkbox"><span>能用 1.8 对 7.2 的群体绩效算例说明「个体选择利于背叛、群体选择利于合作」的张力</span></label><label><input type="checkbox"><span>能对比公共物品（1/N）、拥塞（最优的 2 倍）、可再生资源（崩溃临界点）三个均衡结论</span></label><label><input type="checkbox"><span>能默写奥斯特罗姆有效社群的四项制度特征</span></label><div class="cf">已掌握 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">导出说明</span><span class="nd"><b>1｜</b>第 22 章导出含 48 张插图（图 22-1 囚徒困境矩阵、图 22-2 一般形式、图 22-3 线性网络合作聚类等）、第 23 章含 26 张（图 23-1 资源增长率可变的 10 种可能路径等），重复博弈维持合作不等式、利他主义一般解、拥塞与资源差分方程在源文中以图片嵌入；表 22-1（行策略对列策略的平均收益）本页以文字规则表替代。注释 [1]–[7] 的推导细节未收。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜斯科特·佩奇《模型思维（新版）》（浙江科学技术出版社·湛庐，贾拥民 译）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">Part 2｜合作与集体行动</span><a href="../10-空间竞争与博弈论/index.html">← 空间竞争与博弈论</a><a href="../12-机制设计信号与学习/index.html">机制设计信号学习 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mt-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

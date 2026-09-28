@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分·狭义相对论与广义相对论｜世界观 精读</title>
+<meta name="description" content="第23章狭义相对论：我们关于空间和时间的常识性观点其实是错误的哲学性/概念性事实；第24章广义相对论：根本没有重力这种「吸引力」，只有弯曲的时空。">
+<style>
+:root{
+  --paper:#F3F1EA;      /* 暖星纸底 */
+  --paper-2:#E9E5DB;    /* 纸色深一档 */
+  --card:#FCFBF6;
+  --ink:#1E2633;        /* 主墨（深空墨蓝） */
+  --ink-2:#2B3F66;
+  --ink-deep:#0A0F17;   /* 深空（hero 底） */
+  --gold:#2B3F66;       /* 深空蓝（强调 · 世界观拼图与范式更替） */
+  --gold-b:#6C7FA8;     /* 高亮蓝（辅助强调 · 星光） */
+  --gold-soft:rgba(43,63,102,.16);
+  --cinnabar:#A63528;   /* 行星红（警示 · 悖论与反常证据） */
+  --teal:#B08A3A;       /* 星图金（对照 · 新旧世界观并置） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(30,38,51,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(30,38,51,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#2B3F66 0%,var(--ink-deep) 62%);
+  color:#E8EDF4;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(108,127,168,.42)}
+.hero::after{inset:22px;border:1px solid rgba(108,127,168,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(108,127,168,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(166,53,40,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF2F7}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(108,127,168,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(166,53,40,.6);background:rgba(166,53,40,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(43,63,102,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E9EFF4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(108,127,168,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#E7EBF3;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(108,127,168,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#E7EBF3;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(43,63,102,.5);box-shadow:0 4px 18px rgba(30,38,51,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(43,63,102,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(166,53,40,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(166,53,40,.1);color:var(--cinnabar);border:1px solid rgba(166,53,40,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(43,63,102,.45);background:rgba(43,63,102,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(166,53,40,.55);border-radius:8px;
+  background:rgba(166,53,40,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(166,53,40,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(43,63,102,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(243,241,234,.94);
+  border-bottom:1px solid rgba(30,38,51,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(30,38,51,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#2B3F66;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(43,63,102,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(30,38,51,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(30,38,51,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-科学定律与牛顿世界观的发展/index.html">← 科学定律与牛顿发展</a><a href="../10-不可通约与量子理论导论/index.html">不可通约与量子导论 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">曲</div>
+  <div class="stamp s3">相对论</div>
+  <h1>狭义相对论与广义相对论</h1>
+  <p class="sub">第23章狭义相对论：我们关于空间和时间的常识性观点其实是错误的哲学性/概念性事实；第24章广义相对论：根本没有重力这种「吸引力」，只有弯曲的时空。</p>
+  <div class="meta"><span>第三部分</span>
+    <span class="k">相对论</span>
+    <span>正文 22,879 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>绝对时空</a><a href="#s3" data-t="s3"><span class="cn">叁</span>原理与效果</a><a href="#s4" data-t="s4"><span class="cn">肆</span>双胞胎悖论</a><a href="#s5" data-t="s5"><span class="cn">伍</span>时空间隔</a><a href="#s6" data-t="s6"><span class="cn">陸</span>广义相对论</a><a href="#s7" data-t="s7"><span class="cn">柒</span>重力不是力</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是第三部分的开场：爱因斯坦两论相继登场，常识中的空间、时间与重力全部改写</p><p class="thesis">第三部分研究相对论、量子理论和演化论——它们都要求世界观发生重大改变。<b>第23章</b>狭义相对论（1905）：绝对空间与绝对时间一直被当作显而易见的经验事实，实际却是<b>错误的哲学性/概念性事实</b>；时间膨胀、长度收缩、同时性的相对性都由两条基本原理演绎而来。<b>第24章</b>广义相对论（1916）：重力不是物体间的吸引力，而是<b>时空曲率</b>。</p><div class="chain"><div class="node"><div class="n">谢幕</div><div><p class="tt">绝对空间与绝对时间</p><p class="dd">转动的金属棒没法直接量长度、没见过面的双胞胎「应该同岁」——依据的都是空间不因运动改变、时间对所有人都相同的常识</p></div></div><div class="node"><div class="n">原理</div><div><p class="tt">两条基本原理</p><p class="dd">光速不变原理：真空中光速测量值总是相同；相对性原理：不存在优先视角判定谁在运动谁是静止</p></div></div><div class="node"><div class="n">效果</div><div><p class="tt">三大效果</p><p class="dd">时间膨胀、长度收缩（洛伦茨-菲茨杰拉德方程式）、同时性的相对性——高中代数即可推导，无数实验证实</p></div></div><div class="node"><div class="n">解惑</div><div><p class="tt">不自相矛盾</p><p class="dd">默明快照法：萨拉和乔伊经验数据上无分歧，分歧只在「数据的意思」——两人都是「双胞胎中年长的那个」，且都正确</p></div></div><div class="node"><div class="n">不变</div><div><p class="tt">时空间隔</p><p class="dd">「任何事都是相对的」是大错特错；闵可夫斯基发现时空间隔不随观察点变化——研究相对论的几何学方法</p></div></div><div class="node"><div class="n">重力之变</div><div><p class="tt">时空曲率</p><p class="dd">等效原理+场方程：行星不受吸引力，沿弯曲时空中的测地线运动；1919日食光线弯折、2015年引力波直接证实</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>第三部分导语 · 绝对空间与绝对时间</h2><span class="en">ABSOLUTE</span></div><p class="prose">第三部分开场：相对论、量子理论与演化论，都要求我们的世界观进行重大改变——一些一直被视为显而易见的经验事实，将像17世纪的正圆事实、匀速运动事实一样，被证明是<b>错误的哲学性/概念性事实</b>。第23章首先拿「绝对空间」「绝对时间」开刀。</p><p class="prose">金属棒例子：一根金属棒放在桌上量，正好一米；另一根同样一米，系上绳子在头顶快速转动。问：转动时的长度是多少？你直觉会说还是一米——但这个观点<b>不是直接明确的经验事实</b>：棒在你头顶转动时，你绝对没有办法直接测量它的长度。</p><p class="prose">你依据的其实是两点：①刚才的直接测量；②<b>绝对空间</b>观点——空间不会因为运动而缩小或扩大。同理，从没见过面的双胞胎「约翰今年20岁，乔伊也是20岁」，依据的是<b>绝对时间</b>：不管在哪里、对谁来说，时间的流逝都相等。这两条人人奉为常识的观点，相对论都将发起挑战。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>第23章 · 两条原理与三大效果</h2><span class="en">PRINCIPLES</span></div><div class="aband"><q>光速不变原理：在真空中，光速的测量值总是相同的。</q><cite>——第23章 狭义相对论概述</cite></div><p class="prose">光的运动与棒球非常不同：萨拉把棒球以100千米/秒扔出，从乔伊（以180000千米/秒运动）的角度看，球速是100+180000=180100千米/秒；但若萨拉打开一盏闪光灯，两人测得的<b>光速完全相同</b>——300000千米/秒。</p><div class="aband"><q>相对性原理（粗略版）：不存在一个优先视角来判定谁在运动而谁是静止的。</q><cite>——第23章 狭义相对论概述</cite></div><p class="prose">相对性原理同样合理：我们青睐地面视角，只因大部分时间在地面上度过；若在火星表面或月球上长大，自然会换用那个视角。没有哪个视角是优先的——说谁「真的」在静止毫无经验依据，运动只能理解为相对运动。</p><p class="prose">1905年论文《论动体的电动力学》中，爱因斯坦把这两条原理假定为前提条件，在其上推出一个完整的理论，并用它解释了麦克斯韦电磁理论应用于运动物体时出现的问题——论文标题的焦点是动体的电动力学，并没有提及任何新的相对性理论。两条原理共同造成三个效果：</p><div class="tbwrap"><table><thead><tr><th>效果</th><th>内容</th></tr></thead><tbody><tr><td>时间膨胀</td><td>对运动的人和物体，时间流逝变得更慢——按洛伦茨-菲茨杰拉德方程式的比率变慢</td></tr><tr><td>长度收缩</td><td>运动方向上的距离按同样比率收缩；垂直方向不收缩——从乔伊的角度看，萨拉会变瘦，但不会变矮</td></tr><tr><td>同时性的相对性</td><td>从运动视角看同时发生的事件，从静止视角看就不是同时发生的（萨拉同步的两个时钟，在乔伊看来SC1会比SC2快）</td></tr></tbody></table></div><p class="prose">值得强调：这三个效果都是光速不变原理和相对性原理<b>经过演绎推理所得</b>——只要运用高中代数知识就可能以数学方法得出。而且它们已经被无数实验证实，毋庸置疑。那为什么要如此？</p><div class="aband"><q>为什么运动对空间和时间会产生这样的效果，最好、最准确的答案是，我们居住的宇宙本来就是这个样子。</q><cite>——第23章 不可抗拒的为什么</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>相对论自相矛盾吗</h2><span class="en">TWINS</span></div><p class="prose">直觉的抗议：从乔伊的角度看，萨拉衰老得更慢；从萨拉的角度看，乔伊衰老得更慢——两人怎么可能同时都是「双胞胎中年长的那个」？德威特借大卫·默明（1968《狭义相对论中的空间和时间》）的方法来化解：只需两张时刻快照。</p><div class="grid g2"><div class="card num"><div class="idx">快照A</div><h3>SC1 与 JC1 相邻</h3><p class="cp">两人身边时钟读数都是 0.00，照片一模一样。但对远处 JC2 的读数意见不同：乔伊认为它同步、读数 0.00；萨拉认为它不同步、读数 0.002。</p></div><div class="card num"><div class="idx">快照B</div><h3>SC1 移到 JC2 正上方</h3><p class="cp">照片同样相同：SC1=0.004444、JC2=0.005555。乔伊算出自己过了 0.005555 秒、萨拉只过 0.004444；萨拉算出自己过 0.004444、乔伊只过 0.003555。</p></div></div><p class="prose">即便远距离给 JC2 拍照也分不出对错：光从时钟传到相机需要时间（你看到的太阳其实是8分钟前的太阳，仙女座星系更是250万年前的样子），考虑这一点后，两人照片仍显示相同读数（JC2 为 -0.003333），只是对数字的解释不同。</p><div class="aband"><q>萨拉和乔伊在经验数据上不存在分歧，但对于数据所表达的意思，却持有不同意见。</q><cite>——第23章 狭义相对论自相矛盾吗</cite></div><p class="prose">结论：狭义相对论并不存在自相矛盾之处。萨拉和乔伊确实都会（从各自的角度）认为自己是双胞胎中较年长的那一位——而且他们都正确。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>时空、不变量与几何学方法</h2><span class="en">INTERVAL</span></div><p class="prose">「根据相对论，任何事都是相对的」——大错特错。长度、时间、同时性确实相对于观察点，但光速就不是：真空中光速恒为300000千米/秒，是<b>不变量属性</b>。有趣的是，牛顿世界观里长度、时间、同时性都是不变量，光速反而是变量——两张清单几乎正好相反。</p><p class="prose">爱因斯坦早年的数学老师闵可夫斯基（1864—1909）发现了另一个不变量：<b>时空间隔</b>。时空概念并不神秘：横轴记空间位置、纵轴记时间，四维时空中一点用（x，y，z，t）表示——它只是一种把一个点在空间和时间中的位置同时呈现出来的方式。</p><p class="prose">乔伊两个时钟读数为 0.00 的两个事件，在乔伊坐标系中发生于（0，0，0，0）与（1000，0，0，0）；用洛伦茨变换换算到萨拉坐标系，则是（0，0，0，0）与（1250，0，0，-0.0025）——空间间隔和时间间隔都变了，但用同时涉及空间和时间的方程式计算，<b>时空间隔在两个坐标系中完全相同</b>。</p><p class="prose">这就是研究相对论的几何学方法。</p><div class="aband"><q>从某种意义上说，时空间隔是事件之间的距离。不是两个事件在空间上相隔的距离，也不是在时间上的间隔，而是运用一种同时涉及空间和时间的测量方法后得出的两个事件间的间隔。</q><cite>——第23章 时空、不变量以及研究相对论的几何学方法</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>第24章 · 广义相对论与它的预言</h2><span class="en">GENERAL</span></div><p class="prose">1907～1916年，爱因斯坦花了大量时间和精力发展广义相对论。它同样以两条基本原理为基础：<b>广义协变性原理</b>——在任何参考系中，物理定律都是相同的（相对性原理的推广：狭义相对论只适用于惯性参考系，广义相对论适用于所有参考系）；<b>等效原理</b>——</p><div class="aband"><q>等效原理表述为，加速度产生的效果和重力产生的效果是无法进行区分的。</q><cite>——第24章 基本原理</cite></div><p class="prose">爱因斯坦的电梯例子：封闭轿厢停在地球表面，你感到被拉向地面、下落物体以9.8米/秒2加速；轿厢在空旷宇宙中以9.8米/秒2加速「上升」，感受完全一样。这种联系在牛顿时代就被发现，但被当作巧合；在相对论中，两种效果从本质上无法区分。</p><p class="prose">原理说起来不难，数学表述却极难——爱因斯坦花了好几年、几经撤回与修正，直到1916年才在论文《广义相对论的基础》中发表<b>爱因斯坦场方程</b>：方程的解表明空间、时间和物质如何相互影响（比如大质量恒星坍缩成黑洞时，时空会受到怎样的影响）。</p><div class="tbwrap"><table><thead><tr><th>广义相对论的预言</th><th>观察结果</th></tr></thead><tbody><tr><td>水星近日点进动</td><td>19世纪中期到末期已观察到近日点在非常缓慢地围绕太阳运动，不符合牛顿科学；爱因斯坦用场方程算出的进动量，恰好就是实际观察到的移动量</td></tr><tr><td>引力红移</td><td>离开恒星（如太阳）的光线向光谱红端偏移——已测得，与预言吻合；离开地球的光线同样有微小红移，测量结果与预言完全一致</td></tr><tr><td>强引力场中时间变慢</td><td>连一幢高楼一层与顶层之间的微小差异都被测量到了，而且与广义相对论所预言的相同</td></tr><tr><td>恒星光线弯折</td><td>光线沿弯曲时空中两点之间的最短路径（测地线）传播；1919年日食期间观测到光线弯折，与预言非常一致——广义相对论的重要早期证实证据</td></tr><tr><td>引力波</td><td>时空中的涟漪；2015年底（广义相对论论文发表100周年之际）两个探测器分别独立记录到一列源于约10亿年前两个黑洞碰撞的引力波——首次直接证实，并开启了「引力波天文学」</td></tr></tbody></table></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>哲学反思：重力不是力</h2><span class="en">GRAVITY</span></div><p class="prose">时空曲率才是真正的观念核爆。磁石上盖纸撒铁屑，磁力线代表存在于空间中的力；而广义相对论示意图中的「磁力线」代表的不是空间中的磁场，而是<b>时空曲率本身</b>——大质量物体的存在导致时空弯曲。</p><div class="aband"><q>火星围绕太阳沿椭圆轨道运转并不是火星与太阳之间相互的吸引力或者说万有引力的结果。</q><cite>——第24章 哲学反思：广义相对论和重力</cite></div><p class="prose">那火星为什么沿椭圆轨道？它跟所有不受力的物体一样沿「直线」运动——但在弯曲的时空中，直线就是测地线，时空曲率之大恰好使这条测地线成为围绕太阳的椭圆。第20章困扰牛顿的「超距作用」在这里烟消云散：<b>根本没有力</b>。</p><p class="prose">于是态度必须换轨：广义相对论是得到充分证实的理论，若对它采取现实主义态度，就不得不用<b>工具主义</b>态度对待牛顿的「重力是吸引力」——那个说法充其量是一个为了方便讨论但并不完全正确的说法。17世纪的新发现迫使人们改变对世界的认识；如今，新发现同样迫使我们重新评估自己通常的观点。下一站：量子理论。</p></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜理查德·德威特《世界观：现代人必须要懂的科学哲学和科学史（原书第3版）》（机械工业出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜狭义与广义相对论</span><a href="../08-科学定律与牛顿世界观的发展/index.html">← 科学定律与牛顿发展</a><a href="../10-不可通约与量子理论导论/index.html">不可通约与量子导论 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='wv-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
