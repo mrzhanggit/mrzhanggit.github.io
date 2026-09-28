@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第5章·商业（上） · 人才至上的迷思与固定型领导者｜终身成长 精读</title>
+<meta name="description" content="麦肯锡的权威人士说企业的成功需要「人才型思维模式」。本篇从安然的破产讲到艾柯卡的宫殿、邓拉普的链锯与斯基林的傲慢，看固定型思维模式如何管理一家公司。">
+<style>
+:root{
+  --paper:#F4F3EA;      /* 暖晨纸底 */
+  --paper-2:#E7E6D8;    /* 纸色深一档 */
+  --card:#FCFBF4;
+  --ink:#242E1F;        /* 晨蓝墨（主色） */
+  --ink-2:#3A4A33;
+  --ink-deep:#0F160B;   /* 深夜晨蓝（hero 底） */
+  --gold:#4A7C3F;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#8CB57E;
+  --gold-soft:rgba(74,124,63,.16);
+  --cinnabar:#9C4A2F;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#C77B2E;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#2A3326;
+  --tx-2:#4A5744;
+  --tx-3:#7A8174;
+  --line:rgba(36,46,31,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(36,46,31,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3A4A33 0%,var(--ink-deep) 62%);
+  color:#EDF1E6;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(140,181,126,.42)}
+.hero::after{inset:22px;border:1px solid rgba(140,181,126,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(140,181,126,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(156,74,47,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F2F5EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,241,230,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(140,181,126,.34);color:rgba(237,241,230,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(156,74,47,.6);background:rgba(156,74,47,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(74,124,63,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EBF0E2;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(140,181,126,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EFF2E4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(140,181,126,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EFF2E4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(236,240,230,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(74,124,63,.5);box-shadow:0 4px 18px rgba(36,46,31,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(74,124,63,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(199,123,46,.055)}
+.duo .colR{background:rgba(156,74,47,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(156,74,47,.1);color:var(--cinnabar);border:1px solid rgba(156,74,47,.28)}
+.case .tag.good{background:rgba(199,123,46,.1);color:var(--teal);border:1px solid rgba(199,123,46,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(74,124,63,.45);background:rgba(74,124,63,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(156,74,47,.55);border-radius:8px;
+  background:rgba(156,74,47,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(134,60,38,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(156,74,47,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(74,124,63,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,247,238,.94);
+  border-bottom:1px solid rgba(36,46,31,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(36,46,31,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3A4A33;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(74,124,63,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(36,46,31,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(36,46,31,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A8174;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-第4章-体育冠军的思维模式/index.html">← 体育·冠军的思维模式</a><a href="../07-第5章下-成长型领导者与企业的思维模式/index.html">商业（下） →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">商</div>
+  <div class="stamp ">商鉴</div>
+  <h1>商业（上） · 人才至上的迷思与固定型领导者</h1>
+  <p class="sub">麦肯锡的权威人士说企业的成功需要「人才型思维模式」。本篇从安然的破产讲到艾柯卡的宫殿、邓拉普的链锯与斯基林的傲慢，看固定型思维模式如何管理一家公司。</p>
+  <div class="meta"><span>第5章</span>
+    <span class="k">人才至上</span>
+    <span>正文 12,832 字</span>
+    <span>11 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>人才至上</a><a href="#s3" data-t="s3"><span class="cn">叁</span>成长型企业</a><a href="#s4" data-t="s4"><span class="cn">肆</span>模拟实验</a><a href="#s5" data-t="s5"><span class="cn">伍</span>领导力病灶</a><a href="#s6" data-t="s6"><span class="cn">陸</span>艾柯卡</a><a href="#s7" data-t="s7"><span class="cn">柒</span>邓拉普</a><a href="#s8" data-t="s8"><span class="cn">捌</span>安然核心</a><a href="#s9" data-t="s9"><span class="cn">玖</span>天才碰撞</a><a href="#s10" data-t="s10"><span class="cn">拾</span>特权王国</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>恶老板</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是商业世界的病理报告：人才崇拜的破产史与四位「英雄 CEO」的病历</p><p class="thesis">安然死于<b>思维模式</b>，不是无能也不是腐败——当「人才型思维模式」给一家公司的文化规划蓝图，员工就被迫陷入固定型：不愿承认不足、宁愿撒谎。与之对照的是柯林斯研究的卓越领导者：谦虚、勇于不断提问、有能力面对残忍现实。本篇后半段是四份病历：<b>艾柯卡、邓拉普、莱与斯基林、凯斯与莱文</b>。</p><div class="chain"><div class="node"><div class="n">病根</div><div><p class="tt">人才至上</p><p class="dd">招聘超级天才本身没有错，致命的是把全部信念放在「人才」上——营造人才至上的文化</p></div></div><div class="node"><div class="n">证据</div><div><p class="tt">夸奖实验翻版</p><p class="dd">被大力夸奖才能的学生中几乎 40% 谎报成绩——在固定型思维模式下，瑕疵无法容忍</p></div></div><div class="node"><div class="n">对照</div><div><p class="tt">成长型企业</p><p class="dd">柯林斯历时 5 年的研究：卓越领导者不是天才自负者，而是「检察官」式的提问者</p></div></div><div class="node"><div class="n">病历一</div><div><p class="tt">艾柯卡</p><p class="dd">「如果亨利是国王，那么我就是王储」——从英雄到暴君，两百万美元装修企业套房</p></div></div><div class="node"><div class="n">病历二</div><div><p class="tt">邓拉普与斯基林</p><p class="dd">「我是这个行业里的超级巨星」；「我的天赋就等于利润」</p></div></div><div class="node"><div class="n">病历三</div><div><p class="tt">凯斯与莱文</p><p class="dd">两个天才争权，美国在线时代华纳 2002 年亏损近一千亿美元，创美国史上年度亏损纪录</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>人才至上的思维模式：安然的死亡种子</h2><span class="en">Talent-Obsessed</span></div><p class="prose">2001 年，一个重磅消息震惊了整个美国企业界：美国企业的代表者之一、面向未来的企业——<b>安然公司宣布破产</b>。是无能，还是腐败？是思维模式。</p><p class="prose">马尔科姆·格拉德威尔在《纽约客》中指出，美国企业目前变得对人才过于痴迷：麦肯锡的权威人士坚持认为，企业的成功需要「人才型思维模式」——就像体育界有天生的运动奇才一样，商界也存在天生的人才，企业应该像俱乐部花大价钱签约杰出的运动员那样招募人才。</p><div class="aband"><q>这种‘人才型思维模式’是目前美国企业管理领域普遍接受的方式，它给安然的公司文化规划了蓝图，同时也为它的死亡埋下了种子。</q><cite>——马尔科姆·格拉德威尔</cite></div><p class="prose">安然招聘超级天才、提供高额薪水，本身没有什么不好；致命的错误是将全部的信念孤注一掷地放在「人才」这一点上，营造了一种人才至上的企业文化——<b>迫使员工努力表现得异常有才能，也就是迫使员工陷入固定型思维模式</b>。</p><p class="prose">德韦克实验室的证据在这里全部适用：像拒绝英语补习课的香港大学学生一样，固定型员工不愿暴露不足；像被夸奖才能的学生一样，被安然当作星级员工对待的人中，几乎有 <b>40%</b> 会谎报成绩——「在固定型思维模式下，瑕疵变得无法容忍」。</p><p class="prose">格拉德威尔总结：他们不会参加「补习班」，也不会在投资者和公众面前站出来承认自己错了，他们宁愿选择撒谎。</p><p class="prose">显然，一个不能自我更正的公司是不可能蓬勃发展的。如果安然死在了固定型思维模式上，那蓬勃发展的公司是不是都拥有成长型思维模式？</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>成长型企业：从优秀到卓越的领导者</h2><span class="en">GROWTH COMPANIES</span></div><p class="prose">吉姆·柯林斯想弄清什么让一家公司从优秀发展到卓越并保持长青。他的团队做了历时 <b>5 年</b>的研究：选出 11 家股票收益远远高于同行并保持至少 15 年的公司，与表现不如它们的同行配对比较，还研究了第三种公司——实现过跨越但没能保持长青的公司。</p><p class="prose">最重要的区别是领导者：不是能力超常、魅力出众、非常自负且自认为天才的人，而是<b>谦虚、勇于不断提问并有能力面对残忍现实的人</b>——面对失败，即使是自己的失败，依然能保持信念。</p><p class="prose">这些成长型领导者并不总想证明自己强于他人：不强调自己在金字塔顶端、不掠他人之功、不靠贬低他人显示强大。他们会不断尝试进取，让身边围绕最有能力的人，仔细审视自己的错误和不足——前进建立在<b>事实</b>而不是关于他们才能的美丽幻想之上。</p><p class="prose">电器城（Circuit City）的首席执行官艾伦·沃泽尔会在董事会上展开辩论，不仅说服董事，还利用他们来学习：</p><div class="aband"><q>你知道，像一条斗牛犬一样。直到弄明白之前，我都不会放弃——为什么？为什么？为什么？</q><cite>——艾伦·沃泽尔</cite></div><p class="prose">沃泽尔将自己看作一匹「犁田马」——一个努力工作的、正经而普通的人。但他接手了一个濒临破产的公司，并在接下来的 15 年内将它变成纽约股票交易所中令持有者收益最高的公司。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>管理模拟实验：安然型与沃泽尔型</h2><span class="en">THE SIMULATION STUDY</span></div><p class="prose">罗伯特·伍德和阿尔伯特·班杜拉针对商科毕业生做了一项很吸引人的研究：让学生们分别成为安然公司型的管理者和沃泽尔类型的管理者。他们管理一家虚拟家具公司，需要给员工分配岗位、决定如何领导和激励员工，并根据员工生产能力的反馈不断修改决策——要完成一个很高的生产目标，任务很艰难，尝试初期他们会感到能力不足。</p><div class="tbwrap"><table><thead><tr><th>设定</th><th>被告知的话</th><th>行为与结果</th></tr></thead><tbody><tr><td>固定型组</td><td>这项任务用于评估他们基本、潜在的能力，能力越高表现越好</td><td>像安然公司一样，不能从自己的错误中获益</td></tr><tr><td>成长型组</td><td>管理能力是通过实践不断提升的，这项任务可以赋予他们提升能力的机会</td><td>直面自己的错误，根据反馈不断修改策略，越来越了解如何开发和调动员工，生产力不断提高——最终成效比固定型组高很多，并且保持了一种健康的自信</td></tr></tbody></table></div><p class="prose">成长型的学生不考虑衡量或保护既有的能力——他们成了沃泽尔一样的管理者。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>领导力与固定型思维模式</h2><span class="en">LEADERSHIP &amp; FIXED MINDSET</span></div><p class="prose">在柯林斯的研究中，与卓越公司配对比较的那些公司，领导人的固定型症状显露无遗：在他们的世界里人有优劣之分，他们必须不断确认自己属于优秀这个级别，而<b>公司正是他们展现优秀实力的平台</b>。这些领导者通常只关心「个人是否伟大」，对这一点的过度关心导致他们在团队无路可走时拉着公司一起走向死亡。</p><div class="aband"><q>最终，有什么比你离开公司后公司就四分五裂这一现象更能证明你个人的伟大呢？</q><cite>——吉姆·柯林斯</cite></div><p class="prose">研究发现，这些领导者中<b>有三分之二</b>拥有这种「强烈的自我意识」，这要么加速公司的死亡，要么让公司跌出一流行列。</p><p class="prose">很多公司按柯林斯所谓<b>「1个天才与1000个帮手」</b>的模式运营：不去建立卓越的管理团队，只要帮手执行天才的绝妙构想——而这些天才自己也并不想要一个卓越的团队，他们想成为公司里唯一重要的人。</p><p class="prose">在固定型总裁的个人传记中，德韦克几乎没读到过关于职业辅导或员工发展项目的内容；而在成长型领导者的传记中，都有深刻关注个人发展的内容。</p><p class="prose">最生动的对照来自 1970 年的老式杂货商店危机：从优秀成长为卓越的代表企业<b>克罗格公司</b>勇敢面对，关闭和整顿了所有不适合新型超市模式的店铺，1990 年底一跃成为全美排名第一的连锁杂货商店；而一度是世界上最大零售公司的<b>大西洋与太平洋茶叶公司</b>却选择对危机视而不见——他们开创的新型大型超市看上去更成功，但他们将其关闭了，因为不想看到新兴模式的兴起。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>艾柯卡：我是英雄</h2><span class="en">LEE IACOCCA</span></div><p class="prose">领导艺术大师沃伦·本尼斯研究过的杰出企业领导者都说，他们并不是一开始就想当领导者——对证明自己没有兴趣，只是用巨大的动力和热情去做自己热爱的事业。艾柯卡不是这样的：什么也比不过他想成为福特大亨的愿望。</p><p class="prose">福特公司总部那栋玻璃大楼是一座宫殿，亨利·福特是宫殿里的国王，行政餐厅每天的餐桌上都有从英格兰空运过来的多佛比目鱼。「如果亨利是国王，那么我就是王储。」「我是国王陛下的宠儿。」</p><p class="prose">艾柯卡在福特创下不少壮举（开发并推广福特野马），梦想接任 CEO，但亨利·福特最终将他赶出了公司。他震惊、愤怒、怀恨在心——尽管他了解这个企业的游戏规则，自己也曾毫不手软地开除过不少人：「我一直坚信我是与众不同的，所以在某种程度上我觉得自己比别人更聪明或者更幸运。我从没想过这种事会发生在自己身上。</p><p class="prose">」他的第二任妻子劝他：被福特解雇后你才走向了今天的成功，你应该感谢他才对。——不久后，他和这任妻子离婚了。</p><p class="prose">怒火中烧的艾柯卡加入濒临破产的克莱斯勒，迅速聘用合适的员工、推出新车型、游说政府援助贷款——几年后他终于可以出一本自传，在里面写「今天，我是一个英雄」。然而没过多久，克莱斯勒再次陷入困境：他需要不断证明自己的伟大——把工作时间用来打造公众形象，用公司的钱讨好华尔街、提升股价，却不愿投资新车设计和提高生产。</p><p class="prose">他害怕下属因新设计大受好评而拒绝批准新方案，害怕下属成为公司新的救世主，在自己已无法给公司带来效益的情况下依然死死抓住 CEO 的位置不放。</p><p class="prose">日本进口车几乎占领美国市场时，他手下的员工仔细研究并学习了本田汽车，提出了绝妙的建议——他没有迎接挑战，而是深陷固定型思维模式：暴跳如雷、咒骂日本人、要求政府用关税和配额限制日本车。《纽约时报》谴责道：</p><div class="aband"><q>解决方法应该是制造更好的美国汽车，而不是愤怒地拿日本车当借口。</q><cite>——《纽约时报》</cite></div><p class="prose">他逐渐成为自己曾经指责的亨利·福特那样孤立、偏执、严厉的暴君：解雇有异议的下属，不为付出大量努力的员工嘉奖，即使公司开始盈利也不愿分享成果——与此同时，克莱斯勒最艰难的几年里，他花了两百万美元装修自己在纽约华尔道夫酒店的企业套房。</p><p class="prose">董事会最终解雇了他；看到继任者把公司管理得井井有条时，他愤怒得几乎发疯，加入了一场重新接管克莱斯勒的计划，不惜将公司前途置于危险当中——计划失败了，但也最终印证：艾柯卡确实把他的自我放在了比公司利益更重要的位置上。</p><p class="prose">CEO 们的权力之大，足以让他们建立一个小王国，不分昼夜地确认自己的优越性——不管公司遇到怎样的危险警报，这个王国都能让 CEO 只听到对自己的赞美。</p><p class="prose">德韦克在章末留了一丝善意：艾柯卡晚年为一项新的糖尿病研究募集资金（自己还投入了很多钱），还致力于开发环保汽车——也许他现在已经不那么急于证明自己，可以去追求那些自己真正重视的事情了。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>阿尔伯特·邓拉普：我是超级巨星</h2><span class="en">AL DUNLAP</span></div><p class="prose">邓拉普「拯救」了濒临破产的公司——不过这个词并不恰当：他没有让公司起死回生，而是将它们卖掉换钱，比如解雇几千名员工。他把斯科特纸业救活后转手卖掉，赚了 <b>1 亿美元</b>，短短一年半的工作。「这1亿是我应得的吗？当然是。</p><p class="prose">因为我是这个行业里的超级巨星，就像篮球界的迈克尔·乔丹、摇滚界的布鲁斯·斯普林斯汀」。</p><p class="prose">对于团队协作和基层员工，艾柯卡还算花了点嘴上功夫，邓拉普连这点努力都不愿付出。斯科特纸业的一次员工大会上，一名女员工问他：「现在公司在稳步发展中，我们是不是可以重启慈善捐款项目？」他回答：</p><div class="aband"><q>如果你想捐钱，你自己捐，这是你的事，我鼓励你这么做。但公司的目的是赚钱……我的答案只有一个字：不。</q><cite>——阿尔伯特·邓拉普</cite></div><div class="aband"><q>对我来说，在业内打拼，最重要就是自尊心，要证明自己有价值……直到今天，我仍觉得我需要不断证明自己。</q><cite>——阿尔伯特·邓拉普</cite></div><p class="prose">他要证明自己，就需要标尺：员工满意度、社区责任不能被换算成数字，股东收益可以——「你不可能通过众多利益相关者的利益来衡量自己的成功，但你可以通过股东价值衡量」。他不愿深入了解公司：「最终，我待过的每一个地方都会让我感到厌烦。」他的书里有整整一章叫「给分析师留下好印象」，却没有一章关于如何经营一家公司。</p><p class="prose">1996 年他接管尚彬：以「链锯阿尔」式狠辣风格关闭并卖出三分之二的工厂，把 1.2 万名员工炒掉一半——讽刺的是股价飙升，他想卖掉公司的计划泡汤了：公司太贵，没人愿意买。他必须让公司盈利，至少看上去是盈利的——夸大收入、解雇质疑者、隐瞒越来越严重的困境。</p><p class="prose">出书自称超级巨星后不到两年，他被解雇；尚彬接受美国证券交易委员会的调查，面临 17 亿银行贷款的技术性违约指控。邓拉普对乔丹和斯普林斯汀存在深刻的误解：这两名巨星之所以走上巅峰并维持很久，是因为他们不断探索、直面挑战、不断进步——学习本可以使邓拉普功成名就，但他认为自己天生高人一等，放弃了学习。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>屋内聪明人：肯尼斯·莱与杰弗里·斯基林</h2><span class="en">THE SMARTEST GUYS</span></div><p class="prose">20 世纪 90 年代初，艾柯卡的身影淡去后，又一批产业大亨出现了——最具代表性的就是安然的肯尼斯·莱和杰弗里·斯基林。肯尼斯·莱认为自己是一个非常有远见的人，却看不起那些真正让公司运转起来的人，「就像国王对待奴隶一样」——包括卷起袖子干实事、确保公司达到收益目标的总裁理查德·金德。</p><p class="prose">金德也是公司高层中唯一经常质疑他们是否在自欺欺人的人：「我们是不是在抽自己的烟，喝自己的威士忌？」金德在安然的日子不长，但他凭借敏感和机警，离开时买下了安然根本不在意的资产——能源管道运输。到 2003 年年中，金德的公司市值已经达到 <b>70 亿美元</b>。</p><p class="prose">斯基林不只是聪明——他被人评价为「我见过的最聪明的人」「绝顶聪明」。但他没有利用绝顶聪明的头脑来学习，而是去<b>威慑他人</b>：谁质疑他，就是不够聪明，不能「理解他的想法」；联合 CEO 罗恩被他鄙视「什么都不懂」；金融分析师想让他说得详细些，就被当成傻子——「这件事那么明显，你们怎么就没弄明白呢？</p><p class="prose">」大多数情况下，这些华尔街从业者同样过于重视自己的才智，也会假装自己已经懂了。他自信得过了头，甚至认为刚想出一个可能盈利的方法时，公司就应该立即宣称盈利——<b>我的天赋不仅定义和确认了我的能力，同时也定义和确定了公司的前途。我的天赋就等于利润！</p><p class="prose"></b>安然也确实这样运作：「在没有一分钱实际收益之前，就已经提交了盈利上百万美元的财务报告」在大部分时间里，公司根本没有盈利；内部斗争浪费百万美元也不该成为问题——「能耍心机斗过自己人，是创造力和能力强的体现」。斯基林一直没有承认他做错了，他只怪全世界都不懂他而已。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>两个天才的碰撞：美国在线时代华纳</h2><span class="en">CLASH OF GENIUSES</span></div><p class="prose">天才们也差一点拖垮了美国在线和时代华纳。史蒂夫·凯斯和杰瑞·莱文——两名有着固定型思维模式的 CEO——把两家公司合并了。</p><p class="prose">凯斯和莱文有很多共同点：都把自己置于超级天才的光环之下，都想用自己的聪明才智去威慑别人，也都有点名不副实；都不喜欢听到别人对自己的抱怨，都会随时开除不具有「团队协作能力」的员工——也就是那些没有按照他们创建的运营模式行事的人。</p><p class="prose">合并后，负债累累的美国在线把公司推到危险边缘。按理这两名 CEO 应该通力合作、共同拯救公司，然而莱文和凯斯却<b>争着证明自己拥有的权力更大</b>。莱文首先失败了；当新 CEO 帕尔森派新人整顿美国在线时，凯斯极力反对——如果其他人拯救了美国在线，那个人就会成为功臣。</p><p class="prose">和艾柯卡一样，他认为就算让公司垮台也好过让其他人夺走王位。凯斯最终被迫辞职，异常愤怒，拒绝为公司的任何问题承担责任，并发誓要报复那些针对他的人。拜这些天才所赐，美国在线时代华纳 2002 年亏损高达<b>近一千亿美元</b>，创下美国历史上年度亏损的最高纪录。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>无懈可击、不可战胜、享有特权</h2><span class="en">KINGS OF THEIR REALM</span></div><p class="prose">艾柯卡、邓拉普、莱和斯基林以及凯斯和莱文展示了固定型思维模式者管理公司时会发生什么。他们并不是普通意义上的坏人，本意并不坏——但在决定性的时刻，他们选择让自己感觉良好并看起来完美，放弃了符合公司长远发展目标的方案。</p><p class="prose"><b>责怪他人，掩盖错误，抬高股价，镇压对手和批评之声，不顾员工的死活——这些都是他们标准的运营模式。</b></p><p class="prose">在他们营造的世界里，一切都围绕着个人的伟大和至高无上的权力：肯尼斯·莱领着数百万年薪仍向公司借大笔个人贷款、把亲戚安插进公司、把公司的飞机当作自己的所有物；艾柯卡在克莱斯勒最艰难的几年里仍为管理阶层召开豪华圣诞派对，每次都以国王的身份送自己一份昂贵大礼，之后由下属们买单；一名前雇员这样形容美国在线的高管：「你说的这群人认为自己有权做任何事。</p><p class="prose">」这些领导者将自己裹在皇家特权的外衣下，四周围绕着只会赞美他们的溜须拍马之辈——他们的固定型思维模式创造了一个奇妙的王国，国王的聪明和完美被一遍又一遍地认证。为什么他们还要走出这个王国，去面对满是缺点和失败的残酷现实呢？</p><div class="aband"><q>不幸的是，人们总是喜欢那些与成长相悖的事情……人们喜欢用自己的力量……去取得快速的、戏剧性的成果，即使……他们无法从中得到之后需要的新技能。人们愿意相信自己如同别人口中一样完美……因此不去认真对待自己的缺点。人们不喜欢听到坏消息或者接受批评……放弃自己擅长做的事去挑战一项新任务……存在很大风险。</q><cite>——摩根·麦考尔《培养下一代领导者》</cite></div></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>恶老板：恐惧如何杀死创新</h2><span class="en">BRUTAL BOSSES</span></div><p class="prose">这些领导者感到自己天生强于他人时，会开始忽略下属的感受和需求，很多还会鄙视级别比自己低的人。在「督促员工兢兢业业工作」的外表下，这些老板可能会虐待员工：艾柯卡会耍狠手腕让高管们手忙脚乱；杰瑞·莱文被员工比喻成残忍的罗马皇帝卡里古拉；斯基林尖酸刻薄地嘲弄不如自己聪明的人，这一点出了名。</p><p class="prose">企业领导文化专家哈维·霍恩斯坦在《恶老板》中写道，这些老板的残酷体现了他们「以下属的利益为代价提高自己大权在握、能力出众、举足轻重的感觉」的欲望——而且这些老板有权力让员工们生不如死。</p><p class="prose">尚彬-奥士达公司前 CEO 保罗·卡沙云叫自己「完美主义者」——这其实是「虐待狂」的委婉说法：下属惹他生气时，他会用东西砸他们，一名审计员惹怒他之后看到一个橙汁盒子向自己飞来。更多时候，受害者是公司里最能干的员工——他们给固定型的老板造成了巨大的威胁。</p><p class="prose">一名飞机制造厂的工程师说：「他攻击的目标都是那些最有能力的人。我想说，如果你真的关心我们的表现，你就不会总在这些表现好的人身上挑刺。」当老板们处罚和羞辱员工时，公司的整个氛围就会改变：<b>所有的一切都开始围着老板转，员工忙着哄老板开心。</b></p><p class="prose">柯林斯指出，在很多用于比较研究的公司中，员工最优先考虑的都是公司老板：「当一家公司的领导者让自己而不是公司现状成为员工心中的重中之重，那么这家公司一定会变得平庸，或者更糟。」大通曼哈顿银行的戴维·洛克菲勒掌管时期，管理人员每天战战兢兢，每一天结束时都长舒一口气：「哎，又平安度过一天，我没有惹上麻烦。</p><p class="prose">」——即使洛克菲勒的鼎盛期过去很久，高管依然不敢冒险提出新方案，因为「戴维·洛克菲勒可能会不喜欢」。</p><p class="prose">宝来公司的雷·麦克唐纳公开嘲笑管理人员的错误，扼杀了员工的创新思维——尽管在计算机工业发展早期宝来一直领先于 IBM，公司最终惨遭淘汰；德州仪器的两位领导者不喜欢员工的陈述时就会大喊、敲桌子、侮辱发言员工、扔东西——员工最终丧失了进取心。</p><div class="aband"><q>在这样一个固定型思维模式弥漫的公司中，勇气和创新是无法存活的。</q><cite>——第5章</cite></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜卡罗尔·德韦克《终身成长（全新修订版）》（江西人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第5章｜商业（上）</span><a href="../05-第4章-体育冠军的思维模式/index.html">← 体育·冠军的思维模式</a><a href="../07-第5章下-成长型领导者与企业的思维模式/index.html">商业（下） →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mg-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

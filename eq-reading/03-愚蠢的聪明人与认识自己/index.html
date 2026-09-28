@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第二部分·愚蠢的聪明人与认识自己｜情商 精读</title>
+<meta name="description" content="第三章用一连串跟踪研究拆穿「智商等于成功」的定律，并借萨洛维与梅耶给出情商五领域的正式定义；第四章深入第一块基石——自我意识：从武士的顿悟到述情障碍的反面教材。">
+<style>
+:root{
+  --paper:#F3F2EC;      /* 湖灰纸底 */
+  --paper-2:#E6E4DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#1F2B28;        /* 深湖墨（主色） */
+  --ink-2:#35483F;
+  --ink-deep:#0B1412;   /* 深湖（hero 底） */
+  --gold:#2E6E63;       /* 湖青（强调 · 情绪湖） */
+  --gold-b:#6BA89A;
+  --gold-soft:rgba(46,110,99,.14);
+  --cinnabar:#A04327;   /* 杏仁红（警示 · 杏仁核劫持） */
+  --teal:#B08A3A;       /* 暖金（对照 · 情绪素养） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(31,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35483F 0%,var(--ink-deep) 62%);
+  color:#E9F0ED;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(107,168,154,.42)}
+.hero::after{inset:22px;border:1px solid rgba(107,168,154,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(107,168,154,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF5F2}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(234,240,237,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(107,168,154,.34);color:rgba(234,240,237,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(46,110,99,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E8EFEA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(107,168,154,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#ECF1EE;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(107,168,154,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#ECF1EE;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(231,238,235,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(46,110,99,.5);box-shadow:0 4px 18px rgba(31,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(46,110,99,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(46,110,99,.45);background:rgba(46,110,99,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(46,110,99,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,247,241,.94);
+  border-bottom:1px solid rgba(31,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35483F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(46,110,99,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-情绪的功能与情绪失控/index.html">← 情绪功能与杏仁核劫持</a><a href="../04-激情的奴隶/index.html">激情的奴隶 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">识</div>
+  <div class="stamp ">基石</div>
+  <h1>愚蠢的聪明人与认识自己</h1>
+  <p class="sub">第三章用一连串跟踪研究拆穿「智商等于成功」的定律，并借萨洛维与梅耶给出情商五领域的正式定义；第四章深入第一块基石——自我意识：从武士的顿悟到述情障碍的反面教材。</p>
+  <div class="meta"><span>第二部分</span>
+    <span class="k">自我意识</span>
+    <span>正文 18,566 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>愚蠢的聪明人</a><a href="#s3" data-t="s3"><span class="cn">叁</span>多元智能</a><a href="#s4" data-t="s4"><span class="cn">肆</span>五领域</a><a href="#s5" data-t="s5"><span class="cn">伍</span>纯粹类型</a><a href="#s6" data-t="s6"><span class="cn">陸</span>认识自己</a><a href="#s7" data-t="s7"><span class="cn">柒</span>述情障碍</a><a href="#s8" data-t="s8"><span class="cn">捌</span>直觉与无意识</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是情商的「定义篇」：先破「智商迷信」，再立五领域框架，最后钻进第一块基石</p><p class="thesis">全优生杰森带着菜刀去学校，SAT 满分的同窗十年才拿到学位——<b>学业智力与情绪生活关系不大</b>。萨洛维和梅耶把情绪智力扩展为五个领域，而一切从<b>自我意识</b>开始：意识到自身情绪的发生，是情绪竞争力的基石；反面教材是述情障碍——没有语言来形容感受，就等于没有产生过这种感觉。</p><div class="chain"><div class="node"><div class="n">破</div><div><p class="tt">智商迷信</p><p class="dd">追踪研究：高分学生对生活的满意度不是最高的，智商对成功的贡献率最多 20%</p></div></div><div class="node"><div class="n">立</div><div><p class="tt">多元智能</p><p class="dd">加德纳《心境》：人生成功取决于包含 7 种（乃至 20 种）关键变量的多元智能</p></div></div><div class="node"><div class="n">定义</div><div><p class="tt">五领域</p><p class="dd">萨洛维 &amp; 梅耶 1990：了解自身情绪、管理情绪、自我激励、识别他人情绪、处理人际关系</p></div></div><div class="node"><div class="n">纯粹类型</div><div><p class="tt">两种画像</p><p class="dd">高智商者理性王国如鱼得水、人际社会四处碰壁；高情商者外向乐观、恰如其分</p></div></div><div class="node"><div class="n">基石</div><div><p class="tt">自我意识</p><p class="dd">武士的刀起刀落之间——意识到被情绪控制与被情绪控制是天差地别</p></div></div><div class="node"><div class="n">反面</div><div><p class="tt">述情障碍</p><p class="dd">加里「我没有强烈的感觉」——情绪的空白让聪明人体贴却冷漠</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>愚蠢的聪明人</h2><span class="en">FOOLS OF IQ</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>全优生杰森：80 分与一把菜刀</h4><span class="ar">▶</span></div><div class="cb"><div class="in">佛罗里达州高二全优生杰森·H 的梦想是考入哈佛医学院，而物理老师波洛格鲁图在一次测验中只给了他 80 分。他认为这个分数会使哈佛梦泡汤——于是带着菜刀来到学校，在物理实验室砍中老师的锁骨。法官判他无罪：四位心理学家和精神病学家宣誓作证，他在争执时精神处于失常状态。两年后他以平均学分绩点 <b>4.614</b>——比「A+」还高——的成绩以最高荣誉毕业，却从未向老师道歉。问题如章首所问：<b>智力如此超群的人怎么会做出如此没有理智、如此愚蠢的事情呢？答案在于，学业智力与情绪生活关系不大。</b></div></div></div></div><p class="prose">「智商等于成功」定律的例外甚至多于符合定律的情况。专家导读给出结论：在成功人生的决定因素当中，<b>智商最多有 20% 的贡献率，其余 80% 由其他因素决定</b>。连《钟形曲线》的作者也承认，一位 SAT 数学得 500 分的大学新生如果想开公司、竞选参议员或者成为百万富翁，就不应该轻易放弃梦想。</p><div class="tbwrap"><table><thead><tr><th>跟踪研究</th><th>源文发现</th></tr></thead><tbody><tr><td>95 名哈佛学生</td><td>进入中年后，学校分数最高者较之分数较低者，在薪水、工作效能或地位方面并没有显示出特别的成功；高分学生对生活、友谊、家庭和爱情的幸福感也不是最强烈的</td></tr><tr><td>450 名萨默维尔男孩</td><td>2/3 来自福利救济家庭，1/3 智商低于 90——7% 智商低于 80 的人长期失业，而 7% 智商高于 100 的人也出现同样的情况；童年期应对挫折、控制情绪以及合群的能力导致更显著的差异</td></tr><tr><td>81 名告别演说者</td><td>毕业 10 年后取得的成就仅为中等水平，只有 1/4 的人在所在职业领域处于同龄人的最高水平——他们是「尽职的人」，知道怎样在体制内取得成功，但不能据此判断他们如何应对风云变幻的生活</td></tr></tbody></table></div><div class="aband"><q>情绪潜能(aptitude)是一种元能力(meta-ability)，它决定着个体包括纯粹智力在内的其他技能的发挥程度。</q><cite>——第三章·情绪智力与命运</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>不一样的智力：加德纳与多彩光谱</h2><span class="en">MULTI-INTELLIGENCE</span></div><p class="prose">4 岁的朱迪在玩耍时畏缩不前，像个局外人——实际上她也许是小朋友当中最善于理解他人情绪波动的人。在塔夫斯大学「多彩光谱项目」的课堂游戏中，她把全班的座位安排与好朋友配对<b>完全正确</b>。推动这个项目的梦想家是哈佛大学的霍华德·加德纳，他的话值得逐字听：</p><div class="aband"><q>是时候扩大对才能的认识了。教育对儿童发展最重要的一项贡献是引导他们找到最能发挥所长的领域，使其在该领域获得满足感和竞争力。</q><cite>——第三章·不一样的智力（加德纳）</cite></div><p class="prose">加德纳 1983 年的《心境》是一部反智商宣言：人生成功取决于包含 <b>7 种</b>关键变量的多元智能——语言、数学逻辑之外，还有空间智能、身体运动智能、音乐智能，以及「人事智能」的两种：<b>人际智能</b>（理解他人的能力）与<b>内省智能</b>（塑造准确、真实的自我模式并以此应对生活的能力）。</p><p class="prose">他的理论一度扩展为 20 种智能——「7」只是体现智能多样性的任意数字。</p><div class="tbwrap"><table><thead><tr><th>多彩光谱项目的对照证据</th><th>源文数据</th></tr></thead><tbody><tr><td>两套测试</td><td>斯坦福–比奈智力量表与加德纳智能光谱的测试结果没有显著联系</td></tr><tr><td>智商最高 5 名儿童（125～133）</td><td>1 名在三个领域表现出色，3 名在两个领域，1 名只有一种出色能力</td></tr><tr><td>能力分布</td><td>4 个孩子的能力是音乐，2 个是视觉艺术，1 个是社会认识，1 个是逻辑能力，2 个是语言能力</td></tr><tr><td>短板</td><td>这 5 个智商最高的孩子没有一个在运动、数字或者机械方面表现出色——运动和数字是其中 2 个孩子的弱项</td></tr><tr><td>结论</td><td>「斯坦福–比奈智力量表并不能预测儿童在光谱测试中的出色表现。」</td></tr></tbody></table></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>聪明的情绪：情商五领域的正式定义</h2><span class="en">FIVE DOMAINS</span></div><p class="prose">加德纳的智能理论强调与情绪有关的思想（元认知），而不是情绪本身——情绪这片富饶的海洋还有待开发。把它真正捞上来的，是提出情绪智力概念的彼得·萨洛维和约翰·梅耶。他们把情绪智力扩展为 <b>5 个主要领域</b>——这就是全书后续章节的总目录：</p><div class="tbwrap"><table><thead><tr><th>领域</th><th>源文定义（对应章节）</th></tr></thead><tbody><tr><td>了解自身情绪</td><td>自我意识，即感受发生时能够识别到感受的发生，是情绪智力的基石（第四章）</td></tr><tr><td>管理情绪</td><td>恰当地处理情绪，摆脱过度焦虑、阴郁或易怒；调节能力强的人更快地从挫折和烦恼中恢复（第五章）</td></tr><tr><td>自我激励</td><td>为实现目标进行情绪控制——延迟满足和抑制冲动是所有成功的基础；进入「涌流」境界就会有出色的表现（第六章）</td></tr><tr><td>识别他人情绪</td><td>同理心是基本的「人事技能」，对微妙社会信号的协调性更强；擅长护理、教书、销售和管理（第七章）</td></tr><tr><td>处理人际关系</td><td>人际关系的艺术属于管理他人情绪的一部分；善于处理人际关系的人是社交明星（第八章）</td></tr></tbody></table></div><p class="prose">每个领域的能力表现大相径庭：有人善于化解自身的焦虑，却不擅长安慰他人。好消息是——人脑有很强的可塑性，情绪技能低下可以得到弥补，习惯和反应通过有效的努力就可以得到改善。</p><p class="prose">至于两种智力的日常关系，加德纳引述的那句话流传最广：<b>很多智商高达 160 的人为智商只有 100 的人干活，因为前者内省智能低下，而后者内省智能高超。</b>高情商的人擅长调动别人做事，高智商的人擅长自己亲自做事——领导者是擅长调动别人情绪、让他们与自己共舞的人。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>智商与情商的纯粹类型</h2><span class="en">PURE TYPES</span></div><p class="prose">智商和情商不是相互对立的，而是相互独立、相辅相成——所谓高智商但低情商的人其实比较罕见，尽管我们有这样的刻板印象。心理学家杰克·布莱克用「自我复原」测试对比两种理论上的纯粹类型，差异非常显著：</p><div class="duo"><div class="colL"><h4>高智商纯粹类型</h4><ul><li>男性：理性，做事的能力强——野心勃勃、工作有效率，但刻板乏味、对性和感官体验感到不自在、感情超然</li><li>在理性王国如鱼得水，在人际社会则四处碰壁</li><li>女性：对智力很有自信，流畅表达思想；往往比较内向，容易焦虑，凡事想得过多，容易产生内疚感</li></ul></div><div class="colR"><h4>高情商纯粹类型</h4><ul><li>男性：感性，做人的能力强——热爱社交、外向乐观，有很强的责任感和道德感，情绪生活丰富而又恰如其分</li><li>对自身、他人以及所处的社会感到很自在</li><li>女性：外向开朗，生活充满情趣；直接表达情感而不突然爆发，善于处理压力，很少感到焦虑或内疚</li></ul></div></div><p class="prose">上述描述显然都是极端的例子——每个人都不同程度地同时具有认知和情绪智力，两者融为一体。但相对而言，<b>情绪智力对个人的全面发展所起到的作用更为显著</b>。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>认识自己：情绪智力的基石</h2><span class="en">SELF-AWARENESS</span></div><p class="prose">第四章以一个日本传说开篇：好斗的武士质问禅师何为极乐世界、何为地狱。禅师叱责道「粗鄙之辈，何足论道！」武士暴跳如雷，拔刀吼道「如此无礼，我杀了你！」——禅师平静地回答：<b>「彼为地狱。」</b>武士一愣，立刻平静下来，把刀插回刀鞘，鞠躬感谢点拨——禅师又说：<b>「彼为极乐世界。</p><p class="prose">」</b>刀起刀落之间，武士悟到自身情绪的波动：苏格拉底的警句「认识自己」揭示了情绪智力的基石——<b>意识到自身情绪的发生</b>。</p><div class="aband"><q>如同被第二个自我陪伴左右——它像一个幽灵般的旁观者，完全没有同伴的那种精神错乱，而是带着好奇不动声色地观察自己同伴的挣扎</q><cite>——第四章（威廉·斯泰隆自述重度抑郁症）</cite></div><p class="prose">梅耶把自我意识概括为「同时意识到自身的情绪以及自身对该情绪的看法」——例如「我生气了」「生气对我不好」。意识到情绪之后有两条路：被情绪吞没、被动处理；或者接受情绪、主动处理。由此分出三种类型：</p><div class="grid g3"><div class="card"><h3>自我意识型</h3><p class="cp">情绪发生时有所意识，熟悉并确定自身的心理限度，心理健康状况良好，陷入负面情绪时不会作茧自缚，能迅速摆脱</p></div><div class="card"><h3>吞没型</h3><p class="cp">情绪主宰一切，反复无常，意识不到自身的情绪，迷失于其中而不自知——很少努力摆脱负面情绪，经常感到压抑和失控</p></div><div class="card"><h3>接受型</h3><p class="cp">清楚自己的感受并接受，不试图改变——细分两种：经常有好心情的人无需改变；心情不好却放任自流的人，常见于陷于绝望的抑郁症患者</p></div></div><p class="prose">自我意识还有强度之别。天普大学的飞机气流实验区分了两种注意力立场：对困境<b>「置身事中」</b>的人密切观察每一个细节，无意中增大了情绪反应；「置身事外」的人分散注意力，把情绪反应的体验最小化。</p><p class="prose">两个极端都真实存在：一位大学生发现宿舍起火，用灭火器灭火的整个过程中是<b>走</b>而不是跑——他没有意识到这是紧急状况；而另一个极端的女人弄丢一支钢笔竟心烦意乱好几天。迪纳的研究还发现：不管积极还是消极情绪，女性的情绪体验一般都比男性强烈得多。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>没有感觉的人：述情障碍</h2><span class="en">ALEXITHYMIA</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>外科医生加里：「我天生不会表达感情」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">加里聪明、体贴、是出色的外科医生，但情绪一片空白——谈论科学和艺术时眉飞色舞，一谈到感觉就哑口无言。他对治疗师坦白：「我没有强烈的感觉，不管是积极的还是消极的。」他没有愤怒，没有悲伤，也没有欢乐。未婚妻艾伦的坚持让他走进治疗室——<b>情感空白让人黯然失色，这就是他们的妻子让他们接受治疗的原因</b>。</div></div></div></div><p class="prose">精神病学家彼得·西弗尼奥斯 1972 年把它命名为<b>述情障碍</b>（alexithymia）：希腊语里「a」代表缺乏，「lexi」代表言语，「thymos」代表情绪。他们并不是没有感觉，而是无法用语言准确地表达——描述忐忑不安的感觉时只会说心跳加速、出汗、头晕，不知道自己其实是紧张。</p><p class="prose">与之相伴的是<b>躯体化</b>：把情绪的不适误认为是身体的不适，为情绪问题反复求医却毫无结果。成因可能与边缘系统和新皮层（特别是语言中枢）的分离有关——切断两者联系的癫痫病人，术后同样变得情绪贫乏。</p><div class="aband"><q>“如果你能用语言来形容你的感觉，你就拥有了它”。</q><cite>——第四章·没有感觉的人（引亨利·罗斯《就说是睡着了》）</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>赞美直觉：没有感觉会破坏选择</h2><span class="en">INTUITION</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>律师艾略特：切掉肿瘤，也切掉了感觉</h4><span class="ar">▶</span></div><div class="cb"><div class="in">艾略特额头正后方长了一个小橙子那么大的肿瘤，手术成功切除——但性情大变：不能继续做律师，妻子离开，积蓄浪费在毫无回报的投资上。智力测试毫无问题，他却对发生在他身上的事情<b>没有感觉了</b>——可以完全不动感情地讲述自己悲惨的生活，达马西欧听了他的遭遇后比他本人还要难过。预约治疗时间时，他对每个时间建议都能找到肯定和否定的理由，根本无法选择：他搞不清楚自己对每个时间的感觉，没有偏好。</div></div></div></div><p class="prose">达马西欧推测，手术在切除肿瘤的同时切掉了部分前额叶，切断了杏仁核与新皮层思考中枢的联系——艾略特的思维如同一台电脑，可以精准计算每一个步骤，却无法对不同的可能性赋予不同的价值。</p><p class="prose">指导重大决策的直觉信号，达马西欧称之为<b>「体细胞制造器」</b>（somatic makers，按字面意思理解为「直觉」）：类似自动警报，对特定行为过程的潜在危险发出警报，也提醒我们留意黄金机会——个人选择合理化的关键是与我们的感觉协调一致。</p><div class="aband"><q>强烈的感觉会破坏理性，但是没有感觉会破坏选择。理性和感性共同完成决策。</q><cite>——第四章·赞美直觉</cite></div><p class="prose">最后一层是<b>无意识</b>：向怕蛇的人出示蛇的图片，受测者表示没有感到任何恐惧，皮肤上的感受器却探测到汗液渗出——哪怕图片快得没人意识到看到了什么，他们还是出汗了。</p><p class="prose">情绪的心理开端通常在自觉意识到之前出现，前意识情绪持续累积，最后变得足够强烈才进入意识层面——情绪一旦进入意识层面，就会被前额叶皮层接收，人就可以重新评估、决定摆脱不良情绪。一大早被惹恼却对别人的无心之失大做文章的人，也许根本没意识到自己一直处于易怒状态——<b>情绪一旦变成有意识的，就会被管理</b>。</p><p class="prose">这正是下一章「激情的奴隶」要展开的课题。</p><div class="check" data-k="c03"><p class="ct">情商五领域 · 自测</p><label><input type="checkbox"><span>我能说出「愚蠢的聪明人」指的是什么：智商最多解释成功的 20%</span></label><label><input type="checkbox"><span>我能说明加德纳多元智能理论对情商的启发</span></label><label><input type="checkbox"><span>我能背出情商五领域：认识自身情绪、管理情绪、自我激励、认识他人情绪、管理人际关系</span></label><label><input type="checkbox"><span>我能描述述情障碍：没有语言的情绪，只有身体的症状</span></label><label><input type="checkbox"><span>我能解释「没有感觉会破坏选择」：艾略特案例的核心</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">案例</span><span class="nd"><b>两章一炉｜</b>杰森菜刀案出自源文第三章，艾略特案例出自第四章；本篇将两案分别呈现于「愚蠢的聪明人」与「认识自己」两节，数据均照源文。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·戈尔曼《情商：为什么情商比智商更重要》（中信出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第二部分｜愚蠢的聪明人与认识自己</span><a href="../02-情绪的功能与情绪失控/index.html">← 情绪功能与杏仁核劫持</a><a href="../04-激情的奴隶/index.html">激情的奴隶 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='eq-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

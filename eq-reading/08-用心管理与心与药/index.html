@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分·用心管理与心与药｜情商 精读</title>
+<meta name="description" content="情商的两大应用现场：职场与病房。前半章是组织中的情绪智力——反馈即组织的血液、多样性即竞争优势、群体智商即社会和谐；后半章是心身医学——阿德的糖水实验改写生物学地图，愤怒、焦虑、抑郁三大负面情绪被逐一计量，而情感支持竟把">
+<style>
+:root{
+  --paper:#F3F2EC;      /* 湖灰纸底 */
+  --paper-2:#E6E4DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#1F2B28;        /* 深湖墨（主色） */
+  --ink-2:#35483F;
+  --ink-deep:#0B1412;   /* 深湖（hero 底） */
+  --gold:#2E6E63;       /* 湖青（强调 · 情绪湖） */
+  --gold-b:#6BA89A;
+  --gold-soft:rgba(46,110,99,.14);
+  --cinnabar:#A04327;   /* 杏仁红（警示 · 杏仁核劫持） */
+  --teal:#B08A3A;       /* 暖金（对照 · 情绪素养） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(31,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35483F 0%,var(--ink-deep) 62%);
+  color:#E9F0ED;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(107,168,154,.42)}
+.hero::after{inset:22px;border:1px solid rgba(107,168,154,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(107,168,154,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF5F2}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(234,240,237,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(107,168,154,.34);color:rgba(234,240,237,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(46,110,99,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E8EFEA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(107,168,154,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#ECF1EE;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(107,168,154,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#ECF1EE;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(231,238,235,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(46,110,99,.5);box-shadow:0 4px 18px rgba(31,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(46,110,99,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(46,110,99,.45);background:rgba(46,110,99,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(46,110,99,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,247,241,.94);
+  border-bottom:1px solid rgba(31,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35483F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(46,110,99,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-亲密敌人/index.html">← 亲密敌人</a><a href="../09-家庭熔炉与情绪再学习/index.html">家庭熔炉与情绪再学习 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">心</div>
+  <div class="stamp ">职场</div>
+  <h1>用心管理与心与药</h1>
+  <p class="sub">情商的两大应用现场：职场与病房。前半章是组织中的情绪智力——反馈即组织的血液、多样性即竞争优势、群体智商即社会和谐；后半章是心身医学——阿德的糖水实验改写生物学地图，愤怒、焦虑、抑郁三大负面情绪被逐一计量，而情感支持竟把晚期乳腺癌患者的存活时间延长了一倍。</p>
+  <div class="meta"><span>第三部分</span>
+    <span class="k">用心管理</span>
+    <span>正文 28,506 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>用心管理</a><a href="#s3" data-t="s3"><span class="cn">叁</span>批评的艺术</a><a href="#s4" data-t="s4"><span class="cn">肆</span>处理多样性</a><a href="#s5" data-t="s5"><span class="cn">伍</span>群体智商</a><a href="#s6" data-t="s6"><span class="cn">陸</span>心与药</a><a href="#s7" data-t="s7"><span class="cn">柒</span>负面情绪</a><a href="#s8" data-t="s8"><span class="cn">捌</span>积极情绪</a><a href="#s9" data-t="s9"><span class="cn">玖</span>关怀的医学</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>医生，这一切都是谁教会你的？</p><cite>——问</cite></div><div class="epi"><p>痛苦。</p><cite>——阿尔伯特·卡缪，《瘟疫》</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇一册两卷：前半是情商在工作场所的三个练兵场，后半是情绪写给身体的病历</p><p class="thesis">工作组织是情绪的放大器：一条没人敢说的燃料读数让 10 人丧生，一句恶意批评让士气崩盘，而对偏见的不作为让丹尼饭店付出 <b>5400 万美元</b>。反过来，情绪也是药：<b>慢性负面情绪对健康的危害相当于吸烟</b>，而情感支持把晚期乳腺癌患者的存活时间延长了一倍。</p><div class="chain"><div class="node"><div class="n">坠机</div><div><p class="tt">1978 · 波特兰</p><p class="dd">麦克布鲁姆专心摆弄起落架，副驾驶员害怕发怒什么都没说——10 人死亡，80% 的飞机失事源于本可避免的错误</p></div></div><div class="node"><div class="n">反馈</div><div><p class="tt">批评的艺术</p><p class="dd">反馈是组织的血液——莱文森四原则：具体、提供解决方法、当面表达、保持敏感</p></div></div><div class="node"><div class="n">多样性</div><div><p class="tt">丹尼饭店</p><p class="dd">黑人顾客集体诉讼获赔 5400 万美元——不作为本质上就是容忍偏见的病毒肆意扩散</p></div></div><div class="node"><div class="n">群体智商</div><div><p class="tt">贝尔实验室</p><p class="dd">明星员工与普通员工学业智商没有显著差异，差异在情商——沟通网、专业网、信任网三种非正式网络</p></div></div><div class="node"><div class="n">心身通道</div><div><p class="tt">1974 · 阿德</p><p class="dd">免疫系统像人脑一样具有学习能力——心理神经免疫学成为前沿医学</p></div></div><div class="node"><div class="n">三大负面情绪</div><div><p class="tt">愤怒·焦虑·抑郁</p><p class="dd">慢性困扰情绪的患病风险是常人的两倍——有害性相当于吸烟、高胆固醇对心脏病的危害</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>从驾驶舱到董事会：用心管理</h2><span class="en">MANAGING WITH HEART</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">事故</span><h4>麦克布鲁姆机长：无人敢说出口的燃料读数</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1978 年，麦克布鲁姆驾驶的飞机即将降落俄勒冈波特兰，他发现起落架出了问题，于是把飞行设置为等待航线模式，飞机在机场附近高空盘旋，他则专心拨弄机械装置。燃料读数渐渐接近于零——<b>副驾驶员们害怕他发怒，在灾难即将降临之际居然什么都没说</b>。最后飞机坠毁，10 人死亡。这次失事已成为飞行员安全培训的反面教材：80% 的飞机失事是飞行员犯了本可避免的错误，团队合作、开明沟通、协调配合、注意倾听以及表达真实想法，这些社会智力的基本要素和驾驶技术一样需要训练。</div></div></div></div><p class="prose">驾驶舱是工作组织的缩影。低落的士气、战战兢兢的员工、颐指气使的老板，通常要到出事才被看见，而它们的日常代价是效率降低、错漏百出、大批员工跳槽。一项面向 <b>250 名企业执行官</b>的调查显示，大多数人认为他们的工作需要「用脑而不是用心」，有人甚至觉得「感知员工情绪」的想法荒谬——「就没法管理他们了」。</p><p class="prose">这项调查在 20 世纪 70 年代进行，戈尔曼认为这种态度已经过时：</p><div class="aband"><q>20世纪以来，企业经历了急剧的变化，情绪景观也随之出现了改变。在企业的等级制度下，经理人阶层曾经长期处于统治地位，手腕强硬的铁血老板得到回报。但在全球化和信息技术的双重压力之下，企业僵化的等级制度在20世纪80年代开始瓦解。铁血战士代表企业的过去，而人际关系的大师代表企业的未来。</q><cite>——第十章·专家导读（朱伯夫）</cite></div><p class="prose">哈佛商学院心理学家朱伯夫的这段话是全章的引擎。反面证据随手可拾：情绪低落的人无法聚精会神地记忆、学习或决策——<b>「压力之下必有愚夫」</b>。正面收益则有三条路径：把发牢骚转化为有效的批评；营造推崇多样性的氛围而不是将其视为摩擦根源；建立有效的关系网。</p><p class="prose">领导力不是支配和控制，而是说服人们向共同目标努力的艺术。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>批评是第一要务：反馈的血液循环</h2><span class="en">THE ART OF CRITICISM</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>副总裁的一句挖苦，换来两个星期的绝望</h4><span class="ar">▶</span></div><div class="cb"><div class="in">经验丰富的工程师汇报几个月的工作成果，产品开发副总裁挖苦地问道：「你从研究所毕业多长时间了？这些技术标准太荒唐了，过不了我这关。」工程师在会议剩余时间里闷闷不乐、一言不发，之后两个星期无精打采、绝望透顶，尽管很喜欢这份工作，还是打算辞职。最后他字斟句酌地问：「你应该不只是想让我难堪，你当时还有别的想法吗？」——副总裁大吃一惊：他只是随口说说，其实认为项目很有前途，于是送上迟来的道歉。</div></div></div><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>伦斯勒理工学院的洗发水实验</h4><span class="ar">▶</span></div><div class="cb"><div class="in">受测者被要求给一种新型洗发水制作广告，实验助手的评语预先安排成两种：友善而具体，或包含威胁与人身攻击——「想也不要想，好像没有一件事是做对的」「也许缺乏天赋，我得找其他人来做」。受到攻击的受测者变得紧张、愤怒和抵触，拒绝与批评者协作，很多人希望不再与其来往。<b>刻薄的批评使被批评者士气低落，最严重的后果是，他们自认为不能胜任这项工作。</b></div></div></div></div><p class="prose">系统论里「反馈」的原意是关于系统的一部分运作情况的数据交换——在企业中，<b>反馈相当于组织的血液</b>。一项针对 108 名经理人和白领员工的调查显示，不当批评的影响超过了猜疑、性格不合以及权力斗争，成为工作冲突的主要成因。而最糟糕的激励方式是把批评攒着一起爆发，伊利诺伊大学的拉森这样描述它：</p><div class="aband"><q>员工表现出来的大多数问题都不是突然出现的，它们慢慢地与日俱增。如果上司无法让员工及时了解他的感受，上司就会越来越沮丧。然后有一天，他就会发作出来。</q><cite>——第十章·最糟糕的激励方式</cite></div><div class="aband"><q>批评某人愚蠢或无能，这种人格攻击并没有批评到点子上。你一下子把他置于防守的地位，他再也听不进你让他改进的意见。</q><cite>——第十章·批评的艺术（拉森）</cite></div><p class="prose">对照一下有技巧的批评：同样面对时间超支的软件计划，那位副总裁本可以说——「目前阶段的主要问题是你们的计划时间太长了，增加了成本。我希望你再仔细考虑一下这个提议，尤其是软件开发的设计标准，看看能不能在更短的时间内完成这项工作。」前者制造无助、愤怒和反抗，后者传递改进的希望并提出建议。</p><p class="prose">由精神分析师转为企业咨询顾问的<b>哈里·莱文森</b>把批评的方法总结为四条：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>具体</h4><p>选择能够显示关键问题的事件，明确哪些做得好、哪些做得不好、应该怎样改进——像夫妇发牢骚的 XYZ 法则一样，指明问题是什么、错在哪里、你的态度、如何改进。旁敲侧击只会混淆真正有用的信息</p></div><div class="step"><div class="dot">2</div><h4>提供解决方法</h4><p>批评应当指明改正问题的方法，否则被批评者会感到沮丧、士气低落或失去动力——批评还应包含如何处理这些问题的建议</p></div><div class="step"><div class="dot">3</div><h4>当面表达</h4><p>批评和赞扬一样，面对面和私下场合效果最明显；写备忘录太缺乏人情味，而且对方没有机会回应或澄清</p></div><div class="step"><div class="dot">4</div><h4>保持敏感</h4><p>这需要同理心——与自己所说的话以及说话方式对接收方产生的影响协调一致；没有同理心的经理人最容易造成使人无地自容的奚落</p></div></div><div class="aband"><q>对于赞扬，具体同样重要。当然，含糊的赞扬不是一点儿效果都没有，但是效果不大，而且你无法从中学习。</q><cite>——第十章·批评的艺术（莱文森）</cite></div><div class="chips"><span class="chip">批评别人的艺术：具体，提供解决办法，当面表达，保持敏感。</span><span class="chip">接受批评的艺术：把批评当做建议，不要自我保护，把批评当做机会。</span></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>处理多样性：丹尼饭店与偏见的根源</h2><span class="en">DIVERSITY</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>丹尼饭店：干坐着的牧师与 5400 万美元的账单</h4><span class="ar">▶</span></div><div class="cb"><div class="in">三十多岁的前美军上尉西尔维娅·斯基特在丹尼饭店担任值班经理。一群黑人顾客——一位牧师、一位牧师助理、两位福音歌手——到店就餐，服务员却「面面相觑，把手叉在腰间，然后又继续聊起天来，就好像离他们 5 英尺之外的黑人顾客不存在似的」。经理为服务员开脱：「他们从小就是这样，我一点办法都没有。」斯基特当场辞职。她不是孤例：原告包括 7 名美国非裔特工人员，他们为吃早餐等了整整一小时，邻座的白人同事却很快受到招待；还有一位双腿瘫痪的黑人女孩，深夜在轮椅上等了两个小时才等到晚餐。<b>集体诉讼最后获赔 5400 万美元。</b></div></div></div></div><p class="prose">多样性培训由此成为美国公司入职培训的常规内容。超过 <b>3/4 的新雇员是有色人口</b>，跨国公司需要员工欣赏来自不同文化的人群并转化为竞争优势，而多样性的潜在效果还能提高集体的创造力。但根深蒂固的偏见从哪里来？</p><p class="prose">弗吉尼亚大学精神病学家沃尔坎记得，童年时人们告诉他希腊神父的腰带打着结，每一个结代表他勒死了一个土耳其儿童。社会心理学家佩蒂格鲁的结论是：</p><div class="aband"><q>偏见的情绪在童年期形成，但支持偏见的信念到后来才出现。也许你后来想改变偏见，但改变内心感受比改变理性信念要难得多。</q><cite>——第十章·偏见的根源（佩蒂格鲁）</cite></div><p class="prose">刻板印象还带有<b>自我验证的倾向</b>：人们倾向于记住符合刻板印象的事件，而忽视质疑它的事件——聚会上遇到一位热情亲切的英国人，人们就告诉自己「这个英国人不同寻常」或者「他喝醉了」。于是出现了口头上否认歧视、行动上依然隐秘偏见的微妙形式：以「难以胜任」拒绝黑人求职者，却聘请教育背景完全相同的白人。</p><p class="prose">既然偏见无法轻易根除，能改变的是对待偏见的态度——</p><div class="aband"><q>我们不容忍任何形式的歧视或侮辱，尊重个人是IBM文化的核心</q><cite>——第十章·对不宽容的不宽容（IBM 执行官）</cite></div><p class="prose">研究发现，一群人中若有人发表种族歧视的侮辱言论，其他人也会跟着这样做；而<b>当场指出这种歧视行为可以创造减少歧视的社会氛围，什么都不说就相当于宽恕这种行为</b>。权威人物更关键——不谴责偏见行为，无形中等于传递了这种行为没有问题的信号。</p><p class="prose">禁止偏见行为的发生，比从根本上消除偏见态度的可能性要大得多：废除种族隔离学校的教训是，不同种族若形成对立的小集团，刻板印象反而被强化；若为共同目标平等合作——比如运动队或乐队——刻板印象就会被打破。</p><div class="chips"><span class="chip">国际化的环境要求员工理解不同种族的文化，提高对人性的尊重。</span><span class="chip">偏见是个体在早期获得的一种情绪经验，偏见的情绪在童年期形成，但是支持偏见的信念是后来才出现的。</span></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>组织智慧与群体智商：贝尔实验室的明星工程师</h2><span class="en">GROUP IQ</span></div><p class="prose">管理学大师德鲁克发明了「知识工人」一词：市场分析师、作家、电脑程序员——他们的技能高度专业化，生产力取决于与组织团队的协调能力。德鲁克说，对于知识化的工作，<b>「团队而不是个人成为工作的单元」</b>。</p><p class="prose">团队完成任务质量的高低取决于群体智商，而提出这一概念的斯腾伯格与威廉姆斯通过甜味剂广告实验证实：群体智力不一定大于成员才能的总和——<b>过于急切而不愿合作的人拖了整个团队的后腿</b>，团队和谐才能让天分极高的成员提高整体表现。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">研究</span><h4>贝尔实验室：提名 10%～15% 的明星工程师</h4><span class="ar">▶</span></div><div class="cb"><div class="in">贝尔实验室位于普林斯顿附近，工作内容是研发控制电话系统的电子开关——单枪匹马无法胜任，必须由 5 名至 150 名工程师的团队共同完成。罗伯特·凯利和珍妮特·卡普兰让经理人与员工提名 10%～15% 的工程师作为明星工程师，再把他们与其他工程师对比。最惊人的发现是：两个群体只有很细微的差别。明星员工的差异不在学业智商，而在情商——他们更善于自我激励，更善于召集非正式网络、组建特设工作团队；他们在需要别人帮忙<b>之前</b>就已建立了可靠的关系网。</div></div></div></div><div class="aband"><q>根据一系列认知和社会方面的测量方法，比如智商的标准测试和性格测试，这些人的能力没有显著的差异。随着个体的发展，根据学业才能无法准确地预测工作成果，智商也是如此。</q><cite>——第十章·组织智慧与群体智商（《哈佛商业评论》）</cite></div><div class="tbwrap"><table><thead><tr><th>非正式网络</th><th>构成与作用</th></tr></thead><tbody><tr><td>沟通网</td><td>互相交谈的圈子——非正式网络在同事之间每一次交流时形成，随时间加强，可以跳过整体直接完成任务</td></tr><tr><td>专业网</td><td>由可以提供建议的人组成——担任骨干说明拥有专业技能杰出的声望，专业技能通常是晋升的决定因素</td></tr><tr><td>信任网</td><td>值得交换秘密、疑问和弱点的人——狭隘的办公室暴君即使有过硬的专业才能，得不到信任也会被排除在网络之外</td></tr><tr><td>明星的位置</td><td>组织里的明星通常与所有关系网都有紧密联系——无论是沟通网、专业网还是信任网</td></tr></tbody></table></div><p class="prose">正式组织是为处理可预期的问题而设置的，<b>假如出现了无法预期的问题，非正式网络就开始发挥作用</b>。</p><p class="prose">除了关系网，明星工程师的组织智慧还包括：有效协调团队工作、在达成一致意见时起领导作用、从他人角度看待问题、善于说服、促进合作避免冲突；再加上积极主动、自我激励，善于在时间和工作承诺之间取得平衡——所有这些技能都是情绪智力的组成部分。</p><div class="chips"><span class="chip">工作的单元是团队而不是个人，情商是促使人们协调一致的技能。</span><span class="chip">团队完成任务质量的高低取决于群体智商的高低。群体智力不是群体成员学业意义上的平均智商，而是群体的情绪智力。</span></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>身体的心理：改写生物学地图的糖水实验</h2><span class="en">BODY-MIND</span></div><p class="prose">第十一章从作者自己的一次尿血讲起：一听到「细胞检查」就蒙了，医生的要求重复了三四次仍记不住——「感觉就像刚刚在自家门口被人打劫了」。他解释这种反应：心理健康有一部分源于<b>「刀枪不入」的幻觉</b>，疾病打破了它。</p><p class="prose">而问题在于，医务人员治疗时忽略了病人的情绪反应，尽管越来越多的证据表明情绪状态对患病和康复过程有显著影响——现代医学护理常常缺乏情绪智力。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">实验</span><h4>1974 · 罗彻斯特大学：阿德与糖精水</h4><span class="ar">▶</span></div><div class="cb"><div class="in">心理学家罗伯特·阿德给小白鼠喂食一种抑制血液中 T 细胞的药物，每次都用含糖精的水伴服。随后他<b>不给药物、只喂糖水</b>，小白鼠的 T 细胞数量依然减少，有些甚至生病死亡——作为对糖水的回应，免疫系统学会了抑制 T 细胞。根据当时最先进的科学认识，这不应该发生。这一发现引发了科学界对中枢神经系统与免疫系统之间沟通渠道的探究，<b>心理神经免疫学（Psycho-neuro-immunology）由此成为前沿医学</b>——学科的名称本身就揭示了心理、神经与免疫系统的联系。</div></div></div></div><p class="prose">随后的解剖证据更为直观：费尔腾夫妇借助电子显微镜发现，<b>自主神经系统神经末端有突触状的触点与免疫细胞直接接触</b>，神经细胞与免疫细胞互相释放信号；切除动物淋巴腺和脾脏的部分神经后，动物对病毒的免疫反应大为下降。</p><p class="prose">另一条通道是应激荷尔蒙：儿茶酚胺、皮质醇、催乳素以及内啡肽在应激唤起时全部释放，若应激持续不断且非常强烈，荷尔蒙对免疫功能的抑制会持续更长时间。巴黎理工学校神经学家瓦雷拉干脆说：<b>免疫系统是身体的大脑</b>，决定身体对自身的感觉。</p><div class="aband"><q>如果预约做手术的病人当天告诉我她非常害怕，不想做手术了，我就会取消手术。</q><cite>——第十一章·有害的情绪（尼扎特）</cite></div><p class="prose">斯坦福大学妇科腹腔镜外科医生尼扎特的解释很直白：极度恐慌的病人手术结果通常很糟糕——流血过多、更容易感染和并发症、康复困难。</p><p class="prose">一项综合 <b>101 项小型研究</b>与一项几千人大型研究的综合分析证实：慢性焦虑、长期抑郁和悲观、持续紧张或不满、愤世嫉俗或多疑的人，<b>患病风险是常人的两倍</b>，包括哮喘、关节炎、头痛、胃溃疡以及心脏病——困扰情绪的有害性相当于吸烟、高胆固醇对心脏病的危害。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>三大负面情绪：愤怒、焦虑、抑郁的病历</h2><span class="en">THREE TOXINS</span></div><p class="prose"><b>愤怒</b>——斯坦福大学医学院让心脏病病人回忆被激怒的往事：他们心脏的泵效下降了 5%，有些下降 7% 甚至更多，达到心肌缺血迹象的范围；焦虑等其他情绪不会导致泵效下降。</p><p class="prose">传统认为 A 型人格是心脏病高风险，新发现是<b>敌意才是最重要的风险因素</b>：杜克大学威廉姆斯发现，医学院时敌意测试分数最高的医生，50 岁左右死亡的概率是低分医生的 <b>7 倍</b>——易怒对过早死亡的预测作用比吸烟、高血压、高胆固醇更强。</p><p class="prose">耶鲁对 929 名病人的 10 年追踪显示，容易被激怒者心搏停止的概率是平和者的 3 倍，若还有高胆固醇则是 5 倍。</p><p class="prose">但压制愤怒同样危险——非常生气时完全压制会使血压升高，而发泄出来只会火上浇油。威廉姆斯的判词是：<b>重要的不是是否发泄，而是愤怒是否是慢性的</b>。</p><p class="prose">值得庆幸的是，敌对是一种可以改变的习惯：斯坦福招募心脏病病人参加控制愤怒的培训后，第二次发作的概率降低了 <b>44%</b>；方法正是情绪智力的基本要素——把恶意想法写下来、对自己喊「停止」、用理性想法代替怀疑，而同理心是治愈愤怒的良药。</p><div class="aband"><q>“化解敌意的方法是培养信任感，所需要的只是正确的动机。如果人们认识到敌意会导致早死，他们就会愿意改变”。</q><cite>——第十一章·自毁性愤怒（威廉姆斯）</cite></div><p class="prose"><b>焦虑</b>——它是生活压力引起的困扰情绪，与发病和康复的联系在科学上论证得最确切。耶鲁的麦克尤恩综述了应激与疾病的大量研究：</p><div class="tbwrap"><table><thead><tr><th>系统</th><th>应激的影响（麦克尤恩综述）</th></tr></thead><tbody><tr><td>免疫</td><td>削弱免疫功能，使癌细胞加速转移；增加病毒感染风险</td></tr><tr><td>心血管</td><td>加速斑块形成，导致动脉硬化和血凝固，最后引发心肌梗塞</td></tr><tr><td>代谢</td><td>容易引发 I 型糖尿病，并加速 II 型糖尿病的发展过程</td></tr><tr><td>呼吸</td><td>导致哮喘发作恶化或激化</td></tr><tr><td>消化</td><td>导致胃肠道溃疡，激化溃疡性结肠炎和炎性肠病的症状</td></tr><tr><td>大脑</td><td>海马体受损、记忆力下降——「神经系统由于应激体验受到损害」</td></tr></tbody></table></div><p class="prose">最有力的证据来自卡内基–梅隆大学的科恩团队：他们先评估受测者的压力水平，再系统地让他们暴露在感冒病毒环境中——压力较小的人群只有 <b>27%</b> 患上感冒，压力较大的人群则有 <b>47%</b>。这项严谨的研究被认为具有里程碑意义。</p><p class="prose">夫妇连续三个月每天经历不愉快的事情后，会在不愉快发生后的 <b>3～4 天</b>患上感冒或上呼吸道感染——正好是感冒病毒潜伏的时间。工作压力大的人患结肠癌的可能性是没有生活压力者的 5.5 倍；对女性而言，恐惧和焦虑的危害更为致命。</p><p class="prose"><b>抑郁</b>——它的危害更隐蔽：症状（没有胃口、倦怠）容易被误认为是其他疾病的信号，得不到诊断就意味着得不到治疗。100 位接受骨髓移植的病人中，<b>患有抑郁症的 13 位患者有 12 位在术后第一年死亡</b>，其余 87 位有 34 位两年后仍在世。</p><p class="prose">对 2832 名中年男女 12 年的追踪发现，最严重的 3% 抑郁人士心脏病死亡率是没有抑郁者的 4 倍；蒙特利尔的研究里，抑郁最严重的 1/8 病人死亡率是同类病人的 5 倍；髋骨骨折的抑郁老人平均多住院 8 天，恢复行走的机会只有其他人的 1/3。</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>敌意 7 倍</h3><p class="cp">敌意测试分数最高的医生，50 岁左右死亡的概率是低分医生的 7 倍——易怒对过早死亡的预测作用比吸烟、高血压更强</p></div><div class="card num"><div class="idx">二</div><h3>孤立 2.0</h3><p class="cp">社会孤立的死亡风险因素为 2.0，高于吸烟的 1.6——被孤立的男性死亡风险是有密切社会联系男性的 2～3 倍</p></div><div class="card num"><div class="idx">三</div><h3>抑郁 4 倍</h3><p class="cp">最严重的 3% 抑郁人士心脏病死亡率是没有抑郁者的 4 倍——不对情绪因素进行治疗是不符合医学伦理的</p></div></div><div class="chips"><span class="chip">应激和负面情绪会降低各种免疫细胞的有效性。困扰情绪是疾病的风险因素，人有三大负面情绪：愤怒、焦虑、抑郁。</span><span class="chip">人体的免疫系统像人脑一样具有学习能力。</span><span class="chip">抑郁对人的健康不利，更不利于病人的康复。</span></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>另一半数据：乐观、倾诉与人际关系的疗效</h2><span class="en">THE HEALING SIDE</span></div><p class="prose">这不是说大笑可以治愈重病——「态度治疗一切」的花言巧语只会制造混乱。但大量人群研究的数据确实指向另一面。对 <b>122 名首次心脏病发的男性</b>进行乐观或悲观测试，8 年之后：</p><div class="tbwrap"><table><thead><tr><th>心理状态</th><th>8 年后的结局</th></tr></thead><tbody><tr><td>最悲观的 25 名男性</td><td>21 人已经死亡</td></tr><tr><td>最乐观的 25 名男性</td><td>只有 6 人死亡</td></tr><tr><td>预测力对比</td><td>心理状态对病人存活的预测性，比心脏受损程度、动脉阻塞、胆固醇或血压等医疗风险因素更准确</td></tr><tr><td>动脉搭桥手术</td><td>乐观者相对悲观者康复更快，术中和术后医疗感染也更少</td></tr><tr><td>脊柱损伤病人</td><td>满怀希望者身体移动能力的恢复水平更高——希望对二十多岁瘫痪、影响下半生的病人效果尤其显著</td></tr></tbody></table></div><p class="prose"><b>社会联系</b>是保护健康的另一极。横跨 20 年、涉及人数超过 <b>37000 人</b>的多项研究表明，社会孤立——感到没有人可以分享私密感受或进行亲密接触——使个体患病或死亡的可能性增加了一倍：</p><div class="aband"><q>社会孤立导致死亡的风险“与吸烟、高血压、高胆固醇、肥胖以及缺少运动等因素一样显著”。</q><cite>——第十一章·朋友的帮助（《科学》杂志 1987 年报告）</cite></div><p class="prose">事实上，吸烟加大死亡风险的因素仅为 1.6，而社会孤立为 2.0。<b>孤立对男性的危害大于女性</b>：被孤立男性的死亡风险是有密切社会联系男性的 2～3 倍，女性则为 1.5 倍——女性的人际关系在情感上更亲密。</p><p class="prose">瑞典哥德堡 752 名男性的 7 年追踪里，最初表示遭受严重情绪压力的男性死亡率是生活平静者的 3 倍；而<b>拥有可靠亲密关系网的男性，高应激水平与死亡率并无任何关联</b>。相反，恶劣的人际关系损害健康——大学室友彼此越不喜欢对方，就越容易患风寒或感冒。</p><p class="prose">情感支持还有更主动的形式。</p><p class="prose">南卫理公会大学的彭尼贝克让受测者连续 5 天或更长时间、每天 15～20 分钟写下「一生中最不堪回首的经历」——结果是<b>免疫功能加强、随后 6 个月去医院次数明显减少、请假天数减少、肝脏酶功能增强</b>；情绪最不安的人改善最大，健康的释放模式是先表达极度的悲伤、焦虑、愤怒，再用几天时间从创伤中寻找意义。</p><p class="prose">而最能证明情感支持临床疗效的，是斯皮格尔对晚期转移性乳腺癌妇女的群体研究：</p><div class="duo"><div class="colL"><h4>每周参加群体活动的患者</h4><ul><li>存活时间是独自面对疾病者的 2 倍</li><li>平均额外增加 37 个月的存活时间</li><li>可以向理解并愿意倾听她们恐惧、痛苦和愤怒的人释放情绪</li></ul></div><div class="colR"><h4>独自面对疾病的患者</h4><ul><li>平均在 19 个月后死亡</li><li>周围的人害怕和患者谈论疾病与即将到来的死亡</li><li>群体活动通常是她们唯一可以敞开心扉的场合</li></ul></div></div><div class="aband"><q>每位癌症患者都应该参与这样的群体活动。</q><cite>——第十一章·情感支持的治疗作用（霍兰）</cite></div><p class="prose">斯隆·凯特灵纪念医院首席精神科肿瘤专家霍兰的这句话后面还有一句判断：如果这是一种能够延长患者生命的新药，制药公司一定会不遗余力地生产出来。</p><div class="chips"><span class="chip">寂寞孤立是危害健康的一种情绪，保持密切的情绪联系有助于人体健康。</span><span class="chip">把最烦恼的想法说出来，有助于减轻压力，增进健康。交流是一种延长患者生命的新药。</span><span class="chip">悲观会对治疗产生不良影响，乐观和希望会对治疗带来好处。</span><span class="chip">良好的人际关系是缓解压力的关键。朝夕相处的人对一个人的健康至关重要。这个人际关系对你越重要，它对你健康的影响就越大。</span></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>关怀的医学：把情绪智力引入诊室</h2><span class="en">CARING MEDICINE</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">亲历</span><h4>一个问不出口的问题</h4><span class="ar">▶</span></div><div class="cb"><div class="in">作者躺在手术台上接受放射性染料检查，X 光仪器沿自动轨道不断变换角度拍照，呼呼、滴答。检查持续一个半小时，肾脏专家冲进房间、快速自我介绍、离开去扫描 X 光，<b>没有回来告诉结果</b>。作者被搞得头晕目眩，萦绕了一上午的问题怎么也问不出来——幸好同行的医生朋友替他问出：「我朋友的父亲死于膀胱癌。他很想知道 X 光有没有显示癌症的迹象。」对方一边赶去诊室一边简短回答：「未见异常。」研究发现，平均每位病人有 3 个或更多问题准备询问医生，进入诊室后平均只问了<b>一个半</b>。</div></div></div></div><p class="prose">这种情况每天在世界各地的医院发生几千次。</p><p class="prose">医学应当扩展对健康的认识，把病人在患病期的情绪状况包括进去：病人应定期获得全面的医学信息，与医生平等地共同决策；推广辅导病人在几分钟内有效询问医生的项目；术前指导——传授放松技巧、提前回答问题、明确告知康复期情况——使病人术后康复时间平均<b>缩短 2～3 天</b>；新型病房允许家人陪住，给病人家的感觉。</p><p class="prose">放松训练在临床上已有成熟项目：马萨诸塞大学卡巴金减压诊所提供为期 10 周的<b>觉知和瑜伽课程</b>，训练深度放松的日常技巧；迪恩·奥尼什的心脏病治疗项目以放松、瑜伽加低脂饮食为核心，参与一年后，严重到需要冠状动脉搭桥的病人有效遏制了动脉斑块的形成——利用的正是班森所说的<b>「放松回应」</b>：放松的生理机制与引发众多疾病的应激唤起正好相反。</p><p class="prose">科学发现带来两大启示。<b>其一</b>，帮助人们调节愤怒、焦虑、抑郁、悲观和孤独，本身就是预防疾病——危害相当于吸烟，而向儿童传授情绪智力技能使其成为一生的习惯，是能产生广泛公共健康效果的方法；年届退休者与高危人群（穷人、单亲职业妈妈、高犯罪率地区居民）是另两个目标群体。</p><p class="prose"><b>其二</b>，病人的心理需求与医疗需求协调一致，他们将会受益匪浅——而且人道医学还包含商业价值：髋骨骨折老年病人在矫形治疗之外接受抗抑郁治疗后，出院时间平均提早两天，<b>约 100 位病人总共节省了 97361 美元</b>医疗费用。</p><div class="aband"><q>同情心不仅仅是握着病人的手。它是一剂良药。</q><cite>——第十一章·关怀的医学（病人公开信）</cite></div><div class="chips"><span class="chip">科学发现的启示：帮助人们更好地调节不安情绪是预防疾病的一种方法；如果病人的心理需求与其医疗需求协调一致，他们将会受益匪浅；关怀是医学伦理的要求。</span></div><div class="check" data-k="c08"><p class="ct">用心管理与心与药 · 自测</p><label><input type="checkbox"><span>我能说出恶意批评与莱文森四原则的差别</span></label><label><input type="checkbox"><span>我能列举三种非正式网络：沟通网、专业网、信任网</span></label><label><input type="checkbox"><span>我知道愤怒控制培训的效果：心脏病第二次发作概率降低 44%</span></label><label><input type="checkbox"><span>我能说出科恩实验的数字：压力大的人群 47% 患感冒，压力小的人群 27%</span></label><label><input type="checkbox"><span>我能复述斯皮格尔的发现：群体活动使晚期乳腺癌患者存活时间翻倍</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">题记</span><span class="nd"><b>卡缪题记｜</b>第十一章以《瘟疫》对开门：源文分四行排印（问句 / 回答很快： / 痛苦。 / 署名），本篇拆作两条题记呈现，文字逐字未动；『回答很快：』为叙述过渡语，不入引文。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·戈尔曼《情商：为什么情商比智商更重要》（中信出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜用心管理与心与药</span><a href="../07-亲密敌人/index.html">← 亲密敌人</a><a href="../09-家庭熔炉与情绪再学习/index.html">家庭熔炉与情绪再学习 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='eq-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

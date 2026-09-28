@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第一部分·情绪的功能与情绪失控 · 杏仁核劫持｜情商 精读</title>
+<meta name="description" content="第一章回答「情绪有什么用」——每种情绪都是进化的行动准备；第二章回答「人为什么会失控」——丘脑到杏仁核的神经捷径让情绪抢在理性之前 12 毫秒爆发，而前额叶是唯一的制动阀。">
+<style>
+:root{
+  --paper:#F3F2EC;      /* 湖灰纸底 */
+  --paper-2:#E6E4DA;    /* 纸色深一档 */
+  --card:#FBFAF4;
+  --ink:#1F2B28;        /* 深湖墨（主色） */
+  --ink-2:#35483F;
+  --ink-deep:#0B1412;   /* 深湖（hero 底） */
+  --gold:#2E6E63;       /* 湖青（强调 · 情绪湖） */
+  --gold-b:#6BA89A;
+  --gold-soft:rgba(46,110,99,.14);
+  --cinnabar:#A04327;   /* 杏仁红（警示 · 杏仁核劫持） */
+  --teal:#B08A3A;       /* 暖金（对照 · 情绪素养） */
+  --tx:#24303D;
+  --tx-2:#445360;
+  --tx-3:#77828E;
+  --line:rgba(31,43,40,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(31,43,40,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#35483F 0%,var(--ink-deep) 62%);
+  color:#E9F0ED;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(107,168,154,.42)}
+.hero::after{inset:22px;border:1px solid rgba(107,168,154,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(107,168,154,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#EFF5F2}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(234,240,237,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(107,168,154,.34);color:rgba(234,240,237,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(46,110,99,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#E8EFEA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(107,168,154,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#ECF1EE;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(107,168,154,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#ECF1EE;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(231,238,235,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(46,110,99,.5);box-shadow:0 4px 18px rgba(31,43,40,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(46,110,99,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(176,138,58,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(176,138,58,.1);color:var(--teal);border:1px solid rgba(176,138,58,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(46,110,99,.45);background:rgba(46,110,99,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(140,52,34,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(46,110,99,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,247,241,.94);
+  border-bottom:1px solid rgba(31,43,40,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(31,43,40,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#35483F;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(46,110,99,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(31,43,40,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(31,43,40,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A828C;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-两版序言/index.html">← 两版序言</a><a href="../03-愚蠢的聪明人与认识自己/index.html">愚蠢的聪明人与认识自己 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">核</div>
+  <div class="stamp ">劫持</div>
+  <h1>情绪的功能与情绪失控 · 杏仁核劫持</h1>
+  <p class="sub">第一章回答「情绪有什么用」——每种情绪都是进化的行动准备；第二章回答「人为什么会失控」——丘脑到杏仁核的神经捷径让情绪抢在理性之前 12 毫秒爆发，而前额叶是唯一的制动阀。</p>
+  <div class="meta"><span>第一部分</span>
+    <span class="k">杏仁核</span>
+    <span>正文 20,651 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>情绪的功能</a><a href="#s3" data-t="s3"><span class="cn">叁</span>激情压倒理智</a><a href="#s4" data-t="s4"><span class="cn">肆</span>驱动力</a><a href="#s5" data-t="s5"><span class="cn">伍</span>两种心理</a><a href="#s6" data-t="s6"><span class="cn">陸</span>杏仁核</a><a href="#s7" data-t="s7"><span class="cn">柒</span>情绪哨兵</a><a href="#s8" data-t="s8"><span class="cn">捌</span>前额叶</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是全书的神经科学地基：先懂情绪的功能，再懂失控的机制</p><p class="thesis">情绪的词源来自拉丁语 <b>motere——行动、移动</b>：每一种情绪都是进化赋予的即时行动计划。但为 5 万个世代打磨的警报系统，跑在了只为最近 1 万年文明设计的新皮层前面——<b>杏仁核提出动议，前额叶应对处理</b>，这场头脑与心灵的博弈就是情商的物理基础。</p><div class="chain"><div class="node"><div class="n">功能</div><div><p class="tt">情绪即驱动</p><p class="dd">愤怒供血手部、恐惧供血双腿、悲伤降低能量——每种情绪隐含一种行动倾向</p></div></div><div class="node"><div class="n">构造</div><div><p class="tt">脑的三层</p><p class="dd">脑干 → 边缘系统（情绪脑）→ 新皮层（思考脑）；思考脑从情绪脑进化而来</p></div></div><div class="node"><div class="n">警报</div><div><p class="tt">杏仁核</p><p class="dd">情绪哨兵：扫描每种处境，「我讨厌它吗？它会伤害我吗？」——是则拉响神经警报</p></div></div><div class="node"><div class="n">捷径</div><div><p class="tt">双通道</p><p class="dd">丘脑→杏仁核只要一次突触，比丘脑→新皮层→杏仁核快一倍，先斩后奏</p></div></div><div class="node"><div class="n">劫持</div><div><p class="tt">失控</p><p class="dd">罗伯斯「我当时疯了，头都炸开了」——新皮层来不及判断，边缘脑宣布紧急状态</p></div></div><div class="node"><div class="n">制动</div><div><p class="tt">左前额叶</p><p class="dd">神经恒温器：减缓杏仁核的激发信号——杏仁核提出动议，前额叶应对处理</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>情绪的功能：从一场沉船讲起</h2><span class="en">FUNCTION</span></div><div class="aband"><q>用心去看才看得清楚，本质的东西用肉眼是看不见的。</q><cite>——第一章题记·圣埃克苏佩里《小王子》</cite></div><p class="prose">第一章的入口是一次沉船：美国全国铁路客运公司一列火车冲进河里，昌西夫妇把毕生精力都用来照顾脑瘫的 11 岁女儿安德烈亚——生命的最后一刻，他们竭尽全力把她推出了车窗。孩子获救，夫妇随车厢沉入水底。从进化生物学看，亲代牺牲是为了「成功繁殖」；但对危急关头的父母来说，<b>这一切都是出于爱</b>。</p><p class="prose">只有强烈的爱，才能让父母克服自身的求生欲望。</p><p class="prose">章首「专家导读」把结论说透：情绪指导我们迎接困境或重任的挑战——危险、痛苦的损失、百折不挠坚持目标、建立人际关系、组建家庭，这些任务往往过于重大，无法交由理智单独处理。<b>当情绪占据支配地位时，智力可能毫无意义</b>——这正是下一章要展开的机制。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>当激情压倒理智</h2><span class="en">PASSION OVERTHROWS</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">悲剧</span><h4>克雷布特里一家：一个恶作剧与一把小口径手枪</h4><span class="ar">▶</span></div><div class="cb"><div class="in">14 岁的玛蒂尔达计划在父母凌晨一点回家时从壁橱跳出来大叫一声。可父亲鲍比以为女儿当晚不在家，听到声响便抄起小口径手枪进屋一探究竟——玛蒂尔达跳出来的瞬间，他朝女儿的脖子开了枪。<b>恐惧使鲍比在没有看清对象之前，甚至在听出他女儿的声音之前就开了枪。</b>恐惧的本能反应在史前时期具有生死攸关的意义，可悲的是，正是这种本能反应酿成了悲剧。</div></div></div><div class="case"><div class="ch"><span class="tag mid">虚惊</span><h4>作者的山口暴风雪：警觉的恐惧救了一命</h4><span class="ar">▶</span></div><div class="cb"><div class="in">早春的一天，科罗拉多山口高速，突降的暴风雪挡住视线——作者把车停在路边等待。半小时后重新上路，只行驶几百米就遇到追尾事故堵车。<b>那天我出于警觉的恐惧很可能救了我一命</b>——内心的感觉驱使他把车停下，集中注意力应对即将来临的危险。</div></div></div></div><p class="prose">为什么进化没有跟上？从情绪基础神经回路的生物设计机制来看，人类与生俱来的生物构造是在过去 <b>5 万个世代</b>被证明行之有效的机制；而最近的 1 万年，人口从 500 万膨胀到 50 亿，人类文明迅速发展——但这期间在人类情绪生物机制上却几乎没有留下任何痕迹。</p><p class="prose">我们常常会遇到后现代的困境，而用于应对困境的情绪机制却是更新世的。</p><p class="prose">最早的《汉谟拉比法典》、《十诫》和阿育王的诏书，都可以被视为对人类情绪进行约束、控制和教化的尝试——正如弗洛伊德在《文明及其不满》中所说，社会必须从外部强加一定的规矩，以克制人类随意泛滥的内在情绪。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>驱动力：每种情绪一份行动计划</h2><span class="en">DRIVERS</span></div><p class="prose">情绪（emotion）的词源来自拉丁语「motere」，意为「行动、移动」——<b>每一种情绪都隐含着某种行动的倾向</b>。情绪是深层的驱动力，只有在「受教化」的成年人身上，才会经常出现情绪与反应存在很大偏差的现象。依靠新的人体和大脑检测方法，研究者为每种情绪找到了不同的生理学证据：</p><div class="tbwrap"><table><thead><tr><th>情绪</th><th>源文生理证据</th></tr></thead><tbody><tr><td>愤怒</td><td>血液流到手部，方便抓起武器或攻击敌人；心率加快，肾上腺素激增</td></tr><tr><td>恐惧</td><td>血液流向大块骨骼肌（双腿）方便逃跑，面部因失血发白；身体瞬间呆住，脑干释放保持警觉的激素</td></tr><tr><td>快乐</td><td>抑制负面感觉及提升可用能量的大脑中枢活跃度增强，忧虑中枢趋于平静；身体复原并储备热情和力量</td></tr><tr><td>爱</td><td>唤起副交感神经——「放松反应」，与「战斗或者逃跑」截然相反；身体平静满足，易于合作</td></tr><tr><td>吃惊</td><td>眉毛上挑使视野开阔，允许更多光线射向视网膜，捕捉更多关于意外事件的信息</td></tr><tr><td>厌恶</td><td>上唇撇向一边、鼻头微皱——达尔文认为这是不吸入有害气体而屏住呼吸的本能反应</td></tr><tr><td>悲伤</td><td>降低生命活动的能量和热情，新陈代谢减缓——为哀悼损失创造机会，并把脆弱的个体留在更安全的地方</td></tr></tbody></table></div><p class="prose">这些生理倾向还被生活经历和文化进一步塑造：失去爱人令人悲伤在全世界都一样，但如何表达痛苦、哪些人值得哀悼，却由文化来定义。生存的压力曾经使情绪反应至关重要——远古时期「一触即发」的愤怒有生死攸关的意义，但对当代 13 岁就能获得自动化武器的儿童来说，它经常引发灾难性后果。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>两种心理与大脑的发育</h2><span class="en">TWO MINDS</span></div><p class="prose">一位刚离婚的朋友说「我不再想着他了，我真的不在乎」，说话时眼里却泛着泪花——<b>一种是情绪心理的行为，另一种是理性心理的行为</b>。我们有两种心理，一种用来思考，一种用来感觉；感觉越强烈，情绪对心理的主导作用就越强，理性的作用就越弱。16 世纪的伊拉斯谟早就描述过这场永无休止的纷争：</p><div class="aband"><q>众神之王朱庇特赋予人们的激情多于理智——两者的比例大概是24:1。为了制衡理智的单极力量，他扶植了两个暴君：愤怒和贪婪。理智与这两股联合力量对抗的胜算如何，看看人类在日常生活中的表现就一清二楚了。理智只好使出了最后一个招数，不断强调道德规范，直至声音沙哑。而愤怒和贪婪则让理智见鬼，而且越来越吵闹和嚣张，直到最后理智筋疲力尽，放弃，投降。</q><cite>——第一章·人的两种心理（引伊拉斯谟）</cite></div><div class="ladder"><div class="step"><div class="dot">1</div><h4>脑干：自动调节器</h4><p>主导呼吸、新陈代谢等生命基本功能，控制刻板反应——没有思考或学习的功能，统治了爬行动物时代</p></div><div class="step"><div class="dot">2</div><h4>边缘系统：情绪脑</h4><p>从嗅叶进化而来，环绕脑干——学习和记忆两个工具让生存抉择更明智；渴望、愤怒、爱恋、退缩都受它控制</p></div><div class="step"><div class="dot">3</div><h4>新皮层：思考脑</h4><p>约 1 亿年前哺乳动物大脑生长突增的产物——制定策略、长远计划，艺术、文明和文化的繁盛都是它结出的硕果</p></div></div><p class="prose">关键在于次序：<b>思考脑从情绪脑进化而来，情绪脑的出现要早于思考脑</b>。新皮层虽然是大脑的高级中枢，但对于情绪的紧急状况需要服从边缘系统——情绪中枢对包括思考中枢在内的大脑其他部分的运作具有强有力的影响。</p><div class="aband"><q>理性和感性就如同一个跷跷板，有临界平衡点，也会有失衡的时候。</q><cite>——第一章·人的两种心理</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>杏仁核：激情中枢与神经警报</h2><span class="en">AMYGDALA</span></div><div class="aband"><q>生活对理性的人来说是喜剧，对感性的人来说是悲剧。</q><cite>——第二章题记·霍勒斯·沃波尔</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag bad">反面</span><h4>「职业女性杀手」：被愤怒和恐惧淹没的几分钟</h4><span class="ar">▶</span></div><div class="cb"><div class="in">1963 年 8 月一个炎热午后，刚刑满释放的窃贼理查德·罗伯斯闯入纽约上东区一间寓所，绑住两位年轻女子。本已打算脱身，但人质警告「她记得他的样子，会协助警察抓捕归案」——他突然陷入恐慌，完全失去了控制，抓起汽水瓶把两人砸晕后用菜刀行凶。25 年后他悲恸地说：<b>「我当时疯了，头都炸开了。」</b>神经失控发生在顷刻之间，激发立即的行动反应，掌管思考的新皮层根本来不及全面观察当前的形势——失控者在失控过去之后，根本不知道自己到底怎么了。</div></div></div><div class="case"><div class="ch"><span class="tag good">正面</span><h4>杏仁核切除之后：被剥夺意义的人生</h4><span class="ar">▶</span></div><div class="cb"><div class="in">一位年轻人为控制严重癫痫发作手术去除了杏仁核。此后他对人群完全失去兴趣，认不出原本亲密的朋友、亲戚，甚至母亲。<b>杏仁核如同情绪记忆的仓库，也是意义本身的仓库</b>——没有杏仁核的人生相当于被剥夺了个人意义的人生。流泪也是人类特有的情绪信号，由杏仁核及其附近的扣带回控制。</div></div></div></div><p class="prose">杏仁核是行动中枢：它对每个处境和认知进行判断，质疑每一种处境——「我讨厌它吗？它会伤害我吗？我害怕它吗？」——一旦答案是肯定的，就像神经警报一样向大脑各部分发出危机信号，促使身体分泌「战斗或逃跑」的荷尔蒙，激活心血管系统、肌肉以及内脏器官。</p><p class="prose">第一个发现杏仁核在情绪脑神经中关键作用的是纽约大学的约瑟夫·勒杜克斯——他的研究确立了杏仁核行动中枢的地位，颠覆了长久以来对大脑边缘系统的认识。</p><div class="aband"><q>在人脑的构造中，杏仁核相当于一家警报公司，操作员随时待命，一旦家庭安全系统发出遇险信号，立即向消防队、警察局及邻近社区发出紧急警报。</q><cite>——第二章·神经警报</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>情绪哨兵：绕过新皮层的神经捷径</h2><span class="en">SENTINEL</span></div><p class="prose">英格兰一家河边餐厅，一位食客看见女孩死死盯着河面、面无人色，他不明就里跳进河里——落地才意识到有个小孩失足落水，他正好去搭救。是什么促使他在不明就里的情况下跳进河里？答案在于他的杏仁核。勒杜克斯的研究揭示了人脑构造赋予杏仁核<b>情绪哨兵</b>的地位——这是近 10 年情绪研究领域最有力的发现之一。</p><div class="tbwrap"><table><thead><tr><th>通道</th><th>源文描述</th></tr></thead><tbody><tr><td>丘脑 → 杏仁核</td><td>一束较大的神经元，直接联结；只载有不完全的信息，但传递速度快——率先触发杏仁核反应</td></tr><tr><td>丘脑 → 新皮层 → 杏仁核</td><td>信号经新皮层多个层次的大脑回路充分分析后全面掌握情况，反应更精准——但传输时间大约是前者的两倍</td></tr><tr><td>时间差</td><td>老鼠的杏仁核能在感知的 12 毫秒之后开始反应——这条捷径为紧急关头的即时行动节省了时间</td></tr></tbody></table></div><p class="prose">这条「神经的后院小巷」解释了感性压倒理性、情绪失控然后后悔的原因。勒杜克斯的关键实验破坏了老鼠的听觉皮层——老鼠的新皮层接收不了声音信号，却依然很快学会害怕伴随电击的声音：<b>杏仁核可以独立地感知、记忆和指挥恐惧情绪</b>。</p><p class="prose">杏仁核从快速通道接收到的只是一种粗糙的信号——「你无须确切知道它是什么，就可以判断它可能有危险。」</p><div class="aband"><q>情绪系统可以不依赖于新皮层自动作出反应。有些情绪反应和情绪记忆可以在完全没有任何意识和认知参与的情况下形成。</q><cite>——第二章·情绪哨兵（勒杜克斯）</cite></div><p class="prose">由此产生「<b>前认知情绪</b>」——在思想之前出现的感觉，像根据试探性的前奏获得整体的感知印象，在得到全面证据确认之前就引发行动。</p><p class="prose">而且杏仁核的比较方法是联想式的：当前状况的某个关键要素与以前相似，它就会产生「匹配」的判断——<b>情绪爆发是因为杏仁核发出了过时的神经报警，把过去的情绪记忆与现在的事实进行了草率的匹配</b>。一位前军队护士因储物柜里孩子藏的恶臭纸尿裤，瞬间被战场上的害怕、厌恶和恐慌吞没，正是过时的警报。</p><p class="prose">更麻烦的是，杏仁核在婴儿出生时就已接近完全成形，人生早期的情绪记忆储存在杏仁核里，模糊粗糙、无法用语言描述——我们对情绪爆发困惑不已的一个原因正在于此。</p><p class="prose">记忆也因此分成两套系统：海马体负责记忆事实——它让你认出表姐的脸；杏仁核负责记忆情绪——它提醒你是否喜欢她。杏仁核唤起的程度越强，记忆就越深刻，那些最令我们害怕或恐慌的生活经历是我们最难以磨灭的记忆。</p><div class="aband"><q>海马体对你认出表姐的脸起到关键作用，而杏仁核则会提醒你不是真的喜欢她。</q><cite>——第二章·情绪记忆的专家（勒杜克斯）</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>情绪管理员：前额叶的制动与协调</h2><span class="en">PREFRONTAL</span></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>深夜来电：先冲动，再修正</h4><span class="ar">▶</span></div><div class="cb"><div class="in">6 岁的杰西卡第一次在小伙伴家过夜。接近午夜电话骤响，妈妈冲向电话、心怦怦跳，抓起话筒脱口而出：「杰西卡！」——电话那头：「哦，我好像拨错号码了……」听到这里，妈妈恢复冷静，礼貌地问：「你要的是什么号码？」<b>杏仁核主导冲动的反应，情绪脑的其他部分可以纠正反应</b>——个体容易先冲动，再修正。</div></div></div></div><p class="prose">大脑调节杏仁核的开关位于<b>前额叶</b>。神经心理学家发现，左前额叶的一个功能是控制不愉快的情绪，相当于神经恒温器：右前额叶是恐惧、攻击等负面感觉产生的地方，左前额叶通过压抑右前额叶来抑制这些原始情绪——左前额叶受损的中风病人容易出现过度紧张和恐惧，右前额叶受损的病人则表现出「过度欢乐」。</p><p class="prose">一句话概括两者关系：<b>杏仁核提出动议，前额叶应对处理</b>。</p><p class="prose">前额叶也是工作记忆的所在地：焦虑、愤怒等强烈情绪的信号会制造<b>神经静电</b>，破坏前额叶保持工作记忆的能力——这就是我们悲伤时不能好好思考的原因，也是持续的情绪困扰造成儿童智力缺陷、损害学习能力的原因。</p><p class="prose">智商超出平均水平但学习成绩差的男学童，神经心理学测试发现额叶皮层功能受损、前额叶无法控制边缘组织——原因不在智力欠缺，而在控制情绪生活的能力出了问题。</p><div class="aband"><q>智商测试的是新皮层，情商测试的是情绪脑。</q><cite>——第二章·情绪和思维的协调</cite></div><p class="prose">艾奥瓦大学的达马西欧研究了「前额叶–杏仁核」通道受损的病人：智商测试毫无退化，决策能力却严重缺陷，连「什么时候预约」也犹豫不决——因为无法获得储藏在杏仁核中的情绪知识，每件事都处于灰色的中立地带。由此他持反直觉的立场：<b>感受对理性决策不可或缺</b>，情绪脑正是以这种方式与思考脑共同参与推理。</p><p class="prose">边缘系统与新皮层、杏仁核与前额叶互为补充——传统范式认为理性应当超脱于感性的约束，新范式则要求我们使头脑和心灵保持和谐。</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>神经捷径</h3><p class="cp">感觉信号由丘脑直接送达杏仁核——绕过新皮层的双通道让情绪抢在认知之前行动</p></div><div class="card num"><div class="idx">二</div><h3>情绪劫持</h3><p class="cp">杏仁核调取过往的情绪记忆作出反应——克雷布特里把一次失误当成了袭击，悲剧由此发生</p></div><div class="card num"><div class="idx">三</div><h3>制动与协调</h3><p class="cp">前额叶是情绪的制动阀与协调者——工作记忆被情绪冲垮，正是劫持得手的时刻</p></div></div><div class="check" data-k="c02"><p class="ct">杏仁核劫持 · 自测</p><label><input type="checkbox"><span>我能说出每种情绪都是一份进化的行动准备——包括哭泣在内的反应各有功能</span></label><label><input type="checkbox"><span>我知道情绪抢在思考之前的神经捷径：丘脑直达杏仁核的双通道</span></label><label><input type="checkbox"><span>我能解释「情绪失明」的半脑实验说明了什么</span></label><label><input type="checkbox"><span>我知道前额叶是情绪的制动阀，也是工作记忆的载体</span></label><label><input type="checkbox"><span>我能复述达马西欧的结论：感受对理性决策不可或缺</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">题记</span><span class="nd"><b>两章题记｜</b>第一章与第二章章首各有一条题记（《小王子》与霍勒斯·沃波尔语），源文紧随章名排印，本篇按原样用作对应小节的金句条，不另设篇题记。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·戈尔曼《情商：为什么情商比智商更重要》（中信出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第一部分｜情绪功能与杏仁核劫持</span><a href="../01-两版序言/index.html">← 两版序言</a><a href="../03-愚蠢的聪明人与认识自己/index.html">愚蠢的聪明人与认识自己 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='eq-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

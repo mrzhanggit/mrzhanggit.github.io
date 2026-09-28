@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第3章·关于能力和成就的真相 · 天赋神话的破产｜终身成长 精读</title>
+<meta name="description" content="从莫扎特与达尔文的酝酿期，到初中生成绩分化的追踪研究，再到夸奖实验里 40% 的谎报成绩——德韦克用证据说明：成就的真正要素是思维模式、努力与学习方法。">
+<style>
+:root{
+  --paper:#F4F3EA;      /* 暖晨纸底 */
+  --paper-2:#E7E6D8;    /* 纸色深一档 */
+  --card:#FCFBF4;
+  --ink:#242E1F;        /* 晨蓝墨（主色） */
+  --ink-2:#3A4A33;
+  --ink-deep:#0F160B;   /* 深夜晨蓝（hero 底） */
+  --gold:#4A7C3F;       /* 铸金（强调 · 硬币塔与习惯复利） */
+  --gold-b:#8CB57E;
+  --gold-soft:rgba(74,124,63,.16);
+  --cinnabar:#9C4A2F;   /* 锈红（警示 · 贫穷的习惯） */
+  --teal:#C77B2E;       /* 松石绿（对照 · 成长与正轨） */
+  --tx:#2A3326;
+  --tx-2:#4A5744;
+  --tx-3:#7A8174;
+  --line:rgba(36,46,31,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(36,46,31,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#3A4A33 0%,var(--ink-deep) 62%);
+  color:#EDF1E6;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(140,181,126,.42)}
+.hero::after{inset:22px;border:1px solid rgba(140,181,126,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(140,181,126,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(156,74,47,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F2F5EC}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(237,241,230,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(140,181,126,.34);color:rgba(237,241,230,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(156,74,47,.6);background:rgba(156,74,47,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(74,124,63,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EBF0E2;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(140,181,126,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#EFF2E4;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(140,181,126,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#EFF2E4;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(236,240,230,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(74,124,63,.5);box-shadow:0 4px 18px rgba(36,46,31,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(74,124,63,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(199,123,46,.055)}
+.duo .colR{background:rgba(156,74,47,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(156,74,47,.1);color:var(--cinnabar);border:1px solid rgba(156,74,47,.28)}
+.case .tag.good{background:rgba(199,123,46,.1);color:var(--teal);border:1px solid rgba(199,123,46,.28)}
+.case .tag.mid{background:rgba(122,130,140,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(74,124,63,.45);background:rgba(74,124,63,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(156,74,47,.55);border-radius:8px;
+  background:rgba(156,74,47,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(134,60,38,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(156,74,47,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(74,124,63,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(248,247,238,.94);
+  border-bottom:1px solid rgba(36,46,31,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(36,46,31,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#3A4A33;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(74,124,63,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(36,46,31,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(36,46,31,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#7A8174;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../03-第2章下-失败的意义与问与答/index.html">← 思维模式解析（下）</a><a href="../05-第4章-体育冠军的思维模式/index.html">体育·冠军的思维模式 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">能</div>
+  <div class="stamp ">真相</div>
+  <h1>关于能力和成就的真相 · 天赋神话的破产</h1>
+  <p class="sub">从莫扎特与达尔文的酝酿期，到初中生成绩分化的追踪研究，再到夸奖实验里 40% 的谎报成绩——德韦克用证据说明：成就的真正要素是思维模式、努力与学习方法。</p>
+  <div class="meta"><span>第3章</span>
+    <span class="k">天赋神话</span>
+    <span>正文 18,274 字</span>
+    <span>13 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>爱迪生的神话</a><a href="#s3" data-t="s3"><span class="cn">叁</span>成绩分化</a><a href="#s4" data-t="s4"><span class="cn">肆</span>不愿努力</a><a href="#s5" data-t="s5"><span class="cn">伍</span>发现你的头脑</a><a href="#s6" data-t="s6"><span class="cn">陸</span>学习方法</a><a href="#s7" data-t="s7"><span class="cn">柒</span>天生的资质</a><a href="#s8" data-t="s8"><span class="cn">捌</span>人人出色</a><a href="#s9" data-t="s9"><span class="cn">玖</span>老师的信念</a><a href="#s10" data-t="s10"><span class="cn">拾</span>艺术才能</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>夸奖实验</a><a href="#s12" data-t="s12"><span class="cn">拾貳</span>否定标签</a><a href="#s13" data-t="s13"><span class="cn">拾叁</span>自查练习</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是天赋神话的听证会：名人故事、校园追踪、夸奖实验与标签研究轮番作证</p><p class="thesis">我们总认为，是那些孤独、聪明的人突然间发明了了不起的东西。德韦克把证据一条条摆上台面：<b>爱迪生有 30 名助手</b>，莫扎特酝酿了 10 年；初中转折期里只有固定型学生的成绩下滑；夸奖「聪明」而非「努力」，会把普通孩子变成拒绝挑战甚至谎报成绩的孩子；而否定标签只对固定型思维模式者生效。</p><div class="chain"><div class="node"><div class="n">破题</div><div><p class="tt">爱迪生的神话</p><p class="dd">不是孤僻天才一个人灵光一闪——他有 30 名助手，灯泡是多项发明的组合</p></div></div><div class="node"><div class="n">校园</div><div><p class="tt">成绩分化</p><p class="dd">初中转折期：两组学生起点几乎一样，只有固定型学生成绩突然下降并越来越差</p></div></div><div class="node"><div class="n">歧路</div><div><p class="tt">不愿努力综合征</p><p class="dd">「我的主要目标就是尽可能简单地去做事情，这样我就不用太努力了」</p></div></div><div class="node"><div class="n">极端</div><div><p class="tt">埃斯卡兰特与柯林斯</p><p class="dd">「最差的高中」学微积分领先全国；贫民窟的孩子像天才一样被对待</p></div></div><div class="node"><div class="n">实验</div><div><p class="tt">夸能力 vs 夸努力</p><p class="dd">被夸能力的孩子拒绝挑战、近 40% 谎报成绩；被夸努力的孩子 90% 拥抱挑战</p></div></div><div class="node"><div class="n">标签</div><div><p class="tt">肯定与否定</p><p class="dd">肯定标签让人害怕失去，否定标签只禁锢固定型——成长型可以反击</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>想象中的爱迪生，与真正的爱迪生</h2><span class="en">THE EDISON MYTH</span></div><p class="prose">尝试去想象托马斯·爱迪生，尽量生动地想。德韦克每次问大家，得到的总是同一个画面：「他在实验室里，被一堆仪器围绕」……「他一个人进行着这些工作，因为只有他自己知道他追求的是什么」「他正在研究电灯泡。突然，电灯泡亮了！」——孤僻的天才，灵光一现。</p><p class="prose">但历史记载显示他完全不是一个这样的人：在电灯泡的研究工作中，他有 <b>30 名助手</b>，其中包括训练有素的科学家，研究工作在一家公司投资的、标志着当时最高水平的实验室里进行。</p><p class="prose">电灯泡也不是突然间被发明的——它是由多项旷日持久的发明创新组成的，每一步都需要化学家、数学家、物理学家、工程师以及吹制玻璃的工人协作完成。这个「门洛帕克的奇才」其实是个精明的企业家：他清楚发明的商业潜力，甚至知道如何讨好媒体。</p><p class="prose">是的，他是个天才，但<b>并非从小就是天才</b>——传记作者保罗·伊斯雷尔认为他当时在家乡不过是一个普通的男孩。</p><div class="aband"><q>关于能力和成就，我们有很多错误的想法，特别是我们总认为，是那些孤独、聪明的人突然间发明了了不起的东西。</q><cite>——第3章</cite></div><p class="prose">同样的神话也罩在达尔文与莫扎特头上：《物种起源》是这个领域里多年团队协作、与同事和导师们的上千次讨论、废弃了数篇草稿、奉献了半生精力的产物；莫扎特也是经历了超过 10 年的酝酿，才创作出今天我们仰慕的作品——在此之前，他的作品只是将其他作曲家的作品进行大块拼接而已。本章讲的就是人们取得成就的真正要素。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>思维模式和成绩</h2><span class="en">MINDSET AND GRADES</span></div><p class="prose">回到日常生活。研究团队在一些学生进入初中时评估了他们的思维模式，然后追踪他们之后两年的学习生活。进入初中是一项很大的挑战：功课更难、评分更严格、教学不再有针对性，而青春期的一切又发生在同一时刻。</p><p class="prose">结果泾渭分明——<b>只有固定型思维模式的学生出现了成绩下滑</b>：突然的下降，并在接下来的两年里越来越差；成长型思维模式的学生们则在后来的两年里成绩逐步提高。而两组学生刚进入初中时的成绩几乎一样。</p><p class="prose">固定型的学生这样解释糟糕的成绩：一些人贬低自己——「我是最笨的」「我被数学搞得头都大了」；更多人转而责怪其他人——「因为数学老师又胖又讨厌」「因为英语老师是一个大屁股胖子」「因为老师嗑药了」。这些五花八门的分析问题的方式，让他们很难在未来获得成功。</p><p class="prose">成长型的学生面对失败逼近的威胁，则动用全部能力来学习——有时也会感到招架不住，但采取的应对方式是坚持不懈，全力以赴。他们就像乔治·丹齐格：这位加州大学伯克利分校的数学系研究生上课迟到，抄下黑板上的两道「作业题」，花了很多天才解出来——那其实是两道尚未解决的著名数学难题。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>「不愿努力」综合征</h2><span class="en">NO-EFFORT SYNDROME</span></div><p class="prose">在固定型思维模式中，青春期是一场巨大的测验：<b>我是聪明还是愚蠢？我长得好看还是难看？我是胜利者还是失败者？</b>而且失败者将永远是失败者。所以这么多青春期的学生绞尽脑汁——不为了学习，而是为了保护自我意识，主要途径就是放弃努力。他们非常同意这样的说法：</p><div class="aband"><q>在学校里，我的主要目标就是尽可能简单地去做事情，这样我就不用太努力了。</q><cite>——一位固定型思维模式的学生</cite></div><p class="prose">这种「不愿努力」综合征也被当作青少年与成年人划分界线的方式：成年人说「现在我要看看你到底有什么本事」，他们的回答是「不，我是不会让你看到的」。教育家约翰·霍尔特说，当其他人对自己品头论足的时候，我们都会使出这套招数——「在某一个环节上，他的智力水平和他的学校教育之间产生了脱节」。</p><p class="prose">而成长型思维模式的学生认为，停止努力是自己无法理解的一件事：青春期是一个充满了机遇的时期。</p><p class="prose">改变可以来得非常直接。在向一组新学生介绍成长型思维模式时，组里最顽固难搞、最不愿努力的孩子吉米两眼含泪地抬起头说：<b>「你是说，我可以不是一个笨蛋吗？」</b>从那天起，他开始努力学习、熬夜做作业、提前交作业好提早拿到反馈并进行修改——他现在明白，努力学习并不代表你很脆弱，而是会让你变得更加聪明。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>发现你的头脑：一匹马的比赛</h2><span class="en">DISCOVERING YOUR BRAIN</span></div><p class="prose">德韦克一位密友二年级时，老师毕尔女士让每个学生画一匹马并剪下来，贴在黑板上方向学生灌输成长型思维模式理念：<b>你们的马和你们的头脑跑得一样快。每一次你学到了新知识，你的马就会前进。</p><p class="prose"></b>这位朋友当时对「头脑」这件事并不确定——爸爸总说他「说得太多，却想得太少」，他的马一直停在起点，而班里的天才汉克和贝利的马跑在所有人的前面。但他一直在继续加油：和母亲一起看漫画、和奶奶玩牌时记分数。学期结束时，他写下了一首诗：</p><div class="aband"><q>很快，被我喂养得很好的骏马 会像三冠马一样向前冲去，而且没有人 能够阻止它。 经过几个星期、几个月 他不断向前 一匹一匹超过了其他马 在春末最后冲刺时 汉克和贝利两座高山在前 只需要再做些减法练习 在学校最后的铃声响起时， 我的马赢了——“仅以一鼻之差领先！” 之后我知道，我有聪明的头脑： 我的马可以证明。</q><cite>——保罗·沃特曼，作于二年级学期末</cite></div><p class="prose">当然，学习不该是一场竞赛。但这场比赛帮助我的朋友认识到了自己的头脑，并将它和学校的学习联系起来。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>适应大学生活：两种学习方法</h2><span class="en">TWO STUDY STYLES</span></div><p class="prose">大学是把高中里聪明的学生聚在一起的地方——昨天还占山为王，今天呢？没有人比医科大学预科班的学生更明显地表现出这种焦虑：害怕被摘掉皇冠，成为平庸之辈。第一学期化学课可以授予或拒绝给予他们通往预科班全部课程的入场券。</p><p class="prose">研究再次发现：<b>成长型思维模式的学生取得了更高的分数</b>——即使某次测验表现不好，下一次仍然会迎头赶上；固定型的学生考得不好时，基本上很难提高分数。</p><p class="prose">每个人的学习方法却不同。固定型的学生阅读课本和课堂笔记，内容特别难就再读一遍，尝试把所有东西都背下来，像吸尘器一样；考得不好就得出结论——化学并不适合他们，毕竟「我已经做了所有可以做的事，不是吗？</p><p class="prose">」成长型的学生完全掌控着自己的学习过程和动力：「我会寻找串联每个讲座的主题以及潜在规律」「我不断重新审视自己的错误，直到我弄明白错在哪里」。</p><div class="aband"><q>他们学习的目标是获得知识，而不只是为了通过考试。</q><cite>——第3章</cite></div><p class="prose">课程变得困难和枯燥的时候，他们也没有失去动力——「我让自己对课程内容保持兴趣」「我对上化学课保持积极的心态」。德韦克教给一个本科生成长型思维模式后不久，收到一封邮件：她以前面对复杂内容只会一遍一遍地读，改用新的学习策略后，考试结果出来时「我不知道是该哭还是该坐下来」……</p><p class="prose">「我看上去就像中了彩票一样（我确实也有这样的感觉！）」。 strange 的是，这些医学预科生中，固定型思维模式者为了获得好成绩可以做任何事，但就是不愿意去学习掌握新的学习方法。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>天生的资质：天赋的真实构成</h2><span class="en">BORN GIFTED?</span></div><p class="prose">是不是所有孩子出生时的资质都一样？不是的。《天才儿童》作者艾伦·温诺描述过这些孩子：生来就在某方面拥有超高的能力以及近乎迷恋的兴趣。</p><p class="prose">迈克尔就是这样一个智力超前的孩子——四个月大就会说「妈妈，爸爸，我们晚饭吃什么」，十个月大可以读出招牌上的字，三岁做代数题还能发现并验证代数定律，每天把下班回家的爸爸拉到数学书旁边：「爸爸，来一起做题。」</p><p class="prose">但迈克尔身上最了不起的特征，是他对学习和挑战的极度热爱——他的父母根本无法将他和他喜欢的事情分开。温诺书里的每一个天才儿童都是这样。人们常常认为「天赋」就是能力本身，然而：</p><div class="aband"><q>浇灌这些天赋的是不断的、无休止的好奇心以及对挑战的探寻。</q><cite>——第3章</cite></div><p class="prose">无论是不是天才，每个人都拥有可以发展成为自己才能的兴趣爱好。德韦克小时候对人很感兴趣——五岁时她在爷爷家对因为吃糖和妈妈吵架的表兄说：「别傻了，大人们总喜欢处于掌控的位置。你只要先答应他们，之后想什么时候吃糖都可以。」这些话难道不是出自一个未来的心理学家之口吗？（有意思的是，表兄后来成了一名牙医。）</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>每个人都能做到出色吗</h2><span class="en">CAN ALL EXCEL</span></div><p class="prose">拥有正确的思维模式，每个人都可以有出色的表现吗？看两组对照实验。加菲尔德高中被认为是洛杉矶最差的高中之一——说那里的学生拒绝学习、老师们精疲力竭都太委婉了。但杰米·埃斯卡兰特决定教这些来自贫民区的拉美裔孩子大学水平的微积分。</p><p class="prose">他问自己<b>「我应该怎样去教他们」</b>而不是「我能不能教他们」，问「他们怎样才能学得最好」而不是「他们能学会吗」。1987 年大学预修课程微积分考试中，参加人数高于加菲尔德高中的公立高中只有三所——包括史岱文森高中和布朗克斯科学高中这样的纽约精英学校。这一事迹被拍成了电影《为人师表》。</p><p class="prose">另一组对照：成绩落后的孩子留级时，老师通常给他们简化教材——结果总是令人沮丧。而玛瓦·柯林斯对芝加哥贫民窟里那些被贴上「无法学习」「痴呆」「情绪紊乱」标签的公共学校不及格孩子，<b>像对待天才一样对待他们</b>。</p><p class="prose">她在公立学校教二年级时，班里学生的阅读水平非常低——到了 6 月，他们逐渐达到了五年级学生期中应有的阅读水平，并一路学习亚里士多德、伊索、托尔斯泰、莎士比亚、爱伦·坡、弗罗斯特。</p><p class="prose">她后来创办了自己的学校：四岁的学生能写出「请医生看病」「伊索撰写寓言」这样的句子，会聊双元音与变音符号；二年级的学生会背诵莎士比亚、朗费罗；一个 6 岁入学时被认为智力发育迟缓的孩子，4 年后的暑假里读了 23 本书，包括《双城记》和《简爱》。</p><p class="prose">上课第一天，她走近留级的二年级学生弗雷迪，把他的脸捧在手里：「我们还有很多事要做。你不可能只是坐在椅子上等着变聪明……我保证，你只要去做，你就会有所成就。我是不会让你失败的。」</p><div class="aband"><q>经过40年对美国以及国外的校园学习的透彻研究，我的主要结论是：‘如果说一个人能学会什么东西，那么世界上其他人也都可以学会，只要在此前和当下给他们提供适当的学习条件。'</q><cite>——教育研究员本杰明·布鲁姆</cite></div><p class="prose">布鲁姆对 120 名杰出成功人士（钢琴家、雕塑家、奥运会游泳运动员、世界级网球运动员、数学家、神经学专家）的研究还发现：他们当中的大部分人在童年时并不出色，在认真接受培训之前也没有展现出什么明显的天赋——是持续不断的动力和投入，加上旁人对他们学习上的支持，带领他们登上顶峰的。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>能力水平和追踪：老师相信什么，教室就发生什么</h2><span class="en">WHAT TEACHERS BELIEVE</span></div><p class="prose">将学生分为不同能力等级不是有原因的吗？不——<b>考试成绩和对成就的评估只会告诉你目前这个学生处在什么位置，而不会告诉你将来他会达到什么高度。</b>德国研究人员法尔克·莱茵贝格对拥有不同思维模式的学校老师做了研究。</p><p class="prose">固定型的老师相信：「根据我的经验，大部分学生的成绩在一学年里是不会变的」「如果我了解学生的智力水平，我可以很准确地预知他们在学校的表现」「作为一名老师，我对学生的智力水平起不了什么影响」。在他们的课堂上，学年开始时在优秀组的学生，结束时还在这个组；一开始进入后进组的，一年之后也还在这里。</p><p class="prose">但宣扬并运用成长型思维模式的老师——注重「所有学生的能力都可以得到拓展」——课堂上发生了奇怪的事情：学生们在学年开始时在优秀组还是后进组并不重要，在学年结束时，<b>两组学生都达到了非常高的水平</b>。在这些懂得引导学生进步的老师的指导下，两组人的差距就这么消失了。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>艺术才能是天赋吗</h2><span class="en">IS ART TALENT INNATE</span></div><p class="prose">一旦说到艺术才能，看上去更像是上天赐予的——德韦克也这么认为：朋友的画不用培训就很好，而她的绘画能力就是小学水平。直到她去一位上了年纪的精神科医生家做客。</p><p class="prose">这位医生曾从捷克斯洛伐克的大屠杀中逃生：10 岁时和弟弟放学回家发现父母不见了，逃到伦敦找到叔叔，后来谎报年龄加入英国空军，负伤后与照料他的护士结婚、读医学院、在美国开创蒸蒸日上的事业。多年里，他对猫头鹰的兴趣渐渐浓厚起来，并准备了一本猫头鹰留言簿——对来做客的有好感之人，他会要求对方画一只猫头鹰或写点什么。</p><p class="prose">本子放在德韦克面前时，她感到很荣幸，也很害怕——因为她的画就落在本子的最后一页上。</p><p class="prose">这个故事作铺垫，引出了她看到《用右脑绘画》时的惊讶与喜悦：书中展示了参加作者贝蒂·爱德华兹短期绘画课程的学生自画像对比（源文插图<b>图1 画作对比</b>）——左边是刚进入培训班时的自画像，右边是五天课程结束后的自画像。在一开始，这些人看上去没有什么艺术才能；短短几天之后，每个人都可以画画了！</p><p class="prose">爱德华兹解释说：这根本不是绘画的技能，而是<b>观察的技能</b>——对边、空间、物体之间的关系、光影以及整体的观察能力。绘画要求我们学习其各个构成部分的技能，然后将它们组合到一起。</p><p class="prose">这个故事告诉我们：有些人可以通过少量或零培训做到某些事，并不代表其他人在培训后做不到这件事（有时会做得更好）。太多太多的固定型思维模式者认为，一个人早期的表现可以告诉你有关他们才能和未来的一切。杰克逊·波洛克就是反例——专家们认为他在艺术方面与生俱来的天赋并不多，但他是 20 世纪最优秀的美国画家之一。</p><p class="prose">编舞大师泰拉·萨普在看过《莫扎特传》后表示这太荒谬了：「‘天生的’天才是不存在的。」奉献是波洛克从 A 点走到 B 点的原因：他狂热地想要成为一名艺术家，时时刻刻都想着艺术，时刻都在创作。</p><p class="prose">任何人想做什么都能做吗？德韦克并不确定。但现在我们可以同意的是：<b>人们能做的事比你曾经以为的要多得多。</b></p></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>夸奖和肯定标签的危险性</h2><span class="en">THE PRAISE EXPERIMENTS</span></div><p class="prose">超过 80% 的父母告诉我们，对孩子的能力进行夸奖是必要的，这样才能提高他们的信心和成就。这听上去很有道理——但德韦克开始担忧：对能力进行夸奖，难道不是在教给孩子固定型思维模式吗？于是有了一项包含几百名青春期早期学生的实验：先给十道非常难的非语言型智商测试题，完成后给予两种不同的夸奖——</p><div class="tbwrap"><table><thead><tr><th>组别</th><th>听到的话</th><th>后续走向</th></tr></thead><tbody><tr><td>被夸「能力」组</td><td>「哇，你做对了8道题。这个成绩非常棒，你在这方面非常聪明。」</td><td>拒绝有挑战性的新任务，不想做任何可能暴露缺点的事；面对新难题认定自己一点也不聪明，乐趣消失，表现直线下降；将近 40% 谎报了成绩，而且都报高了</td></tr><tr><td>被夸「努力」组</td><td>「哇，你做对了8道题。你一定非常努力。」</td><td>90% 的人希望挑战可以让他们学到新知识的新任务；困难意味着「付出更多努力」；依然热爱难题，很多人说难解的题是最有意思的；用高难度难题提高技能，表现越来越好</td></tr></tbody></table></div><p class="prose">德韦克写道：这为我们敲响了警钟——<b>我们将普通的孩子变成了骗子，只是因为我们告诉他们，他们非常聪明。</b>作曲家亚当·古特尔的经历是这一结论的人生版本：他曾被称为「皇太子」和「剧院的救世主」，母亲总是滔滔不绝地谈论儿子的天赋。</p><p class="prose">13 岁时他被安排在大都会歌剧院的电视歌剧中担任主演，却放弃了，说自己声音出现了问题——「我只能假装自己正在经历变声期……我不想去面对这些压力。」在他家，「只做到好则意味着失败。做到非常好，依然是失败……唯一不算失败的，就是做到杰出」。</p><p class="prose">他会出现强迫性抽搐、不停咬手指到出血，还经历过严重的周期性毒瘾——「天赋」没能给予他力量，反而让他充满恐惧和怀疑，他用人生大部分时间去逃离它。</p><p class="prose">转机出现在一个梦：他梦到外祖父，陪他走到电梯，问他到底出不出色。外祖父和蔼地对他说：「你有属于你自己的声音。」凭借《晴光翡冷翠》的配乐，古特尔赢得了 2005 年托尼奖。德韦克写道：我希望他把这项荣誉看作努力的结果。</p><p class="prose">一位 49 岁的读者来信说得更直白：小时候曾是天才儿童协会的一员、经常被人夸奖，「现在大半辈子过去了，我一直在浪费自己的潜力」——是这本书让他开始学着不把失败看作愚蠢的象征，而是认识到那是因为缺乏经验和技能。</p></section><section id="s12"><div class="h2"><span class="cn">拾貳</span><h2>否定标签及其作用方式</h2><span class="en">NEGATIVE LABELS</span></div><p class="prose">德韦克曾是个数学高手：高中代数 99 分、几何 99 分、三角学 99 分，还在学校数学队里，空军视觉空间能力考试成绩和男生一样高。后来她遇到了赫尔曼先生——一个不相信女孩能学好数学的老师。之后她的成绩下滑了，她后来不再研究数学。</p><p class="prose">每个人都知道否定标签会造成不好的结果，但心理学家要弄清的是它<b>如何</b>起作用。</p><p class="prose">心理学家克劳德·斯蒂尔和约书亚·阿伦森的研究表明：就连勾选种族和性别这一栏的动作本身，都能够激发你脑中的刻板印象，导致考试分数降低。当刻板印象没有被唤起时，黑人和白人表现得一样好，女人和男人也是一样；但在数学考试前，仅仅是把一名女性放在男性考生居多的考场里，她的分数都会受到影响。</p><p class="prose">关键在于：<b>这种情况主要发生在固定型思维模式者身上</b>。否定的刻板印象会对人们说「你和你的族群永远都低人一等」——只有固定型思维模式者会对此产生共鸣。所以固定型思维模式中，肯定与否定的标签都会扰乱思绪：被贴上肯定标签时害怕失去它，被贴上否定标签时害怕自己正如标签所说。</p><p class="prose">而成长型思维模式让人们不受刻板印象所害——他们不相信人会永远低人一等，即使落后也会更加努力地学习，迎头赶上。</p><p class="prose">一个威胁环境实验：让非洲裔美国学生写论文参赛，被告知将由常青藤出身的出色教授爱德华·考德威尔评估——他是白人机构的代表。他的评估非常挑剔但同时很有帮助。固定型的学生把反馈看作威胁、侮辱或攻击：「他太刻薄了，他分数评得不对，要么他是有明显的偏见。</p><p class="prose">他不喜欢我」「他是一个傲慢的浑蛋」「他没有理解我观点的简洁性」「他并没有耐心去读」「他不喜欢创新」——他们中没有人能从考德威尔的反馈中学到任何东西。成长型的学生可能也认为考德威尔是个顽固的人，但这个顽固的人却可以教会他们一些事情：「‘合理’是我想到的第一个词……看来我又有新挑战了」「他的评估是一种促进剂……</p><p class="prose">能让我写出更好的论文」。</p><p class="prose">刻板印象还会剥夺归属感。追踪大学女生的微积分课发现：成长型的女生有很强烈和稳定的归属感，即使周围充斥着否定的刻板印象依然可以保持——「但是没关系，因为我们在分小组学习，同学可以互相给予支持」；固定型的女生归属感越来越弱——有位教授每次在她答对问题后都说「猜得不错」。</p><p class="prose">德韦克强调：我绝对不是说这是她们的错误，偏见是一个根深蒂固的社会问题——成长型思维模式只是能帮助人们认识到偏见的本质只是其他人对他们的看法，从而在能力和自信不受影响的情况下去对抗偏见。</p><p class="prose">很多能力出众的女性还太容易相信别人的评价——她们小时候通常非常完美，学会去相信别人对自己的评价。男孩因为自己的行为而被责骂的次数是女孩的 8 倍，「蠢货」「傻瓜」这类称呼让恶意评价丧失了攻击力。</p><p class="prose">世界最杰出的神经科医生之一弗朗西丝·康利——第一个在美国医学院校的精神科获得终身职位的女性——会因为男同事在手术中叫她「亲爱的」而开始质疑自己。高科技领域同样如此：初中就学会编程的朱莉·林奇，因为老师不喜欢她的一项快捷操作，兴趣随即消失，转去学习娱乐和公关专业了。</p><p class="prose">反例是匈牙利的波尔加家族——培养了三名最成功的女性象棋大师。「我爸爸认为天生的才能没有用，这个［成功］是靠 99% 的辛苦努力得到的。我同意他的想法。」最小的女儿朱迪特并不是最有天赋的那一个——「朱迪特起步较慢，但她非常努力」。</p></section><section id="s13"><div class="h2"><span class="cn">拾叁</span><h2>培养你的思维模式</h2><span class="en">THE MINDSET AUDIT</span></div><div class="check" data-k="ch3-audit"><p class="ct">本 章 练 习</p><label><input type="checkbox"><span>想一想你心中的英雄：去查一查他为了取得成就付出了多么大的努力——然后比以前更钦佩他。</span></label><label><input type="checkbox"><span>想一想其他人比你强的时刻：他们只是用了更好的学习技巧，自学了更多内容，进行了更多练习，并跨越了障碍。你也可以做到这些，只要你愿意。</span></label><label><input type="checkbox"><span>觉得自己很傻、大脑短路的时刻：将自己放入成长型思维模式，去想想如何学习和提高，而不是评价自己，然后回到正轨上去。</span></label><label><input type="checkbox"><span>是否给孩子贴标签（这个孩子是艺术家，那个是科学家）？对孩子的能力进行夸奖会让他们的智力测验得分降低——换一种属于成长型思维模式的方式去夸奖他们。</span></label><label><input type="checkbox"><span>我们社会中超过一半的人属于某个否定型刻板印象：创造条件去教你身边的大人和孩子掌握成长型思维模式，让他们即使被贴上否定的标签，依然可以掌控自己的学习。</span></label><div class="cf">已核对 <b>0</b> / 5</div></div><div class="aband"><q>固定型思维模式会限制人的成就。它让人们的头脑中充满了干扰信息，让人们不屑于努力，毁掉学习策略，也会让其他人变成审判者而非我们的同伴。</q><cite>——第3章 · 本章总结</cite></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜卡罗尔·德韦克《终身成长（全新修订版）》（江西人民出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第3章｜能力与成就的真相</span><a href="../03-第2章下-失败的意义与问与答/index.html">← 思维模式解析（下）</a><a href="../05-第4章-体育冠军的思维模式/index.html">体育·冠军的思维模式 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='mg-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
