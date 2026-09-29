@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第三部分·计算机的思考工具 · 七个秘密与电梯控制｜直觉泵 精读</title>
+<meta name="description" content="笔记本电脑能做的事，一台只会增量、减量、跳转的寄存器机也能做——只是要算上几个世纪。丹尼特亲手带你从盒子和豆子开始编程，逐层揭开计算机的 7 个秘密：部分之和大于总体的最好实例。">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../04-意义与内容-下/index.html">← 意义与内容·下</a><a href="../06-更多意义的工具/index.html">更多意义的工具 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">码</div>
+  <div class="stamp ">算法</div>
+  <h1>计算机的思考工具 · 七个秘密与电梯控制</h1>
+  <p class="sub">笔记本电脑能做的事，一台只会增量、减量、跳转的寄存器机也能做——只是要算上几个世纪。丹尼特亲手带你从盒子和豆子开始编程，逐层揭开计算机的 7 个秘密：部分之和大于总体的最好实例。</p>
+  <div class="meta"><span>第三部分</span>
+    <span class="k">计算机</span>
+    <span>正文 22,911 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>寄存器机</a><a href="#s3" data-t="s3"><span class="cn">叁</span>七个秘密</a><a href="#s4" data-t="s4"><span class="cn">肆</span>虚拟机</a><a href="#s5" data-t="s5"><span class="cn">伍</span>算法</a><a href="#s6" data-t="s6"><span class="cn">陸</span>电梯</a><a href="#s7" data-t="s7"><span class="cn">柒</span>第三部分小结</a>
+    
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第三部分：一台「本体机」的升级史——寄存器机 → 图灵机 → 冯·诺依曼机 → 大脑</p><p class="thesis">丹尼特从没说过「大脑就是一部庞大的计算机」；他要说的是：<b>如果大脑真是一部计算机，我们就能毫无神秘色彩地解释它的全部活动。</b>方法叫逆向工程。本章的阶梯：王浩的寄存器机（1957）证明了「发挥能力，无需理解力」，随后七层加速——每层都只是速度的改善。</p><div class="chain"><div class="node"><div class="n">24</div><div><p class="tt">七个秘密</p><p class="dd">寄存器机三条指令起步：结束、增量、减量（遇 0 跳转）——它能完成计算机能做的所有运算</p></div></div><div class="node"><div class="n">25</div><div><p class="tt">虚拟机</p><p class="dd">「构成它们的是指令」：层层佯装的下棋程序，与大脑中的法语虚拟机</p></div></div><div class="node"><div class="n">26</div><div><p class="tt">算法</p><p class="dd">底层中立、潜在无头脑、结果有保障——达尔文发现的正是一大类算法</p></div></div><div class="node"><div class="n">27</div><div><p class="tt">电梯</p><p class="dd">操作手册 → 伪代码 → 源代码 → 目标代码：机器取代人类的完整逻辑</p></div></div><div class="node"><div class="n">小结</div><div><p class="tt">计算者</p><p class="dd">图灵淘汰了「理解器」：分支跳转 + 算法 = 系统所需的全部</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>24 计算机施展魔法的7个秘密（上）· 从盒子和豆子开始</h2><span class="en">REGISTER MACHINE</span></div><p class="prose">1957 年，逻辑学家王浩（哥德尔的学生）发明了<b>寄存器机</b>。它简陋得可爱：若干寄存器像大盒子，里面可放任意多（0 到无限多）的豆子；处理单元只会三条指令——</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>结束</h4><p>表示将自己停止或者关闭。</p></div><div class="step"><div class="dot">2</div><h4>增量</h4><p>将寄存器 n 中的数字加 1，或者说在盒子 n 中再填入一粒豆子，然后进入下一步。</p></div><div class="step"><div class="dot">3</div><h4>减量（遇 0 跳转）</h4><p>将寄存器 n 中的数字减 1（从盒子中拿走一粒豆子）；若寄存器已是 0、无法再减，则跳转至指令指定的另一个步骤——这个条件分支是全部魔法的关键。</p></div></div><p class="prose">就这三招。用 RAP（寄存器汇编程序）语言写出「程序1：相加［1,2］」，寄存器 1 每减一次、寄存器 2 就加一次，直到寄存器 1 变成 0——处理单元并不知道寄存器里的数字，<b>它只能识别出「空了」</b>，像个盲人看不见盒子里有多少豆子却摸得出空盒。</p><p class="prose">于是：<b>即使不知道哪两个数相加、不知道数字是什么、甚至也不知道加法是什么，寄存器机也能完美地完成累加计算！</p><p class="prose"></b>随后是移动［4,5］、复制［1,3］、无损加法［1,2,3］——想内化它们，可以取几个杯子写上地址、抓一把硬币「手动模拟」，或者「先用几分钟去变成一部寄存器机（就像一个演员要去饰演哈姆雷特那样）」。</p><p class="prose">加法熟练后，减法要注意「旗帜」寄存器标记正负号；乘法是「n 乘以 m 表示 m 个 n 相加」，用计数器从 m 递减到 0；除法则不断减去除数并记录次数，还要小心核查除数是否为 0——为 0 时让专门的报错寄存器拉响警报：「快！我就要除以 0 了！」。书末附录收有全部练习题的答案。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>24 计算机施展魔法的7个秘密（下）· 部分之和大于总体</h2><span class="en">SEVEN SECRETS</span></div><div class="tbwrap"><table><thead><tr><th>秘密</th><th>内容</th></tr></thead><tbody><tr><td>秘密 1</td><td>发挥能力，无需理解力：有些东西——如一台寄存器机——它能完成精密的运算，但无需理解自己在做什么。</td></tr><tr><td>秘密 2</td><td>寄存器中的数字会代表什么取决于我们所编写的是什么样的程序。</td></tr><tr><td>秘密 3</td><td>寄存器中的数字可以表示任何事物——寄存器原则上可以「识别」所有用数字表示的图案或特征（黑白图片、OCR 文字识别，用的都只是算术）。</td></tr><tr><td>秘密 4</td><td>既然一个数字可以表示任何事物，那么它就一定能表示一条指令或是一个地址。</td></tr><tr><td>秘密 5</td><td>所有可行的程序都能由一个单独的数字指代，都可以被看作是一串指令，等待通用万能机去执行。</td></tr><tr><td>秘密 6</td><td>自图灵的假想纸带机之后，计算机所有方面的改善，提高的都只是运算速度。</td></tr><tr><td>秘密 7</td><td>没有再多的秘密了！</td></tr></tbody></table></div><p class="prose">第 5 条要归功于图灵：通用图灵机是<b>一部通用拟态机</b>——自带程序 A 的多用途通用机，喂给它各种程序（软件）它就能按要求办事。笔记本电脑能做的事通用寄存器机也一样能做，反之亦然。</p><p class="prose">而第 6 条最让人意外：冯·诺依曼拓宽交流窗口（一次读多比特，即「冯·诺依曼瓶颈」）、硬连线的专门电子路线、并行机、每秒超过一亿亿次浮点运算的富士通 K-computer——自图灵以来专家们所做的一切，<b>就是要让寄存器机能做的一切工作变得高效起来，其他别无所求</b>。</p><p class="prose">你大脑的即时运算速度与此旗鼓相当：约一千亿个神经元组成的卓越并行处理机，只是神经元比电路慢得多——所以让机器更快的一个方法是<b>把它做得更小</b>：光走一尺大致需要十亿分之一秒，想让两个程序通讯更快，就让它们离得更近些。</p><p class="prose">至于流行中的量子计算机：得益于「量子叠加」，它能同时计算大量数值，是提速进程中的最新一次重大变革——但工程难题未克，尚不稳定实用。真正美妙的地方在于：</p><div class="aband"><q>这里没有仙气，没有“形态共振”（morphic resonance），没有无形的力场，没有未知的物理定律，也没有那些神奇的组织。</q><cite>——24 计算机施展魔法的7个秘密</cite></div><div class="aband"><q>发挥能力，无需理解力：有些东西——如一台寄存器机——它能完成精密的运算，但无需理解自己在做什么。</q><cite>——24 计算机施展魔法的7个秘密 · 秘密1</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>25 虚拟机 · 模仿硬件运行的计算机程序</h2><span class="en">VIRTUAL MACHINES</span></div><p class="prose">计算机不像割草机或开瓶器——它不需插上不同附件，只要点开不同的程序（一串串由 0 和 1 组成的超长数字），就能转换成不同的装置。<b>每套装置系统都是一台单独的小机器，没有齿轮、轴承、电线或者滑轮，这就是模拟机——「构成它们的是指令」。</p><p class="prose"></b>计算机上唯一「可移动的部件」是硬件上数百万个可在 1 态和 0 态之间切换的小空位。</p><p class="prose">「虚拟机」最初（波佩克与戈德堡，1974）指「实体机的一种独立有效的复制品」：在硬件 B 上模拟硬件 A，你写的程序应该畅通无阻。它像小丑模仿手臂打石膏的人——肢体动作做出相应调整，旁观者看不出破绽。</p><p class="prose">概念随后扩展：操作系统本身就是一部虚拟机；Java 虚拟机（JVM）更是只作为软件机存在，让同一程序跑在 PC、Mac 与 Linux 上——<b>是 Java 的出现让今天的因特网变得如此丰富多彩</b>。而广义地说，几乎所有程序都是虚拟机：一旦运行，通用计算机就被转成了专用计算机。</p><p class="prose">关键技巧是<b>层层嵌套</b>：一个用 Common Lisp 写的国际象棋程序，运行在 PC 佯装的 Windows7 上——PC 佯装 Windows 机，Windows 机佯装 Lisp 机，Lisp 机又佯装成国际象棋游戏机。这与关乎心智的小人儿功能主义中小人儿的层层嵌套并非巧合。</p><p class="prose">下棋时、说法语时大脑各层面到底发生了什么，目前还不得而知；但虚拟机给出了一种最好的解释：<b>所有说法语的人脑中都藏着一套版本各异的法语虚拟机</b>——你说「Donnez-moi le sel, s'il vous plait」，就能预见它的反应。</p><div class="aband"><q>虚拟机推动着人类的创造和理解，实质性地完成了一些至今都超越我们想象的任务，比如完成航线预定、下象棋、预测天气、做记录等等</q><cite>——25 虚拟机</cite></div><p class="prose">这些惊人的成就鼓励着我们：如果对大脑也采用类似（仅仅是类似）的技巧来实施逆向工程，或许我们也能得到一些收获。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>26 算法 · 有效解决问题的策略机制</h2><span class="en">ALGORITHMS</span></div><p class="prose">《达尔文的危险观念》里的那句话是本篇的题眼：</p><div class="aband"><q>地球上的生命经由这种或者那种算法，在上亿年的时间里谱出了一棵布满枝桠的生命之树。</q><cite>——26 算法</cite></div><p class="prose">「算法」一词得自 9 世纪波斯数学家花剌子模（Mûusâ al-Khowârizm）；直到 20 世纪 30 年代，图灵、哥德尔、丘奇这一代人的一系列创始性工作才确立了今人的理解。对丹尼特来说，算法概念有三个至关重要的特征：</p><div class="grid g3"><div class="card num"><div class="idx">①</div><h3>底层中立</h3><p class="cp">不管你用的是哪种符号体系，也不管你用的是铅笔还是钢笔，纸张或是羊皮卷，霓虹灯或者空中文字，都不会影响你运算长除法——依据的是逻辑结构，物质材料的因果力量不直接参与运算。</p></div><div class="card num"><div class="idx">②</div><h3>潜在无头脑</h3><p class="cp">步骤出奇地简单，一个听话的白痴或一个简单的机械装置就能执行。算法就像为新手厨师设计的烹饪说明：「取一瓶标签上写有『干』字样的白葡萄酒，用螺旋开瓶器打开……」你只需充当一部食谱阅读器。</p></div><div class="card num"><div class="idx">③</div><h3>结果有保障</h3><p class="cp">只要不出意外，它就能每次都按照同样的步骤运作。一种算法就是一份简单的、不易有出入的食谱。</p></div></div><p class="prose">计算机就是靠这些特点成就的：电子在硅芯片上飞来飞去，但计算机的能力与它们的因果特性完全无关——运算速度除外。同一算法用光纤分流光子更快，用纸笔则慢得很。<b>是达尔文发现了算法的力量</b>——不过他发现的不是一种算法，而是一大类相关的算法，只是他还没办法做出明确划分（详见第五部分）。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>27 让电梯实现自动控制 · 机器取代人类的逻辑</h2><span class="en">ELEVATOR CONTROL</span></div><p class="prose">丹尼特年轻时的电梯还有操作员：转动奇怪的手柄，电梯总停得比楼层高出或下陷三五厘米，要提醒乘客「注意脚下」。操作规程被写成一本<b>操作手册</b>——「无论什么人，只要按照手册正确操作就一定能成为优秀的电梯操作员」。于是「玩具问题」来了：让程序员把手册变成程序。</p><p class="prose">先写<b>伪代码</b>（「如果呼叫楼层>所在楼层，那么上升，直到呼叫楼层=所在楼层即停止；开门。等待……</p><p class="prose">」），再转译成<b>源代码</b>——变量名直接显示作用（呼叫楼层 callfloor、总重量 weightsum），并附上让人能读懂意图的<b>注释</b>；编译器把源代码读录成<b>目标代码</b>，烧进只读存储器，装上电梯，连上传感器与效果器。</p><p class="prose">再见了！机器已经彻底取代了真实的人类操作员，遵守着同样的规则——真的是这样吗？<b>不，它们只是近似于遵守着同样的规则。</b>这是一种经典的中间状况：既不像人类那样逐字逐句保存规则随时查阅，也不像行星「按照」轨道运行。</p><p class="prose">我们人类也常处在这种中间状况——英语的 i/e 拼写规则人人「遵守」却说不全；每个十岁的母语孩子都能为脑中的英语虚拟机调出相当不错的目标代码，而语言学家至今写不出一本标准的规则手册。</p><p class="prose">临别提醒才是本章真正的靶子：源代码里的注释能帮程序员理解各部分的意图，但自然选择在大脑中安装的功能结构，就像一些<b>没有注释的代码</b>——</p><div class="aband"><q>自然选择在我们的大脑中安装的那些功能结构就像是一些没有注释的代码，这些功能是有目的的，但由于代码并没有对结构的目的有所注释，大脑也就无从理解这些意图了。</q><cite>——27 让电梯实现自动控制</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>第三部分小结 · 分支跳转与算法</h2><span class="en">PART III SUMMARY</span></div><p class="prose">在图灵机发明之前，「计算者（computer）」是一种职业——工厂和政府雇佣成千上万的人为商业、航海、枪炮制造与银行做计算。图灵的大胆设想：<b>大脑也可能是一名计算者</b>，通过奴隶般地履行大量像增量、减量那样简单的指令完成信息处理。</p><p class="prose">他最具创新力的地方在于淘汰了那些笨拙环节——早期设想里，节骨点上永远得有一个员工、译者或图书管理员，一个领会所有输入信号的「理解器」。图灵把理解成分降到最低：他发明了<b>条件分支跳转</b>，通过（近似）识别 1 或者 0、A 或者 B 来确定（近似确定）走左边还是右边。</p><div class="aband"><q>分支跳转和算法，这就是这个系统所需要的全部了，只要在虚拟机上叠加虚拟机，在其上再叠加虚拟机，一个个叠加下去，就能组装出具有各种识别水平的装置。</q><cite>——第三部分小结</cite></div><p class="prose">50 年来我们一直为这一愿景努力，也发现了很多细小而棘手的问题：如果大脑可以比作计算机，那它肯定不是我们平时所用的那种计算机。带着这个澄清过的插曲继续上路：下一步，先探索意义在大脑中怎样生成、演化的力量如何在没有程序员的情况下设计出精妙构架，再去面对最狡猾的两个概念——意识和自由意志。</p><div class="check" data-k="05-computer"><p class="ct">本 篇 自 查</p><label><input type="checkbox"><span>我能写出寄存器机的三条指令，并说明「遇 0 跳转」为什么是全部魔法的关键</span></label><label><input type="checkbox"><span>我能复述七个秘密，尤其是「提高的都只是运算速度」</span></label><label><input type="checkbox"><span>我能画出一层层佯装的虚拟机嵌套（PC → Windows → Lisp → 象棋）</span></label><label><input type="checkbox"><span>我能说出算法三特征：底层中立、潜在无头脑、结果有保障</span></label><label><input type="checkbox"><span>我能解释「没有注释的代码」为什么是理解大脑的关键比喻</span></label><div class="cf">已对照 <b>0</b> / 5</div></div></section>
+    
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注条 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第三部分｜计算机的思考工具</span><a href="../04-意义与内容-下/index.html">← 意义与内容·下</a><a href="../06-更多意义的工具/index.html">更多意义的工具 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

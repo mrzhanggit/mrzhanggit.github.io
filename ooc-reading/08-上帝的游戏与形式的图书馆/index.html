@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>演化之部·上帝的游戏 · 在形式的图书馆中 · 网络神学与字母序｜失控 精读</title>
+<meta name="description" content="第十三章写造物：玩家当神、拟像传送、仿真战争与文字泥巴——神之游戏的巨大吊诡是「要想赢，先放手」；第十四章写搜索：博尔赫斯图书馆真实存在，进化是造访一切可能形式的唯一途径。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-电子货币/index.html">← 电子货币</a><a href="../09-人工进化/index.html">人工进化 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">上</div>
+  <div class="stamp s4">上帝的游</div>
+  <h1>上帝的游戏 · 在形式的图书馆中 · 网络神学与字母序</h1>
+  <p class="sub">第十三章写造物：玩家当神、拟像传送、仿真战争与文字泥巴——神之游戏的巨大吊诡是「要想赢，先放手」；第十四章写搜索：博尔赫斯图书馆真实存在，进化是造访一切可能形式的唯一途径。</p>
+  <div class="meta"><span>演化之部</span>
+    <span class="k">人工进化</span>
+    <span>正文 45,601 字</span>
+    <span>17 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>电子神格</a><a href="#s3" data-t="s3"><span class="cn">叁</span>交互理论</a><a href="#s4" data-t="s4"><span class="cn">肆</span>多边形神祗</a><a href="#s5" data-t="s5"><span class="cn">伍</span>拟像传送</a><a href="#s6" data-t="s6"><span class="cn">陸</span>数字之战</a><a href="#s7" data-t="s7"><span class="cn">柒</span>无缝分布</a><a href="#s8" data-t="s8"><span class="cn">捌</span>万千碎片</a><a href="#s9" data-t="s9"><span class="cn">玖</span>文字泥巴</a><a href="#s10" data-t="s10"><span class="cn">拾</span>放手则赢</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>大千图书馆</a><a href="#s12" data-t="s12"><span class="cn">拾贰</span>图像之空间</a><a href="#s13" data-t="s13"><span class="cn">拾叁</span>生物形态王国</a><a href="#s14" data-t="s14"><span class="cn">拾肆</span>御变异体而行</a><a href="#s15" data-t="s15"><span class="cn">拾伍</span>形式库的性</a><a href="#s16" data-t="s16"><span class="cn">拾陸</span>繁育杰作</a><a href="#s17" data-t="s17"><span class="cn">拾柒</span>穿越随机性</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>这个神之游戏中一个巨大的吊诡就在于：要想赢，先放手。</p><cite>——第十三章 13.9 放手则赢</cite></div><div class="epi"><p>当搜索空间足够大时，有效的搜索流程就与真正的创造并无二致了。</p><cite>——第十四章 14.7 穿越随机性（理查德·道金斯）</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇两章是一体两面：第十三章讲人类如何造世界——并不得不放手；第十四章讲进化如何在一切可能形式的图书馆中搜索——造访即创造</p><p class="thesis">从《上帝也疯狂》到《模拟城市》，从杰伦·拉尼尔的虚拟现实到 SIMNET 的仿真战争，从文字泥巴到博尔赫斯的「大千」图书馆——凯利把这一切收拢进一个词：<b>「方法」，就是我们现在称之为「进化」的各种东西</b>。神之游戏的巨大吊诡在于：要想赢，先放手；而博尔赫斯图书馆的巨大吊诡在于：发现某一本特定的书，就等同于写了这本书。</p><div class="chain"><div class="node"><div class="n">游戏</div><div><p class="tt">玩家当神</p><p class="dd">《上帝也疯狂》里的神只能间接控制世界：提供激励、处理全球性事件，然后放手让子民自己干</p></div></div><div class="node"><div class="n">拟像</div><div><p class="tt">地图生成了领地</p><p class="dd">鲍德里亚：领地不再先于地图而存在——自今而起，反而是地图先于领地，拟像在先</p></div></div><div class="node"><div class="n">战争</div><div><p class="tt">超真实的战场</p><p class="dd">东距73战役被重建为拟像——参战者说：这场战斗跟训练没什么区别</p></div></div><div class="node"><div class="n">泥巴</div><div><p class="tt">文字超级有机体</p><p class="dd">MUD 里玩家生活在这个世界的同时，还可以建设这个世界——两厢情愿的超级有机体</p></div></div><div class="node"><div class="n">放手</div><div><p class="tt">神之游戏的吊诡</p><p class="dd">要想诞生真正让自己惊讶的东西，就必须放弃自己主宰一切的王位，让位于底层的群氓</p></div></div><div class="node"><div class="n">进化</div><div><p class="tt">形式的图书馆</p><p class="dd">「方法」不是由人发明的；也许是上帝——在包括一切可能之书的图书馆里，发现一本书就等同于写了它</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>13.1 电子神格</h2><span class="en">ELECTRONIC GODHOOD</span></div><p class="prose">《上帝也疯狂2》是那种玩家为神的游戏：你扮演宙斯的某个儿子，透过屏幕监视一片大陆，用一只闪闪放光的蓝手（神手）抹平山峰、雕琢山谷，平整出可以让人类耕种的土地。除了引发地震、海啸、飓风，这只地理之手是你对子民唯一的直接影响。</p><p class="prose"><b>良田造就快乐的人民</b>：他们盖农舍、盖红瓦宅院，最终建起带城墙的城市——他们越是繁荣，对你就越加崇拜，你这个神就能获得越多的魔法值。</p><p class="prose">但问题由此而来：在更广阔的土地上，宙斯的其他儿子也在为获得永生而彼此竞争——他们掀起摧毁性的蓝色海啸，不仅淹死你的人民，还淹没他们的农田，进而危及到你作为神的存在。<b>没有人民，就没有崇拜，也就不会有天神。</p><p class="prose"></b>你可以「礼尚往来」——动用破坏力消耗的魔法值令人乍舌——也可以弄个潘神用魔笛吸引新加入者，或者立起一个「教皇磁石」：花岗岩埃及十字纪念碑，用来吸引信徒和朝圣者。</p><p class="prose">在拜访游戏发行商「艺电」时（源文此句即截断），发行人哈斯主动介绍：「作为一个天神，你还是有一些积极的事情可以做的——不过不太多。其中之一是造树。树总是能让人开心的。你还可以用野花为这片大地赐福。但多数情况下，它都是在破坏或被破坏。</p><p class="prose">」这种理念，亚里士多德也许早已知晓：在他那个时代，诸神就是些让人恐惧的存在，你最好是躲着点神，然后祈祷你的神能灭掉其他的神。</p><div class="aband"><q>我就这么说吧”，哈斯说道，“你绝对不想成为这么一个世界里的人。</q><cite>——第十三章 13.1 电子神格（哈斯）</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>13.2 有交互界面的理论</h2><span class="en">INTERACTIVE THEORY</span></div><p class="prose">要想玩好《上帝也疯狂》，你必须<b>像神一样去思考</b>：不能指望一一经历小人的生活，也不能同时操控每个小人还保持神志清楚——控制必须交给人数众多的群体来进行。作为神，你只能通过间接手段控制世界：提供激励，处理全球性事件，精打细算地进行交易。</p><p class="prose">在这个游戏里，因果链条颇为模糊，往往是牵一发而动全身，而且因果的演化往往朝着你最不想看到的方向去——所有的管理工作又都是平行进行的。</p><p class="prose">在经典上帝游戏中，《文明》排名颇高：你不能告诉子民如何制造汽车，但可以合理安排，让他们获得制造汽车所需要的「发现」——发明轮子就能造二轮战车，获得砖瓦工技能就能进行数学运算。有狂热玩家吹嘘曾用隐形轰炸机蹂躏了其他还在研究双轮战车的文明。</p><p class="prose">而在《模拟地球》里，三个 10 到 12 岁的小男孩在后座上要进化出一条智能蛇：「你觉得我们现在能开始造爬行动物了吗？」——「瞎扯，哺乳动物都在接替它们了。」——「我们最好多加点阳光。」它没什么故事情节或固定目标，成年人与小孩子却毫不犹豫地爱上了它：「我们就跟神一样，而且很可能同样擅于做这份工作。</p><p class="prose">」（布兰德，1968）</p><p class="prose">《模拟地球》的本意是建立盖亚假说的模型，而它给出的答案更明确：<b>在这个游戏里，地球不是一个有机体——但它朝向有机体迈进了一步</b>。玩家们抱怨它运行起来似乎根本置人类控制于不顾，就好像游戏有自己的议程。</p><p class="prose">姊妹篇《模拟城市》则「作为游戏来说要令人满意得多」：它是基于群体的——一座有效运转的城市，是由几百个做着纯朴工作的无知模拟市民创造出来的。有超级玩家自述：93% 的支持率，为了减少污染订购原子能发电站，一时疏忽盖在了飞机场跑道上——一天一架飞机撞在发电厂上，火势扩散，<b>最后把整座城都烧掉了。</p><p class="prose">我现在正在重建它，这一次会完全不同了。</b></p><p class="prose">作者威尔·莱特把《模拟》系列称为<b>软件玩具</b>——无所谓输赢，「就好像你在做园艺的时候也无所谓输赢一样」。</p><p class="prose">它们的起源颇具启示：1985 年他写「一个很傻，我是说非常傻的视频游戏」《突袭笨笨海湾》，为了画被直升机轰炸的岛，他写了一个自动生成道路的小工具——「最后我终于完成了那个『赶尽杀绝』的游戏部分，但是出于某种原因，我不断回到这该死的东西里，把公共设施建筑弄得越来越花哨……</p><p class="prose">我发现我从建设这些小岛上所获得的乐趣，要远远超过摧毁它们所能给我的乐趣。」他为福瑞斯特《城市动力学》的方程式添加上血肉——</p><div class="aband"><q>从本质上说，模拟城市就是一个赋予了用户界面的城市理论。同样道理，玩具屋就是关于持家的理论。小说是被当成故事来讲的理论。飞行模拟器则是航空的互动理论。模拟生命就是自己照料自己的生物学理论。</q><cite>——第十三章 13.2 有交互界面的理论</cite></div><div class="aband"><q>抛开所有的次要动机，电脑游戏让人上瘾的全部原因其实只有一个：创造一个属于我们自己的世界。我想不出有什么东西比做一个神更能让人上瘾的了。</q><cite>——第十三章 13.2 有交互界面的理论</cite></div><p class="prose">理论把实在之物的复杂模式抽象成某种摹本模式。如果做得好，这个小摹本就能把握到更大的整体的某种完整性（爱因斯坦把宇宙的复杂状态简化为 5 个符号——源文在此截断）。而我们始终在把自己填充到一个有待完成的世界里——</p><div class="aband"><q>其实，每一个创造行为，不多不少，正是对造物的重演。</q><cite>——第十三章 13.2 有交互界面的理论</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>13.3 一位造访他用多边形创造出来的天地的神祗</h2><span class="en">A GOD OF POLYGONS</span></div><p class="prose">1989 年夏天，一个长着蓬乱头发的男人在凯利眼皮底下创造出一个人造世界：一座蕨状穹顶横架在栗色方砖的阿拉伯风格地板上，伴随一座高耸入云的红色烟囱——两小时前它还只是这个男人头脑中幻想的地狱世界（它诞生在两台硅谷图形公司的机器上——源文在此截断）。这个男人就是<b>杰伦·拉尼尔</b>（源文此句即残句）。</p><p class="prose">他通过边做边摸索发明了一种费用低廉的系统，运行效果比学院装置还好，而且他所建立的是一个极不科学的「狂野世界」——他为它起了个响亮的名字：<b>虚拟现实</b>。</p><p class="prose">凯利跟在他后面爬进了拟境。杰伦消失在自己的世界中：面带电气化呼吸器面罩，在地板上摇摇晃晃，大张着嘴，目瞪口呆，小心翼翼地爬过地毯，不时停下来审视眼前空气中某个别人看不见的奇观。「嘿！这个石灰石底座下面是空的！你可以爬进去，看到红宝石的底部！」——底座是杰伦自己建的，但他没花心思考虑红宝石的底面。</p><p class="prose"><b>一个完整的世界对于人脑来说太复杂了。模拟世界则能够演示出这些复杂性</b>——要想预测到底会发生什么，唯一的办法就是运行它。</p><p class="prose">几个月后杰伦又搭了一个超真实场景：直径约一个街区的环形铁轨、齐胸高的火车头、粉红色的地面、浅灰色的多面体小火车。凯利动了动那只漂浮在空中的多边形手套，沿着手指的方向飞行，落在火车上猛拉了一下拉杆——火车绕圈运行起来。后来他弯腰去抓一个倒置的大礼帽，手一碰到它，<b>它就变成了一只白色的兔子</b>。</p><p class="prose">他听见世界的外面有人笑出了声，仿如来自天堂的窃笑——<b>这是神开的一个小玩笑。</b></p><p class="prose">仿真并非新鲜事：墓葬中的玩具被视为人类文化的证据，波斯微型画、日本茶园、所有的小说和戏剧都是微小世界。但在仿真时代，我们在更大的带宽上创造它们——只要给它能量、可能的行为以及成长的空间，<b>任何东西都可以成为某种仿真</b>。</p><p class="prose">20 世纪 70 年代早期，意大利小说家安伯托·艾柯踏上「超真实旅程」（源文两处截断）：美国人的想象力需要真实的存在作为载体，而为此又必须打造绝对的虚构——他称之为<b>超真实</b>。法国哲学家让·鲍德里亚用两段紧紧缠绕的话开场（对博尔赫斯的引文在此截断）——</p><div class="aband"><q>领地不再先于地图而存在，也不会比地图存在得更久远。自今而起，反而是地图先于领地——拟像在先，是地图生成了领地。</q><cite>——第十三章 13.3 一位造访他用多边形创造出来的天地的神祗（让·鲍德里亚《仿真》）</cite></div><div class="aband"><q>彼地图非彼领地；地图即领地。</q><cite>——第十三章 13.3 一位造访他用多边形创造出来的天地的神祗（斯蒂芬·列维《人工生命》）</cite></div><p class="prose">「拟像」一词源远流长：伊壁鸠鲁学派认为每个物体都释放出某种「幻象」，罗马语中它指被鬼魂或精灵激活的塑像——这些古代神庙的机器人有活动的头部和四肢，没有人把它们当作真神，但也没有人忽视它们的存在：<b>它们既非真，也并不假——它们是真实的幻像。</p><p class="prose"></b>我们这些后现代都市人每天都有大量时间沉浸在这种超真实之中：煲电话、看电视、用电脑、听广播。拟像已经成了我们生活于其中的地域。而在杰伦的平行世界里，那些超真实的事件——大礼帽的消失、火车的运行——实实在在地发生过：换了谁进去，都能证明这一点。在拟像的平行世界里，<b>它们就是现实</b>。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>13.4 拟像的传送</h2><span class="en">TRANSMITTING SIMULACRA</span></div><p class="prose">如果拟像不是如此有用，由仿真真实性引起的不安原本只会是哲学家的学术课题。麻省理工学院媒体实验室的安迪·利普曼正在研发「由观众驾驭」的电视传输方法：他传输的不是固定的图像，而是某种拟像——以超紧凑形式传送视频，并可以解压成一千种不同的版本（演示版用《我爱露茜》——源文在此截断）。</p><p class="prose">媒体实验室主任尼古拉斯·尼格洛庞帝称之为——</p><div class="aband"><q>模型而非内容的传输，内容是接受者从模型中演绎出来的东西</q><cite>——第十三章 13.4 拟像的传送（尼古拉斯·尼格洛庞帝）</cite></div><p class="prose">届时的节目不再是播放一张二维图片，而是发送一个拟像：播放设备说「这有一个球的拟像：呈亮蓝色，直径 50 厘米，沿着这个方向以这个速度运动」，接受装置回答「好的，我看见它了」——然后以移动的全息图方式显示，家庭观众可以从任何角度直观地考察这个球。</p><p class="prose">尼葛洛庞帝建议播放橄榄球赛的全息图像：抱着啤酒的球迷看到球员突破、过人时的三维动态幻影，孩子们则大呼小叫着从球的视角来观看比赛。传送拟像的主要目的还是数据压缩——</p><div class="aband"><q>建模，发送，然后让接收方来填充细节——还有什么比这更好的压缩复杂性的办法呢？</q><cite>——第十三章 13.4 拟像的传送</cite></div><p class="prose">军方也对拟像显示出强烈的兴趣。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>13.5 数字之战</h2><span class="en">DIGITAL WAR</span></div><p class="prose">1991 年春天，美国第二装甲骑兵团上尉麦克马斯特走过一片静谧的沙漠战场——一个月前，交战双方都不知道他们所进行的是沙漠风暴行动中的关键战役：东距73战役（源文此句截断）。五角大楼要求军官重返战场，重建整个战役的三维仿真——「一本活的历史书」，一个战争的拟像。</p><div class="tbwrap"><table><thead><tr><th>信息来源</th><th>用途</th></tr></thead><tbody><tr><td>士兵回忆与重复演练</td><td>勾勒战役过程，重现各自行动</td></tr><tr><td>士兵日记与战场录像</td><td>帮助重建当时的行动</td></tr><tr><td>坦克上三卫星定位黑匣子</td><td>将地面坐标精确到 8 位有效数字</td></tr><tr><td>指挥中心的无线电通讯磁带</td><td>记录当时从战场发来的通讯内容</td></tr><tr><td>卫星顺序拍摄的照片</td><td>提供重要的视图</td></tr><tr><td>激光与雷达测绘</td><td>绘出该地的数字地形图</td></tr></tbody></table></div><p class="prose">弗吉尼亚州亚历山大里亚国防分析研究所的技术人员花了 9 个月消化这些信息，拼接出人工合成的现实。战役结束一年后，重现的「东距73战役」为军方高层首次公演——一位身经百战但当时远离战场的四星上将参加虚拟战斗，从仿真器中出来时<b>手臂上汗毛直立</b>。</p><p class="prose">他看到的是：油烟乌黑的天空、被摧毁的坦克喷涌的黄橙色火舌、超过三百辆游荡的车辆、黄昏时速 40 节的夏马沙暴（源文在此截断）。他可以骑上每个士兵都梦想拥有的飞毯在战场上游走，甚至——骑着飞向目标的导弹，发疯似地在天空中划出一道弧线。</p><p class="prose">如果没有提出「如果」的能力，这只是一个昂贵的纪录片；只要赋予仿真系统极小的朝无计划方向运动的权力，它就获得了某种灵魂：伊拉克人有红外夜视装备怎么办？导弹射程翻倍呢？</p><p class="prose">——<b>学员们所参与的是一场超真实的战争，一场只有他们知道、也只有他们才能参与的战斗</b>，也许比历史更真实，因为这些战事的结局是未知的，正如真正的人生一般。</p><p class="prose">这套系统名为「仿真网络」（SIMNET）：遍及世界的 300 个仿真器联结成网，300 辆战车可在同一场虚拟战斗中同时亮相；人工智能操纵的「半自动化力量」让一个人控制 17 辆半自动战车——「我们曾经在 SIMNET 中同时投入 1000 个实体」，而「你绝对分不清楚这些半自动战车到底是真的，还是只是一些数字复制品」。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>柯斯比的国民警卫队上尉</h4><span class="ar">▶</span></div><div class="cb"><div class="in">仿真中心负责人尼尔·柯斯比举例：你是国民警卫队的一个上尉，周六早上带着 100 个士兵守卫军械库，想抵挡一个 500 人营队的攻击——在周六早上的圣地亚哥城，你到哪去找 500 个人来？你可以呼叫 SIMNET，找另外 3 个人各操作两三个操作台来扮演进攻方，发一条信息：「今晚 21:00 在巴拿马数据库碰面，准备行动。」你所交谈的对象可能身处德国、巴拿马、堪萨斯或者加州，大家会在同一个虚拟地图上碰面。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>诺克斯堡的纤维玻璃坦克</h4><span class="ar">▶</span></div><div class="cb"><div class="in">标准的 M1 坦克是 SIMNET 虚拟地面上最普通的实体：一个巨大的纤维玻璃盒子，外形像固定在地上的超大垃圾桶，从外面看从来不会动一动。四人驾乘小组挤在狭窄的岗位上，快速控制数百个复制的表盘和开关——驾驶员发动坦克仿真器时，它会轰鸣、呻吟和颤抖，就和驾驶真的坦克一样。8 个或更多的这种盒子接入诺克斯堡土褐色的仓库，长途电话线把遍及世界的 300 个仿真器联结成一个网络。</div></div></div></div><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>活的历史书</h3><p class="cp">五角大楼重建东距73战役的三维仿真——未来军校的任何学员都可以进入并从头经历那场战斗：一个战争的拟像。</p></div><div class="card num"><div class="idx">二</div><h3>300 辆战车联网</h3><p class="cp">长途电话线将遍及世界的 300 个仿真器联结起来，300 辆战车可以在同一场虚拟战斗中同时亮相。</p></div><div class="card num"><div class="idx">三</div><h3>半自动化力量</h3><p class="cp">人工智能操纵的车辆只需一个操作员照看——一人可控制 17 辆半自动战车，真假根本分不清楚。</p></div><div class="card num"><div class="idx">四</div><h3>仿真练出的胜利</h3><p class="cp">参战空军大队 90%、地面部队指挥官 80% 事先参加过高强度仿真训练——这场战斗跟训练没什么区别。</p></div><div class="card num"><div class="idx">五</div><h3>嵌入式训练</h3><p class="cp">真正坦克中的真正炮手，与外界的唯一通道是监视器——那一英寸高的坦克是真是假，又有什么关系呢？</p></div></div><p class="prose">海湾战争颠覆了「美军年轻没经验」的预测：参战空军大队 90%、地面部队指挥官 80% 事先参加过高强度战斗仿真训练；国家训练中心（跟罗德岛差不多大，价值 1 亿美元的光纤无线网络）里，美国老兵穿俄罗斯军服按苏式操典战斗，号称不败。第一天夜里，600 架盟军战斗机中只有一架没能返航。</p><p class="prose">一位退伍上校问「东距73战役」的指挥官如何解释胜利——</p><div class="aband"><q>啊，我们有经验。我们曾经在国家训练中心和德国参加过6次完整的仿真战役。这场战斗跟训练没什么区别。</q><cite>——第十三章 13.5 数字之战</cite></div><p class="prose">军方探索的是「嵌入式训练」——难分真假的仿真训练：真正坦克中的真正炮手，与外界的唯一通道是眼前可旋转的小监视器——<b>监视器上那一英寸高的坦克是真是假，又有什么关系呢？</b>对参战者来说，所谓仿真是一种三位一体的东西——</p><div class="aband"><q>首先，士兵进行的是一场仿真战斗。其次，战斗是真正通过监视器和传感器来实现的。最后，战斗仿真的是历史。也许有一天，他们也无法说清其中的区别。</q><cite>——第十三章 13.5 数字之战</cite></div><p class="prose">再往前一步：既然仿真演习和实战区别甚微，为什么不用仿真演习来进行真正的战争？远程临场（Telepresent）的无人巡逻吉普已经在真正的道路上行驶；海湾战争中无人却仍由人操纵的飞机发挥了巨大作用。不过军方的愿景进展缓慢——到 1992 年为止，军方的仿真和战争游戏比普通老百姓玩的商业游戏强不了多少。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>13.6 无缝分布的军队</h2><span class="en">SEAMLESS DISTRIBUTION</span></div><p class="prose">乔丹·魏斯曼和好友罗斯·拜伯科克（两人出自「美国商船学院」——源文此句残缺）于 1990 年推出《暴战机甲兵》：芝加哥北码头购物中心里价值 250 万美金的游戏中心，全天营业——「哪儿声大往哪儿走就对了」。</p><p class="prose">12 个拥挤的箱体固定在水泥地上，玩家用脚踏板驾驶、踩油门加速、用操纵杆开火，在红土沙漠世界里追击其他的长腿坦克。显示屏上凯利能看到队友的名字：大兵，鼠人，成吉思——而他自己在别人的显示器上只是「凯文」，因为忘了起绰号。他们都属于那种早早就被别人弄死的新手。</p><p class="prose">密西根州立大学研究了至少玩过 200 局（每局 6 美元）的老鸟：他们主要是二十多岁的未婚男性，有些高手吃住在游戏中心。单是习惯驱动装置就要 5 局，再玩 50 局才能掌握配合技术——<b>团队合作是这个游戏的要点所在</b>。</p><p class="prose">高手们把它视为一个「社会契约」，一次次回到仿真世界的原因是：「其他人」「能够找到够格的对手」「名声和荣誉」「配合默契的队友」。问他们要什么改进？只有两个人说要「提高真实度」，大多数人希望价格更低、故障更少——<b>最希望的是这个仿真世界里有更多的玩家</b>。</p><p class="prose">这是网络的呼声：他们的联系越多，我的联系就变得越有价值。<b>所谓真实，首先指的是共同进化的动力，其次才是什么 600 万像素。</b></p><div class="aband"><q>量变导致质变，更多就会变得不同。从第一粒沙开始不断地增加沙子的粒数，你会得到一个沙丘，而它和单个沙粒是完全不同的。在一个游戏网络中不断增加玩家的人数的话，你得到的是……什么呢？是某种完全不同的……分布式存在，一个虚拟世界，一个蜂群思维，一个网络社区。</q><cite>——第十三章 13.6 无缝分布的军队</cite></div><p class="prose">军队巨大的规模可以让它尝试商业企业做不到的宏大计划（国防高级研究项目局——源文在此截断）。 retired 上校们推销的关键思想，浓缩成三句口号——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>先仿真，再建造！</span></label><label><input type="checkbox"><span>先仿真，再采购！</span></label><label><input type="checkbox"><span>先仿真，再战斗！</span></label><div class="cf">已勾选 <b>0</b> / 3</div></div><p class="prose">通过在流程的每个环节应用仿真技术，可以得到性价比更高的武器（诺斯洛普、波音 VS-X 与 ADST 仿真平台——源文三处截断）。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>13.7 一个万千碎片的超真实</h2><span class="en">A HYPERREAL OF FRAGMENTS</span></div><p class="prose">军队是赢家，群氓是输家。独行的兰博终要归于死亡——军队比其他任何人更加懂得，最重要的事情就是如何让团队运转良好：<b>正是团队变群氓为军队，变兰博为士兵。</b>索普上校说得没错——</p><div class="aband"><q>是分布式智能，而不是火力，赢得了战争的胜利。</q><cite>——第十三章 13.7 一个万千碎片的超真实</cite></div><div class="aband"><q>下一个突破不是个人接口，而是团队接口。</q><cite>——第十三章 13.7 一个万千碎片的超真实（施乐帕洛阿托研究中心主管约翰·西里·布朗）</cite></div><p class="prose">分布式智能是未来的趋势。互联网——它由国防高级研究项目局开发，而今已经成为全球性、非军事的应用——上的学生们早已迫不及待：他们看到了分布式仿真的前景，并且已经在互联网的静谧角落中开始研发他们自己的版本了。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>13.8 两厢情愿的文字超级有机体</h2><span class="en">TEXT SUPERORGANISM</span></div><p class="prose">戴维每天有 12 个小时待在精灵和城堡的地下世界里，扮演一个神气活现的探险者 Lotsu——他本该去上课拿优等成绩，却随波逐流于最新的校园时尚，沉溺在多用户奇幻游戏里（源文在此截断）。多用户奇幻游戏运行在学校和私人电脑构建的大型网络上，故事场景来自《星际旅行》（源文截断）。</p><p class="prose">1978 年，英国艾塞克斯大学的罗伊·杜伯萧编写了一个类似《龙与地下城》的角色扮演游戏，第二年同班同学理查德·巴图扩展了玩家人数和动作选项——他们管它叫「<b>泥巴</b>」（MUD，源文截断）。</p><p class="prose">探索通过键盘文字进行：输入「看骷髅」，计算机回应「骷髅对你说：『小心老鼠。』」；输入「往北走」，你就迈进另一个未知的房间。</p><p class="prose">它有两个突出改进：<b>其一</b>，地下城里可以组织多达 100 名玩家同玩——他们既可以是并肩战斗的拍档，也可以是邪恶的敌人，或者凌驾于你之上的反复无常的神；<b>其二</b>，也是最重要的一点：玩家可以增加房间、改变路径、发明魔法道具——<b>玩家生活在这个世界的同时，还可以建设这个世界。</p><p class="prose">这个游戏的目的就是创造出一个比旧世界更酷的新世界。</b></p><p class="prose">于是「泥巴」成了<b>为两厢情愿的超级有机体显现而准备的并行分布式平台</b>：有人鼓捣出一个虚拟甲板，别人加上舰桥和轮机舱——几个月后，数百名本该做微积分作业的玩家用文字造出了《星际旅行》的企业号，进而发展出星球和互联的星系。</p><p class="prose">你随时可以登入，一天 24 小时跟舰队同伴打招呼，共同执行舰长的指令，与敌方玩家建造的战舰作战。真实生活在其中重现：为死去的角色送葬守灵，为虚拟人物和真实人物举办小型婚礼。你可以自定义身份——「她是一个身材高挑的黑发瓦肯女性」的始作俑者，可能是一个满脸粉刺的小女生，或者一个留着大胡子的男性。</p><p class="prose">雪莉·特克说：「在『泥巴』中，<b>自我是多重而且去中心的</b>。」</p><p class="prose">恶作剧也猖獗：隐形「锄头」把到访者的四肢全部切除，连来「看诊」的巫师也挨上一锄头；挂在墙上书着「家啊！甜蜜的家啊！」的十字绣，会把毫无防备的你强制传送回家（源文此段截断）。</p><p class="prose">而在麻省理工学院一款宣布一切杀戮皆非法的实验性「泥巴」——<b>赛博城</b>——里，每天约 500 个孩子建造了 5 万个物品、人物和房间：带多厅电影院的购物中心、市政厅、科学博物馆、绿野仙踪主题公园、民用电台广播网络，以及一个四处转悠跟人做生意的机器人地产商。</p><p class="prose">赛博城有意不提供地图——知不知，为知之；其现实管理者说：「进入赛博城这样的陌生环境或文化的一大吸引力，就在于它把成年人拉回到跟孩子一样的起跑线上。」主要建筑师年龄都不超过 15 岁。</p><p class="prose">《旧金山纪事报》专栏作家初访的感受：「这个地方——所有那些房间，还有那些跑来跑去的『玩偶』，让你感觉是被扔到了东京的市中心，而你随身带着的只有一块巧克力糖和一把螺丝刀。」<b>在这里，活下去就是唯一的目标。</b></p><p class="prose">迄今为止，每一款运行着的「泥巴」（大约有 200 款）都是由狂热的学生在业余时间写的，没经过任何人的许可。22 世纪的孩子们看到 20 世纪 90 年代的单人仿真游戏会感到十分奇怪——</p><div class="aband"><q>这有点像世界上只有一部电话，你能打给谁呢？</q><cite>——第十三章 13.8 两厢情愿的文字超级有机体</cite></div><p class="prose">「泥巴」的未来、SIMNET 的未来、《模拟城市》的未来、虚拟现实的未来，终将归于一统——在某个融合点上诞生出终极版的上帝游戏：一个遵从几条精心选择的规则而运动的广阔世界，居于其间的是无数自治的活物和人类玩家的拟像。</p><p class="prose">随着相互关系的不断加深，参与者们——真的、假的、超真实的——与系统共同进化成一个与其刚开始时完全不同的游戏。于是——</p><div class="aband"><q>神自己戴上魔术眼睛，穿戴整齐，降临到他自己创造的世界中。</q><cite>——第十三章 13.8 两厢情愿的文字超级有机体</cite></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>13.9 放手则赢</h2><span class="en">WINNING BY LETTING GO</span></div><p class="prose">按照摩西讲述的故事，在创世的第 6 天最后时刻，上帝捏起一些黏土，用一种几乎戏谑的态度捏出一个小模型，放到自己所创造的新世界里。其他的造物只需在他脑子里完成，但这个部分却要花点工夫——这个最终用手制成的模型，这个眨着眼的、不知所措的、被耶和华称之为「男人」的东西，<b>是耶和华自己的拟像</b>。</p><p class="prose">因为耶和华是创造者，这个模型也能模仿他的创造性进行创造；因为耶和华有自由意志、有爱，这个模型也会拥有自由意志和爱。而自由意志和创造性带来一个开放而无限制的世界：人既可能创造令人痛恨之物，又可能创造为人所爱之事（耶和华在创世之初曾试图教给他辨别善恶的能力——源文此段截断）。</p><p class="prose">千年之后，耶和华的人形物开始从地球上收集矿物，建造他们自己的模型——一个拟像，一个像耶和华和他们自己一样能够自由创新的东西（由于对人形物的巴别塔诅咒——源文在此截断）。</p><p class="prose">他们创造的拟像各不相同：电脑病毒更像灵魂而不是实体；另一些存在于虚拟空间；还有些——比如 SIMNET 中昂首挺胸的拟像——则是现实与超真实之间的令人恐怖的结合。好问题也随之而来：模型建立自己的模型，这到底是虔诚还是亵渎？</p><p class="prose">有一件事是确切无疑的：建造自己的模型绝不是什么轻而易举的事情。人形物还应该知道——<b>他们的模型同样不可能是完美的，也不可能被置于「神」的控制之下</b>。要想真正创造出具有创造性的造物，创造者必须把控制权交给被创造者，就好像耶和华把控制权让渡到人类手里一样——</p><div class="aband"><q>要想成为上帝，至少是有创造性的上帝，你就必须放弃控制，拥抱不确定性。绝对的控制也就是绝对的无趣。要想诞生出新的、出乎意料的、真正不同的东西——也就是真正让自己惊讶的东西，你就必须放弃自己主宰一切的王位，让位于那些底层的群氓。</q><cite>——第十三章 13.9 放手则赢</cite></div><div class="aband"><q>这个神之游戏中一个巨大的吊诡就在于：要想赢，先放手。</q><cite>——第十三章 13.9 放手则赢</cite></div></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>14.1 “大千”图书馆之旅</h2><span class="en">THE LIBRARY OF BABEL</span></div><p class="prose">大学图书馆三楼小说区，凯利在书架间搜寻博尔赫斯——却发现一本 80 多岁博尔赫斯专访选集里，有一篇本该只出现在《失控》里的访谈。访谈从他提问开始：「我读过你一篇关于书籍迷宫的文章。那个图书馆——」「大千」（此处源文即残句）。博尔赫斯说——</p><div class="aband"><q>在这些书中读到的每一行有意义的简单陈述中，都充斥着毫无意义的杂音、混乱的文字和互不相干的思想。荒谬是图书馆的普遍现象。</q><cite>——第十四章 14.1 “大千”图书馆之旅（博尔赫斯）</cite></div><p class="prose">图书馆的基本法则由两页破译出的文字发现：所有的书都由相同的要素构成——空格、句号、逗号、22 个字母；没有两本完全一样的书。由此推断：图书馆即是全部，书架记录了 20 多个拼写符号所有可能的组合。那么它容纳了过去与未来所有的书——</p><div class="aband"><q>一切东西——纤毫毕现的未来史，天使长的传记，图书馆的忠实目录，成千上万的虚假目录，真实目录的谬误展示，巴西里德斯派的诺斯底派福音书，对那个福音书的注释，对那个福音书的注释的注释，关于你的死亡的真实故事，每本书的所有语言的译本，在所有的书中对任何一本书的篡改。</q><cite>——第十四章 14.1 “大千”图书馆之旅（博尔赫斯）</cite></div><p class="prose">博尔赫斯图书馆的诱惑力不可思议：凯利为它拖延了一年的截稿日期——救他于困境的绝佳方案就躺在图书馆某处：一本已经完稿、编辑和校对了的《失控》。他沿着六边形回廊出发了，翻了几百本书，全是胡言乱语。于是他换了一种策略——「方法」：以某本书为基准，比较六个方向上「最有意义」的书，向有序的顶峰攀登。</p><p class="prose">「好」书籍之处的拓扑（源文在此截断）像山脉的等高线地图：唯一一本极佳的书位于山之巅，往下是数量更多的平庸书籍，越底层的环带越大——这座山体矗立在广袤无差别的无意义之平原上。几天之后，「方法」找到了一本藏有 4 个英文词组的书；但从未发现一个《失控》的摹本。他退出了图书馆，回家<b>独自写完了《失控》</b>。</p><p class="prose">「方法」勾起了他的好奇心。回到大学图书馆，他从索引跳到脚注，发现了一个让自己大吃一惊的真相——</p><div class="aband"><q>真相出乎意料：科学家们认为从遥远的年代起“方法”就已经充斥着我们这个世界。它不是由人发明的；也许是上帝。“方法”就是我们现在称之为“进化”的各种东西。</q><cite>——第十四章 14.1 “大千”图书馆之旅</cite></div><p class="prose">更惊人的是：凯利越读越入迷，渐渐体会到博尔赫斯的图书馆是真实存在的。20 年前，人们已经在人类制造的硅电路中揭示了它：电脑芯片用程序指令创建了博尔赫斯的图书馆——想要搜索容纳所有可能书籍的图书馆，你只需要坐下来，点击鼠标就好了。而最普适的结果是：不论采用什么人工方式实现，所有的游客到达的都是同一个图书馆——</p><div class="aband"><q>不存在伪博尔赫斯图书馆；图书馆的所有摹本都是原本。</q><cite>——第十四章 14.1 “大千”图书馆之旅</cite></div></section><section id="s12"><div class="h2"><span class="cn">拾贰</span><h2>14.2 一切可能图像之空间</h2><span class="en">THE SPACE OF ALL IMAGES</span></div><p class="prose">1993 年制造的「连接机5」（CM5，源文此句截断）的主人卡尔·西姆斯，是「思维机器」公司的科学家（源文截断）。在剑桥他的办公室里，桌面上 20 个矩形框显示着 20 幅略有不同的大理石纹样环形图。</p><p class="prose">他点击其中一幅——一眨眼 20 个窗口都变成新纹样，每一幅都和刚才点击的略有不同：<b>他正在利用「方法」在视觉模式的博尔赫斯库里穿行</b>。</p><p class="prose">这个「大千」包含所有的色彩和条纹——蒙娜丽莎及其所有仿制品、五角大楼的蓝图、梵高的所有素描、《乱世佳人》的每一帧画面——然而这些还只是愿望，他收获的主要是不规则的斑点、条纹和色彩漩涡。</p><p class="prose">「方法」也即进化，可以被看成是<b>繁殖，而不是旅行</b>：西姆斯把这 20 幅新图像描述为父母的 20 个孩子，选择「最佳」的一个，立刻繁殖出 20 个新变体。不论是理智还是直觉都无法回避这个印象：<b>西姆斯实际上是在繁殖图像</b>。他和同行们把这个过程称为——<b>人工进化</b>。</p><p class="prose">繁殖图像与繁殖鸽子的数学逻辑没有什么区别：都既是人工的（从艺术的角度看），又是天然的（从本质上讲）。</p><div class="aband"><q>去掉组织和毛发的遮蔽，取走栖身于其中的血与肉，将灵魂注入到电子回路里，进化的重要本质就从天生的世界转移到了人造的世界，从原来唯一的碳水化合物领域转移到了算法芯片中的人造硅世界。</q><cite>——第十四章 14.2 一切可能图像之空间</cite></div><div class="aband"><q>令我们震惊的不是进化行为从碳转到了硅；硅和碳实际上是非常相似的元素。人工进化真正令人吃惊的是，它对计算机来说是完全自然而然的事情。</q><cite>——第十四章 14.2 一切可能图像之空间</cite></div><p class="prose">博尔赫斯图书馆的电子版本同理：每段文本都沉睡在虚拟书架的指定位置上，当被选中时，硅芯片唤醒它——<b>图书馆员以按序跳跃的方式穿越空间；路径就是一连串的选择</b>。西姆斯在 CM5 上把灰色的杂点繁育成生机勃勃的植物生命——</p><div class="aband"><q>进化的创造力是无穷的。它能够超过人类的设计能力</q><cite>——第十四章 14.2 一切可能图像之空间（卡尔·西姆斯）</cite></div><p class="prose">他把最迷人形式的「种子」复制下来，渲染成动画表示的三维植物：巨大的羊齿蕨、纺锤形的类松树、蟹爪样的草、扭曲的橡树——放在他的视频作品「胚种论」里：异形的树和巨草铺满贫瘠的星球，繁育出自己的种子，被球形大炮爆裂到空中，来到下一个贫瘠的世界（源文此段末尾截断）。</p></section><section id="s13"><div class="h2"><span class="cn">拾叁</span><h2>14.3 倘佯在生物形态王国</h2><span class="en">BIOMORPH LAND</span></div><p class="prose">第一个合成博尔赫斯世界的图书馆员，是英国动物学家<b>理查德·道金斯</b>。1985 年他发明了「生物形态王国」——一个由可能的生物形状组成的空间（第一个计算机生成的可能形式库，源文在此截断）。</p><p class="prose">它是作为教育程序编写的，目的是阐明<b>在没有设计师的情况下，设计之物是如何产生的</b>：随机选择绝不能产生连贯的设计物，而累积选择（即「方法」）可以。程序画出线段并加上枝条，9 个可能变量随机变异，每次得到一个新形状。</p><div class="aband"><q>当你通过人工选择在电脑中第一次进化出新生物时，感觉就像是在创造一般。确实如此。而从数学的角度看，你所做的实际上是在发现生物，因为在‘生物形态王国’的基因空间里，它早就待在那属于它的位置上了。</q><cite>——第十四章 14.3 倘佯在生物形态王国（道金斯《盲眼钟表匠》）</cite></div><p class="prose">随着时间流逝，道金斯走进了库的另一个空间：分支开始自相缠绕，层层缠绕形成小小的躯体，从中长出的辅助分支像极了腿和翅膀——<b>他进入了库中的昆虫世界（尽管他这个上帝从未打算过要有这么一个国度！）</b>——</p><div class="aband"><q>当我写这个程序时，我从未想过除了类似树的形状，它还能进化出别的什么东西来。我本希望能够进化出垂杨柳、杨树和黎巴嫩雪松。</q><cite>——第十四章 14.3 倘佯在生物形态王国（道金斯）</cite></div><p class="prose">那一晚他兴奋得废寝忘食：「我简直兴奋得发狂。探索一个按自己设想所创造出来的王国是多么令人兴奋。在面对这些突现在屏幕上的东西时，无论是我的生物学家背景，还是我 20 年的编程经验，抑或是我最狂野的梦境，都未能让我有丝毫的心理准备。</p><p class="prose">」接下来几个月，他找到了仙女虾、阿兹特克神庙、哥特式教堂窗户、土著袋鼠壁画，甚至用进化的方法（不是画出来的）找到了许多字母——但始终没能找到一个像样的 D 或精致的 K（摄影师杰尔·山伍德看过超过一百万只蝴蝶翅膀才收集全 36 个符号——源文此段截断）。</p><p class="prose">这个空间的怪物只出现一次，然后就消失了——最早版本没有保存坐标功能，重新碰到它们的可能性微乎其微。</p><p class="prose">为了证实这个空间到底有多大，道金斯悬赏 1000 美元，给能重新繁育出他偶遇过的一幅<b>高脚杯</b>图像（他称之为圣杯）的人：「用我自己的钱悬赏，是用我的方式宣告没有人会找到它。」让他大跌眼镜的是，不到一年，加州软件工程师托马斯·里德竟然重逢了圣杯。</p><p class="prose">线索在于道金斯把可能的形状限定在「生物学意义上有趣的」范围内——<b>受限胚胎学</b>：他想要的胚胎学是递归的——「长出一个单位长度然后分岔成两个」的递归规则重复应用，5 次循环就生成一片灌木般的形状。</p><p class="prose">他又把基因和躯体的理念引入：基因不控制屏幕上的像素点，而是控制生长规则（绘图算法）——于是在库中建立了一条内在语法，几乎所有随机基因生成的都是符合逻辑的生物形状。里德正是靠繁育与「基因工程学」双管齐下找到圣杯：40 个小时里 38 个小时花在工程学上——「只通过繁育手段，我是绝不可能找到它的。</p><p class="prose">」（数星期内又有两个发现者各自独立找到圣杯，其中一个运用了反向工程——源文在此截断。）</p></section><section id="s14"><div class="h2"><span class="cn">拾肆</span><h2>14.4 御变异体而行</h2><span class="en">RIDING THE MUTATOR</span></div><p class="prose">最先吸取道金斯思想的是艺术家。英国小伙子威廉·拉萨姆在 20 世纪 80 年代早期展示的作品，像某个深不可测的精巧装置的零部件图册：先画一个简单形状，然后用渐趋复杂的圆锥体填满画面，每个新图形都遵循预设规则——整个画面像一个包含许多交叉婚姻的族谱。</p><p class="prose">他把这种「基于规则的受迫过程」称为<b>形式合成</b>：「我的关注点从完成一件单一作品转向雕刻上百万件作品，而每个作品又能再延伸出上百万件雕刻。<b>我现在的艺术作品就是整棵雕刻的进化树。</p><p class="prose"></b>」1986 年他遇见「生物形态」，把道金斯进化引擎的核心与三维形式结合，孕育出昵称为「<b>变异体</b>」的进化艺术程序——那些夺人眼球的电子怪兽由不知疲倦的 IBM 图形计算机鼓捣出来，而这个巨大的「生物形态王国」也只不过是拉萨姆空间的一个子集。</p><p class="prose">他找到的形式包括：编制精巧的篮子、大理石质地的巨蛋、双体蘑菇、来自另一个星球的麻花状鹿角、朋客造型的海星，还有被他称为「Y1 异形」的来自异域空间的多臂湿婆神。</p><p class="prose">他要的不是仿制地球生命，而是比地球生命「更具野性的某种东西」——他参观乡间展会时在人工授精摊位前驻足，发现巨大的变异超级牛的照片最能带来灵感：「这台机器可以让我自由地探寻以前从未接触到的、超出我想象力的形式。」</p><div class="aband"><q>在博尔赫斯形式库的深处，一层层优雅的鹿角、一行行左旋蜗牛、一排排矮花树、一屉屉瓢虫，都在等待着它们的第一个造访者——这个造访者也许是大自然本身，也许是位艺术家。而在两者未曾触及它们之前，它们仍然在意识之外，在视觉之外，在触感之外，是纯粹的可能之形式。就我们所知，进化是造访它们的唯一途径。</q><cite>——第十四章 14.4 御变异体而行</cite></div><div class="aband"><q>进化，则是一匹暴烈野马，带我们到人力所不能及之处。</q><cite>——第十四章 14.4 御变异体而行</cite></div><p class="prose">西姆斯道破双重动机：「我使用进化方法是出于两个目的：一是为了繁育出我不可能想象到的、也不可能凭其他方式发现的东西；二是为了创造出我可能想象到的、但永远没有时间去细化的东西。</p><p class="prose">」但进化空间中也有断点：最激进的选择也不能让那个慵懒的家伙挪动半步——<b>就好像身处一个巨大的沙漠盆地，下一步与上一步没有什么分别，而朝向的顶峰仍遥不可及</b>。里德追圣杯时经常需要回退，有一次回退了数百步到第 6 个存档才走出死胡同。</p></section><section id="s15"><div class="h2"><span class="cn">拾伍</span><h2>14.5 形式库中也有性</h2><span class="en">SEX IN THE LIBRARY</span></div><p class="prose">拉萨姆也曾闯入「不稳定态」的领地：在一些区域，基因显著变化只带来微不足道的形式改变——这就是西姆斯所滞留的盆地；在另一些区域，基因的微小变化也会造成形式的巨大改变。</p><p class="prose">于是开拓者们学会了<b>调整变异的幅度</b>：形状变得有意思之后调低变异率，慢慢接近被隐藏的形状；西姆斯的软件则自动软着陆——「否则，当你试图微调一帧图像时会很抓狂。」</p><p class="prose">道金斯的生物形态王国丰饶却寡欲，一切变化都通过单亲的无性变异达成；相比之下，西姆斯和拉萨姆的世界是由<b>性</b>所驱动的。他们认识到的最重要一点就是——</p><div class="aband"><q>在一个进化系统里，交配行为可以有任意多种花样！</q><cite>——第十四章 14.5 形式库中也有性</cite></div><div class="duo"><div class="colL"><h4>内亲后代</h4><ul><li>继承父母之间的性状——位于图书甲与图书乙的连线之上</li><li>可以以章节交错的方式继承两本书的内容，把彼此关联的基因片段保留下来，更有可能「去芜存菁」</li><li>另一种理解：生物甲异形成生物乙的过程中产生的一切异形生物</li></ul></div><div class="colR"><h4>外戚后代</h4><ul><li>所处的位置是父母变形线之外的某点</li><li>一头狮子与一条蛇的「外戚」并非两者中间的某个点，而更有可能是一只狮头蛇尾却长着分叉舌的怪物（源文在此截断）</li></ul></div></div><p class="prose">交配还可以有悖常理：拉萨姆正在推行<b>多配偶制</b>——选择多达 5 位父母，每位权重各不相同，还可以赋予负权重：设定一个「反父母」，繁衍出尽可能与之不同的子女。他的变异体程序甚至会追随繁育者在库中的足迹，把保持不变的基因视为繁育者的偏好而设为显性（源文在此截断）。</p><p class="prose">西姆斯和拉萨姆都梦想建立一个人工智能模型，分析繁育者探索的点滴进步，推导出每一步选择所共有的要素，进而直达库的纵深。在林茨国际电子艺术节的展台上，凯利在连接机 2 上亲手繁育图像：在脚踏板之间来回奔跑，汗流浃背——「这份体力活像是在做园艺」。而若未被选中的话，精致的色彩绚烂的作品就永远地离别消失了。</p><p class="prose">也许，我们会惊讶地发现，并没有什么统一的选择标准——<b>也许，任何高度进化的生命形式都是美丽的。众生皆美——尽管各有所好。</b></p></section><section id="s16"><div class="h2"><span class="cn">拾陸</span><h2>14.6 三步轻松繁育艺术杰作</h2><span class="en">BREEDING ARTWORKS</span></div><p class="prose">俄罗斯程序员弗拉迪米尔·伯克希尔科与阿列克谢·帕杰诺夫（俄罗斯方块的编写者）设计了一个繁育虚拟水族馆的程序：「刚开始时，我们并没打算使用电脑来生成什么很实用的东西，而只是想得到非常漂亮的东西。</p><p class="prose">」他们从日本插花艺术起步，因为电脑屏幕「看起来像一个水族馆」，于是「电子鱼」应运而生——多达 50 名俄罗斯程序员在莫斯科重新发现了计算进化的方法和威力，而他们对道金斯、拉萨姆和西姆斯的工作一无所知。</p><p class="prose">电子鱼于 1993 年由 Maxis 发行：每一条鱼有 <b>56 个基因、800 个参数</b>（好大的一个库啊！）。</p><p class="prose">凯利在这片鱼类形式库里撒网捞起两条亲本——胖胖的黄绿色妈妈和鱼雷体态的蓝色爸爸——选择交配，把注意力放在鱼鳍上，让每一代的鳍越来越华丽，最终得到一条周身长满鳍的鱼，「如此之怪异，以至于不能再进行繁育」——<b>他已经处于库的边缘，超出这个边界的形式就不再是鱼了。</p><p class="prose"></b>（弄清楚鱼和非鱼的界限，正是这个游戏的一部分。）存储整条鱼太占磁盘，程序只存基因——「鱼卵」，比鱼小 250 倍。Maxis 的测试程序员罗杰把自己的名字直接插入鱼卵代码，孵出一尾黑色蝌蚪；又输入林肯葛底斯堡演说的文本——孵出「一张苍白的脸拖曳着一个残破的蝙蝠翼」，绰号「葛底斯堡鱼」。</p><p class="prose">后来他们发现，任何一个包含大约 2000 个数位的序列都可以作为鱼卵——项目经理把财务预算电子表格输进去，孽生了一个鱼头、毒牙嘴和龙身的怪物，「这可不是什么好兆头」。</p><p class="prose">繁育新品种曾经是园丁独有的手艺，而现在画家、音乐家、发明家都可以染指。拉萨姆预言<b>进化主义将是当代艺术发展的下一个阶段</b>。进化艺术家进行了两次创造：首先扮演上帝，为生成美而设计一个世界；其次是这个伊甸园的园丁和看护人——「他更象慈爱的天父导引一个个生灵降临世间，而不是冰冷的模具塑造出一个个创造物。</p><p class="prose">」威尔·莱特甚至想好了完美名字：<b>「达尔文绘图」</b>——草草勾勒一个图标，每条线每个点转换成数学函数，然后任由它进化成你从未料想的奇异设计，其精细度是你力不能及的；因为这个图像基于算法，它有无限的分辨率。</p><p class="prose">IBM 正把拉萨姆的进化方法交给汽车设计师改变车身外形，并认为这种「驾驭」方法对所有涉及大量参数的设计问题都有帮助——而另一个优点是：<b>这样的设计模式极其适合群体共享共管。参与的人越多，效果就越好。</b></p><p class="prose">人工进化作品的版权问题还处于法律真空中：谁将受到保护——繁育出作品的艺术家，还是编写繁育程序的艺术家？正如道金斯所指出的，在一个真正巨大的形式库中，一个模式不可能被发现两次——<b>拥有一条通往特定地点的进化路径，就不容置疑地证明了艺术家是最先找到这个目标的原始权利人，因为进化不会两次光顾同一个地点。</b></p></section><section id="s17"><div class="h2"><span class="cn">拾柒</span><h2>14.7 穿越随机性</h2><span class="en">THROUGH RANDOMNESS</span></div><p class="prose">归根结底，繁育一个有用的东西几乎就和创造一个东西一样神奇。理查德·道金斯的论断印证了这点——</p><div class="aband"><q>当搜索空间足够大时，有效的搜索流程就与真正的创造并无二致了。</q><cite>——第十四章 14.7 穿越随机性（理查德·道金斯）</cite></div><div class="aband"><q>在包括一切可能之书的图书馆里，发现某一本特定的书就等同于写了这本书。</q><cite>——第十四章 14.7 穿越随机性</cite></div><p class="prose">人类早在几个世纪前就意识到了这点（正如德尼·狄德罗——源文在此截断）：书籍的数量将持续增加，可以预见，在未来的某个时刻，<b>从书本中学习知识就如同直接研究整个宇宙一样困难</b>。</p><p class="prose">威廉·庞德斯通用一座包含所有可能视频的图书馆来阐述这个难题：一盘随机磁带无法用更少空间或更短时间的符号来表示——<b>不可压缩性正是随机性的最新定义</b>。整理磁带所需的信息和精力将超过创作它。</p><p class="prose">进化是解决这道难题的笨办法，而智能恰好就是一条穿堂过室的隧道：把进化与对图书馆内在秩序的学习结合起来，就能找到你的书。</p><p class="prose">一些研究人类心智的学生提出了一个强有力的论点：<b>思维是大脑内想法的进化</b>。凯利在写这段文字时不得不承认这一点：写这本书之初，脑子里并没有一个成形的句子，完全随意选了「我被」的短语，接着从 10 万个可能的单词中挑选下一个——每一个被选中的都繁育出可供下一代用的单词，直到进化出差不多一个完整的句子。</p><p class="prose">但下一句的第一个单词可能是任何一个单词——这本书的结尾，远在 15 万次选择之外，恍若银河系的尽头。</p><div class="aband"><q>我通过寻找来写作。我在自己的书桌上对它进行进化，从而在博尔赫斯图书馆里找到它。</q><cite>——第十四章 14.7 穿越随机性</cite></div><div class="aband"><q>这次漫漫搜索给我的最大满足是——不管这本书是珠玉还是敝屣，只有我才能找到它。</q><cite>——第十四章 14.7 穿越随机性</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>第十三章多处｜</b>「在拜访这个游戏的发行商“艺电”」（15 字残句）「爱因斯坦……简化为5个符号」「两台硅谷图形公司」「这个男人就是杰伦·拉尼尔」「安伯托·艾柯」「称为超真实」「如果我们可以把博尔赫斯」（鲍德里亚开场引文）「《我爱露茜》」「东距73战役」「夏马沙暴」「在田纳西州的诺克斯堡」「仿真与训练研究所」「“美国商船学院”」「国防高级研究项目局」「诺斯洛普公司」「波音在对倾转旋翼飞机VS-X」「代号为ADST」「多用户奇幻游戏」「《星际旅行》」「管这个游戏叫“泥巴”(MUD)”」「十字绣整人段末」「阿默斯特学院」「斯堪的纳维亚」「斯坦尼斯拉夫·莱姆」（神下凡话题）「辨别善恶的能力」（13.9 创世段）「对人形物的巴别塔诅咒」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>第十四章多处｜</b>「那个图书馆」（博尔赫斯访谈首句）「“好”书籍之处的拓扑」「书名为Hadal」「（有人认为他的小说是用来精心守护通往绝顶化境的道路的。）」「1993年制造的“连接机5”(CM5)」「卡尔·西姆斯……“思维机器”公司」「这就是胚种论的过程。）」「第一个由计算机生成的可能形式库」「道金斯希望通过人工选择和繁殖来遍历」「这正是道金斯最初用BASIC」「蝴蝶翅膀字母段（杰尔·山伍德）」「颇有杰克逊·波洛克」「有一个还运用了反向工程」「长着分叉舌的怪物」（外戚后代）「成为显性基因」「正如德尼·狄德罗」等处句子未收尾，均不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>结构说明｜</b>14.1 博尔赫斯访谈采用问答体，访谈首句与「大千」释义均为残句，本篇以间接转述呈现并注明，不补写。13.7 全章仅 3 段（源文最短小节之一），按源文如实呈现。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">演化之部｜上帝的游戏·形式的图书馆</span><a href="../07-电子货币/index.html">← 电子货币</a><a href="../09-人工进化/index.html">人工进化 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

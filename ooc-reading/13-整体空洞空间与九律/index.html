@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>终章·整体，空洞，以及空间 · 九律 · 协作翻译的译后记｜失控 精读</title>
+<meta name="description" content="终章回望来路：控制论怎么了？科学知识网上的缺口在哪里？霍夫施塔特式的琐碎问题开列成单；超文本终结权威，计算机是权威的终结而非权威的开始。最终凝成九律——大自然从无创造了有，而中文版的诞生正是一次蜂群协作的实践。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../12-水往高处流与预言机/index.html">← 水往高处流·预言机</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">九</div>
+  <div class="stamp ">九律</div>
+  <h1>整体，空洞，以及空间 · 九律 · 协作翻译的译后记</h1>
+  <p class="sub">终章回望来路：控制论怎么了？科学知识网上的缺口在哪里？霍夫施塔特式的琐碎问题开列成单；超文本终结权威，计算机是权威的终结而非权威的开始。最终凝成九律——大自然从无创造了有，而中文版的诞生正是一次蜂群协作的实践。</p>
+  <div class="meta"><span>终章</span>
+    <span class="k">无中生有</span>
+    <span>正文 22,198 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>控制论怎么了</a><a href="#s3" data-t="s3"><span class="cn">叁</span>知识网缺口</a><a href="#s4" data-t="s4"><span class="cn">肆</span>琐碎小事</a><a href="#s5" data-t="s5"><span class="cn">伍</span>超文本</a><a href="#s6" data-t="s6"><span class="cn">陸</span>新的思考空间</a><a href="#s7" data-t="s7"><span class="cn">柒</span>九律</a><a href="#s8" data-t="s8"><span class="cn">捌</span>据为己有</a><a href="#s9" data-t="s9"><span class="cn">玖</span>译后记</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>大自然从无创造了有。</p><cite>——第二十四章 24.1 如何无中生有</cite></div><div class="epi"><p>计算机是权威的终结而非权威的开始。</p><cite>——第二十三章 23.5 新的思考空间</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">终章是一张回望与开列的地图：从 1959 年的控制论盛会出发，途经科学知识网的缺口、琐碎问题清单与超文本空间，最终以九律收束全书</p><p class="thesis">35 年前的一次会议概述了凯利 1994 年写的一整本书；而控制论本身却枯萎消亡了。科学的版图是大片无知的荒漠中横亘的知识山峰——异常事物不是典范更替的原因，而是更替的结果。终局处，九律现身：<b>大自然从无创造了有</b>——分布式、自下而上的控制、递增收益、模块化生长、边界最大化、鼓励犯错误、不求最优化但求多目标、谋求持久的不均衡态、变自生变。而这部中文版《失控》的诞生，正是一次「蜂群思维」的协作实践。</p><div class="chain"><div class="node"><div class="n">控制论</div><div><p class="tt">消亡的源头</p><p class="dd">35 年前的刹那之间，威尔博士概述了凯利 1994 年出版的一整本书——但控制论却因资金枯竭、批处理模式与「把观察者放进盒子里」而枯萎</p></div></div><div class="node"><div class="n">缺口</div><div><p class="tt">无知的荒漠</p><p class="dd">大片无知的荒漠中横亘着一个个自成体系的知识山峰——异常事物不是典范更替的原因，而是更替的结果</p></div></div><div class="node"><div class="n">问题</div><div><p class="tt">琐碎的清单</p><p class="dd">对没人感兴趣的问题惊讶不已，也许是一个更好的科学进步的典范</p></div></div><div class="node"><div class="n">超文本</div><div><p class="tt">权威的终结</p><p class="dd">计算机创造的几乎所有实际的可能性空间都表明——计算机是权威的终结而非权威的开始</p></div></div><div class="node"><div class="n">九律</div><div><p class="tt">无中生有</p><p class="dd">从分布式到变自生变——只要坚守这九律就能够有如神助一般无往而不利</p></div></div><div class="node"><div class="n">蜂群</div><div><p class="tt">译后记</p><p class="dd">八个社区招募的译者以「蜂群思维」协作翻译——这部书的翻译过程身体力行地实践了书中的思想</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>23.1 控制论怎么了？</h2><span class="en">WHATEVER HAPPENED TO CYBERNETICS</span></div><p class="prose">「早上好，组织系统！」——1959 年 5 月仲春，400 名学科背景迥异的学者云集芝加哥，参加海军研究处和装甲研究基金会联袂发起的研讨会。此前还没有任何一次会议召集过这么多不同领域的顶尖科学家来研讨一个主题：自组织系统——组织是如何自举图存的。</p><p class="prose">只有年轻而兴旺发达的国家，在对自己在世界格局里扮演的角色信心满满时才会思考这样的问题——</p><div class="aband"><q>自举图存！这是置于方程式的美国梦。</q><cite>——第二十三章 23.1 控制论怎么了？</cite></div><p class="prose">看看讲台上海军研究处主任约阿希姆·威尔博士的术语：信号噪声、突变、执行功能、自组织——</p><div class="aband"><q>说出这些词的时候，DNA模型尚未建立，数字技术尚未应用，信息管理系统专业尚未出现，复杂性理论尚未诞生。</q><cite>——第二十三章 23.1 控制论怎么了？</cite></div><div class="aband"><q>35年前的刹那之间，威尔博士概述了我在1994年出版的一整本书。</q><cite>——第二十三章 23.1 控制论怎么了？</cite></div><p class="prose">1959 年这次会议的全明星阵容，出自由梅西基金会发起的私密聚会——梅西会议。这批跨学科精英因开拓性的观点——控制论，即控制的艺术和科学——而以控制论群体闻名于世。他们的方法在当时堪称另类：严格地把生物视为机器，把机器视为生物。</p><p class="prose">人类学家玛格丽特·米德回忆，自己参加第一次会议时为那些横空出世的思想兴奋不已，以至于——「直到会议结束我才注意到自己咬掉了一颗牙齿」。史蒂文·海姆斯在《控制论群体》中说道——「即使是像米德和弗兰克这样的人类社会学家也成了从机械视角理解事物的拥护者。」而在一次会议上，沃伦·麦克洛克说过这样的话——</p><div class="aband"><q>我特别不喜欢人类，从没喜欢过。在我看来人类是所有动物里最卑鄙最具破坏性的。如果人能进化出活得比人自己更有趣味的机器，我想不出为什么机器不应该十分快乐地取代我们，奴役我们。它们也许会过得快活的多，找出更好玩的乐子。</q><cite>——第二十三章 23.1 控制论怎么了？（沃伦·麦克洛克）</cite></div><p class="prose">人道主义者听到这种推测惊惧不已，但在这种噩梦般泯灭人性的情节背后，隐藏着一些非常重要的理念：机器有可能进化，我们与精良的机器享有相同的操作原理——<b>这些理念就是下一个千年的绝好比喻。</b>然而，控制论群体并没有按照自己安排的时间表找到答案。</p><p class="prose">凯利发问：如果本书真是探讨控制论的，为什么全书罕见「控制论」这个术语呢？对于控制论运动消亡的原因有三种推测——人工智能抽走了资金（开发出了效用，却牺牲了控制论）；批处理计算模式（连中学生都把苹果II型机搬回家了，大学里还在使用穿孔卡片）；以及——</p><div class="aband"><q>“把观察者放进盒子里”这句话扼杀了控制论。</q><cite>——第二十三章 23.1 控制论怎么了？</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>梅西会议的三个预言</h4><span class="ar">▶</span></div><div class="cb"><div class="in">冯·诺依曼从数量上比较了大脑神经元和真空电子管的运算速度，大胆暗示两者可以类比；维纳回顾了自动控制机器进入人体解剖学的演变历史；医生罗森布鲁斯预测了人体及细胞内的自我平衡线路。海姆斯总结道：他们把生命体描绘为熵的衰减装置，赋予人类自动控制装置的特色，把人的思维看成计算机，并以数学博弈论来看待社会冲突。</div></div></div><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>穿孔卡片时代的牺牲品</h4><span class="ar">▶</span></div><div class="cb"><div class="in">信息传递是控制论最主要的妙策，其试验要求计算机以全面考察的模式全速运算多次——这对保护主机的严格律条来讲显然不合时宜，因此控制论理论几乎很少做实验。连中学生都把苹果 II 型机搬回家了，大学里还在使用穿孔卡片：克里斯·朗顿在苹果电脑上做出了平生第一个人工生命实验，多恩·法默和朋友用组装电脑发现了混沌理论。实时掌控一台完备的通用型计算机，是传统控制论需要但从未做到的事情。</div></div></div></div><p class="prose">以上三种原因一致行动，以至于到了 20 世纪 70 年代末，控制论就此枯萎消亡。绝大多数控制论的研究停留在不切实际地拼织一幅宏大的画卷——在凯利看来，没有一本正式的控制论教科书是用英文写成的。几十年后，研究混沌、复杂性、人工生命、包容架构、人工进化的科学家们将会为控制论中的问题提供一个框架。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>23.2 科学知识网之缺口</h2><span class="en">GAPS IN THE NET OF SCIENCE</span></div><p class="prose">科学知识是一种平行的分布式体系：没有中心，没人处于控制地位；它也是一个网络，一个事实和理论互相作用互相影响共同进化的体系。凯利一直醉心于科学知识的构造，因为它看上去凹凸不平、厚薄不匀——</p><div class="aband"><q>一无所知的领域，人人都避而远之，于是愈加一无所知。</q><cite>——第二十三章 23.2 科学知识网之缺口</cite></div><div class="aband"><q>大片无知的荒漠中横亘着一个个自成体系的知识山峰。</q><cite>——第二十三章 23.2 科学知识网之缺口</cite></div><p class="prose">在这本特别的书里遍布缺口以及整体。承认自己无知真是个不错的秘诀——<b>全面勾绘出人类在科学认知上的缺口或许就是科学的下一次飞跃。</b>今天的科学家用微小变革的模型解释科学如何发展：异常事件累积到无法忽略时，激进分子提出变革性的另类模型，旧理论被扫地出门。</p><p class="prose">按照科学史家托马斯·库恩的说法，科学史上真正的发现，只能「从了解异常事物开始」。但阿兰·莱特曼和欧文·金戈里奇在 1991 年的一期《科学》杂志上发表的论文却声称——</p><div class="aband"><q>只有在新的基本概念范围内对某些异常事物做出令人信服的解释，它们才能为大家所公认。在此之前，那些特异的事实在旧框架内要么被当作假想的事实，要么被忽视</q><cite>——第二十三章 23.2 科学知识网之缺口（莱特曼和金戈里奇）</cite></div><p class="prose">换句话说，最终颠覆典范的真正异常事物，最初甚至没被看作异常事物——<b>它们被视而不见。</b>南美洲和非洲的地形契合、牛顿两质量的均等、宇宙动能与重力能的精准平衡——以上例子的共同主题都是说，一开始异常事物都只是人们观察到的事实，完全不需要解释——</p><div class="aband"><q>异常事物不是典范更替的原因，而是更替的结果。</q><cite>——第二十三章 23.2 科学知识网之缺口</cite></div><p class="prose">戴维·巴拉什在写给《科学》杂志的信里讲述了自己的经历：受莱特曼－金戈里奇论文的启发，他回顾了大量 1964 年以前的教科书，却发现——「在汉密尔顿顿悟之前，动物界出现的明显的利他行为并没困扰进化生物学家们」。所谓「生物学家的烦扰」，同样是事后识别出来的。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>23.3 令人惊讶的琐碎小事</h2><span class="en">THE SURPRISING TRIVIA</span></div><p class="prose">本书的最后一章是个简短的课程，讲述我们所不了解的复杂的自适应系统和控制的本质——这是一份问题的清单，一份缺口的目录。凯利的灵感来自道格拉斯·霍夫施塔特的一个精彩段落：看见楼梯，无论它多大多小，「楼梯」这个标签总能自然而然地蹦达出来——这种现象完全融入了我们的生活和语言，然而——</p><div class="aband"><q>然而，这或许正是所有心理机制的最关键之处。</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事（道格拉斯·霍夫施塔特）</cite></div><div class="aband"><q>对没人感兴趣的问题惊讶不已，或者对于没人认为是问题的问题惊讶不已，这也许是一个更好的科学进步的典范。</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事</cite></div><p class="prose">凯利对自然和机器的运行之道感到无比惊讶，这也是写作本书的根本动力：写到不懂的事情就较劲、研究、阅读，直至被下一个问题难住——这些拦路的问题一开始绝未显得举足轻重，但实际上它们就是原型异类。在探索途中，一些实在平常的问题却困住了他。涌现到底是什么？</p><p class="prose">用「发生」来取代「涌现」，效果似乎还不错——<b>全球的秩序发生自各地的规则。</b>「复杂性」到底是什么？两本同名的《复杂性》都不敢冒险给出有用的定义。于是问题接连涌现——</p><div class="aband"><q>如果进化日趋复杂化，为什么？如果真相并非如此，那为什么它看上去似乎如此呢？复杂真的比简单的效率更高吗？</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事</cite></div><div class="aband"><q>死亡拥有无限的时间和空间。活着则存在于限制中。</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事</cite></div><div class="aband"><q>有没有完全不能精简并精确模拟的重要的自然系统？这样一个系统应该是本身就是自己最小的压缩形式，是它自己的模型。</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事</cite></div><p class="prose">物种究竟为什么灭绝？一种牡蛎状双壳贝进化出越来越趋螺旋状的外壳，直到该物种灭绝前，其外壳已经几乎打不开了——为什么这种生物体不能进化回归到适用的范围内呢？为什么灭绝发生在同一族群，仿佛是劣质基因的责任？古生物学家戴夫·诺普假设 75% 的物种灭绝事件是小行星撞击造成的。而没有小行星，就不会有灭绝了吗？——</p><div class="aband"><q>为什么任何形式的复杂系统都会走向失败或绝灭呢？</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事</cite></div><div class="aband"><q>另一方面，在这个共同进化的世界里，为何任何事物归根结底都是稳定的？</q><cite>——第二十三章 23.3 令人惊讶的琐碎小事</cite></div><p class="prose">还有上帝——人工生命研究者的学术论文上看不到上帝的功劳，但在私下场合却常常谈到：科学家用到的上帝是个技术概念——「好吧，算你是上帝……」一位计算机科学家在演示一段新程序的时候嘟囔道。上帝成了一个科学概念：<b>它不过是探讨运行一个世界所必需的初始条件的一种方便途径。</p><p class="prose"></b>那么我们对神明又有什么要求呢，是什么造就了一个好上帝？最后一个难住凯利、使他暂时搁笔的问题是：思考的可能方式的空间有多大？</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>23.4 超文本：权威的终结</h2><span class="en">HYPERTEXT: END OF AUTHORITY</span></div><p class="prose">这些都是老问题了——如果知识网络完全连通了，凯利此时此刻就可以把恰当的历史引用文附在本书之后。</p><p class="prose">走向高度连接的知识网络的第一步，是美国陆军医学图书馆理员们的期刊索引：1955 年，尤金·加菲尔德开发了自动跟踪科学论文文献出处的计算机系统，后来在费城自家车库里开创了科学信息研究所(ISI)——今天数百万份学术论文与文献参考目录网状交联在一起。</p><p class="prose">引文索引功能目前被用来绘制科研「热门」领域的概图；对这个系统较为简洁的描述，就是特德·纳尔逊于 1974 年杜撰的「超文本」——</p><div class="aband"><q>本质上，超文本是一种大型分布式文档。超文本文档就是在文字、思想和资料来源之间实况链接的模糊网络。这样的文档没有中心，没有尽头。</q><cite>——第二十三章 23.4 超文本：权威的终结</cite></div><p class="prose">超文本的读者在作者架设的网络上又做出了自己的创造——因此，就像在别的分布式创造物里一样——</p><div class="aband"><q>创造者必须对他的创造物适当放权，减少控制。</q><cite>——第二十三章 23.4 超文本：权威的终结</cite></div><p class="prose">1988 年，凯利参与开发第一代商用超文本产品——《全球目录》杂志的电子版本。超文本很容易使读者迷路，但应用科学塑造了我们的思想：黑板促进随心所欲的思考；用羽毛笔书写要求小心翼翼；印刷的页面征集反复修改过的草稿；而超文本激发的是别样的思考方式——简短的、组合式的、非线性的、可延展的以及合作的思考模式。</p><p class="prose">音乐家布莱恩·伊诺在写伯尔特的作品时写道——</p><div class="aband"><q>（伯尔特的理论）是说，我们组织写作空间的方式，也就是我们组织思想的方式，最终成为我们考虑世界必须组织自身的方式。</q><cite>——第二十三章 23.4 超文本：权威的终结（布莱恩·伊诺）</cite></div><p class="prose">在印刷书籍的概念空间，书籍稳定不变，浩瀚而不朽，而且绝对由作者作主；另一方面——流动不定，作者和读者间往来互动的关系成为电子书的概念空间的特色。</p><p class="prose">在过去的印刷时代，詹姆斯·乔伊斯和博尔赫斯曾试图从封闭线性的印刷书籍转入带来非连续性体验的超文本——博尔赫斯描述的写作空间是：有关书的书，包含不断分支的情节的文本，怪异地反复自我指称的书，无尽排列的文本。伯尔特这样评价道——「博尔赫斯能够想象出这样的空中楼阁，却无法制造出来……</p><p class="prose">博尔赫斯本人从未为自己创建一个有效的电子空间，在这个文本网络里，各个时代发散、融合或并行。」</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>23.5 新的思考空间</h2><span class="en">A NEW SPACE OF THOUGHT</span></div><p class="prose">凯利以电脑网络为生：1993 年 8 月，因特网由 170 万台主机和 1700 万个用户组成。网络无人控制，也无人主管——因特网已然是全世界最大的有效运转的无政府组织。人们日复一日建造着一个巨大的分布式文档，「电子写作空间内的基本元素不是纯粹的杂乱无章，」伯尔特写道——</p><div class="aband"><q>而是处于一种持续的重新组织状态。</q><cite>——第二十三章 23.5 新的思考空间（杰伊·戴维·伯尔特）</cite></div><p class="prose">网络结出的硕果远殊于印刷书籍或餐桌闲谈：文本是一次与无数参与者的理智交谈。分布式文本为读者提供了一种新的角色——每个读者共同决定文本的含义。要想解读文本就必须把它看成思想的网络——思路。伯尔特说——「读者从网络中引出自己的文本，而每一篇这样的文本都属于某位读者和某一次特别的阅读过程。</p><p class="prose">」这种对作品的分拆破解叫作「解构」。解构主义之父雅克·德里达把文本称为「一种微分的网络，一种不断地指向不同于自身的另一些不同踪迹的踪迹织物」；或者用伯尔特的话来说——「一个指向其他标记的标记结构」——这种符号意象，就是分布式群的无限倒退和紊乱的递归逻辑的原型意象，<b>是网络的标志，万物相连的象征。</b></p><p class="prose">网络空间的这种特殊形式也塑造了我们：商业市场、社会习俗、精神信仰以及真理本身的残片分裂为越来越细小的碎片——</p><div class="aband"><q>我们这个社会是碎片混战的场所。这几乎就是分布式网络的定义。</q><cite>——第二十三章 23.5 新的思考空间</cite></div><div class="aband"><q>网络中没有知识的中央管理者，只有独特观点的监护人。</q><cite>——第二十三章 23.5 新的思考空间</cite></div><p class="prose">人们身处高度连接又深度分裂的社会，不可能再依赖中心标准的指导——<b>分布式的、无领导的、自然出现的整体性成为社会的理想。</b>伯尔特写道：「批评者谴责计算机使我们的社会单调同一，通过自动化产生了一致性，但是电子阅读和写作恰恰起了相反的作用。</p><p class="prose">」对于计算机的使用后果，没人比乔治·奥威尔在《1984》中的预言错得更离谱了——</p><div class="aband"><q>计算机是权威的终结而非权威的开始。</q><cite>——第二十三章 23.5 新的思考空间</cite></div><p class="prose">蜂群的工作模式为我们开启的不仅是新的写作空间，而且是新的思考空间。思考空间也许很辽阔——解决一个问题、探究一个概念、证明一个说法的方法或许和想法本身一样多；也可能狭小有限。凯利敢断言——</p><div class="aband"><q>我敢断言，当人工智能真正出现的时候，它会是智慧的，但不会十分类似于人类。</q><cite>——第二十三章 23.5 新的思考空间</cite></div><div class="aband"><q>这个空间也将包含我们人类根本无法理解的某些思考类型。</q><cite>——第二十三章 23.5 新的思考空间</cite></div><p class="prose">说不定我们会为自己创造出惊喜——我们也许会创造出考夫曼机器似的头脑，可以通过一个小型的指令有限集生成所有的思考类型和所有前所未见的复杂性。</p><div class="aband"><q>我坚信我们会为自己创造出意外惊喜。</q><cite>——第二十三章 23.5 新的思考空间</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>24.1 如何无中生有</h2><span class="en">HOW TO MAKE SOMETHING FROM NOTHING</span></div><p class="prose">大自然从无创造了有。先是一颗坚硬的岩石星球；然后是生命，许许多多的生命。先是橡子，然后是一片橡树林。如何无中生有？虽然大自然深谙这个把戏，但仅仅依靠观察她，我们并没学到太多的东西——</p><div class="aband"><q>我从计算机科学和生物研究的最前沿成果中以及交叉学科的各种犄角旮旯里提取出了大自然用以无中生有的九条规律——是为九律</q><cite>——第二十四章 24.1 如何无中生有</cite></div><div class="chips"><span class="chip">分布式</span><span class="chip">自下而上的控制</span><span class="chip">递增收益</span><span class="chip">模块化生长</span><span class="chip">边界最大化</span><span class="chip">鼓励犯错误</span><span class="chip">不求最优化，但求多目标</span><span class="chip">谋求持久的不均衡态</span><span class="chip">变自生变</span></div><div class="tbwrap"><table><thead><tr><th>九律</th><th>一句话释义</th></tr></thead><tbody><tr><td>分布式</td><td>生命、智力、进化全都根植于大型分布式系统——总体大于各部分之和，多出的部分就分布于各部分之中</td></tr><tr><td>自下而上的控制</td><td>全面控制必须由最底层相互连接的行动通过并行方式完成，而非出于中央指令——控制必然依赖于简单性的底层</td></tr><tr><td>递增收益</td><td>成功孕育成功——凡有的，还要加给他更多；信心建立起信心，秩序造就更多的秩序</td></tr><tr><td>模块化生长</td><td>先从一个能运转的简单系统开始，通过将简单且能独立运作的模块逐步组装起来，复杂性就诞生了</td></tr><tr><td>边界最大化</td><td>健康的边缘能够加快适应过程，增加抗扰力，并且几乎总是创新的源泉</td></tr><tr><td>鼓励犯错误</td><td>错误必然成为创造过程中不可分割的一部分——进化可以看作是一种系统化的错误管理机制</td></tr><tr><td>不求最优化，但求多目标</td><td>与其费劲将任一功能最优化，不如使多数功能「足够好」——无中生有讲究的不是高雅；只要能运行，就棒极了</td></tr><tr><td>谋求持久的不均衡态</td><td>均衡即死亡——仿佛在永不停歇、永不衰落的边缘上冲浪，在流动的临界点上安家落户</td></tr><tr><td>变自生变</td><td>使系统产生变化的规则自身也产生了变化——要做到无中生出最多的有，就必须要有能自我变化的规则</td></tr></tbody></table></div><p class="prose">我并不是说它们是无中生有的唯一律法；但由复杂性科学所累积的大量观察中总结出来的这九律是最为广泛、最为明确、也最具代表性的通则——<b>我相信，只要坚守这九律就能够有如神助一般无往而不利。</b></p><div class="aband"><q>要想无中生有，控制必然依赖于简单性的底层。</q><cite>——第二十四章 24.1 如何无中生有</cite></div><p class="prose"><b>递增收益</b>：每当你使用一个想法、一种语言或者一项技能时，你都在强化它、巩固它——成功孕育成功。这条社会动力学原则在《新约》中表述为：「凡有的，还要加给他更多。」——「信心建立起信心。秩序造就更多的秩序。既得者得之。</p><p class="prose">」<b>模块化生长</b>：试图未加培育就立即启用高度复杂的组织，注定走向失败——通过将简单且能独立运作的模块逐步组装起来，复杂性就诞生了。<b>边界最大化</b>：健康的边缘能够加快适应过程，增加抗扰力，并且几乎总是创新的源泉。</p><p class="prose"><b>鼓励犯错误</b>：诗人威廉·布莱克写道——「犯错和越轨，皆为上帝之安排」——</p><div class="aband"><q>进化可以看作是一种系统化的错误管理机制。</q><cite>——第二十四章 24.1 如何无中生有</cite></div><p class="prose"><b>不求最优，但求多目标</b>：与其费劲将任一功能最优化，不如使多数功能「足够好」，这才是大型系统的生存之道——<b>无中生有讲究的不是高雅；只要能运行，就棒极了。</p><p class="prose"></b><b>谋求持久的不均衡态</b>：均衡即死亡；但某种事物可以处于持久的不均衡态——仿佛在永不停歇、永不衰落的边缘上冲浪——创造的神奇之处正是要在这个流动的临界点上安家落户。<b>变自生变</b>：变化本身是可以结构化的——随着时间推移，那些使系统产生变化的规则自身也产生了变化。</p><p class="prose">人们常挂在嘴边的进化是关于个体如何随时间而变化的学说；而深层进化，则是关于改变个体的规则如何随时间而变化的学说——</p><div class="aband"><q>要做到从无中生出最多的有，你就必须要有能自我变化的规则。</q><cite>——第二十四章 24.1 如何无中生有</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>24.2 将宇宙据为己有</h2><span class="en">THE UNIVERSE, ALL OURS</span></div><p class="prose">九律支撑着令人敬畏的自然界的运作：大草原，火烈鸟，雪松林，眼球，地质时代中的自然选择，乃至从幼小的精子、卵子到幼象的演变……如今，这些生物逻辑规则被注入了电脑芯片、电子通信网络、机器人模块、药物搜索、软件设计、企业管理之中——</p><div class="aband"><q>当科技被生物激活之后，我们就得到了能够适应、学习和进化的人工制品。而当我们的技术能够适应、学习和进化之后，我们就拥有了一个崭新的生物文明。</q><cite>——第二十四章 24.2 将宇宙据为己有</cite></div><div class="aband"><q>工业时代的标志是机械设计能力的登峰造极；而新生物文明的标志则是使设计再次回归自然。</q><cite>——第二十四章 24.2 将宇宙据为己有</cite></div><p class="prose">即将到来的文化带有鲜明的生物本性，这是由于受到以下五方面的影响——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>尽管我们的世界越来越技术化，有机生命——包括野生的也包括驯养的，将继续是人类在全球范围内进行实践和认知的基础；</span></label><label><input type="checkbox"><span>机械将变得更具生物特性；</span></label><label><input type="checkbox"><span>技术网络将使人类文化更有利于生态环境的平衡和进化；</span></label><label><input type="checkbox"><span>工程生物学和生物技术将使机械技术黯然失色；</span></label><label><input type="checkbox"><span>生物学方法将被视为解决问题的理想方法。</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div><p class="prose">在即将到来的新生物时代，所有我们所依赖和担心的事物，都将具有更多天生的属性。</p><p class="prose">我想，也许会出现这样一个世界：其中有变异的建筑、活着的硅聚合物、脱机进化的软件程序、自适应的车辆、塞满共同进化家具的房间、打扫卫生的蚊型机器人、能治病的人造生物病毒、神经性插座、半机械身体部件、定制的粮食作物、模拟的人格，以及由不断变化的计算设备组成的巨型生态——</p><div class="aband"><q>生命长河，或者说是其流动的逻辑，将始终奔流不息。</q><cite>——第二十四章 24.2 将宇宙据为己有</cite></div><p class="prose">对此我们不应大惊小怪——</p><div class="aband"><q>生命已征服了地球上大多数非活性物质，接下来它就会去征服技术，并使之接受它那不断进化、常变常新且不受我们掌控的进程安排。</q><cite>——第二十四章 24.2 将宇宙据为己有</cite></div><p class="prose">就算我们不交出控制，新生物技术也远比时钟、齿轮和可预测的简单世界要更有看头得多。今天的世界已经够复杂了，而明天的一切将会变得更加复杂：科学家们以及本书中所提及的那些项目，已经在关注如何利用设计规则，使混沌中产生有序，使有组织的复杂性避免解体为无组织的复杂性，并做到无中生有。</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>控制论之问</h3><p class="cp">35 年前威尔博士概述了凯利 1994 年出版的一整本书——但控制论却因资金、批处理模式与「把观察者放进盒子里」而枯萎。</p></div><div class="card num"><div class="idx">二</div><h3>缺口即方向</h3><p class="cp">大片无知的荒漠中横亘着知识山峰——异常事物不是典范更替的原因，而是更替的结果。</p></div><div class="card num"><div class="idx">三</div><h3>权威的终结</h3><p class="cp">超文本是没有中心、没有尽头的分布式文档——计算机是权威的终结而非权威的开始。</p></div><div class="card num"><div class="idx">四</div><h3>九律收束全书</h3><p class="cp">从分布式到变自生变——只要坚守这九律就能够有如神助一般无往而不利：大自然从无创造了有。</p></div><div class="card num"><div class="idx">五</div><h3>蜂群译书</h3><p class="cp">八个社区招募的译者以「蜂群思维」协作翻译——这部书的翻译过程身体力行地实践了这本书中的思想。</p></div></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>译后记 · 蜂群协作的实践</h2><span class="en">AFTERWORD BY THE TRANSLATORS</span></div><p class="prose">很多人都会认为这本书过于技术化了，不适合阅读——每读上一小节都要停下来想一想。但这部读着都很「辛苦」的书，其翻译过程更与众不同——</p><div class="aband"><q>这部书的翻译过程之所以与众不同，正在于它身体力行地实践了这本书中的思想。</q><cite>——译后记</cite></div><p class="prose">翻译工作早在 2008 年 5 月就开始了。起初只有一位译者（同时身怀清华数学系学士学位和北大哲学系准博士学位），评估原作后一致认为这个「大部头」绝不能采用多人协作的方式。</p><p class="prose">到 2008 年底，翻译进度只完成了初稿的四分之一左右——无奈之下，组织者决定铤而走险，通过社区公开招募的方式选拔了另外 8 名译者，组成虚拟团队，创建维基页面和 Google 小组。</p><div class="aband"><q>协作一开始就处在一种“失控”的状态</q><cite>——译后记</cite></div><p class="prose">章节段落是自由认领的：译者们喜欢哪一章就在维基页面那章的标题后面注上自己的 ID；有的译者只小心翼翼地认领半章，也有的死乞白赖地求手快的译者把喜欢的章节让给自己。组织者只是维护一张表格、每周汇报进度。</p><p class="prose">当难点争论需要仲裁时，提议推举三位译者组成仲裁小组——想不到遭到了所有译者的反对：「不，我们自己能摆平这些问题！」仅仅用了一个半月的时间（中间还过了一个春节），全书初稿就奇迹般地完成了。</p><p class="prose">随后的互校同样吵吵闹闹，但「节外生枝」的成果丰硕：一位译者检索了书中过百个人物做注释，一位列出了三十几个关键词，还有几位为专业术语加注——<b>今天这个中文版中，注解多达 400 多个！</b></p><p class="prose">两轮互校后，大家又推举了一位译者对全书文字做了润色。到 2009 年 5 月，「蜂群思维」式的协作基本告一段落——第一版中文《失控》诞生了，全部译文放在维基页面上，谁都可以看到。之后组织者再做的终校一校就是一年多，最终还是未来得及对第 22 章和第 23 章进行终校——</p><div class="aband"><q>这一版的中译本还算不上完美，还有很大的进化空间。</q><cite>——译后记</cite></div><p class="prose">终校的「拖沓」并不能算是「失败」——如果说终校之前的协作是在一个扁平层级上的「蜂群思维」，那么终校则是在这个层级之上的更高级行为：这里的层级不是阶级的层级，而是功能的层级。</p><p class="prose">由此，译者引出了对「众包」的再定义——「众包」不是「威客」：借助网络从茫茫人海中筛选出最突出的个体来完成任务，那其实是「超女」的海选；没有了协作，没有了「蜂群思维」，也就不成其为「众包」——</p><div class="aband"><q>然而从另一方面讲，不确定性和不可控性也正是创新的源泉、进化的动因。</q><cite>——译后记</cite></div><div class="aband"><q>答案就是层级架构，而且往往只需要两个层级就足够了：下层是充满活力的“蜂群”式协作，上层则对产品或服务的最终质量进行把控。</q><cite>——译后记</cite></div><p class="prose">《失控》中用了一个相对专业的术语来描述这种结构——包容架构。四年之后，《连线》编辑 Jeff Howe 在 06 年提出的「众包」需要重新定义——</p><div class="aband"><q>因而，我们在这里所说的“众包”，是以“蜂群思维”和层级架构为核心的互联网协作模式。</q><cite>——译后记</cite></div><p class="prose">感谢参与《失控》协作翻译的译者们：陆丁、袁璐、陈之宇、郝宜平、小青、张鹃、张行舟、王钦、顾珮钦、卢蔚然、gaobaba；感谢「东西」团队；感谢曾协助校对的金晓轩；感谢鼓励和帮助组织者一路走来的朋友们；更要感谢 KK 对我们的包容和支持。</p><div class="aband"><q>也期待《失控》中译本在你我的手上继续进化！</q><cite>——译后记（赵嘉敏／拙尘，2010 年 11 月于北京）</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>23.3–23.4 多处｜</b>「是否这仅仅是通过玩金发女孩和三只熊的把戏」「（可是，目前书籍还不能编制引文索引……但其原理是适用的。）」「超文本为自己创造了可能性空间。正如杰伊·戴维·伯尔特」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">结构说明</span><span class="nd"><b>清单与译后记｜</b>24.1 无中生有九律以 chips 呈现（逐字照抄源文◎列表）；24.2 新生物文化的五方面影响以 check 呈现（逐字）；译后记为独立小节（源文【源行段】第三段），段首导语与落款（赵嘉敏／拙尘，2010 年 11 月于北京）照录源文段标题信息。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">终章｜整体·空洞·空间与九律</span><a href="../12-水往高处流与预言机/index.html">← 水往高处流·预言机</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

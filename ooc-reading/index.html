@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>失控｜精读全集</title>
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.hubtop{background:radial-gradient(120% 90% at 76% 6%,#453B32 0%,#130E07 62%);
+  color:#F2EFE9;padding:70px 26px 58px;text-align:center;position:relative;overflow:hidden}
+.hubtop::before{content:"";position:absolute;inset:16px;border:1px solid rgba(224,154,94,.4)}
+.hubtop::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--serif);font-size:260px;color:rgba(224,154,94,.05);pointer-events:none}
+.hubtop h1{position:relative;font-family:var(--serif);font-size:clamp(28px,4.6vw,44px);
+  margin:0;letter-spacing:.14em;text-indent:.14em;color:#F5F1EA}
+.hubtop .s{position:relative;margin:18px auto 0;max-width:700px;font-size:15px;
+  line-height:1.9;color:rgba(234,240,245,.74)}
+.hubtop .m{position:relative;margin-top:24px;font-family:var(--sans);font-size:12.5px;
+  letter-spacing:.05em;color:rgba(224,154,94,.9)}
+.hubwrap{max-width:1000px;margin:0 auto;padding:44px 26px 80px;position:relative;z-index:1}
+.hubwrap .hd{font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);
+  border-bottom:1px solid var(--line);padding-bottom:11px;margin:0 0 6px}
+.row{display:grid;grid-template-columns:52px 1fr auto auto auto;gap:16px;align-items:center;
+  padding:17px 16px;border-bottom:1px solid var(--line);border-left:0;border-radius:6px;
+  transition:.18s;color:var(--tx)}
+.row:hover{background:var(--card);box-shadow:0 4px 20px rgba(42,36,32,.07);
+  transform:translateX(3px)}
+.row .no{font-family:var(--serif);font-size:21px;color:var(--gold);letter-spacing:.02em}
+.row .bd{min-width:0}
+.row .tt{display:block;font-family:var(--serif);font-size:18px;color:var(--ink);
+  letter-spacing:.04em;margin-bottom:4px}
+.row .ss{display:block;font-size:13.4px;line-height:1.7;color:var(--tx-3);
+  font-family:var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:44em}
+.row .tg{font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.3);background:rgba(160,43,43,.06);
+  padding:3px 10px;border-radius:20px;white-space:nowrap}
+.row .mk{font-family:var(--sans);font-size:12px;color:var(--tx-3);white-space:nowrap}
+.row .go{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap}
+.hubfoot{margin-top:34px;font-family:var(--sans);font-size:12.6px;line-height:1.95;
+  color:var(--tx-3)}
+.hubfoot b{color:var(--tx-2)}
+@media(max-width:820px){.row{grid-template-columns:40px 1fr auto;gap:12px}
+  .row .tg,.row .mk{display:none}}
+</style></head><body>
+<div class="hubtop">
+  <h1>失控</h1>
+  <p class="s">机器与生命的终局之书 —— 14 篇主题精读：从蜂群思维与涌现（第 2–3 章）
+  到共同进化与自然流变（第 4–7 章），从生态圈实验与工业生态（第 8–10 章）到网络经济
+  与电子货币（第 11–12 章），从人工进化与控制的未来（第 14–17 章）到九律收束全书
+  （第 23–24 章），还原凯文·凯利对「活系统」的完整论证。</p>
+  <p class="m">凯文·凯利 ｜ 新星出版社 ｜ 精读篇正文合计 39.4 万字</p>
+</div>
+<div class="hubwrap">
+  <p class="hd">全 书 目 次</p>
+  <a class="row" href="00-开场-致读者与人造与天生/index.html"><span class="no">00</span><span class="bd"><span class="tt">开场 · 蜂群做的书，人造与天生的联姻</span><span class="ss">一本由去中心化协作译成的书，与它要讲的主题互为证据</span></span><span class="tg">人造与天生</span><span class="mk">4,493 字</span><span class="go">阅读 →</span></a><a class="row" href="01-蜂群思维/index.html"><span class="no">01</span><span class="bd"><span class="tt">蜂群思维 · 群体即神，去中心化的记忆与量变</span><span class="ss">从养蜂人到五千人的集体乒乓：没有一只蜜蜂在控制蜂群</span></span><span class="tg">涌现</span><span class="mk">18,479 字</span><span class="go">阅读 →</span></a><a class="row" href="02-有心智的机器/index.html"><span class="no">02</span><span class="bd"><span class="tt">有心智的机器 · 众愚成智与快速廉价失控</span><span class="ss">波林的机器马戏、布鲁克斯的成吉思虫与丹尼特的意识峰会</span></span><span class="tg">包容架构</span><span class="mk">23,820 字</span><span class="go">阅读 →</span></a><a class="row" href="03-组装复杂性与共同进化/index.html"><span class="no">03</span><span class="bd"><span class="tt">组装复杂性 · 共同进化 · 拼蛋壳与变色龙之镜</span><span class="ss">帕克德的草原、温盖特的岛与洛夫洛克的盖亚：生态系统怎么从零拼起来</span></span><span class="tg">共同进化</span><span class="mk">24,273 字</span><span class="go">阅读 →</span></a><a class="row" href="04-自然之流变与控制的兴起/index.html"><span class="no">04</span><span class="bd"><span class="tt">自然之流变 · 控制的兴起 · 均衡即死亡与抽水马桶</span><span class="ss">从流变中的生命网络，到克特西比乌斯浮阀与瓦特飞球：自我控制的两千年</span></span><span class="tg">反馈</span><span class="mk">26,148 字</span><span class="go">阅读 →</span></a><a class="row" href="05-封闭系统与冒出的生态圈/index.html"><span class="no">05</span><span class="bd"><span class="tt">封闭系统 · “冒出”的生态圈 · 从玻璃罩到珊瑚礁</span><span class="ss">从封口烧瓶与邮购生态球，到一亿美元的玻璃方舟：封闭系统如何在持久的混沌中「冒出」</span></span><span class="tg">生物圈二号</span><span class="mk">34,791 字</span><span class="go">阅读 →</span></a><a class="row" href="06-工业生态学与网络经济学/index.html"><span class="no">06</span><span class="bd"><span class="tt">工业生态学 · 网络经济学 · 闭环制造与赢家通吃</span><span class="ss">从看不见的智能与闭环制造，到以联结取代计算：网络经济的十二条执行纲要</span></span><span class="tg">联结</span><span class="mk">30,759 字</span><span class="go">阅读 →</span></a><a class="row" href="07-电子货币/index.html"><span class="no">07</span><span class="bd"><span class="tt">电子货币 · 加密无政府状态与超现金</span><span class="ss">从密码朋克与加密永胜，到盲签名的数字现金：网络把隐私从道德领域搬进市场</span></span><span class="tg">加密</span><span class="mk">24,141 字</span><span class="go">阅读 →</span></a><a class="row" href="08-上帝的游戏与形式的图书馆/index.html"><span class="no">08</span><span class="bd"><span class="tt">上帝的游戏 · 在形式的图书馆中 · 网络神学与字母序</span><span class="ss">从上帝游戏与超真实，到博尔赫斯图书馆中的人工进化：要想赢，先放手</span></span><span class="tg">人工进化</span><span class="mk">45,601 字</span><span class="go">阅读 →</span></a><a class="row" href="09-人工进化/index.html"><span class="no">09</span><span class="bd"><span class="tt">人工进化 · 达尔文式进化与算法之合流</span><span class="ss">从汤姆·雷的电进化机到蚁群算法：人工进化是工程霸权的终结</span></span><span class="tg">电进化机</span><span class="mk">22,586 字</span><span class="go">阅读 →</span></a><a class="row" href="10-控制的未来与开放的宇宙/index.html"><span class="no">10</span><span class="bd"><span class="tt">控制的未来 · 开放的宇宙 · 从控制权到放权</span><span class="ss">从无实体机器人到超生命的国度：创造者必须和他的创造物一起共享控制权</span></span><span class="tg">协同控制</span><span class="mk">32,268 字</span><span class="go">阅读 →</span></a><a class="row" href="11-变化架构与后达尔文主义/index.html"><span class="no">11</span><span class="bd"><span class="tt">变化之架构 · 后达尔文主义 · 沉睡的蝴蝶</span><span class="ss">从绕开中心法则到混沌边缘：自然选择之外，进化还有许多其他因素</span></span><span class="tg">无序之有序</span><span class="mk">42,175 字</span><span class="go">阅读 →</span></a><a class="row" href="12-水往高处流与预言机/index.html"><span class="no">12</span><span class="bd"><span class="tt">水往高处流 · 预言机 · 内发送与伪生命体</span><span class="ss">从上升之流到可预测性范围：预测是控制的一种形式，学习就意味着生存</span></span><span class="tg">可预测性范围</span><span class="mk">42,422 字</span><span class="go">阅读 →</span></a><a class="row" href="13-整体空洞空间与九律/index.html"><span class="no">13</span><span class="bd"><span class="tt">整体，空洞，以及空间 · 九律 · 协作翻译的译后记</span><span class="ss">从控制论的消亡到无中生有的九律：大自然从无创造了有</span></span><span class="tg">无中生有</span><span class="mk">22,198 字</span><span class="go">阅读 →</span></a>
+  <div class="hubfoot">
+    <p><b>制作口径</b>｜每篇页面正文与微信读书导出源文逐段逐字符一致（去空白比对）；
+    源文缺失处如实标注、不补写；分析性文字均由源文内容推出。导出源把 6.3 节正文与人名
+    索引各重复收录了两遍（另有 4.5 节一个空壳标题），制作时已剔重并逐行校验，无一行丢失。
+    源文存在约 290 处句子中途截断（微信读书导出剥离了注文续文），各篇校勘区已如实标注。</p>
+    <p><b>怎么读</b>｜建议从「开场」读起——凯利以《致中文版读者》交代这本书本身即由
+    蜂群式协作译成；随后沿主线推进：蜂群思维与有心智的机器（自底向上的控制）→
+    组装复杂性、共同进化、自然之流变与控制的兴起（进化的逻辑）→ 封闭系统与冒出的
+    生态圈（实验验证）→ 工业生态学、网络经济学与电子货币（网络中的经济）→ 人工进化
+    与控制的未来（造物的命运）→ 变化之架构与九律（全书收束）。每篇开头有「一篇之图」，
+    可先看图再读文。</p>
+    <p><b>未收进精读页</b>｜人名索引（重复导出两份，剔除一份） ｜ 6.3 整块重复导出 ｜ 4.5 空壳标题。</p>
+  </div>
+</div>
+</body></html>

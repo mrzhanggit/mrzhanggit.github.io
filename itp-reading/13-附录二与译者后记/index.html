@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>附录·寄存器机练习题的答案 · 译者后记｜直觉泵 精读</title>
+<meta name="description" content="附录二是第 24 章寄存器机课程的练习答案，随后是七十七件思考工具的素材来源清单（哪几件「之前从未发表过」？哪些改写自《达尔文的危险观念》？）与三百余条参考文献；最后是译者冯文婧的后记——一本「人人都能读懂的哲学书」是怎">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../12-做个哲学家与结语/index.html">← 做个哲学家与结语</a><span class="dis">末篇 →</span></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">附</div>
+  <div class="stamp ">附录</div>
+  <h1>寄存器机练习题的答案 · 译者后记</h1>
+  <p class="sub">附录二是第 24 章寄存器机课程的练习答案，随后是七十七件思考工具的素材来源清单（哪几件「之前从未发表过」？哪些改写自《达尔文的危险观念》？）与三百余条参考文献；最后是译者冯文婧的后记——一本「人人都能读懂的哲学书」是怎样炼成的。</p>
+  <div class="meta"><span>附录</span>
+    <span class="k">答案</span>
+    <span>正文 32,687 字</span>
+    <span>4 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>练习答案</a><a href="#s3" data-t="s3"><span class="cn">叁</span>素材来源</a><a href="#s4" data-t="s4"><span class="cn">肆</span>译者后记</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">附录：练习答案 → 素材来源 → 参考文献 → 译者后记</p><p class="thesis">附录二是全书唯一的「作业区」——想内化寄存器机，就取几个杯子写上地址、抓一把硬币动手做练习。素材来源清单则像七十七件思考工具的<b>出厂记录</b>：每一件泵从丹尼特的哪篇论文、哪本书里改装而来，一目了然。中文版的诞生，则要感谢陈嘉映与叶峰两位老师。</p><div class="chain"><div class="node"><div class="n">附2</div><div><p class="tt">寄存器机练习题的答案</p><p class="dd">程序 1 相加、流程图改写、乘法与除法——亲手变成一部寄存器机</p></div></div><div class="node"><div class="n">素材来源</div><div><p class="tt">77 件工具的出处</p><p class="dd">「古怪的狱卒」出自 Elbow Room；「算法」取材于 Darwin's Dangerous Idea</p></div></div><div class="node"><div class="n">参考文献</div><div><p class="tt">300 余条书目</p><p class="dd">从《平面国》到《自由进化》——一部心灵哲学的地图</p></div></div><div class="node"><div class="n">后记</div><div><p class="tt">译者冯文婧</p><p class="dd">初稿试讲只留本科新生；「只要熟悉了还是可以得心应手」</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>附录二 · 寄存器机练习题的答案</h2><span class="en">EXERCISES</span></div><p class="prose">第 24 章请读者「先用几分钟去变成一部寄存器机」，附录二就是那批练习的答案。最基本的程序 1（相加）——</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>练习 1a</h4><p>运用程序 1，想一下寄存器机需要几步可以计算出 2+5=7？（「结束」也算是一步。）</p></div><div class="step"><div class="dot">2</div><h4>答</h4><p>6 个步骤：3 个减量，2 个增量，一步结束（最后一步是遇 0 跳转）。</p></div><div class="step"><div class="dot">3</div><h4>练习 1b</h4><p>要计算出 5+2=7 需要几步完成？</p></div><div class="step"><div class="dot">4</div><h4>答</h4><p>12 个步骤：6 个减量，5 个增量，一步结束。</p></div></div><p class="prose">（你从中可以得出什么结论？）——</p><div class="aband"><q>内容按不同顺序相加会导致很大的差异，所以你可能会认为，最好设定一条规则，总是将较小的数字放入寄存器1；但如果你要首先从两个数字中区别出那个较小的，这会比你完成相加花费更多步骤！</q><cite>——附录二 寄存器机练习题的答案</cite></div><p class="prose">后续练习依次进阶：<b>练习 2</b> 为流程图写出 RAP 程序，并追问「如果从 3 中减 3，或者从 4 中减 4，这个程序会出现哪些不同」（答：程序在寄存器 4 那里遇 0 中止）、提前清零寄存器 3 能避免哪些错误（答：若寄存器 1 和 2 最初都是 0，程序结束后答案很可能无意义——符号寄存器里出现 -0 或除 0 和 1 之外的其他数字）。</p><p class="prose"><b>练习 3</b> 写乘法程序（寄存器 1 与寄存器 3 相乘、答案显示在寄存器 5），可选的进阶版要求保护输入寄存器不被损坏、或比较两个寄存器内容的大小。</p><p class="prose"><b>练习 4（可选）</b>则把寄存器机转变成一台便携式计算器——寄存器 2 执行运算（0=相加、1=相减、2=相乘、3=相除），寄存器 4 表示符号（0 代表 +、1 代表 -），寄存器 5 显示答案数值，寄存器 6 存放除法余数，寄存器 7 负责警示报错（例如除数为 0，或寄存器 2 中出现了没有定义的操作）。</p><p class="prose">于是「306」表示「3+6」，「513」表示「5-3」，「425」表示「4×5」，「933」表示「9÷3」。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>素材来源 · 77 件思考工具的出厂记录</h2><span class="en">SOURCES</span></div><p class="prose">书末的素材来源清单逐章交代了每个思考工具的出处——哪几件是全新的，哪几件是从丹尼特以往的论文与著作中改装而来的。几个值得留意的分组——</p><div class="tbwrap"><table><thead><tr><th>分组</th><th>思考工具</th></tr></thead><tbody><tr><td>「古怪的狱卒」与「垃圾箱里的珠宝」</td><td>取自 Elbow Room（Dennett, 1984a）中刻画的案例，并做了一些修改。</td></tr><tr><td>之前从未发表过</td><td>「归谬法」「奥卡姆剃刀」「外行做媒」「反问」「石头、剪子、布」「终极责任」「掘土蜂状」「巴西来的男孩」「只需关注那10%的精品」——全书 77 件工具中有 9 件为本书首秀。</td></tr><tr><td>改写自《达尔文的危险观念》（1995a）</td><td>「算法」「两个黑盒子」「万能酸」「孟德尔图书馆」「自然选择VS智能设计」「蝉知道素数的含义吗」「世界上第一只哺乳动物是什么」「青蛙的眼睛」「穿越巴别图书馆」等——第五、六两部分的骨干。</td></tr><tr><td>来自《意识的解释》（1991a）</td><td>「对立的两幅意象」「僵尸和殭尸」「色彩科学家玛丽」「他者现象学」的进一步阐述等。</td></tr><tr><td>新内容</td><td>「什么是基因」深受道金斯《祖先的故事》（2004）启发并引用书中大量原文；「瞪羚的弹跃」是新内容；「生命之树」记录了新想法，配图来自伦纳德·艾森伯格。</td></tr><tr><td>讲台出身</td><td>「计算机施展魔法的7个秘密」从塔夫茨大学计算机科学导论课程发展而来——史蒂夫·巴尼为此设计了模拟计算机 AESOP，1986 年丹尼特用 Logo 语言完成第一版 Rego 编程，130 页插图中那个尖头小矮人正是 Logo 海龟绘图的古老痕迹；后由罗德·达·席尔瓦改编成更便捷可靠的 RodRego。</td></tr><tr><td>著名的「直觉泵」一词</td><td>诞生于 1980 年对塞尔「中文屋」的回应文章（Dennett, 1980），与侯世达合编《心我论》（1981）时成型。</td></tr></tbody></table></div><p class="prose">这份清单本身就是一件思考工具：它展示了丹尼特一贯的工作方式——把多年讲课、写论文、做演讲中打磨过的思想实验重新「转动旋钮」，编入一个更大的系统。</p><p class="prose">书末还附有三百余条参考文献，从艾勃特1884 年的《平面国》、博尔赫斯的《巴别图书馆》，到侯世达《哥德尔、艾舍尔、巴赫》、道金斯《自私的基因》与《盲眼钟表匠》、罗尔斯《正义论》、蒯因《语词和对象》、塞尔「Minds, Brains and Programs」（1980）、内格尔《做只蝙蝠是一种怎样的体验？</p><p class="prose">》（1974）、杰克逊「Epiphenomenal Qualia」（1982）——本精读站各篇引文中标注的出处，几乎都能在这里找到原文条目。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>译者后记 · 一本人人都能读懂的哲学书</h2><span class="en">TRANSLATOR&#x27;S NOTE</span></div><p class="prose">译者冯文婧（2018 年 8 月）回忆：相比于其他还算按部就班的哲学作品，丹尼特此书的风格其实可算是一次新尝试。就像他在前言中所说，本书要写成一本人人都能读懂的哲学书——</p><div class="aband"><q>在他一贯的初稿试讲测试中，他排除掉了讨论班中所有哲学专业的学生和研究生，只留下十几个没有太多知识背景的本科新生，他们可以对书中任何不懂的细节提出疑问，并不断要求丹尼特给出清晰通俗的解释。</q><cite>——译者后记</cite></div><p class="prose">可能正是因为这个原因，《直觉泵》中能看到很多有意思的设想、疑问和隐喻，很多细节问题的剖析都向外伸展得非常细长。读者在阅读过程中，可能会因为能跟随一位大思想家一步步完成每一次漂亮的论证和推理而感到欣喜，但也难免会因为脱离其思想主干太远、不明所以而生出苦恼。</p><p class="prose">译者提醒：那些看似拓展说明的细节、案例或者假设其实在心灵哲学的大背景中都有所针对——毕竟本书内容基本涵盖当代心灵哲学研究所有关键的概念和论题，包括意识、意向性、意义、自我、自由意志等等；而丹尼特在进化论基础上坚持自然主义的心灵理论，那种囊括各种可能性、无限伸展的表达方式，实则也是他阐明心灵状态的一种展现。</p><p class="prose">后记中最动人的段落是致谢：翻译过程中当然会遇到困难，但让人更苦恼的是，时不时要面临赤裸裸的智力挑衅——《直觉泵》中太多反直观的优质论证让人不得不承认，大脑与大脑间可能真的存在智力差距。做陈嘉映老师的学生到 2018 年正好整十年，而陈老师的一句——</p><div class="aband"><q>只要熟悉了还是可以得心应手</q><cite>——译者后记</cite></div><p class="prose">——让她如愿瞬间重拾自信、脱离苦海。陈老师总是这样，不经意间就慷慨分发学生们些小小「法宝」，估计如果使用得当，再用个十几二十年也不见得会显老旧。而在邀请叶峰老师写序之前，译者与他并不十分熟悉，叶老师接到这份「苦差事」时大概有些惊异，弱弱问她：如果他来写序能带来什么实质性的帮助？</p><p class="prose">她把这部著作的表述特点和可能给读者带来的混淆统统说出，叶老师听后便立马答应下来——不久后收到一篇非常出色、近万字的导论性序言。最后感谢编辑简学、赵地和王子涵，以及合作伙伴金岳、徐韬——</p><div class="aband"><q>此书在翻译过程中尽量保留了丹尼特原本行文中轻松流畅的表述风格，希望读者们喜欢；对于文中不足，请多多包涵，也欢迎大家的指导和建议。</q><cite>——译者后记</cite></div><div class="check" data-k="13-appendix"><p class="ct">全 书 自 查</p><label><input type="checkbox"><span>我能不看书说出至少 20 件思考工具的名字与用途</span></label><label><input type="checkbox"><span>我能亲手把寄存器机的相加程序在纸上走一遍</span></label><label><input type="checkbox"><span>我能向朋友解释「意向立场」为什么是无可替代的</span></label><label><input type="checkbox"><span>我能说出天钩与起重机、僵尸与殭尸、像棋与国际象棋这三组对照</span></label><label><input type="checkbox"><span>我知道下一步该做什么：去读丹尼特的原著与参考文献里感兴趣的那几本</span></label><div class="cf">已对照 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">编目</span><span class="nd"><b>注一｜</b>附录二在源书中实为三段内容：寄存器机练习题的答案、「素材来源」（对全书各章出处的逐章说明）与「参考文献」（ABBOTT 至 ZAHAVI 共 300 余条）；导出文本中三段连排且无独立标题，本篇按内容归组呈现，参考文献未逐条罗列、按代表性精选。</span></div><div class="note" id="n2"><span class="nn">编目</span><span class="nd"><b>注二｜</b>译者后记在源文中无标题，其首段（「记得刚入学攻读哲学硕士……」）在导出时被识别为标题行；正文落款「冯文婧／2018年8月」两行为原书署名，随正文保留。</span></div><div class="note" id="n3"><span class="nn">编目</span><span class="nd"><b>注三｜</b>素材来源清单中英文书名与期刊名在源文中原有斜体格式，导出后丢失；本篇照录文字不加补排。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">附录｜附录二与译者后记</span><a href="../12-做个哲学家与结语/index.html">← 做个哲学家与结语</a><span class="dis">末篇 →</span></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

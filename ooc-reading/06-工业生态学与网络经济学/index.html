@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>网络之部·工业生态学 · 网络经济学 · 闭环制造与赢家通吃｜失控 精读</title>
+<meta name="description" content="第十章把机器接成群落：智能房屋、生态办公室、磨损共同体与闭环制造，让工业与自然合作而非对峙；第十一章走进网络经济——计算机的未来不在数字而在于联结，网络经济所哺育的将是一种新的灵魂。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-封闭系统与冒出的生态圈/index.html">← 封闭系统·冒出的生态圈</a><a href="../07-电子货币/index.html">电子货币 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">网</div>
+  <div class="stamp ">网络</div>
+  <h1>工业生态学 · 网络经济学 · 闭环制造与赢家通吃</h1>
+  <p class="sub">第十章把机器接成群落：智能房屋、生态办公室、磨损共同体与闭环制造，让工业与自然合作而非对峙；第十一章走进网络经济——计算机的未来不在数字而在于联结，网络经济所哺育的将是一种新的灵魂。</p>
+  <div class="meta"><span>网络之部</span>
+    <span class="k">联结</span>
+    <span>正文 30,759 字</span>
+    <span>12 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>全方位接入</a><a href="#s3" data-t="s3"><span class="cn">叁</span>看不见的智能</a><a href="#s4" data-t="s4"><span class="cn">肆</span>咬人的房间</a><a href="#s5" data-t="s5"><span class="cn">伍</span>规划共同体</a><a href="#s6" data-t="s6"><span class="cn">陸</span>闭环制造</a><a href="#s7" data-t="s7"><span class="cn">柒</span>适应的技术</a><a href="#s8" data-t="s8"><span class="cn">捌</span>脱离实体</a><a href="#s9" data-t="s9"><span class="cn">玖</span>以联结取代计算</a><a href="#s10" data-t="s10"><span class="cn">拾</span>信息工厂</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>与错误打交道</a><a href="#s12" data-t="s12"><span class="cn">拾贰</span>联通一切</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>它们将自己编织进日常生活的细枝末节之中，直到成为生活的一部分。</p><cite>——第十章 10.2 看不见的智能</cite></div><div class="epi"><p>生物学是一个必然——近于数学的必然，所有复杂性归向的必然。</p><cite>——第十章 10.6 适应的技术</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇两章是一枚硬币的两面：第十章讲机器如何结成生态（工业模仿生物），第十一章讲经济如何结成网络（商业模仿生态）</p><p class="thesis">章首从高迪「长出来的建筑」起笔：未来正带着自适应技术、分布式网络和合成进化向我们走来。机器组合成食物网，工厂吞吃彼此的排出物，形成<b>闭环的工业生态</b>；而当计算机被用作通讯工具，一切被颠覆并推向一个完全不同的逻辑方向——<b>Net 的逻辑</b>。结论由第十章收束：下个纪元的特色是新生物学而不是仿生学，因为<b>生物学总是能最终胜出</b>。</p><div class="chain"><div class="node"><div class="n">接入</div><div><p class="tt">家域网</p><p class="dd">门铃会关上吸尘器，洗衣机把信息发到电视——每样东西都被接入网络，从中获取电力和信息</p></div></div><div class="node"><div class="n">隐形</div><div><p class="tt">看不见的智能</p><p class="dd">最深刻的技术将自己编织进日常生活的细枝末节——整个房间化作为一个自适应的茧</p></div></div><div class="node"><div class="n">群落</div><div><p class="tt">机器生态</p><p class="dd">细如蝼蚁的单元聚集成群且彼此互联时，便升格为一种群体智力——量变引起质变</p></div></div><div class="node"><div class="n">闭环</div><div><p class="tt">工业生态</p><p class="dd">没有垃圾问题，因为物尽其用——任何在当下没有用的材料，都可以通过设计从源头将它消除</p></div></div><div class="node"><div class="n">联结</div><div><p class="tt">Net 的逻辑</p><p class="dd">我们不该把它们叫作“计算机”，而应该把它们称作“联结器”</p></div></div><div class="node"><div class="n">灵魂</div><div><p class="tt">全球意识</p><p class="dd">网络经济所哺育的将是一种新的灵魂——没有中心的“我”，寻找它的“我在”是永远没有终点的探索</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>10.1 全天候、全方位的接入</h2><span class="en">ACCESS ALL DAY</span></div><p class="prose">巴塞罗那——一个充满铁杆乐观者的城市，1988、1929 两办万国博览会，1992 年又自制了奥林匹克这个宏大远景。而在这座务实之城里，最奇特的遗产属于传奇人物安东尼·高迪：通风管道像外星生命形式一样麇集在公寓屋顶，窗檐和排水沟呈自然流畅的曲线，不循机械的直角——</p><div class="aband"><q>高迪捕捉了这独特的活性反应，让它跨越校园方正的草坪，勾画出一条弧线优美的捷径。他的建筑似乎不是造出来的，而是长出来的。</q><cite>——第十章 10.1 全天候、全方位的接入</cite></div><p class="prose">想象一下整个城市都是高迪的建筑：不但依照有机设计建设，而且像生物一样有适应性、灵活性及进化的能力，形成一个建筑生态群。</p><p class="prose">生态房屋的构件在普通住宅里已能看到——恒温器让火和钟联网，录像机与电视机对话；随着电脑缩成小点置入所有电器，洗衣机、音响、烟气报警器将形成「<b>家域网</b>」：客人按响门铃，门铃会关上吸尘器；洗衣机洗好衣服，会发送信息到电视上；躺椅里的微型芯片感应到有人坐下，就给房间加温。</p><p class="prose">家域网的核心是一个<b>通用接口</b>，遍布每个房间：电话、电脑、门铃、暖炉、吸尘器都接入进来，从中获取电力和信息——这些互联的接口把许多线路汇聚到一点，可以从任何一点获取信息、能量乃至智慧。遍布智能线路的房屋将为残疾人和老年人雪中送炭：床头的开关控制灯光、电视以及房屋各处的安全小物件。</p><p class="prose">而生态建筑也将更节能。至于那个终极问题——「迄今为止，还没有谁能住在智能房屋里」（源文在此截断）——答案被留在了下一节。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>10.2 看不见的智能</h2><span class="en">INVISIBLE INTELLIGENCE</span></div><p class="prose">1994 年凯利的预言：智能办公室的实现要早于智能住宅——商业具有信息度密集的天然本质。在施乐帕罗奥多研究中心，马克·威瑟站在白板前画的像古罗马军队的图解：底部百来个小单元，往上十来个中等单元，顶部一个大单元——一个「房屋有机体」的场域。</p><p class="prose">他真正想要的是<b>一大群微型智能体</b>：每本书里嵌一枚芯片，追踪它放在哪里、上次何时打开、翻到哪一页，甚至带着章节目录的动态拷贝——<b>书于是就具有了社会属性</b>。</p><p class="prose">在威瑟的智能办公室里，房间知道你在哪里——你不在，灯就该关掉。「大家都携带自己的电灯开关，而不是在各个房间里安装电灯开关。」音量调节也一样：礼堂里每人一个控制器，大家像投票似地使用，声音最终定格在一个平均值上。</p><p class="prose">层级架构清晰：<b>底部是廉价、可抛弃的小芯片</b>（微生物大军，附着在写字簿和聪明贴上），中间是十个左右中等尺寸的显示屏，每个房间至少一面一米宽的大屏幕——房间里最聪明的非人类，你和它说话、在上面指指点点、写字，它都懂。</p><div class="aband"><q>“最深刻的技术是那些看不见的技术，”威瑟说，“它们将自己编织进日常生活的细枝末节之中，直到成为生活的一部分。”</q><cite>——第十章 10.2 看不见的智能</cite></div><p class="prose">书写的技术如此淡出我们的注意力，马达也从巨大的野兽缩小融入机械——乔治·吉尔德在《微宇宙》里把它称为<b>坍塌过程</b>：部件一个接一个进入无形层面，消失在肉眼的视线外。实体消失了，留下的是它们的集体行为；我们与这个超有机体互动，整个房间就化作一个自适应的茧。「电脑最终会变身成针头般大小……</p><p class="prose">电脑的胜利不但不会使世界非人化，反而会使环境更臣服于人类的愿望。我们在将自己的生命延伸到周边环境中去。」</p><div class="duo"><div class="colL"><h4>虚拟现实 · 置身电脑世界</h4><ul><li>把自己置身于电脑世界中</li><li>为了体验，必须披挂上目镜和紧身衣</li></ul></div><div class="colR"><h4>普适计算 · 电脑在你身周</h4><ul><li>威瑟：我想要把电脑世界安置在你身周、身外</li><li>要想无时无刻不被计算包围，所要做的只是推开一扇门而已</li></ul></div></div><p class="prose">在这个由网络支配的房间里，样样东西相互联结：电话响时音响自动调低音量；答录机知道你的汽车不在停车场，就告诉打电话的人你还没到；拿起一本书，它就点亮阅读椅头顶的灯；钟表监听天气，冰箱查看时间并在牛奶告罄之前订购。</p><p class="prose"><b>书会记得自己在哪里</b>——凯利在屋内搜索，屏幕说爱丽丝的小隔间里有一本还没人读过，借来后它会根据他的嗜好改变外观，并把新位置知会所有人的数据库。这本书不大可能像以往的借书那样一去不复返。至于隐私——「但假如我不想让部门里的每一个人都知道我在哪个房间时怎么办？」（源文在此截断）</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>10.3 咬人的房间与不咬人的房间</h2><span class="en">BITING ROOMS</span></div><p class="prose">威瑟的建筑群是一个<b>机器的共同进化生态系统</b>：每个设备都是可以对刺激做出反应并与其他设备沟通的有机体。单干的话，绝大多数电子器件都会变成一盘散沙，因无所事事而消亡；聚在一起，就构成一个周到而强壮的群落——每个微小装置在深度上的不足，都会由共有的网络来补上。</p><p class="prose">共同进化生态的定义之一，即是一个充当其自身环境的有机体集合：蜉蝣的命运要取决于附近的青蛙、鳟鱼、赤杨、水蜘蛛的卖力演出——<b>每一种生物都充当着其他生物的环境。机器也是如此。</b></p><p class="prose">今天市场上的电冰箱是个自命不凡的家伙：它自以为是家里唯一的电器，既不能从其他机器那里学习，也没有什么可以告诉它们。而机器生态将提升愚钝机器的有限能力——嵌在书和椅子里的芯片只具备蚂蚁的智能，但「当细如蝼蚁的单元聚集成群且彼此互联时，它们便升格为一种群体智力」。<b>量变引起质变。</b></p><p class="prose">但集体效率是有代价的：<b>生态智力会对新入圈者不利</b>，就像冻土带对北极新来者不利。生态系统要求你具备本地知识——只有本地人才知道树林里哪能找到大片的蘑菇。试着用用别人的「智能」电话吧：它是按「9」呼外线吗？你怎样（晕！）做电话转接？只有物主才知道。</p><p class="prose">借用别人的电脑时，「就好像你在用他们的牙刷」——熟悉的部件，陌生的排列，随之而来的是恐怖：<b>你在窥视别人的思想！</b></p><p class="prose">有不咬人的房间也有咬人的房间：咬人的房间会咬入侵者；不咬人的房间会把来访者带到安全的地方，款待客人。将来大公司里一定会有某些被遗忘的角落——那里的计算设施得不到关照，变得粗鲁、偏执、难相处（尽管有灵性）、睚眦必报。当然，也有一股强大的反作用力在维持环境的统一——</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">场景</span><h4>书写式嵌入的未来街景</h4><span class="ar">▶</span></div><div class="cb"><div class="in">威瑟用「书写」作类比：文字遍布城乡、被动等待人们阅读；当计算与联结的嵌入度和书写一样时——街头标识会与车载导航系统沟通（街名改变时所有地图都相应改变），停车场的街灯会在你进入车场之前亮起，查看广告牌时它会向你传送更多产品信息，同时让广告客户了解哪个地段招来的查询量最大。</div></div></div><div class="case"><div class="ch"><span class="tag mid">场景</span><h4>咖啡机先生的新手模式</h4><span class="ar">▶</span></div><div class="cb"><div class="in">设计得当的话，咖啡机能在急性子客人使用时「感受」到他的迫切，从而默认使用「新手模式」——只提供 5 种基本的通用功能，即使是小学生也懂得如何操作。与之相对，某些被遗忘角落里的计算设施则会变得粗鲁、偏执、睚眦必报，却没有人有空去驯化或重新教育它。</div></div></div></div><div class="aband"><q>我们曾经用过一种电脑编辑器，可以让每个人有不同的界面。于是大家都设置了各自的界面。然后我们发现这个主意很糟糕，因为我们无法使用别人的终端。于是我们又走回老路：一个共享的界面，一个共同的文化。这也正是使我们聚集在一起成为人类的因素之一。</q><cite>——第十章 10.3 咬人的房间与不咬人的房间（丹尼·希利斯）</cite></div><p class="prose">机器永远不能完全靠自己而发展，但它们会变得更能意识到其他机器的存在。要想在达尔文主义的市场里生存，设计者必须认识到：机器要栖息在其他机器构成的环境中，<b>它们一起构成一段历史</b>，并且必须分享自己所知道的东西。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>10.4 规划一个共同体</h2><span class="en">DESIGNING A COMMONS</span></div><p class="prose">汽车配件店的柜台上，上万页的产品目录一字排开有卸货卡车那么宽——技工们最常用的十几页，页边沾满油腻的黑手印。廉价的平装书也一样：书脊的结合部在你上次阅读处微微张开，自然产生的书签陪你继续跟进故事。<b>磨损保藏的是有用的信息。</b>黄树林里有两条岔路，踩踏更多的那一条就给你提供了信息。</p><p class="prose">磨损是涌现出来的：大量个体活动的产物，有自我巩固的倾向，并且像大多数涌现属性一样能够传递信息。</p><p class="prose">贝尔通信研究所的威尔·希尔想把这种物理磨损的环境意识嫁接到办公室的机器生态中：电子表格里每个格子被修订的次数可以映射到灰度区间，从而以视觉形式指出哪里可能有混淆、争议或错误；程序员们把文件被各部门踢来踢去时反复改动的热点称作「折腾」（churns）——在成百万行代码中找出折腾藏身的区域非常有用。</p><p class="prose">在希尔的实验室，选读文件时显示器上会出现一条刻度尺，标示其他人花在各部分上的累计时间——这些被突出的「常用」段落，<b>是从不受控的集体鉴赏中涌现出来的</b>。</p><div class="aband"><q>磨损可以看作是共同体的一个妙喻。单个的磨损痕迹是无用的。但是汇聚起来并与他人共享，其存在就有了价值。它们分布得越广，其价值就越高。</q><cite>——第十章 10.4 规划一个共同体</cite></div><p class="prose">人类渴求隐私，但事实上，<b>我们的社会性胜过独立性</b>。如果机器也像我们这样互相了解（甚至是一些很私密的事情），那么机器生态就是不可征服的。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>10.5 闭环制造</h2><span class="en">CLOSED-LOOP MANUFACTURING</span></div><p class="prose">机器组合成<b>食物网</b>：一部机器「捕食」另一部机器——钢厂吞吃铁矿采掘机的流涎，钢被制造汽车的机器吃掉变成小汽车，车子死亡后被压碎机消化，反刍的铁渣再被回收工厂吞食，排泄出来说不定就成了盖房顶的电镀铁板。</p><p class="prose">追踪一个铁粒子从地底挖出的旅程：第一轮用在雪弗兰上，第二轮登陆中国台湾产的船壳，第三轮定型于铁轨，第四轮又上了一条船——这种缠绕的流动就是一个联网的群落：<b>工业生态</b>。木纤维从树变成报纸再变成树的肥料，轻易地在自然和工业生态圈间溜进溜出，而这两个生态圈同属于一个更大的全球性元系统。</p><p class="prose">人造工业的杂草特性威胁着自然界，倡导自然与鼓吹人工的人彼此对峙——直到「机器的未来是生物」这个观点把诗意转化为实用的东西：<b>自然和工业都能取得胜利</b>。自然界没有垃圾问题，因为物尽其用。</p><p class="prose">哈丁·提布斯与罗伯特·福罗什把工业生态的概念扩大到机器网络及其环境——目标是用自然系统的整体设计理念来塑造工业整体化设计。「为分解而设计」成为最早孕育的理念：数十年来易组装性至高无上，易维修、易处理却几乎完全被忽视。</p><p class="prose">德国通过法案强制汽车厂商设计容易分解的汽车；电茶壶能轻易分解成可回收部件；你制造一部收音机、一双跑鞋或一张沙发时，不得不考虑它尸体的归宿——<b>每一种产品都要考虑到它自己制造的垃圾。</b></p><div class="aband"><q>任何在当下没有用的材料，都可以通过设计从源头将它消除，这样就不会生产出那种材料了。我们已经大体上知道如何建成零污染的加工工序。之所以还没有这么做，是因为我们还没下定决心。这与其说是技术问题，倒不如说是决心问题。</q><cite>——第十章 10.5 闭环制造（哈丁·提布斯）</cite></div><p class="prose">成本账算得过来：3M 公司在每单位产品污染降低 50% 的情况下节约了 5 亿美元；马萨诸塞一家金属抛光厂被环保门槛逼到墙角后，发明了电镀业前所未有的完全闭环系统——水和有害溶剂全部在厂墙范围内循环使用，污染输出降为零，两年内见到收益。</p><p class="prose">「如果由水处理厂来处理污水的话，要花 50 万美金，而他们新颖的闭环系统只花费了约 25 万美金」，而且不再需要每星期 50 万加仑的耗水，再生水比外购的本地水还要干净。</p><p class="prose">提布斯举出已在进行中的原型——哥本哈根往西 80 英里的丹麦工业园区：燃煤电厂向炼油厂提供废热；炼油厂去除气体中的硫卖给硫酸厂，气体回供电厂作燃料，每年省煤 3 万吨。煤烟提取的硫酸钙供石棉水泥板厂当石膏，粉尘送往水泥厂。多余蒸汽给生物制药厂、3500 个家庭和海水鳟鱼养殖场供暖。</p><p class="prose">渔场的淤泥和药厂的发酵料给农场作肥料——十多家企业以开环形式互相处理「废料」，并在相互学习中让这个环逐步「收口」。在这个大循环里，</p><div class="aband"><q>任何东西都不会丢弃，因为根本没有“丢弃”一说。最终，所有的机器、工厂以及人类的种种机构都成为一个更大的全球范围的仿生系统的成员。</q><cite>——第十章 10.5 闭环制造</cite></div><p class="prose">实事求是地说，总有一星半点的废料进入生物圈——前提是机械系统必须运行在自然系统所能承受的节奏和范围内。活体生物如水浮莲，能够将稀释在水里的杂质浓缩成有经济价值的东西。</p><p class="prose">剩下的问题在于工业消化不了「分散和稀释」：一座数百万美元的再生纸厂需要持续不断、质量稳定的旧报纸供应——所以工业生态必须发展为网络化的及时生产系统（源文在此截断）。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>10.6 适应的技术</h2><span class="en">ADAPTIVE TECHNOLOGY</span></div><p class="prose">适应的技术——分布式智能、弹性时间计算、生态位经济、教导式进化——唤起了机器中的有机性。在联结成巨型回路之后，人造世界便稳固地滑向天生的世界。提布斯在 1991 年划时代的专题论文《工业生态学》中写道：「生物代谢主要以太阳能为燃料，在常温常压下运作。</p><p class="prose">」绝大多数需要高温高压的工厂将被运营在生物值范畴内的工厂取代——</p><div class="aband"><q>热代表着快、猛和高效。冷代表着慢、稳和灵活。生命是冷的。</q><cite>——第十章 10.6 适应的技术</cite></div><p class="prose">制药公司正以生物工程酵母取代有毒的化学品制造药品；用细菌从废弃尾矿中提取矿物，取代过去粗暴破坏环境的方法。更根本的账是氢碳比：生命的构建基石是碳，但生命不以碳为驱动力——燃料释放的真正能量来自氢而非碳。</p><div class="tbwrap"><table><thead><tr><th>燃料</th><th>时代</th><th>含碳比例</th></tr></thead><tbody><tr><td>木头</td><td>古时最好的燃料</td><td>碳约占 91%</td></tr><tr><td>煤</td><td>工业革命高峰期的主要燃料</td><td>碳占 50%</td></tr><tr><td>燃油</td><td>现代工厂</td><td>含碳量 33%</td></tr><tr><td>天然气</td><td>正在兴起的清洁燃料</td><td>含碳比例 20%</td></tr><tr><td>纯氢</td><td>理论上的理想清洁燃料</td><td>无碳——用日光将水分解成氢和氧</td></tr></tbody></table></div><p class="prose">通过推动工业流程向有机模式发展，仿生工程师创建了一条<b>生态系统谱系带</b>：一端是纯粹的自然生态系统（高山草甸、红树林沼泽），另一端是纯粹的工业系统，中间是湿地污水处理厂、酿酒厂这样的混合生态，以及部分生物、部分机器的第三类仿生系统。而工业将无可避免地采用生物方式，是因为——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>它能用更少的材料造出更好的东西。</span></label><label><input type="checkbox"><span>今天，创造事物的复杂性已经达到了生物级别。</span></label><label><input type="checkbox"><span>大自然是不为所动的，所以必须去适应她。</span></label><label><input type="checkbox"><span>自然界本身——基因和各种生命形式——与工业系统一样能够被工程化（或模式化）。</span></label><div class="cf">已勾选 <b>0</b> / 4</div></div><p class="prose">世界的通俗史：稀树大草原孕育狩猎采集者——最原始的生物学；狩猎采集者发展出农业和畜牧业；农民孵化出机器时代；工业家孵化出后工业物品。凯利把它称为<b>天生和人造的联姻</b>。但下个纪元的特色是新生物学而不是仿生学——</p><div class="aband"><q>因为在任何有机体和机器的混成物中，尽管开端可能是势均力敌的，但生物学却总是能最终胜出。</q><cite>——第十章 10.6 适应的技术</cite></div><p class="prose">有机并不意味神圣，它不是生命体通过神秘方式传承下来的神圣状态——</p><div class="aband"><q>生物学是一个必然——近于数学的必然，所有复杂性归向的必然。它是一个欧米茄点</q><cite>——第十章 10.6 适应的技术（此句在源文末尾即截断）</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>11.1 脱离实体</h2><span class="en">DISEMBODIED</span></div><p class="prose">很难说清约翰·派瑞·巴洛到底是干什么的：怀俄明州松谷县的农场主、前参议院共和党候选人、老牌地下乐队「感恩而死」的歌词作者（自我介绍通常到此为止）。</p><p class="prose">在任意一个时刻，他可能在斯里兰卡为捕鲸船下水忙碌，可能正在就言论自由和隐私权的未来演讲，可能在北海道的温泉里和日本企业家集思广益，也可能在蒸汽浴室和最后一位空间幻想家制定定居火星的计划。凯利在 WELL 上与他相识并共事数年——在信息时代，友朋之道往往就是如此。</p><p class="prose">巴洛大概有 10 个手机号码，分属几个城市；<b>凯利永远不知道他到底在哪里，却总能在几分钟之内联系到他。</b></p><p class="prose">「巴洛，你现在到底在哪儿？」一次冗长通话中凯利极不耐烦地盘问。——「这个嘛，你刚打过来的时候，我是在停车场，现在我正在行李箱店里修我的行李箱。」——「哎哟，你干脆做个手术直接把接收器安脑子里算了！」——「我正是这么想的。」他回答道，没有一点开玩笑的意思。</p><p class="prose">从空旷的怀俄明州搬迁出来，巴洛现在栖身于赛博空间（源文在此截断）。而赛博空间还不止是一个隐形帝国或三维游戏——</p><div class="aband"><q>用巴洛的话来说，赛博空间就是你和你的朋友在通电话时所“存在”的世界。</q><cite>——第十一章 11.1 脱离实体</cite></div><p class="prose">赛博空间是网络文化的集散地：分布式网络那违反直觉的逻辑和人类社会的各种特异行为在此相遇。拜网络经济所赐，它已经成为一种越用越丰富的资源——巴洛俏皮地说，赛博空间「是一种特殊的地产——越开发它的面积就越大」。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>11.2 以联结取代计算</h2><span class="en">CONNECTION OVER COMPUTATION</span></div><p class="prose">凯利买第一台电脑是为了给邮购公司建客户数据库。玩转苹果 II 几个月后，他把它联结到电话线上，「从此获得了一种宗教般的体验」。在电话接口的另一边是年轻的 Net——就在那天拂晓他意识到：<b>计算机的未来不在数字而在于联结</b>。</p><p class="prose">一百万台相互联结的苹果 II 所产生的力量，要远远超过一台价值数百万美元、用最精心的方式调制出来的、孤立的超级计算机。</p><div class="aband"><q>这种硅基芯片的真正力量，不在于通过数字运算来为我们进行筹划的奇妙功能，而在于通过数字开关把我们联结在一起的神奇能力。其实，我们不该把它们叫作“计算机”，而应该把它们称作“联结器”。</q><cite>——第十一章 11.2 以联结取代计算</cite></div><p class="prose">在「我时代」，个人电脑是个人的奴隶：硅质的大脑忠诚而循规蹈矩，哪怕你只有 13 岁也能轻松驾驭——个性化报纸、视频点播，一切似乎再清晰不过。而现实又一次出乎意料。到 1992 年，网络技术成为计算机工业中增长最迅速的领域；1993 年，《时代周刊》与《商业周刊》都以封面故事报道数据高速公路。</p><p class="prose">这种规模的网络化将会真正彻底地改变几乎所有的商业行为。它会改变——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>我们生产什么</span></label><label><input type="checkbox"><span>如何生产</span></label><label><input type="checkbox"><span>如何决定生产什么</span></label><label><input type="checkbox"><span>以及生产活动所处其中的经济的本质</span></label><div class="cf">已勾选 <b>0</b> / 4</div></div><p class="prose">网络逻辑已经塑造出产品：「即时现金」只有网络环境下才会出现；彩色打印机是把打印装置联网而成——印刷品在滚轴网络中穿行，各色高速叠印。1993 年起，必能宝的传真机、惠普的微型电脑、通用电气的身体扫描仪已可远程诊断和修理——你把电话线插进机器，工厂的操作员就能直接对机器进行远程修理。</p><p class="prose">这套技术由卫星制造商开发：<b>他们只能对产品进行远程维修</b>，别无选择。最终，也许所有的机器都可联入网络，在快不行的时候发出警报，并接受智能升级。</p><p class="prose">日本人把网络逻辑推到下一个前沿：灵活制造与大规模定制。日本国分地区的国家自行车工业公司可以在装配线上生产定制自行车——总计 1100 万种不同车型可供选择，价格只比大批量生产高 10%。</p><p class="prose">李维斯（源文在此截断）、贝纳通把回路收得更紧：毛衣不到出门时不做染色这道工序——当各地连锁店开始抢购青绿色套头衫，几天之内网络就会开始加染这种颜色。<b>决定当季流行色的不再是时尚专家，而是那些收款机。</p><p class="prose"></b>而灵活制造的前提是模块化的适应性工厂：要让重达几吨、铆在地上的机器踮起脚尖来，就得把大块头替换成网络化的智能组件——机器模具可调、物料分送咫尺转向、劳动力协调、货运线可调、营销同步，「而所有这些，都是通过网络来完成的」。联邦快递存着 IBM 的配件、施奈德的卡车实时接入网络——发货人到底是谁？</p><p class="prose">谁在管事？<b>到了这个时候，有时已经很难说清楚到底是谁在为谁工作了。</b>企业面临的挑战就此浮现：向外扩展企业的内部网络，把雇员、供应商、监管人员和消费者都囊括进来，使他们都成为公司的集体性存在的一部分——</p><div class="aband"><q>“他们”，就是公司。</q><cite>——第十一章 11.2 以联结取代计算</cite></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>11.3 信息工厂</h2><span class="en">THE INFORMATION FACTORY</span></div><p class="prose">未来的公司将不断演化，直到彻底的网络化。一个纯粹网络化的公司应该具有四个特点——</p><div class="grid g3"><div class="card"><h3>分布式</h3><p class="cp">商业在几个不同的地方同时发生，总部甚至可能不设在单一地点——Open Vision 的雇员「绝大多数人甚至都不知道喜乐屯到底在什么地方」；最合理的颗粒度是 8 到 12 人的团队放在同一地点，全球企业成为由细胞组成的系统</p></div><div class="card"><h3>去中心化</h3><p class="cp">攫财大亨式的完整生产链已从优势变成负担——控制必须让位于速度和灵活性。嘉露不再自己种特种葡萄，通用汽车甚至让外聘公司在自己厂房里喷漆；网络使巨量信息交换的成本降到可承受，外包因此成为可行、可盈利且有竞争力的选择</p></div><div class="card"><h3>协作性</h3><p class="cp">有时某些核心功能甚至外包给竞争者：航空公司把订座出票外包给美国航空，万事达和 VISA 把交易处理交给对手美国运通——寻找能形成共生关系的竞争者，「战略联盟」成为时髦词</p></div><div class="card"><h3>适应性</h3><p class="cp">从产品到服务的转移无可避免——自动化不断降低物质复制的成本；在研发、设计、授权、营销上，服务性成分占的比重越来越大。要想在新时代挣到钱，你得追随信息之流</p></div></div><p class="prose">凯利假想了「新贵汽车公司」：12 人在帕罗奥多的写字楼里办公（财务、4 个工程师、CEO、协调员、律师、市场），城市的另一头一个旧仓库里组装每加仑 120 英里的环保汽车——高科技塑料来自合资公司，引擎从新加坡买来，带条码的器件每天从墨西哥、犹他州、底特律运来，运输公司充当临时仓储；每辆车都是消费者通过网络定制的，装配完成立即发货。</p><p class="prose">机器人维修外包、厂房维护外包、接电话外包、行政外包、记帐远程响应——直接领工资的只有 100 人左右。<b>好像有点遥远，是吧？其实并非那么远。</b></p><p class="prose">行业之间的界线消失在无限的网络之中：航空公司会做旅游、卖旧货、订酒店；计算机公司却几乎已经不去碰硬件了。也许某一天，完全自给自足的公司会非常少见——公司这个概念的寓意，将从紧密耦合、被严格约束的机体，变为<b>松散耦合、松散约束的生态系统</b>。把 IBM 看成是一个有机体的概念需要被颠覆了——</p><div class="aband"><q>IBM其实是一个生态系统。</q><cite>——第十一章 11.3 信息工厂</cite></div><p class="prose">一个网络就是一个信息的加工厂：当产品的价值随着其中蕴含的知识增加而提高时，产生这些知识的网络其价值也随之增加。小器件的生命历程从线性路径变成网状形态——同时散布在众多位置的不同部门，以致很难说哪件事先发生、发生在什么地方。</p><p class="prose">而在成熟的网络经济中，货架上的商品将带主动微型芯片而非被动条形码：它们可以自己显示价格、按销售情况调整价格、记住你是否看了一眼标价就走开。<b>当货架上的商品获得自己或相互之间的注意，并且和消费者产生互动的时候，它们会迅速迸发为完全不同的经济形态。</b></p></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>11.4 与错误打交道</h2><span class="en">LIVING WITH ERRORS</span></div><p class="prose">网络经济令人担忧的地方（源文首句即截断），被概括成三条：它们很难被理解；它们不太容易受控制；它们并非最优化的。公司进入赛博空间后就有了软件的特点——无污染、无重量、快速、有用、可移动而且有趣，但同时也可能充满<b>没人能查明的烦人的小毛病</b>。会破碎的电视机？突然熄火的汽车？会爆炸的烤面包机？</p><p class="prose">关键的概念区分是<b>连续系统与非连续系统</b>：通用汽车测试新车急弯性能，50、60、70 英里通过，那么 55、67 英里肯定也能通过——性能是插值，汽车是连续系统。</p><p class="prose">但软件、分布式网络和绝大多数活系统是非连续的：你的软件可能平稳运行好几年，然后突然在某个特定值点上「轰隆一声系统爆炸，或者突变为某种全新的东西」。断点始终存在，而你已测试到了所有邻近取值；在一个拥有海量可能性的系统中，既不可能穷尽所有测试，也不能依靠抽样——因为它是非连续的。</p><p class="prose">于是有了「零缺陷」软件运动——不出意外，发生在日本。大型程序的目标是每千行代码错误小于等于 0.001，方法大量借鉴新乡重夫的零缺陷生产开创性工作。</p><p class="prose">软件可靠性大师 C.K. 曹告诫业界：不要把软件看成产品，要把它看成<b>便携式工厂</b>——你卖给客户的是一个工厂（程序代码），你的难题是要制造一个能生产零缺陷答案的工厂。</p><p class="prose">编制过程被分散成上千个小步骤，「公司里的每个人都有一个客户」——从某种意义上说，软件自下向上的这种发展过程与罗德尼·布鲁克斯的包容结构本质上并无不同。而关键的概念区分在于：</p><div class="aband"><q>我们绝对不可能避免错误，但是我们可以避免错误成为缺陷。</q><cite>——第十一章 11.4 与错误打交道（新乡重夫）</cite></div><p class="prose">真正的改进在于尽早清除产生错误的原因：工人总插错螺栓，就设置一个防止插错螺栓的系统——<b>犯错的是人，处理错误的则是系统</b>（日本人的经典发明 Poka-Yoke 防错系统，源文在此截断）。</p><p class="prose">另一个手段是模块化：1 万行的程序整块编写有 317 个错误，拆成三个子程序降为 265 个；IBM 的 IMS 系列代码以模块化编制，425 个模块中 300 个完全没有错误，而剩下 125 个有错误的模块中，超过一半的错误集中在仅仅 31 个模块上——<b>错误总是扎堆出现的</b>。</p><p class="prose">「魔鬼定律」说：当你发现一个错误的时候，也就意味着还有另外一堆你没看见的错误在什么地方等着你。</p><div class="aband"><q>你发现的下一个错误，极有可能出现在你已经找出了11个错误的模块里，而那些从未出过错误的模块，则可能会一直保持不败金身。</q><cite>——第十一章 11.4 与错误打交道（《零缺陷软件》）</cite></div><p class="prose">补救方法毫不留情：「不要把钱花在错误百出的代码上，抛弃它！」重写的代价和修补相差无多；前期就显示出出错倾向的代码，意味着后面还将不断出错。</p><p class="prose">更热的前沿是<b>面向对象程序（OOP）</b>：每个「对象」是独立成立、保持自身完整性的单元——就像带着微小的智能的乐高积木，对象知道自己能干什么不能干什么，并与其他对象横向交流。</p><p class="prose">传统程序一个地方出问题整个程序崩溃，而 OOP 有效地对功能实行了隔离——即使一个对象崩溃了，程序的其他部分也能继续运转；换掉坏单元，就好像给汽车换刹车片。</p><p class="prose">但零缺陷不是免费的：泰德（SmallTalk 和 HyperCard 的编写者）永远不可能跟日本的软件作坊合得来——「在创造性编程过程中，没有任何已经被完全理解的东西。你不得不去编写自己也并不明白的东西……你是可以写出零缺陷的软件，但它会有好几千行超出所需的代码。」自然亦是如此：它通过牺牲简洁性来换取可靠性。</p><p class="prose">研究小龙虾尾部神经细胞的科学家对回路的臃肿和丑陋瞠目结舌——<b>尽管比真正需要的冗余很多，却是不会出错的。</b>零缺陷软件的代价就是它的「过度设计」：多少有点浮肿，永远不会处在未知的边缘——用执行效率来换取生产效率。凯利曾就此请教诺贝尔奖得主赫伯特·西蒙（源文在此截断）。</p><p class="prose">结论：网络式经济的未来在于<b>设计出可靠的流程，而不是可靠的产品</b>；与此同时，这种经济的本质意味着这种流程是不可能最优化的（源文末句「在一个分布式的、半活性」截断）。</p></section><section id="s12"><div class="h2"><span class="cn">拾贰</span><h2>11.5 联通所有的一切</h2><span class="en">CONNECT EVERYTHING</span></div><p class="prose">全篇以一份「执行纲要」收束——凯利列出的新兴网络经济特征：</p><div class="tbwrap"><table><thead><tr><th>特征</th><th>要义</th></tr></thead><tbody><tr><td>分布式核心</td><td>公司边界模糊，核心任务通过网络层层分包——从一人公司到财富 500 强，都变成由所有权和地理位置都分散的工作中心组成的社会</td></tr><tr><td>适应性技术</td><td>如果不能达到「实时」要求，你就完蛋了（条形码、激光扫描仪、手机等，源文此项截断）</td></tr><tr><td>灵活制造</td><td>需求量更少的商品用更小的机器在更短的周期内生产——产品研发周期从几年缩短到几周</td></tr><tr><td>批量化的定制</td><td>流水线上生产的都是个性化定制的产品，却按大批量生产的价格销售</td></tr><tr><td>工业生态学</td><td>闭合回路、无废料、零污染的制造业；可拆解回收的产品；对违背生物学准则的行为越来越无法容忍</td></tr><tr><td>全球会计</td><td>零和游戏变成正和游戏——只有能把系统看成统一整体的玩家才能获得回报；结盟与协作成为行业根本和规范</td></tr><tr><td>共同进化的消费者</td><td>公司培训和教育消费者，消费者反过来培训和教育公司——产品随使用不断改进和进化</td></tr><tr><td>以知识为基础</td><td>数据是廉价的；你的优势不再体现在「如何完成工作」，而是「做什么工作」——将知识运用到数据上才是无价之宝</td></tr><tr><td>免费的带宽</td><td>接入免费，但接入与不接入的选择则非常昂贵——选择不接入什么成为关键</td></tr><tr><td>收益递增</td><td>拥有者，得之；先到者，得之——网络价值增长的速度超过用户增加的速度，新、老客户之间的对话按指数增长</td></tr><tr><td>数字货币</td><td>日常使用的数字货币取代成捆成沓的纸币，所有账户实时更新</td></tr><tr><td>隐性经济</td><td>创造性前沿以不可见的方式联结到加密网络中——负面结果是：不规范的经济活动四处萌芽</td></tr></tbody></table></div><p class="prose">在网络经济中，消费者享有越来越快的速度和越来越多的选择，也承担越来越多的责任；供应商的所有功能越来越分散化，与消费者的共生关系越来越紧密——在一个由无限信息构成的无序网络中找到合适的消费者，成为新时代的游戏。而<b>最核心的行为就是把所有的东西都联结在一起</b>：</p><div class="aband"><q>缺少了这些巨大的网络，就没有生命、没有智能、也没有进化；而有了这些网络，这些东西就都会存在，而且还会出现更多的东西。</q><cite>——第十一章 11.5 联通所有的一切</cite></div><p class="prose">巴洛——至少是他那个没有实体的声音——早就把他的所有东西都相互联结了：他生活和工作在一个真正的网络经济中。他给出的是信息——当然是免费的，而别人给他的是钱；<b>他给出的越多，挣的也就越多。</p><p class="prose"></b>在他给凯利的电子邮件里，他把这个正在兴起的网络比作某种炼金术的遐想：用导线将群体意识连接起来，创造出某种星球之脑（德日进的身影在此浮现，源文截断）。那些最大胆的科学家、技术人员、经济学家和哲学家们已经迈出了第一步——</p><div class="aband"><q>从这些网络机器中冒出的东西活了起来、变得聪明起来、而且可以进化——我们看到了新生物文明。</q><cite>——第十一章 11.5 联通所有的一切</cite></div><p class="prose">从网络文化中还会涌现出一种全球意识：计算机和自然的统一体——电话、人脑还有更多东西的统一体。它无定形，掌握它的只有它自己那只看不见的手——</p><div class="aband"><q>我们人类将无从得知这种全球意识在想什么。这并不是因为我们不够聪明，而是因为意识本身就不允许其部分能够理解整体。全球意识的独特思想，以及其后的行为，将脱离我们的控制，并超出我们的理解能力。因此，网络经济所哺育的将是一种新的灵魂。</q><cite>——第十一章 11.5 联通所有的一切</cite></div><p class="prose">理解它最大的困难在于：<b>它没有一个中心的「我」可以让我们去诉求</b>。没有总部，没有首脑——这是最令人气恼和气馁的地方。过去，探险者们寻找过圣杯、尼罗河的源头、约翰王的国度或者金字塔的秘密；未来，人们将会去寻找全球意识的「我在」。</p><p class="prose">很多灵魂会尽其所有来寻找它，关于它藏匿何处也会有许多种学说——不过和以往一样，这将会是一个永远没有终点的探索。下一篇进入进化之部：共同进化与失控的联盟。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>第十章多处｜</b>「传奇人物安东尼·高迪」「动画中的杰森一家」「110伏的“营养果汁”」「全球通用的时间讯号」「记者伊恩·艾勒比」「还没有谁能住在智能房屋里」「施乐公司实验室」「普适计算」「重播的《囚犯》」「威尔·希尔……贝尔通信研究所」「像凯夫拉纤维」「网络化的及时生产系统」「哈丁·提布斯」（6 字残句）「1989年，罗伯特·福罗什」（13 字残句）」「它是一个欧米茄点」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>第十一章多处｜</b>“感恩而死”乐队介绍、「在名为WELL」「栖身于赛博空间」「牛仔服装供应商李维斯」「大型广告公司Chiat/Day」「詹姆斯·布赖恩·奎恩」「苹果的微处理器是从Synertek」「芝加哥……EDS」「大型、去中心化的自为」「加拿大计算机学家戴维·帕那斯」「Poka-Yoke的防错系统」「我曾经问诺贝尔奖得主赫伯特·西蒙」「在一个分布式的、半活性」「条形码、激光扫描仪、手机、700打头的号码」（执行纲要「适应性技术」项）「德日进」等处句子未收尾，均不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>11.4 结构说明｜</b>11.4 首句「许多令人担忧的地方，这些问题也同样存在于其他的大型、去中心化的自为」截断，三条担忧内容依赖其后 ◎ 列表项补全，本篇以列表呈现，不补写首句。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">网络之部｜工业生态学·网络经济学</span><a href="../05-封闭系统与冒出的生态圈/index.html">← 封闭系统·冒出的生态圈</a><a href="../07-电子货币/index.html">电子货币 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

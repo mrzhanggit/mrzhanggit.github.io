@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第七部分·自由意志 · 生命游戏与掘土蜂状｜直觉泵 精读</title>
+<meta name="description" content="一个恶毒的谎言就能夺走一个人的自由意志；一台决定论的计算机象棋马拉松里却有真实的机会、错过与「本来可以」。本篇从康威的生命游戏一路拆到掘土蜂与自主队长：值得向往的自由意志，不需要奇迹，只需要实践的不可预测性与道德能力的成">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../10-意识-下/index.html">← 意识·下</a><a href="../12-做个哲学家与结语/index.html">做个哲学家与结语 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">志</div>
+  <div class="stamp ">意志</div>
+  <h1>自由意志 · 生命游戏与掘土蜂状</h1>
+  <p class="sub">一个恶毒的谎言就能夺走一个人的自由意志；一台决定论的计算机象棋马拉松里却有真实的机会、错过与「本来可以」。本篇从康威的生命游戏一路拆到掘土蜂与自主队长：值得向往的自由意志，不需要奇迹，只需要实践的不可预测性与道德能力的成长。</p>
+  <div class="meta"><span>第七部分</span>
+    <span class="k">决定论</span>
+    <span>正文 31,223 字</span>
+    <span>11 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>神经外科医生</a><a href="#s3" data-t="s3"><span class="cn">叁</span>生命游戏</a><a href="#s4" data-t="s4"><span class="cn">肆</span>猜拳</a><a href="#s5" data-t="s5"><span class="cn">伍</span>两种彩票</a><a href="#s6" data-t="s6"><span class="cn">陸</span>无效历史</a><a href="#s7" data-t="s7"><span class="cn">柒</span>象棋马拉松</a><a href="#s8" data-t="s8"><span class="cn">捌</span>终极责任</a><a href="#s9" data-t="s9"><span class="cn">玖</span>掘土蜂状</a><a href="#s10" data-t="s10"><span class="cn">拾</span>巴西来的男孩</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>第七部分小结</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第七部分：决定论与自由意志相容——用玩具世界把它想清楚</p><p class="thesis">如果决定论是真的，还存在真正的选择吗？丹尼特的答案：即便在一个完全决定论的世界中，我们也能对 A 和 B 做出真实而有意义的区分——A 本来可以王车易位，B 不能。<b>「本来可以不这么做」并不依赖一种非决定论。</b>那些坚持自由意志需要绝对不可预测性的人，负有论证的责任。</p><div class="chain"><div class="node"><div class="n">65</div><div><p class="tt">恶毒的神经外科医生</p><p class="dd">一个谎称移除自由意志的玩笑，真的把患者变成了傀儡</p></div></div><div class="node"><div class="n">66</div><div><p class="tt">生命游戏</p><p class="dd">康威的决定论玩具世界：滑翔机、吞噬者与像素银河</p></div></div><div class="node"><div class="n">67</div><div><p class="tt">石头、剪子、布</p><p class="dd">最好的套路就是没有套路——实践的不可预测性就够了</p></div></div><div class="node"><div class="n">68–69</div><div><p class="tt">两种彩票与无效历史事实</p><p class="dd">140 亿年前就已开奖的彩票，和数字化制造的无痕过去</p></div></div><div class="node"><div class="n">70</div><div><p class="tt">象棋马拉松</p><p class="dd">在 t 时刻，A 本来可以王车易位，但宇宙中不可能有王车易位的事件发生</p></div></div><div class="node"><div class="n">71</div><div><p class="tt">终极责任</p><p class="dd">斯特劳森的论证是伪装的连锁推理：你不必是绝对的哺乳动物</p></div></div><div class="node"><div class="n">72</div><div><p class="tt">掘土蜂状</p><p class="dd">有限能力无法成就自由选择——但操纵必须永远秘密进行</p></div></div><div class="node"><div class="n">73+小结</div><div><p class="tt">巴西来的男孩</p><p class="dd">转动四个旋钮，格林和科恩的「坏」直觉泵现出原形</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>65 一位恶毒的神经外科医生 · 非手术的手术</h2><span class="en">THE EVIL SURGEON</span></div><p class="prose">如今媒体上充斥着神经科学家的言论，说科学已经告诉我们自由意志只是一种幻觉。丹尼特的回应是一个虚构：一位出色的神经外科医生给患者做完植入手术后说——</p><div class="aband"><q>我给您植入的装置不仅能够治疗您的强迫障碍，还能控制您的每一个决定。这要感谢我们的主控系统，它可以与您脑中植入的微型芯片随时联络。换句话说，我已经解除了您的自由意志，以后您对自由意志的感觉都只是幻觉了。</q><cite>——65 一位恶毒的神经外科医生</cite></div><p class="prose">事实上，她没有这么干——这是一句谎言，她想看看会发生什么。谎言奏效了：这个可怜的家伙出院后果真相信自己不再是一个能对自己行为负责的行动者，而只是一个傀儡；他开始变得不负责任、好斗、随随便便，纵容自己最坏的念头肆意妄为，直到被送上法庭。</p><p class="prose">在法庭上他激动地宣称自己不该为那些行为负责，因为大脑被植入了芯片；医生作证说她只是开了个玩笑——「谁能想到他真会相信我的话呀！」</p><p class="prose">无论法庭最终采纳了谁的证词，都不重要：那段欠考虑的玩笑话已经毁了这个患者的生活，夺去了他的正直，严重伤害了他的决断力——她以<b>非手术的方式</b>完成了她声称要通过手术完成的事：她让患者变成了「残废」。</p><p class="prose">如果她要为这个后果负责，那么某些神经科学家也危险了：他们不也正以同样的方式伤害着那些对「自由意志只是幻觉」信以为真的人吗？实验之外的人描画的结论是——</p><div class="aband"><q>我们的大脑是电路固定好的！无法改变！别怪我了！是我的电路接错了！（Wolfe, 2002, p. 100）</q><cite>——65 一位恶毒的神经外科医生</cite></div><p class="prose">电路接错了？可是接对了又怎样呢？如果科学家们「发现」我们谁也没接对、或者根本不可能接对，那么道德义务又该如何呢？——这正是本部分要用一整套思考工具处理的问题。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>66 生命游戏 · 我们的世界是被决定的吗</h2><span class="en">GAME OF LIFE</span></div><p class="prose">每当物理学家费曼听到别人谈论他不熟悉的科学领域，总爱问：「关于你所讲的这些，能给我举一个简单的例子吗？」——如果无法相对简化一个困难的问题，可能就意味着你没有找到正确的解决方法。</p><p class="prose">简化并不只是新手的事：生物学有模式生物（果蝇、小白鼠、斑马鱼、鱿鱼、秀丽隐杆线虫、拟南芥），人工智能有「玩具问题」（积木世界、国际象棋），伦理学家有电车命题。下面要介绍的，是一个帮助人们思考<b>决定论</b>的玩具世界——1970 年数学家康威创造的生命游戏。</p><p class="prose">决定论的意思是：某一时刻的事实，包括每个粒子的位置、质量、方向、速度等，会决定下一时刻发生什么，以此类推，接连不断。</p><p class="prose">生命游戏发生在一个二维网格中，每个方格的状态要么是开、要么是关。这不是一个有胜负之分的游戏——它更像是单人跳棋。时间滴答滴答地离散前进，全部物理学只有一条规则：</p><div class="tbwrap"><table><thead><tr><th>生命物理</th><th>规则</th></tr></thead><tbody><tr><td>周围恰好 2 个开</td><td>下一时刻，该方格保持现有状态（开或关）</td></tr><tr><td>周围恰好 3 个开</td><td>下一时刻，该方格的状态为开，不论它现有的状态是什么</td></tr><tr><td>其他情况</td><td>下一时刻，该方格的状态是关</td></tr></tbody></table></div><p class="prose">把小方格的开当作生、关当作死、时刻的变动当作世代交替：过度与世隔绝（周围生存方格少于 2）或过度拥挤（大于 3）都会导致死亡。</p><p class="prose">若干基本图形：两个图案交替反复的<b>闪光灯</b>；永远不变的<b>静止的生命</b>（每个开的方格周围都有 3 个开格子）；会消失的斜线；还有像变形虫一样游动的<b>滑翔机</b>——由 5 个像素组成，看起来在往东南方飞去。以及<b>吞噬者</b>：</p><div class="aband"><q>吞噬者将在四个时刻之后吃掉滑翔机。不论吞噬者捕杀什么，基本过程都是一样的：首先，吞噬者和它的猎物形成接触。在下一刻，双方接触的部分都会因过度拥挤而死亡。随后，吞噬者进行自我修复，而它的猎物不会。只要猎物残存的部分继续向前滑翔并且自我消亡，那么就算吞噬成功。（Poundstone, 1985, p. 38）</q><cite>——66 生命游戏</cite></div><p class="prose">请注意，当我们转换到这个新的<b>设计层面</b>上来谈论这些图形时，我们在「本体论」上也发生了微妙的变化：物理层面上这个世界没有移动，唯一存在的个体是固定位置的小方格；而在设计层面上，我们一下就「看到了」移动的持续存在对象——尽管每一时刻的滑翔机都由不同的小方格构成。</p><p class="prose">在物理层面上只有普遍的定律而没有例外，所以设计层面的概括必须加上「通常」或「假如没有别的东西侵入」等限定语。康威和他的学生们沿着冯·诺依曼的思路设计并证明：在生命游戏中创造出一个<b>能够自我复制的物体</b>是可能的，而且它还是一架通用图灵机——原则上可以运算一切能在计算机上运算的函数！</p><p class="prose">庞德斯通经计算得出，整台机器将占用大约 1013 个小方格：</p><div class="aband"><q>要想显示一个1013像素的图形，需要一个至少有300万像素宽的显示屏……想象一个高分辨率的屏幕，类似你的笔记本电脑或iPad，不过它的宽度要达到800米。如果从全景上看，这个自我复制图案中的像素会小得几乎不可见。当你距离屏幕足够远，让整个图案完全进入视野中，其中的一个个像素会变得极为微小，即使它们组合成的滑翔机、吞噬者或一把手枪也无法辨识。整个自我复制的图案构成一条朦胧的光带，看起来像是银河。（Poundstone, 1985, pp. 227-288）</q><cite>——66 生命游戏</cite></div><p class="prose">生命游戏可以阐释很多重要原则，丹尼特只指出三点。</p><p class="prose"><b>第一</b>，物理层面和设计层面之间的差异是怎样变得模糊起来的：滑翔机无需被设计发明，它只是从生命游戏的物理学预设中<b>发掘</b>出来的——正如氨基酸无需被设计，可仅凭氨基酸就能合成蛋白质，有人觉得至少得经过点儿什么近似设计吧——看来，还需要再讲一遍达尔文的进化论。</p><p class="prose"><b>第二</b>，生命游戏的世界是决定论的，我们可以预测所有图案的未来，但它们的过去往往完全是个谜——「静止的生命」到底过去哪一个方格是关着的，是一个无效的历史事实（详见第 69 章）。</p><p class="prose"><b>第三</b>，康威构建的巨大自我复制体无法发生突变：它总是完美地复制自身；生命游戏里能动的最小物体就是滑翔机——若要让它只对自我复制体的基因组织作出「调整」而不是摧毁，基因组必须比滑翔机巨大得多、足够强壮。</p><p class="prose">若那些银河般巨大的集合体实在脆弱、无法经受住偶然降下的「滑翔机雨」，那就说明：无论在生命游戏世界中设计出的物体有多大，它都不会发生进化。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>67 石头、剪子、布 · 最好的套路就是没有套路</h2><span class="en">ROCK PAPER SCISSORS</span></div><p class="prose">石头崩剪子、剪子剪布、布包石头。如果你能看透你的对手、猜透她的心思，你就可以一直赢下去——但若真的发生了这种事，也是怪吓人的。为了不让对手从你的外在行为中找到规律，最好的策略是什么？<b>最好的策略就是绝对随机地玩猜拳</b>。</p><p class="prose">人类并不善于创造随机的序列（我们倾向于避免重复同样的动作），所以可以从随机数字表抄下上百个数字，删去 0，把 1、2、3 换成石头 R、4、5、6 换成布 P、7、8、9 换成剪子 S——一张约 90 次猜拳的「出招表」就备好了。最需要恪守的原则：<b>不要把这张表告诉任何人</b>。</p><p class="prose">一旦让对手看到它，你就等着任人宰割；而只要对手得不到出招表，她就不得不费劲地猜——不得不站在意向立场上理性地分析你。</p><p class="prose">「不要让对手看到你偷偷选择的是什么」——这条简单的原则实际上触及了自由意志问题的核心。冯·诺依曼和摩根斯坦能发明博弈论，正是因为他们意识到：面对两个意向系统，双方都必须把对方的观察、预测、算计纳入自己的考量，形成一种异常复杂而不确定的反馈循环——每个行动者看来，对方都笼罩在迷雾般的不可预测性之下。</p><p class="prose">生物进化中也发现了这种博弈：瞪羚的弹跃、蝴蝶难以捉摸的飞行（让食虫鸟难以预测轨迹——鸟类的「闪光融合率」比人类更快，看电影像看幻灯片）。</p><p class="prose">让自己变得不可预测，同时小心别人也这样做——动物们普遍在本能上「领会」了这一原则，这正是我们发明那些看不见摸不着的事物的进化源泉：从哥布林、矮妖、精灵、食人魔和众神，最终进化成神。</p><p class="prose">古玩市场上不要先夸赞再谈价；卖东西开价合理、别让买家知道你的底价；一见钟情也最好不要一下子意乱神迷——「扑克脸」不只是为扑克玩家准备的。魔术师们则知道如何利用「心理力量」使你「出于自己的自由意志」选择他们希望你选中的牌——这是对你主动性的剥夺，把你变成他本人意志的延伸。</p><p class="prose">与古代的自由观不同，我们不再向往完全独立于因果性之外的那种自由选择；我们应该向往的自由观是：<b>当我们行动时，可以充分了解到我们力所能及的最好选择是什么。</b>我们的愿望清单中还应该加上保持自己思想和决定的神秘性的能力——即便这意味着有时只能选择次好方案。</p><p class="prose">有些人糊里糊涂地执着于绝对的不可预测性——它要求我们大脑运行的物质基础在物理层面上是非决定论的。哲学家福多尔曾生动地阐述过这一思想：</p><div class="aband"><q>人希望自己成为传说中那偷吃禁果的夏娃，可以完全自由地做任何事。实际上，她是如此自由，就连上帝都不知道她会去偷吃禁果。</q><cite>——67 石头、剪子、布</cite></div><p class="prose">但是，为什么「人们希望」这样的自由？几千年来无数哲学家坚持认为绝对的不可预测性是自由意志的先决条件——「自由意志与决定论不相容」这一命题俨然无需论证。<b>但是要我说，他们有论证的责任。</p><p class="prose"></b>丹尼特已经证明过，为什么尽量保持一定的实践的不可预测性对我们而言是明智的，就像进化本身——所以请告诉我们吧，为什么这还不够？他替他们找了一个好理由：如果你打算和上帝玩石头、剪子、布而且赌注颇高——比如赌你会不会得到拯救——那你肯定会像福多尔所说，希望拥有「完美的」自由。</p><p class="prose">而我个人并不期待这样一场赌局，所以我很满意我所拥有的<b>实践的自由</b>：如果我要赌个大的，只需要做好保密工作并且离那些神偷和操盘手们远一点就好了。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>68 两种彩票 · 从新视角看“决定论”</h2><span class="en">TWO LOTTERIES</span></div><p class="prose">公平地比较两种彩票。<b>彩票 A（「之后」）</b>：销售结束后摇奖，抽出中奖号码；<b>彩票 B（「之前」）</b>：销售之前中奖号码就已摇出、保存在保险箱里。有人觉得 B 不公平——购买之前胜者已定，其他彩票都成了废纸。</p><p class="prose">可实际上<b>两种彩票是同样公平的</b>：每个买彩票的人都有着相同的中奖概率，这与中奖号码在何时选出没有任何本质上的联系。成百上千万人在买「刮刮乐」——购买时中没中奖早已事先决定好——显然人们认为他们真的有机会中奖。</p><p class="prose">这会扰乱一些哲学家的心神：他们坚持认为，如果不能持续不断地提供真正的随机性、没有随时出现的不确定分支点去打破因果关系的大网，自由选择将是不可能的。</p><div class="aband"><q>如果世界是被决定的，那么我们所有的彩票实际上在大约140亿年以前就已经开奖了，随着宇宙大爆炸的一声巨响它们就被装进了信封，并在我们需要它们的时刻交到了我们手上。</q><cite>——68 两种彩票</cite></div><p class="prose">每当你要「抛硬币」或者做一个随机的决定时，你的大脑就会把那个信封打开，从中取出一个「随机」数字，然后让它来决定你该干什么——就像石头、剪子、布那一章中的那张「出招表」。「但这不公平啊，」有人会说，「有些人分到的胜利比其他人多呀。</p><p class="prose">」确实如此——但即便在我们出生前签还没有抽好，即便它是遇事现抽的、抽签机制完全随机公正，也仍然有些人注定比其他人赢得多：即使在完全公平的掷硬币比赛中，也注定有某个人会赢。<b>公平并不在于所有人都赢。</p><p class="prose"></b>人们期望非决定论的最常见理由是：如果世界是决定论的，那么只要我们选择了某个行为，就意味着「我们不再可能有别的做法」。同样，这一点也没有它看起来那样理所当然——为此需要先认识一类有趣的无效历史事实。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>69 无效历史事实 · 用强行分类抹平微小差异</h2><span class="en">TRIVIAL FACTS</span></div><p class="prose">无效历史事实是一些非常平常的事实：它发生在过去，只不过现在人们已经无法对它做出判断——一种在当今世界根本没有留下任何痕迹的事实。丹尼特最爱举的例子是一对选言命题：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>A</h4><p>我牙齿里面有些金子曾经属于凯撒。</p></div><div class="step"><div class="dot">2</div><h4>B</h4><p>我牙齿里面的金子曾经并不属于凯撒。</p></div></div><p class="prose">根据逻辑，以上两句话中必定有一个是事实。等等——根据「近似算子」那章的精神，我们不应该怀疑这些「显而易见」的选言式命题吗？</p><div class="broken-tip">源文截断提示：「就如同今天英国女王依然是领土上所有天鹅的主人」一句在源文中戛然而止，疑为导出残缺（原书此处以女王对天鹅的所有权类比凯撒时代所有权概念的模糊性）；如实保留，不补写。</div><p class="prose">在某些情况下我们几乎能确定 A 或 B 哪个为真：如果牙医从博物馆买来有据可查的「凯撒小指之戒」、融化后灌入牙齿石膏模型，A 就是真的；如果金子来自冰川消融后阿拉斯加的淘金之旅，B 就是真的。但没有这种既离谱又证据充分的故事的话，我们永远也无法知道到底谁是真的——无论哪一个是真的，它都是一个无效的历史事实。</p><p class="prose">量子力学又添了一层障碍：只要凯撒戒指上的一颗金原子与外界的金原子发生过碰撞，原则上我们就无法确定哪个原子来自凯撒——粒子无法留下指纹。</p><p class="prose">不论整个宇宙是不是决定论的，<b>电子计算机在设计上是决定论的</b>：它通过数字化而不是模拟来消除亚微观噪声。数字化背后的基本理念是：<b>我们可以有意创造无效的历史事实。</p><p class="prose"></b>把所有主要事件强行划分为两类——高和低、开和关、0 和 1——同一类别之间微小的差异被无情地忽略，这些差异并不决定任何东西，其自身也消失得无影无踪。</p><p class="prose">试想：朋友从网上下载一首歌刻录到两张无法区分的 CD 上，你在漆黑的房间中请他随机拷贝一张，消掉所有指纹与 DNA 痕迹后摇进 CD 袋——「电脑里的歌是从光盘 A 拷贝下来的」还是「从光盘 B」，便成了一个标准的无效历史事实。</p><p class="prose">数字化可以避免把 CD 的个性传播到拷贝中；就算「黄金耳」音乐发烧友能分辨黑胶与数字唱片的差别，要问两段同样的音乐是否出自同一张 CD，也只能随便猜——要是有人能分辨，那他绝对是一位超自然的超感觉能力者。</p><p class="prose">计算机内置的「随机数发生器」拥有的也只是<b>虚假的随机性</b>：它生成的数列「数学上可压缩」——一兆大小的算法程序就能把握并重现整个无限长数列，就像一盘录有数百万轮盘赌结果的超长录像带，开机即倒回「开头」。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>70 一场计算机国际象棋马拉松 · 如果决定论是真的，还存在真正的选择吗</h2><span class="en">CHESS MARATHON</span></div><p class="prose">在计算机上安装两个不同的国际象棋软件 A 和 B，连到监控软件上让它们一局又一局地对弈以至无穷——它们会重复同一盘棋吗？</p><p class="prose">如果你不让随机数发生器在每局开始时重新初始化，程序就会在不同棋路间「选择」，一连串对弈中不存在两盘完全相同的棋局；但只要你重启计算机，运行相同的程序，就能得出与上次完全相同的棋局组合——因为决定「抛硬币」的是与上次完全相同的一串<b>虚假的随机数</b>。</p><p class="prose">假设 1000 场比赛中 A 总能打败 B，我们想要的是解释：哪种结构、算法、配置使 A 具备优势？也许是低层次的——A 与 B 有着完全相同的棋步取值器，只是 A 编译更有效、计算得更快；也许是更高层次的——A 能更好地评价棋局态势、「想得不一样，想得更好、更复杂」。</p><p class="prose">总之，我们会发现一块蕴含着无数解释性规律的宝藏。</p><p class="prose">但从「显微镜」的角度——通过 CPU 指令和数据流的角度看——实际上只有一台决定论的自动机在以唯一的方式运行着；A 和 B 所做的一切选择都是由那台计算机及其内存的状态所决定的。</p><p class="prose">假如 A 在 t 时刻即将陷入一个将杀网，但 B 由于时间不够而停止了搜索——那么这就意味着，这个将杀网<b>绝对不会发生</b>：再花一天时间重演比赛，B 会再一次由于时间不够而停止搜索。那么，在这个游戏世界中真的没有截与让、没有攻与守、没有错过的机会、没有真实的可能性了吗？</p><p class="prose">丹尼特承认，像昆虫和鱼一样，国际象棋软件太简单，无法承担有道德意义的自由意志——<b>但它们所处世界的决定论状态并不能阻止它们以不同的力量和能力去把握机会。</b></p><p class="prose">加入第三个下棋程序 C，它几乎每次都能打败 A 和 B。专家们回看比赛一致认定：某两局共有的第 12 步棋——王车易位——是获胜的关键，而 A 和 B 都把它错过了。程序 A 的设计者耸耸肩说：「其实，A 本来可以王车易位的。」B 的设计者插话说：「我的也是，B 本来也可以这么下的。</p><p class="prose">」<b>但 A 的设计者说的是对的，而 B 的设计者说的是错的！</b>这怎么可能呢？整个比赛程序都是确定性的，回到与上次完全相同的状态，无论 A 和 B 都仍然不会做出王车易位的选择。</p><p class="prose">答案在于：问 A 是不是本来能够王车易位时，一遍遍看一模一样的棋局毫无帮助，我们应该查看那些<b>有相似之处</b>的棋局——如果其他比赛中碰上类似情况时 A 确实能算得更多一点、发现王车易位的好处，那么「A 本来可以王车易位」就得到了支持。</p><p class="prose">深挖下去甚至可能发现：A 过早停止思考前，曾让随机数发生器掷硬币决定要不要继续分析王车易位——掷出的结果是不该。假如那个随机数是 1 而不是 0，A 就会继续思考并进行王车易位。这种情况可以说，A 没有王车易位是一个意外，因为随机数发生器没有带来好运。而 B 呢？</p><p class="prose">王车易位是一步很深奥的棋，已经远远超出了 B 的分析能力——它在<b>本质上</b>走不了这步棋。于是我们得到一个明显自相矛盾的方式：</p><div class="aband"><q>在t时刻，A本来可以进行王车易位，但是，在时刻t，宇宙中却不可能有王车易位的事件发生。</q><cite>——70 一场计算机国际象棋马拉松</cite></div><p class="prose">意义很简单：把 A 和与 A 紧密联系的周边环境分开来看，A 是否王车易位就不是被决定的了——严格来说，A 是否被决定<b>依赖于 A 的外部环境</b>；基于给定的外部世界，A 不可能王车易位，但这「不是 A 的错」。B 则相反：它本来就无法王车易位，要想让 B 走出这步棋，需要改变太多的事实。</p><p class="prose">即便在一个决定论的世界中，我们也能看出 A 能做某些 B 做不了的事。使用量子随机数发生器（比如盖革计数器）也不会有什么改善：B 进行王车易位与不进行的概率是一半一半，不管它使用的是「真实的」还是「虚假的」随机数发生器——哲学家威金斯写过的决定论下的「宇宙不平等」，在非决定论下同样存在。</p><p class="prose">B 任由它的随机数发生器「摆布」；当然，A 也一样，我们都一样。真随机数发生器没有任何理由得到青睐——除非你准备跟全知的神对弈！</p><p class="prose">还有一个理由：「我不能改变过去，但如果非决定论是真的，我就能够改变未来！」——不是的。你想把未来从什么改成什么呢？从将要发生的改成将会发生的？</p><div class="aband"><q>你无法改变过去，也无法改变未来。因为改变未来这个概念是不合逻辑的。</q><cite>——70 一场计算机国际象棋马拉松</cite></div><p class="prose">于是结论水到渠成：如果决定论是真的，我们不能改变未来；如果决定论是假的，我们也不能改变未来。所以结论就是我们根本没法改变未来。</p><p class="prose">我们希望自己能够预见到灾难并通过努力避免它的发生——但无需非决定论我们也能够做这样的事：有人向你扔了一块砖头，你看到并躲开了；或许直到最后一刻一些观察者都无法知道你会不会被砸中，如果他赌你会躲，也有可能输。回到那个理由——不想被预测到，但这并不需要世界是非决定论的。</p><p class="prose">这个直觉泵让我们看到：<b>「本来可以不这么做」并不依赖一种非决定论。</b>即便它有一种既不兼容于决定论又具有道德重要性的意义，证明的责任也在那些相信它的人一边。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>71 终极责任 · 斯特劳森的错误论证</h2><span class="en">ULTIMATE RESPONSIBILITY</span></div><p class="prose">是时候具体地考察我们想成为道德行动者的愿望了——也许这时我们才真正需要非决定论？哲学家斯特劳森把一个流行的论证整理成如下形式：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>①</h4><p>在任何给定情况下，你因自己是什么样的人而做出你所做之事。</p></div><div class="step"><div class="dot">2</div><h4>②</h4><p>因此，为了在根本上对你所做的事负责，你必须在根本上对你是什么样的人负责，至少对你的心智的一些关键方面负责。</p></div><div class="step"><div class="dot">3</div><h4>③</h4><p>但是在任何方面，你都无法在根本上对你是什么样的人负责。</p></div><div class="step"><div class="dot">4</div><h4>④</h4><p>所以，你无法在根本上对你所做的事负责。</p></div></div><p class="prose">第四个结论看上去似乎符合逻辑。真的吗？考察第三个前提：为什么我们不能（至少在某些方面）在根本上对自己是什么样的人负责？设想你设计制造了一个机器人，不加看管地扔到外面的世界，你完全清楚它所有可能参与的事情并估计它可能把人弄成重伤——伤害发生后，被责备的人就是你。</p><p class="prose">再设想你设计制造了一个人——晚些时候的你自己——把自己扔到充满危险的世界：那个你在酒吧把自己灌醉后开车上路，撞上一辆校车，难道你一点儿也不用对「这样的你」承担一部分责任吗？常识告诉我们，当然要承担。斯特劳森说的是我们不能对自己是什么样的人负有<b>绝对</b>的责任——</p><div class="aband"><q>要做到对所做之事绝对负责，人必须是自因，自己是自己的原因，但这是不可能的。即便我们不完全是由物质组成，即便我们有不朽的灵魂，这也还是不可能的。（Strawson, 2010）</q><cite>——71 终极责任</cite></div><p class="prose">这又怎么样呢？<b>谁会认为我们必须承担绝对的责任？这简直是一种根本不可能存在的状态，即便非决定论是真的也不可能！</b>绝对责任是干扰视线的伪焦点，是没人渴望得到的祝福。</p><p class="prose">斯特劳森批评丹尼特「他没有建立那种大多数人都想去相信、或者真的相信的绝对的自由意志和道德责任」——完全正确，而且他认为大多数人的那种想法是错的：如果他们真的相信，那也相信错了。论证的责任在斯特劳森等人一边。结束讨论前，丹尼特请大家注意：斯特劳森的论证与一个我们见过的论证惊人地相似——</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>①</h4><p>在任何给定的情况下，哺乳动物因为是哺乳动物而是哺乳动物。</p></div><div class="step"><div class="dot">2</div><h4>②</h4><p>要想是一个哺乳动物，你的母亲也必须是哺乳动物。</p></div><div class="step"><div class="dot">3</div><h4>③</h4><p>但是，你的母亲也必须符合这一条件，还有你母亲的母亲，以至无穷，而这是不可能的。</p></div><div class="step"><div class="dot">4</div><h4>④</h4><p>所以你不可能是一个哺乳动物，因为哺乳动物在根本上是不可能的。</p></div></div><p class="prose">你应该永远警惕这种「祖先」论证——它是一种经过伪装的、被称作<b>连锁推理</b>（或者「谷堆」论证）的古代谬论：一粒小麦不是谷堆；加一粒也不是；你不能通过增加一粒小麦使非谷堆变成谷堆；因此，不存在谷堆这种东西！</p><p class="prose">就像第 43 章所讲的，达尔文已然教会了我们如何拒绝连锁推理——我们无需在族谱中画下一条原则上的物种分界线。</p><div class="aband"><q>你是一个哺乳动物，不必是一个绝对的哺乳动物；你可以承担责任而不必承担绝对的责任；你也可以拥有一种值得向往的自由意志，而不是永远绝对的自由意志。</q><cite>——71 终极责任</cite></div><p class="prose">绝对的自由意志就像奇迹一样，你必须给出一个强有力的论证才能证明为何人们要贪图这样的东西。难道你想成为上帝吗？真糟糕，我们一般可没有这种好运——不过，能成为第二好的也不错呀。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>72 掘土蜂状 · 有限能力无法成就自由选择</h2><span class="en">SPHEXISHNESS</span></div><p class="prose">侯世达（1982）杜撰了<b>「掘土蜂状」</b>（sphexishness）这一术语，指容易被人误以为是大智若愚的一种死板的、机械的无意识状态。典出迪恩·伍尔德里奇《大脑机制》对掘土蜂的描写：产卵时节，掘土蜂为后代挖洞、蛰咬蟋蟀使其麻痹、拖进洞中放在卵的周围、封死洞口——这套精心组织的过程甚至传达出思想性。</p><p class="prose">直到发现更多细节：掘土蜂会例行公事地把麻痹的蟋蟀拖到洞口放下，进洞检查一番，出来后再把蟋蟀拖进洞；如果它进洞检查时蟋蟀移动了几厘米，它出来后会把蟋蟀重新拖回洞口，把「准备工作」重做一遍——有一次这一过程重复了 40 多次，每次都是同样的结果。</p><p class="prose">不过我们最近获悉，伍尔德里奇作了过于简化的概述：心理学家奇卡引用法布尔《昆虫记》的研究指出，实际上只有<b>某些</b>掘土蜂是「掘土蜂状」的——</p><div class="aband"><q>两三次之后，掘土蜂用钳子揪着猎物的触须，把猎物拖进洞里。现在谁是傻瓜呢？</q><cite>——72 掘土蜂状（法布尔《昆虫记》）</cite></div><p class="prose">「掘土蜂状」其实有点用词不当，不过既然都这么叫了，只好继续让掘土蜂忍辱负重。它之所以重要，是因为它给了我们一个术语，用来指代一种<b>有限的、机械的、短视的能力</b>，而更奇妙、更复杂、更有理解力的心智则建于其上——任何心智的构建模块都最好是掘土蜂状的，是近似心智、我们心智中苍白的影子。</p><p class="prose">我们也可以用掘土蜂状把有道德能力的心智与没有道德能力的心智区分出来：如果一个人的心智到了像掘土蜂似的程度——不管因为脑瘤、脑损伤、严重的神经失调、精神病，还是纯粹因为愚昧或不成熟——那么他也就无法做出有意义的事。</p><p class="prose">哲学上许多自由意志思想实验都引入了傀儡操纵者或恶毒的神经外科医生。但请注意：<b>这种操纵永远永远是秘密进行的。</b>为什么？</p><p class="prose">回想开启博弈论的那个洞见：当一个行动者意识到另一个行动者想要操纵他时，他会寻找对策——两个行动者之间的竞争性互动涉及许多层面的反馈，会削弱操纵者的控制力；而一旦操纵没能秘密进行，而且还正中「傀儡」的下怀，局面就完全反转了。</p><p class="prose">法兰克福（1969）的著名直觉泵：神经外科医生偷偷植入监控设备，你想选 A 他就袖手旁观，想选 B 他就按按钮阻止——无论如何你都会选择 A，而你对这一切都没有感觉。转动旋钮：为了抑制你对甜食的爱，你和医生签了一份合同，他帮你植入监控装置、你支付优厚报酬，双方都希望他永远不必按下按钮。</p><p class="prose">装置连续记录下成百上千个指令，显示你选择了 A——「不了，只需要一杯黑咖啡，谢谢」。<b>这能不能作为你自由选择的例子呢？</b>对你来说，让自己多少有些脆弱的意志力得到点儿帮助，难道不是一件很明智的事吗？</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>73 巴西来的男孩 · 一个干扰人们思考的“坏”直觉泵</h2><span class="en">BOYS FROM BRAZIL</span></div><p class="prose">格林和科恩 2004 年在《皇家学会哲学汇刊》撰文，唤起一场由科学发现引发的法律革命：法律的直觉支撑完全建立在一种过于形而上学的野心上——自由意志主义者的自由意志观念正遭受着认知神经科学的威胁。</p><p class="prose">他们受电影《巴西来的男孩》（培养希特勒克隆人的纳粹科学家）启发，设计了这样一个思想实验：一群科学家成功地创造出了一个人，就叫他<b>傀儡先生</b>好了，他们的设计令傀儡先生做出了犯罪行为，比如在毒品交易失败时杀人。</p><p class="prose">他们在直觉上觉得他更值得同情而不是谴责——「重要的是，这些力量超出了傀儡先生的控制，它们并不是傀儡先生的。」他们自己也预感到：「丹尼尔·丹尼特可能会反对说，傀儡先生的故事只是一个有误导性的『直觉泵』。」我确实是这么想的——来，转动四个旋钮：</p><div class="tbwrap"><table><thead><tr><th>旋钮</th><th>转动前</th><th>转动后</th></tr></thead><tbody><tr><td>① 拿掉邪恶的阴谋（作者自己都坚持认为它不重要）</td><td>一群科学家成功地创造出了一个人</td><td>冷漠的环境成功地创造出了一个人</td></tr><tr><td>② 去掉「他们的设计令」</td><td>他们的设计令傀儡先生做出犯罪行为</td><td>他有很高的概率做出犯罪行为</td></tr><tr><td>③ 改变犯罪动机</td><td>在毒品交易失败时杀人</td><td>为了掩盖挪用公款而杀人</td></tr><tr><td>④ 改动罪犯的名字</td><td>傀儡先生</td><td>自主队长</td></tr></tbody></table></div><p class="prose">现在它激发出的是什么直觉？还是同样的直觉吗？你还觉得他更值得同情而不是谴责吗？把细节再充实一点——</p><p class="prose"><b>自主队长</b>在哈佛大学主修经济学，毕业之后去了雷曼兄弟公司上班，和他一起工作的同事都在偷奸耍滑并以此牟利。他爱上了一个傍大款的迷人女郎，她威胁说，除非自主队长马上变得很有钱，否则她就甩了自主队长。自主队长看到有个机会可以挪用公款而不被发现，基本上可以做到隐形犯罪，于是他决心冒险一试。</p><p class="prose">唉，可惜人算不如天算，冒出来了一位目击者——一次快速的「跌倒」，证人摔死在了大道上。他引起了人们的怀疑，不久之后自主队长就被捕了。到这里，你还倾向于认为，由于他的行为是由外部原因决定的，所以他「其实不该负责」吗？即便你仍然愿意把自主队长看作奢靡环境的受害者，也不得不承认他所受诱惑的力量已经大大削弱了。</p><p class="prose">丹尼特并不是想证明被决定的人们要对自己的行为负责——他只是想说明：<b>格林和科恩给出的那个直觉泵一点也不可信，因为其中可用的、允许转动的旋钮设置大大地干扰了我们的判断。</b>也许设计它的初衷并不是为了糊弄人，但它确实妨碍了我们清晰的思考。</p></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>第七部分小结 · 相容论不是可怜的托词</h2><span class="en">PART VII SUMMARY</span></div><p class="prose">人们非常在意自己拥有的自由意志，不过对于什么是自由意志，人们常被一些观念误导，就像他们在颜色和意识的问题上被误导一样。</p><p class="prose"><b>我们的决定并不是发生在大脑中的小小奇迹</b>，它并不违反那些可以解释我们身体其余部分的物理和化学原理；但也不能因此推断我们没有自由意志——因为在这个疯狂的意义上的自由意志并不是自由意志的唯一概念。</p><p class="prose">在法律中，人们会区别「出于」自愿签订的合同与在强制、幻觉或精神错乱之下签订的合同——这个意义上的自由意志蕴含在常识映像的实践与态度之中，没有任何迹象显示它的各个特点依附于那个疯狂的概念。相容论不仅是哲学家，还是法官、律师之间的共识。</p><p class="prose">现如今一些科学家正在挑战这一共识——就让我们严格地审视一下这些论证吧：恶毒的神经外科医生把她的病人变成了残废，凭的不是别的而是一个虚假的观念；有影响力的科学家们颁布的错误观点可能会剥夺自由意志的多样性。我呼吁，每一方都应当小心谨慎。</p><p class="prose">康德曾把相容论称为一个「可怜的托词」，今天的作者们也常常怀疑我们这些相容论者是否真诚——事实上，他们也理当如此：科学教导我们要特别警惕一厢情愿的想法。</p><p class="prose">想象一下，假如有些天文学家宣称一颗巨大的小行星将在 10 年后撞击地球，而后又有一些天文学家宣布再次分析后可以松一口气——我们怎么才能知道第二批天文学家不是在自我欺骗？要对计算进行一遍一遍的验算。但永远不要忘记，他们也有可能是对的：<b>不要矫枉过正，不要「在原则上」怀疑所有看起来「好得令人难以置信」的事。</p><p class="prose"></b>相容论真是好得让人不能信吗？那倒不是。它还需要很多人的努力——它是我们今天面临的最困难也是最重要的哲学问题，因为赌注很高，问题很棘手，我们的判断也容易被情绪所扰。我们需要调动所有的思考工具，可这还不够，在前进的道路上我们还必须制造更多。</p><p class="prose">本部分之后，丹尼特插入了一段关于哲学本身的诚恳反思：对于一些完全外行的人来说，哲学常常是可笑的，简直是「聪明劲没处使」的典型——所以他们错过了一些东西。想一想史特金定律：</p><div class="aband"><q>任何事物中的百分之九十都是垃圾，而他们却还在错过那剩下的百分之十。</q><cite>——第七部分小结</cite></div><p class="prose">入哲学一行 50 余年，他想利用跨界把两边的好处都占上：与科学家一起工作得到了很多有趣又棘手的事实以供思考；保持哲学家身份，则令他即使没有实验室和研究经费也能钻研一切理论和实验，甚至连培养皿都不用刷——「那是一份好差事，假如你能得到它。</p><p class="prose">」认知科学家所研究的几乎就是哲学家们几个世纪以来一直在思考的问题：感知、记忆、意义、意志和意识。但当这两群人试图沟通时，交流上的失败却大量存在——接下来，是时候打消一些双方的分歧了。</p><div class="check" data-k="11-freewill"><p class="ct">本 篇 自 查</p><label><input type="checkbox"><span>我能说明恶毒的神经外科医生的谎言为什么构成了「非手术的手术」</span></label><label><input type="checkbox"><span>我能默写生命游戏的唯一规则，并说出滑翔机、吞噬者与像素银河</span></label><label><input type="checkbox"><span>我能解释为什么「绝对随机」是猜拳的最好策略，以及福多尔的夏娃错在哪里</span></label><label><input type="checkbox"><span>我能用两种彩票与无效历史事实说明「之前决定」并不剥夺公平</span></label><label><input type="checkbox"><span>我能复述象棋马拉松中 A 与 B 在王车易位上的不对称，及其「自相矛盾」的表述</span></label><label><input type="checkbox"><span>我能指出斯特劳森论证与哺乳动物论证、谷堆论证的同构</span></label><label><input type="checkbox"><span>我能按四个旋钮重讲傀儡先生变自主队长的过程</span></label><div class="cf">已对照 <b>0</b> / 7</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>注一｜</b>69 章「就如同今天英国女王依然是领土上所有天鹅的主人」句在源文中戛然而止，正文以 broken 块如实标注，不补写。</span></div><div class="note" id="n2"><span class="nn">编目</span><span class="nd"><b>注二｜</b>源文 71 章人名排印为「Galen Strauson」「Strawaon, 2010」，应为 Galen Strawson（引文内括注亦作 Strawson），照录不改。</span></div><div class="note" id="n3"><span class="nn">编目</span><span class="nd"><b>注三｜</b>66 章「1013个小方格」「1013像素」为 10^13 丢上标的导出痕迹，「大约1013个小方格」按 10 的 13 次方理解；引文照录原样。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第七部分｜自由意志</span><a href="../10-意识-下/index.html">← 意识·下</a><a href="../12-做个哲学家与结语/index.html">做个哲学家与结语 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>演化之部·人工进化 · 达尔文式进化与算法之合流｜失控 精读</title>
+<meta name="description" content="第十五章让进化在硅与试管里重演：80 字节病毒与它的寄生虫们、谎报尺寸的病毒 36、霍兰德的遗传算法、希利斯的军备竞赛、乔伊斯的核糖核酸世界——结论是：这就是进化的交易，我们舍控制而取力量。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../08-上帝的游戏与形式的图书馆/index.html">← 上帝的游戏·形式的图书馆</a><a href="../10-控制的未来与开放的宇宙/index.html">控制的未来·开放的宇宙 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">人</div>
+  <div class="stamp s4">人工进化</div>
+  <h1>人工进化 · 达尔文式进化与算法之合流</h1>
+  <p class="sub">第十五章让进化在硅与试管里重演：80 字节病毒与它的寄生虫们、谎报尺寸的病毒 36、霍兰德的遗传算法、希利斯的军备竞赛、乔伊斯的核糖核酸世界——结论是：这就是进化的交易，我们舍控制而取力量。</p>
+  <div class="meta"><span>演化之部</span>
+    <span class="k">电进化机</span>
+    <span>正文 22,586 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>电进化机</a><a href="#s3" data-t="s3"><span class="cn">叁</span>进化能行</a><a href="#s4" data-t="s4"><span class="cn">肆</span>并行盲目</a><a href="#s5" data-t="s5"><span class="cn">伍</span>军备竞赛</a><a href="#s6" data-t="s6"><span class="cn">陸</span>驾驭野性</a><a href="#s7" data-t="s7"><span class="cn">柒</span>分子进化</a><a href="#s8" data-t="s8"><span class="cn">捌</span>死亡老师</a><a href="#s9" data-t="s9"><span class="cn">玖</span>蚁群算法</a><a href="#s10" data-t="s10"><span class="cn">拾</span>工程霸权的终结</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>人类力所不逮的，进化却能做到。</p><cite>——第十五章 15.2 你力所不逮的，进化能行</cite></div><div class="epi"><p>放弃控制吧，我们将人工进化出一个崭新的世界和梦想不到的富裕。放手吧，它会开花结果的。</p><cite>——第十五章 15.9 工程霸权的终结</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章九节是一台不断换挡的进化机：从一个人的虚拟计算机出发，途经遗传算法、连接机、分子试管与蚁群，最终抵达「工程霸权的终结」</p><p class="thesis">汤姆·雷只想研究进化本身，却在虚拟计算机里造出了一锅为生存大打出手的病毒培养液；霍兰德与希利斯证明并行执行的盲目行为能导出一切有趣的东西；乔伊斯在试管里让核糖核酸同时兼任机体与信息。终章的判词是：<b>人工进化是工程霸权的终结</b>——进化系统的一个问题就是，我们放弃了某些控制。</p><div class="chain"><div class="node"><div class="n">病毒</div><div><p class="tt">一锅培养液</p><p class="dd">区区几个小时，电进化机已进化出近百种病毒大打出手——雷的首次尝试就孕育出了人工进化</p></div></div><div class="node"><div class="n">超越</div><div><p class="tt">进化能行</p><p class="dd">人类力所不逮的，进化却能做到——麻省理工高手的最好成绩是 31 条指令，雷睡觉时进化给了他 22 条</p></div></div><div class="node"><div class="n">并行</div><div><p class="tt">盲目者的合唱</p><p class="dd">隐含的并行主义是进化过程确保其不单攀上高峰、而且是最高峰的魔力所在</p></div></div><div class="node"><div class="n">竞赛</div><div><p class="tt">寄生虫加速器</p><p class="dd">希利斯把测试程序变成会变异的寄生虫——寄生虫式的军备竞赛大大加快了进化的速度</p></div></div><div class="node"><div class="n">分子</div><div><p class="tt">试管里的进化</p><p class="dd">乔伊斯的核糖核酸世界：我们的人工系统甚至比自然进化还要好——一小时产生 10^15 个个体</p></div></div><div class="node"><div class="n">交易</div><div><p class="tt">舍控制取力量</p><p class="dd">进化的代价就是失控——放弃控制吧，它会开花结果的</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>15.1 汤姆·雷的电进化机</h2><span class="en">TOM RAY&#x27;S EVOLUTION MACHINE</span></div><p class="prose">汤姆·雷（源文以残句开场）本是哈佛出身的腼腆热带植物生态学家——在哥斯达黎加雨林采集蚂蚁时，他发现了一条精妙到荒诞的链：行军蚁吞噬一切，把飞虫赶得慌不择路；一种鸟跟随这个掠食大军享用空中的虫儿；而「蚂蚁鸟」身后的蝴蝶又接踵而至——为的是享用蚂蚁鸟粪便里产卵所急需的氮。</p><p class="prose">蚂蚁、「蚂蚁鸟」、「蚂蚁鸟蝴蝶」，组成一支杂牌军，<b>像一群串联好了的吉普赛人一样浩浩荡荡地横扫这片丛林</b>。雷被折服了，但他沮丧于生态学的暮气沉沉：没有一个总体理论，生态学只不过是个充斥着迷人童话的图书馆。「我不想研究进化的产品——爬藤啊、蚂蚁啊、蝴蝶啊什么的。<b>我想研究进化本身。</b>」</p><p class="prose">1989 年，新闻杂志铺天盖地报道计算机病毒比瘟疫还糟，雷却从病毒的简单代码中窥见一个新科学：实验进化与生态学。他用一台虚拟计算机——在真实计算机的潜意识深处模拟特定计算机的智能软件——来运行实验，把可自我复制的小家伙们与外界隔离。「看了一年计算机手册之后，我坐下来写代码。两个月后，这小玩意儿跑起来了。</p><p class="prose"><b>在程序运行的头两分钟里，我就已经获得了可以进化的生物。</b>」他在称为「地球」的世界里种下自己编写的 80 字节程序，并引入了两个关键功能：<b>变异和死亡</b>——复制中偶尔搞乱几位代码，而刽子手程序「收割机」杀死最老的和最捣蛋的家伙。</p><p class="prose">计算机科学家警告过随机改动代码无异于浪费时间——然而「收割机」会放过极少数碰巧形成真正替代程序的变种。</p><p class="prose">没几分钟，一个生态系统诞生了：竞争奖励个头小的家伙，达尔文进化论淘汰贪婪的消耗者。物种 79 很快超过 80；接着出现了只有 45 字节的变种——它是一只<b>寄生虫</b>，只包含生存所需的代码，繁殖时「借用」80 的复制功能——这对舞伴跳着共同进化的探戈，就像北部森林中的狐狸和兔子。</p><p class="prose">然后是捕食 45 的 51（由 7 个出处已无从考究的指令引发「基因事件」而来）、以其他寄生虫为宿主的超寄生虫、乃至寄生第三重的超-超寄生虫和利用两个合作超寄生虫代码的「社交骗子」——<b>这种不劳而获的游戏也许永无止境。</b></p><div class="tbwrap"><table><thead><tr><th>物种</th><th>字节</th><th>角色</th></tr></thead><tbody><tr><td>80</td><td>80</td><td>祖宗病毒——雷的「最佳设计」，几乎被新物种逼到濒临灭绝后又死灰复燃</td></tr><tr><td>79</td><td>79</td><td>首个赢家——比 80 少一个字节，工作卓有成效，后对寄生虫 45 免疫</td></tr><tr><td>45</td><td>45</td><td>寄生虫——只含生存必需代码，「借用」80 的繁殖代码复制自己</td></tr><tr><td>51</td><td>51</td><td>第二代寄生虫——由 45 经一个「基因事件」进化而来</td></tr><tr><td>超寄生虫</td><td>更短</td><td>「就像是从你家的电线上偷电的邻居。他们用你的电，你付电费，而你还蒙在鼓里」</td></tr><tr><td>社交骗子</td><td>—</td><td>利用两个合作的超寄生虫（它们彼此还相互偷窃！）的代码</td></tr></tbody></table></div><div class="aband"><q>这个系统自我优化的速度之快令我震惊</q><cite>——第十五章 15.1 汤姆·雷的电进化机（汤姆·雷）</cite></div><div class="aband"><q>所有成功的系统都会吸引寄生虫，这似乎是生命的普遍属性。</q><cite>——第十五章 15.1 汤姆·雷的电进化机</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>15.2 你力所不逮的，进化能行</h2><span class="en">EVOLUTION CAN DO IT</span></div><p class="prose">雷所发现的「生物」是人类程序员无法编写出来的。「我从编写 80 字节的东西开始，因为那是我能拿出来的最佳设计了。我猜想或许进化能把它降到 75 字节左右，于是就让程序运行了一整夜。结果第二天早上就出现了一个新东西——不是寄生虫，而是某种能完全自我复制的东西——<b>它只有 22 字节！</p><p class="prose"></b>」麻省理工学院一位计算机专业的学生试图手工重新创造它，最好成绩也需要 31 条指令——当他得知雷是在睡觉时得到 22 条指令的时候，他沮丧极了。</p><div class="aband"><q>人类力所不逮的，进化却能做到。</q><cite>——第十五章 15.2 你力所不逮的，进化能行（汤姆·雷）</cite></div><div class="aband"><q>想想看，随机地改动程序竟然能胜过精雕细琢的手工编程，这听上去挺荒谬的，可这就是一个活生生的例子。</q><cite>——第十五章 15.2 你力所不逮的，进化能行（汤姆·雷）</cite></div><div class="grid g3"><div class="card"><h3>病毒 36 · 骗子</h3><p class="cp">第 110 亿个周期诞生的 36 字节病毒计算自己的真实尺寸，再把长度值在尾部左移一位——二进制里等于翻倍，靠谎报尺寸窃取了病毒 72 的资源，横扫整个系统</p></div><div class="card"><h3>性 · 意外的发明</h3><p class="cp">没人告诉它什么是性，然而它还是发现了它——关闭变异功能后进化仍然发生；雷戏称这种中断式交配「相当于和死人发生性关系」——从某种意义上说，系统进化出了变异</p></div><div class="card"><h3>间断平衡</h3><p class="cp">种群比例长期稳定，几乎一眨眼被翻江倒海的新老交替打断——静止是常态，变化总是突如其来；化石研究显示这正是地球自然界的压倒优势</p></div><div class="card"><h3>达尔文进化芯片</h3><p class="cp">雷想把虚拟计算机和基本语言「烧制」进一块硅片——它为你迅速繁殖东西；但进化应与终端用户分开，在后台离线进行「数字耕牧」</p></div></div><p class="prose">进化早已不是天方夜谭：苹果电脑上叫作「进化者」的电子表格模块，工程师们正用它对海量交互变量做优化——比如从三万名病人的医疗记录里抽出「典型患者」。<b>要想穿过这片包含各种可能结果的广阔空间，并且还留有些许登顶的希望，唯一的方法就是进化。</p><p class="prose"></b>计算机科学家把这个过程叫作「爬山法」——而真正的难题是：这个峰顶是周围最高的吗？还是被困在一个局部高点，与旁边高得多的峰顶只有一条峡谷之隔？——</p><div class="aband"><q>找到登上一处高点的路径并不难。自然界中的进化和计算机中的进化程序所擅长的，是在山峦起伏、一山更比一山高的地形中，爬到全局意义上的至高点——主峰。</q><cite>——第十五章 15.2 你力所不逮的，进化能行</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>15.3 并行实施的盲目行为</h2><span class="en">PARALLEL BLINDNESS</span></div><p class="prose">约翰·霍兰德曾摆弄过世界上最早的计算机，任教于密歇根大学。他首次提出一种描述进化优化能力的数学方法——<b>遗传算法</b>（源文此句截断）。</p><p class="prose">和汤姆·雷不同，<b>霍兰德从性开始入手</b>：选取两组类似 DNA 的代码，以交配互换的方式随机重组，看新代码会不会更好；20 世纪 60 年代中期他再引入突变作为幕后策划者——通过将交配与突变结合在一起，系统变得灵活且宽泛。他的论断令计算机科学家难堪——</p><div class="aband"><q>生物体是高明的问题解决者，”霍兰德在他的工作总结中写道，“它们所展示出来的多才多艺使最好的计算机程序都为之汗颜。</q><cite>——第十五章 15.3 并行实施的盲目行为（约翰·霍兰德）</cite></div><div class="aband"><q>排除了软件设计中最大的一个障碍：预先规定问题的所有特征</q><cite>——第十五章 15.3 并行实施的盲目行为（约翰·霍兰德）</cite></div><p class="prose">遗传算法要炮制数量庞大的代码群，同时处理数据和发生变异——<b>一大群略有差别的策略，试图在崎岖的地形上同时攀爬不同的峰顶</b>。「地势高」的区域交配率就高，系统把注意力集中到最有前途的区域——隐含的并行主义是进化确保不单攀上高峰、而且是最高峰的魔力所在。而这是生命的极大讽喻——</p><div class="aband"><q>一个接一个地重复盲目行为只能导致更深层的荒谬，而由一群个体并行执行的盲目行为，在条件适合时，却能导出所有我们觉得有趣的东西。</q><cite>——第十五章 15.3 并行实施的盲目行为</cite></div><div class="check" data-k="09-s4-parallel-blind"><p class="ct">隐含并行主义的三问三答（进化确保攀上最高峰的魔力所在）</p><label><input type="checkbox"><span>如何找出全局最优值？——通过同时考察整个地貌的每一寸土地</span></label><label><input type="checkbox"><span>如何在复杂系统中对上千个相互冲突的变量做出最佳平衡？——通过同时尝试上千种组合</span></label><label><input type="checkbox"><span>如何培养出能在恶劣条件下生存的生物体？——通过同时投入一千个略有差异的个体</span></label><div class="cf">这样，并行主义既做到了「天网恢恢，疏而不漏」，又减少了寻找顶峰所需要的代码数量。 <b>0</b> / 3</div></div><p class="prose">霍兰德 1960 年代发明遗传算法，成果直到 80 年代末都无人问津——1975 年的《自然与人工系统中的适应》到 1992 年再版只卖出 2500 本。生物学界缺乏兴趣尚情有可原，计算机科学的冷漠就莫名其妙了。凯利调研时的困惑有了答案——</p><div class="aband"><q>这种视而不见的根源，在于进化所固有的看上去杂乱无章的并行性，以及它与当时盛行的计算机信条——冯·诺依曼串行程序——在根本上的抵触。</q><cite>——第十五章 15.3 并行实施的盲目行为</cite></div><p class="prose">面对两难——进化是并行的处理器，而所有可用的计算机都是冯·诺依曼式的串行处理器——霍兰德做了唯一合理的决定：<b>设计一台大规模并行计算机来运行他的实验</b>。</p><p class="prose">1959 年他提交了介绍「能同时执行任意数量子程序的通用计算机」的论文；而在此期间，计算进化论者们不得不在串行机上编程模拟一个缓慢的并行过程——模拟工作卓有成效，足以揭示出真正并行过程的威力。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>15.4 计算中的军备竞赛</h2><span class="en">ARMS RACE IN SILICON</span></div><p class="prose">直到 20 世纪 80 年代中期，麻省理工出身的神童<b>丹尼·希利斯</b>才开始建造第一台大规模并行运算计算机。他真正想做的是生物学家，而把开创性想法归功于霍兰德的启发——最终他的小组发明了「连接机」，1988 年每台卖得一百万美元。</p><p class="prose">希利斯说：「我们知道，只有两种方法能制造出结构极其复杂的东西——一个是依靠工程学，另一个是通过进化。<b>而在两者中，进化能够制造出更加复杂的东西。</b>」他的第一台连接机使 64000 个处理器同时运行——每个程序都有专门的处理器，种群反应之快是串行计算机根本不可能做到的。</p><p class="prose">培养液里的随机指令序列经过几万代进化，变成能把一长串数字排序的程序（排序体），几乎和人类程序员的最佳排序程序一样短。关键的转折在于第二步：<b>允许测试程序（测试体）本身也发生变异</b>——排序体必须瞄准一个移动的目标，测试体则需要躲避一支会转向的利箭。</p><p class="prose">希利斯把测试用的数字列表从一个僵化被动的环境转变成了积极主动的有机体——就像狐狸和野兔、黑脉金斑蝶和马利筋一样，构成经典的共同进化关系。传统观念认为这种胶着的军备竞赛在浪费时间——</p><div class="aband"><q>寄生虫的引入并没有妨碍排序体的发展，恰恰相反，它加快了进化的速率。寄生虫式的军备竞赛也许很丑陋，但它们大大加快了进化的速度。</q><cite>——第十五章 15.4 计算中的军备竞赛</cite></div><p class="prose">在共同进化了 1 万个周期之后，希利斯的小怪物们进化出计算机科学家前所未见的排序体——最具讽刺性的是，<b>它刚好比人类设计的最短算法少一步</b>。看似愚钝的进化设计出了一个独具匠心又非常有效的软件程序。而连接机中的单个处理器智力跟一只蚂蚁差不多——</p><div class="aband"><q>而当64000个又蠢又笨的蚂蚁大脑形成相互联结的庞大网络时，它们就构成了一个进化的种群，看起来就像大脑里的一大堆神经元。那些使人类精疲力尽的难题，却往往在这里得到绝妙的解法。</q><cite>——第十五章 15.4 计算中的军备竞赛</cite></div><p class="prose">这种「海量连接中涌现出秩序」的方法被冠以「连接主义」的名号：愚钝的神经元联结成巨大的网络，以基于联结的并行处理方法同时进行大量运算——这些大大「开窍」了的网络被称为神经网络。可一切事物均来自低等连接这一理念着实令人惊诧——</p><div class="aband"><q>在上一分钟，你有的还只是由简单个体组成的乌合之众；在下一分钟，联结之后，你却获得了涌现出来的、有用的秩序。</q><cite>——第十五章 15.4 计算中的军备竞赛</cite></div><p class="prose">人工进化者们仍在追寻连接主义的梦想，只是和着进化的缓慢节奏，更有耐心。凯利向雷表达忧虑：进化需要的时间多得令人难以置信——根本就没有足够的时间能做成这件事。雷的回答——</p><div class="aband"><q>对人类来说，一代是30年，但对我的小东西们来说，一代就是几分之一秒。而且，当我扮演上帝时，我能加快整体的突变率。我不敢肯定，但是也许我可以在计算机上得到更多的进化。</q><cite>——第十五章 15.4 计算中的军备竞赛（汤姆·雷）</cite></div><p class="prose">况且在计算机上做进化另有好处：雷能记录每个「小东西」的基因组序列，保存完整的人口统计和种群谱系——在现实世界中根本无法收集这些数据。「<b>即使我的世界变得像真实世界一样复杂，但我是上帝，我无所不知。我能获取任何我感兴趣的信息而不打扰它，也不用走来走去踩坏植物。这是一个根本的不同。</b>」</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>15.5 驾驭野性的进化</h2><span class="en">HARNESSING WILD EVOLUTION</span></div><p class="prose">回到 18 世纪，本杰明·富兰克林很难让朋友们相信，实验室里微弱的电流与荒野中的雷电本质上是同一回事——部分原因是电火花与撕裂天空的巨型闪电不在一个级别，更主要的原因是旁观者们认为再现自然<b>有违常理</b>。</p><p class="prose">今天，汤姆·雷也难以让同事们信服：实验室里人工合成的进化与塑造自然界的进化本质相同——怀疑者的理由如出一辙。</p><p class="prose">在富兰克林之后 200 年，人造的闪电通过电线被导入建筑物和工具，成为数字社会中最重要的组织力量。再 200 年后，可驾驭和可度量的人工适应也将被导入各种机械设备，成为我们社会的主要组织力量。还没有人合成出强大的人工智能，也没有生物化学家创造出人工生命——然而雷和一些人已经捕捉到了进化的一角。</p><p class="prose">许多技术人员相信星星之火必将燎原：<b>与其制造，不如培育。</b></p><p class="prose">我们已经运用工程技术造出了尽可能复杂的机器。如今面对的项目——数千万行代码的软件、覆盖全球的通讯系统、几天内更新设备的工厂、价廉物美的机器人——其复杂度只有进化才能搞定。由于进化是缓慢的、无形的和冗长的，它在快节奏的人造机器世界里恍若一个难以察觉的幽灵——</p><div class="aband"><q>但我更愿意相信，进化是一种能被容易地转化为计算机代码的自然而然的技术。正是进化与计算机之间的这种超级兼容性，将推动人工进化进入我们的数字生活。</q><cite>——第十五章 15.5 驾驭野性的进化</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>15.6 进化聪明分子的愚钝科学家</h2><span class="en">EVOLVING MOLECULES</span></div><p class="prose">人工进化不仅限于硅片——只要是工程方法一筹莫展的地方，都可以导入进化。把疾病机理看作一把锁，你需要一把正确的钥匙——一种药。但有机分子由数千个原子组成，排列方式多达数十亿种（长长的氨基酸链层层叠叠绕成一团，而热点——源文在此截断）。</p><p class="prose">制药商的两条老路都走到头了：碰运气试遍天然化合物，或「合理化药物设计」的逻辑方法——<b>实际上已经撞上了工程方法所能处理的复杂性的极限</b>。自 20 世纪 80 年代末起，世界各地的生物工程实验室开始完善另一种工具——进化。</p><p class="prose">简单地说：进化系统产生出数十亿随机分子试着开锁，也许只有一个分子的一部分与锁的 6 个点之一相合——这把「亲和」钥匙被保留，其余无情淘汰；幸存者繁育数十亿个变种，绑定不变的点继续试锁……这种<b>淘汰-变异-绑定</b>的过程重复几代后，就会找到与锁的所有点都相契合的药——或许是救命药。</p><p class="prose">胰岛素可以进化；对抗肝炎病毒的抗体可以进化；甚至<b>疫苗也可以通过非工程的方法进化出来</b>——进化出一种与抗体相配、缺失了可引发致命症状的活性点的仿肝炎病毒。</p><p class="prose">所有药物制造的常规逻辑在进化方法面前都不再适用：进化出来的分子与合理化设计的药物在效果上并无二致，唯一不同的是——<b>我们对其功效的原理和方式一无所知。我们只知道它通过了所有的测试</b>。这些发明出来的药物已经超出了我们的理解力，它们是「非理性设计」的产物。</p><p class="prose">药物进化允许研究人员不明就里，而进化本身却慢慢聪明起来——</p><div class="aband"><q>要让分子告诉你有关它的事情，因为它比你更了解它自己。</q><cite>——第十五章 15.6 进化聪明分子的愚钝科学家（安德鲁·埃林顿）</cite></div><p class="prose">但分子进化偏重于机体，忽略了可遗传的信息——而没有死亡就没有进化。圣地亚哥的生物化学家<b>杰拉尔德·乔伊斯</b>给出了答案：核糖核酸。「生物学中的一切迹象都表明，<b>39 亿年前的地球是由核糖核酸来唱主角</b>。</p><p class="prose">」它有一个独一无二的优势：能同时兼任机体和信息两个角色——既是表现形式，又是内在成因；既充当信使，又是信息。在斯克里普斯研究所的海边实验室里，塑料试管底部顶针大小的液滴就是他的核糖核酸世界——几十支试管放在冰桶里，需要进化时加热到体温，<b>核糖核酸能在一小时内产生出十亿个副本</b>。</p><div class="aband"><q>我之所以选择生物进化而不是计算机模拟，原因之一就是在地球上，至少在不久的将来，还没有计算机能为我提供1015个并行的微处理器。</q><cite>——第十五章 15.6 进化聪明分子的愚钝科学家（杰拉尔德·乔伊斯）</cite></div><div class="aband"><q>实际上，我们的人工系统甚至比自然进化还要好，因为没有多少自然系统能让我们在一小时内产生1015个个体。</q><cite>——第十五章 15.6 进化聪明分子的愚钝科学家（杰拉尔德·乔伊斯）</cite></div><p class="prose">这是真正的进化吗？与那个带给我们胰岛素、眼睫毛和浣熊的进化是一回事么？没错，这就是进化——我们通常所说的进化是达尔文进化，不过在另一种进化中，选择压力（源文在此截断）。<b>定向进化是另一种监督式学习，另一种遍历博尔赫斯图书馆的方法，另一种繁育。在定向进化中，选择是由培育者引导的，而非自然发生的。</b></p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>15.7 死亡是最好的老师</h2><span class="en">DEATH THE TEACHER</span></div><p class="prose">戴维·艾克利（贝尔通信研究所——源文此句残缺）是个壮得像头熊、满嘴俏皮话的家伙。他对「街霸」做了一次虚拟基因工程：改进染色体使个体能力超强、脱颖而出——然而它们的种群数目总是低于自然进化而来的家伙，作为一个群体活力不足，总是濒临灭绝。</p><p class="prose">手工改进的基因最大限度适合个体，却不如自然成长的基因对整个族群有利——<b>对个体而言最好的，对物种而言却不一定。</b>「我们弄不明白从长远看到底什么才是最好的，这点让人很难接受。……但是我想，嘿，这就是生命！」他在人工生命会议上的一席话赢得一片掌声。</p><p class="prose">贝尔通信研究所之所以支持他，是因为认识到<b>进化也是一种计算</b>——电话网就是一个分布式计算机。艾克利对学习特别感兴趣：「强学习」需要聪明的老师；不太聪明的老师只能告诉你是否猜对。他一直在推动「弱学习」的研究——利用最少的输入信息，获取最多的输出信息。「我一直在试图找出最愚笨、最孤陋寡闻的老师。</p><p class="prose">我想我找到了。<b>答案是：死亡。</b>」</p><div class="aband"><q>死亡是进化中唯一的老师。</q><cite>——第十五章 15.7 死亡是最好的老师（戴维·艾克利）</cite></div><div class="aband"><q>进化是聪明的，但同时又是盲目和愚笨的。</q><cite>——第十五章 15.7 死亡是最好的老师（戴维·艾克利）</cite></div><div class="aband"><q>我想象不出比自然选择更笨的学习方法了</q><cite>——第十五章 15.7 死亡是最好的老师（戴维·艾克利）</cite></div><p class="prose">自然选择是学习和智能的最低基线——基线之下不会有学习产生，基线之上则会产生更智能、更复杂的学习。而有了计算机这个新硬件，全新的搜索策略得以应用。艾克利和利特曼选择了一个最合逻辑的方案：<b>拉马克进化</b>，也即获得性遗传（源文此句截断）。</p><p class="prose">在生物学上它从未真正存在过——生物体的任何外在变化都可能由多个基因引起，理清这张因果网络所需的追踪系统其复杂性不惶多让；求多个质数的乘积极其容易，但分解质因素则异常困难。<b>拉马克学说之所以没有在生物界中真正存在过，就在于它需要一种不可能存在的生物解密方案。</p><p class="prose"></b>但计算机中不需要躯体：代码兼任基因和躯体，难题迎刃而解。</p><div class="duo"><div class="colL"><h4>达尔文模式</h4><ul><li>躯体代码发生变异，幸运的家伙被选中交配复制</li><li>但交配必须使用原始的「基因」副本——即它所继承的代码，而非后天改良的躯体代码</li><li>这正是生物的方式：铁匠交配时用的是「先天」代码</li></ul></div><div class="colR"><h4>拉马克模式</h4><ul><li>改良了躯体代码的幸运儿被选中交配时，能使用后天获得的改良代码</li><li>这就好比铁匠能将自己粗壮的胳膊传给后代</li><li>16000 个处理器、100 万个个体上的实验：拉马克系统的解决方案比达尔文系统强上两倍</li></ul></div></div><div class="aband"><q>拉马克比达尔文强太多了！</q><cite>——第十五章 15.7 死亡是最好的老师（戴维·艾克利）</cite></div><p class="prose">拉马克进化的优越性使艾克利大感惊讶——「从计算机科学的角度看，自然是达尔文主义者而不是拉马克主义者，这实在是很蠢。可是自然受困于化学物质，而我们没有。」如果进化的对象不局限于分子，也许会有更有效的进化方式和搜索方法。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>15.8 蚂蚁的算法天赋</h2><span class="en">ANT ALGORITHMS</span></div><p class="prose">意大利米兰的一组研究员提出了新的进化和学习方法——「<b>蚁群算法</b>」，受蚁群集体行为的启迪。蚂蚁把分布式并行系统摸了个门清——</p><div class="aband"><q>蚂蚁既代表了社会组织的历史，也代表了计算机的未来。</q><cite>——第十五章 15.8 蚂蚁的算法天赋</cite></div><div class="aband"><q>一个蚂蚁军团，智愚而不知测量，视短而不及远望，却能迅速找到穿越崎岖地面的最短路径。这种计算正是对进化搜索的完美映射：一群无知而短视的个体们在数学意义上崎岖不平的地形上同时作业，试图找出一条最优路径。蚁群就是一个并行处理机。</q><cite>——第十五章 15.8 蚂蚁的算法天赋</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>没有一只蚂蚁知道如何调节温度</h4><span class="ar">▶</span></div><div class="cb"><div class="in">一个蚁群也许包含百万只工蚁和数百只蚁后，它们能建起一座城市，尽管每个个体只是模模糊糊地感觉到其他个体的存在。蚂蚁能成群结队地穿过田野找到上佳食物，仿佛它们就是一只巨大的复眼；它们排成协调的并行行列穿行在草木之间，并共同使其巢穴保持衡温——尽管世上从未有任何一只蚂蚁知道如何调节温度。</div></div></div><div class="case"><div class="ch"><span class="tag mid">实验</span><h4>米兰小组的参数扫描</h4><span class="ar">▶</span></div><div class="cb"><div class="in">米兰小组还尝试了各种变化：如果虚拟蚂蚁都由一座城市出发或均匀分布在各个城市，会有什么不同吗？（分布的效果要好一些。）一个回合中虚拟蚂蚁的数量会有影响吗？（越多越好，直到蚂蚁与城市的数量比为 1:1。）通过改变参数，米兰小组得到了一系列蚂蚁搜索算法。</div></div></div></div><p class="prose">真正的蚂蚁通过名为<b>信息素</b>的化学系统彼此交流：沿途留下气味，气味随时间消散，路径越短挥发越少，信号越强循迹而来的蚂蚁越多——较短的路径由此得到自我强化。米兰小组（阿尔贝托·克罗尼、马可·多利古和维多里奥·马涅索）用标准的<b>旅行商问题</b>测试：每座城市只能拜访一次，哪条路径最短？</p><p class="prose">运行 5000 回合之后，蚂蚁的群体思维就会进化出一条相当理想的路径。蚂蚁算法是<b>拉马克搜索的一种形式</b>：单只蚂蚁毕生的学习所得，通过信息素间接地成为整个蚁群信息遗产的一部分。艾克利说：「除了交配，信息交换还有许多方式。比如晚间新闻。」</p><p class="prose">直到 1990 年并行计算机还遭专家嘲笑——过于专业，属于狂热派的玩物。1989 年希利斯与知名专家公开打赌，预测到 1995 年并行机每月处理的数据量将超过串行机——<b>看来他是对的</b>。</p><p class="prose">但并行计算机还是很难掌控：并行软件是水平的、并发的、错综复杂的因果网络——<b>制造并行计算机很容易，但要为其编程却很难</b>。「我认为我们永远也写不出能充分利用并行处理能力的软件。」雷由此想到一个办法——</p><div class="aband"><q>进化能够‘想出’我们穷尽一生也无法想清楚的并行编程。如果我们能够进化软件，那我们就能大大往前迈进一步。</q><cite>——第十五章 15.8 蚂蚁的算法天赋（汤姆·雷）</cite></div><div class="aband"><q>进化是最自然的编程方式。</q><cite>——第十五章 15.8 蚂蚁的算法天赋（汤姆·雷）</cite></div><div class="aband"><q>自然的编程方式！这听起来真让人有些泄气。人类就应该只做自己最擅长的工作：那些小而灵的、快而精的系统。让（人工注入的）自然进化去做那些杂乱无章的大事吧。</q><cite>——第十五章 15.8 蚂蚁的算法天赋</cite></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>15.9 工程霸权的终结</h2><span class="en">END OF ENGINEERING</span></div><p class="prose">希利斯也得出了相同的结论：他想让「连接机」进化出商务软件——「我们想让这些系统解决一个我们只知如何陈述却不知如何解决的问题。</p><p class="prose">」比如数百万行驾驶飞机的程序：建立群系统，进化出「驾驶技巧」更优秀的软件，同时让微小的寄生虫程序试图坠毁飞机——「我们宁肯花更多时间在编制更好的寄生虫上，也不愿花上无数个小时去做设计代码和查错这些事情。」这种软件的成长环境里充斥着成千上万专职的挑刺者，凡是在它们手下躲过一劫的，都经受住了严酷的考验——</p><div class="aband"><q>我宁愿乘坐由进化出来的软件驾驶的飞机，也不愿乘坐由我自己编制的软件驾驶的飞机</q><cite>——第十五章 15.9 工程霸权的终结（丹尼·希利斯）</cite></div><p class="prose">软件正在膨胀：长途电话公司的呼叫路由程序 200 万行代码——其中三行错误代码就导致了 1990 年夏天全国电话系统的连锁崩溃；海军海狼潜艇 360 万行；微软 NT 操作系统 400 万行；<b>一亿行的程序也离我们不远了</b>。</p><p class="prose">戴维·艾克利预言，可靠性和无故障运行时间将成为软件最首要的任务——「<b>99%的原始计算机周期都将被用在让这个怪兽自我监视以维持其正常运转上。只有剩余的 1% 将被用于执行用户任务——电话交换或其他什么。要知道，这个怪兽只有活下来，才能完成用户任务。</p><p class="prose"></b>」计算必须有生命力和活力——他称之为「软件生物学」或「活力计算」；人工进化也许是唯一能使软件保持生命力的方法。</p><div class="aband"><q>人工进化是工程霸权的终结。进化能使我们超越自身的规划能力；进化能雕琢出我们做不出来的东西；进化能达到更完美的境界；进化能看护我们无法看护的世界。</q><cite>——第十五章 15.9 工程霸权的终结</cite></div><p class="prose">但是，正如本书标题所点明的——<b>进化的代价就是失控</b>。「进化系统的一个问题就是，我们放弃了某些控制。」（汤姆·雷）希利斯所乘航班的驾驶程序是进化出来的，没有人能弄懂这个软件——它像一团千丝万缕的乱麻，但能够确保无故障地运行。</p><p class="prose">艾克利的电话系统由进化软件管理，是「活」的——当它出问题时没有人能排除故障，<b>但它会自行修复</b>。唯有进化能应付我们所创造的复杂性，但进化却不受我们的节制。</p><p class="prose">必须被淡化的，恰恰是我们在工程中引以为傲的精密性、可预测性、准确性以及正确性——因为真实的世界是一个充满不测风云的世界；生存在这个世界里，需要一点模糊、松弛、更多适应力和更少精确度的态度。</p><div class="aband"><q>生命是无法控制的；活系统是不可预测的；活的造物不是非此即彼的。</q><cite>——第十五章 15.9 工程霸权的终结</cite></div><div class="aband"><q>小而专且正确的程序就像蚂蚁，对身处的世界茫然无知；而反应灵敏的程序往往是失控的庞然大物，仅把1%的精力花在你要解决的问题上。孰优孰劣，不言自喻。</q><cite>——第十五章 15.9 工程霸权的终结（戴维·艾克利）</cite></div><p class="prose">考夫曼课上，有学生问：「对于你不想要的东西，你的进化是如何处理的？」——我们能定义想要的并培育出来，却往往不知道不想要什么；即使知道，不受欢迎者的名单也长得不切实际。考夫曼坦率地回答：「<b>你做不到的。</b>」</p><div class="aband"><q>这就是进化的交易。我们舍控制而取力量。对我们这些执着于控制的家伙来说，这无异于魔鬼的交易。</q><cite>——第十五章 15.9 工程霸权的终结</cite></div><div class="aband"><q>放弃控制吧，我们将人工进化出一个崭新的世界和梦想不到的富裕。放手吧，它会开花结果的。</q><cite>——第十五章 15.9 工程霸权的终结</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>15.1–15.4 多处｜</b>「汤姆·雷」（4 字残句开场）「就曾为著名的蚁人威尔森」「劳伦斯·福格尔」「人类的第一台电子计算机叫作电子数值积分计算器」「离散变量自动电子计算机」「当赫伯特·西蒙和艾伦·纽厄尔」「一卷由R.A.费希尔」「希利斯以其惯有的清楚明了向作家史蒂文·列维」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>15.6–15.9 多处｜</b>「长长的氨基酸链层层叠叠绕成一团，而热点」「抗体是毒素的互补构型」「“核糖核酸”（乔伊斯早期生命化学段）」「专门从事定向分子进化」「不过在另一种进化中，选择压力」「戴维·艾克利是贝尔通信研究所」「迈克尔·利特曼」「拉马克进化，也即获得性遗传」「就像自复制的分子那么简单。）」「彼得·丹宁」「在施乐公司帕洛阿尔托研究中心，拉尔夫·默克勒」等处句子未收尾，均不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>结构说明｜</b>15.1 以「汤姆·雷」4 字残句开场、15.6 乔伊斯试管实验的关键引文（RNA 世界）因截断仅存间接转述；核糖核酸平行数「1015」系源文对 10^15 的排版残缺，按源文如实保留并在此注明。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">演化之部｜人工进化</span><a href="../08-上帝的游戏与形式的图书馆/index.html">← 上帝的游戏·形式的图书馆</a><a href="../10-控制的未来与开放的宇宙/index.html">控制的未来·开放的宇宙 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

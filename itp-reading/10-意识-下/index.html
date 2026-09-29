@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第六部分·意识（下）· 中文屋与叙事重心｜直觉泵 精读</title>
+<meta name="description" content="「困难问题」可能是一套听声辨牌的把戏；中文屋的漏洞藏在塞尔从不告诉你的模拟层级里；远距传送回来的妈妈死在火星上了吗？本篇一路拆到全书方法论的心脏——他者现象学，再借黑白屋里的玛丽收官：任何人都很难想象有人知道有关物理一切">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../09-意识-上/index.html">← 意识·上</a><a href="../11-自由意志/index.html">自由意志 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">叙</div>
+  <div class="stamp ">叙事</div>
+  <h1>意识（下）· 中文屋与叙事重心</h1>
+  <p class="sub">「困难问题」可能是一套听声辨牌的把戏；中文屋的漏洞藏在塞尔从不告诉你的模拟层级里；远距传送回来的妈妈死在火星上了吗？本篇一路拆到全书方法论的心脏——他者现象学，再借黑白屋里的玛丽收官：任何人都很难想象有人知道有关物理一切的一切。</p>
+  <div class="meta"><span>第六部分</span>
+    <span class="k">理解</span>
+    <span>正文 26,572 字</span>
+    <span>8 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>听声辨牌</a><a href="#s3" data-t="s3"><span class="cn">叁</span>中文屋</a><a href="#s4" data-t="s4"><span class="cn">肆</span>远程克隆</a><a href="#s5" data-t="s5"><span class="cn">伍</span>叙事重心</a><a href="#s6" data-t="s6"><span class="cn">陸</span>他者现象学</a><a href="#s7" data-t="s7"><span class="cn">柒</span>玛丽</a><a href="#s8" data-t="s8"><span class="cn">捌</span>第六部分小结</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第六部分（下）：听声辨牌 → 中文屋 → 远程克隆 → 叙事重心 → 他者现象学 → 玛丽</p><p class="thesis">查尔莫斯的「困难问题」与感受质问题可能是同一个骗局：问题呈现的方式本身就捏造了虚幻的残余。而图灵完成了达尔文式的「奇怪的推理倒置」——<b>理解不是智力的源泉，而是成堆能力层层叠加冒出来的效果</b>。据此，自我是一种类似于重心的理论虚构：叙事重心。</p><div class="chain"><div class="node"><div class="n">59</div><div><p class="tt">听声辨牌</p><p class="dd">纸牌鬼才赫尔用定冠词「The」骗过所有专家——困难问题也许是一大包招术</p></div></div><div class="node"><div class="n">60</div><div><p class="tt">中文屋错在哪里</p><p class="dd">塞尔手动模拟的是什么层级的程序？理解可以从一堆能力中冒出来</p></div></div><div class="node"><div class="n">61</div><div><p class="tt">远程克隆人</p><p class="dd">火星上的妈妈走进传送舱——她是生还是死？</p></div></div><div class="node"><div class="n">62</div><div><p class="tt">叙事重心</p><p class="dd">自我像重心一样是理论家的虚构：大脑在用故事编织我们自己</p></div></div><div class="node"><div class="n">63</div><div><p class="tt">他者现象学</p><p class="dd">第三人称方法公允对待第一人称数据：美人鱼目击报告是真实的</p></div></div><div class="node"><div class="n">64</div><div><p class="tt">色彩科学家玛丽</p><p class="dd">蓝香蕉结局：她一点儿也不惊讶，惊讶的是你居然使这种下三滥的把戏</p></div></div><div class="node"><div class="n">小结</div><div><p class="tt">镜中的纸牌</p><p class="dd">凝视镜中自己的眼睛晃动纸牌——视觉意识呈现的丰富世界只是幻觉</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>59 听声辨牌 · 感受质的意义之四</h2><span class="en">THE TUNED DECK</span></div><p class="prose">查尔莫斯（1995）把意识问题分成「简单」问题与困难问题。简单问题已经很难：意识如何使我们谈论自己的所见所闻？例行活动遇到麻烦时意识为何自动启动？我们能同时有意识地追踪几个独立运动的物体（答案：至少四个）？「话到嘴边」是怎么回事？为什么你能意识到那是一个笑话并觉得它好笑？</p><p class="prose">这些牵扯的只是意识的认知功能，可以通过实验检测和改善，也能由计算机一一展示。但与「体验」相关的才是困难问题：拥有意识是什么体验，难以形容又不可分析——机器人可以回答问题、追视动点、在该笑的时候笑，但它们都只是些无心之作，像僵尸一样没有内心生活。</p><p class="prose">要清楚地将一个有意识的人和一个僵尸分开，这的确是一个困难的问题——如果它是个问题的话。丹尼特直言：「存在着困难问题」这一观点绝对是个错误，但他不会用理性论证去证明——因为持这一观点的哲学家早已准备好无懈可击的「理论根基」：这是人类的直觉，显而易见、不可否定。</p><p class="prose">这总让他想到刚看完舞台魔术的人的由衷旦旦之言：人们总执意认为自己没有遭受魔术师的愚弄。对不少人来说，<b>意识就是「真正的魔法」</b>。科学记者罗伯特·赖特说得更直接——</p><div class="aband"><q>显然，这里的问题是，为什么有人会宣称意识“同一于”物理上的大脑状态？而丹尼特等人越是不停地向我解释这句话的意思，我就越是确信，“不存在所谓的意识”才是他们真正想要说的。（Wright, 2000, p. 398）</q><cite>——59 听声辨牌</cite></div><p class="prose">大脑里没有什么装着意识的锦囊。《意识的解释》曾为意识「消脂」，被读者开玩笑地建议改名为《被解释掉的意识》。现在，丹尼特从纸牌魔术界引入一个美妙又扰人的类比——<b>听声辨牌</b>（The Tuned Deck）。</p><p class="prose">1938 年希利亚德在《纸牌魔术》中记载：俄亥俄州的纸牌鬼才拉尔夫·赫尔宣称自己有一副能发出乐音的纸牌，凑到耳边「听声」就能挑出你想要的任何一张牌。他把这魔术演示给同是魔术师的朋友们看，一遍又一遍，没人瞧出端倪；很多魔术师想买，他不卖。赫尔晚年说：</p><div class="aband"><q>多年来，我一直在表演这个魔术，数以百计次地将它展示给所有最好的专业魔术师和业余爱好者们看，但没人能看出其中的蹊跷……小伙子们在找寻答案时都太用力了。</q><cite>——59 听声辨牌</cite></div><p class="prose">谜底全在名字里——就在定冠词「The」上！赫尔转着圈地使用一整套大家都熟悉的普通招术：观众是懂行的魔术师，觉察出可能是招术 A，便顽劣地阻碍表演以验证猜想；赫尔随即转而「重演」这个魔术，实际换成了招术 B；观众再去印证 B，他又换成 C、D——在大家验证猜想之前切换到下一个即可。</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>观众</h4><p>「他这次用的是招术 A！」——于是阻碍 A 的每一步，验证自己的猜想。</p></div><div class="step"><div class="dot">2</div><h4>赫尔</h4><p>悄悄切换到招术 B。观众又开始印证 B——再切换到 C。</p></div><div class="step"><div class="dot">3</div><h4>循环</h4><p>如此重复多次，每次在验证之前切换即可；因为观众已经否决了 A 与 B 的猜测，他还可以绕回 A、B。</p></div><div class="step"><div class="dot">4</div><h4>诀窍</h4><p>加上定冠词「The」，让「一个」大阴谋变成接二连三的阴谋，观众深深陷入泥潭，无法「跳出系统」。</p></div></div><div class="aband"><q>他走的是这样一个套路，让观众脑中的想法接二连三地破灭，最终，他们就会放弃再尝试去解开这个谜题。</q><cite>——59 听声辨牌</cite></div><p class="prose">丹尼特认为，查尔莫斯提出「困难问题」时同样使用了这套手法——当然并非有意为之。困难问题和「听声辨牌」差不多，也是一大包招术：它们就是查尔莫斯定义的那些简单问题，只需要很平凡的解释。我们别犯算术错误，自以为整合好所有简单问题之后还剩下不明来历的残余——那些残余可能早已在平凡的现象中安顿了下来。</p><p class="prose">以卡普格拉先生为例，他的不对劲其实有两条完全不同的路径：<b>A</b>．色彩感受质的美学反应和情绪反应完全倒置，但感受质本身保持不变；<b>B</b>．色彩感受质倒置了，但保留了对颜色的辨别能力。</p><p class="prose">这些辩解却忽视了第三种可能性：<b>感受质在 A 和 B 中不发挥作用</b>——可能是情绪反应让感受质带上了主观特征，而不是感受质的「内在」本质引发了情绪反应。若是这样，殭尸就会和有意识的人一样因为知觉反应的倒置而灰心丧气。</p><p class="prose">这个真实的案例告诉我们：即便博学睿智的专家也会仅仅因为问题呈现的方式而捏造出虚幻的问题。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>60 “中文屋”错在哪里 · 理解可以从一堆能力中冒出来</h2><span class="en">CHINESE ROOM</span></div><p class="prose">20 世纪 70 年代末，人工智能喧嚣一时，塞尔坚信自己看透了破绽。1980 年，他在《思想、大脑和程序》中提出著名的「中文屋」思想实验，试图证明「强人工智能」不可能出现。这个论证确实有误导性——它在欺骗读者；而另一方面，它又那么有说服力、读起来让人愉悦。</p><p class="prose">这正是「直觉泵」一词诞生的场合：丹尼特在与侯世达讨论塞尔文章时发明了这个术语，并收入文集《心我论》。开拆之前，他先自我检讨了一番：你们贪恋的只是「根本不可能有强人工智能存在」这个结论，一种反理智的逃避！</p><p class="prose">——而他自己也曾对量子力学心怀抵触，直到读了盖尔曼《夸克和美洲豹》才心头一颤：<b>我真正理解了他的论证了吗？还是只是近似理解？我敢保证没有受到「花言巧语」的诱惑吗？这跟你们的状况真是如出一辙。</b></p><p class="prose">图灵测试中，「法官」通过电传打字机与隐藏身份的人和计算机交谈；若法官说不出不同，计算机就通过了测试——用塞尔 1988 年的话说，它「已经在最根本的意义上像人类那样具有了思想」。为什么图灵测试是强人工智能的试金石？因为大家都认为：<b>没有理解能力就完成不了那种对话</b>。</p><p class="prose">塞尔的设定：他不懂汉语，被锁在屋里按照英文写的指令手动模拟一个能理解中文的庞大程序——屋里除了他和「几张写着指令的纸条」什么都没有。他只根据字符形状辨别中文，中文字符对他是无意义的「涂鸦」。既然塞尔不懂中文，当然（叮！），再加上几张纸他也照样不懂——所以中文屋里没有可以对中文产生理解的东西。</p><p class="prose">伯克利的计算机专家们随即提出「系统回应」：</p><div class="aband"><q>的确，锁在屋里的人类个体看不懂中文，但他只是整个系统的一部分，而整个系统是能形成理解能力的。个体面前摆着一本总账簿，上面写着各种规则，有大量的草稿纸和铅笔供他运算，他还有一整套中文字符的“数据库”。所以，形成理解绝不仅是一个个体的事情，它是隶属于系统的，个体只是其中的一部分。（Searle, 1980, p. 419）</q><cite>——60 “中文屋”错在哪里</cite></div><p class="prose">塞尔的回应是：「这让我觉得有些尴尬……，如此展开一个理论真的有些不可思议。你们想说的意思是，一个单独的人不能理解中文，但是以某种方式联合上几张纸条就能把中文弄明白？」——</p><p class="prose">让塞尔觉得不可想象的，恰恰是图灵有关存储程序计算机的那些基本洞见：<b>所有的能力都在软件那儿。</b>单独的寄存器机不理解什么是算术，但与软件联合起来就能将算术完美实现。要完全复制出人类的能力并最终完成理解，需要在虚拟机上叠加虚拟机，能量和能力完全由系统承载，从来不是隐藏在硬件里。</p><p class="prose">图灵完美地重复了达尔文「奇怪的推理倒置」——</p><div class="aband"><q>在图灵之前，我们总以为人类所有的能力都来自于他们能理解，理解是所有智力的神秘源泉，现在我们才认识到，理解本身其实是一种效果，它从成堆的能力中冒出来，是各种能力层层叠加生成的。</q><cite>——60 “中文屋”错在哪里</cite></div><p class="prose">细节是关键——塞尔从来没有告知读者，自己要在<b>什么水平</b>上手动模拟那个庞大程序。他引用的程序说明只是「将一串规整的符号联结到另一串规整符号上」，仿佛程序就只有几条规则。</p><p class="prose">可任何能通过图灵测试的程序都必须经过一番「理智」操作：假设图灵测试的提问者用苏格拉底式问答考察量子力学——要通过测试，引擎室里的塞尔不得不通过精心设计的智力练习来阻止对话结束。</p><p class="prose">测试结束时他仍对量子力学一窍不通，<b>而系统对量子力学的理解却深厚多了</b>，因为它已经完成了相关练习——这个测试会在程序中安装一个新的虚拟机：简单的量子力学虚拟机。</p><p class="prose">转动旋钮到最高层次，系统的理解力量没有超出我们的想象，我们甚至能洞察系统如何理解了自己的所为。这不表明塞尔批判的人工智能已达到那种水平——它只表明：<b>塞尔的思想实验并没有成功说明他想说明的那个问题：强人工智能不可能形成理解。</b></p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>61 从火星来的远程克隆人 · 他还是原来的那个“他”吗</h2><span class="en">TELEPORTATION</span></div><p class="prose">你被搁浅在火星上：太空船修不好，家园、朋友、家人永远留在了视线的尽头。但残破的太空船上有通信舱，里面有一台传送器——「远距离克隆机马克四号」和它的使用说明书。</p><p class="prose">把光波调到地球接收机的波段，你走进发送舱，传送器会将你的身体快速分解、产生分子结构图，图纸通过光波发送到地球，接收舱的储备井里填满你身体所需的原子，按照图纸迅速把你组装起来！五、四、三、二、一，眼前一闪——你推开门，走出接收舱，回到阳光下，回到朋友和家人身边。</p><p class="prose">你老了些；女儿萨拉已经 8 岁，她身上几乎所有的细胞都已不是你当年看到的那些，但她仍旧还是你三年前吻别的那个小女孩。</p><p class="prose">马上你心头一颤：「我果真还是三年前吻别过这个小女孩的那个人吗？我真的是这个8岁小孩子的妈妈吗？或者我已经是个全新的人了，只来到这世上几个小时，我只是保留了之前那些岁月所谓的记忆？」——<b>在远程克隆机发送舱里分解消失之后，这位年轻的妈妈是不是就死在火星上了？</p><p class="prose"></b>诡异的远程克隆机是运输工具，还是谋杀机器的一个代名词？她想的是要活下去，她走进那个传送舱是为了有希望能生还；她冒险因为她无私——不能让女儿萨拉失去那个深爱她想保护她的人；同时她也是自私的，为了脱离险境只能殊死一搏。或者这些都只是看似如此——</p><div class="aband"><q>我怎么知道这事情看起来会是怎样？因为我是当事人，是个心有所念的妈妈。我是萨拉的妈妈。事情就是这样。</q><cite>——61 从火星来的远程克隆人</cite></div><p class="prose">毫无疑问，我们可以远程传送一首歌、一首诗或是一部电影——这类东西「由信息构成」，那么它们的本质在传送过程中会有缺损吗？丹尼特就此反问：我们不情愿接受人的远程传送，会不会像反对电子扫描签名一样有些不合时宜？</p><p class="prose">哈佛大学学者协会曾经不接受推荐信上的扫描签名，要求他「用手的实际动作留下那串晾干的墨迹」——他坐着出租车在贝鲁特转了大半天，在奶油色的高档书写纸上签了名快递过去。这种传统承载着荣耀，但它是关于<b>信息</b>的还是关于<b>原子</b>的？这道难题将在下一章得到它真正的名字。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>62 叙事重心 · 究竟什么是自我</h2><span class="en">CENTER OF NARRATIVE GRAVITY</span></div><p class="prose">什么是自我？这个关于「不朽灵魂」的概念迷惑了众多思想家上千年。休谟早在 1739 年就写道：</p><div class="aband"><q>就我而言，在我无比亲密地走近所谓的自我时，我总能无意中发现一些有关冷或热、亮或暗、爱或恨、痛苦或愉悦之类的独有知觉。只有动用知觉我才能捕捉到自我……</q><cite>——62 叙事重心（休谟, 1964, I, iv, sect. 6）</cite></div><p class="prose">什么不是自我倒是清晰明了：自我不像杏仁体或海马体，它不是大脑的一部分——前额叶切除术「只为患者的自我留下了一个影子」，但它并不因此变成一场自我切除手术。那自我会是什么呢？丹尼特的答案：<b>它应该是一种类似于重心的东西</b>。</p><p class="prose">重心是一个抽象概念，却与物质世界紧密结合：一根钢管的重心并不由钢构成，也不由任何东西构成，它是空间中的一点；你只要重心超出支撑架的托举面就肯定会掉下来。它也许只是「理论家的一个虚构」，但那也是非常有价值的虚构——比较一下「因为咖啡杯的重心很低」和「因为咖啡杯紧贴甲板」这两种解释，重心的作用就体现出来了。</p><p class="prose">虚构自有虚构的规则：柯南·道尔没写福尔摩斯有三个鼻孔，我们就有理由认为他真的没有；但「福尔摩斯的左肩上是不是有颗痣」是无解的——他只有作者虚构出的那些特点及在此基础上推论出的东西。同样的道理，如果你已把「重心」看成理论家的虚构，还卯足了劲儿要弄清「它到底是不是中微子」，那你就还未得其要领。</p><p class="prose"><b>叙事重心</b>也是理论家的虚构：设置这样一个概念，是为了把构成一个人的那些变幻莫测又纷繁复杂的动作、表达、烦闷、抱怨和诺言统一起来，让它们变得可以理解。<b>你的手签订不了一个合同，而你能；你的嘴巴说不出谎言，而你可以；你的脑子记不住巴黎，而你行。</b>你是你鲜活身体「所有履历的所有者」。</p><p class="prose">与重心不同的是：自我没有贯穿时间和空间的轨迹——<b>他一边行进一边收集自己</b>，随时积攒记忆，一路设想着自己的预期和计划。</p><div class="aband"><q>与其说我们在用大脑编织我们的故事，还不如说是大脑在用故事编织我们自己。</q><cite>——62 叙事重心</cite></div><p class="prose">一副身体就不能由两个或多个自我共同拥有吗？多重人格疾患「表面上」就是多个自我进驻一个身体。丹尼特和心理学家汉弗莱多年探讨后的结论是——<b>所有人都是对的！</p><p class="prose"></b>欺骗和夸大其词随处可见，但很多状况确实能在最基本的案例中找到：多重人格只不过是正常生活状态的加剧版本——我们大部分人在工作上、家庭中过着截然不同的生活，每种情境都让我们养成不同的习惯和记忆。</p><p class="prose">正如戈夫曼《日常生活中的自我呈现》所叙述的，我们总在把自己展现成真人戏剧中的某个角色（丹尼特教授，从路人到爸爸再到爷爷等等），也能轻而易举地得到配角们的配合——因为他们也在以同样的方式展现着自己。那个你扮演的人，不管是多重角色还是单一角色，<b>他才是你的叙事重心</b>。</p><p class="prose">你所拥有的是经验和才华、庄严的意图和白日梦的幻想，把它们装进一个大脑和身体里，赋予一个特定的名字——那就是你。要想去了解一个人，问问他的理想、希望、英雄主义或者罪恶就足够了。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>63 他者现象学 · 人类语言的妙用</h2><span class="en">HETEROPHENOMENOLOGY</span></div><p class="prose">他者现象学（heterophenomenology）并不是直觉泵，<b>它是一个脚手架</b>。意识研究乍看发生在私有的、主观的「第一人称」维度——我们需要开创革命性的替代科学吗？</p><p class="prose">丹尼特的主张：存在一个对客观科学<b>简单而保守的扩展</b>，能宽宏地涵盖人类意识的所有基础，公平地对待所有数据，且不放弃其他领域中运行良好的方法约束。这种第三人称方法便是他者现象学：一种关于他者而不是自我的现象学，尽可能严肃合理地采用第一人称视角。</p><p class="prose">「现象学」原指完善理论出现之前对现象的收集——16 世纪吉尔伯特编撰的磁现象学在几个世纪后才全部得到解释；胡塞尔式的第一人称现象学则早已四面楚歌。</p><p class="prose">他者现象学的核心：<b>利用我们执行和解释言语行为的能力</b>，产生一系列主体关于其意识体验的信念——这一系列信念，外加我们所能收集的同时发生于主体大脑之中以及周遭环境里的所有事件，构成了人类意识理论的全部数据。</p><p class="prose">美人鱼目击报告是真实的事件，但该报告内容总是不实的，因为美人鱼并不存在。</p><div class="aband"><q>美人鱼目击报告是真实的事件，但该报告内容总是不实的，因为美人鱼并不存在。</q><cite>——63 他者现象学</cite></div><p class="prose">同样的道理，<b>一组关于体验的信念并不等同于体验本身</b>。莱文（1994）反对说「意识体验本身并不仅仅是我们的言语判断，它是理论必须回答的原始数据」——这不可能是正确的：我们要怎么做才能先于理论就将体验本身分门别类？证据资源被级联式解释自然地套嵌在一起，按粗糙程度排列——</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>（4）</h4><p>表达言语判断的某种表述——在「原始」意义上，这才是原始数据，它记录了声音与动作（脑电图、fMRI 读数也算）。</p></div><div class="step"><div class="dot">2</div><h4>（3）</h4><p>莱文提到的「言语判断」——基于可靠的解释方法可以接受。</p></div><div class="step"><div class="dot">3</div><h4>（2）</h4><p>关于这些意识体验的信念——他者现象学的原始数据的最大集合。</p></div><div class="step"><div class="dot">4</div><h4>（1）</h4><p>「意识体验本身」——不应事先推进：如果（1）成立而（2）不成立，那些额外的意识体验对你来说是无法理解的；如果（2）成立而（1）不成立，这种信念就需要解释。</p></div></div><p class="prose">言语判断中有难以用言语表达的信念怎么办？他者现象学家和主体可以毫无限制地合作：在一条线段上画垂直线以表明体验的强度（「几乎无法察觉————非常显著」），或以不同力道按压按钮来表示疼痛、焦虑、无聊甚至对试验的疑惑程度；再用皮电反应、心率、面部表情以及体姿变化来衡量。</p><p class="prose">如果主体用尽这些方法后依然相信残留着无法表达的东西，可以报告给他者现象学家——<b>S 宣称他对 X 有着无法言喻的信念。</b>若这种信念是真实的，科学有责任解释它是什么、为什么会无法言喻；若它是虚假的，科学依然得解释 S 为什么会错误地相信存在这种信念。无论哪种情况，都在科学的职责范围之内。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>64 色彩科学家玛丽：揭露吊杆托架 · 错误假设导出错误结论</h2><span class="en">MARY</span></div><p class="prose">澳大利亚哲学家杰克逊关于色彩科学家玛丽的思想实验（1982）是有史以来分析哲学家发明的最成功的直觉泵之一——有趣的是，其作者随后宣布放弃该结论，但这并没有削弱它的影响力。</p><p class="prose">实验内容：玛丽是天才科学家，被迫待在一间只有黑白色的屋子里，通过黑白电视研究世界；她熟知我们看到熟透的西红柿或天空并说出「红色」「蓝色」时的<b>所有物理信息</b>。当她走出黑白屋子（或得到一台彩色电视）时，她会学到什么？</p><p class="prose">「结论似乎相当明显，她会学到有关这个世界的知识以及我们对这个世界的视觉经验」——但她不是早已熟知所有物理信息吗？因此存在着比这一切更多的东西，所以物理主义是错的（Jackson, 1982, p. 130）。</p><p class="prose">这是一个优秀的直觉泵吗？转动旋钮——</p><h3 class="h3">旋钮一：「待在一间黑白屋里通过黑白电视研究世界」</h3><p class="prose">切断色彩的所有「外部来源」在任何情况下都无法实现：难道要给她装上装置防止她看到自己？难道她不能在梦中看到色彩？难道她必须「通过眼睛获取」才能将色彩「存储」于大脑？在这个简单的假设背后，有关色彩的民间理论乱作一团。</p><h3 class="h3">旋钮二：「她熟知此时出现的所有物理信息」</h3><p class="prose">有多少呢？是不是就像拥有世界上所有的金钱那样？它必须包括发生在所有大脑中的有关反应的全部信息——包括玛丽自己的大脑，尤其必须包含任何条件下对所有色彩的全部感情以及情绪反应：哪些色彩让她平静、哪些使她心烦意乱、哪些加深印象、哪些令她厌恶……她被禁止用自己做实验了吗？这可既没有作弊、也没有偷偷放进彩色东西。</p><p class="prose"><b>如果你无法想象所有的这一切或更多，那么你就无法跟进这一思想实验——这就像是被要求将一个圆设想成一个 1000 边形。</b>甚至可以想象玛丽有 100 万个脑袋来分装这些信息；而如果她熟知所有信息，由于担负着成千上万的百科全书词条和图表，她整个人将处在心力衰竭的状态。</p><p class="prose">然后是那个完全不同的结局——关玛丽的人使了一个小花招，准备了一根鲜艳的蓝色香蕉作为她的第一次色彩体验：</p><div class="aband"><q>“嘿！还想骗我！香蕉是黄色的，但这东西是蓝色的！”</q><cite>——64 色彩科学家玛丽：揭露吊杆托架</cite></div><p class="prose">关她的人大吃一惊：她是怎么做到的？「很简单，」她清楚，「要知道，我可是知道一切的一切——迄今为止所有已知的关于色觉的物理因果。所以，毫无疑问，在你把香蕉拿给我之前，我早就记下了一个黄色或蓝色物体，甚至一个绿色的对象等，会带给我的所有物理感受，这些感受会对我的神经系统产生影响。</p><p class="prose">所以，我已经准确地知道了我会产生什么样的感受，毕竟，做出这种思考的‘纯粹性’不就是你那赫赫有名的‘感受质’吗？我一点儿也不对我的蓝色感受感到惊讶，使我感到惊讶的是，你居然会使这种下三滥的把戏。</p><p class="prose">」（Dennett, 1991a, pp. 399-400）杰克逊漫不经心地说「实在太明显了，她会学习到有关这个世界的知识」；格雷厄姆和霍根说「当然（叮！），我们觉得，她应该既感到惊讶又觉得高兴」——<b>但这是一个错误，这正是玛丽这个思想实验的错误所在。</p><p class="prose"></b>「当玛丽第一次看到色彩时会像得到了某种启示」这个结论因为看上去实在不错，之后便没人再费心思考故事该如何发展——其实它根本就不该如此编排。当然，它毕竟是一个无与伦比的直觉泵，30 年来，它让哲学家们「有口饭吃」。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>第六部分小结 · 镜中的纸牌与自由意志的预告</h2><span class="en">PART VI SUMMARY</span></div><p class="prose">大家都觉得自己是意识行家——这种现象严重困扰着有关意识的系统研究：有些人只对某个问题思量几分钟，就认为自己想出的观点比所有高科技实验结果还有道理。但受一些不可靠却极有说服力的意识形态的控制，我们也会记错、错误描述、甚至误解我们最亲近的那些体验。有一个你在家就能完成、却可能让你很震惊的实验——</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>1</h4><p>在镜子前面坐下，专心凝视镜中自己的眼睛，视线保持不动，像面对着靶子一样。</p></div><div class="step"><div class="dot">2</div><h4>2</h4><p>一只手从一打洗好的纸牌里抽出一张，举在离你一臂左右但脱离视线范围的地方，牌面朝你，晃动纸牌——你知道你在晃动它，但你看不到它。</p></div><div class="step"><div class="dot">3</div><h4>3</h4><p>慢慢将纸牌移入视线并保持摇动——这时你会看到它在摇动，但你却看不清上面的图案！你说不出纸牌是红色、黑色还是人面牌，更不用说数字了。</p></div><div class="step"><div class="dot">4</div><h4>4</h4><p>纸牌渐渐向注视点靠拢——直到你真正看清它时，它几乎就在你的正前方了。</p></div></div><p class="prose">惊讶吧？我们一直认为视线「从中心集中点到外周」对细节和色彩的关注度应该都一样——它终究是错误的：「（视觉）意识呈现给我们的是一个丰富、连续、细腻的世界」，<b>这只是我们的幻觉</b>。所以，在科学界给出最新发现之前，先不要急于对所见意识现象妄下结论——在摇椅上想出的那些理论才根本微不足道。</p><p class="prose">仍然会有很多难题有待分晓，但此难题非彼困难问题。就像「颜色实际上是什么」「美元实际上是什么」一样，「自由意志到底是一场幻觉还是我们真正拥有的东西」这个问题本身是从描述常识映像的传统表达中提出的。一批杰出的科学家直截了当地说过自由意志就是幻觉——</p><p class="prose">科学家通常会犯一种低级错误：<b>把常识映像与人们对常识映像的流俗看法混为一谈</b>。人们对颜色的流俗看法荒谬之极，但这并不意味着常识世界中真的没有颜色——只能说真正的颜色与人们所设想的颜色有相当大的差别。人们对意识的流俗看法也是荒谬的，完全是神秘主义二元论——</p><div class="aband"><q>如果意识果真如他们所想，那么赖特就是对的（见第59章）：“我们不得不承认，意识并不存在。”</q><cite>——第六部分小结</cite></div><p class="prose">同样，自由意志也不是流俗看法所宣称的那种跳出因果性的神奇现象——有哲学家大言不惭地宣称每一次自由选择都是一个「小奇迹」。<b>如果科学家们异口同声地将这种自由意志称作幻觉，丹尼特百分之百赞同。但这并不意味着在与道德有关的任何一个意义上，自由意志都是幻象。</b></p><div class="aband"><q>它像颜色一样真实，像美元一样真实。</q><cite>——第六部分小结</cite></div><p class="prose">那些宣称科学已经证明自由意志是幻觉、因此再也不能惩罚或赞扬谁的科学家，用的只是过时的、流俗的概念。这一部分介绍的直觉泵，是为了让你从对自由意志的流俗看法中解脱出来而设计的——思考工具的作用就像铁锹，把陷入老车辙中的你解救出来，驶向新的天地。</p><div class="broken-tip">源文截断提示：小结中「心理学家保罗·布卢姆（Paul Bloom）」列举名单一句在源文中戛然而止，疑为导出残缺；据上下文该句列举的是断言自由意志为幻觉的科学家名单。如实保留，不补写。</div><div class="check" data-k="10-conscious2"><p class="ct">本 篇 自 查</p><label><input type="checkbox"><span>我能讲完听声辨牌的谜底，并说明「困难问题」与它哪里相像</span></label><label><input type="checkbox"><span>我能指出中文屋论证掩埋的关键事实：程序运行的层级与规模</span></label><label><input type="checkbox"><span>我能说出图灵的「奇怪的推理倒置」倒置了什么</span></label><label><input type="checkbox"><span>我能用「叙事重心」回答什么是自我，并说明它与重心的异同</span></label><label><input type="checkbox"><span>我能列出他者现象学的数据级联四层，并说出「美人鱼目击报告」类比</span></label><label><input type="checkbox"><span>我能复述玛丽的蓝香蕉结局及其针对的前提</span></label><div class="cf">已对照 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>注一｜</b>第六部分小结「心理学家保罗·布卢姆（Paul Bloom）」后的科学家名单在源文中戛然而止，正文以 broken 块如实标注，不补写。</span></div><div class="note" id="n2"><span class="nn">编目</span><span class="nd"><b>注二｜</b>48 章「古德文哥特体」德文谜题（哈姆雷特第 3 幕第 2 场德译）与 63 章线段强度量表「几乎无法察觉————非常显著」在源书中均为插图或排版图形，导出时部分剥离，正文已按上下文补明。</span></div><div class="note" id="n3"><span class="nn">编目</span><span class="nd"><b>注三｜</b>源文 59 章中「因难问题」（第 27 段）为「困难问题」之排印误，照录不改。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第六部分｜意识·下</span><a href="../09-意识-上/index.html">← 意识·上</a><a href="../11-自由意志/index.html">自由意志 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

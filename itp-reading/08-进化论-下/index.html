@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第五部分·进化论（下）· 从回溯性加冕到模因｜直觉泵 精读</title>
+<meta name="description" content="物种形成于某个精确但又不为人知的时刻；线粒体夏娃只能被回溯性地加冕；深蓝打败卡斯帕罗夫并没有动用「完全不同的」探索过程。本篇把达尔文式思想推向语言、音乐与创造力的腹地，最终引入丹尼特最钟爱的思考工具——模因。">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../07-进化论-上/index.html">← 进化论·上</a><a href="../09-意识-上/index.html">意识·上 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">循</div>
+  <div class="stamp ">循环</div>
+  <h1>进化论（下）· 从回溯性加冕到模因</h1>
+  <p class="sub">物种形成于某个精确但又不为人知的时刻；线粒体夏娃只能被回溯性地加冕；深蓝打败卡斯帕罗夫并没有动用「完全不同的」探索过程。本篇把达尔文式思想推向语言、音乐与创造力的腹地，最终引入丹尼特最钟爱的思考工具——模因。</p>
+  <div class="meta"><span>第五部分</span>
+    <span class="k">起重机</span>
+    <span>正文 19,230 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>物种形成</a><a href="#s3" data-t="s3"><span class="cn">叁</span>回溯性加冕</a><a href="#s4" data-t="s4"><span class="cn">肆</span>循环</a><a href="#s5" data-t="s5"><span class="cn">伍</span>青蛙的眼睛</a><a href="#s6" data-t="s6"><span class="cn">陸</span>巴别图书馆</a><a href="#s7" data-t="s7"><span class="cn">柒</span>帕姆雷特</a><a href="#s8" data-t="s8"><span class="cn">捌</span>虚拟旅馆</a><a href="#s9" data-t="s9"><span class="cn">玖</span>哈尔</a><a href="#s10" data-t="s10"><span class="cn">拾</span>模因</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第五部分（下）：起重机的级联——从物种形成到模因</p><p class="thesis">进化依赖于那些<b>几乎从未</b>发生过的事件：突变几乎从不发生、物种形成几乎从不发生——但进化恰恰依赖于它们。而且它的一切加冕都只能<b>回溯性</b>地颁发：许多降生只有在数千代之后才被追认为「物种形成事件」。本篇一路讲到期末大戏：《帕姆雷特》的作者是谁？答案是——这取决于研发轨迹的分布，而作者与作品的边界，像河狸坝之于河狸一样，是<b>延伸的表现型</b>。</p><div class="chain"><div class="node"><div class="n">44</div><div><p class="tt">物种形成于何时</p><p class="dd">某个精确但又不为人知的时刻——「物种」是一个近似概念</p></div></div><div class="node"><div class="n">45</div><div><p class="tt">回溯性加冕</p><p class="dd">线粒体夏娃艾米很可能并不比同时代的其他女人更强壮、更漂亮</p></div></div><div class="node"><div class="n">46</div><div><p class="tt">循环</p><p class="dd">周期性重复是进化的关键：练习、练习、再练习</p></div></div><div class="node"><div class="n">47</div><div><p class="tt">青蛙的眼睛</p><p class="dd">扩展适应的最好例子：根本不存在什么元初饲丸探测</p></div></div><div class="node"><div class="n">48</div><div><p class="tt">穿越巴别图书馆</p><p class="dd">诺伊格鲍尔与福尔摩斯的高效推理：研发过程的指纹</p></div></div><div class="node"><div class="n">49</div><div><p class="tt">《帕姆雷特》的作者</p><p class="dd">深蓝与 EMI：创造力没有「完全不同的」探索过程</p></div></div><div class="node"><div class="n">50</div><div><p class="tt">虚拟旅馆的噪音</p><p class="dd">妙用「意外」是创新的关键</p></div></div><div class="node"><div class="n">51</div><div><p class="tt">哈尔是誰的孩子</p><p class="dd">克雷格·文特尔说：是——遗传的重点是信息的因果传递</p></div></div><div class="node"><div class="n">52+小结</div><div><p class="tt">模因</p><p class="dd">不论好与坏，它都是我们人类的共生体；起重机级联的总回顾</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>44 物种形成于何时 · 某个精确但又不为人知的时刻</h2><span class="en">SPECIATION</span></div><p class="prose">经自然选择而进化的过程有一个奇怪的特征：它在很大程度上取决于那些<b>「几乎从未」发生过的事件</b>。每条世系中的每次降生都是一个潜在的物种形成事件，但百万次降生中也不会有一例成真；DNA 的突变一万亿次复制中也不会有一例——但进化恰恰依赖于这些极为罕见的事件。</p><p class="prose">考虑一个关于可能性的直觉泵：假设五十年后一场病毒消灭了我们大部分后代，只留下一千名因纽特人栖居康沃利斯岛、一千名安达曼人生活在印度洋腹地的海岛。两个群体在地理隔离与生殖隔离下又生存了一万年，最终成为两个物种——直到有一天他们彼此遭遇，发现没有兴趣同对方交配。</p><p class="prose">他们也许想知道：这次物种形成事件到底是在什么时候发生的？我们不可能心安理得地给出笃定的答案。可以想象，事件实际发生于某个精确但又不为人知的时刻——也许就是跨世系交配的尝试首次无果而终的时刻——但这类有违事实的猜测并没有什么意义。</p><div class="aband"><q>“物种”这一概念是一个近似概念。</q><cite>——44 物种形成于何时</cite></div><p class="prose">横贯美洲大陆的铁路曾将北美野牛分成诸多生殖隔离的种群，但野牛比尔·科迪及其同伴很快把潜在的物种形成事件消灭在萌芽状态——他们几乎把野牛消灭得只剩下一个种群。</p><p class="prose">同种个体常因环境事件分成孤立群体，但绝大多数要么重聚、要么灭绝；即便你拥有彼时世界上每一个分子的物理知识，也绝对无法从首次分离的环境推断出这是不是物种形成事件的开端。家犬、土狼和狼属于不同的物种，可科伊犬和狼狗的后代相当常见——「理论上讲」，我们或许该把它们仅仅看作不同的品种。</p><p class="prose">生物学家并不为此担忧：既然已经理解了创造出所有这些中间形态的过程，他们也就不纠结于定义或本质了。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>45 回溯性加冕 · 「线粒体夏娃」大约生活在20万年前</h2><span class="en">RETROACTIVE CROWNING</span></div><div class="broken-tip">源文截断提示：本节开篇的婚姻类比——一位身在纽约的女人很可能突然就成了寡妇，原因是，在千里之外的道奇城——在源文中戛然而止，疑为导出残缺；其功能是引入「关系如何被制度追认」的话题，与下文「物种形成同样是一个在空间和时间上『远距的』奇怪现象」相衔接。如实保留，不补写。</div><p class="prose">「物种形成」和「婚姻」一样，内嵌于一个严格、形式上可定义的思想体系，却没有婚礼、婚戒、结婚证那样可供观察的约定俗成之物。物种是一个边界模糊、随时间变化的集合。</p><p class="prose">作为对照，先看一个更醒目的事实：<b>你是一个行走的生态系统</b>——十万亿个左右的细胞拥挤在你的衣服下面，其中九成不是人类的细胞：细菌、真菌、螨虫、蠕虫……把入侵者赶尽杀绝，你会死掉。就重量而言你主要是个人类，但这些共生访客加起来也许有 4.5 千克之多，病毒的数量则更为庞大。</p><p class="prose">线粒体是细胞中的小型细胞器，从食物中获取身体所需能量，有自己的 DNA，且<b>仅通过母系遗传链传递</b>。遗传学家卡恩、斯托金和威尔逊据此命名了「线粒体夏娃」：就母系遗传链而言，她是今天还活着的所有人最近的直系祖先，生活在大约 20 万年前的非洲（初步计算为 30 万年前，后改进为 20 万年前）。</p><p class="prose">不妨给她起名「艾米」。重要的是：艾米肯定不是第一个女人，也不是智人的创始人；她很可能并不比她那个年代的其他女人更强壮、更敏捷、更漂亮，或更富生殖力。</p><p class="prose">艾米可能多么不起眼？假设未来一种致命疾病消灭了 99% 的人类，幸存者最近的共同直接女性祖先——叫她贝蒂——可能是艾米千百代之后的某个女人，冠冕就会回溯性地传给她。同理，一定也存在某位 Y 染色体亚当：今天活着的每个男人最近的直接男性祖先。</p><p class="prose">奇妙的事实是：每个生物个体——你、我、你的爱犬或天竺葵——都可能是某种新物种潜在的创始者，但加冕必定发生在很久以后，那时我们早已烟消云散；吉娃娃犬和大丹犬若在人类文明崩溃后各自野化，就可能比比格犬更容易另立门户——当然，这两个世系极有可能等不到那一天就已灭绝。</p><p class="prose">据估计，所有曾经存在过的生物中，超过 90% 无后而终——</p><div class="aband"><q>重点是，线粒体夏娃只能被回溯性地加冕。历史上这个举足轻重的角色并不仅仅由艾米所在时代的一些偶然事件决定，它同样被随后发生的那些偶然事件决定。</q><cite>——45 回溯性加冕</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>46 循环 · 周期性重复是进化的关键</h2><span class="en">CYCLES</span></div><p class="prose">从原子尺度到天文尺度的各种循环，是隐藏着的高速马达，为所有令人叹为观止的自然现象提供动力。1861 年奥托制成第一台汽油内燃机，1897 年狄塞尔发明柴油机——两类循环都在完成部分工作后将系统恢复至原初状态，为接下来的工作做好准备。生物界早有更精巧的版本——</p><div class="grid g2"><div class="card"><div class="idx">①</div><h3>奥托循环 / 狄塞尔循环</h3><p class="cp">四冲程或二冲程的内燃机循环，由数百年历史的研发过程揭示并优化，改变了世界。</p></div><div class="card"><div class="idx">②</div><h3>克雷布斯循环</h3><p class="cp">一台更为精巧的超小型引擎，由生物化学家汉斯·克雷布斯于 1937 年发现——进化在生命之初发明了它。一种「八冲程」化学反应，在所有生命（无论细菌还是红杉）至关重要的新陈代谢中把燃料（食物）转变为能量。</p></div><div class="card"><div class="idx">③</div><h3>蛋白质改性的「无效」循环</h3><p class="cp">激酶和磷酸盐像一窝蚂蚁，把磷酸基添加到蛋白质上又将它们移除，每个循环耗掉一个 ATP。这种循环反应最初被贴上「无效」标签——实则远非徒劳，它为细胞提供了必不可少的资源：一个快捷灵动的调节装置（Bray, 2009）。</p></div><div class="card"><div class="idx">④</div><h3>达尔文大循环</h3><p class="cp">生息不止的累积性改善循环：历经一代又一代，在漫长的时间中累积偶然的改进。生命中每一处改进的秘诀总是千篇一律——练习、练习、再练习。</p></div></div><p class="prose">在人类尺度上，我们的祖先也发现了循环的功效——史前时代最伟大的成就之一：<b>重复的制造作用</b>。拿木棍在石头上摩擦，几百次也难见变化；但磨上几千次，你就能把它磨成一支不同寻常的箭杆。通过不知不觉的增量累积，循环过程可以创造出全新的东西。</p><p class="prose">认知的全部「魔法」也一样：程序员近百年的发明不过是数以百万计的循环嵌套——神经元内部的纳米级生化循环、感知系统中具有预测编码能力的生成与测试循环（Clark, 2013）、全脑睡眠循环。</p><p class="prose">神创论者希望我们把生命之前的世界想象成一片混沌，再由一场风暴把化学碎片组装成那架人人尽知的飞机——但若提醒自己，进化的关键过程是周期性的重复，基因复制只是其中一个高度优化的实例，奥秘就转化为一道智力谜题：也许刚开始的一千次「尝试」都功亏一篑，但就像格什温和迪斯尔瓦在那首性感的歌曲里提醒我们的——</p><div class="aband"><q>看看你“再做一次”、再一次、再一次……会发生什么。</q><cite>——46 循环</cite></div><div class="aband"><q>不错，当你面对生命世界和精神世界中的“魔法”时，一个好用的经验方法便是去探寻那些承担着全部艰辛工作的循环。</q><cite>——46 循环</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>47 青蛙的眼睛究竟将什么告诉了青蛙的大脑 · 扩展适应的最好例子</h2><span class="en">FROG&#x27;S EYE</span></div><p class="prose">莱特文等人 1959 年的名文《青蛙的眼睛究竟将什么告诉了青蛙的大脑》是认知科学的早期经典：青蛙的视觉系统对视网膜上移动的小黑点非常敏感，在几乎所有自然环境中，小黑点都是附近飞虫投下的阴影。这个「飞虫探测器」恰与青蛙舌头上的微力触发器相连。那么，蛙眼报告的究竟是「飞虫」？「飞虫或假飞虫」？</p><p class="prose">还是某种 K 型物件——能可靠触发视觉小装置的某种东西（回想双币机）？福多尔揪住这一例子不放：进化式的意义理论本该区分这些选项却没有。</p><p class="prose">福多尔错了。设想科学家把一群濒临灭绝的食虫蛙养在一座特别的蛙园里：没有飞虫，只有饲养员定期抛撒<b>饲丸</b>。系统运作正常，青蛙伸出舌头吃到饲丸、茁壮成长。一段时间后出现了一群幼蛙——它们从未见过飞虫，只吃过饲丸。它们的眼睛将什么东西告诉了它们的大脑？倘若你坚持认为意义并未改变，你可就难了。</p><p class="prose">这正是<b>扩展适应</b>（exaptation）——重新利用已有结构获得一项新功能——的清楚例示；为着新目的重新利用已有机制，是大自然成功的秘诀之一。若饲养的青蛙视觉系统的饲丸探测力发生变异，短期内就会出现对饲丸探测的选择——虽然它到底从什么时候起才算出现是无法确定的。</p><div class="aband"><q>千万别指望某个精确的时刻可以指示蛙眼所看到的东西正好发生了变化。根本就不存在元初哺乳动物，也根本不存在什么元初饲丸探测。</q><cite>——47 青蛙的眼睛究竟将什么告诉了青蛙的大脑</cite></div><p class="prose">福多尔等人把不确定性视作意义进化式阐论的缺陷，实际上它不过是所有此类进化的<b>先决条件</b>：倘若蛙眼不发生「无意义」或「不确定」的变异，就没有为新目的而进行选择所需的盲目变异原材料了。认为一定存在某个确定了蛙眼真正意指什么的命题——恰是本质主义的意义观。</p><p class="prose">意义，和它直接依赖的功能一样，一开始并不是某种确定的东西；它的产生不是来自设计空间中的巨大飞跃，而是来自周遭环境中渐进式的微小变化。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>48 穿越巴别图书馆 · 福尔摩斯的高效推理</h2><span class="en">THROUGH BABEL</span></div><p class="prose">1988 年，89 岁的天文学史家诺伊格鲍尔收到一张希腊草纸残篇的照片：一列数字，发件人毫无头绪。他算了每行数字间的差值，确定最大值和最小值，随即断定：这张草纸转译自巴比伦楔形文字泥板书「G 列」，记录的是巴比伦阴历「B 系统」——一种计算天体位置的星历！</p><p class="prose">基本演绎法：这段希腊文是一串<b>六十进制</b>而非十进制的数列，正是巴比伦人对月球位置精确计算的一部分；任何独立制作历书的人都有自己的一套系统，得出的数字不会完全相同——而巴比伦的 B 系统极其优秀，所以该设计方案连同它的每一个细节都保存了下来。</p><p class="prose">你也可以做一次类似的推理。假设你收到一段「古德文哥特体」文字的复印件（源文中该谜题文本以插图形式呈现，已剥离），被问及它是什么意思、来自哪里。</p><p class="prose">即便你不懂哥特体甚至不懂德语，试着大声读出这些单词——你很快就能认出它一定是伊丽莎白时代某个悲剧的德语翻译的一部分：准确地说，是《哈姆雷特》第 3 幕第 2 场 79～80 行。一旦想到它，你就知道它绝不是其他东西——因为<b>参与创造出这个序列的研发过程过于特殊，很难随随便便就复制出来</b>。</p><p class="prose">在巴别图书馆的隐喻里：能读出「研发指纹」的字符串，其邻居星系全是乱码。</p><p class="prose">心理学家汉弗莱（1987）把这个问题变得戏剧化：如果不得不把一件伟大作品「置之脑后」——牛顿的《数学原理》、乔叟的《坎特伯雷故事集》、莫扎特的《唐璜》、埃菲尔铁塔——你选哪件？</p><div class="aband"><q>《数学原理》是人类智慧的一座丰碑，而埃菲尔铁塔是一项罗曼蒂克工程，相比之下没那么伟大。然而，事实是，埃菲尔的成就出自自家之手，而牛顿的成就仅仅是神来之笔。</q><cite>——48 穿越巴别图书馆（汉弗莱）</cite></div><p class="prose">牛顿的作品是唯一可被替代的——如果牛顿没写它，自然会有其他人写，也许相差不了几年。这句话里藏着本篇下一章的全部伏笔：作品的「可替代性」正是其研发轨迹可复制性的度量。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>49 谁是《帕姆雷特》的作者 · 「延伸的表现型」为你揭开谜底</h2><span class="en">PAMSHAKESPEARE</span></div><p class="prose">设想弗兰肯斯坦博士设计并制造了一个怪物<b>帕士比亚</b>，它随即坐起身来，写下一出名为<b>《帕姆雷特》</b>的戏剧。谁是《帕姆雷特》的作者？丹尼特先请读者注意不相干的东西：帕士比亚用什么材料制成根本不重要——硅铁机器人、人造细胞还是纳米马达蛋白，都只是技术禁区，可以打打擦边球。</p><p class="prose">要把握这个问题，必须到帕士比亚内部一探究竟，两个极端之间是一条连续的旋钮：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>极端一 · 存储版</h4><p>帕士比亚自带存储器，内置一份《帕姆雷特》基础存储版，一切加载就绪——那弗兰肯斯坦博士肯定是作者，帕士比亚只是一台格外高端的文字处理器，所有研发工作早在复制给它之前就已完成；哪怕它只负责用拼写检查器引导打字，也不认可它的作者身份——拼写检查是整个研发工作中可以测量但极为微渺的一部分。</p></div><div class="step"><div class="dot">2</div><h4>中间 · 生成与测试</h4><p>博士为帕士比亚装上一套虚拟的过去：整整一生的伪记忆——剧院的夜晚、阅读、不求回报的爱、骇人听闻的死里逃生、可耻的背叛。某个「人情味的」故事片段刺激它进入狂乱的生成与测试过程：在记忆中翻找花边新闻和主题、变形、杂糅成临时结构，再由侵蚀性的批评过程逐层分解——评价函数之上还有对评价函数的评价，循环套循环套循环。</p></div><div class="step"><div class="dot">3</div><h4>极端二 · 上帝</h4><p>假使神奇的博士预见到这一活动的所有细节、直至最混乱无序的底层，并人工构建了帕士比亚的虚拟过去及其所有搜索机制，仅仅为了产生《帕姆雷特》——那他就还是作者，甚至就是上帝。但如此浩瀚的事前知识根本就是个奇迹；把旋钮转到不那么极端的位置，我们就逼近了现实：世上已有大大超出其创造者预见的人工智能作者。</p></div></div><p class="prose">现实中的两位选手：<b>「深蓝」</b>与<b>EMI</b>。是谁击败了国际象棋卫冕冠军卡斯帕罗夫？既非计算机科学家默里·坎贝尔，也非其团队里的任何人——是「深蓝」打败了卡斯帕罗夫！</p><div class="aband"><q>是谁击败了加里·卡斯帕罗夫（Garry Kasparow）这位世界国际象棋卫冕冠军？既非计算机科学家默里·坎贝尔（Murray Campbell），也非其团队里的任何人，是“深蓝”打败了卡斯帕罗夫！</q><cite>——49 谁是《帕姆雷特》的作者</cite></div><p class="prose">你可能会认为「深蓝」是赢了卡斯帕罗夫，但它的穷举搜索法相比卡斯帕罗夫的思考，是完全不同的探索过程——事实根本并非如此。卡斯帕罗夫的大脑同样是一种大规模并行的搜索引擎，只不过建立了一系列出色的启发式「修剪」技术，得以避免把时间浪费在不可能的分支上。</p><p class="prose">他的「洞察力」极大地改变了搜索路径的形状，但这并不构成「一种全然不同的」创造方法；而且卡斯帕罗夫同样受惠于棋手、教练、国际象棋专著的丰富成果——这些成果被安装在他的大脑习惯里。</p><p class="prose">神经元不知道下棋是怎么回事，它们所做的任何工作都必然是某种蛮力式的工作；说卡斯帕罗夫动用了「洞察力」或「直觉」，只意味着连他本人也无法洞见自己如何发现了一个好的处理方案。</p><p class="prose">「那不过是下下棋，又不是艺术。</p><p class="prose">」——轮到作曲家兼黑客柯普的 <b>EMI</b>（音乐智能实验）登场：当输入巴赫的音乐，它创作出巴赫风格的作品；输入莫扎特、舒伯特、普契尼或斯科特·乔普林，它能分析风格并生成相应风格的新作，比几乎所有人类作曲家的模仿之作更胜一筹；输入两位作曲家，它能立即生成把两者风格怪异地结合在一起的曲子。</p><p class="prose">在达尔文主义者看来，级联起重机中的这一新元素不过是漫长历史中的崭新一页——</p><p class="prose">道金斯（1982）注意到，河狸的坝同它的牙齿和毛皮一样，均是河狸的<b>延伸的表现型</b>。人类作者的边界也完全服从于同样的延伸：几个世纪以前我们就知道了这一点——我们制定了各种半稳定约定，用它们来处理鲁本斯、鲁本斯画室或鲁本斯学生的作品。作者与其作品之间的边界，和级联中的其他所有边界一样具有渗透性。</p><div class="broken-tip">源文截断提示：本章三处残句——「一旦从排印错误（typos）过渡到思维错误（thinkos）」「菲舍尔希望恢复国际象棋比赛中理性的纯洁性，要求在开局时白方的强子」「并掺杂以任意MIDI格式」——均在源文中戛然而止，疑为导出残缺（所涉内容分别为排印变异的推广、菲舍尔任意制规则、EMI 输出格式的说明）；如实保留，不补写。</div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>50 虚拟旅馆的噪音 · 妙用「意外」是创新的关键</h2><span class="en">VIRTUAL NOISE</span></div><p class="prose">建一家真实的旅馆，得花费大量时间、精力和材料给相邻客房隔音；一座虚拟旅馆则完全不必——若想让客人听到隔壁的声音，你反而得<b>加上</b>那种功能。阴影、气味、震动、污垢、脚印、磨损，所有这些非功能性特征在现实世界本来就有，统称<b>碰撞检测</b>（collision detection）。</p><p class="prose">侯世达在《马罗之挽歌》中讨论过创造过程中「自发侵入」（spontaneous intrusion）的作用：现实世界中几乎所有的东西都会留下痕迹、造成阴影、发出声音——这恰恰是虚拟世界缺乏的东西。</p><p class="prose">噪声的缺席使计算机在模拟进化方面受到极大限制，因为经自然选择的进化<b>依赖于噪声</b>——它能将意外发生的噪声转化为信号，化腐朽为神奇。</p><p class="prose">卡尔·西姆斯的《虚拟生物的进化》（1994）是早期模拟进化的佼佼者：随机装配带关节的虚拟物体，让它们在虚拟物理规律下进化，自动选择移动得最远的装配方式交配繁殖——在没有任何智能设计者干预的情况下，这些物体进化出了越来越出色的游泳、行走与跳跃能力。</p><p class="prose">但它也暴露了限制：遗传系统位于模型之外，并未直面自然选择——西姆斯创造的这些东西根本没法进化出一条新的染色体。</p><div class="aband"><q>无论对新的基因组、新的行为，还是新的旋律来说，利用意外均是创新的关键。</q><cite>——50 虚拟旅馆的噪音</cite></div><p class="prose">于是有一条有违直觉的建议：无论你在为什么东西建模，确保每一个现象、每一个子程序，都能在世界上散播各种非功能性的影响——产生一些不和谐的噪声、留下一些痕迹、散布一些灰尘、引发一些震动。加入这些噪声为的是什么？</p><p class="prose">加入它们并不是为了什么——只是让其他所有进程可以将其作为一个潜在的信号源，通过创造性算法的炼金术使其有可能转变成某种东西。宇宙中的每一个设计增量都始于某个机缘巧合的时刻。</p><p class="prose">但计算机建模者若过于遵循这条建议就浪费了效率——这里有一种微妙的自平衡：为一步步逼近人类的创造力，模型必须越来越多地为只有实体间才能发生的偶然碰撞建立模型。</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>51 哈尔是赫布和爱丽丝的孩子吗 · 克雷格·文特尔说：是</h2><span class="en">HAL</span></div><p class="prose">已故的伟大进化论理论家乔治·威廉姆斯坚持认为，把基因等同于 DNA 分子是个天大的错误——这就好比说《哈姆雷特》就是纸上的一连串墨迹。戏剧是抽象的、载有信息的、可以更换媒介存储；基因作为合成蛋白质的配方，同样抽象且载有信息。针对生物哲学家戈弗雷-史密斯的反对，丹尼特构想了一个小巧的直觉泵。</p><p class="prose">赫布和爱丽丝想要一个孩子，他们做了四件事：</p><div class="ladder"><div class="step"><div class="dot">1</div><h4>1</h4><p>他们做了基因组测序，随后收到一封关于其基因组的数据文件，这份文件包含两行有着 30 亿个字母的序列：A，C，G，T……</p></div><div class="step"><div class="dot">2</div><h4>2</h4><p>他们为基因组编写了一小段程序，采用细胞减数分裂算法随机产生虚拟的精子和卵子，再随机结合，产生一个新基因组的详述文件——经法医鉴定，它描述的确实是赫布和爱丽丝的后代所拥有的 DNA。到目前为止，这一切纯粹是计算机字符串的重写过程。</p></div><div class="step"><div class="dot">3</div><h4>3</h4><p>通过不断的克隆，这个详述文件被用来表达整个基因组的 DNA——文特尔的实验室现在就能实现这个过程。</p></div><div class="step"><div class="dot">4</div><h4>4</h4><p>接着，这个基因组将被植入某个人类卵子的细胞核中（移植前该卵子的 DNA 已被去掉，它是谁的卵子并不重要）。该受精卵最终变成了一个「试管婴儿」。</p></div></div><p class="prose">那么，最后得到的婴儿哈尔，是赫布和爱丽丝的孩子吗？对丹尼特而言，无疑是的——这个直觉泵突出强调了繁殖过程中的重点：<b>信息，以及信息的因果传递</b>。</p><div class="aband"><q>在本例中，遗传信息以“A”“C”“G”“T”的ASCII码形式传递，而不是分子形式。这条因果链也满可以通过通信卫星传递，而不是通过更为直接的生化过程传递。</q><cite>——51 哈尔是赫布和爱丽丝的孩子吗</cite></div><p class="prose">戈弗雷-史密斯也同意哈尔是他们的后代，但有所保留。丹尼特承认有一个生物学上的重大差别：如果人人都这么做，来自赫布方面的遗传信息不再搭乘精子进入卵子，精子活性将不再承受自然选择的压力——用进废退。</p><p class="prose">但直觉泵的要义不变：遗传信息的分子结构之所以能在许多世代间大致保持不变，是因为它<b>具体体现了</b>它载有的遗传信息。</p><p class="prose">再进一步：设想某个星球上「奇数代」用 A、C、G、T 的 DNA，「偶数代」用完全不同的 XNA（由 P、Q、R、S 构成），子代分子以父代为模版经类似信使 RNA 的机制在两种生化语言间「翻译」——进化将畅通无阻地持续下去，只是俄狄浦斯式的结合将无法生育。</p><p class="prose">相同的基因、不同的分子结构，其差别就好比「cat」与「chat」（法语「猫」）——注意该例与两个黑盒子的相似处：<b>两个载体在句法上、结构上不相同，但它们拥有相同的信息，也就是相同的语义。</b></p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>52 模因 · 不论好与坏，它都是我们人类的共生体</h2><span class="en">MEMES</span></div><p class="prose">丹尼特最钟爱的思考工具——模因（memes）——直到第五部分尾声才正式登场。道金斯（1976）将它作为<b>能够自行复制的文化项</b>引入：生物学的基本原则是，所有生命都凭借自复制体的差异性生存而进化；基因（DNA 分子）恰好就是这种自复制体，但或许还有其他类型的自复制体——</p><div class="aband"><q>就在我们这个星球上，已经出现了一种全新的自复制者。它就在我们面前。它尚处在婴儿期，仍然在它的原始汤里笨拙地漂流着，但是，它产生进化改变的速度，将古老的基因远远地甩在了后面。（Dawkins, 1976, p. 206）</q><cite>——52 模因</cite></div><p class="prose">模因思考工具带来两个主要见解。<b>其一</b>，它粉碎了一个诱人的想法——达成出色设计只有两条路径：要么是基因的，要么是天才般的。奥格尔第二定律似乎将这两个选项奉若圭臬，但事实上还有第三种随处可见的可能性：非遗传的文化选择。一百多年前对布列塔尼人独木舟的观察是鲜活实例——</p><div class="aband"><q>“每条小舟都仿制自其他小舟……是大海造就了这些小舟，她选择了有用的形式，毁掉了其他形式。”（Alain, 1908）</q><cite>——52 模因</cite></div><p class="prose">岛民的规则很简单：哪艘船能从大海中安然返航，就仿制哪艘船！进化自会对其造物精雕细琢。语法规则、词语、宗教实践以及其他许多人类文化中的基础特征也同样如此：无人设计它们，它们也不在「我们的基因中」，但即便如此，它们也经过了相当优秀的设计。</p><p class="prose"><b>其二</b>，为了这条人类独有的额外的信息高速公路，我们付出了代价：模因有其适应性，这种适应性在某种程度上<b>独立于我们的适应性</b>。「每种人类文化中都有某种形式的宗教」——那好，每种人类文化中也都有感冒，它有什么好处呢？它是对自身有好处。</p><div class="aband"><q>模因是载有信息的共生体，就像栖居在我们身上的那些数以万亿计的互助共生体一样，我们不能没有它们，但这并不意味着它们都是我们的朋友。其中一些就是灾祸，我们最好没有它们。</q><cite>——52 模因</cite></div><h3 class="h3">第五部分小结 · 起重机的级联</h3><p class="prose">将达尔文的思想比作万能酸名副其实：它颠覆了「设计来自智能设计者神来之笔」的自上而下图景，代之以一个自下而上的图景——笨拙、漫无目的的循环过程产生大量组合，周而复始，直至这些组合具有自我复制的能力。</p><p class="prose">随后是一整条起重机级联：最早的生物体形成合力（<b>共生</b>）导致多细胞生物的出现，经由<b>有性繁殖</b>使更高效的探索成为可能，最终在一个物种当中产生了语言和<b>文化进化</b>——这又为文学、科学和工程技术的传播发展提供了媒介，使我们能以其他生命形式所不能实现的方式「追根寻源」，借助戏剧、小说、理论模拟和计算机模拟建模重演这些过程。</p><p class="prose">装备好几十样思考工具，我们终于迎来了「意识」——许多人视之为全宇宙最让人困惑的现象，甚至宣称它是「终极谜团」、科学注定徒劳。丹尼特的回应毫不客气：并没有充足的理由相信这种智力上的障碍——</p><div class="aband"><q>由于并没有充足的理由来相信这种智力上的障碍，我不得不说，这只是一厢情愿。</q><cite>——第五部分小结</cite></div><p class="prose">还有一些人不愿我们去揭示意识的运作，不想让我们的理解强加于他们，劝我们早点放弃，因为那注定是徒劳——但丹尼特的结论是：不要理他们，让我们继续这场困难但并非不可能完成的探索吧。</p><div class="check" data-k="08-evolution2"><p class="ct">本 篇 自 查</p><label><input type="checkbox"><span>我能解释为什么说「物种」是近似概念、物种形成只能回溯性认定</span></label><label><input type="checkbox"><span>我能讲清线粒体夏娃为何只能被回溯性地加冕</span></label><label><input type="checkbox"><span>我能列举奥托循环、克雷布斯循环、达尔文大循环并说出「探寻循环」这条经验方法</span></label><label><input type="checkbox"><span>我能复述蛙园饲丸实验，并说出「元初饲丸探测」不存在</span></label><label><input type="checkbox"><span>我能用存储版—生成与测试—上帝这条旋钮带分析《帕姆雷特》的作者归属</span></label><label><input type="checkbox"><span>我能解释深蓝打败卡斯帕罗夫并未动用与人类全然不同的创造方法</span></label><label><input type="checkbox"><span>我能向朋友介绍模因，并说出「每种人类文化中也都有感冒」反驳的是什么</span></label><div class="cf">已对照 <b>0</b> / 7</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>注一｜</b>45 章开篇婚姻类比与 49 章三处残句（typos→thinkos／菲舍尔任意制／MIDI 格式）均在源文中戛然而止，正文以 broken 块如实标注，不补写。</span></div><div class="note" id="n2"><span class="nn">编目</span><span class="nd"><b>注二｜</b>48 章「假设你收到下面这段文字的复印件」所指的德文谜题文本在源书中为插图（哈姆雷特第 3 幕第 2 场 79–80 行德译），导出时已随插图剥离，正文已按上下文补明出处；46 章「水循环注成湖泊」中的「注」为原书脚注标记残留，照录。</span></div><div class="note" id="n3"><span class="nn">编目</span><span class="nd"><b>注三｜</b>51 章第 3 步「A代表腺膘呤」之「膘」为原书排印误（应为「腺嘌呤」），照录不改。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第五部分｜进化论·下</span><a href="../07-进化论-上/index.html">← 进化论·上</a><a href="../09-意识-上/index.html">意识·上 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

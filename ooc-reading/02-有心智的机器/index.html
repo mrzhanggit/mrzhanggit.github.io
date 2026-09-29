@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>蜂群之部·有心智的机器 · 众愚成智与快速廉价失控｜失控 精读</title>
+<meta name="description" content="第三章把蜂群思维装进钢铁：机器马戏团的波林说要「取悦机器」，布鲁克斯用六条腿的成吉思证明没有大脑也能走路，丹尼特则宣布——意识没有中心。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../01-蜂群思维/index.html">← 蜂群思维</a><a href="../03-组装复杂性与共同进化/index.html">组装复杂性·共同进化 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">机</div>
+  <div class="stamp ">机心</div>
+  <h1>有心智的机器 · 众愚成智与快速廉价失控</h1>
+  <p class="sub">第三章把蜂群思维装进钢铁：机器马戏团的波林说要「取悦机器」，布鲁克斯用六条腿的成吉思证明没有大脑也能走路，丹尼特则宣布——意识没有中心。</p>
+  <div class="meta"><span>蜂群之部</span>
+    <span class="k">包容架构</span>
+    <span>正文 23,820 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>机器马戏</a><a href="#s3" data-t="s3"><span class="cn">叁</span>漫步者与蚂蚁</a><a href="#s4" data-t="s4"><span class="cn">肆</span>成吉思</a><a href="#s5" data-t="s5"><span class="cn">伍</span>众愚成智</a><a href="#s6" data-t="s6"><span class="cn">陆</span>层级与反馈</a><a href="#s7" data-t="s7"><span class="cn">柒</span>躯体与心智</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>自上而下的控制就如同将乘积分解成因子一样困难，而用因子来得到乘积则非常容易。</p><cite>——第三章 3.4 嵌套层级的优点</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇是蜂群思维落地为钢铁的一章：两条路线的对照贯穿全篇</p><p class="thesis">中央大脑路线（「漫步者」）步步深思熟虑却寸步难行；<b>自底向上</b>路线（成吉思、蚂蚁、蜂群）没有掌管走路的部件，控制却从底层汇聚起来。口号只有三个词：<b>快速、廉价、失控</b>。</p><div class="chain"><div class="node"><div class="n">马戏</div><div><p class="tt">取悦机器</p><p class="dd">波林的机器怪兽互相撕咬碾压：表演不是为人们办的，而是给机器办的</p></div></div><div class="node"><div class="n">对照</div><div><p class="tt">漫步者 vs 蚂蚁</p><p class="dd">两吨重的大脑在地球上的「漫步者」蹒跚学步；百分之一克的蚂蚁在院子里畅行无阻</p></div></div><div class="node"><div class="n">成吉思</div><div><p class="tt">没有脑的走路</p><p class="dd">6 条腿各自为政，12 个电机 21 个传感器没有中央处理器——行走是团队合作项目</p></div></div><div class="node"><div class="n">层级</div><div><p class="tt">包容架构</p><p class="dd">当某个系统能够正常运转时，不要扰乱它；要以它为基层来构建——改良就是打补丁</p></div></div><div class="node"><div class="n">心智</div><div><p class="tt">众愚成智</p><p class="dd">意识从许许多多微渺而无意识的神经环路构成的分布式网络中涌现，世上本无「我」</p></div></div><div class="node"><div class="n">躯体</div><div><p class="tt">身体打断幻想</p><p class="dd">没有身体，意识便只能顾及自己；黑盲性精神错乱证明了身体是意识的锚</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>3.1 取悦有身体的机器</h2><span class="en">DELIGHTING MACHINES</span></div><p class="prose">马克·波林住在旧金山公路高架桥下一条死胡同尽头的仓库里，制造<b>嚼食同类的机器</b>：最小号的机器人都比成人的个头还大，最大号的那位伸直了脖子能有两层楼那么高。「回转利嘴机」的两个铁环疯狂旋转互相大嚼特嚼；「一步一啄机」好似一只 500 磅重的巨型啄木鸟，发疯似地啄着公路。</p><p class="prose">他的自评面无笑容：「其他神经正常的人不会去造这些对人类毫无实际用处的机器。」</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">演出</span><h4>1991 机器马戏：受控的无政府状态</h4><span class="ar">▶</span></div><div class="cb"><div class="in">旧金山闹市区一座废弃停车场，数千位黑皮夹克朋客靠口口相传云集。十来个机甲怪兽角斗：「螺丝锥投石机」以 30 英里时速乱窜、向 20 架钢琴搭成的塔楼大投火焰弹；改装的草地撒水车「地狱花洒」泵出点燃的煤油；「喷火器」吐出长达 50 英尺的火舌。波林把喷嘴转向观众时，50 英尺外都能感到扑面的热浪。</div></div></div><div class="case"><div class="ch"><span class="tag mid">宣言</span><h4>「缺了掠食者，生态链就不稳定了」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">波林说：这些观众的生活里没有天敌，那么，就让这些机器充当掠食者吧——它们的任务就是给文明社会突降些掠食者。他的最终目的是让机器们自治：「让它们做出些自治的行为确实很难。」但在把控制权由人转交给机器的研究领域里，他走在了许多经费充足的大学实验室的前头。</div></div></div></div><div class="aband"><q>我们的表演不是为人们办的，而是给机器办的。我们从不关心机器该如何取悦我们。我们关心的是如何取悦它们。这就是我们的表演——为机器举办的表演。</q><cite>——第三章 3.1 取悦有身体的机器</cite></div><p class="prose">人工智能研究的先驱马文·明斯基与鼠标发明人道格拉斯·英格巴特有过一场著名的短对话——</p><div class="duo"><div class="colL"><h4>明斯基</h4><ul><li>我们要赋予机器智慧，让它们有自我意识！</li></ul></div><div class="colR"><h4>英格巴特</h4><ul><li>你要给机器做那么多好事？那你打算给人类做点什么呢？</li></ul></div></div><p class="prose">凯利的态度是固持明斯基的理念——<b>站在制造物的一边</b>：人类有自己的生存之道，我们会训练机器来伺候我们，那么，我们打算为机器做点什么呢？当时世界上工业机器人的总数已接近 100 万，但除了波林，没有谁会问机器人想要什么。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>「漫步者」与一只蚂蚁的赛跑</h2><span class="en">WALKER VS ANT</span></div><p class="prose">我们想要的是那个叫作「罗比」的机器人——可还没有哪位计算机高手能摆弄出一台靠自己的智能穿过房间的机器。1990 年 12 月，卡耐基－梅隆大学「野地机器人学」实验室的<b>漫步者</b>：19 英尺高、重达两吨，样机阶段就花了几百万美元；而波林的拖脚走怪兽只花了几百块，其中三分之二买了啤酒和披萨。</p><div class="tbwrap"><table><thead><tr><th>对照项</th><th>「漫步者」</th><th>小蚂蚁</th></tr></thead><tbody><tr><td>体重</td><td>两吨（大脑还搁在地上，用长电缆连着身体）</td><td>脑袋加身体才百分之一克，米粒那么大点儿</td></tr><tr><td>走路</td><td>每次迈步都要深思熟虑；每走一步更新一次环境轮廓图</td><td>畅行无阻，甚至想都不用想</td></tr><tr><td>大脑</td><td>中央电脑数千行程序，只靠它的头活着</td><td>既没有对整个院子的印象，也对自己身处何地一无所知</td></tr><tr><td>前途</td><td>块头太大，这辈子无论如何去不了火星</td><td>只有蚂蚁那么小的机器人才有希望</td></tr></tbody></table></div><p class="prose">用蚂蚁式移动机器人来作为解决方案，是麻省理工学院的<b>罗德尼·布鲁克斯</b>提出的。他 1989 年的论文《快速、廉价、失控：一场太阳系的机器人入侵》声称：「若干年内利用几百万只低成本小机器人入侵一颗地外行星是可能的。</p><p class="prose">」派出一支由无足轻重的机器人个体组成的军队：有些士兵会死掉，大多数会继续工作，并最终做出一些成绩。对宇航局来说，机器人必须实现自治——火星上的机器人等不起一分钟一次的地面指令，它必须随身携带自己的大脑。</p><div class="aband"><q>他们当中单拿出来任何一个，可能干得都不是很好，但当成百个机器人进行集团化作业的时候，就能出色地清理出一片建筑地基。</q><cite>——第三章 3.1 取悦有身体的机器</cite></div><p class="prose">绝大多数移动机器人会在着陆后的数月内死去——但这就像蚂蚁群落，<b>单个的移动机器人是无足轻重的</b>。它们的发射费用比「漫步者」便宜上千倍。这种粗犷却实用的逻辑颠覆了缓慢、精细、力图完全掌控的传统设计之道，并简化成一个口号：<b>快速、廉价、失控</b>。适用领域：探索星球、采集开矿收割、远程建设。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>3.2 快速、廉价、失控：成吉思的行走课</h2><span class="en">GENGHIS</span></div><p class="prose">布鲁克斯的精简理念在「成吉思」上成形：橄榄球大小、像只蟑螂，<b>6 条腿却没有一丁点儿可以称为「脑」的东西</b>——所有 12 个电机和 21 个传感器分布在没有中央处理器的可解耦网络上。每条腿自顾自地工作，由自己的一组微型处理器控制。对成吉思来说，走路是一个团队合作项目。</p><p class="prose">这个精巧装置上没有任何一部分是掌管走路的——布鲁克斯称之为<b>「自底向上的控制」</b>。折断一肢，其余 5 条腿会即时重新编组走路，如同蟑螂一样轻易找到新的步态。</p><div class="aband"><q>布鲁克斯借此阐释了一个普适的生物原则——一个神律：当某个系统能够正常运转时，不要扰乱它；要以它为基层来构建。在自然体系中，改良就是在现存的调试好的系统上“打补丁”。</q><cite>——第三章 3.2 快速、廉价、失控</cite></div><div class="ladder"><div class="step"><div class="dot">1</div><h4>第一层：避免碰触物体</h4><p>最低层的反射早已应对自如，高层不必过问</p></div><div class="step"><div class="dot">2</div><h4>第二层：无目地漫游</h4><p>在每个房间里晃来荡去——碰到障碍物时它毫不在意</p></div><div class="step"><div class="dot">3</div><h4>第三层：探索世界</h4><p>「搜集癖好机」整晚闲逛，摄像头侦测到饮料罐形状的物体</p></div><div class="step"><div class="dot">4</div><h4>第四层：构造内在地图</h4><p>胳膊通过周围环境「了解」自己的位置：轮子停下了，前面肯定有个饮料罐</p></div><div class="step"><div class="dot">5</div><h4>第五层：注意环境变化</h4><p>罐子比空罐子重就留在桌上，一样轻就拿走</p></div><div class="step"><div class="dot">6</div><h4>第六层起：规划、预见与修正</h4><p>偶遇回收筒就把空罐扔进去——这个「撞大运」系统效率极低，却夜复一夜搜集到数量可观的铝罐子</p></div></div><p class="prose">这种分布式控制结构后来被称作<b>包容架构</b>(Subsumption Architecture)：更高层级的行为希望起主导作用时，需要包容较低层次的行为——代码永远不变，只是被忽略了而已。多么官僚却又多么生物化。</p><p class="prose">如果把国家看成一台机器：先解决乡镇的后勤，再设郡县、州、联邦——<b>即使联邦政府消失了，千百个乡镇仍会继续整修街道、敷设水电管道、提供照明</b>。美国政府的联邦结构就是一个包容架构。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>3.3 众愚成智</h2><span class="en">SMART FROM DUMB</span></div><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>先做简单的事</h3><p class="cp">先生成一小段能完成简单工作的神经回路（本能或反射）</p></div><div class="card num"><div class="idx">二</div><h3>学会准确无误地做简单的事</h3><p class="cp">让大量类似的回路运转起来</p></div><div class="card num"><div class="idx">三</div><h3>在简单任务的成果之上添加新的活动层级</h3><p class="cp">复杂行为从一大堆有效运作的反射行为中脱颖而出</p></div><div class="card num"><div class="idx">四</div><h3>不要改变简单事物</h3><p class="cp">无目的漫游模块一旦调试好，就永远不会被改变</p></div><div class="card num"><div class="idx">五</div><h3>让新层级像简单层级那样准确无误地工作</h3><p class="cp">更低层级被包容而非被替代</p></div><div class="card num"><div class="idx">六</div><h3>重复以上步骤，无限类推</h3><p class="cp">这套办法也是管理任何一种复杂性的诀窍</p></div></div><p class="prose">中央指令型经济的下场写在历史里：苏联的经济就是按这种合乎逻辑却又极不切合实际的方式运作的。布鲁克斯把没有中枢的智能称为<b>「非理性智能」</b>——本身没有用于推理的机制，其涌现也毫无推理可遵循。</p><p class="prose">而人类并没有一个中央大脑——认知哲学家丹尼特正在慢慢说服心理学家：意识是从一个由许许多多微渺而无意识的神经环路构成的分布式网络中<b>涌现</b>出来的。</p><div class="aband"><q>并没有什么意识之流。意识的苗头往往是多发并存的，或者说，有许多不同的意识流，没有哪一条是被单独选出来的。</q><cite>——第三章 3.3 众愚成智</cite></div><p class="prose">明斯基把这称为<b>「心智社会」</b>：智能活动产生于「几乎各自离散的个体，为了几乎各自独立的目的而结合的松散的联盟」。头脑并非垄断独裁，而是一个无情而冷酷的生态系统，竞争孕育出自发的合作。多重人格综合症之所以可能，正源于人类意识的分散化——病人将人格中的某个群组当作完整人格表现了出来。</p><p class="prose">凯利的结论一路推到底：</p><div class="aband"><q>人无“我”，蜂窝无“我”，野兽无“我”，公司无“我”，家国无“我”，任何活物都没有“我”。一个活系统的“我”是一个幽灵，是不知晦朔的朝菌。它就如同亿万个水分子汇成的瞬间的漩涡，指尖轻轻一碰，便即销饵无形。</q><cite>——第三章 3.3 众愚成智</cite></div><p class="prose">然而须臾之际，低层的乌合之众又搅起了新的漩涡。凯利留了一个分布式系统的思想实验：如果本书的章节打乱次序，还会是原来这本书吗？</p></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>3.4 嵌套层级 · 3.5 利用现实世界的反馈</h2><span class="en">HIERARCHY &amp; FEEDBACK</span></div><p class="prose">分布式控制不等于层级机制的终结：专制的「自上而下」的层级会趋于消亡，但<b>「自下而上」控制的嵌套式层级</b>是分布式系统长久存活的条件——底层的活动较快，上层的活动较慢。数学上的类比是：几个质数相乘小学生就会做，对一个大数分解质因数则连超级计算机也卡壳。相关定律可以简明表述为——</p><div class="aband"><q>必须从简单的局部控制中衍生出分布式控制；必须从已有且运作良好的简单系统上衍生出复杂系统。</q><cite>——第三章 3.4 嵌套层级的优点</cite></div><p class="prose">另一个诀窍是用<b>外部世界本身作为交流媒介</b>。行为代理之间并没有明确的信息交流——所有的交流都通过观察其他代理的动作在外界环境里留下的痕迹来进行。布鲁克斯发现，与其让中央大脑费力协调出一幅关于世界的中央视图，不如让现实世界做自己自身的模型：「世界确实是其自身相当好的模型。</p><p class="prose">」信息有可能会丢失——实际上丢失的频率还很高，但没关系，代理会一遍又一遍地不断发送信息，直到世界被改变。</p><p class="prose">脑子转得快的人发现，这正是市场经济的写照：参与市场活动的个体之间并没有交流，他们只是观察别人的行动对共同市场所造成的影响——千百位从未谋面的商贩告诉你，「一打鸡蛋比一双皮鞋便宜，但是比打两分钟国内长途贵」。布鲁克斯据此总结了设计移动式机器人的 5 条经验：</p><div class="check" data-k="02-s6-lessons"><p class="ct">布鲁克斯设计移动机器人的 5 条经验</p><label><input type="checkbox"><span>递增式构建——让复杂性自我生成发展，而非生硬植入</span></label><label><input type="checkbox"><span>传感器和执行器的紧密耦合——要低级反射，不要高级思考</span></label><label><input type="checkbox"><span>与模块无关的层级——把系统拆分为自行发展的子单元</span></label><label><input type="checkbox"><span>分散控制——不搞中央集权计划</span></label><label><input type="checkbox"><span>稀疏通讯——观察外部世界的结果，而非依赖导线来传递讯息</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div><p class="prose">小型化还带来一个良性循环：电脑部件越小，电机、电池、构架就越小，结构强度反而越大。成吉思由模型汽车组件装配出来，仅重 3.6 磅；布鲁克斯想在三年内推出体长 1 毫米（铅笔尖大小）的「机器跳蚤」。他甚至想让便宜的门芯片互相交谈，帮大楼控制气候和车流——人造生物的数量将像自然界的昆虫一样远多于我们，与万物同化。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>3.6 无躯体则无意识 · 3.7 黑盲性精神错乱</h2><span class="en">MIND / BODY</span></div><p class="prose">通俗文化相信意识可以像液体一样在容器间倒来倒去（《终结者2》《弗兰肯斯坦》）。但凯利的判断相反：我们不以头脑为中心，脊髓也在思考，免疫系统更是一台能辨识并记住数以百万计不同分子的<b>并行分布式感知机</b>。对布鲁克斯来说，躯体就意味着简洁明了——</p><div class="aband"><q>只有在真实世界里创造真实的物体，才能建立如意识和生命般的复杂系统。只有创造出必须以真实躯体而存活的机器人，让它们日复一日地自食其力，才有可能发掘出人工智能或真正的智慧。</q><cite>——第三章 3.6 无躯体则无意识</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">实验</span><h4>1954：避光隔音的小房间</h4><span class="ar">▶</span></div><div class="cb"><div class="in">赫伯斯在蒙特利尔麦吉尔大学让志愿者头戴半透明防护眼镜、手臂裹纸板、手戴棉手套，静躺两到三天。有半数受测者报告产生幻视——「有一队小人，一个德军钢盔……一个卡通式人物的鲜活而完整的场景」；随后「现实感没了，体像变了，说话困难，尘封的往事历历在目」。一位受测者按字母表列化学反应，列到 N 就被这个「N」缠住，心魔难驱，只好按下紧急按钮中止测试。</div></div></div><div class="case"><div class="ch"><span class="tag mid">病例</span><h4>白内障病房的黑盲性精神错乱</h4><span class="ar">▶</span></div><div class="cb"><div class="in">白内障摘除术后双眼蒙上眼罩静养一周的病人：术后第三天「黑暗，黑暗，黑暗，外加一片寂静，四周墙上似乎爬满了密密麻麻的红色虫子」。1923 年的医院报告记载，一位 60 岁老妇深夜撕扯头发和被单，声称有人要抓她、房间起火了——解开未手术那只眼的绷带后才平静下来。纽约西奈山医院抽样 21 例：9 位焦躁不安，6 位癔症，3 位幻视，2 位幻听。</div></div></div></div><p class="prose">「黑盲性精神错乱」如今已是眼科大夫巡视病房时很留意的症状。凯利建议每个哲学系都在红色警报盒里挂一副黑眼罩，标明：「一旦发生与意识和身体有关的争执，请打破玻璃，戴上眼罩。」——身体通过加载需要立即处理的紧急事务，打断了神智的胡思乱想。单调乏味会使心智错乱，无论是人还是机器。</p><details class="ext"><summary>延伸 · 2034 年的一封推荐信（刊发于 1984 年 IEEE 会刊）</summary><div class="ex">信是写给「亲爱的布里斯先生」的，落款雷德里克·海斯－罗特，推荐「由人类来承担专业工作」：人类是有人性的，可以向客户传递真诚关爱的感觉；每个个体都独一无二，团队提供无与伦比的多样性；人类具有直觉，善于变通。总之，人类虽然不是万能药，但对某些重要且具挑战性的专业难题来说却是对症良药——<b>仔细考虑一下人类吧</b>。在这封未来之信里，申请工作的已经是人类。</div></details><p class="prose">章末的总结把全章收进一句话里：达尔文革命最重大的社会后果，是人类不情愿地承认自己是猿猴某个偶然的后代分支；而新生物文明最重大的社会后果，则是人类不情愿地承认自己碰巧成了机器的祖先——</p><div class="aband"><q>自然进化强调我们是猿类；而人工进化则强调我们是有心智的机器。</q><cite>——第三章 3.7 心智/躯体的黑盲性精神错乱</cite></div><p class="prose">我们与机器终将成为同类。当某天机器人开口反驳我们时，谁不会心生敬畏呢？下一篇进入进化之部——组装复杂性与共同进化。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>3.1 段一｜</b>源文首句即停在「当马克·波林」，本篇以第二段起笔，不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>3.1 多处｜</b>源文在「有创意的汪达尔式」「这里接近于受控的无政府状态」「先进的远程视在」「废旧的步进电机」「野地机器人学」「罗德尼·布鲁克斯」「马文·明斯基」「我们想要的是那个叫作罗比的机器人」等处中断（本篇共 15 处疑似截断），均不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>3.3–3.7｜</b>「丹尼尔·丹尼特」「心理学家先驱威廉·詹姆斯」「等同于大数定律」「罗切斯特大学研究生布赖恩·山内」「凯斯·汉森」「海因茨·冯·福尔斯特」「加拿大心理学家赫伯斯」等处句子未收尾，本篇不补写。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">蜂群之部｜有心智的机器</span><a href="../01-蜂群思维/index.html">← 蜂群思维</a><a href="../03-组装复杂性与共同进化/index.html">组装复杂性·共同进化 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

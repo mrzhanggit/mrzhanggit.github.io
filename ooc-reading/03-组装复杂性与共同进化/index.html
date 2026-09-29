@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>进化之部·组装复杂性 · 共同进化 · 拼蛋壳与变色龙之镜｜失控 精读</title>
+<meta name="description" content="第四章讲「拼装」：利奥波德与帕克德试图把草原种回来，皮姆证明随机也能抵达稳定，温盖特为一只海鸟重建了整座岛；第五章讲「纠缠」：镜上的变色龙、蝴蝶与马利筋、盖亚与囚徒困境。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../02-有心智的机器/index.html">← 有心智的机器</a><a href="../04-自然之流变与控制的兴起/index.html">自然之流变·控制的兴起 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">壳</div>
+  <div class="stamp ">拼壳</div>
+  <h1>组装复杂性 · 共同进化 · 拼蛋壳与变色龙之镜</h1>
+  <p class="sub">第四章讲「拼装」：利奥波德与帕克德试图把草原种回来，皮姆证明随机也能抵达稳定，温盖特为一只海鸟重建了整座岛；第五章讲「纠缠」：镜上的变色龙、蝴蝶与马利筋、盖亚与囚徒困境。</p>
+  <div class="meta"><span>进化之部</span>
+    <span class="k">共同进化</span>
+    <span>正文 24,273 字</span>
+    <span>10 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>火的教训</a><a href="#s3" data-t="s3"><span class="cn">叁</span>软体种子</a><a href="#s4" data-t="s4"><span class="cn">肆</span>反混沌与岛</a><a href="#s5" data-t="s5"><span class="cn">伍</span>拼蛋壳</a><a href="#s6" data-t="s6"><span class="cn">陆</span>变色龙公案</a><a href="#s7" data-t="s7"><span class="cn">柒</span>无法理喻</a><a href="#s8" data-t="s8"><span class="cn">捌</span>摇摇欲坠</a><a href="#s9" data-t="s9"><span class="cn">玖</span>岩石与盖亚</a><a href="#s10" data-t="s10"><span class="cn">拾</span>囚徒困境</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>不仅要有合适的物种按恰当的顺序出现，而且还要有合适的物种在恰当的时间消失。</p><cite>——第四章 4.5 艰巨的“拼蛋壳”</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本篇两章一体：先看生态系统如何被拼装（组装复杂性），再看拼装各方如何互相改写（共同进化）</p><p class="thesis">组装复杂性的铁律是<b>顺序</b>——不仅要有合适的物种按恰当的顺序出现，还要有合适的物种在恰当的时间消失；共同进化的本质是<b>互相投映</b>——蜥蜴与镜子、蝴蝶与马利筋，双方彼此拉扯，直到成为一个自我生成的系统。</p><div class="chain"><div class="node"><div class="n">火</div><div><p class="tt">缺失的成员</p><p class="dd">利奥波德的柯蒂斯草原缺了关键物种——火；20 年后他承认了天然火的重要本质</p></div></div><div class="node"><div class="n">种子</div><div><p class="tt">软体种子</p><p class="dd">帕克德顿悟：要恢复的不是北美大草原，而是靠动物传播粘糊糊种子的稀树大草原</p></div></div><div class="node"><div class="n">随机</div><div><p class="tt">反混沌</p><p class="dd">皮姆的随机生态系统从随机性入手，却能聚合成有条理的东西——它们最共同的特征就是都能达到某种恒定状态</p></div></div><div class="node"><div class="n">拇指</div><div><p class="tt">机械拇指</p><p class="dd">复杂的机器必定是逐步地、间接地完善的：先做一个可运行的系统，再以此为平台研制真正想要的系统</p></div></div><div class="node"><div class="n">镜面</div><div><p class="tt">变色龙公案</p><p class="dd">凯利真的做了实验：蜥蜴稳定在春树新叶般的嫩绿——但镜子上的变色龙最好作为思想实验保留</p></div></div><div class="node"><div class="n">合作</div><div><p class="tt">一报还一报</p><p class="dd">不讲交情、无需远见的合作是大自然的冷规则；双赢是共同进化模式下生命所演绎的故事</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>4.1 生物——机器的未来：利奥波德的草原</h2><span class="en">FIRE LESSON</span></div><p class="prose">第四章从一场草原火开始。灰暗的秋色里，凯利站在美国最后一片开着野花的大草原上，用绑在扫帚把上的橡皮垫拍打火墙。他在燃烧的草原上想到机器：<b>逝去的是旧的机器之道，到来的是重生的机器之本性</b>。而机器的未来就在脚下这片杂乱的草地里——因为机器的未来是生物。</p><p class="prose">生态学教父奥尔多·利奥波德做过一个天真的实验：在威斯康星养护 300 英亩草原，试图让土地回到垦殖之前。但十年后他承认，新生的柯蒂斯草原只不过是个<b>荒原混血儿</b>——树苗、欧亚舶来种以及农场杂草与草原植物一起旺盛地生长。这里缺失了什么？</p><p class="prose">20 世纪 40 年代中期，人们找到了答案：这个缺失的成员就是——<b>火</b>。</p><p class="prose">讽刺的是，这位最伟大的美国生态学家曾强烈反对让野火在荒地里燃烧，1920 年他写道：「放火烧荒不仅无益于预防严重的火灾，而且最终会摧毁为西方工业提供木材的森林。」直到大自然的相互依赖性被进一步揭示，利奥波德才终于承认天然火的重要本质——当他重新引入火种之后，草原迎来了几个世纪以来最茂盛的生长期。</p><div class="aband"><q>生命正在变为人造的，一如人造的正在变得有生命，它们都在成为某种精彩而奇特的东西。</q><cite>——第四章 4.1 生物——机器的未来</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>4.2 用火和软体种子恢复草原</h2><span class="en">SOFT SEEDS</span></div><p class="prose">30 多年后，史蒂夫·帕克德在芝加哥郊外重做这个实验，他称自己的宝地为<b>「阁楼中发现的伦勃朗」</b>。他的口号是「让火来做决定」：让火从草地蔓入灌木丛，烧掉林下灌木。但第三年，重新种植的区域又还原为灌木丛——他意识到一定还有另一个因素被忽略了。</p><p class="prose">线索藏在那些不知名的物种里：它们不属于北美草原，而是属于<b>稀树大草原生态系统</b>——有树的草原，中西部的拓荒者称之为「荒野」。</p><p class="prose">帕克德在古老公墓的角落、铁路路基和旧马车道上搜寻幸存者的种子，然后有了顿悟：北美草原的种子是干燥绒毛的草籽，靠风传播；而稀树大草原的种子是「一把把色彩斑斓、凹凸不平、粘糊糊的软胶质」，<b>靠动物和鸟类传播</b>。他要恢复的不是一个单纯草原，而是一个共同进化系统、联锁的有机体系。</p><p class="prose">播种了成堆的粘糊糊种子后，奇迹接连发生：1988 年的干旱让外来杂草枯萎，土著野花却茁壮成长；1989 年，几十年未见的一对东方蓝色知更鸟安了家——帕克德将此看作「认证」；整整 10 年未见过的银蓝色蝴蝶奇迹般地出现在芝加哥郊区，因为这块新兴的稀树大草原上长着它最爱的连理草。</p><p class="prose">到了第五年，爱德华兹细纹蝶已经满天飞舞。</p><div class="aband"><q>“你盖好了，他们就会来。”这是电影《梦幻之地》</q><cite>——第四章 4.2 用火和软体种子恢复草原</cite></div><p class="prose">（源文此句至电影名即中断——但引文本身完整可查。）生态重建的次序问题同样关键：利奥波德的同事发现，在杂草丛生的土地而不是新开垦的土地上播种草原种子，反而能获得更接近真实的草原——这好比盖房子先灌了水泥地基，钢筋才到。<b>次序非常重要。</b></p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>4.3 随机路线 · 4.4 如何同时做好一切</h2><span class="en">ANTICHAOS &amp; ISLAND</span></div><p class="prose">生态学家斯图亚特·皮姆和吉姆·德雷克在实验室的试管里做「微宇宙」实验：随机投放物种，看能否形成稳定系统。皮姆本以为随机生态系统会永无休止地徘徊，结果令人惊讶——这些随机的生态系统绝对没有稳定方面的麻烦。皮姆说：「从完全的随机性入手，你会看到这些东西聚合成某种更有条理性的东西，远非按常理所能解释的。</p><p class="prose"><b>这就是反混沌。</b>」计算机模型显示：投放同样的物种，初始无序状态会朝向十几个终点；改变哪怕一个物种的投入顺序，都足以使系统由一个结果变成另一个。</p><p class="prose">但光是随机还不够——<b>组合指南</b>必不可少。「要想得到一块湿地，不能只是灌入大量的水就指望万事大吉了。</p><p class="prose">」戴维·温盖特在百慕大楠萨奇岛的工作就是一份组合指南的实战：为恢复已经「灭绝」几个世纪的百慕大圆尾鹱，他不得不种植 8000 棵香柏，再种生长迅速的木麻黄作环岛防风林保护香柏；补种的森林为几百年未见的夜鹭安了家，夜鹭吞食陆地蟹，蟹少了，稀少的百慕大莎草才有了生长的机会——这就好像「少了钉子，丢了王国」。</p><p class="prose">温盖特面对的是所有整体系统制造者的难题：<b>从何入手？</b>事事都要求其他的条件万事俱备，但你又不可能一下子把整个东西拎起来舞弄。有些事必须先做，而且要按正确的顺序去做。</p><p class="prose">大自然一般都是利用临时的脚手架来完成自己的许多成就的——人工智能专家丹尼·希利斯把这称为「无拇指思想」：将样板草场更新为花的世界所需要的中间物种此刻都消失了，留给我们的只有「花的念想」，而缺失了看护它们成型的「拇指」。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>4.5 艰巨的“拼蛋壳”</h2><span class="en">SHELL GAME</span></div><p class="prose">《植树人种出了幸福》的故事是杜撰的——一位法国人为时尚杂志编写的奇幻故事。</p><p class="prose">但真实版本同样存在：20 世纪 60 年代初，温迪·坎贝尔-普尔蒂在摩洛哥 45 英亩沙地上种下 2000 棵树形成「绿色的墙」，又为阿尔及利亚布萨达的 260 亩沙漠荒原上再种植 13 万株树木提供资金——最终形成了一小块适合柑橘、蔬菜和谷物生长的新田地。</p><p class="prose">哪怕只给予一个小小的立足点，绿色植物内隐藏的巨大潜能都会触发收益递增的法则：<b>「拥有者得到更多。」</b></p><div class="grid g3"><div class="card"><h3>温盖特的岛 · 鹭</h3><p class="cp">鹭的出现使莎草能够重现——只需一个小小的立足点，相互关联的绿色植物内隐藏的巨大潜能就会触发收益递增的法则。</p></div><div class="card"><h3>帕克德的草原 · 火</h3><p class="cp">以火来清除障碍使野花得以生存，从而使蝴蝶得以生存——北美大草原修复链条上的每一环都为下一环准备好了条件。</p></div><div class="card"><h3>布萨达 · 树</h3><p class="cp">一些树木改变了气候和土壤，从而使那里适合更多树木的生长；更多的树木为动物、昆虫和鸟儿创造了生存地，从而为更多的树木准备好了栖息地。</p></div></div><div class="aband"><q>我们能把失去的生态系统重新组合起来吗？是的，只要所有的碎片都还存在，我们就能将其还原。只是，不知道我们能否还能得到所有的碎片。</q><cite>——第四章 4.5　艰巨的“拼蛋壳”</cite></div><p class="prose">皮姆称之为<b>「拼蛋壳效应」</b>：也许陪伴生态系统早期发展的某些物种——正如助推智能发展的拇指——在附近已不复存在了。「记住，两点之间并非总有一条路径可走。</p><p class="prose">」更可怕的推论是：<b>不仅要有合适的物种按恰当的顺序出现，而且还要有合适的物种在恰当的时间消失</b>——一个成熟的生态系统也许能轻易地容忍 X 物种，但在其组合过程中，X 物种的出现会把该系统转到其他路径上。</p><div class="aband"><q>由此说到机器，有一个违反直觉却很明确的规则：复杂的机器必定是逐步地，而且往往是间接地完善的。别指望通过一次华丽的组装就能完成整个工作正常的机械系统。</q><cite>——第四章 4.5　艰巨的“拼蛋壳”</cite></div><p class="prose">你必须首先制作一个可运行的系统，再以此为平台研制你真正想完成的系统——要想形成机械思维，你需要制作一只机械「拇指」，这是很少有人欣赏的迂回前进方式。即使我们拥有现存电话系统的所有关键技术，如果缺少了从许多小型网络向一个全球网络成长的过程，也不可能组装出同样巨大且可靠的替代品。</p><p class="prose"><b>没有完全发展成熟或没有完全适应外界多样性就投入使用的机械系统，必然会遭到众口一致的诟病。</b></p><div class="check" data-k="k"><p class="ct">本节自测</p><label><input type="checkbox"><span>收益递增法则：「拥有者得到更多」——生物促进环境发展，也促进更多生物的成长。</span></label><label><input type="checkbox"><span>拼蛋壳效应：只要所有碎片都存在，失去的生态系统就能还原——但也许陪伴系统早期发展的某些物种已经永远消失了。</span></label><label><input type="checkbox"><span>皮姆和德雷克的更可怕结论：不仅要有合适的物种按恰当的顺序出现，而且还要有合适的物种在恰当的时间消失。</span></label><label><input type="checkbox"><span>复杂机器的规则：必定是逐步地、而且往往是间接地完善——先做一个可运行的系统，再以此为平台研制你真正想完成的系统。</span></label><div class="cf">已勾选 <b>0</b> / 4</div></div></section><section id="s6"><div class="h2"><span class="cn">陆</span><h2>5.1 放在镜子上的变色龙是什么颜色的？</h2><span class="en">CHAMELEON ZENON</span></div><p class="prose">20 世纪 70 年代初，斯图尔特·布兰德向他的老师、控制论先驱格雷戈里·贝特森提出这桩公案，1974 年发表于《全球概览》。</p><p class="prose">两人给出了相反的预言：贝特森断言变色龙最终将停留在它变色范围的<b>中间点</b>——如同一次民主表决；布兰德则坚信这个可怜的家伙会将种种保护色<b>试个没完</b>，陷入太极阴阳般的混沌。学生杰拉尔德·霍尔提出第三种假说：变色龙会保持进入镜子反射区域那一瞬间的任何颜色。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">猜想</span><h4>科学家们的答案林林总总</h4><span class="ar">▶</span></div><div class="cb"><div class="in">数学家约翰·霍兰德、计算机科学家马文·明斯基（变色龙可能有若干特征值，因此会回归到若干颜色上）、自然主义者彼得·沃肖尔（变色出于恐惧反应，因此取决于情绪状态——一开始被自己的镜像吓坏，随后处之泰然）。凯利干脆动手做了实验：镜箱、一条会变颜色的蜥蜴——据他所知这是 20 年来第一次有人真正动手试验。结果：蜥蜴稳定在一种颜色——<b>春树发新叶的那种嫩绿</b>。</div></div></div><div class="case"><div class="ch"><span class="tag mid">存疑</span><h4>为什么这个实验不能定案</h4><span class="ar">▶</span></div><div class="cb"><div class="in">凯利自己列出三条：他用的不是真正的变色龙，变色种类少得多；变色蜥蜴为了应对恐惧也变色，而它确实相当恐惧，不愿进入镜箱；最后是观察者的问题——把脸贴近镜箱本身就骚扰了蜥蜴。这个谜题恐怕最好仅作为思想实验来保持其理想化的形式。但答案的分布取决于反馈回路的参数：反应时间、敏感度、衰减率——工程师们正是这样调校宇宙飞船和机器人手臂的。</div></div></div></div><p class="prose">镜子上变色龙之谜的重要之处在于：蜥蜴与镜子形成了一个整体——「蜥蜴属性」和「镜子属性」融合为更复杂的<b>「蜥镜属性」</b>。市场营销就是那面镜子，全体消费者就是变色龙：在一个紧密相连的 21 世纪社会中，每个消费者都将成为反射镜像与反射体，<b>既是因，也是果</b>。</p><p class="prose">希腊哲学家痴迷的链式因果（线性逻辑）在这里失效。蜥蜴-镜子系统展示的是一种网状的因果循环：事件并非由存在链所触发，而是由一系列业因如奇趣屋般地反射、弯曲、彼此互映所致——浅水喧闹，深潭无波。</p><p class="prose">计算机科学家丹尼·希利斯指出，计算特别是网络计算呈现了一种非线性的因果关系域：<b>没有哪个存储单元比别的存储单元更不易受影响</b>。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>5.2 生命之无法理喻之处</h2><span class="en">INEXPLICABLE LIFE</span></div><p class="prose">「共同进化」（coevolution）这个词源于蝴蝶与马利筋的故事。人口生物学家保罗·埃尔利希研究蝴蝶收藏家的文献时注意到：大多数蝴蝶幼虫只吃一种特定的植物——黑脉金斑蝶的幼虫专吃马利筋，而马利筋似乎也只欢迎黑脉金斑蝶前来就餐。</p><p class="prose">蝴蝶的映像投入了植物，植物的映像也投入了蝴蝶——这种相互投映仿佛<b>两条贴着肚皮跳舞的变色龙</b>。1958 年，穆德和约翰·汤普森为这种关系造了词。</p><div class="aband"><q>进化就是不断适应环境以满足自身的需求。共同进化，是更全面的进化观点，就是不断适应环境以满足彼此的需求。</q><cite>——第五章 5.2 生命之无法理喻之处</cite></div><p class="prose">自然界最具说服力的结盟实例是墨西哥的<b>巨刺金合欢与蚂蚁</b>：金合欢为蚂蚁提供防水的漂亮巨刺、现成的蜜露泉和叶尖嫩苞；蚂蚁日夜为金合欢巡逻放哨，攻击一切贪吃金合欢的生物，甚至剪除可能遮挡住它的入侵植物。</p><p class="prose">金合欢如今完全依赖于这种蚂蚁的保护，而蚁群离开金合欢也活不下去——<b>它们组合起来就天下无敌</b>。</p><p class="prose">共同进化将事物推往荒唐的境地：蝴蝶和马利筋从某种角度看是竞争对手，却又不能分开独立存活。埃尔利希认为共同进化推动两个竞争对手进入<b>「强制合作」</b>——「除掉敌人既损害了掠食者的利益，也损害了被掠食者的利益。</p><p class="prose">」布兰德与贝特森由此得出一个古怪的结论：相对于其他事物都有一个平衡点来说，意识、生命、智力以及共同进化都是失衡的、意外的，甚至是无法理喻的——<b>它们维持着一个远离平衡态的不稳定状态，处于一个稳定的非稳态</b>。</p><div class="aband"><q>蝴蝶拉扯马利筋，马利筋也拉扯蝴蝶，它们拉扯得越厉害，就越难以放手，直到整体的蝴蝶/马利筋逐渐形成一个独特的存在——一个鲜活的昆虫/植物系统便自我生成。</q><cite>——第五章 5.2 生命之无法理喻之处</cite></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>5.3 在持久的摇摇欲坠状态中保持平衡</h2><span class="en">POISED STATE</span></div><p class="prose">生物学家曾请 NASA 向火星和金星发射携带生命探测器的无人探测器。而 NASA 聘请的英国生物化学家<b>詹姆斯·洛夫洛克</b>却说：不必找这个麻烦——只需用天文望远镜测量行星大气层的光谱，就能确定其是否有生命。1967 年他预言火星没有生命，十年后 NASA 的轨道航天器证实了这一点。</p><p class="prose">他是怎么知道的？火星大气的化学反应方程式等号两边基本持平，如元素周期表那般稳定、死气沉沉；而地球大气中氧气占 21%，是高活性气体——从热力学角度看理应快速下降才对，却数百万年来就是不降下来。<b>地球的化学性质是不正常的，完全失去了平衡，却充满活力。</b>那只看不见的手就是共同进化的生命。</p><div class="aband"><q>大气层像一个高空悬索上摇摇摆摆的杂技演员，而且几百万年来一直保持着那个欲跌还休的姿势。她永不坠落，也永远摆脱不了坠落的趋势，始终处于摇摇欲坠的状态。</q><cite>——第五章 5.3 在持久的摇摇欲坠状态中保持平衡</cite></div><p class="prose">洛夫洛克认为这持久的摇摇欲坠状态是生命的显著特征——任何活系统：经济体、自然生态系统、复杂的计算机模拟系统、免疫系统，都具有摇摇欲坠的显著特征。</p><p class="prose">而且这种特质<b>具传染性</b>：地球上没有哪块从未被生命触摸过的岩石；微小的海洋微生物生产出海床的盐，植物性微生物把碳化为石油，细菌聚集出金属矿团——「铁作为非生命的典型代表，竟然产生生命！」</p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>5.4 岩石乃节奏缓慢的生命</h2><span class="en">GAIA</span></div><p class="prose">俄罗斯地质学家沃尔纳德斯基把这套逻辑推到极致，得罪了两方人：他把活体生物所处的生物圈看作巨型的化工厂（激怒了生物学家），又把岩石看作半生命——岩石是<b>生命中移动最慢的一部分</b>，山脉、海洋里的水以及天空中的气体，都是节奏非常缓慢的生命（激怒了地质学家）。</p><p class="prose">两种奇思怪论组合成一个美丽且对称的体系：生命是不断更新的矿物质，矿物质是节奏缓慢的生命——<b>有机体即是环境，而环境也即是有机体</b>。</p><div class="aband"><q>没有生命，地球的脸面就会失去表情，变得像月球般木然。</q><cite>——第五章 5.4 岩石乃节奏缓慢的生命</cite></div><p class="prose">30 年后洛夫洛克从天文望远镜得出同样结论：「我们呼吸的空气，以及海洋和岩石，所有这一切要么是生命机体的直接产物，要么是由于他们的存在而被极大改变了的结果。」1972 年他提出地球的自治表征假说——</p><div class="aband"><q>地球上的所有生命体集合，从巨鲸到细菌，从橡树到海藻，可以看成是一个单体生命，它能够熟练地操控地球大气层以满足自己的全部需要，而其所具备的能力和能量也远超过其组成部分。</q><cite>——第五章 5.4 岩石乃节奏缓慢的生命</cite></div><p class="prose">他把它称为<b>盖亚</b>。许多生物学家不喜欢这个理念——洛夫洛克并未获得他们的准许就扩大了生命的定义：这个固体行星成了我们所知道的「最大的生命形式」，一头 99.9% 岩石的怪兽。但凯利的回应是：假如将地球缩成细菌大小放在高倍显微镜下观察，它能比病毒更奇怪吗？</p><p class="prose">盖亚就在那里——一个强光映照下的蓝色球体，吸收着能量，调节着内部状态，挡避着各种扰动，并日趋繁复。后来洛夫洛克不再坚持盖亚是一个有机体，但保留了它是一个<b>活系统</b>的判断：它是一个鲜活的系统。</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>5.5 不讲交情或无远见的合作</h2><span class="en">PRISONER&#x27;S DILEMMA</span></div><p class="prose">共同进化就是多种形式的学习——「如果说生态系统是在维持的话，那么共同进化则是在学习。」共同进化的各方在相互学习的同时也在相互传授，这使科学家想到了游戏。冯·诺依曼提出博弈论；兰德公司列出 4 种相互猜测游戏的基本变体：草鸡博弈、猎鹿博弈、僵局，以及<b>囚徒困境</b>。</p><div class="tbwrap"><table><thead><tr><th>博弈变体</th><th>规则</th><th>启示</th></tr></thead><tbody><tr><td>草鸡博弈</td><td>两辆赛车朝悬崖边奔去，后摔出来的司机是赢家</td><td>比拼胆量，双输边缘</td></tr><tr><td>猎鹿博弈</td><td>猎手必须合作才能把鹿杀死；开小差撵兔子更好些</td><td>赌合作（高回报）还是背叛（低但肯定有回报）</td></tr><tr><td>僵局</td><td>彼此背叛收益最高</td><td>最无聊的游戏</td></tr><tr><td>囚徒困境</td><td>单次博弈中背叛对手是最合理的选择</td><td>20 世纪 60 年代末成为两百多例社会心理学实验的测试模型</td></tr></tbody></table></div><p class="prose">但当两个「囚徒」<b>一次又一次地玩</b>，游戏的推演就发生了变化——你不能无视对手玩家的存在。1980 年，密歇根大学政治学教授罗伯特·阿克塞尔罗德发起循环锦标赛征集策略，胜者是<b>「一报还一报」</b>：它从不琢磨利用对手的策略——只是以其人之道还治其人之身。</p><p class="prose">这种合作不是新时代的精神至上主义，而是一种<b>「不讲交情、无需远见的合作」</b>，是大自然的冷规则。</p><div class="aband"><q>“一报还一报”策略从不琢磨利用对手的策略——它只是以其人之道还治其人之身。</q><cite>——第五章 5.5 不讲交情或无远见的合作</cite></div><p class="prose">实验还得出了众神的另一条律法：<b>向你的错误致敬吧</b>——引入少许的随机因素（差错、缺陷）反而能够在共同进化的世界里缔造出长久的稳定，因为某些策略就无法被轻易地「山寨」。</p><p class="prose">另一条教益关于零和与非零和：零和游戏中对他人的任何伤害都对你有好处；而自然界的荒野、经济、思维意识、网络属于非零和游戏——「你们可能共荣，也可能同衰。人们常用零和游戏的观点看世界，其实他们本不该这样。」</p><div class="aband"><q>双赢是共同进化模式下生命所演绎的故事。</q><cite>——第五章 5.5 不讲交情或无远见的合作</cite></div><div class="chips"><span class="chip">公开的信息能够保持经济的稳定和增长</span><span class="chip">错误能使共同进化关系不致因为胶着太紧而陷入自沉的漩涡</span><span class="chip">稳步的信息交流将它们焊接成一个单一的系统</span><span class="chip">开放者赢，中央控制者输，而稳定则是由持续的误差所保证的一种永久临跌状态</span></div><p class="prose">戈尔巴乔夫被认为具有基本的共同进化洞察力——他单方面裁掉了一万辆坦克，使得美国和欧洲更难有借口保持大规模的军事预算。在我们刚刚迈入的网络时代中，频繁的交流正在创造日益成熟的人工世界：<b>开放者赢，中央控制者输，而稳定则是由持续的误差所保证的一种永久临跌状态</b>。下一篇进入自然之流变与控制的兴起。</p></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>4.1 段一｜</b>源文该段停在「我站在美国最后一片开着野花的大草原」，本篇以第二段续述，不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>4.2 段十二｜</b>源文该段停在「这是电影《梦幻之地》」，正文以源文说明续接，不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>4.3–4.4 多处｜</b>「史蒂夫·帕克德」「奥尔多·利奥波德」「斯图亚特·皮姆」「皮姆和吉姆·德雷克」「斯图亚特·考夫曼」「戴维·温盖特」「丹尼·希利斯」等处句子被导出剥离（本篇第四章共 35 处疑似截断），均不补写。</span></div><div class="note" id="n4"><span class="nn">截断</span><span class="nd"><b>5.1–5.5 多处｜</b>「斯图尔特·布兰德」「奇趣屋」「保罗·埃尔利希」「罗斯·艾希比」「马歇尔·麦克卢汉」「生物学家普莱斯」「梅里尔·弗勒德」「罗伯特·阿克塞尔罗德」「克里斯蒂安·林德格雷」「威廉·庞德斯通」等处句子未收尾（第五章另有若干处），均不补写。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">进化之部｜组装复杂性·共同进化</span><a href="../02-有心智的机器/index.html">← 有心智的机器</a><a href="../04-自然之流变与控制的兴起/index.html">自然之流变·控制的兴起 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

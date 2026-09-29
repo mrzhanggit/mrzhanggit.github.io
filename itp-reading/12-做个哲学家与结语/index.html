@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第八部分·做个哲学家是一种怎样的体验 · 结语与附录一｜直觉泵 精读</title>
+<meta name="description" content="如果靡菲斯特让你选：彻底解决一个重要的哲学问题、让它永远终结，还是写出一部让学者们困惑数百年的巨著——你选哪个？本篇是丹尼特写给同行与后辈的肺腑之言：警惕「像棋」式的高阶真理，用史特金定律挑出那 10% 的精品，然后把思">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../11-自由意志/index.html">← 自由意志</a><a href="../13-附录二与译者后记/index.html">附录二与译者后记 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">哲</div>
+  <div class="stamp ">哲学</div>
+  <h1>做个哲学家是一种怎样的体验 · 结语与附录一</h1>
+  <p class="sub">如果靡菲斯特让你选：彻底解决一个重要的哲学问题、让它永远终结，还是写出一部让学者们困惑数百年的巨著——你选哪个？本篇是丹尼特写给同行与后辈的肺腑之言：警惕「像棋」式的高阶真理，用史特金定律挑出那 10% 的精品，然后把思考工具加倍地用起来。</p>
+  <div class="meta"><span>第八部分</span>
+    <span class="k">哲学</span>
+    <span>正文 12,127 字</span>
+    <span>6 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>浮士德式交易</a><a href="#s3" data-t="s3"><span class="cn">叁</span>自我人类学</a><a href="#s4" data-t="s4"><span class="cn">肆</span>像棋</a><a href="#s5" data-t="s5"><span class="cn">伍</span>史特金定律</a><a href="#s6" data-t="s6"><span class="cn">陸</span>结语与附录</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第八部分：哲学家的自我诊断书——目标、方法、陷阱与书单</p><p class="thesis">哲学的目标不同于科学家的目标：科学发现不属于某一个人，而莎士比亚的戏剧是莎士比亚的。看清这一点，哲学就该以<b>复杂的朴素人类学</b>为方法、以「除了哲学家还有没有人在玩」来检验课题、以史特金定律挑选读物——最后，把思考工具加倍地用起来：<b>我们正在寻找答案。</b></p><div class="chain"><div class="node"><div class="n">74</div><div><p class="tt">浮士德式交易</p><p class="dd">宁愿被阅读而不选择正确？——哲学家与科学家的目标之别</p></div></div><div class="node"><div class="n">75</div><div><p class="tt">简单的自我人类学</p><p class="dd">把常识映像当作原住民文化来调查：反直觉的发现何其珍贵</p></div></div><div class="node"><div class="n">76</div><div><p class="tt">「像棋」中的二阶真理</p><p class="dd">若不值得做，亦不值得做好——别把宝贵岁月浪费在保质期很短的主题里</p></div></div><div class="node"><div class="n">77</div><div><p class="tt">只需关注那 10% 的精品</p><p class="dd">但伟大的图书馆里收藏着所有的书</p></div></div><div class="node"><div class="n">结语</div><div><p class="tt">加倍努力地使用这些工具</p><p class="dd">「噢，太好了！我爱神秘的东西。让我们瞧瞧能不能把它也解决掉吧。」</p></div></div><div class="node"><div class="n">附录一</div><div><p class="tt">未写入正文的直觉泵</p><p class="dd">「我在哪儿」、沙基披萨店的民谣、机器玛丽……</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>74 浮士德式交易 · 哲学家的目标不同于科学家的目标</h2><span class="en">FAUSTIAN BARGAIN</span></div><p class="prose">丹尼特总爱给哲学家同行提出这样一个问题：如果靡菲斯特给你两个选项，你会选哪一个？</p><div class="grid g2"><div class="card"><div class="idx">A</div><h3>彻底解决问题</h3><p class="cp">你彻底解决了一个重要的哲学问题，经过你的努力这个问题大家以后就不用再讨论了。多亏了你，哲学的某个领域彻底终结了，你因此在哲学史中占据了一定地位。</p></div><div class="card"><div class="idx">B</div><h3>写出传世巨著</h3><p class="cp">你写出了一部巨著，它令人感到既着迷又困惑、充满争议，在接下来的几个世纪中这本书都在学者们的必读书目之列。</p></div></div><p class="prose">一些哲学家不情愿地承认会选择 B——如果必须二者择一，他们宁愿选择被阅读而不选择正确。而科学家们面对同样的问题常常毫不犹豫地选 A，听说哲学家难以抉择时惊愕得直摇头。但科学家的反应忽略了一个重要的事实，尼古拉斯·汉弗莱说过：</p><div class="aband"><q>在《两种文化》（The Two Cultures）一书中，斯诺（C.P. Snow）用“科学中的莎士比亚”来赞美科学中的伟大发现，但在某种意义上，他却犯了一个根本的错误。莎士比亚的戏剧是莎士比亚的，而不是其他人的；相比之下，科学发现从根本上说却不属于某一个人。（Humphrey, 1987, Chapter 48）</q><cite>——74 浮士德式交易</cite></div><p class="prose">如果莎士比亚不存在，将没人能写出《哈姆雷特》；如果梵高不存在，也就没有人能画出《星月夜》。而在科学界，你努力研究出的成果恰恰是别人也可能做出来的——假如你是某个成果的第二发现者，个人的研究风格可不会给你加分。</p><p class="prose">反过来，丹尼特也把这个问题抛给科学家：是当<b>正确的第一发现者</b>（沃森和克里克——若他们没赢，鲍林或其他人无疑也能很快完成 DNA 结构的发现），还是当<b>充满争议的奠基人</b>（笛卡尔的身心二元论、拉马克的进化论、斯金纳的行为主义、弗洛伊德的观点）？</p><p class="prose">笛卡尔那些野心勃勃的物理学著作可能是选项 2 的更好例子——它的错误相当「才华横溢」：正是在笛卡尔《哲学原理》的刺激下，牛顿故意把书名起成《自然哲学的数学原理》，要明确地取而代之。</p><p class="prose">还有乔姆斯基：他在《句法结构》（1957）中提出的「转化生成」理论已被广泛弃用、被各种理论后代取代——这些后代的区别就像鸵鸟、蜂鸟和信天翁迥异于它们共有的祖先。乔姆斯基在 1957 年犯了一个有益的错误吗？或者他发现了一个伟大的真理？「是的」一词很好地回答了这个问题。</p><p class="prose">我们崇敬那些犯了有益错误的科学家——想想物理学家泡利是怎么鄙视那些连「犯错都算不上」的理论家们的。这个决定有点难做了，是不是？</p><div class="broken-tip">源文截断提示：「如果靡菲斯特（Mephistopheles）」一句在源文中戛然而止，疑为导出残缺（原书此句为浮士德式交易提问的完整引入）；两个选项的具体表述已在本节 cards 中逐字呈现。如实保留，不补写。</div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>75 简单的自我人类学 · 哲学家应该把反直觉的一切都去掉</h2><span class="en">AUTO-ANTHROPOLOGY</span></div><p class="prose">人工智能专家哈耶斯曾计划将朴素的流体物理学公理化（<b>《朴素物理学宣言》</b>，1978），以便机器人能与人类互动。</p><p class="prose">在朴素的流体物理学中，所有违反大众直觉的论断都要被排除出去：虹吸现象是「不可能」的、移液器是「不存在」的，但用松软的毛巾把液体吸走是可能的——记住了一大堆这种「知识」的机器人，和我们大多数人一样，第一次看到虹吸实验时也会大吃一惊。</p><p class="prose">丹尼特愿意把这叫作<b>复杂的朴素物理学</b>：哈耶斯知道他要公理化的那套理论虽然是我们日常所依赖的，但仍然是错的。于是还可以有一项<b>公理化的自我人类学</b>：将民众常说的、认同的东西当作公理和定理，试着消除它们之间的矛盾——不用搞调查问卷，问问自己就行。</p><p class="prose">「分析的形而上学」常常给丹尼特一种<b>天真的朴素人类学</b>的印象：做这种研究的人似乎深信他们的工作是在获得某种真的东西，而不仅仅是在人类某特殊群体中被相信为真的东西——你收集共享的直觉，让它们在共通的直觉泵中得到检验和激发，再努力把数据揉进一个融贯的「理论」。</p><p class="prose">他曾问过许多分析的形而上学家，能否把其事业与他们部落的天真朴素人类学区分出来，<b>至今还没有收到一个令人信服的回答</b>。</p><p class="prose">与之相反，<b>复杂的朴素人类学</b>对自身定理是否可信留有判断：他们必须收起自命不凡的样子，意识到自己的研究只不过是对常识映像进行的一次初步侦查，像人类学家研究异域文化那样把信与不信悬置起来——让我们暂时假装认为这些原住民是正确的，看看接下来会发生什么。</p><div class="aband"><q>如果你做的只是朴素人类学，那么你就会把（对原住民来说）反直觉的东西当作你的对手；而当你改变方式，开始思考朴素“理论”在哪些方面是正确的，那么反直觉的论断就不再是你的障碍了，有时它反而是你取得重大进展的标志。毕竟，在科学中，违反直觉的发现是何其珍贵啊。</q><cite>——75 简单的自我人类学</cite></div><p class="prose">自我人类学的一个缺陷在于：一个人的直觉容易被他的理论偏好所扭曲。语言学家早就发现了这一点——由于太专注于自己的理论，他们自己的语言直觉就不再可靠了，必须找那些不是语言学家的人来问一问。</p><p class="prose">最近哲学家们开始重视这一点，掀起了<b>实验哲学</b>的新风：哲学家不能再因为一些命题对自己来说是显而易见的，就断言它们显然是真的。这番系统的调查将给我们提供一个目录式的东西——常识映像的形而上学——当哲学家们试图不断协调那些最新的科学观念时，请务必从这里开始。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>76 “像棋”中的二阶真理 · 若不值得做，亦不值得做好</h2><span class="en">CHMESS</span></div><p class="prose">先验真理的范本是国际象棋真理：只需知道规则就能探索先验真理——开局足足有 20 种走法，一王一相无法将死孤王，一王一马也不行。</p><p class="prose">但先验真理的推导并不都那么容易：几年前一个计算机象棋程序发现了一种将杀网，执行过程中竟有 200 余步不吃子——这一发现打破了「50 步内未吃子即是平局」的古老规则，迫使人们改写了规则。而《波士顿环球报》刊载的一个残局更让丹尼特大吃一惊：白棋两步将死——他一直以为国际象棋中无法「单马定孤将」是已经被证明了的。</p><p class="prose">正如米希亚洛维思奇所指出的：<b>「当你只有一马一王时无法将死对方的王」这一命题不是国际象棋中的真理——这一事实，是国际象棋中的高阶真理。</b></p><p class="prose">很多哲学项目的研究就像在推算国际象棋的先验真理：都先以一组大家一致同意而几乎从不讨论的规则为前提，再对这些前提所包含的东西进行推算、组织、争论和重新定义。可是某些哲学研究项目却更像是在推算<b>「像棋」（chmess）</b>的真理——</p><div class="broken-tip">源文截断提示：「可是某些哲学研究项目却更像是在推算“像棋”（chmess）的真理」一句在源文中戛然而止，疑为导出残缺；据下文（琼斯对「像棋」真理 p 的证明、史密斯的断言等）可推知原句当为对「像棋」规则的界定（如国王只能像车一样移动两步之类）。如实保留，不补写。</div><p class="prose">于是就有了这样的文献：「琼斯对『像棋』真理 p 的证明（1989）有问题：他并未考虑如下的可能……」「史密斯断言（2002）：琼斯证明（1989）错误地预设了布朗引理（1975）为真，而布朗引理最近遭受了加芬克尔的挑战（2002）……」——这些不只是儿戏了对吧？</p><p class="prose">事实上，可能会有人向你证明，人们对「像棋」高阶真理的研究成果辉煌呢。心理学家赫布的格言该派上用场了：</p><div class="aband"><q>若不值得做，亦不值得做好。</q><cite>——76 “像棋”中的二阶真理</cite></div><p class="prose">要想检验一项哲学研究是否只是在探索「像棋」的高阶真理，一个好办法是看看<b>除了哲学家之外这个游戏是否真的有人在玩</b>——把这些东西讲给入行未深的本科生们听：如果他们「听不懂」，你就该好好想想是不是在被那个自娱自乐的专家团体牵着鼻子走。</p><p class="prose">聪明的琼斯就是这样掉进陷阱的：一篇得了 A 的论文让他看到一项似乎值得奋斗终生的事业，他与志向远大的同伴相互打气「我们可真擅长哲学啊」，「为了论证的方便」逐渐不再怀疑预设的前提，开始出书了。不要指望你的研究生同学或喜欢的教授告诉你真相——<b>因为他们都是这项事业既得利益的维护者。</p><p class="prose"></b>对哲学家来说，重装上阵其实要简单很多、便宜很多。哲学家德雷本曾在哈佛对研究生们说：「哲学是垃圾，但垃圾的历史则是学问。」奥斯汀演讲录里有一句话堪称暗讽的杰作：</p><div class="aband"><q>来听我讲座的听众一般都不是来听重要的事的，如果今天来的诸位中有人想听重要之事，事先声明：我欠你们一个结论。（Austin, 1961, p.179）</q><cite>——76 “像棋”中的二阶真理</cite></div><p class="prose">可如今，围绕在奥斯汀身边那些有前途的哲学家，大部分已经消失得无影无踪了，他们关于日常语言哲学的著作（「哇，写得真聪明」）也在出版后不久就被人们理所当然地遗忘了。这只是一个警告标志，并不绝对——哲学中那些伟大的创见最初总会遭到怀疑和嘲弄，你的脚步不应被它们阻挡。</p><p class="prose">丹尼特想说的只是：请不要只因为自己那些聪明的同行觉得你的工作不容忽视，就沾沾自喜地以某个思想流派而自居。<b>或许，你们只是在相互欺骗罢了。</b></p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>77 只需关注那10%的精品 · 哲学领域的史特金定律</h2><span class="en">STURGEON&#x27;S LAW</span></div><p class="prose">如果哲学也适用史特金定律，哪些作品算精品？首先，「经典」绝对是经典的理由：从柏拉图到罗素，这些哲学史教程的标配已经通过了几个世纪的检验。另外一些专家主要关心如何将伟大作品中的观点与今天的问题联系起来——莱布尼兹毕竟不是为了写一篇 17 世纪理性主义的代表作而写《单子论》的，<b>他是为了揭示真理而写</b>。</p><p class="prose">说到底，只有当你追问这些哲学家所讲的是否正确时，才算得上严肃地对待他们。哲学生和哲学教授们有时会忘记这一点，忙于「比较和对比」哲学家之间的关系，就像在回答考题——<b>这不是哲学，这是哲学鉴赏。</b></p><p class="prose">丹尼特是这样帮学生打破这一陋习的：设想有人发现了惊天大秘密（有人图谋炸毁自由女神像），疯狂收集证据写了长信寄给警察、联邦调查局、《纽约时报》和 CNN。</p><p class="prose">得到的回复却是——「哈，又是一篇巧妙的后 9·11 阴谋论」「文笔甚佳」「它让我想起了小说家唐·德里罗（Don De Lillo），当中亦有托马斯·品钦（Thomas Pynchon）写作风格的影子」。啊啊啊啊啊！注意！<b>我正在告诉你们实情！</p><p class="prose"></b>请尊重你正在解读的哲学家，读每一句、每一段时多问问自己：「我相信这些话吗？如果不相信又是因为什么？」</p><p class="prose">但是为什么要在那些失败者身上花心思呢？丹尼特举了一个好例子：当他在欧洲的博物馆看见堆积如山的二流作品之后，才发现自己从未真正欣赏到 16～17 世纪那些名画之美——如果你所看的全部只是精品，你反而很难发现它们的精妙之处。</p><div class="aband"><q>你知道好图书馆和一座伟大的图书馆之间的区别吗？好图书馆里收藏得全是好书，而伟大的图书馆里收藏着所有的书。</q><cite>——77 只需关注那10%的精品</cite></div><p class="prose">如果你真想理解一位伟大的思想家，你必须花时间读读与他同代的或前辈学者的作品。此外还有伦理学：1971 年罗尔斯的《正义论》开创了一个硕果累累的新时代，多亏了罗尔斯，伦理学家们的游戏被抬高到了一个新的水平。</p><p class="prose">最后，丹尼特对后辈的嘱咐：他曾多次轻信同行的判断——「别读某人的书了，写得又蠢又垃圾」——过了一段时间才发现自己被误导了，竟忽视了一位有创造性的思想家。<b>所以，请把这本书当作一本开放式的导论</b>：如果这些哲学工作的方式有意义，就把它们作为跳板，以自己的方式探索那些被历代思想家们反复研究的问题吧。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>结语 · 加倍努力地使用这些工具吧</h2><span class="en">CONCLUSION &amp; APPENDIX</span></div><p class="prose">「太不可思议了！」——当某些人发现意识的「秘密」时如是说；「太不可思议了！」——当某人发现这个星球在 30 亿年前不借助任何造物主之手就产生了生命时如是说。每当听到这种话，丹尼特总忍不住想说：「好吧，对你来说这当然不可思议了。<b>因为你自己把思考工具扔在一边，几乎从来不碰。</p><p class="prose"></b>」今天，即使对学校里的孩子来说，DNA 也是很容易理解的——并不是因为他们比贝特森高明多少，而是因为经过一个世纪的设计和改良，我们的思考工具已经足以快刀斩乱麻。当然，还有一些人确实不愿构想这些事情，他们想要保护神秘之物，担心解释会令宝藏消失。</p><p class="prose">当别人想要刨根问底时，「上帝以神秘的方式起作用」是一种方便的反思考工具——我们应该积极地回应道：</p><div class="aband"><q>“噢，太好了！我爱神秘的东西。让我们瞧瞧能不能把它也解决掉吧。你们有什么点子吗？”</q><cite>——结语</cite></div><p class="prose">构想新事物是一件困难的事——如果我们研究得更加努力，对我们来说不可构想的东西或许现在已经显然可以构想了。全书以此收束：</p><div class="aband"><q>我们仍未完全成功地构想出意义如何在物质世界中存在、生命如何诞生与进化、意识如何工作以及我们是否拥有自由意志，但我们已经取得了进展：与过去相比，现如今我们正在用更恰当的方式提出问题、解决问题。我们正在寻找答案。</q><cite>——结语</cite></div><h3 class="h3">附录一 · 未写入本书正文中的几个直觉泵</h3><p class="prose">读过草稿的朋友们对几个最著名的直觉泵没有出现在定稿中表示惊讶和失望——实际上最后被删掉的有几十个。附录一交代了缘由，丹尼特列出的「遗珠」包括：</p><div class="tbwrap"><table><thead><tr><th>直觉泵 / 思考工具</th><th>出处与去向</th></tr></thead><tbody><tr><td>「我在哪儿」</td><td>可能是他最著名的直觉泵：1978 年首见于《头脑风暴》，《心我论》亦有收录，被译为十几种语言，改编过电影《大脑的受害者》30 分钟情节（他还扮演了第二个丹尼特的身体）、BBC 纪录片，甚至被木偶师林恩·杰弗里斯改编成爪哇皮影戏，1984 年在哈佛大学勒布剧院演出——正因太著名才应该删掉。</td></tr><tr><td>「沙基披萨店的民谣」</td><td>（1982a）消解了「从物模态与从言模态的信念」所包含的一套预设——有些哲学家必须了解，而其他人继续幸福地无视它也不会有丝毫损失。</td></tr><tr><td>「达尔文的空间」</td><td>哲学家戈弗雷-史密斯发明的多维空间思考工具，是把多维空间引入哲学的最佳尝试之一，但需要回顾大量生物学事实才能有效工作；详见评论《小人儿法则》。</td></tr><tr><td>《蒯因感受质》中的 14 个直觉泵</td><td>（1988a）为澄清并消除「感受质」这个混乱得无可救药的概念而发明——本书收录的「花椰菜的诅咒」即是其中之一。</td></tr><tr><td>其他意识直觉泵</td><td>《为什么你无法造一台可以感受疼痛的计算机》中的「箭毒致忘剂」、《机器玛丽知道什么》中的「沼泽玛丽与机器玛丽」、《意识的解释》中的「奥威尔式与斯大林式」意识模型等。</td></tr><tr><td>宗教直觉泵</td><td>《打破魔咒》中的诸多泵，以及《科学与宗教：它们相容吗？》中「超人动了波基斯页岩」的例子。</td></tr></tbody></table></div><div class="check" data-k="12-philosophy"><p class="ct">本 篇 自 查</p><label><input type="checkbox"><span>我能说出浮士德式交易的两个选项，以及哲学家与科学家目标的不同</span></label><label><input type="checkbox"><span>我能区分天真的与复杂的朴素人类学，并说出「悬置信与不信」像谁</span></label><label><input type="checkbox"><span>我能用「像棋（chmess）」提醒自己检验一个哲学课题的价值</span></label><label><input type="checkbox"><span>我能默写赫布格言与史特金定律，并说出伟大的图书馆与好图书馆的区别</span></label><label><input type="checkbox"><span>我能向朋友转述结语的态度：我爱神秘的东西——让我们把它也解决掉</span></label><div class="cf">已对照 <b>0</b> / 5</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>注一｜</b>74 章「如果靡菲斯特（Mephistopheles）」与 76 章「更像是在推算“像棋”（chmess）的真理」两句在源文中戛然而止，正文以 broken 块如实标注，不补写。</span></div><div class="note" id="n2"><span class="nn">编目</span><span class="nd"><b>注二｜</b>76 章「像棋」（chmess）为丹尼特仿 chess 生造的词，源书未给出完整规则界定（对应上述截断），本篇据上下文如实说明。</span></div><div class="note" id="n3"><span class="nn">编目</span><span class="nd"><b>注三｜</b>77 章引用原文「好图书馆里收藏得全是好书」之「得」为原书排印（应为「的」），照录不改。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第八部分｜做个哲学家与结语</span><a href="../11-自由意志/index.html">← 自由意志</a><a href="../13-附录二与译者后记/index.html">附录二与译者后记 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

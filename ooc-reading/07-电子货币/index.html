@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>网络之部·电子货币 · 加密无政府状态与超现金｜失控 精读</title>
+<meta name="description" content="第十二章是全书最像预言书的一章：一盘 DAT 磁带当武器、密码朋克的地下室会议、传真机效应、超级分发、盲签名的数字现金——加密技术允许蜂巢文化所渴求的必要的失控。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../06-工业生态学与网络经济学/index.html">← 工业生态学·网络经济学</a><a href="../08-上帝的游戏与形式的图书馆/index.html">上帝的游戏·形式的图书馆 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">电</div>
+  <div class="stamp s4">电子货币</div>
+  <h1>电子货币 · 加密无政府状态与超现金</h1>
+  <p class="sub">第十二章是全书最像预言书的一章：一盘 DAT 磁带当武器、密码朋克的地下室会议、传真机效应、超级分发、盲签名的数字现金——加密技术允许蜂巢文化所渴求的必要的失控。</p>
+  <div class="meta"><span>网络之部</span>
+    <span class="k">加密</span>
+    <span>正文 24,141 字</span>
+    <span>7 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>加密永胜</a><a href="#s3" data-t="s3"><span class="cn">叁</span>传真机效应</a><a href="#s4" data-t="s4"><span class="cn">肆</span>超级传播</a><a href="#s5" data-t="s5"><span class="cn">伍</span>电子货币充值</a><a href="#s6" data-t="s6"><span class="cn">陸</span>超级小钱</a><a href="#s7" data-t="s7"><span class="cn">柒</span>隐密经济</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>在这场战争中，加密肯定是赢家。除非政府能够成功禁止加密，而这是不可能的，加密永胜。</p><cite>——第十二章 12.1 密码无政府状态：加密永胜</cite></div><div class="epi"><p>网络是阳，密码分子就是阴，一种微小隐蔽的力量，能够驯服去中心、分布式的系统引发的爆炸性的相互联结。</p><cite>——第十二章 12.6 对隐密经济的恐惧</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">本章是一条不断落地的主线：一个预言（加密永胜）逐节变成技术（计量）、制度（超级分发）、货币（电子现金），最后变成哲学（阴与阳）</p><p class="thesis">前英特尔物理学家蒂姆·梅宣称<b>加密永胜</b>：加密技术是经济学——始终是可能的，就是很贵。传真机效应让免费传播工具的人成为赢家；超级分发让易复制性从负担变成资产；盲数字签名让现金既精确记账又 100% 匿名。而章末的立场出乎意料地平衡：<b>互联网说「连接」，密码则相反，说「断开」</b>——网络是阳，密码分子就是阴。</p><div class="chain"><div class="node"><div class="n">武器</div><div><p class="tt">一盘 DAT 磁带</p><p class="dd">迈克尔·杰克逊《颤栗者》的数字带里，可以藏下一个电脑硬盘所有数据的编码信息</p></div></div><div class="node"><div class="n">宣战</div><div><p class="tt">密码无政府状态</p><p class="dd">两股力量之间即将有一场战争——而加密肯定是赢家，加密永胜</p></div></div><div class="node"><div class="n">递增</div><div><p class="tt">传真机效应</p><p class="dd">在网络经济中，多能带来更多——给予成为一种有效手段，免费传播就是播撒种子</p></div></div><div class="node"><div class="n">计量</div><div><p class="tt">信息龙头</p><p class="dd">加密计量把付费过程和复制过程分离——信息的海洋流过身边，只为你所饮的那一瓢付钱</p></div></div><div class="node"><div class="n">现金</div><div><p class="tt">盲数字签名</p><p class="dd">真钱，具有现金的私密性和电子的灵活性——精确记账和 100% 匿名在数学上无条件实现</p></div></div><div class="node"><div class="n">阴阳</div><div><p class="tt">断开的力量</p><p class="dd">加密技术允许蜂巢文化所渴求的必要的失控，以在向不断深化的缠结演变中保持灵活和敏捷</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>12.1 密码无政府状态：加密永胜</h2><span class="en">CRYPTO ANARCHY</span></div><p class="prose">在蒂姆·梅眼中，一盘售价 9.95 美元的数字录音磁带（DAT）作为武器的威力，如同肩扛式毒刺导弹。DAT 以 16 位二进制存储音乐，但这个精度已超过人类感知——把所有音乐数据的第 16 位替换成加密信息，听到的仍是《颤栗者》的浅吟低唱；逐位匹配才会发现差异，而那差异看起来就像复制时产生的噪音。</p><p class="prose">只有将这个「噪音」解密（这不太可能），才能证明它其实并非噪音。梅还用过照片：把加密消息分插到每个像素的最低位，重新贴到网上，跟原图完全一样。<b>「要阻止信息的越界流动是一件毫无希望的事情。因为任何随身携带从店里买来的音乐卡带的人，都可能随身携带隐形轰炸机的电脑文档，而且，我们完完全全察觉不到。」</b></p><p class="prose">梅管这种运动叫作「密码无政府状态」——企业当前形式的终结，以及更加精密的逃税黑市的兴起。他向凯利透露了两股力量的战争：一股想要全面公开化（政府，想追缉吸大麻者和控制网上论坛），另一股想要隐私权和公民自由——</p><div class="aband"><q>在这场战争中，加密肯定是赢家。除非政府能够成功禁止加密，而这是不可能的，加密永胜。</q><cite>——第十二章 12.1 密码无政府状态：加密永胜（蒂姆·梅）</cite></div><p class="prose">梅在网上发布过一份宣言，警告「密码无政府状态的幽灵」的到来。宣言中最漂亮的类比：正如印刷术削弱了中世纪行会的权力——「有个人想要在行会之外做皮货或者银器，国王的人就会闯进来把它们打烂，因为行会是向国王交了税的；打破这种垄断的是印刷术」——</p><div class="aband"><q>就像带刺铁丝网这种看起来完全不起眼的发明却能把广阔的牧场和农场与外部隔离，从而永远改变了西部拓荒中的土地和财产权的概念一样，某个数学神秘分支中产生的这个看起来并不起眼的发现，必将成为拆除知识产权周围的带刺铁丝网的断线钳。</q><cite>——第十二章 12.1 密码无政府状态：加密永胜（蒂姆·梅宣言）</cite></div><p class="prose">密码无政府状态之所以还没爆发，是因为加密关键技术垄断在军方手里——就像教会曾经试图垄断印刷术。但 20 年来情况大变：情报成为企业最主要的财富，加密不再需要超级计算机，一台二手个人电脑就能应付巨量计算。于是 1992 年夏天，「密码朋克」诞生了——</p><div class="aband"><q>一个由富有创意的数学黑客、公民自由主义者、自由市场的鼓吹者、天才程序员、改旗易帜的密码学家以及其他各种前卫人士组成的松散联盟开始创造、拼凑甚或是盗用加密技术，并将其植入网络之中。他们管自己叫“密码朋克”。</q><cite>——第十二章 12.1 密码无政府状态：加密永胜</cite></div><p class="prose">1992 年秋天的几个周六，凯利参加了蒂姆·梅等约 15 个「密码反叛者」在帕洛阿尔托的月度会议：灰地毯、白板上潦草的会议日程（「信誉，PGP 加密……」源文在此截断）。迪安·特里布尔讲数字信誉——从某种「信托代管」购买信誉，用博弈论中反复博弈的结论说明信誉在重复交易中的分量。</p><p class="prose">穿黑色皮衣钉满饰钉的亚瑟·亚伯拉罕带大家过数学证明，「这些业余密码学钻研者们质疑着每一个论断，反复琢磨，直到每个人都搞清楚」——就这样，又一个分布式计算的工具诞生了，又一个组件从军事机密的遮蔽下传送到了互联网这个开放的网络，<b>网络文化的基座上又添上了一块砖</b>。</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>在线匿名</span></label><label><input type="checkbox"><span>在线身份</span></label><label><input type="checkbox"><span>在线身份验证</span></label><label><input type="checkbox"><span>在线信誉</span></label><label><input type="checkbox"><span>在线信托</span></label><label><input type="checkbox"><span>在线签名</span></label><label><input type="checkbox"><span>在线隐私</span></label><label><input type="checkbox"><span>在线的访问</span></label><div class="cf">已勾选 <b>0</b> / 8</div></div><p class="prose">凯利向蒂姆坦白对匿名潜在市场的担忧：「匿名对赎金、恐吓、绑架、贿赂、勒索、内部交易、恐怖主义来说恐怕是再好不过了。」蒂姆反问：「出售诸如种植大麻、自助堕胎、人体冷冻等不那么合法的信息又如何？举报者、忏悔者以及约会的人所需要的匿名又怎么办？</p><p class="prose">」密码朋克认为数字匿名是和合法身份同样重要的公民工具；他们研发了约 15 个匿名邮件中继系统的原型，埃里克·休斯则看到<b>数字伪匿名</b>（一些人知道你的身份，但其他人不知道）的应用：通过伪匿名团购信息，成数量级降低成本，卖主绝对没有办法知道他到底是卖给了 1 个人还是 500 个人——「扩展了穷人的生存空间」。</p><p class="prose">「有一件事情是肯定的，」蒂姆说，「长远上，这东西会破坏税收。」凯利猜想会有一场与数字化国税局之间逐步升级的军备竞赛，蒂姆对此嗤之以鼻：「毫无疑问，这种东西是牢不可破的。加密永胜。」——</p><div class="aband"><q>这很恐怖。因为大行其道的加密技术会使对经济活动进行中央控制的任何冀望都化为乌有，而经济活动则是驱动社会前进的一种力量。加密技术加剧了失控状态。</q><cite>——第十二章 12.1 密码无政府状态：加密永胜</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>12.2 传真机效应和收益递增定律</h2><span class="en">FAX EFFECT</span></div><p class="prose">加密之所以永远是赢家，是因为它符合互联网的逻辑。任何密码原则上都能破解——密钥越长越难破解，但也越笨拙迟钝。埃里克·休斯经常提醒密码朋克伙伴们——</p><div class="aband"><q>加密技术是经济学。加密始终是可能的，就是很贵。</q><cite>——第十二章 12.2 传真机效应和收益递增定律（埃里克·休斯）</cite></div><p class="prose">为了破解一个 120 位密钥，阿迪·沙米尔用 Sun 工作站的分布式网络业余干了一年；而美国国家安全局占据一整幢楼的超级计算机，可能要用一整天才能破解一个 140 位密码。</p><p class="prose">密码朋克打算用「<b>传真机效应</b>」对抗中央化的计算资源：如果只有你有传真机，那它就是废物；世界上每多一台传真机，每个人手里的传真机就越有价值——这就是<b>收益递增定律</b>，与基于均衡交易的传统经济学截然相反。「在网络经济中，多能带来更多。</p><p class="prose">这就是为什么给予会如此频繁地成为一种有效手段」——密码朋克把工具免费传播出去，跟善心无关，来源于一种清晰的直觉：<b>网络经济奖励那些「较多者」，而不是那些「较少者」</b>。他们甚至想把这套经济学用到反面：把上百万台苹果电脑联结成一台大众超级计算机，远比国家安全局的中央化计算机强大（源文此段末尾截断）。</p><p class="prose">这个蚂蚁啃大象的想法催生了免费软件 <b>PGP</b>——Pretty Good Privacy（蛮不错的私密性），菲利普·齐默曼自己鼓捣出来的作品，因为使用了 RSA 的专利数学，它实际上是一款非法软件。</p><p class="prose">RSA 则是麻省理工学院的研究人员在申请专利之前就把方法发表出来的算法（因为担心国家安全局锁住专利）——因此在海外合法，「而在这个空间中，知识产权还是有点晦暗的，而且接近某种密码无政府状态的初始状态」。RSA 无法阻止 PGP 流传，因为互联网就是这样：<b>一旦把某个东西传上去，就再也收不回来了。</p><p class="prose"></b>从经济上讲，这对专利拥有者反而是个再美妙不过的场景：你什么都不用做（盗版和传播都有别人代劳），等上百万用户想要最好的产品时，就来排队买你的东西。</p><p class="prose">传真机效应同样改写政治：黑客大会主席格伦·特尼在网络打选战时领悟到电子民主需要建立信任的数字工具——「想象一下，如果一个参议员回复一封电子邮件，结果这封信被什么人改动了之后直接发送给了《纽约时报》会怎么样？」齐默曼说，加密技术培育了「<b>信任之网</b>」，而这样的网络正是任何社会或者人类网络的核心。</p><p class="prose">密码朋克对加密技术的执迷可以总结成：蛮不错的私密性就意味着蛮不错的社会。于是——</p><div class="aband"><q>由密码和数字技术推动，网络经济学改变了我们所谓的“蛮不错的私密性”。网络把隐私从道德领域转移到了市场领域——隐私成了一种商品。</q><cite>——第十二章 12.2 传真机效应和收益递增定律</cite></div><p class="prose">电话号码簿的变迁是最好的注脚：如今一个没有列在号码簿的号码，对不想被列出的用户（付更多钱）和电话公司（收更多钱）都更有价值。<b>隐私现在是一种定价销售的商品。</p><p class="prose"></b>成百上千的隐私卖主会按照市场率销售隐私：「小兄弟公司」替你向垃圾邮件商争取报酬、监控你信息的使用；黑名单过滤器、陌生 ID 筛选机、网络知识机器人，以及专门消除你活动痕迹的「反-网络知识机器人」。</p><p class="prose">凯利把隐私想象成「<b>反信息</b>」——在信息之水滔滔不绝无限复制以至于要涨爆互联网的世界里，一点点信息的消失或蒸发就变得非常有价值——</p><div class="aband"><q>在所有的东西都相互联结在一起的世界，联结、信息还有知识都非常便宜，贵重的反而是那些隔离、反信息和零知识。</q><cite>——第十二章 12.2 传真机效应和收益递增定律</cite></div></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>12.3 超级传播</h2><span class="en">SUPERDISTRIBUTION</span></div><p class="prose">计量本身并非轻而易举：爱迪生推行过用电固定费用——在他看来，统计不同用电量的成本高于用电量差异带来的成本。让爱迪生懊恼的是这种办法在经济上行不通，他的补救措施——电表——既不稳定也不实用，冬天会冻住，有时还往回走；直到市政电网投入使用十年后，才有另一位发明家搞出可靠的电度表。</p><p class="prose">一百年后，<b>信息产业仍然缺少信息计量表</b>。乔治·吉尔德表述得很妙：「你不想每次渴的时候都必须为整个水库付钱，而是希望只为眼前这一杯水付钱。」</p><p class="prose">创业家彼得·斯普拉格发明了这个东西：「我们可以用加密技术来强制信息计量。</p><p class="prose">」这个「信息龙头」是一枚微型芯片，可以从一大堆加密数据中少量发放一点信息：十万页法律文档的只读光盘不用整张卖 2000 美元，而是按页收费；花很少的钱读摘要，选全文时由「分发器」解密，每解密一次收一小笔钱，计量芯片像邮资咪表一样从预付款里扣除。</p><p class="prose"><b>密码-计量表把付费过程和复制过程分离了</b>：艾丽丝想复制多少加密光盘都可以，反正她只需为她要使用的内容付费。</p><p class="prose">它拦不住黑客——卫星电视的加密系统几周内就被破解了：盗版者不解密，而是把酒店解码器的 ID 克隆到别的芯片上——<b>黑掉系统的方法不是解密，而是在密码与其附属的设备之间做了手脚</b>。</p><p class="prose">但没有不可破解的系统，却有够用的摩擦：加密把盗版变成繁琐的事，消除坐享其成和人类天生的分享欲望的影响，卫星加密因此总体有效——因为加密永胜。</p><p class="prose">这套办法有效，恰恰因为它<b>不限制信息的复制欲望</b>：一小段信息会在可用的网络中复制，直到充满整个网络。事实越「适应」——越有趣或越有用——传播得就越广；观念或弥母在人群中的传播与基因在种群中的传播非常相似——</p><div class="aband"><q>蝴蝶种群和一批电子邮件信息有相同的诉求：要么复制，要么消亡。信息要的就是被复制。</q><cite>——第十二章 12.3 超级传播</cite></div><p class="prose">可我们却不让这个由传真机、影印机和硬盘组成的超级拷贝网络去复制——我们拥有一个巨大的并行复制机，却试图扼杀绝大多数复制行为。「和其他清教徒政体下的情形相同，这行不通。」于是有了更聪明的方案：软件架构师布莱德·考克斯称之为「<b>超级分发</b>」（日本研究人员称呼类似方法的词）——</p><div class="aband"><q>就象超导体，超级分发能让信息自由流动，不再受复制保护或者盗版的阻碍。</q><cite>——第十二章 12.3 超级传播（布莱德·考克斯）</cite></div><p class="prose">存在性证明早就有了：音乐人把作品按「拷贝」卖钱，也卖给电台按每次「使用」收钱——ASCAP 和 BMI 替音乐人统计播放情况、收版税。</p><p class="prose">日本电子工业发展协会（JEIDA）开发的芯片和协议可以让网上的每台苹果电脑自由免费地复制软件，同时计量使用权利——「每台电脑都可看成一个广播电台，广播的不是软件本身，而是对软件的使用，『听众』则只有一个」，每运行一次就激发一次版税。考克斯的小册子总结——</p><div class="aband"><q>当前，软件的易复制性是一种负担，超级分发则让它变成了一种资产；当前，软件商必须花费重金让用户知晓自己的软件，超级分发则将软件扔进世界，自己给自己做广告。</q><cite>——第十二章 12.3 超级传播（布莱德·考克斯小册子）</cite></div><p class="prose">按次付费一直是信息经济的难题：人们不愿为没看到的信息预付钱，看完之后又觉得没有它也能活下去——你能想象看完电影后被人要钱吗？（医学知识是唯一一种在没看到之前就收到钱的信息，因为购买者认为他没有这种知识就活不下去了。）加密-计量提供了两个解法：<b>记录使用量，并把昂贵的大块数据分成便宜的小块</b>。</p><p class="prose">精细粒度让斯普拉格兴奋：「你在科罗拉多州特柳赖德市自己家中写荤段子，一天一个，找到 1 万个愿意每天付 10 美分的人——一年 365000 美元，给你 12 万，你这辈子就够花了。」一个段子除了网络找不到任何市场，但在网络市场，哪怕信息量只跟一块口香糖那么多，也值得制作和销售。</p><p class="prose">他还愿意每月出 25 美分买布拉格的天气、每股 50 美分买股票价格更新、每月 1 美元买奥黑尔机场拥挤报告——<b>本质上，信息的海洋从你身边流过，但你只为你所饮的那一瓢付钱就好了。</p><p class="prose"></b>此刻这套技术是一块 95 美元的电路板（斯普拉格的公司正把它压成 20 美元的芯片；而他本人是世界主要半导体生产商之一——国家半导体……源文在此截断）。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>12.4 带电荷的东西就可用于电子货币充值</h2><span class="en">E-CASH</span></div><p class="prose">信息经济还缺一个重要组成部分——电子现金。我们已经有了电子货币：单单一个票据交换所的同业支付系统，每天通过电线和卫星流动的资金平均就有上万亿美元。</p><p class="prose">但这条数字之河中涌动的是<b>机构的电子货币</b>，它与电子现金的差别如同大型主机和个人电脑的差别——计算机从机构走向个人之后才重塑了整个社会，电子经济的全面影响，也要等到个人的日常现金交易数字化之后才能显现。</p><p class="prose">信用卡和借记卡的无现金社会有什么不对？卡本身记录了艾丽丝从报亭到托儿所的所有购买历史——可以构成一份精准且极具市场推广价值的档案，<b>艾丽丝本人却无法控制这些信息</b>；费用最后出在用户头上；商家要付比例费用，打消小额交易的念头；而且只能在专有刷卡设备上使用，排除个人对个人支付。</p><p class="prose">真正的数字现金没有这些缺点——</p><div class="tbwrap"><table><thead><tr><th>对比维度</th><th>信用卡/借记卡的无现金</th><th>真正的数字现金</th></tr></thead><tbody><tr><td>购买记录</td><td>记录从报亭到托儿所的所有购买历史，艾丽丝本人却无法控制</td><td>没有关联性——除了支付人之外，没有人能够追查到它</td></tr><tr><td>费用承担</td><td>费用最后出在用户头上，商家还要按比例付费</td><td>任何拥有良好声誉的公司都可充值，费率由市场决定，银行只是外围参与者</td></tr><tr><td>小额交易</td><td>商家要付比例费用，打消了小额交易的念头</td><td>离线工作、成本极低，适用停车场、餐厅、公交车、杂货店</td></tr><tr><td>使用限制</td><td>只能在专有刷卡设备上使用</td><td>不需要专属的硬件或软件，钱可以在任何地方、任何个人之间传递</td></tr><tr><td>个人对个人</td><td>硬件隔离排除了个人对个人支付</td><td>你不必是店家或机构用户，任何接入系统的人都可以收钱</td></tr></tbody></table></div><div class="aband"><q>真正的数字现金是真钱，具有现金的私密性和电子的灵活性。</q><cite>——第十二章 12.4 带电荷的东西就可用于电子货币充值</cite></div><div class="aband"><q>这种现金不需要专属的硬件或软件。因此，钱可以在任何地方，任何个人之间传递。</q><cite>——第十二章 12.4 带电荷的东西就可用于电子货币充值</cite></div><p class="prose">其技术核心叫「<b>盲数字签名</b>」，基于公钥加密的变种：你在「乔大叔肉店」买烤肉，商家通过核查发行银行的数字签名确认这笔钱之前确实没「花」过，但他看不到付钱人的记录；银行有验证帐单——你花了 7 美元且只花了一次，乔大叔肉店确实收到 7 美元——但交易双方没有联系，只有支付方同意，银行才能重建这两笔帐。</p><div class="aband"><q>同时做到精确记账和100%匿名，这在数学上是可以“无条件”实现的——绝无例外。</q><cite>——第十二章 12.4 带电荷的东西就可用于电子货币充值</cite></div><p class="prose">这套数学来自现居荷兰的伯克利密码学家<b>大卫·乔姆</b>——阿姆斯特丹数学与计算机中心密码系统组负责人。</p><p class="prose">他从防欺诈电子选举的不能伪造的数字签名入手，把「安全」与「私密」两个方向引向密码学；1978 年他灵光一闪，想到构造一个人群数据库：你无法通过它把其中的人关联起来，却能证实对每个人描述的正确性——1984 或 1985 年才想清楚如何实现。他把发明叫作「<b>绝对不可追踪性</b>」。</p><p class="prose">智能卡上拇指甲大小的金色方块是一部 CPU——比一片泡发的玉米片大不了多少，内存有限数额的现金，比如 500 美元或者 100 次交易（该芯片由 Cylink……源文在此截断）。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>纽约电话亭逼出来的无现金卡</h4><span class="ar">▶</span></div><div class="cb"><div class="in">纽约市为大约 5.8 万个公用电话亭中的一部分引进了无现金电话卡——促使它这么做的不是未来主义，而是小偷：据《纽约时报》报道，每三分钟就有一个电话亭暴徒砸掉钱箱或弄断听筒线，一年超过 17.5 万起，修理费每年达 1 千万美元。这种一次性电话卡用红外线光学记忆，很难少量伪造，大批量生产又非常便宜。</div></div></div><div class="case"><div class="ch"><span class="tag mid">反转</span><h4>丹麦智能卡因成功而过载</h4><span class="ar">▶</span></div><div class="cb"><div class="in">在丹麦，法律规定智能卡(1)没有最低消费；(2)不追加使用费，于是在日常使用中取代了现金。但普及为其自身种下了祸根：智能卡依赖与银行间的实时互动，哪怕卖出一块糖果都要把数据传到中央银行，电话线路被霸占，系统被交易事务淹没——造成的损失超出了其带来的价值。</div></div></div></div><p class="prose">乔姆系统的重要改进：其一，与实物现金同等的私密性——商家收到一数字美元，银行证明他确实收到、不多不少，但除了你没人能证明这钱从哪来；还可设「挟持密码」，被强盗用枪逼着说出密码时，卡表面上正常工作，实际上隐藏了更有价值的财产。</p><p class="prose">其二，<b>离线工作</b>，不通过电话线即时验证，交易记录每天一次成组传送——成本极低，适用停车场、餐厅、公交车、杂货店。其三，有个有趣的怪癖：<b>除非你想要作弊花钱超过一次，否则这钱是不可追查的</b>——两次花费所携带的额外信息就足以追踪到付款人了。因此电子货币跟实物现金一样是匿名的——但作弊者除外！</p><p class="prose">每一次加密交易只占智能卡上 64 字节；一户人家一年所有收支的财政记录，轻松存进一张高密软盘。</p><p class="prose">改变一下基础设计，人们就能在家通过电话线收付数字现金——互联网上的电子货币：<b>你给你女儿发电子邮件，附件里添加 100 美元的电子钞票</b>；她用这笔钱买回家的机票；航空公司把钱传给飞机餐供应商——没有人能够追查到流动路径。电子邮件和电子现金是天作之合。而无处不在的数字现金会最先渗透到哪里——</p><div class="aband"><q>货币是另一类信息，一种小型的控制方式。货币也会随着互联网延伸而扩展。信息流动到哪里，货币肯定也会跟随其后。</q><cite>——第十二章 12.4 带电荷的东西就可用于电子货币充值</cite></div><div class="aband"><q>我还要说：真正的数字现金，或者更准确地说，真正的数字现金所需要的经济机制，将会重新构造我们的经济、通讯以及知识。</q><cite>——第十二章 12.4 带电荷的东西就可用于电子货币充值</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>12.5 点对点金融与超级小钱</h2><span class="en">PEER-TO-PEER MONEY</span></div><p class="prose">数字货币对网络经济蜂群思维的重要影响已经开始显现。我们预计有五方面——</p><div class="grid g3"><div class="card"><h3>加速度</h3><p class="cp">货币完全脱离物质实体后，流通速度就会加快——而货币流通速度增加的效果等同于货币流通量的增加；卫星上天已使全球证券交易接近光速不分昼夜地运转，使全球货币量扩大了 5%</p></div><div class="card"><h3>连续性</h3><p class="cp">黄金、纸币组成的货币以固定单位出现、在固定时间支付——一种「批量模式」的货币；电子货币是连续流（阿尔文·托夫勒……源文此处截断）</p></div><div class="card"><h3>无限互换性</h3><p class="cp">数字货币可在任何最方便的介质中迁移：发票就在条形码中，激光一扫就可付清——任何一种有电荷的东西，都可用来充值付费；兑换外币变成了变换符号</p></div><div class="card"><h3>可达性</h3><p class="cp">电子货币将打破金融婆罗门的垄断——把图标拖到电子票据上就可以收取利息、按分钟收息、让电脑追踪汇率用最不值钱的货币付账：我们正走向编码资本主义</p></div><div class="card"><h3>私有化</h3><p class="cp">互联网的法则：谁拥有了计算机，他拥有的就不只是印刷机，还有铸币厂——准货币会突然出现在有信用的任何地方（也会在那里突然消失）</p></div></div><p class="prose">历史上，绝大多数现代实物交易网络会迅速转向货币交易；但电子货币系统的盲目性可能不会遵从这一趋势——准货币网络能否浮出水面，是个涉及 3500 亿美金税费的问题。</p><p class="prose">货币的铸造和发行是政府仅存的尚未被私有部门侵占的少数功能之一，电子货币将削弱这难以克服的障碍——在全球范围内使用机构电子货币进行洗钱已经超出了任何人的控制。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>12.6 对隐密经济的恐惧</h2><span class="en">THE HIDDEN ECONOMY</span></div><p class="prose">电子货币的本质——无形、快速传播、廉价以及全球渗透，很可能造就无法抹除的隐密经济。电子矩阵注定是一块坚硬的隐密经济的内陆：互联网络对电子现金如此友好，使其一旦嵌入网络的链接中，就很可能无法根除。</p><p class="prose">匿名数字现金的合法性从一开始就处于灰色地带——政府的倾向是要求充分公开金融交易并阻止非法交易；「真正的大问题是，在政府要求对每一笔小交易进行报告之前，货币在网络上的流动到底能达到多大的程度？</p><p class="prose">因为如果流通量足够大，超过了某个临界值，那么汇聚起来的货币就有可能提供一种经济动力，刺激跨国的货币发行服务，那时候一国的政府做些什么就都无关紧要了。」（埃里克·休斯）</p><p class="prose">休斯设想全球网络出现若干电子货币机构：供应商充当旅行支票公司，为 1% 的额外费用发行电子货币；也可能由苦苦求存的发展中国家政府资助——像老式的瑞士银行一样提供不被上报的交易。「有趣的市场试验是等到市场均衡之后，看看匿名货币的收费差别有多大。</p><p class="prose">我猜测是它可能会高上 1 到 3 个百分点，上限是大约 10 个百分点。这个数字将是金融私密性价值的第一个真实测度。还有一种可能，匿名货币将成为唯一的货币。」草根阶级突然接管原本神秘被禁止的密码领域，最重要的结果也许就是获得了可用的电子货币——而它肯定会进入主流。</p><p class="prose">到今天为止，加密技术已经衍生出：数字签名、盲证书（文凭证书无法与驾校证书关联）、匿名电子邮件，以及电子货币——这些「隔断」技术，将会随着网络的兴盛而兴盛起来。</p><div class="aband"><q>加密胜出，因为它是必要的反作用力，防止互联网不加节制地联结。任由互联网自行发展，它就会把所有人、所有东西都联结在一起。互联网说，“连接”；密码则相反，说“断开”。</q><cite>——第十二章 12.6 对隐密经济的恐惧</cite></div><p class="prose">凯利说他之所以听得进去密码朋克的观点，并不是因为觉得无政府主义是万灵丹，而是因为加密技术使网络系统产生的铺天盖地的知识和数据变得文明一些：没有这种驯服精神，互联网络就会变成扼住自身生命之网，<b>它会因自己无限增多的联结扼杀自己</b>——</p><div class="aband"><q>网络是阳，密码分子就是阴，一种微小隐蔽的力量，能够驯服去中心、分布式的系统引发的爆炸性的相互联结。</q><cite>——第十二章 12.6 对隐密经济的恐惧</cite></div><div class="aband"><q>加密技术允许蜂巢文化所渴求的必要的失控，以在向不断深化的缠结演变中保持灵活和敏捷。</q><cite>——第十二章 12.6 对隐密经济的恐惧</cite></div><div class="chips"><span class="chip">在网络经济中，多能带来更多。</span><span class="chip">隐私现在是一种定价销售的商品。</span><span class="chip">互联网绝对会是第一个电子货币深入渗透的地方。</span><span class="chip">以使私密性和安全性达成平衡</span><span class="chip">这个数字将是金融私密性价值的第一个真实测度</span></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>12.1–12.2 多处｜</b>「在凯玛特」（DAT 藏数据段）「蒂姆·C.梅，密码无政府状态：加密，数字货币，匿名网络，数字假名，零知识，信誉，信息市场，黑市，政府倒台」（宣言签名行）「如果网络的大部分成员都使用点对点」「信誉，PGP加密」（白板会议日程）「也就是把上百万台苹果电脑联结在一起……远比国家安全局的中央化的计算机要强大。）」（大众超级计算机段末括号）「（当然啦，这样做就对了。）」（PGP 法律问题段）等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>12.3–12.4 多处｜</b>「把它卖给了斯蒂夫·乔布斯，用在NeXT机」（考克斯对象模块段）「彼得·斯普雷格可是世界主要的半导体生产商之一——国家半导体」等处句子未收尾，均不补写；「这种芯片由Cylink」（智能卡 CPU 段）、「日本电信电话株式会社(NT)」（NTT 编号残缺）同属此列。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>12.5 结构说明｜</b>五方面影响之「连续性」一条在「电子货币是连续流。用阿尔文·托夫勒」处截断，托夫勒的原话缺失，本篇仅保留源文可见部分并注明，不补写。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">网络之部｜电子货币</span><a href="../06-工业生态学与网络经济学/index.html">← 工业生态学·网络经济学</a><a href="../08-上帝的游戏与形式的图书馆/index.html">上帝的游戏·形式的图书馆 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>变化之部·变化之架构 · 后达尔文主义 · 沉睡的蝴蝶｜失控 精读</title>
+<meta name="description" content="第十八至二十章是一部变化之架构的通史：进化自身也在进化——从绕开中心法则的拉马克之梦、后达尔文主义者的共生与跳变，到考夫曼的反混沌与混沌边缘。正因为自然选择什么都能解释，所以它其实什么也没有解释。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../10-控制的未来与开放的宇宙/index.html">← 控制的未来·开放的宇宙</a><a href="../12-水往高处流与预言机/index.html">水往高处流·预言机 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">深</div>
+  <div class="stamp s4">深度进化</div>
+  <h1>变化之架构 · 后达尔文主义 · 沉睡的蝴蝶</h1>
+  <p class="sub">第十八至二十章是一部变化之架构的通史：进化自身也在进化——从绕开中心法则的拉马克之梦、后达尔文主义者的共生与跳变，到考夫曼的反混沌与混沌边缘。正因为自然选择什么都能解释，所以它其实什么也没有解释。</p>
+  <div class="meta"><span>变化之部</span>
+    <span class="k">无序之有序</span>
+    <span>正文 42,175 字</span>
+    <span>21 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>日常进化</a><a href="#s3" data-t="s3"><span class="cn">叁</span>绕开中心法则</a><a href="#s4" data-t="s4"><span class="cn">肆</span>学习与进化</a><a href="#s5" data-t="s5"><span class="cn">伍</span>进化的进化</a><a href="#s6" data-t="s6"><span class="cn">陸</span>进化解释一切</a><a href="#s7" data-t="s7"><span class="cn">柒</span>不完备之处</a><a href="#s8" data-t="s8"><span class="cn">捌</span>自然选择不够</a><a href="#s9" data-t="s9"><span class="cn">玖</span>共生连理枝</a><a href="#s10" data-t="s10"><span class="cn">拾</span>非随机突变</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>怪亦有道</a><a href="#s12" data-t="s12"><span class="cn">拾贰</span>化抽象为具象</a><a href="#s13" data-t="s13"><span class="cn">拾叁</span>物以类聚</a><a href="#s14" data-t="s14"><span class="cn">拾肆</span>编码之外</a><a href="#s15" data-t="s15"><span class="cn">拾伍</span>搜索空间</a><a href="#s16" data-t="s16"><span class="cn">拾陸</span>选择的数学</a><a href="#s17" data-t="s17"><span class="cn">拾柒</span>无序之有序</a><a href="#s18" data-t="s18"><span class="cn">拾捌</span>网络数学</a><a href="#s19" data-t="s19"><span class="cn">拾玖</span>迭坐自催化</a><a href="#s20" data-t="s20"><span class="cn">貳拾</span>值得问的问题</a><a href="#s21" data-t="s21"><span class="cn">貳拾壹</span>自调节活系统</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>正是因为自然选择什么都能解释，所以它其实什么也没有解释</p><cite>——第十九章 19.1 达尔文进化论不完备之处（理查德·莱旺顿）</cite></div><div class="epi"><p>乍一看这有些奇怪，但的的确确，束缚即创造。</p><cite>——第十九章 19.8 DNA并不能给所有东西编码</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">三章合演一台进化的自我升级：十八章讲进化把学习写入自身、十九章讲后达尔文主义者找出自然选择之外的创造力、二十章讲考夫曼证明秩序无需指令即可涌现</p><p class="thesis">进化是一种自身求变、自行重组的有组织变化的架构——它不仅创造生物，还创造创造本身。后达尔文主义者的课题是：自然选择的适用极限何在？答案是共生、定向变异、跳变与自组织四种机制；而考夫曼的网络数学则宣布：<b>混沌之中会涌现出无序之有序</b>——生命是必然的，且被调节到混沌的边缘。</p><div class="chain"><div class="node"><div class="n">恒定</div><div><p class="tt">被遗忘的另一半</p><p class="dd">进化理论的书里很少有谈到稳定性的——尽管进化在大部分时间里都变化不大</p></div></div><div class="node"><div class="n">学习</div><div><p class="tt">绕开中心法则</p><p class="dd">躯体和行为的适应性被基因吸收并化为己有——遗传同化将进化提速了一个档级</p></div></div><div class="node"><div class="n">超越</div><div><p class="tt">后达尔文主义</p><p class="dd">自然选择的适用极限何在？——共生、定向变异、跳变、自组织补充了那只无形之手</p></div></div><div class="node"><div class="n">束缚</div><div><p class="tt">怪亦有道</p><p class="dd">基因组抗拒变化、发育限制怪物、种群筛选个体——束缚即创造</p></div></div><div class="node"><div class="n">反混沌</div><div><p class="tt">无序之有序</p><p class="dd">考夫曼的随机基因网络落入行为盆地——细胞种类数由结构本身决定，与自然选择没太大关系</p></div></div><div class="node"><div class="n">边缘</div><div><p class="tt">混沌边缘冲浪</p><p class="dd">生命是被调节到混沌边缘的活系统——最具适应性的系统与失控之间仅一线之隔</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>18.1 日常进化的革命</h2><span class="en">EVERYDAY EVOLUTION</span></div><p class="prose">翻开任何一本论述进化的书，关于变化的故事俯首可拾——适应、物种形成、突变，这些术语说的都是一回事：转变。但进化理论的书里很少有谈到稳定性的：你在书中找不到类似静态平衡、固定性、稳定性或任何表示恒常的术语。<b>尽管进化在大部分时间里都变化不大，但老师们和教科书们却闭口不谈这种恒定。</p><p class="prose"></b>恐龙被当作不愿改变的典型，这实在有点冤——我们时常劝诫怯懦者：别做恐龙！要么适应，要么倒下。</p><p class="prose">华盛顿进化系统协会由 180 名工程及科学专家组成，其宪章认为所有系统毫无例外都是进化性的。凯利问协会创始人鲍伯·克劳斯贝：有没有你认为不是进化的系统？他回答——</p><div class="aband"><q>我们还没看到任何一处没有进化的角落。</q><cite>——第十八章 18.1 日常进化的革命（鲍伯·克劳斯贝）</cite></div><p class="prose">最能体现变化之意的那些词都与有机体密切相关：成长、发育、进化、变异、学习、蜕变、适应——<b>大自然就是一个有序变化的王国。</b>而迄今为止的无序变化正是技术的真实写照，无序变化的极致是「革命」——这是人造之物特有的激烈、间断式的变化，自然界中不存在革命。但凯利预言——</p><div class="aband"><q>我预言，这种每天发生的革命将会受到每天发生的进化的狙击。</q><cite>——第十八章 18.1 日常进化的革命</cite></div><p class="prose">与其不断地泵入少许的变化，不如将变化的本质——一种适应的精神，植入系统的内核：<b>这个神奇的幽灵就是人工进化。</b>往大了说，它能繁育出人工智能；往小了说，它可以促成温和的适应。无论从哪方面说，进化都是一种机器们远不具备的自引导力量——</p><div class="aband"><q>人工进化是生物所属的新生物学的第二主线，也是机器所属的新生物学的第一主线。</q><cite>——第十八章 18.1 日常进化的革命</cite></div><p class="prose">后现代思维接受了「进化对未来一无所知」这一曾经令人不安的理念。讽刺的是，进化比我们所想的更混沌无知：它既不知从何而来，也不知向何处去——<b>大自然从不知道它昨天做过什么，它也不在乎这个。</p><p class="prose"></b>当我们把自然看作一个系统时，希望它能记录下自己的所作所为，但生物学有条金科玉律叫中心法则：自然没有任何簿记——信息由基因传递给肉体，但绝不可能倒推。一个普通的有机体对其下层的运作细节没有丝毫概念；植物和动物都是小型的制药厂，随便鼓捣出的生化药剂都会使基因泰克公司（源文在此截断）。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>18.2 绕开中心法则</h2><span class="en">CIRCUMVENTING THE CENTRAL DOGMA</span></div><p class="prose">假使大自然能在生物体内双向传递信息的话，就可能实现拉马克进化——当羚羊需要跑得更快以逃离狮口时，它可以利用由身体到基因的交流方式引导基因制作快腿肌肉，再把革新后的基因传递给后代，进化的过程将大大加快。</p><p class="prose">但拉马克进化需要生物体能够为其基因编制有效的索引：身体并不记录自己是如何解决问题的，因此也就不能确定到底是哪个基因被用来在铁匠的肱二头肌上给肌肉充血。生物体内有数百万个基因，可以生成数十亿个特征——<b>簿记和索引的复杂性将远超过生物体本身的复杂性。</b>所以——</p><div class="aband"><q>基因中没有管理信息交通的中央管理局。基因组就是极致的分权系统——蔓生的冗余片断，大规模并行处理，没有主管，无人监察各个事务。</q><cite>——第十八章 18.2 绕开中心法则</cite></div><p class="prose">不过，身体对环境的适应会为进化赢得时间。安第斯高山居民的几千年高山生活中，心肺为了适应高海拔不得不超负荷运转；假如村里出生了一个基因上有处理高海拔压力更好方式的「怪人」，这种特征就可能代代相传。</p><p class="prose">乍看之下这似乎正是经典的达尔文进化，但为了使达尔文进化能够进行，生物首先必须在未得益于基因改变的条件下在这个环境里生活许多代——<b>由躯体带头的适应能力（肉体适应性），随着时间的推移，被基因吸收并化为己有。</b>理论生物学家沃丁顿（源文此句截断）称其为遗传同化，或鲍尔温效应。</p><p class="prose">谁具有灵活的外在表现形式，谁就能获得回报——这正是进化的精髓所在。但肉体的灵活性是「代价不菲」的：适应一种压力，就会削弱适应另一种压力的能力；在迅速变化的环境里，保持身体灵活可塑是首选的折衷方案。</p><p class="prose">这还不是故事的全部——左右着身体的是行为：长颈鹿必须先想要够到高处的树叶，人类因为某种原因不得不选择移居到海拔更高的村庄。自然选择将进化的刻度盘调至最佳特性，而肉体和行为适应性则不仅提供了进化的刻度盘，还能告知应该向哪个方向转动以及离最佳特性还有多远——</p><div class="aband"><q>遗传同化将进化提速了一个档级。</q><cite>——第十八章 18.2 绕开中心法则</cite></div><p class="prose">生物体在其一生中有很大的空间重塑自己。加拿大维多利亚大学的罗伯特·里德指出，生物能通过以下可塑性来回应环境的变化——</p><div class="chips"><span class="chip">形态可塑性（一个生物体可能有不止一种肉体形态）</span><span class="chip">生理适应性（一个生物体的组织能改变其自身以适应压力）</span><span class="chip">行为灵活性（一个生物体能做一些新的事情或移动到新的地方）</span><span class="chip">智能选择（一个生物体能在过去经历的基础上做出选择）</span><span class="chip">传统引导（一个生物体能参考或吸取他人的经验）</span></div><p class="prose">这里的每一个自由度都代表一个方向，生物体可以沿着它在共同进化的环境中寻找更好的办法重塑自己——因而这五种选项被称为<b>可遗传学习的 5 个变种</b>。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>18.3 学习和进化之间的区别</h2><span class="en">LEARNING VERSUS EVOLUTION</span></div><p class="prose">戴维·艾克利和迈克尔·利特曼（1990 年）、杰弗里·韩丁和史蒂文·诺兰（1987 年）通过仿真实验明确无疑地揭示了会学习的生物族群是如何比那些不会学习的生物族群更快地进化的。艾克利和利特曼发现——</p><div class="aband"><q>我们发现，能够将学习和进化融为一体的生物要比那些只学习或只进化的生物更成功，它们繁育出更有适应力的族群，并能一直存活到仿真实验结束的时刻。</q><cite>——第十八章 18.3 学习和进化之间的区别（艾克利和利特曼）</cite></div><p class="prose">迈克尔·利特曼告诉凯利：「达尔文进化的问题在于，你要有足够的进化时间！」可是，谁能等上一百万年呢？在将人工进化注入制造系统的努力中，要加快事物的进化速度，一个办法就是向其中加入学习——<b>人工进化很可能需要一定的人工学习和人工智能，才能在人类可接受的时间尺度内上演。</p><p class="prose"></b>而学习加上进化，正是文化的一笺配方——</p><div class="aband"><q>通过学习和行为将信息传递给基因，是遗传同化；反之，由基因将信息传递给学习和行为，就是文化同化。</q><cite>——第十八章 18.3 学习和进化之间的区别</cite></div><p class="prose">文化人类学家克利福德·格尔茨对此做了总结：贯穿冰河时代的、如同冰川一般缓慢而坚定的文化成长，改变了进化中的人类所面对的选择压力，对人类进化起着主要的指导作用——我们不得不放弃试图通过基因来精准、规律地控制我们行为的道路。</p><p class="prose">社会生物学家威尔逊和拉姆斯登则用数学模型发现了「千年规则」：文化进化能带动基因的重大变化，使之在一千年内就能迎头赶上。威尔逊认为——</p><div class="aband"><q>基因和文化不可分离地连为一体。任何一个发生变化都将不可避免地迫使另一个也发生变化</q><cite>——第十八章 18.3 学习和进化之间的区别（威尔逊和拉姆斯登）</cite></div><p class="prose">文化随我们的躯体而进化，反之亦然。在丹尼·希利斯的概念中，文明的人类是「世界上最成功的共生体」——文化和生物行为互惠互利、互为依存。对人体来说，这种朝向信息系统的加速进化似乎意味着生物性的萎缩：正如生命无情地侵入物质并将其据为己有一样，文化也将生物性据为己有——<b>在此我宣称，文化修改我们的基因。</p><p class="prose"></b>凯利由此推想：拉马克进化的优势是如此显著，以至于大自然找到了使其发生的方式——进化搜寻着行星表面，力图找寻拉马克进化而不自知；用马文·明斯基的话来说，达尔文进化不仅缓慢，而且「愚钝」——</p><div class="aband"><q>当人类的大脑诞生后，进化终于找到了预见并引导自身进程所需的复杂性。</q><cite>——第十八章 18.3 学习和进化之间的区别</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>18.4 进化的进化</h2><span class="en">THE EVOLUTION OF EVOLUTION</span></div><p class="prose">进化是一种有组织地变化的架构。不仅如此——<b>进化是一种自身求变、自行重组的有组织变化的架构。</b>地球上的进化已经经历了 40 亿年漫长的结构变化，进化的进化可以归结为以下一系列历史进程——</p><div class="chips"><span class="chip">系统自发</span><span class="chip">复制</span><span class="chip">遗传控制</span><span class="chip">肉体可塑性</span><span class="chip">弥母文化</span><span class="chip">自我导向的进化</span></div><p class="prose">在地球的早期岁月中，进化更偏心于那些稳定的事物（源文在此截断）——进化可以更长久地作用于那些稳定的事物，因而稳定通过进化产生进一步的稳定（从沃尔特·方塔纳——源文此句截断）。</p><p class="prose">进化的下一步是进化出自复制的稳定性；接下来，遗传机制从幸存机制中分离出来，进化进化出同时具有基因型和表现型的对偶系统；随着进化进化出更复杂的躯体和行为，躯体得以重塑自身，打开「学习」的空间；学习加快了人脑这台复杂的符号学习机的进化，进化因而能以自觉和「更聪明」的方式加快自身的进化速度——<b>这就是我们现在所处的历史阶段。</p><p class="prose"></b></p><div class="aband"><q>人类所缔造的人工进化是否会成为进化的下一个舞台？</q><cite>——第十八章 18.4 进化的进化</cite></div><p class="prose">还存在一个探索空间的可能方法之空间——这个元进化，或者以超级进化、深度进化、乃至终极进化名之，逡巡于所有可能的进化游戏中。生物体、弥母、生物群系，凡此种种，都只是进化用以维持其进化的工具。</p><p class="prose">进化真正想要的，是揭示（或创造）某种机制，能以最快的速度揭示（或创造）宇宙中可能的形式、事物、观念、进程——其最终目的不仅要创造形式、事物和思想，<b>而且要创造用以发现或创造新事物的新方法。</b>这听起来有些饶舌，但凯利找不到不那么绕口的说法——</p><div class="aband"><q>进化的工作就是通过创造所有可能的可能性籍以栖身的空间来创造所有可能的可能性。</q><cite>——第十八章 18.4 进化的进化</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>18.5 进化解释一切</h2><span class="en">EVOLUTION EXPLAINS EVERYTHING</span></div><p class="prose">进化的理念是如此强大且具有普适意义，似乎万事万物背后都有它的影子。传奇的考古学家德日进曾写道——</p><div class="aband"><q>进化乃理论乎？体系乎？抑或假说乎？未及其万一也。概凡理论、假说、体系，皆须以进化为基本之原则，方可成其为真。进化乃普照世间之光明，指引万物之航标。是为进化。</q><cite>——第十八章 18.5 进化解释一切（德日进）</cite></div><p class="prose">然而，进化这种解释一切的作用使其蒙上了一层宗教的阴影。华盛顿进化系统协会的鲍伯·克劳斯贝就曾毫无顾忌地说道——</p><div class="aband"><q>凡是人们看见上帝之手的地方，我们都能看见进化。</q><cite>——第十八章 18.5 进化解释一切（鲍伯·克劳斯贝）</cite></div><p class="prose">进化与宗教有许多貌似之处：进化的理论框架是自包容的、丰富的，几乎是不证自明、不容争辩的。作家玛丽·密德格雷在其短小精悍的著作《作为宗教的进化》中，以这样四句话作为开场白——「进化不仅是理论科学中的一潭死水。它还是——也不得不是，关于人类起源的一个至强传说。任何故事都一定有其象征意义。</p><p class="prose">我们大概是第一个弱化这种意义的文化。」她并非要质疑进化理论的真实性，她所反对的是罔顾进化的逻辑性而空谈这个强大的理论对我们人类所做的一切。</p><div class="aband"><q>揭示深度进化的内在本质之时，也即是触动我们灵魂之日。</q><cite>——第十八章 18.5 进化解释一切</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>19.1 达尔文进化论不完备之处</h2><span class="en">INCOMPLETENESS OF DARWINISM</span></div><p class="prose">「它完全地错了。」——直言不讳的林恩·玛格丽丝说的是她最近的靶子：达尔文派的进化论信条。关于「什么是错的」，玛格丽丝以前曾经说对过：1965 年她提出真核细胞共生起源的惊人论断；1974 年她又（跟詹姆斯·洛夫洛克一起）提出了盖亚的设想。如今，她又公开对历经百年的达尔文学说的现代框架发起抨击。</p><div class="aband"><q>它完全地错了。像在巴斯德之前的传染病医学一样错了。像颅相学一样错了。它的所有重要信念都错了。</q><cite>——第十九章 19.1 达尔文进化论不完备之处（林恩·玛格丽丝）</cite></div><p class="prose">一批微生物学家、基因学家、理论生物学家、数学家和计算机科学家正在提出：生命所包含的东西，不仅仅是达尔文主义所说的那些东西。他们并不排斥达尔文所贡献的理论；他们想做的，只是要超越达尔文已经做过的东西——凯利把他们称为<b>后达尔文主义者</b>。</p><p class="prose">他们中谁都不否认自然选择的存在，他们的异议所针对的是达尔文论证那种横扫一切、不容其他的本性。后达尔文主义学者提出的重大课题是——</p><div class="aband"><q>自然选择的适用极限何在？什么是进化所不能完成的？</q><cite>——第十九章 19.1 达尔文进化论不完备之处</cite></div><p class="prose">就人工进化而言，这些界限对实践非常重要：我们希望人工进化产生出无穷的多样性，却不容易做到；我们希望对它的控制能略多于我们对有机进化的控制——有此可能吗？事实上，我们在今天所看到的所有那些激进的进化论观点，几乎都可以在达尔文发表理论到他被当成教条接受之前的那段时间里找到根源。</p><p class="prose">而对于达尔文理论的弱点，没有人比达尔文自己更清楚——他主动提供过人眼这个让批评者们沿用了百年的实例，并在给阿萨·格雷的信中写道——</p><div class="aband"><q>你说的弱点我同意。直到今天，眼睛还是会让我不寒而栗。</q><cite>——第十九章 19.1 达尔文进化论不完备之处（达尔文致阿萨·格雷的信）</cite></div><p class="prose">达尔文的立论是基于逻辑推理的论断，可是合乎逻辑的东西未必是实情。新达尔文主义把蝴蝶翅膀的每一次扇动、叶片上的每一条曲线、鱼的每一个种类都归于适应性选择来解释——似乎没有什么不能归结为适应的结果。正如理查德·莱旺顿这位著名的新达尔文主义者所言——「正是因为自然选择什么都能解释，所以它其实什么也没有解释」。</p><p class="prose">科学哲学家卡尔·波普更直接了当地认为，因为不能被证伪，所以新达尔文主义根本不是什么科学。但计算机诞生出了第三种进行科学工作的方式：仿真——一次仿真，同时就会既是理论也是实验。</p><div class="aband"><q>人工进化曾一度作为自然进化的一种仿真，但如今它闯出了自己的一片天地。</q><cite>——第十九章 19.1 达尔文进化论不完备之处</cite></div><div class="tbwrap"><table><thead><tr><th>挑战者 / 补全者</th><th>对本篇叙事的贡献</th></tr></thead><tbody><tr><td>林恩·玛格丽丝</td><td>真核细胞共生起源；盖亚假说；「自然选择是编辑，而不是作者」</td></tr><tr><td>理查德·高兹史密特</td><td>「有前途」的怪物与跳变式进化——生前被嘲笑，70 年代被古尔德重提</td></tr><tr><td>史蒂文·杰·古尔德</td><td>间断平衡；重提高兹史密特；化石记录中的停滞与突然出现</td></tr><tr><td>约翰·凯恩斯 / 拜瑞·豪尔</td><td>大肠杆菌定向突变的实验证据——变异速率高出随机预期约一亿倍</td></tr><tr><td>皮埃·阿博彻</td><td>畸形学是活生物体内在自组织进程的蓝图——内在论</td></tr><tr><td>斯图亚特·考夫曼</td><td>无序之有序；随机基因网络；混沌边缘——第二十章的主角</td></tr></tbody></table></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>19.2 只有自然选择还不够</h2><span class="en">SELECTION ALONE IS NOT ENOUGH</span></div><p class="prose">野外的长期观察——塔希提岛的蜗牛、夏威夷的果蝇、加拉帕戈斯群岛的鸣禽、非洲的湖中鱼类——证实了自我管理的适应性变化确实会在自然界中自发出现：鸣禽的喙确实会像达尔文预言的那样变粗变厚。不过，实验结果却并未显示出有新层级的多样性或任何新物种，甚至也未能证实有新的复杂性涌现出来。</p><p class="prose">更值得注意的是：人类在对动物的驯养过程中，也未见有任何新的物种出现——对数亿代果蝇的研究中未见有新种果蝇出现。</p><p class="prose">迄今为止，还没有人见证过那确切的变化时刻——也就是自然选择机制激发其复杂性跃入新层次的那一时刻。人工生命跟它的表亲人工智能有着同样的弊病：没有一种人工智能能连续运行超过 24 个小时；绝大多数依靠计算运行的模拟生命，热闹了一阵子后，很快就归于沉寂（其中包括汤姆·雷设计的「地球」）。</p><p class="prose">法国进化学者比埃尔·格拉斯说——「变异是一回事，进化则完全是另一回事……变异提供了变化，但不是进步。」所以，尽管自然选择也许形成了微变，却没人能担保它可以形成宏变。绝大多数自然选择的批评家都勉强承认达尔文的「适者生存」是正确的——自然选择主要意味着不适合者的毁灭；但是——</p><div class="aband"><q>自然选择主要意味着不适合者的毁灭。</q><cite>——第十九章 19.2 只有自然选择还不够</cite></div><p class="prose">创造出有用的东西听来有点唬人——达尔文主义观点所忽视的，是对适合者产生的似是而非解释：<b>在被选定之前，适合者又在哪里呢？</b>按照当今新达尔文主义的通行解释，适合者归功于随机变异。但倘若自然选择能够把那些不可胜数的失败尝试都清除出去而且有无限的时间，这种随机的变异能否产生出可供选择的完整系列？</p><p class="prose">后达尔文主义提出，归根到底，进化过程中还存在别的作用力——动态共生、定向变异、跳变论、自组织理论，作为对达尔文那无情的选择过程的补充——</p><div class="aband"><q>他们把每一种动态共生、定向变异、跳变论或者自组织理论都看做是一种机制，一种从长远来看，作为对达尔文那无情的选择过程的补充，能促使进化不断革新的机制。</q><cite>——第十九章 19.2 只有自然选择还不够</cite></div><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>共生</h3><p class="cp">两个正常运转的简单系统合并为一个更大、更复杂的系统——交互关系中的进化可以跃过个体上百万年的试错。</p></div><div class="card num"><div class="idx">二</div><h3>定向变异</h3><p class="cp">凯恩斯与豪尔：大肠杆菌会自发产生所需的突变来直接响应环境压力，变异速率高出随机预期约一亿倍。</p></div><div class="card num"><div class="idx">三</div><h3>跳变</h3><p class="cp">高兹史密特：发育早期的小变化会在成熟期放大成大变化——偶尔诞生「有前途」的怪物，进化跳跃式前进。</p></div><div class="card num"><div class="idx">四</div><h3>自组织</h3><p class="cp">阿博彻：内部结构特别是染色体的内部结构，发挥着等同于或超出自然选择的作用，造成生物组织的多样性。</p></div></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>19.3 生命之树上的连理枝</h2><span class="en">IN SIC VIVOS ANNEXA</span></div><p class="prose">自从玛格丽丝提出「细菌共生是祖细胞形成的核心事件」这一假设之后，生物学家们忽然发现，在微生物世界中，共生现象比比皆是。按照传统的图景，种群随着微小的、随机的、累进的变化而骚动不安；与此相反，玛格丽丝希望我们考虑的是两个正常运转的简单系统合并为一个更大、更复杂系统的意外现象。</p><p class="prose">这些涌现的细胞无需历经十亿年的反复摸索来重新发明一种过程——它们将细菌的发明据为己有。在某些情况下，共生伴侣的基因株会融合在一起：细胞间的基因转移在野生环境的细菌之间发生频率极高——</p><div class="aband"><q>世界上所有的细菌就是一个单一的、在基因方面相互作用的超有机体，它在其成员之中以极快的速度吸收并且传播基因的革新成果。</q><cite>——第十九章 19.3 生命之树上的连理枝</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">反转</span><h4>从地衣孤例到无处不在</h4><span class="ar">▶</span></div><div class="cb"><div class="in">人们曾经认为，共生现象（两个有机体合而为一）只会发生在类似地衣这种比较孤立的奇特生物身上。自从玛格丽丝提出「细菌共生是祖细胞形成的核心事件」这一假设之后，生物学家们忽然发现，在微生物世界中，共生现象比比皆是——由于微生物生命是地球上所有生命形式中的主要部分，广泛分布的微生物共生使共生无论在过去还是现在都是一种基本行为。</div></div></div><div class="case"><div class="ch"><span class="tag mid">新解</span><h4>病毒信使与人类 DNA</h4><span class="ar">▶</span></div><div class="cb"><div class="in">细胞间的基因转移是共生合作的著名机制：在野生环境的细菌之间发生频率极高，专有信息可以在不同物种间穿梭往返。物种间的基因转移也会在包括人类的复杂物种间发生，通常由裸露病毒担任信使。许多生物学家认为人类 DNA 链中有大块片断是插入的病毒；甚至有人认为这是一个循环——人类很多疾病的病毒就是逃逸的人类 DNA 的乖戾部分。</div></div></div></div><p class="prose">如果这是真的，那么细胞所具有的这种共生本性就能为我们提供不少教益。首先，它提供了一个实例：重大的进化改变减少了给个体生物的直接好处（因为个体消失了），这与达尔文主义教条相反。其次，进化的改变不是由细微渐进的差异累积而成的，这同样与达尔文主义教条相悖。</p><p class="prose">大规模的常规共生行为能促成自然界中很多复杂现象——它通过对生物形式库进行扩充而释放出了进化空间的又一个维度：<b>处于交互关系中的进化过程可以跃过个体的上百万年反复试错的时间。</b></p><p class="prose">也许，没有共生，进化过程也可以直接获得有核细胞，但是要完成这个目标可能要再花上 10 亿年或者 50 亿年的时间。共生将散布在生命谱系中的各种经验和所得重新结合起来——</p><div class="aband"><q>生命之树在不断地开始散叶，向四面蔓生枝条。与此同时，共生又把这棵生命之树上分叉的枝条重新拢到一起使之相交。</q><cite>——第十九章 19.3 生命之树上的连理枝</cite></div><div class="aband"><q>而融合了共生的进化，更像是一丛灌木而非一棵树——生命之丛。</q><cite>——第十九章 19.3 生命之树上的连理枝</cite></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>19.4 非随机突变的前提</h2><span class="en">NONRANDOM MUTATION</span></div><p class="prose">自然选择是自然界冷酷的死神。它一心一意地削减着生命——它是一位编辑，但只会一个字：「不」。变异则轻易地通过衍生大量新生命来与死神这首单音符的葬曲相抗衡——变异也只会一个词：「可能」。但死亡清除了那些无能者，为新生者腾出了位置；如果说是死亡导致翅膀的形成、眼球的运作，那就犯了根本性的错误。</p><p class="prose">林恩·玛格丽丝说——「自然选择是编辑，而不是作者」。那么，又是什么，创造发明了飞行能力以及视觉能力呢？关于革新性成果最初起源的问题，达尔文问的是物种起源，但没有问：个体之间的变异从何而来？</p><p class="prose">我们确知的是：显然，变异不是由于随机突变而产生——至少不总是如此；在变异中其实存在着某种程度的秩序。基因与基因之间存在着十分广泛的相互作用和相互调节的关系，因此基因组形成了抗拒变化的复杂整体。正如进化论学者恩斯特·迈尔所说——「自由变异只在基因型的有限部分才能见到。</p><p class="prose">」饲养员通常会遇到这样的困窘：挑选某一特定性状会同时激活某些未知的基因，带来不太如意的副作用；放松环境压力之后，基因组仿佛弹回到原点——<b>变异不仅是非随机的、范围有限的，而且根本就是很难获得的。</b></p><p class="prose">当我发现居然找不到任何还持随机突变观点的主流学者时，一开始还真是大吃一惊。林恩·玛格丽丝讽刺道——</p><div class="aband"><q>哦，所谓随机，只不过是为无知找的一个借口而已。</q><cite>——第十九章 19.4 非随机突变的前提（林恩·玛格丽丝）</cite></div><p class="prose">另一种加强版才是富有刺激性的异端观点：基因组为特定目的会创造出突变——定向突变可以刺激自然选择的盲目进程，把它推向越来越复杂的状态。1988 年，哈佛的遗传学家约翰·凯恩斯发表了大肠杆菌受环境影响诱发突变的证据：在某些特定的条件下，这种细菌会自发产生所需的突变来直接响应环境压力——这简直就是拉马克的观点。</p><p class="prose">拜瑞·豪尔的研究不仅证实了凯恩斯的断言，还发现变异的速率比随机理论统计的预期值高约一亿倍，而且只有那些有选择压力的领域发生了突变——这些成功的小不点们精确地敲定了那种刚好符合需要的变化。</p><p class="prose">有些定向变异很复杂，需要同时在两个基因上发生突变，他把这称为「极小可能发生事件中的极不可能」：<b>它们身上，带着某种设计的味道。</b></p><div class="aband"><q>在某些特定的条件下，这种细菌会自发产生所需的突变来直接响应环境压力。</q><cite>——第十九章 19.4 非随机突变的前提（约翰·凯恩斯）</cite></div></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>19.5 怪亦有道</h2><span class="en">EVEN MONSTERS FOLLOW RULES</span></div><p class="prose">自然界中的野生进化与计算机上的合成进化之间的差别就是：软件没有躯体。生物代码改动后，在代码与终端效果之间存在一系列受物理或化学变化控制的中间实体——酶、蛋白质和生命组织。进化是善于创造的，也是保守的，总在凑合着用些现成的东西——生物极少会从头来过。<b>没有躯体的进化是不受限制的进化。</p><p class="prose"></b>而有实体的进化则受到诸多条件的约束，并且既有的成功阻止了其开倒车——不过，这些束缚也给予了进化一个立足之地：人工进化要想真的有所成就的话，也许同样需要依附一个躯体。</p><p class="prose">躯体成形之际，时间也就滴答开始了——这是迄今为止人工进化几乎没有的另一样东西：发育的时间。果蝇身上著名的触足突变就是一个实例：这个单点突变搅乱了果蝇胚胎的足肢生成系统，在原本应该是触角的地方生出一条腿来。</p><p class="prose">不过，奇怪的是，这些怪物似乎遵循着某种内在的规律：独眼的动物不论什么物种，鼻孔几乎总是长在它的眼睛上面；双头通常要比三头更为常见。既然这些怪物很少能生存下来，自然选择也就不可能在两者中有什么偏好——</p><div class="aband"><q>那么这种变异的指令必定来自于内部。</q><cite>——第十九章 19.5 怪亦有道</cite></div><p class="prose">哈佛比较动物学博物馆的皮埃·阿博彻认为，畸形学是一幅被忽视的描绘活生物体强劲内在自组织进程的蓝图。怪物们的这种有序内在显示出一种深深潜伏着的内在力量，影响着有机体的外部形状。作为「内在论者」，阿博彻写道——「可能的形式集合是系统内在结构的表象。</p><p class="prose">」因而，我们看到的双头怪物，其出现的原因也许就跟我们有对称生长的手臂一样，很有可能都不归因于自然选择。恰恰相反——</p><div class="aband"><q>恰恰相反，内部结构特别是染色体的内部结构，以及发育过程中所累积的形态改变，发挥着等同于或超出自然选择的作用，造成了生物组织的多样性。</q><cite>——第十九章 19.5 怪亦有道（皮埃·阿博彻）</cite></div></section><section id="s12"><div class="h2"><span class="cn">拾贰</span><h2>19.6 化抽象为具象</h2><span class="en">EMBODYING ABSTRACTIONS</span></div><p class="prose">在性活动中，两条染色体不是一丝不挂地重新结合，而是被包裹在一个巨大的卵细胞里面——这个塞得满满的卵细胞对于如何重组基因拥有很大的话语权（其自身非染色体DNA——源文在此截断）。</p><p class="prose">每一个生物卵细胞都会在染色体之外携带好几个DNA信息库；令正统理论最感困扰的事情在于，卵细胞有可能在内部DNA与染色体DNA之间不断交换编码信息——这就违反了中心法则。达尔文的批评者亚瑟·凯斯特勒指出：我们有理由怀疑中心法则这样的规则，因为——「它会是生物进程中唯一不需要反馈的实例」。</p><p class="prose">德国形态学家鲁伯特·雷德尔的话一锤定音——</p><div class="aband"><q>新拉马克主义认为存在一种直接的反馈；而新达尔文主义则认为不存在这种反馈。两者皆错。真相介于两者之间。反馈是有的，但不是直接的。</q><cite>——第十九章 19.6 化抽象为具象（鲁伯特·雷德尔）</cite></div><p class="prose">躯体的成形过程对人工进化的缔造者们有两个借鉴之处。第一，成熟机体的变异受到胚胎期母体卵细胞环境的间接作用——间接反馈的一个主要环节发生在胚胎期的极早期阶段，就在基因化身为肉体的那几个小时内。第二，在这几个小时里，胚胎就是一个放大器：<b>微小的改变会在发育过程中被放大</b>。</p><p class="prose">这个观点由伯克利的遗传学家理查德·高兹史密特提出，一生都受到嘲笑，直到 20 世纪 70 年代才被古尔德重提并大力宣讲。高兹史密特究其潦倒的一生都在证明：仅仅将微进化（从红玫瑰到白玫瑰）推而广之是无法解释宏进化（从虫子到蛇）的——</p><div class="aband"><q>通过研究昆虫的发育他得出结论：进化过程是跳跃式前进的。</q><cite>——第十九章 19.6 化抽象为具象</cite></div><p class="prose">发育早期的小变化会导致成熟期的大变化，从而诞生一个怪物；尽管多数极端变异都会夭折，但偶尔也会有些大的变化能融入整体，于是诞生某种<b>「有前途」的怪物</b>——它可能会长出一对完整的翅膀，而按照达尔文理论则需要有一种半翅的中间态。这也能解释为什么化石中找不到过渡形态的物种。</p><p class="prose">正如他的拥护者古尔德所写——「胚胎早期的微小改变，经过生长过程的累积之后，会在成体身上产生巨大的差异……如果我们不能通过发育速率中的微小变化来引发间断式变异的话，那么最重要的进化过渡根本就不可能完成。」</p></section><section id="s13"><div class="h2"><span class="cn">拾叁</span><h2>19.7 物以类聚</h2><span class="en">THINGS FALL INTO CLASSES</span></div><p class="prose">化石记录中明显缺失那些理应存在的中间物种——这种「化石断代」是达尔文理论的一个缺陷，他曾断言将来的探索一定会填补上这块空白，遗憾的是这些空白依然如故。进化古生物学家史蒂芬·斯坦利说——「在已知的化石记录中找不到任何一个通过渐进进化完成重大形态迁跃的例子，因而也就无法为渐进模式提供有力证据。</p><p class="prose">」而史蒂文·杰·古尔德则指出，绝大多数物种的化石都具有两个与渐进论相抵触的特征——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>停滞不前。绝大多数物种活跃在地球上的那段时间内，都没有呈现出有指向性的改变。</span></label><label><input type="checkbox"><span>突然出现。在任何一个地域，一个物种并不是通过自其祖先以来的稳步变化而出现的；它是一下子就出现的，而且一出现就「完全成形」。</span></label><label><input type="checkbox"><span>化石断代。在已知的化石记录中，找不到任何一个通过渐进进化完成重大形态迁跃的例子。</span></label><div class="cf">已勾选 <b>0</b> / 3</div></div><p class="prose">达尔文影响最深远的论断在于指出，生命不同侧面所展现出来的巨大不同其实是一种幻象——物种间的屏障是虚幻的，不堪一击的，因而生命是一个均匀分布的存在。不过，对复杂系统的研究渐渐引起了人们的怀疑，怀疑达尔文的这个最具革命性的假设其实是错误的：<b>生命在很大程度上是物以类聚的，只略具可塑性。</p><p class="prose"></b>物种要么存续，要么消亡；类别的停滞不前才是正道：一个物种的典型存续时间在一百万到一千万年之间。与生物体相似的事物——经济体、思维、生态群落，乃至国家，也会自然地分化成一些持续存在的丛簇。</p><p class="prose">「有机的」实体并非具有无限可塑性——一个复杂系统（比如斑马或公司）进化的方向和方式都极为有限。因而，假如我们发现进化实际上是以量子阶跃的方式进行的话，也就没有什么好大惊小怪的了：这就是生物学中的跳变论。随着人们对高兹史密特「有前途」怪物说的兴趣愈来愈浓厚，温和的跳变论重又焕发青春——</p><div class="aband"><q>复杂事物组成部分间的相互依赖和共同适应必然会产生量子式的进化。</q><cite>——第十九章 19.7 物以类聚</cite></div></section><section id="s14"><div class="h2"><span class="cn">拾肆</span><h2>19.8 DNA并不能给所有东西编码</h2><span class="en">DNA CANNOT CODE FOR ALL</span></div><p class="prose">构成躯体的物质利用物理约束限定了躯体所能发育成的形态——<b>大象不可能长着蚂蚁般的细腿。</b>基因具有独立于躯体的动态特性，对它们的产出物有生杀予夺之权；基因组内基因之间相互关联，形成互锁现象：A 以 B 为前提，B 以 C 为前提，而 C 又以 A 为前提——</p><div class="aband"><q>与复杂系统一样，基因组通过限制所允许的变化来对抗扰动，它所追求的是作为一个有凝聚力的统一体而留存下来。</q><cite>——第十九章 19.8 DNA并不能给所有东西编码</cite></div><p class="prose">当人工选择或自然选择使某个基因型偏离稳态时，基因组中的相互关联特性就会产生许多副效应——达尔文作为一名育鸽人，把这种现象称为「生长中神秘的相关法则」。新达尔文主义的元老恩斯特·迈尔声称：「过去50年中进行的所有精细选择（繁育）实验中，没有一例未出现过讨人厌的副效应。</p><p class="prose">」基因通常身处复杂环境，并且其自身就是一个复杂适应系统，它有自己的智慧与惰性——<b>这正是怪亦有道的原因所在。</b>而在生物体真正同自然选择打交道之前，它还面临来自三个方面的内部选择：基因组的内部约束、躯体所遵循的法则，以及种群——只发生在单体身上的变异，即使再出色，也必然随着单体的死亡而灰飞烟灭。</p><p class="prose">凯利之所以深入研究这些情况，是因为对生物进化的束缚也正是人工进化的希望所在：用来维持旧传统的束缚力可以用来创造新事物。将生物限制在自己的形态内、防止其随意漂移到其他形态的力量，也正是最初使生物成形的力量。基因内部的这种自强化特性使得它难以离开其稳定状态，就如同一条山谷，将各种随机因素拽入其中——</p><div class="aband"><q>乍一看这有些奇怪，但的的确确，束缚即创造。</q><cite>——第十九章 19.8 DNA并不能给所有东西编码</cite></div><div class="aband"><q>在生物不同层面上涌现出来的内敛性而非自然选择，很可能正是那99.999%的生命形式得以起源的原因所在。</q><cite>——第十九章 19.8 DNA并不能给所有东西编码</cite></div></section><section id="s15"><div class="h2"><span class="cn">拾伍</span><h2>19.9 不确定的生物搜索空间密度</h2><span class="en">SEARCH SPACE DENSITY</span></div><p class="prose">达尔文的《物种起源》写于一个多世纪之前，彼时第一台计算机尚未问世，而达尔文却在书中用计算机化的语言准确地描绘出一幅著名的进化图景——进化「每日每时都在筛查着整个世界，不放过哪怕是最微小的变异；它剔除劣质的变异，保留并累积优质的变异」。<b>这不正是搜索形式库的算法么？</p><p class="prose"></b>这个所有可能生命的形式库，究竟是一个零星点缀着有效样本的巨大空间呢，还是一个拥挤之所？</p><p class="prose">如果可能的生命形式中密布着可行（源文在此截断）；而如果可行的生物体空间是非常稀疏的，那么——</p><div class="aband"><q>如果可行的生物体空间是非常稀疏的，那么进化无疑需要一些引导，以穿过空旷的荒野，从一片可存活生物的聚集区走到另一片聚集区。</q><cite>——第十九章 19.9 不确定的生物搜索空间密度</cite></div><div class="aband"><q>自然选择所奉行的试错方法，只会让你很快陷入不知身在何处的境地。</q><cite>——第十九章 19.9 不确定的生物搜索空间密度</cite></div><p class="prose">说到达尔文，他自己曾在《物种起源》第三版中这样提醒读者：「我确信自然选择是物种变化的主要途径，但并非唯一途径。」——这句话显然没有起到应有的作用，断章取义的力量还真是强大啊。</p><p class="prose">新达尔文主义描述了一个凭借自然选择进行进化的精彩故事，其逻辑简直让人无从辩驳：既然自然选择能够从逻辑上创造所有的物种，那么所有的物种就都是自然选择创造的。我们至今尚无证伪的证据，但凯利所叙述的种种——共生、定向变异、跳变、自组织——确实表明了一点——</p><div class="aband"><q>在自然选择之外，进化还有许多其他因素。</q><cite>——第十九章 19.9 不确定的生物搜索空间密度</cite></div><p class="prose">进一步说，一个大胆而富于冒险精神的蓝图正从这些问题和碎片中呼之欲出——开展生物学之外的人工合成进化。当我们试着将进化从历史移植到人工介质中时，进化的内在本质就暴露在我们眼前——</p></section><section id="s16"><div class="h2"><span class="cn">拾陸</span><h2>19.10 自然选择之数学原理</h2><span class="en">THE MATH OF SELECTION</span></div><p class="prose">人工进化早已教给我们重要一课——</p><div class="aband"><q>进化不是一个生物过程。它整合了技术的、数学的、信息的和生物学的过程。几乎可以说，进化是一条物理法则，适用于所有的群体，不管它们有没有基因。</q><cite>——第十九章 19.10 自然选择之数学原理</cite></div><p class="prose">自然选择的条件非常特殊，但这些条件一旦满足，自然选择就会无可避免地发生——正如进化理论家约翰·恩德尔所说：「自然选择也许不该被称为生物学定律。它发生的原因不是生物学，而是概率论。」但自然选择并不是进化，进化也不等同于自然选择——正如算术不是数学。</p><p class="prose">你可以声称数学其实就是加法的组合，这与新达尔文主义者的逻辑有些相似；虽说这有一点点道理，但它阻绝了我们对更为复杂事物的理解和接受：<b>乘法确实就是某种连加运算，但从这种快捷运算中涌现出了全新的力量</b>——只满足于加法，你就永远得不到 E=mc2。</p><p class="prose">凯利相信存在一种生命的数学——自然选择也许就是这种数学中的加法。要想充分解释生命的起源、复杂性的趋势以及智能的产生，不仅仅需要加法，还需要一门丰富的数学。后达尔文主义者已经证明，由一个维度上的自然选择推进的单一进化是不存在的——</p><div class="aband"><q>深度进化是多种进化的聚合，是一位多面的神祗，一位千臂的造物主，他的造物方法多种多样，自然选择也许只是其中最普适的一个方法。</q><cite>——第十九章 19.10 自然选择之数学原理</cite></div><p class="prose">当我们构建人工进化来繁育机器或者软件时，也要考虑到进化的这种异质特性。凯利期待着在具有开放性和可持续创造力的人工进化中看到以下特性——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>共生——便捷的信息交换以允许不同的进化路径汇聚在一起</span></label><label><input type="checkbox"><span>定向变异——非随机变异以及与环境的直接交流和互换机制</span></label><label><input type="checkbox"><span>跳变——功能聚类、控制的层级结构、组成部分的模块化，以及同时改变许多特性的适应过程</span></label><label><input type="checkbox"><span>自组织——偏向于某种特定形态（譬如四轮）并使之成为普遍标准的发展过程</span></label><div class="cf">已勾选 <b>0</b> / 4</div></div><p class="prose">在可能的生物这片原野上，哪儿还有未被占据的黑洞呢？对此凯利只能引述阿博彻那个怪人的话——「我更关心那些空白的地方，那些能想象得到却实现不了的形态。」用列万廷的话说就是——</p><div class="aband"><q>进化不能产生所有的东西，但可以解释某些东西。</q><cite>——第十九章 19.10 自然选择之数学原理（理查德·莱旺顿）</cite></div></section><section id="s17"><div class="h2"><span class="cn">拾柒</span><h2>20.1 无序之有序</h2><span class="en">ORDER OUT OF CHAOS</span></div><p class="prose">我们头脑中的某些想法是基于重重事实，而另一些想法则毫无来由和根据——比如「反混沌」。30 年前，当斯图亚特·考夫曼还是一名达特茅斯学院的医科研究生时，这个念头攫住了他：他站在书店的玻璃窗前，脑海中浮现出一本印有他名字的书，书中到处都是由相互连接的箭头所组成的网络——这种混乱并非没有秩序。</p><p class="prose">作为一名研究细胞发育的医学生，考夫曼把那些缠结的线段看作是基因之间的相互联系：在这看似杂乱无章的混乱之中有着意料之外的秩序——<b>有机体的架构正蕴含其中。</b></p><div class="aband"><q>混沌会毫无理由地产生秩序，或者名之为无序之有序。</q><cite>——第二十章 20.1 无序之有序</cite></div><p class="prose">为了证实他的猜想，考夫曼研究了果蝇由受精卵发育到成熟的过程：人体的卵细胞仅仅需要分裂 50 次，就能产生出上千亿的细胞并发育成婴儿。是什么样的无形之手在控制着每个细胞的命运？1961 年，雅各布和莫诺发现了一条重要线索——调控基因，它负责开启其他基因。一段经典的控制论对话非常适用于调控基因——</p><div class="aband"><q>是什么控制了基因？是其他基因！那又是什么在控制那些基因？还是其他基因！</q><cite>——第二十章 20.1 无序之有序</cite></div><p class="prose">这种绕圈子的逻辑使考夫曼想起了他那幅宿命的图景：由指向各个方向的箭头所组成的错综复杂的网络。雅各布和莫诺的调控基因代表了一种如意大利面一般的管理模式——由基因组成的去中心化网络掌控着细胞网络的命运。于是考夫曼冒出了一个更大胆的念头——</p><div class="aband"><q>每个卵所经历的分化（秩序）是必然的，不管最初的基因到底是什么！</q><cite>——第二十章 20.1 无序之有序</cite></div><p class="prose">他可以设想一种实验来验证这个想法：将果蝇的基因用随机基因来取代。他打赌：你得到的绝不会是果蝇，但不管得到什么样的怪物，你所得到的秩序与果蝇在自然态下得到的秩序并无二致。「我问自己」，考夫曼回忆道——「如果把基因随意地连在一起，会得到任何有用的东西吗？</p><p class="prose">」他的直觉告诉他：凭着自下而上的分布式控制以及「一切连接一切」的模式，必然会出现某种模式。<b>必然！正是这个异端的想法，值得他用一生去追寻。</b>为了证明他的想法，考夫曼做出了一个明智的决定：与其在实验室中逆天而行，不如在电脑中建立数学模型。</p></section><section id="s18"><div class="h2"><span class="cn">拾捌</span><h2>20.2 反直觉的网络数学</h2><span class="en">COUNTERINTUITIVE NETWORK MATH</span></div><p class="prose">考夫曼、霍兰德和其他人发明的这套数学还没有合适的名字，凯利叫它「网络数学」：并行分布式处理、布尔网络、神经网络、自旋玻璃、细胞自动机、分类系统、遗传算法、群计算……不管是哪一种网络数学，由数千个相互作用的函数所形成的横向因果关系都是其共同要素。</p><p class="prose"><b>网络数学与古典牛顿数学是相对的</b>——而网络数学离了计算机则一无用处。它所具有的特性往往不符合人们的直觉：在相互作用的群集中，输入的微小变化可以引起输出的巨大变化——这就是蝴蝶效应，效果与起因并不成比例。</p><p class="prose">要想知道方程能产生什么效果，唯一的方法就是让方程运行起来——正如要想知道一粒种子长成什么样，最便捷的途径就是让它发芽生长。</p><p class="prose">考夫曼设计了一种能在普通电脑上运行的基因模型：一万个基因，每个基因都是能够开启或关闭其他基因的微小代码段，基因间的关联是随机设置的。他的观点是——</p><div class="aband"><q>不管基因的任务是什么，如此复杂的网络拓扑都能产生秩序——自发的秩序！</q><cite>——第二十章 20.2 反直觉的网络数学</cite></div><p class="prose">他意识到自己所做的是在为任意一种群系统构建通用的基因模型——细胞、基因、企业、黑箱系统，只要这些介子有输入和输出并且其输出又作为临近介子的输入即可。他将一大群节点随机联接成互动的网络，让它们彼此作用并记录下它们的行为，如此重复多次，直到「踏遍」了可能随机联结空间的每一寸土地。</p><p class="prose">在对这些通用的互动网络进行数以万计的实验后，他发现它们落在了几种行为「盆地」中——就像水流不会停留在中间模式上，而是迅速转向一种或另一种模式，仿佛两边的模式对它有吸引力一样——</p><div class="aband"><q>随机组合系统会找到通往某个盆地的道路，也即是混沌之中会涌现出无序之有序。</q><cite>——第二十章 20.2 反直觉的网络数学</cite></div><p class="prose">考夫曼发现，系统中的基因数（平方根）与这些基因最终所进入的「盆地」数之间存在大致的比率关系；而生物细胞中的基因数与这些基因所产生的细胞种类数之间也存在相同的关系——所有生物的这个比率大体恒定。考夫曼宣称，这一比率对许多物种都适用这一事实表明——</p><div class="aband"><q>细胞种类的数量实质上由细胞结构本身决定。</q><cite>——第二十章 20.2 反直觉的网络数学</cite></div><p class="prose">那么，身体内细胞种类的数量就可能与自然选择没太大关系，而与描述基因互动现象的数学有关。考夫曼兴奋地想：<b>还有多少其他生物学上的表象也与自然选择没太大关系呢？</b>他首先需要一种能够随机构造生命的方法——对生命的起源进行仿真，诀窍是让分子们都来玩一个名为「迭坐」的游戏。</p></section><section id="s19"><div class="h2"><span class="cn">拾玖</span><h2>20.3 迭坐，喷涌，自催化</h2><span class="en">SIT AND SPURT, AUTOCATALYSIS</span></div><p class="prose">「迭坐」游戏：25 个或更多的人紧挨着站成一圈，每个参与者盯着前面那个人的后脑勺；一声令下，一圈人立刻曲膝坐到后面朋友的膝盖上——如果大家动作协调一致，这圈人坐下时就形成了一个自支撑的椅子；有一个人失误，整个圈子就崩溃了。</p><p class="prose">自催化系统与衔尾蛇很像「迭坐」游戏：化合物 A 在化合物 C 的帮助下合成了化合物 B，而 C 自己是由 A 和 D 生成的——无他则无我。换句话说，<b>某种化合物或功能得以长期存在的唯一途径，就是成为另一种化合物或功能的产物。</b>与我们通常的认识相反——</p><div class="aband"><q>一切实体的存在都取决于其他实体的共同存在。</q><cite>——第二十章 20.3 迭坐，喷涌，自催化</cite></div><p class="prose">生命和进化必然会陷入循环因果的怪圈，它们在基本面上具有套套逻辑——缺少了这种根本的循环因果逻辑矛盾，也就不可能有生命和开放的进化。正如数学家哥德尔所阐明的，矛盾是任何自维持系统所固有的特性——即便组成该系统的各部分都是一致的。</p><p class="prose">1991 年，年轻的意大利科学家沃尔特·方塔纳从数学上论证了函数 A 生成函数 B、B 再产生 C 这样的线性序列可以容易地构成自生成环。考夫曼第一次看到方塔纳的工作时，就被它的美所倾倒——「你一定会爱上它！函数之间彼此生成。」考夫曼把这种自催化系统叫作「卵」——</p><div class="aband"><q>一个卵就是一套规则，它拥有这样的特性：它们所生成的规则也正是创造它们的规则。这一点也不荒谬。</q><cite>——第二十章 20.3 迭坐，喷涌，自催化（斯图亚特·考夫曼）</cite></div><p class="prose">要获得卵，首先要有一大「池」不同的介子——蛋白质碎片或计算机代码片断。让它们在足够长的时间内互相作用，局部闭环形成的网络会蔓延开来，直至环路中的每个生产者都是另一个生产者的产品——这时系统突然进入一个稳态游戏：<b>系统坐在自己的膝头上，始端倚在末端，末端亦倚在始端。</p><p class="prose"></b>考夫曼通过「符号串作用于符号串产生新的符号串」的实验论证了这种逻辑的理论可行性：它们没有开始，没有中心，也没有结束。生命是作为一个完整的整体而突然冒出来的，就像晶体突然从过饱和溶液中显露出其最终的形式——就像「迭坐」游戏中 200 个人突然坐成一圈一样。考夫曼写道——</p><div class="aband"><q>生命是完整的、综合的，不是支离破碎的，也不是无组织的。</q><cite>——第二十章 20.3 迭坐，喷涌，自催化（斯图亚特·考夫曼）</cite></div><div class="aband"><q>生命，从深层意义上来说，是结晶而成的。</q><cite>——第二十章 20.3 迭坐，喷涌，自催化（斯图亚特·考夫曼）</cite></div><p class="prose">他希望证明，自复制和动态平衡这些生物体的基本特征是高分子化学固有的集体表达式——这里，考夫曼再次暗示了那个必然性的概念——</p><div class="aband"><q>如果我的模型是正确的话，那么宇宙中生命的路径就是一条条宽敞大道，而不是迂回曲折的窄巷。</q><cite>——第二十章 20.3 迭坐，喷涌，自催化（斯图亚特·考夫曼）</cite></div></section><section id="s20"><div class="h2"><span class="cn">貳拾</span><h2>20.4 值得一问的问题</h2><span class="en">QUESTIONS WORTH ASKING</span></div><p class="prose">考夫曼曾经对一群科学家表示：「我们已经习惯于处理数以十亿计的事情！」任何事物聚集成群都会与原来有所不同：聚合体越多，由一个聚合体触发另一个聚合体这样的相互作用就会呈指数级增长——在某个点上，不断增加的多样性和聚合体数量就会达到一个临界值，使系统中一定数量的聚合体瞬间形成一个自发的环。</p><p class="prose">只要能量流入，这个环就不会垮掉。一个小发明（晶体管）产生了其他发明（计算机），它又产生了更新的其他发明（虚拟现实）。考夫曼想从数学上把这个过程概括为：函数产生新的函数，新的函数再生出其他更新的函数。</p><p class="prose">他在意大利北部某个一战掩体中与古德温谈论自催化系统时有了深刻的体会：达尔文的物竞天择和亚当·斯密的国富论何其相似——二者都有一双无形之手。</p><p class="prose">凯利跟考夫曼提到了一个有争议的想法：在任何社会中，只要交流和信息连接的强度适中，民主就必然会出现。考夫曼同意这个想法——「民主是允许相冲突的少数族群之间达成相对流畅的妥协的机制。它避免了族群们陷入局部有利但全局不利的解决方案。</p><p class="prose">」不难想象，考夫曼的布尔逻辑网络和随机基因组正是对市府乃至州府运作方式的映射：通过地方层级上持续不断的微小冲突和微小变革，避免了大规模的宏观和全面革命，而整个系统既不会一片混乱，也不会停滞不前。考夫曼毫不隐瞒他的野心——</p><div class="aband"><q>我在寻找一幅自洽的图景，可以将所有的事物联系起来：从生命起源到基因调控系统中自发秩序的涌现，到可适应系统的出现，到生物体间最优折衷方案的非均衡价格的确立，再到类似热力学第二定律的未知规律。</q><cite>——第二十章 20.4 值得一问的问题（斯图亚特·考夫曼）</cite></div><div class="aband"><q>我们能否证明有限的函数集合可以产生无限的可能性集合？</q><cite>——第二十章 20.4 值得一问的问题（斯图亚特·考夫曼）</cite></div><p class="prose">凯利叫它为「考夫曼机」：一个精心挑选的不大的函数集合，连接成一个自生成环，并产生出无限更复杂的函数。自然界中充满了考夫曼机——卵细胞发育成巨鲸是一例，进化机器经过十亿年时间由细菌生成火烈鸟又是一例。冯·诺依曼早在 20 世纪 40 年代初期就提出了同样的问题：机器会制造出比自己更复杂的机器吗？</p><p class="prose">不管它叫什么，问题都是一个：<b>复杂性是如何自行建立的？</b>「一旦你问对了问题，」考夫曼说道——「就很有可能找到某种答案。」</p><p class="prose">考夫曼研究的主要变量是网络的连接度。他发现了一个不会让通用汽车总裁感到惊讶的事实：一个只有少数个体可以影响其他个体的系统不具备较强的适应性——连接太少不能传播创新，系统也就不会进化。而完全出乎意料的发现是：超出某个连接度时，继续增加连接度只会降低系统作为整体的适应性。</p><p class="prose">考夫曼用山丘来描绘这种效应：山顶是灵活性的最佳点——一侧是松散连接的系统，迟缓而僵化；另一侧是连接过度的系统，陷入「复杂度灾难」——从长远来看，过度连接的系统与一盘散沙并无二致。</p><p class="prose">最佳的连接度位于中间某个位置：拥有成千上万个成员的大型网络里，每个成员的最佳连接度小于 10，而一些网络甚至在连接度小于 2 时达到性能顶点——</p><div class="aband"><q>大规模并行系统不必为了适应而过度连接。只要覆盖面足够，即使是最小的平均连接数也够用了。</q><cite>——第二十章 20.4 值得一问的问题</cite></div><p class="prose">考夫曼发现，当生物体或介子的平均连接数小于 2 时，整个系统的灵活性就不足以跟上变化。而当个体间的连接度超过某个值时，适应性就冻结了——当许多行动取决于另外许多互相矛盾的行动时，就会一事无成。另一种说法是——</p><div class="aband"><q>当太多人可以对其他人的工作指手划脚时，官僚主义的僵尸就开始复活。</q><cite>——第二十章 20.4 值得一问的问题</cite></div><p class="prose">我们这些有交流瘾的后现代人应该关注这个结果：我们正在不断增加我们网络社会的总人数（1993 年全球网络用户月增长率为 15%）以及每个成员所连接的人数和地点数，而不论是哪一种增长，都没有显著地提高我们系统（社会）作为整体的适应性。</p></section><section id="s21"><div class="h2"><span class="cn">貳拾壹</span><h2>20.5 自调节的活系统</h2><span class="en">SELF-REGULATING SYSTEMS</span></div><p class="prose">斯图亚特·考夫曼的仿真是在用真实的（计算机）网络来仿真假设的网络。他非常渴望将其通用试验的结果外推到真实生命中，并打赌群网络在某个层面上的表现都是相似的。考夫曼喜欢说——</p><div class="aband"><q>IBM和大肠杆菌看待世界的方式并无不同。</q><cite>——第二十章 20.5 自调节的活系统（斯图亚特·考夫曼）</cite></div><p class="prose">凯利倾向于相信他的观点。我们生活在加速连接的时代，其实就是在稳步地攀登考夫曼的小山丘——但我们很难阻止自己越过山顶，滑入连通性越来越强而适应性越来越弱的山坡。<b>断开就是刹车，它能避免系统的过度连接，它能使我们的文化系统保持在最高进化度的边缘。</p><p class="prose"></b>进化的艺术就是管理动态复杂性的艺术——把事物连接起来并不难，但是进化的艺术是要找到有组织的、间接的、有限的连接方式。</p><p class="prose">克里斯·朗顿从其人工生命的群体模型试验中得到了一种抽象性质，叫作 λ 参数——它能预测一个群体在某个特定规则集下产生行为「最佳平衡点」的可能性。最令人惊奇的是，朗顿发现当 λ 参数接近相变，即最大适应性的「最佳平衡点」时，它减速了：系统趋向于停在这个边缘上，而不会跑过了头。</p><p class="prose">朗顿喜欢将之描绘成这样一幅图景：<b>系统在一个缓慢运动的永不消逝的完美浪头上冲浪，越接近于浪顶，时间就走得越慢。</b>生命既非毫无沟通的停滞系统，也非沟通太多的死锁系统——</p><div class="aband"><q>生命是被调节到“混沌边缘”的活系统——就处在那个λ点上，信息流量刚好足够到使每个事物都处于摇摇欲坠当中。</q><cite>——第二十章 20.5 自调节的活系统（克里斯·朗顿）</cite></div><p class="prose">考夫曼也讲到过将其仿真的基因网络参数「调节」到「最佳平衡点」——处于这个进化平衡点上的系统能够最快地学习，最容易地进化。如果朗顿和考夫曼是对的话，那么一个进化的系统会自己找到这个平衡点。</p><p class="prose">自调节也许正是那把通往永不停止的进化——即开放进化的圣杯——的神奇钥匙：任何系统寻求的首要目标都是生存；其次是保证系统最大灵活度的理想参数；而最令人兴奋的是第三个层级的目标——寻找系统在进化过程中不断增强自调节的策略和反馈机制。</p><p class="prose">就在朗顿和同事们在可能世界的空间中寻找生命所能停留的最佳平衡点时，凯利听到他们说自己是在无尽的夏天里冲浪，找寻着那波完美而缓慢的浪头。圣塔菲研究所的研究员瑞奇·巴格利（源文此句截断）。「没错，」无意中听到我们谈话的朗顿回答道——</p><div class="aband"><q>确实就像拍岸的海浪，它们砰砰的拍着岸边，就像心跳一样稳健。然后突然之间，哗——掀起一个大浪。而那就是我们所有人正在寻找的。</q><cite>——第二十章 20.5 自调节的活系统（克里斯·朗顿）</cite></div><div class="tbwrap"><table><thead><tr><th>连接度区间</th><th>系统状态（考夫曼的发现）</th></tr></thead><tbody><tr><td>平均连接数 &lt; 2</td><td>灵活性不足以跟上变化——成员分成几个孤立的小团体，小团体之间没有互动</td></tr><tr><td>最佳连接度（个位数）</td><td>系统弹性最大，遇到干扰会「迅速反弹」——大规模并行系统不必为了适应而过度连接</td></tr><tr><td>连接度 > 最佳值</td><td>适应性冻结——极端连接产生极端险峻，从适应的山顶跌入不适应的山谷（复杂度灾难）</td></tr><tr><td>过度连接的极端</td><td>与一盘散沙并无二致——「官僚主义的僵尸」开始复活</td></tr></tbody></table></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>18.1–18.5 多处｜</b>「随便鼓捣出的生化药剂都会使基因泰克公司」「理论生物学家沃丁顿」「第一届欧洲人工生命会议」「我从史蒂文·杰·古尔德」「（这里暗含一个循环论证的逻辑……稳定即意味着生存。）」「从沃尔特·方塔纳」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>19.1–19.9 多处｜</b>「如果自然界这位盲眼钟表匠」「科学家们在由4个符号编码而成的长链分子」「早在1926年，斯马茨」「克雷布斯循环」「几乎完全相同的同源异形盒」「父亲圣提雷尔和儿子小圣提雷尔」「尽管要面对极强的负选择」「受其自身非染色体DNA」、19.6 末括注（人工进化与自然进化运行在不同的基质上……）、「内稳的吸引域」、《走向新的生物学哲学》、「如果可能的生命形式中密布着可行」等处句子未收尾，均不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>20.1–20.5 多处｜</b>「而弱磁性的『自旋玻璃』」「他把著名的克里特岛撒谎者悖论以及哥德尔」「用约翰·惠勒」「米奇·沃尔德罗普」「考夫曼把建立在λ值范围内的系统叫作『悬平系统』」「圣塔菲研究所的研究员瑞奇·巴格利」等处句子未收尾，均不补写。</span></div><div class="note" id="n4"><span class="nn">结构说明</span><span class="nd"><b>清单与理论｜</b>18.2 可遗传学习的 5 个变种与 18.4 进化的进化六进程以 chips 呈现；19.7 化石记录两大特征与 19.10 人工进化四机制以 check 呈现，均逐字照抄源文；19.10 的四机制清单与 20.4 连接度规律另以表格归纳（归纳文字为编者整理，非引文）。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">变化之部｜变化架构·后达尔文主义</span><a href="../10-控制的未来与开放的宇宙/index.html">← 控制的未来·开放的宇宙</a><a href="../12-水往高处流与预言机/index.html">水往高处流·预言机 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

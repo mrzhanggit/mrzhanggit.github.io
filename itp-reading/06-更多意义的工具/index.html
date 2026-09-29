@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第四部分·更多关于意义的思考工具 · 从红发人到黑盒子｜直觉泵 精读</title>
+<meta name="description" content="「迈克对红发人有看法」到底是什么东西？丹尼特用三个环环相扣的直觉泵——彷徨的双币机、孪生地球、巨型机器人——证明：连我们自己的意向性也是派生的，源头是那些「无意的赋义者」，即自私的基因。">
+<style>
+:root{
+  --paper:#F5F2E8;      /* 黄铜纸底 */
+  --paper-2:#EAE4D2;    /* 黄铜纸深一档 */
+  --card:#FAF7EC;
+  --ink:#2A251C;        /* 深墨（主色） */
+  --ink-2:#4A4234;      /* 深次墨 */
+  --ink-deep:#131007;   /* 深夜黄铜（hero 底） */
+  --gold:#8C6A1E;       /* 黄铜（强调 · 思维工具的金属本色） */
+  --gold-b:#C0A050;     /* 高亮黄铜 */
+  --gold-soft:rgba(140,106,30,.16);
+  --cinnabar:#A04327;   /* 锈红（警示 · 坏直觉泵与谬误） */
+  --teal:#4E5E6E;       /* 工具钢蓝（对照 · 冷静的机械推理） */
+  --tx:#2E2920;
+  --tx-2:#524A3B;
+  --tx-3:#8A8064;
+  --line:rgba(42,37,28,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,37,28,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#4A4234 0%,var(--ink-deep) 62%);
+  color:#F0EBDE;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(192,160,80,.42)}
+.hero::after{inset:22px;border:1px solid rgba(192,160,80,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(192,160,80,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,67,39,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1E3}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(240,235,222,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(192,160,80,.34);color:rgba(240,235,222,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,67,39,.6);background:rgba(160,67,39,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(140,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#EFEADA;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(192,160,80,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F2EDDF;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(192,160,80,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F2EDDF;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(239,234,218,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(140,106,30,.5);box-shadow:0 4px 18px rgba(42,37,28,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(140,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(78,94,110,.055)}
+.duo .colR{background:rgba(160,67,39,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,67,39,.1);color:var(--cinnabar);border:1px solid rgba(160,67,39,.28)}
+.case .tag.good{background:rgba(78,94,110,.1);color:var(--teal);border:1px solid rgba(78,94,110,.28)}
+.case .tag.mid{background:rgba(138,128,100,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(140,106,30,.45);background:rgba(140,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,67,39,.55);border-radius:8px;
+  background:rgba(160,67,39,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(160,67,39,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,67,39,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(140,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(245,242,232,.94);
+  border-bottom:1px solid rgba(42,37,28,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,37,28,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#4A4234;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(140,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,37,28,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,37,28,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A8064;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「普世智慧（上）· 哈佛演讲」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../05-计算机的思考工具/index.html">← 计算机的思考工具</a><a href="../07-进化论-上/index.html">进化论·上 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">意</div>
+  <div class="stamp ">意义</div>
+  <h1>更多关于意义的思考工具 · 从红发人到黑盒子</h1>
+  <p class="sub">「迈克对红发人有看法」到底是什么东西？丹尼特用三个环环相扣的直觉泵——彷徨的双币机、孪生地球、巨型机器人——证明：连我们自己的意向性也是派生的，源头是那些「无意的赋义者」，即自私的基因。</p>
+  <div class="meta"><span>第四部分</span>
+    <span class="k">意向性</span>
+    <span>正文 26,756 字</span>
+    <span>9 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>红发人</a><a href="#s3" data-t="s3"><span class="cn">叁</span>双币机</a><a href="#s4" data-t="s4"><span class="cn">肆</span>巨型机器人</a><a href="#s5" data-t="s5"><span class="cn">伍</span>彻底翻译</a><a href="#s6" data-t="s6"><span class="cn">陸</span>句法引擎</a><a href="#s7" data-t="s7"><span class="cn">柒</span>沼泽人</a><a href="#s8" data-t="s8"><span class="cn">捌</span>黑盒子</a><a href="#s9" data-t="s9"><span class="cn">玖</span>第四部分小结</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">第四部分：意义被连根拔起——从「大脑中的句子」到「两个黑盒子」</p><p class="thesis">塞尔区分了<b>原初意向性</b>（我们心灵的）与<b>派生意向性</b>（书籍、电脑的），并断言前者是后者的终极源头。丹尼特在本部分要消解的正是这组「无可争辩的对照」：如果道金斯是对的，我们不过是基因的生存机器，那么<b>它们才是无意的赋义者，而非我们</b>。意义总是相对于某个功能背景——没有深层事实，只有浅层事实。</p><div class="chain"><div class="node"><div class="n">28</div><div><p class="tt">红发人那事儿</p><p class="dd">「迈克对红发人有看法」不是任何命题态度——信念未必是大脑中的句子</p></div></div><div class="node"><div class="n">29</div><div><p class="tt">双币机·孪生地球·巨型机器人</p><p class="dd">三个直觉泵联动，消解原初意向性与派生意向性的边界</p></div></div><div class="node"><div class="n">30</div><div><p class="tt">彻底翻译</p><p class="dd">蒯因式填字游戏：不存在绝对正确的翻译，只有浅层事实</p></div></div><div class="node"><div class="n">31</div><div><p class="tt">语义引擎与句法引擎</p><p class="dd">物理学永远胜过意义：大脑只是用句法引擎模仿语义引擎</p></div></div><div class="node"><div class="n">32</div><div><p class="tt">沼泽人遇上母牛鲨</p><p class="dd">哲学家最喜爱的直觉泵——思想实验的效用与其脱离现实的程度成反比</p></div></div><div class="node"><div class="n">33</div><div><p class="tt">两个黑盒子</p><p class="dd">红灯为何闪烁？不用语义学术语，根本无法解释这条因果规律</p></div></div><div class="node"><div class="n">小结</div><div><p class="tt">冒泡式图景</p><p class="dd">21 种思考工具的战果清点：一个宽敞的逻辑空间，而非一种意义理论</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>28 红发人那事儿 · 大脑中的认知机制</h2><span class="en">REDHEADS</span></div><p class="prose">一个还算诱人的想法：大脑把携带的全部信息——信念、看法、记忆、策略——分解成类似语句的片段，分类存档以待再次唤起。但这个想法已经出了问题：脑写入不能简单地置入一个虚假信念，人们共享某个信念也犯不着共享用脑语写成的公式。可我们人类能「零打碎敲地」学习，总得有些让孤立事实逐个加起来的办法。</p><p class="prose">难道知识、信念或学习过程，真的一定得分解为句子般大小的碎片？</p><div class="aband"><q>知识、信念或学习过程一定得分解为句子般大小的碎片这一想法大概只是拟人论的幻象。</q><cite>——28 红发人那事儿</cite></div><p class="prose">设想帕特说「迈克对红头发的人有点看法」。我们可能发现迈克确实持有某种东西——它不是想法或见解，不是信念或想象，而是大脑中的某种<b>「次人」的认知机制</b>：只要话题关乎红发人，它就会系统地发挥作用，调整迈克认知机制中的各种参数，使他不大能接受对红发人优点的恭维、更易做出相对激进的行为等等。</p><p class="prose">这种东西的意义无法否认，却无法表述为一个让人信以为真的语句——无论怎么塞入不可兼条款、限定词、概率算符，它都变不成「迈克相信：对于所有 x，如果 x 是红发人，那么……」的形式。</p><p class="prose">用哲学术语说：各种信念在系统中可以是<b>隐式的</b>——系统当前的运行「基于这一假设」。这就像程序员在源代码中加注释：注释只是为观察者设置的<b>助记标签</b>，不是由电脑读取或理解的东西，也不是有关内容的「详细说明」。为某种次人的大脑结构给出意向立场的解释，正是类似地为几段代码加上注释。</p><p class="prose">有些哲学家没看透这一点，生造出内在语句操控机制的奇妙世界，在其中「我看见一个男孩或女孩」与「我看见一个孩子」竟成了截然不同的大脑事件内容。</p><p class="prose">这个直觉泵的目的，是回应力挺思想语言的那句反诘「还能是什么呢」。丹尼特坦言自己给不出一套宏大的计算架构——</p><div class="aband"><q>但是切记，在认知科学领域，至今还没有人发展出一套可行的思想语言模式，甚至也不曾为此努力过。这是一个异常困难的问题。</q><cite>——28 红发人那事儿</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>29 彷徨的双币机、孪生地球以及巨型机器人（上）· 派生意向性</h2><span class="en">TWO-BITSER</span></div><p class="prose">「原初意向性」这个术语是塞尔在 1980 年发明的：书籍、电影、电脑、指示牌可能从我们身上获得某种意向性，而我们的（内在）意向性则完全不是派生的。印在本页的文字关乎哲学，恰恰因为作者和读者拥有关于哲学的思想和信念——若没有我们这些文字使用者，它们根本什么都不是。这看起来无懈可击。</p><p class="prose">亚里士多德说上帝是不动的原动者（unmoved mover），</p><div class="aband"><q>亚里士多德说上帝是不动的原动者（unmoved mover），套用这一说法，我们便是无意的赋义者（unmeant meaner）。</q><cite>——29 彷徨的双币机、孪生地球以及巨型机器人</cite></div><p class="prose">塞尔说，任何东西都不能单凭其物理形状获得内在意向性：设想 <b>F R E E B E E R</b> 这串字母形状由于机缘巧合出现在火星岩壁上——无论地球人多想把它读作「免费啤酒」，它（「本来」）也不会是这个意思。到此为止，塞尔、福多尔、克里普克都会点头。然后丹尼特亮出牌：<b>「坦率地说，他们全都错了。</p><p class="prose">是的，我不是在开玩笑。」</b>他需要三个彼此联系的直觉泵来消解这组备受钟爱的对照。</p><h3 class="h3">直觉泵 1 · 彷徨的双币机</h3><p class="prose">设想美国设计组装的制式软饮料贩卖机，只收 25 美分硬币——双币机（two-bitser）。工程师告诉我们：合法硬币会触发 Q 状态，某种 K 型金属片也能可靠地「骗过」传感器，过重的 J 型物件或磁性 L 型物件则不能。</p><p class="prose">唯有设计者、制造者、拥有者与使用者的<b>共同意向</b>，才使之成为一部硬币探测器；只有在意向的背景中，我们才把某些情形视为「切实」、另一些视为「出错」。</p><p class="prose">现在加一枚旋转旋钮：真有人从稀有钱币商处证实，标准自动贩卖机<b>无法区分</b> 25 美分硬币与 1966—1984 年间铸造的巴波亚 25 分硬币——后者就是在美国铸币厂用美元硬币的储备造出来的。</p><p class="prose">把这台双币机运到巴拿马：物理状态原样发生，但被视为出错的情形颠倒了——25 美分硬币成了「金属片」，而在美国，巴波亚硬币才是金属片。它这次进入的究竟是 Q 状态（收美分）还是 QB 状态（收巴波亚）？丹尼特与米利肯的答案：完全取决于在其新岗位上我们是否选它来检测巴波亚硬币。</p><p class="prose">若它被巴拿马百事可乐特许经营人选中，首秀即正确辨认；若阴差阳错被发往巴拿马，则首次亮相毫无意义。</p><p class="prose">「双币机只是人工制品，」塞尔的同事会说，「它不具有原初意向性，因此也没有我们要试图揭示的什么“深度”事实。」——完全同意。那么，<b>我们的</b>意向性有什么不同？在这一点上，塞尔一派不同意米利肯、丘奇兰德夫妇、侯世达、明斯基，以及工作在人工智能领域的每一个人。历经 30 多年的聚讼，大家在争什么呢？</p><h3 class="h3">直觉泵 2 · 孪生地球</h3><p class="prose">设想有个叫琼斯的人以为看到了一匹马。孪生地球思想实验是一个归谬法：孪生地球与地球几乎一模一样，只是那里生活着<b>犸</b>，我们这里生活着马。把琼斯下药迷晕送过去，他在一匹犸前自然地说或想「看哪！一匹马」。由犸唤起的信念是真还是假？他需要多久才调整「马」这个音的意义（自己毫无察觉）？</p><p class="prose">他在孪生地球生养的孩子从老爸那里学来的词「马」，指马还是指犸？</p><p class="prose">是什么决定了我们词语的意义？琼斯自己也无法参考他的「原初意向性」——设想我们反过来骗他说「你被送到了孪生地球」，他若宣布「我的词『马』现在意指犸」，他是对的吗？他能否像我们有时那样，靠一句声明「从今往后，我就用『渣渣』来指盐啦」解决问题？规定性定义依赖交往双方的合作共同体。</p><p class="prose">我们这些对原初意向性将信将疑的人，还需要第三个直觉泵来同传统直觉正面交战——请读者擦亮眼睛。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>29 彷徨的双币机、孪生地球以及巨型机器人（下）· 我们是造物</h2><span class="en">GIANT ROBOT</span></div><h3 class="h3">直觉泵 3 · 巨型机器人</h3><p class="prose">想过 25 世纪的生活？唯一已知办法是把自己冻起来，直到 2401 年被自动唤醒。冷冻舱需要保护与供能 400 年，你不能指望儿孙，所以必须造一个巨型机器人安置它。自然界给了两种基本策略（外加一种不合用的）：</p><div class="grid g3"><div class="card"><div class="idx">①</div><h3>固定设备（植物策略）</h3><p class="cp">找最佳场所，让固定装置提供水、阳光与能量。主要缺点：危害来临时不能移动——比如有人碰巧想在此处修一条高速公路。</p></div><div class="card"><div class="idx">②</div><h3>可移动机器人（动物策略）</h3><p class="cp">配传感器与预警装置，避开危害、寻找能量。整个冷冻期你在沉睡，无法指导，只能把它设计为自发制订计划——且切勿赋予超凡的识别能力，能识别世界上需要识别的东西就够了。</p></div><div class="card"><div class="idx">③</div><h3>孢子（不合用）</h3><p class="cp">孢子或种子能在坚硬护甲里几乎无限期存活，但它处在尽可能低能耗的惰性状态——你的生命支持系统需要高能量。</p></div></div><p class="prose">注意丹尼特给所有意向词都加了双引号——「知道」「找到」「预见」——表示这只是一种近似意向性。机器人的「识别器」并非完美无瑕，它可以出错，但<b>什么算错误归根到底取决于制作者的需要和欲求</b>；若制作者想造一个在「认不清」东西的世界里瞎撞的机器小丑，那些「错误」中就会有一些是弄对了的。</p><p class="prose">你入睡后不得不放弃精细控制，机器人能评估当前状态与终极目标、自行得出附加目标——即便所有行为都源自你的目的，它们也会开始有点脱离你的目标了。</p><p class="prose">现实中的非虚构例子：一台国际象棋计算机可以击败它的创造者。我们说它正在「琢磨」车的行动，唯一理由是设计者设计它做那种事；但一旦确定了设计者的最大目标，<b>暴虐的大自然就会接管过来</b>，决定哪个系统中的哪些状态是错误的或不准确的。</p><p class="prose">布莱克可以写一首看上去关于马其实关于教授的诗，计算机工程师却不能把自己的意图强加给造物。</p><p class="prose">然后是最显著的含义：不管多少神奇的人工智能妙法植入其中，人工制品都不会有什么派生意向性——若坚持这一观点，我们就不得不接受，<b>我们自己的意向性和机器人的意向性完全一样</b>。因为这个科幻故事并不新鲜，它是道金斯（1976）看法的另一种形式：</p><div class="aband"><q>我们是被造物，是历经亿万年设计而成的用来保障基因的生存机器，因为基因无法出于其利益迅速地、知情地行动。</q><cite>——29 彷徨的双币机、孪生地球以及巨型机器人</cite></div><p class="prose">我们的意向性源自「自私」基因的意向性——</p><div class="aband"><q>它们是无意的赋义者，而非我们！</q><cite>——29 彷徨的双币机、孪生地球以及巨型机器人</cite></div><p class="prose">有人会反驳：巨型机器人有有意识、慎思、有远见的工程师，而基因不会设计自己、再愚蠢不过——它们只是设计过程中的<b>受益者</b>，「非常愚蠢、非常有钱的客户」。做设计的是谁？是自然选择压力下漫长而缓慢的进化过程。</p><p class="prose">自然「选择」心脏作为血液循环泵是出于其优越之处，并非出于它们跳动时迷人的节奏——正如巴拿马百事特许经营人因识别巴波亚硬币的功能选择双币机，进化也可以因为血液供氧的能力选择某个器官，将其作为肺。</p><p class="prose">这一图景有两个相当不明显的含义让人难以接受：其一，如果我们「仅仅」是造物，我们就没有任何特别权威来确认内心深处的思想意味着什么——琼斯没有权威认定他在考虑马还是犸；其二，根本就不存在所谓的深层事实。</p><p class="prose">当有关功能的「真相」（the fact of the matter）有争议时——当多个解释都讲得通时——<b>那里就不存在任何真相</b>。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>30 彻底翻译与蒯因式填字游戏 · 不存在绝对正确的翻译</h2><span class="en">RADICAL TRANSLATION</span></div><p class="prose">当两个同样优秀的功能解释冲突时，蒯因（1960）以<b>彻底翻译的不确定性</b>原理捍卫了「不存在深层事实」的主张：设想太平洋孤岛上有一门特有语言，没有双语翻译，人类学家只能靠观察与互动式试错来理解——蒯因称之为「彻底翻译」。</p><p class="prose">他认为，原则上两位调查员可以做出相当不同、却又同样优秀的翻译手册，因此<b>不存在事实上正确的翻译</b>。许多哲学家对此不屑一顾。</p><p class="prose">丹尼特用一个亲手设计的填字谜题让它变得合情合理：那道题有两组很棒的答案（藏在第 76 章），横排与竖列之间的多重约束限制着设计的可能性——「我是有意这样设置的」，他并没有先定一组「真正的」答案再凑出另一组，而是从收集的意思相近的四字母单词中取几对一并制定了这两组答案。</p><p class="prose">你若找到谜题的一个解决方案，密码学家通常相信你就发现了唯一解。但这类填字谜题表明：<b>存在唯一解并不是形而上的必然，而只是在强大约束条件下极其可能的一种结果</b>。</p><p class="prose">人远比填字游戏复杂——大脑充满神经调质，身体与整个世界深深交织，其进化史与个人历史内嵌于世界——所以米利肯等人是对的：在极端情况下不可能存在两套不分轩轾的全局解释，彻底翻译的不确定性在实践中当然可以忽略不计。</p><p class="prose">不过该原则依然有效。我们没有彻底翻译的不确定性，不是因为脑袋里存有「真正的意义」（蒯因称之为意义的<b>「博物馆神话」</b>，他的主要攻击对象），而是因为有很多个独立的约束条件需要满足。</p><p class="prose">当现实世界遭受不确定性威胁时，解决问题的始终是更具「行为性」或「倾向性」的事实，而非某种神秘的「因果力量」或「内在语义性质」。</p><div class="aband"><q>事实确实能够确定解释，但始终是“浅层”事实在发挥作用。</q><cite>——30 彻底翻译与蒯因式填字游戏</cite></div></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>31 语义引擎和句法引擎 · 大脑只是通过句法引擎模仿语义引擎</h2><span class="en">SYNTAX ENGINE</span></div><p class="prose">意义如何能产生影响？它似乎没有温度、质量或化学成分那样的物理性质。大脑从感觉器官的能量流中提取意义，产生对世界上各种重要东西的预期，用这种形式「制造未来」——所以大脑应该是<b>语义引擎</b>。</p><p class="prose">但大脑由大量分子片段构成，其相互作用只服从严格的化学定律、物理定律，只对分子形状和分子力做出响应——所以大脑事实上只是<b>句法引擎</b>。</p><p class="prose">类比验钞机：你要求工程师造一部能把所有真钞叠成一沓、假币堆成另一沓的机器。工程师说不可能——他们只能响应「句法」性质：厚度、形状、纸张的化学成分、油墨的颜色模式以及其他难以伪造的物理性质，做一部运作良好但并非万无一失的验钞机。大脑任何一部分的结构都受同样限制：无论其输入意味着什么，都是由物理化学力引起的。</p><div class="aband"><q>物理学永远胜过意义。直接响应意义的语义引擎像永动机一样，在物理上是不可能的。那么，大脑如何完成指定给它的任务呢？——作为句法引擎，它具有可以跟踪或模仿语义引擎的能力。</q><cite>——31 语义引擎和句法引擎</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>32 沼泽人遇上母牛鲨 · 哲学家最喜爱的直觉泵</h2><span class="en">SWAMPMAN</span></div><p class="prose">直觉泵理应有效利落地工作，抽取待寻找的直觉，继而返回待命状态——但直觉泵往往引发激烈的辩驳与反辩驳。戴维森本人曾对丹尼特说，他<b>后悔发明了</b>沼泽人直觉泵，因为它怂恿了一种毫无节制且不具持久启发性的争吵。</p><p class="prose">泵身如下：一道闪电击中沼泽里的枯树，站在旁边的「我」被分解成各种元素，与此同时，完全出于巧合，树中完全不同的分子变成了「我」的物理复制品——沼泽人。它离开沼泽、碰上我的朋友、说英语寒暄、回到我家、开始撰写有关彻底翻译的文章。没人能看出不同。</p><p class="prose">但有一处不同：我的复制品并没有认出我的朋友。它不能辨识任何东西，因为它本来就不能对任何东西有所认知——它无法知道我朋友的名字，无法记得我的家在哪儿，它发出的「家」这个声音并不是在某个背景中习得的（Davidson, 1987, pp. 443-444）。</p><p class="prose">这些古怪例子在设计上模仿科学实验：孪生地球设置最大程度的内在相似性，让外部环境的影响可靠显现；沼泽人则让未来倾向和内在状态保持不变，把「历史」的影响降到最低。由于因变量就是直觉，想象力的贡献比哲学家认识的更难控制。更深的困难在于：凭空想出个例子就来「证明」深层概念要点不过是小儿把戏——</p><div class="broken-tip">源文截断提示：「一些哲学家认为，微笑的恶魔、母牛鲨」——正文在源文中戛然而止，疑为导出残缺。据下文可知所省略的大意是这类假想不值得回应；如实保留，不补写。</div><p class="prose">母牛鲨随后登场：一头母牛诞下了同鲨鱼分毫不差的生物——它像鲨鱼一样游动，还能同其他鲨鱼成功交配，天哪，除了它的所有细胞里都是<b>牛的 DNA</b> 之外，它同鲨鱼毫无二致。它是鲨鱼吗？哲学家说这在逻辑上不是不可能。</p><p class="prose">可正如戴维森的记忆「痕迹」出现在沼泽人的大脑结构中在物理上不可能一样，一条鲨鱼由包含牛的 DNA 的细胞构成同样在物理上不可能——这种事从未发生过，谁会在乎如果它们发生了我们该怎么说呢？注重反问的哲学家在乎：「以最大的严密性定义你的用词以及所有逻辑可能的事项向来非常重要。这才是追寻真理之道。</p><p class="prose">」丹尼特的回击是那条一般性的经验法则：</p><div class="aband"><q>思想实验的效用与其脱离现实的程度成反比。</q><cite>——32 沼泽人遇上母牛鲨</cite></div><p class="prose">「伽利略在其思想实验中忽略了摩擦力，他不也做了同样的事吗？</p><p class="prose">」——确实如此，但两相对照：孪生地球在物理上不可能，但其不可能并非沼泽人的那种不可能（量子多重宇宙救不了它——即便有无限多星球与地球几乎一模一样，我们也无法送人去访问）；<b>双币机到巴拿马一游是可能的</b>，不必悬置任何自然定律，就能设想关于它的全部细节。这就是好直觉泵与坏直觉泵的分界线。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>33 两个黑盒子 · 究竟是什么让红灯闪烁</h2><span class="en">TWO BLACK BOXES</span></div><p class="prose">本部分压轴的直觉泵是一则科幻小故事：两个大型黑盒子 A 与 B 由一条绝缘铜电缆相连。A 上有两个按钮 α、β；B 上有三个灯泡：红（R）、绿（G）、黄（Y）。科学家在各式条件下做了几十亿次实验：按下 α，红灯短暂闪烁；按下 β，绿灯闪烁；黄灯似乎从不亮。规律一目了然——</p><div class="tbwrap"><table><thead><tr><th>比特串</th><th>后来发现的真相</th></tr></thead><tbody><tr><td>红串</td><td>英语<b>真</b>语句的 ASCII 码——「房子比花生大」「鲸不会飞」「三乘四比二乘七少二」</td></tr><tr><td>绿串</td><td>英语<b>假</b>语句的 ASCII 码——「九小于八」「纽约是西班牙的首都」</td></tr><tr><td>黄串</td><td>不合语法的、非真非假的比特串——数量比红串和绿串多了很多个数量级，几乎所有的比特串都是黄串</td></tr></tbody></table></div><p class="prose">故事的推进充满反转：信号检测显示，每次按下按钮，一串 10000 比特的脉冲流就会发往 B 盒子——<b>但比特串的模式每次都不一样！</b>打开 B 盒，里面是一台配有大存储器的串行计算机，每个输入的微观因果步骤都清清楚楚、毫无神秘；同一比特串永远点亮同一盏灯，尽管中间步骤几乎总在经历不同的物理状态。</p><p class="prose">科学家临时修改 A 发出的信号——黄灯闪烁，「你们杀了它！」；打开 A 盒，又发现一台超级计算机，内有一个每秒百万次滴答的「时钟」，正是这个随机性机制保证同一比特串从不被重复发送，也解释了那十亿分之一的异常。</p><p class="prose">真相由两个制作盒子的黑客揭开：A 的作者 Al 与 B 的作者 Bo 各自为「专家系统」打造了天底下所有「真命题」的数据库与推理引擎，后来决定一起做个哲学玩具——两个系统都以标准 ASCII 码互译英语语句。B 对格式错误零容忍，故篡改传输几乎总是闪烁黄灯。</p><p class="prose">所以，神秘的因果性质「红」实际是英语真语句的性质，「绿」是英语假语句的性质。哲学家随即发现小把戏：某句话「这句话送往你那里做评估的次数少于一百零一次」，头一百次是红串，尔后变成绿串。</p><p class="prose">围绕「红」究竟是否等同于英语语句的真理性，哲学家们吵成一团：有说真理是抽象的语义性质、不可能导致任何事情发生的；有反驳说这正像拧动点火钥匙发动汽车的；有主张红、绿只是「非常非常复杂的句法性质」的——最后连「内容已经被消解掉了」的极端立场都出场了。</p><div class="aband"><q>没有什么东西可以代替意向立场，你要么采用意向立场的方式，找出语义层面的事实来解释这一模式，要么永远被这种显而易见的因果规律所困扰。</q><cite>——33 两个黑盒子</cite></div><h3 class="h3">堵住出口</h3><p class="prose">丹尼特深知没有哪个思想实验能清晰到让哲学家不误解它，于是「不甚优雅地」堵住三个出口：<b>（1）</b>盒子里的装置不过是自动化的百科全书设备，甚至是无聊透顶的意向系统，被严格约束在单一目标上（IBM 的沃森同样如此）；<b>（2）</b>两套系统独立研制却高度重叠——Al 与 Bo 可能语言不同，但生活在同一个世界，且都在打造有用的数据库。</p><p class="prose"><b>（3）</b>为什么不用两个美国人、或者干脆在 B 里拷贝一份 Al 的系统？因为那样规律就成了显而易见的句法匹配。</p><p class="prose">Bo 用瑞典版 Lisp 正是为了让两个<b>句法系统</b>的外部行为尽可能不同、内部又同为一个共同世界的系统性表征——如此，解释那种引人瞩目的规律的唯一方法，便是上升到<b>语义引擎</b>的层面。这正是第 13 章想要的阐释主题。</p><div class="broken-tip">源文截断提示：本章「该系统原本就是一部戈德堡式的机械」「两个系统发送的都是以标准ASCII码写成的英语」「完全超出了所有的分析调查」三处，正文在源文中戛然而止，疑为导出残缺——据上下文语意衔接无碍，如实保留，不补写。</div><p class="prose">故事的彩蛋属于连接机的发明者丹尼·希利斯：他立刻想到一个密码学「解答」——「Al 和 Bo 把世界当作<b>『一次性密码本』</b>了啊！」就像你和好友被太空海盗抓住后约定：划表示讲真话，点表示讲假话，然后当着绑架者的面说「鸟会下蛋，青蛙会飞」——听上去全是废话，实则每句都在回答「No」。</p><p class="prose">把 Al 和 Bo 塞进盒子运到火星，火星人同样会对他们的摩尔斯电码恶作剧困惑不解——除非他们得出结论：盒子里的这些东西需要语义解释。<b>这对我们而言显而易见，但我们不是火星人。</b></p></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>第四部分小结 · 一个宽敞的逻辑空间</h2><span class="en">PART IV SUMMARY</span></div><p class="prose">为了处理意义的基础概念，21 种思考工具悉数登场。它们是否全部奏效了？证明一个直觉泵有价值有两种方法：制作精良，泵出的直觉可靠而有说服力；或泵出的直觉依旧可疑，但泵本身帮我们把注意力集中在出了问题的前提上。无论哪种，直觉泵都是一根杠杆——接受结论前，还须检查其他旋钮。</p><p class="prose">至于战果，丹尼特自评「喜忧参半」：意义不会是某种易于映射到大脑中的简单性质，我们也找不到可以解答某个信念真正意义的「深层」事实；我们能做的，不过是找到并锚定全部物理立场、设计立场以及现有资料的最佳解释。正如前往巴拿马的双币机表明的那样——</p><div class="aband"><q>意义总是相对于某个功能背景，它并不需要什么原初意向性，除了我们（近似）自私的基因的意向性。</q><cite>——第四部分小结</cite></div><p class="prose">21 世纪，我们第一次可以严格地、积极地对那些有着数以万亿计的活动部件的机制进行思考。多亏了图灵，我们隐约看到一条路径：从无理解能力的物质（物理立场）出发，经由一系列重新安排（设计立场、近似意义），达到这样一种自我理解——我们是信者、知者、理解者的典范，经意向立场简化为意向系统。</p><p class="prose">这些命题每一个都存有争议，把它们有序组织起来，会吸引尚未看到部件如何啮合的人，也让批评者更容易找出贯穿其中的错误主线——不论怎样，我们都能由此获得进步。</p><p class="prose">他自评并没有给出一种意义理论——它给我们的只是一个相当宽敞的逻辑空间，如果他对的话，一个恰当的有关意义的科学理论必须能容纳于其中。但这一部分的终点恰好是下一个大主题的起点：</p><div class="aband"><q>达尔文认为万物经自然选择而进化，在我看来，这是人类有史以来最为杰出的想法，因为它大胆地尝试将物质与意义联结在一起，而现实的这两个方面似乎有着天壤之别</q><cite>——第四部分小结</cite></div><div class="aband"><q>这是一种关于诞生的重要性的冒泡式（bubble-up）图景，它颠覆了传统的涓滴式（trickle-down）图景。</q><cite>——第四部分小结</cite></div><p class="prose">自然选择的想法并不十分复杂，但非常强大，以至于让有些人无法直视，仿佛它是一剂难以下咽的苦药。接下来的思考工具，将展示这个想法如何照亮存在中阴暗的角落，把奥秘转变为可以解决的问题。</p><div class="check" data-k="06-meaning2"><p class="ct">本 篇 自 查</p><label><input type="checkbox"><span>我能解释「迈克对红发人有看法」为什么不是命题态度，而像一段代码的注释</span></label><label><input type="checkbox"><span>我能复述双币机到巴拿马后 Q/QB 状态之争，并说出「归属取决于用途」的答案</span></label><label><input type="checkbox"><span>我能讲清孪生地球上的琼斯为何无法靠自己的权威确定「马」的意义</span></label><label><input type="checkbox"><span>我能说出「它们是无意的赋义者，而非我们」指的是基因</span></label><label><input type="checkbox"><span>我能默写那条经验法则：思想实验的效用与其脱离现实的程度成反比</span></label><label><input type="checkbox"><span>我能向朋友讲完两个黑盒子的故事，并说明为什么不用语义学术语就解释不了红绿灯</span></label><div class="cf">已对照 <b>0</b> / 6</div></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">编目</span><span class="nd"><b>注一｜</b>源文 29 章哲学家姓名拼写为「Prtricia Churchland」，应为 Patricia Churchland，原书排印如此，照录不改。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>注二｜</b>33 章三处句末截断（「戈德堡式的机械」「以标准ASCII码写成的英语」「完全超出了所有的分析调查」）与 32 章一处段中截断（「微笑的恶魔、母牛鲨」），均在正文以 broken 块如实标注，不补写。</span></div><div class="note" id="n3"><span class="nn">编目</span><span class="nd"><b>注三｜</b>各源段末尾的孤立数字（29–34）为原书页码残留，随骨架保留，不进入正文呈现。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜丹尼尔·丹尼特《直觉泵和其他思考工具》（浙江教育出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">第四部分｜更多意义的工具</span><a href="../05-计算机的思考工具/index.html">← 计算机的思考工具</a><a href="../07-进化论-上/index.html">进化论·上 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='itp-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

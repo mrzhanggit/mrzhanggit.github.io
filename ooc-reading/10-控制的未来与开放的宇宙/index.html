@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>控制之部·控制的未来 · 开放的宇宙 · 从控制权到放权｜失控 精读</title>
+<meta name="description" content="第十六·十七两章合奏一个转折：数字侏罗纪、无实体的机器人、重装上阵的米老鼠——当造物有了自作主张的能力，控制就成了一个范畴，一端是「一体」式的全面支配，另一端是「失控」。答案是协同控制：放牧人工生命，将计算机上传到生命中">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../09-人工进化/index.html">← 人工进化</a><a href="../11-变化架构与后达尔文主义/index.html">变化架构·后达尔文主义 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">控</div>
+  <div class="stamp s4">控制的未</div>
+  <h1>控制的未来 · 开放的宇宙 · 从控制权到放权</h1>
+  <p class="sub">第十六·十七两章合奏一个转折：数字侏罗纪、无实体的机器人、重装上阵的米老鼠——当造物有了自作主张的能力，控制就成了一个范畴，一端是「一体」式的全面支配，另一端是「失控」。答案是协同控制：放牧人工生命，将计算机上传到生命中。</p>
+  <div class="meta"><span>控制之部</span>
+    <span class="k">协同控制</span>
+    <span>正文 32,268 字</span>
+    <span>16 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>卡通物理学</a><a href="#s3" data-t="s3"><span class="cn">叁</span>合成角色</a><a href="#s4" data-t="s4"><span class="cn">肆</span>无实体机器人</a><a href="#s5" data-t="s5"><span class="cn">伍</span>行为代理</a><a href="#s6" data-t="s6"><span class="cn">陸</span>自由意志</a><a href="#s7" data-t="s7"><span class="cn">柒</span>米老鼠重装上阵</a><a href="#s8" data-t="s8"><span class="cn">捌</span>协同控制</a><a href="#s9" data-t="s9"><span class="cn">玖</span>拓展空间</a><a href="#s10" data-t="s10"><span class="cn">拾</span>基元组</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>无心插柳</a><a href="#s12" data-t="s12"><span class="cn">拾贰</span>打破规则</a><a href="#s13" data-t="s13"><span class="cn">拾叁</span>进化工具</a><a href="#s14" data-t="s14"><span class="cn">拾肆</span>滑翔意外</a><a href="#s15" data-t="s15"><span class="cn">拾伍</span>生命的动词</a><a href="#s16" data-t="s16"><span class="cn">拾陸</span>超生命国度</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>控制的未来是：伙伴关系，协同控制，人机混合控制。</p><cite>——第十六章 16.7 寻求协同控制</cite></div><div class="epi"><p>我不要把生命下载到计算机中。我要将计算机上传到生命中。</p><cite>——第十七章 17.8 在超生命的国度中安家落户（汤姆·雷）</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">十五章两节是一部双向叙事：虚拟世界沿卡通物理学与合成角色一路逼近真人，开放宇宙则沿开放基因组与进化方程一路逼近超生命——两条线在「协同控制」处交汇</p><p class="thesis">凯利从被造物而非造物主的角度发问：怎样在不剥夺人工生命角色自由的情况下，给它设定某种结局？答案不在「一体」式的全面支配，也不在「失控」，而在中间那片没有名字的地带——<b>协同控制</b>，像放牧羊群那样放牧人工生命。而当造物拿到了开放基因组与进化方程，它们便涌向<b>超生命</b>的国度：要探索超生命，就必须制造超生命。</p><div class="chain"><div class="node"><div class="n">卡通物理</div><div><p class="tt">虚拟世界的沃土</p><p class="dd">让动画形象遵循自己的物理学法则是现实主义的新秘诀——人工环境加入更多复杂度，就会成为合成生命成长的沃土</p></div></div><div class="node"><div class="n">无实体机器人</div><div><p class="tt">银幕上的造物</p><p class="dd">动画人物就是没有实体的机器人——支配动物的去中心化、分布式控制在数字生物身上同样适用</p></div></div><div class="node"><div class="n">控制范畴</div><div><p class="tt">两个端点之间</p><p class="dd">控制是一个范畴：一端是「一体」式的全面支配，另一端则是「失控」——中间的各类控制尚无恰当的词语</p></div></div><div class="node"><div class="n">协同控制</div><div><p class="tt">伙伴关系</p><p class="dd">控制的未来是：伙伴关系，协同控制，人机混合控制——创造者必须和他的创造物一起共享控制权</p></div></div><div class="node"><div class="n">开放基因组</div><div><p class="tt">22 到 23000 字节</p><p class="dd">开放的基因组带来开放的进化——雷的创造物自行决定基因组的长度，他的世界最终能进化出任意东西</p></div></div><div class="node"><div class="n">超生命</div><div><p class="tt">生命是个动词</p><p class="dd">重要的不是组成材料，而是它做了什么——人工生命是合成生物学的实践，我们要制造超生命才能探索超生命</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>16.1 玩具世界的卡通物理学</h2><span class="en">CARTOON PHYSICS</span></div><p class="prose">《侏罗纪公园》中的那些恐龙不过是些行尸走肉：它们有逼真的身体，却缺少自己的行为、自己的意志、自己的生存力——是由计算机动画师操纵的幽灵般的提线木偶。不过有朝一日，这些恐龙会像匹诺曹一样获得生命（源文在此截断）。</p><p class="prose">在这些恐龙进入到栩栩如生的电影世界之前，它们栖居在一个空旷的三维世界里：风、重力、惯性、摩擦力、硬度以及物质世界所具有的细枝末节全都不存在，需要想象力丰富的动画师来构建。苹果公司的迈克尔·凯斯（源文此句截断）想要尝试的，就是把物理学引入仿真世界——</p><div class="aband"><q>我们参考了把物理学装进动画师脑子的传统做法，决定改一下，让计算机也懂得一些物理学知识。</q><cite>——第十六章 16.1 玩具世界的卡通物理学（迈克尔·凯斯）</cite></div><p class="prose">给那个一无所有的幻想世界添上质量属性与重力定律，飘浮的徽标坠落的加速度就会跟实物一样；再加上弹性公式，它就能「自然而然」地从地板上弹起来；再加上硬度，镀铬徽标摔到地上反弹的幅度越来越小，直到咔嗒一下停下来。</p><p class="prose">随着为人工环境加入更多的复杂度——弹性系数、表面张力、旋转效果——<b>它们就会成为合成生命成长的沃土</b>。这就是侏罗纪的恐龙如此逼真的原因——</p><div class="aband"><q>当它们抬腿的时候，它们要克服虚拟的躯体的重量，它们的肌肉会伸缩或下垂。当脚落下的时候，重力会拉扯它，落地时带来的冲击同时向上反射到腿部。</q><cite>——第十六章 16.1 玩具世界的卡通物理学</cite></div><p class="prose">电影观众看到秋叶被吹到街上，却没意识到这个场景是计算机生成的动画——画面之所以看起来真实，是因为这段影像中确实有某种真实性：片片虚拟的叶子被一阵虚拟的风吹到了虚拟的街道上。</p><p class="prose">当终结者II号机器人从一滩熔化的铬里冒出来时，那效果逼真得令人震惊，因为它遵循的是液体在真实世界里的物理规律（譬如表面张力）——<b>这是一滩「仿真」的液体</b>。而要使数字世界以后也能有用，所有创造出来的东西都得简化成某种方程式：恐龙和水、恐龙啃咬的树木、数字吉普车、建筑物、衣服、餐桌还有天气。</p><p class="prose">凯斯和同事盖文·米勒（源文此句截断）；不单只是电影，所有制造品都将通过计算机辅助设计（源文在此截断）。生物学当然也不例外：计算机已经可以为花朵建立模型了，普鲁辛凯维奇（源文在此截断）。</p></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>16.2 合成角色的诞生</h2><span class="en">SYNTHETIC ACTORS</span></div><p class="prose">米老鼠是人工生命的前辈之一。已 60 高龄的米奇很快就要进入数字时代，但迪斯尼并不急于把自动化技术完全运用在动画上——动画是一门手艺，一种艺术，公司的巨大财富就封存在这门手艺之中。为迪士尼动画师提供新技术的鲍勃·兰伯特说——</p><div class="aband"><q>我们可不想人们说，‘噢，见鬼，又一门手艺钻到计算机眼儿里去了’</q><cite>——第十六章 16.2 合成角色的诞生（鲍勃·兰伯特）</cite></div><div class="aband"><q>瞧，我们已经让400位穿着白大褂的女士为米奇画了30年。我们不可能一下子就都变过来。</q><cite>——第十六章 16.2 合成角色的诞生（鲍勃·兰伯特）</cite></div><div class="tbwrap"><table><thead><tr><th>作品</th><th>数字化的足迹</th></tr></thead><tbody><tr><td>《妙妙探》</td><td>迪斯尼最早引入自动化动画技术的影片之一（源文此处仅存残句）</td></tr><tr><td>《美女与野兽》</td><td>同上——1990 年起逐步数字化他们的世界（源文此处仅存残句）</td></tr><tr><td>《阿拉丁》</td><td>迪斯尼第一个完全无纸化的角色：那块飞来飞去的毯子</td></tr><tr><td>《狮子王》</td><td>好几种动物按《侏罗纪公园》恐龙的方法由计算机生成，含半自动集群行为的飞禽走兽</td></tr><tr><td>下一部</td><td>迪斯尼正在制作他们的第一部完全数字化的动画（源文在此截断）</td></tr></tbody></table></div><p class="prose">1992 年的时候，迪斯尼的动画师们就已经大吵着要用计算机来完成工作了。凯利顺便拜访了皮克斯公司，想看看他们到底在孵化什么样的人工生命：四部获奖计算机动画短片的作者拉塞特，喜欢让正常状态下没有生命的东西动起来——自行车、玩具、灯，或是书架上的小摆件。</p><p class="prose">可皮克斯的动画部分，绝大部分其实是「手绘」的——只不过绘画工具不是铅笔而是鼠标，画板不是木制而是计算机屏幕。皮克斯的制作主管拉尔夫·古根海姆（源文此句截断）反复强调——</p><div class="aband"><q>动画师们在角色没有画出之前，是不会知道它是什么样的。</q><cite>——第十六章 16.2 合成角色的诞生（拉尔夫·古根海姆）</cite></div><p class="prose">问皮克斯的艺术家能否想象自动生成的电脑角色——你把粗糙的草图喂进去，就出来一个能自己调皮捣蛋的数码达菲鸭——得到的回答一概是严肃的否定和摇头：「如果把草图喂进电脑里就能画出好角色来，那这世界上就没有什么蹩脚演员了。</p><p class="prose">」他们提出的问题就是一个关于<b>控制</b>的问题：事实证明，特效和动画行业就是各种控制狂的天下——在他们看来，演技的微妙之处只有人类的掌控者才能够引导。他们是对的。不过，将来他们就不再是正确的了——</p><div class="aband"><q>如果电脑的运算能力像现在这样继续增强下去，在5年之内，我们就可以看到合成出来的角色在电影中担当主角，他们不仅仅身体是合成出来的，行为举止也是合成出来的。</q><cite>——第十六章 16.2 合成角色的诞生</cite></div><p class="prose">在《侏罗纪公园》中，合成恐龙的逼真度已经近乎完美；许多数字特效实验室正汇集制作数字化人类演员的元素——一个专攻数字化的头发，另一个集中在手部动作上，第三个专注于面部表情。制作以假乱真的虚拟人物形态虽棘手，但已经近在咫尺；而模拟出以假乱真的人物行动则要更远一些。</p><p class="prose">据图形专家们说，这个领域中的最后堡垒就是人物的表情——<b>控制人物的脸部活动将会是一场攻坚战</b>。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>16.3 没有实体的机器人</h2><span class="en">DISSEMBODIED ROBOTS</span></div><p class="prose">在旧金山工业区的克洛萨尔图像工作室，布莱德·格拉夫（源文此句截断）的计算机都来自硅谷图形公司（源文此句截断）。凯利去工作室是想见一见莫西：第一个完全计算机化的动画人物——一只卡通狗，大鼻子、被啃过的耳朵、戴着白手套的手和「橡皮管」手臂。</p><p class="prose">他的动作是从一个人类演员的动作中提取出来的：借自制的虚拟现实装置「瓦尔多」，人可以远距离操纵木偶（第一个以此方式完成的计算机动画《科米蛙》——源文在此截断）。动画师想让莫西跳舞时，就戴上顶有位置传感器的黄色头盔，肩胯捆上传感器，拎起泡沫板裁成的巨型卡通手——卡通狗便在屏幕上那个古怪的桃木屋里亦步亦趋地舞起来。</p><p class="prose">真正的难关是实时。人体大概有 200 个运动点，所能做出的动作姿态数量基本是天文数字——</p><div class="aband"><q>单单是个抠鼻子的实时动作，所需要的计算量就已经超过了我们现在所拥有的大型计算机的能力。</q><cite>——第十六章 16.3 没有实体的机器人</cite></div><p class="prose">而且身体的每一个姿势都可以通过多种不同的途径来达到：四肢在走路时所完成的动作顺序如此复杂，以至于有足够的余地允许用上百万种不同的方式去完成它。</p><p class="prose">试图让人工形象模拟人类动作的研究者们很快认识到制作兔八哥和猪小弟的动画师们早就知道的事情——就动作而言，某些联接顺序会比其他联接顺序显得更「自然」；一个动画形象即使按人类的正确顺序来行动，如果甩膀掀胯的相对速度跟不上节奏，仍会显得很机械。<b>时机的掌握是动作的又一个复杂面。</b></p><p class="prose">麻省理工媒体实验室的戴维·塞尔彻（源文此句截断）与学生史蒂文·斯特拉斯曼（源文此句截断）想用简单易懂的英语来指导角色：你只要告诉它做什么，它就会从「行为库」里找到一组合适的素材，再按恰当的次序组成一个合理的动作——「这家伙写不了奏鸣曲，但它能坐在椅子上。</p><p class="prose">」斯特拉斯曼的「桌面剧场」里，约翰与玛丽按他输入的剧情开演。难点在于人物动作的微妙之处——</p><div class="aband"><q>这家伙写不了奏鸣曲，但它能坐在椅子上。</q><cite>——第十六章 16.3 没有实体的机器人（史蒂文·斯特拉斯曼）</cite></div><div class="aband"><q>我可以储存不同的手部动作，但难办的是不知道什么东西支配着这些动作。掌管这些选择的部门又是从哪里冒出来的呢？</q><cite>——第十六章 16.3 没有实体的机器人（史蒂文·斯特拉斯曼）</cite></div><p class="prose">塞尔彻和同事迈克尔·麦肯纳（源文此句截断）造出的巨型铬蟑螂在街上爬行时，行为是「自由的」：程序员告诉它「走过这片建筑」，虚拟蟑螂就会设法搞明白腿应该如何动作、躯干转动到什么角度——<b>程序员给这只大虫子的只是行动的目标，而不是动作的指令</b>。</p><p class="prose">更进一步的自主虚拟角色已经成形：提取出巨型蟑螂自下而上的行为引擎，为它包裹上侏罗纪恐龙的迷人外壳，就得到了一个数字电影演员——</p><div class="aband"><q>它就会自己弄明白如何通过协调自己的肢体来完成指令。</q><cite>——第十六章 16.3 没有实体的机器人</cite></div></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>16.4 行为学架构中的代理</h2><span class="en">ETHOLOGICAL AGENTS</span></div><p class="prose">20 世纪 40 年代，欧洲著名的动物观察三人组——康拉德·劳伦兹（源文此句截断）——开创的行为学，给数字角色提供了骨架。行为学架构的核心是「去中心化」这样一个关键概念：正如丁柏根在他 1951 年的著作中指出的——</p><div class="aband"><q>动物行为是一种去中心化协同，它将许多独立的动作（驱动）中心像盖房子一样搭建到一起。</q><cite>——第十六章 16.4 行为学架构中的代理</cite></div><p class="prose">雄性鳟鱼会本能地对三种刺激做出反应：到了交尾期的雌鱼、游到附近的虫子、从身后袭来的捕食者——三者同时出现时，捕食者模块总会压制交配或进食本能，抢先反应。这就像你在厨房两手弄得很脏，电话响了，同时外面又有人敲门：相互冲突的冲动可能使你手足无措，除非有另一个后天习得的行为模块进行仲裁。</p><p class="prose">从一个更积极的角度看，这种驱动中心相当于某种<b>代理</b>——侦测到一个刺激，然后做出反应；它的输出在其他模块看来可能是输入：拉开撞针，扣动扳机，或关闭撞针。外在行为就这样从错综复杂的盲目反射中涌现出来。</p><p class="prose">猫的身上并没有什么中心模块去决定它挠耳朵还是舔爪子——它的所作所为是由独立的「行为代理」构成的乱麻般的网络决定的。听起来这跟布鲁克斯的包容结构非常相似——<b>它其实就是一种包容结构！</b></p><div class="aband"><q>动物就是能够正常运作的机器人。</q><cite>——第十六章 16.4 行为学架构中的代理</cite></div><p class="prose">在计算机科学家的眼里，行为学教科书上那些相互连接的行为模块网络图，其实就是计算机的逻辑流程图。得出的结论是：行为是可以电脑化的——通过对子行为进行安排，任何人格特征都能够编成程序；从理论上来说，动物所具有的任何情绪、任何微妙的情感反应，都可以用计算机来生成。</p><p class="prose">这样，银幕上的自主动画角色就可以按照和真正动物一样的一般组织规则来行动——尽管是合成的，它们的行为却是真实的（或者至少是超真实的）。因而——</p><div class="aband"><q>因而可以说，动画人物就是没有实体的机器人。</q><cite>——第十六章 16.4 行为学架构中的代理</cite></div><p class="prose">能够被编程的远不只是动作。性格也同样可以被封装到数字里：沮丧、兴奋还有愤怒都可以作为模块添加到造物的操作系统中——某些软件公司销售的恐惧情感程序会比其他公司的好。也许，他们还会销售「关联式恐惧」：这种恐惧不仅仅表现在生物的身体上，还会渗入到一连串的情感模块中，并随时间的流逝而逐渐消散。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>16.5 给自由意志强加宿命</h2><span class="en">IMPOSING FATE ON FREE WILL</span></div><p class="prose">行为想要自由，可如果要为人类所用，人工生成的行为就需要受到监管和控制。我们希望机器人罗比或者兔八哥能够在不需要我们监管的情况下自行完成任务，但它们所做的事情并不都是有成效的——<b>我们怎么才能向机器人、没有实体的机器人、或任何一种人工生命颁发自由行动的许可证，同时还继续引导它们成为对我们有用的东西？</p><p class="prose"></b>卡内基梅隆大学互动文学项目的约瑟夫·贝茨虚构了一个叫作「奥兹」的奇幻虚拟世界（源文此句截断）：里面聚居着自动机器人和受人类控制的角色，目的是让人们参与创建这个环境、故事以及其中的自动机器人——既不破坏故事情节，又不仅仅是个旁观者。奥兹世界涉及了三个控制研究的前沿领域——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>如何组织一个既允许一定偏离又围绕着既定结局的故事？</span></label><label><input type="checkbox"><span>如何构建一个能产生意外事件的环境？</span></label><label><input type="checkbox"><span>如何创造自主但又受节制的生物？</span></label><div class="cf">已勾选 <b>0</b> / 3</div></div><p class="prose">贝茨想象的是一种具有分布式控制的戏剧：故事变成了某种类型的共同进化，这种进化也许只有外部的边界是预先设定的。你可以进入《星际迷航》的某一幕里施加影响以形成另一条故事线索，也可以跟合成的堂吉诃德把臂同游。贝茨本人最关心人类用户的使用体验——</p><div class="aband"><q>我研究的问题是，怎样在不剥夺用户自由的情况下，给他们设定某种结局？</q><cite>——第十六章 16.5 给自由意志强加宿命（约瑟夫·贝茨）</cite></div><p class="prose">凯利对控制的未来的探寻是从被造物而不是造物主的角度出发的，因此他把贝茨的问题改为：<b>怎样在不剥夺人工生命角色自由的情况下，给它设定某种结局？</b>布莱德·格拉夫相信，控制的这种转换改变了作者们的写作目标——</p><div class="aband"><q>我们正在创造一种完全不同的东西。我所创造的不是故事，而是一个世界。我创造的是一种人格，而不是角色之间的对话和动作。</q><cite>——第十六章 16.5 给自由意志强加宿命（布莱德·格拉夫）</cite></div><p class="prose">贝茨的宠物「小圆扣」是三色弹性球体：羞怯型的、进攻型的、模仿型的，在一个只有台阶和洞穴的简单世界中蹦来蹦去；有人插入光标进入它们的世界，它们就会和到访者互动——可能跟着你到处跑，也可能躲着你。<b>你确实是在这个局里，但你却无法控制这里的局面。</p><p class="prose"></b>日本富士通实验室把类似的角色加工成了栩栩如生的虚拟三维角色：三只「水母」会根据情绪改变颜色——自己玩耍时是蓝色，虚拟人招手时兴奋地弹过来，变成橙色，像等着追逐棒子的友善小狗一样跳上跳下。派蒂·梅斯的「仓鼠」则饿了自己找「食物」、手动得太快就逃避、手掌慢慢移动又因好奇跟着走。「虚拟现实，」格拉夫说——</p><div class="aband"><q>只有里面住满了有趣的角色，才会有趣。</q><cite>——第十六章 16.5 给自由意志强加宿命（布莱德·格拉夫）</cite></div><p class="prose">眼下，梅斯正试图教会这些生物「怎样做正确的事情」——让它们在不太受人监护的情况下，通过它们在环境中的经验来学习东西。如果侏罗纪的恐龙们不能学习，那它们就不能称为真正的角色——</p><div class="aband"><q>按照包容架构模型，梅斯正在构造一个算法的层级，以使她的造物不仅具有适应力，还能将自身导向更为复杂的行为模式，并且——作为这一整套设计必不可少的部分——还能让它们的目的从行为中自然地涌现出来。</q><cite>——第十六章 16.5 给自由意志强加宿命</cite></div><p class="prose">迪斯尼和皮克斯的动画师们差点被这个想法惊呆了，但总有一天米老鼠会拥有自作主张的能力的。</p></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>16.6 米老鼠重装上阵</h2><span class="en">MICKEY RELOADED</span></div><p class="prose">2001 年冬天，迪斯尼片场的一个角落里，一辆拖车被布置成了最高机密实验室：三个 24 岁的计算机图形艺术家用了大约三个月的时间解构了米老鼠——这个只出现在二维动画片里的家伙被重新塑造成一个具有三维潜质的存在：知道怎样走路、跳跃和起舞，怎样表示惊讶，怎样挥手道别，能够对口型。</p><p class="prose">焕然一新的米老鼠现在装在一个 2G 的移动硬盘里。动画师们早就为这只老鼠创造了应有尽有的人工世界：他在楼梯上失足，重力把他拉倒；一阵虚拟的风刮进来吹走了他的帽子；地毯从下面滑走，遵循织物的物理规律卷成一团。<b>整个过程中米奇只收到了一个指令，就是进入房间且一定要去追自己的帽子。其他事情都是自然发生的。</p><p class="prose"></b></p><p class="prose">1997 年之后，就没有人再去用手画米老鼠了。图形高手们在米奇的代码中加入了梅斯的学习模块：他会对同一幕里其他大牌演员的情绪和行为作出反应；每当一场戏重拍，他都会记得上一次的表演，并在下一次加以强化。</p><p class="prose">经过了 5 年的学习，米奇现在已经开始有自己的主见了：他对唐老鸭充满敌意，被人用木槌敲头就会暴跳如雷，导演让他在悬崖边行走，他就迟迟疑疑。程序员们抱怨说，如果要编一段程序来避免这些癖性，就不得不破坏另外一些米奇已有的品性和技能——「你要想移走一个东西，就肯定会搅动整个环境。」有一位图形专家说得最好——</p><div class="aband"><q>实际上，这就跟心理学一样。这只老鼠现在有一个真正的人格。你不可能把人格分割开，你只能在它的基础上做些补救。</q><cite>——第十六章 16.6 米老鼠重装上阵</cite></div><p class="prose">到了 2007 年，米老鼠就是个相当不错的演员了：他会说话，可以熟练地应对任何一种闹剧情境，有很强的幽默感——唯一的问题是，如果与他共事的话，你会发现他是个混蛋。导演们恨死他了，不过他们得容忍他——说到底，他是米老鼠。而最棒的是，他永远不会死，也永远不会老。</p><p class="prose">迪斯尼公司在影片《谁陷害了兔子罗杰》（源文此句截断）。问题就在于控制：米奇在它的第一部电影《蒸汽船威利号》（源文在此截断）。描述这一状况的最恰当说法是——</p><div class="aband"><q>控制是一个范畴：一端是“一体”式的全面支配，另一端则是“失控”；这两端之间则是各种类型的控制，我们尚没有恰当的词语与之对应。</q><cite>——第十六章 16.6 米老鼠重装上阵</cite></div><p class="prose">直到最近，我们所有的人工产品、所有的手工造物都仍然处在我们的威权之下；可是，我们在培育人工产品的同时也培育出了合成的生命，因此也预示着我们将丧失令行禁止的特权。老实说，所谓「失控」是对未来的一种夸张描述——那些我们赋予了生命的机器还是会间接地接受我们的影响和指导，只不过脱离了我们的支配而已。</p><p class="prose">我们确实没有一个恰当的名字来称呼这种在具有影响力的创造者和拥有自己心智的造物之间的松散关系。我们有「牧羊」这个词：放牧羊群时，我们知道自己不具有完全的权威，但也并非全无控制——</p><div class="aband"><q>也许，我们将会“放牧”人工生命。</q><cite>——第十六章 16.6 米老鼠重装上阵</cite></div><div class="grid g3"><div class="card"><h3>牧羊</h3><p class="cp">放牧羊群时，我们知道自己不具有完全的权威，但我们也并非全无控制——也许我们将会「放牧」人工生命</p></div><div class="card"><h3>栽培</h3><p class="cp">我们也会「栽培」植物——帮助它们实现其自身的目标，或者对它们稍加影响以为我所用</p></div><div class="card"><h3>管理</h3><p class="cp">意义上最贴近的词：女人可以管理她不听话的孩子，迪斯尼也可以管理电影里的米老鼠</p></div><div class="card"><h3>但管理并不完美</h3><p class="cp">我们管理国民经济，可它还是为所欲为；管理电话网络，却并没有监控某个特定的通话是如何完成的</p></div></div><p class="prose">「管理」所意味的高高在上的监管权力，远远超出我们在上述例子中所能行使的权力，也超出了未来我们在极其复杂的系统中所能行使的权力。</p></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>16.7 寻求协同控制</h2><span class="en">SEEKING CO-CONTROL</span></div><p class="prose">凯利要寻找的词更接近于「协同控制」(co-control)。在恶劣天气里使 747 大型喷气式客机平稳降落是非常复杂的任务：飞机上有好几百个系统在同时运转，高速飞行要求反应迅速，而飞行员经过长途飞行后往往困倦不堪——计算机能够比人类飞行员更好地胜任驾驶工作。</p><p class="prose">上百条生命系于一身，那么，为什么不让一台非常聪明的机器来控制飞机呢？工程师们加装了自动导航系统，事实证明这套系统非常好使——不过唯一的问题是，人类做这种消极的监工实在不怎么地：他们会觉得无聊，于是走神，随之忽视一些关键的细节，然后紧急情况突然发生，他们不得不忙着「救火」。</p><p class="prose">因此，现在的新想法不是让飞行员去盯着计算机，而是反过来让计算机盯着飞行员。欧洲的空中客车 A320 从 1988 年开始就让机载计算机担负起监督飞行员的工作：当飞行员推动操纵杆使飞机转向时，计算机会算出左倾或右倾的程度，但不允许飞机的倾斜度超过 67 度，也不允许机头抬起或低下的幅度超过 30 度。</p><p class="prose">用《科学美国人》的话来说——</p><div class="aband"><q>这个软件织出了一个能够阻止飞机超出其结构限度的电子茧</q><cite>——第十六章 16.7 寻求协同控制（《科学美国人》）</cite></div><p class="prose">1989 年，英航驾驶 747 客机的飞行员经历了 6 次不同的事故，每一次他们都必须推翻计算机发出的减小动力的指令。人类飞行员觉得他们是在为飞机的控制权而战。计算机应该做飞行员还是导航员？飞行员们取笑说——</p><div class="aband"><q>计算机就像是放到了驾驶舱里的一条狗。</q><cite>——第十六章 16.7 寻求协同控制</cite></div><p class="prose">狗的任务就是在飞行员想要去控制的时候咬他；而飞行员唯一要做的就是喂狗——在自动飞行的新行话里，飞行员被称为「系统管理员」。皮特·利特维诺维兹（源文残句）。《终结者II》的导演詹姆斯·卡梅隆（源文在此截断）。</p><p class="prose">凯利相信计算机终将成为飞机上的副驾驶员：它将完成许多飞行员不能胜任的工作，但是飞行员会管理——或者说「放牧」——计算机的行为；机器和人这两者之间会不停地发生些小龃龉，就像所有具有自主性的事物一样。<b>他们将以协同控制的方式来驾驶飞机。</b></p><div class="aband"><q>控制的未来是：伙伴关系，协同控制，人机混合控制。所有这些都意味着，创造者必须和他的创造物一起共享控制权，而且要同呼吸共命运。</q><cite>——第十六章 16.7 寻求协同控制</cite></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>17.1 拓展生存的空间</h2><span class="en">EXPANDING THE SPACE</span></div><p class="prose">一群蜜蜂从蜂巢里溜出来，聚成一团悬挂在一根树枝上。</p><p class="prose">将上万只蜜蜂从树枝上移入蜂箱的过程可说是生活中的一场奇妙表演：蜂团整个儿从树上掉下来，落到布单上四下奔涌，像翻腾的黑色糖浆；蜜蜂们面向蜂巢的开口排成一行，鱼贯而入，就像是接受了同一个指令的小小机器人——它们一边行进一边弓着背猛烈扇动翅膀，从自己的尾部喷出玫瑰香气扇到身后的队伍里。</p><p class="prose">这种香气告诉后面的伙伴们：「蜂后在此，跟我来。」五分钟后，整个蜂群都钻进了蜂箱。</p><p class="prose">地球上最初的生命是不可能上演这一幕的：用玫瑰的味道来协调上万只飞虫聚成一个目标明确的爬行怪物，这不是早期生命所能做到的——早期生命不仅还未能创造出大戏上演的舞台，而且连搭建这个舞台的工具也还没有创造出来。但大自然之所以能产生令人震惊的多样性，是因为它在本质上是开放的——</p><div class="aband"><q>大自然之所以能产生令人震惊的多样性，是因为它在本质上是开放的。</q><cite>——第十七章 17.1 拓展生存的空间</cite></div><div class="aband"><q>生命最早的发现之一是如何创造新的基因，更多的基因，可变的基因，以及一个更大的基因库。</q><cite>——第十七章 17.1 拓展生存的空间</cite></div><p class="prose">生命的特征之一是它会不断地拓宽自身的生存空间：<b>大自然是一个不断扩展的可能性之库，是一个开放的大千世界。</b>我们不知道生命如何突破了从固定基因空间到可变基因空间的分界线——也许某一个特殊的基因决定着染色体中基因的数量，也许基因组的大小是由基因系统自身的结构决定的。</p><p class="prose">汤姆·雷的实验显示，在他的自我复制世界里，可变的基因长度瞬时就涌现出来了——</p><div class="aband"><q>他的创造物自行决定其基因组的长度（由此也决定了它们可能存在的基因库的规模），短至出乎他意料的22字节，长至23000字节。</q><cite>——第十七章 17.1 拓展生存的空间</cite></div><p class="prose">开放的基因组带来开放的进化：一个预先设定了每个基因的工作或基因数量的系统只能在预先设定的范围内进化——道金斯、拉萨姆和西姆斯最初的那些系统以及俄罗斯程序员的电子鱼，都搁浅在这个局限性上。它们也许能生成所有可能的具有既定大小和深度的画面，但不能生成所有可能的艺术品。</p><p class="prose"><b>一个没有预先确定基因角色和数量的系统才能出奇制胜。</b>这就是汤姆·雷的创造物造成轰动的原因——</p><div class="aband"><q>从理论上说，他的世界只要运行时间够长，在最终的形式库中就能进化出任意东西。</q><cite>——第十七章 17.1 拓展生存的空间</cite></div></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>17.2 生成图像的基元组</h2><span class="en">PRIMITIVE ELEMENTS</span></div><p class="prose">形成开放基因组的方法不止一种。1990 年，卡尔·西姆斯利用二代连接机(CM2)的超级计算能力设计了一个由长度可变基因组成的新型人工世界。</p><p class="prose">他的妙招是创造一个由小方程而非长串数码组成的基因组：旧基因库中每个固定长度的基因各控制着植物的一个视觉参数；这个新基因库则拥有长度不定且可自由扩展的方程，籍此绘制各种曲线、色彩和形状。西姆斯的方程——或者说基因，是一种计算机语言(LISP)（源文在此截断）。</p><p class="prose">方程基因库还有个意外的好处。</p><p class="prose">在西姆斯的原版世界（以及雷的「地球」和希利斯的共同进化寄生虫世界）中，有机体是一串串每次随机转换一个数字的数码，就像博尔赫斯图书馆里的书那样，一次改变一个字母；而在改良版世界里，有机体成了一串串每次随机转换一个基元的逻辑基元组——<b>仍以博尔赫斯图书馆为例的话，这次被调换的是词而不是字母。</p><p class="prose"></b>每本书里每个词的拼写都正确，每一页由此就更有实际意义（对以词为原料的博尔赫斯图书馆来说，要煮这锅汤——源文在此截断）。</p><div class="duo"><div class="colL"><h4>原版世界：数码串</h4><ul><li>每次随机转换一个数字——像博尔赫斯图书馆里的书，一次改变一个字母</li><li>固定长度基因各控制一个视觉参数</li><li>道金斯、西姆斯初版与电子鱼都搁浅于此：只能在既定大小和深度的空间内进化</li></ul></div><div class="colR"><h4>改良版世界：逻辑基元组</h4><ul><li>每次随机转换一个基元——像调换词而不是字母，每个词的拼写都正确</li><li>逻辑单元本身就是功能，而不像数字位元那样仅仅是功能的数值</li><li>对逻辑单元做进化，最根本的优势在于它能马上将系统引上通往开放宇宙的大道</li></ul></div></div><div class="aband"><q>在任意一个地方增加或交换一个逻辑基元，程序的整体功能就会产生转变或得到扩展，从而在系统中涌现出新功能和新事物。</q><cite>——第十七章 17.2 生成图像的基元组</cite></div><p class="prose">这就是西姆斯的发现。他的方程进化出全新的图像：屏幕上不会再充斥着模糊灰暗的图像，无论西姆斯「漫步」到哪里，都能看到令人惊艳的风景——一小时里上千张美轮美奂的图像被从藏身之所唤起，第一次也是最后一次展现在我们面前，<b>这好比站在世上最伟大的画家身后，观看他创作从不重复主题和风格的速描。</p><p class="prose"></b>他的系统曾进化出一段 478 字符的逻辑代码（源文在此截断，存目），在西姆斯的彩色屏幕上绘出了一幅引人注目的图画：北极的落日余辉映照在两根冰柱上，冰柱晶莹剔透；远方的地平线淡然而宁静。西姆斯告诉凯利——</p><div class="aband"><q>这个方程的进化从头到尾仅用了几分钟时间——如果是人类有意为之的话，可比这个费功夫多了。</q><cite>——第十七章 17.2 生成图像的基元组（卡尔·西姆斯）</cite></div><p class="prose">但是西姆斯却无从解释方程背后的逻辑以及它为何会绘出一幅冰的图画：<b>在这个方程面前，西姆斯和我们一样茫然无知。</b>方程所隐藏的逻辑已经无法用简单明了的数学来破解。</p></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>17.3 无心插柳柳成荫</h2><span class="en">SERENDIPITY</span></div><p class="prose">真正开始将逻辑程序的进化从理论付诸实践的是约翰·柯扎——斯坦福大学计算机科学系的教授，约翰·霍兰德的学生；他和霍兰德的另外几个学生一起，使 20 世纪 60~70 年代一度被冷落的遗传算法重放光芒。与「艺术家」西姆斯不同，柯扎并不满足于单纯地探索可能之方程的空间，他想进化出能够解决特定问题的最佳方程。</p><p class="prose">柯扎在《遗传编程》一书中写道——</p><div class="aband"><q>这些问题的求解过程可以重新表述为在可能存在的计算机程序中搜索最合适的单个计算机程序。</q><cite>——第十七章 17.3 无心插柳柳成荫（约翰·柯扎）</cite></div><p class="prose">柯扎通过繁衍「找到」方程的想法之所以被认为有悖常理，和计算机专家对雷的进化方案嗤之以鼻的理由是一样的：过去人人都「知道」逻辑程序是脆弱的，不能容忍任何变动——计算机科学理论中，程序只有两种状态：(1) 无故障运行；(2) 修改后运行失败。第三种状态——随机修改后还能运行——是不可能的。</p><p class="prose">然而，人工进化的研究成果出乎意料地表明，传统观点大错特错了——</p><div class="aband"><q>西姆斯、雷和柯扎都有绝妙的证据来证明，逻辑程序是可以通过渐进式改良进化的。</q><cite>——第十七章 17.3 无心插柳柳成荫</cite></div><p class="prose">柯扎的方法基于一种直观判断：如果两个数学方程在解决一个问题时多少有些效果，那么它们的某些部分就是有价值的——把有价值的部分重新整合成新程序，结果可能比两个母程序中的任何一个都更有效。</p><p class="prose">他的「数据培养液」含有大约一打用 LISP 语言表达的数学基元，随机串在一起形成一棵棵逻辑「树」；系统像繁殖人口一样创建 500 到 10000 个独立逻辑树，通常在繁衍了大约 50 代之后收敛到某个合适的后代身上。</p><p class="prose">方程进化能解决形形色色的古怪问题：让一根扫把立在滑板上、走出迷宫的策略、二次方程求解、优化旅行商路径（源文在 tictac-toe 处截断）。</p><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>立在滑板上的扫把</h4><span class="ar">▶</span></div><div class="cb"><div class="in">柯扎用它来解决的一个经典难题是如何让一根扫把立在滑板上：滑板必须在马达的推动下来回移动，使倒立的扫帚在板中央保持直立。马达控制的计算量惊人，但在控制电路上与操纵机器人手臂的电路并无多大区别。柯扎发现，他可以进化出一个程序来实现这种控制。</div></div></div><div class="case"><div class="ch"><span class="tag mid">新解</span><h4>树枝即子程序</h4><span class="ar">▶</span></div><div class="cb"><div class="in">树与树之间交换分枝迫使它们产生变种：有时嫁接的是一根长树枝，有时仅仅是一根细枝或枝头的「叶子」。每根树枝都可以被看作是由更小的分枝构成的完整无缺的逻辑子程序。通过分枝交换，一小段方程（一根树枝），或一个有用的小程序，可以得到保存甚至传播。</div></div></div></div><p class="prose">尽管方程进化能得出有效的解决方案，可这些方案却往往要多难看有多难看。柯扎拿起他那些高度进化的宝贝查看细节时，和西姆斯以及雷一样感到震惊——</p><div class="aband"><q>解决方案简直是一团乱麻！</q><cite>——第十七章 17.3 无心插柳柳成荫</cite></div><p class="prose">进化要么绕上一个大弯，要么钻个曲里拐弯的逻辑漏洞抄近道；它塞满冗余，毫不雅致；出了错时宁愿添加一节纠错程序，也不愿销去错误的部分（最后的公式颇有几分神奇的鲁宾·戈德堡——源文在此截断）。</p><p class="prose">以双螺旋线判定问题为例：柯扎将 10000 个随机公式加载数据培养液，他睡觉时程序树交换分枝，度假归来，系统已经进化出能完美划分双螺旋线的答案了——这就是软件编程的未来：<b>定义一个问题，机器就能在程序员打高尔夫球的时候找到解决方案。</p><p class="prose"></b>那个 820 字符的公式（源文在此截断，存目）不但样子难看，而且还令人费解。汤姆·雷说，进化写的代码只有喝醉酒的人类程序设计员才写得出来——</p><div class="aband"><q>进化写的代码只有喝醉酒的人类程序设计员才写得出来。</q><cite>——第十七章 17.3 无心插柳柳成荫（汤姆·雷）</cite></div><p class="prose">这绝非人类所为：对这个方程追本溯源，柯扎终于找到了这个程序处理问题的方式——完全是凭着百折不挠和不择手段，它才打通了一条艰难曲折又令人费解的解决之道。<b>但这确实管用。</b>而几乎任何一个高中生都能在一行内写出一条非常简洁优雅的方程式来描述这两条螺旋线——在柯扎的世界里没有要求方案简洁的进化压力。</p><p class="prose">但柯扎坚信简约的重要性被过分高估了：简约不过是「人类的审美标准」，大自然本身并不特别简约——小龙虾尾部肌肉中的神经回路如巴洛克建筑那般繁复，取消几个多余的循环指令马上就可以使它简化一些，但那堆乱七八糟的东西却很管用：<b>大自然并不会只为了优雅而简化。</b></p></section><section id="s12"><div class="h2"><span class="cn">拾贰</span><h2>17.4 打破规则求生存</h2><span class="en">BREAKING THE RULES</span></div><p class="prose">柯扎指出，人类之所以追求类似牛顿的 F=ma 那样简单的公式（源文在此截断）。</p><p class="prose">尽管大脑像并行机器一般运作，人类意识却无法并行思考——我们不能凭直觉理解概率、横向因果关系及同步逻辑方面的各种概念；我们的思维退而求其次地选择了串行叙述，那正是最早的计算机使用冯·诺依曼串行设计方案的原因：因为人类就是这样进行思考的。而这也正是为什么并行计算机必须被进化而不是被设计出来——</p><div class="aband"><q>因为在需要并行思考的时候我们都成了傻子。计算机和进化并行地思考；意识则串行思考。</q><cite>——第十七章 17.4 打破规则求生存</cite></div><p class="prose">柯扎认为，进化处理定义不严格的并行问题的能力是它的另一个独特优势。现实世界中，答案的范围、性质或值域可能完全模糊不清——譬如：香蕉挂在树上，请给出摘取程序。</p><p class="prose">一旦定义了答案的界限，也就等于回答了问题的一半；而在进化中，完全可能出现完全意想不到的答案：使用高跷；学习跳高；请小鸟来帮忙；等暴风雨过后；生小孩然后让他们站在你的头上。每一个涉足人工进化的人都为进化能轻而易举地得出异想天开的结果而大为吃惊——</p><div class="aband"><q>进化可不管有没有意义；它关心的是管不管用。</q><cite>——第十七章 17.4 打破规则求生存（汤姆·雷）</cite></div><p class="prose">生命的天性就是以钻常规的漏洞为乐。看看这些生物学上令人瞠目结舌的奇事吧：由寄居在体内的雄鱼来进行授精的雌鱼，越长越萎缩的生命体，永远不会死的植物——自然界层出不穷的怪事几乎跟所有生命的数量一样多，每一种生物都在某种意义上通过重新诠释规则来为自己找活路。</p><p class="prose">人类的发明物就没有那么丰富了：大部分机器被造来完成某个明确的任务，遵照我们旧式的定义，服从我们的规则。然而，如果让我们构想一架理想的、梦寐以求的机器的话，它应该可以改变自身来适应环境——更理想的是，它还能自我进化。</p><p class="prose">适应是对自身结构的扭曲，以使之能够钻过一个新漏洞；而进化是更深层的改变——它改变的是构建结构本身的架构。如果我们预先确定了一台机器的组织结构，也就预先确定了它能解决怎样的问题。理想的机器应该是一台通用问题解决机——这就意味着它必须拥有一种开放性的结构。柯扎写道——</p><div class="aband"><q>（解决方案的）规模、形式以及结构复杂度都应是答案的一部分，而不是问题的一部分。</q><cite>——第十七章 17.4 打破规则求生存（约翰·柯扎）</cite></div><p class="prose">我们最终想要的是如何制造出没有预先定义结构的机器——<b>我们想要的是一种不断自我更新的机器。</b>我们所知唯一一台能重塑自己内部连接的机器就是我们称为大脑的灰色活体组织；我们目前唯一可以设想付诸生产的重塑自身结构的机器，可能是一种能够自我改编的软件程序——西姆斯和柯扎的进化方程是通向自我改编程序的第一步：</p><div class="aband"><q>繁衍其他方程的方程就是开放性宇宙。</q><cite>——第十七章 17.4 打破规则求生存</cite></div><p class="prose">在那里任何方程都能产生，包括自我复制的方程和衔尾蛇式的无限循环公式——这种作用于自身并重写自身规律的递归程序，蕴涵着世上最宏伟的力量：<b>创造恒新</b>。「恒新」是约翰·霍兰德使用的词组：他真正在从事的，是一种恒新的新数学——能够创造永无止尽的新事物的工具。</p><p class="prose">探索超越我们理解力外的领域并提炼我们所收获的，这是定向式、监督式和最优化的进化带给我们的礼物。但是，汤姆·雷说——</p><div class="aband"><q>但是，进化不仅是优化。我们知道进化能超越优化并创造新事物来加以优化。</q><cite>——第十七章 17.4 打破规则求生存（汤姆·雷）</cite></div><p class="prose">当一个系统可以创造新事物来加以优化时，我们就有了一个恒新的工具和开放的进化。西姆斯的图像遴选和柯扎的逻辑繁衍遴选，都是生物学家称为人工选择的例子——「合格」的标准由培育员决定。</p><p class="prose">为了达到恒新——找到我们不曾预料的东西，我们必须让系统自己为它的选择划定标准：<b>开放的人工进化也需要自然选择，选择的特征应该从人工世界内部自然地产生。</p><p class="prose"></b>汤姆·雷已经通过让他的世界自主选择适者的方式加载了人工自然选择工具；但他确实「做了点小手脚」以使系统进入运作——他等不及他的世界靠自己的力量进化出自我复制能力，一开始就引进了一个自我复制机制。用雷的比喻来说，他将生命在单细胞有机体状态下强力启动，然后观看了一场新生物体的「寒武纪大爆发」。</p><p class="prose">「和系统所产生的结果相比，我不得不操控它达到临界点是一件不值一提的事。」雷会控制他的系统直到它能靠自己的力量进化——他在控制数月之后转入了人工自然选择。</p></section><section id="s13"><div class="h2"><span class="cn">拾叁</span><h2>17.5 掌握进化工具</h2><span class="en">EVOLUTION AS A TOOL</span></div><p class="prose">进化作为一种工具，特别适用于以下三件事——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>如何到达你想去而又找不到路的领域；</span></label><label><input type="checkbox"><span>如何到达你无法想象的领域；</span></label><label><input type="checkbox"><span>如何开辟全新领域；</span></label><div class="cf">已勾选 <b>0</b> / 3</div></div><p class="prose">第三种用途就是通向开放世界的门户：它是非监督式、非定向式的进化过程，是霍兰德设想的不断扩张的恒新机器，是一个可以自己建设自己的事物。像雷、西姆斯和道金斯这些伪上帝们在实验伊始都以为自己划定了系统空间，当他们看见进化如何扩大这一空间时，都大感惊诧——「那比我想象的要大得多」是他们常说的话。</p><p class="prose">在西姆斯的进化展图片之间穿行的凯利也有类似的无法抗拒的感觉：每一张新图片似乎都扩大了可能存在的图片的空间——<b>它们既非人造也非生物制造，却同样丰富多彩。</p><p class="prose"></b>生命的机制与此非常相似：DNA 的字节都是功能单位，是拓展可能性空间的逻辑进化者；屈指可数的几个逻辑单位就可以通过混合和配对形成天文数字般的蛋白质编码。</p><div class="aband"><q>生物进化是一种开放的进化，它以旧的DNA单元繁育新的DNA单元，它是一个不断扩张、永无止境的库。</q><cite>——第十七章 17.5 掌握进化工具</cite></div><p class="prose">分子育种学家杰拉德·乔伊斯很高兴他所从事的分子进化工作「既是为了兴趣，也能有利可图」。但他的真正梦想是孵化出另一种开放进化机制——「我想试试看，能否在我们的控制之下启动自组织过程。」乔伊斯和同事们正在做一个试验，让一种简单的核酶（源文在此截断）。</p><p class="prose">目前，自发且能自我维持的进化对生物化学家们来说还只是一个梦想：至今还没有人能够驱使一个系统迈出「进化的一步」——发展出之前未曾有过的化学进程。到目前为止，生物化学家只能针对那些他们已经知道该如何解决的问题来进化出新的分子——</p><div class="aband"><q>真正的进化是要闯出一片未知的新天地，而不是仅仅是在感兴趣的变异中打转转。</q><cite>——第十七章 17.5 掌握进化工具（杰拉尔德·乔伊斯）</cite></div><p class="prose">一个有效的、自发的、进化的分子系统将会是一个超级强大的工具：它将是一个可以创造出任何生物的开放系统——「它将是生物学的巨大成就」，乔伊斯宣称，其冲击力相当于「在宇宙中找到了另一种乐于与我们分享这个世界的生命形式」。但是，乔伊斯是一个科学家，他不会被热情冲昏了头——</p><div class="aband"><q>我们并非要制造生命，然后让它发展自身的文明。那无异于痴人说梦。我们只是要制造一种与现有的化学存在略有不同的人工生命形式。这可不是什么天方夜谭，而是可以触摸得到的。</q><cite>——第十七章 17.5 掌握进化工具（杰拉尔德·乔伊斯）</cite></div></section><section id="s14"><div class="h2"><span class="cn">拾肆</span><h2>17.6 从滑翔意外到生命游戏</h2><span class="en">FROM GLIDER TO LIFE</span></div><p class="prose">克里斯·朗顿并不觉得能创造自己文明的人工生命是一个天方夜谭。作为开创了人工生命中一个时髦领域的特立独行之人，他的故事很值得陈述，因为他自身的经历再现了人造的、开放的进化体系的觉醒。（源文残句：他以计算机科学家的身份在洛斯阿拉莫斯国家实验室——不补写。</p><p class="prose">）作为拒服兵役的人，朗顿得到一个替代兵役的机会——在波士顿的马萨诸塞州综合医院做护理工，被分配去做一件没人乐意做的苦差事：把尸体从医院地下室搬运到太平间地下室。当轮床撞到隆起物时，尸体打了个嗝，坐了起来，并开始从轮床上滑下来！他的搭档夺路而逃，门在身后来回晃荡——</p><div class="aband"><q>死了的东西可以表现得像活的一样！生命就是一种行为，这是朗顿最初的体会。</q><cite>——第十七章 17.6 从滑翔意外到生命游戏</cite></div><p class="prose">朗顿对老板说他无法再做那种工作了，能不能做点别的？「你会编写计算机程序吗？」「当然会。」——于是他得到了一份为早期计算机编写程序的工作。有时，他会在晚上让一个无聊的游戏在闲着的计算机上运行：这个被称为「生命」的游戏由约翰·康威设计。</p><p class="prose">一天深夜，他突然感到屋里有人，有某种活着的东西在盯着他看——在「生命」的屏幕上，他看到令人惊异的自我复制的细胞模式；几分钟之后，那个模式已经死去。他突然意识到那个模式曾经活过——活着，而且像琼脂盘上的细胞一样真切地活过——不过是在计算机屏幕上。<b>也许计算机程序能够获得生命——朗顿心里萌生了这个大胆的想法。</p><p class="prose"></b></p><p class="prose">他开始思考是否能够设计一种开放的、类似「生命」那样的游戏，以使事物能够开始自行进化。期间，朗顿接到一个任务：将一个程序从一台过时的大型计算机中移植到一台构造完全不同的新计算机中去——窍门是抽象出旧计算机的硬件运行方式，在新计算机上以软件的方式模拟出来。朗顿说——</p><div class="aband"><q>这是将过程从一个媒介转到另一个媒介上的直接体验。硬件是什么并不重要，因为你可以在任何硬件中运行程序。重要的是要抓住过程的本质。</q><cite>——第十七章 17.6 从滑翔意外到生命游戏（克里斯·朗顿）</cite></div><p class="prose">这让他开始遐想，生命是否也能从碳结构中提取出来，转化成硅结构。随后是那个夏天：他和一位朋友在北卡罗来纳州老爷山上空滑翔招徕游客，日薪 25 美元。一天，一阵狂风袭击了朗顿——他以胎儿的姿势摔在地上，折断了 35 根骨头，其中包括头部除颅骨以外的所有骨头。接下来他卧床 6 个月，处于半昏迷状态。</p><p class="prose">在严重脑震荡恢复过程中，朗顿感觉他正看着自己的大脑在「重启」，仿佛计算机重启时必须重新载入操作系统一样——他大脑深层的功能一个接一个地重现，本体感受——那种在一具躯体之中的感知——复原了。「关于心智形成是什么感觉，我有亲身的体验。」生命是否可以独立于母体而存在？他体内的生命和计算机中的生命难道不能是一样的吗？</p><p class="prose">作为亚利桑那州立大学的大四学生，朗顿写了题为《文化的进化》的论文，希望教授们认同他制造一台可运行人工进化程序的计算机的想法——但教授们不鼓励他。他自己掏钱买来一台苹果II型电脑，并编写了他的第一个人工世界；他没能实现自我复制或自然选择，但是他找到了元胞自动机（源文在此截断）。</p><p class="prose">这时，他偶然读到约翰·冯·诺依曼在 20 世纪 40 年代对人工自我复制的论证，于是每夜在他的苹果II上编写代码（这是冯·诺依曼不具备的有利条件——他是用铅笔在纸上完成编码的）。</p><p class="prose">终于，朗顿设计出了当时人们所知的最小的自我复制器：在计算机屏幕上，这个自我复制器看上去就像一个蓝色的小 Q——在这个仅有 94 个字符的循环中，朗顿不仅塞进了完整的循环语句，还有如何进行复制的指令以及甩出复制好的另一个自我的方法。</p><div class="aband"><q>如果他能设计出如此简单的复制器，那么他还能模仿出多少生命的关键过程呢？</q><cite>——第十七章 17.6 从滑翔意外到生命游戏</cite></div><p class="prose">1987 年，他以破釜沉舟的决心召集了「活系统合成与模拟跨学科研讨会」。</p></section><section id="s15"><div class="h2"><span class="cn">拾伍</span><h2>17.7 生命的动词</h2><span class="en">LIFE IS A VERB</span></div><p class="prose">在专题研讨会上，朗顿开始探求生命的定义——现有的生命定义似乎不够充分。首届研讨会结束后多年里，更多的学者对此进行了研究；在此基础上，物理学家多恩·法默提出了界定生命的一个特征列表，他说，生命具有——</p><div class="chips"><span class="chip">时间和空间上的模式</span><span class="chip">自我复制的能力</span><span class="chip">自我表征（基因）的信息库</span><span class="chip">使特征持久的新陈代谢功能</span><span class="chip">功能交互——它并非无所事事</span><span class="chip">彼此相互依赖，或能够死亡</span><span class="chip">在扰动中保持稳定的能力</span><span class="chip">进化的能力</span></div><p class="prose">这个清单引起了争议：尽管我们不认为计算机病毒是活的，它却符合上述大多数条件——它们是一种能够复制的模式；包含一份自我表征的副本；截获计算机新陈代谢(CPU)的周期；能死亡；也能进化。<b>我们可以说计算机病毒是首例涌现出来的人工生命。</p><p class="prose"></b>而另一方面，有些东西毫无疑问是生物，却并不符合此清单的所有条件：骡子不能自我复制，疱疹病毒也没有新陈代谢。朗顿在创造能自我复制的个体上的成功也令他怀疑，人们是否能达成对生命定义的共识——「每当我们成功地使人工生命达到生命所定义的标准时，生命的定义都会被扩充或被改变。」</p><p class="prose">朗顿对人工生命的定义则要更容易为人们所接受。他说，人工生命是——</p><div class="aband"><q>从不同的材料形式中提取生命逻辑的尝试</q><cite>——第十七章 17.7 生命的动词（克里斯·朗顿）</cite></div><p class="prose">他的论点是，生命是一个过程，是不受特殊材料表现形式限制的行为。对生命而言，重要的不是它的组成材料，而是它做了什么——</p><div class="aband"><q>生命是个动词，不是名词。</q><cite>——第十七章 17.7 生命的动词（克里斯·朗顿）</cite></div><p class="prose">法默对生命标准列出的清单描述的是行动和行为。朗顿的同事斯蒂恩·拉斯穆森曾经把铅笔扔在办公桌上叹息道——</p><div class="aband"><q>在西方，我们认为铅笔要比铅笔的运动更真实。</q><cite>——第十七章 17.7 生命的动词（斯蒂恩·拉斯穆森）</cite></div><p class="prose">如果铅笔的运动是其本质，是真实的那部分，那么「人工」就是一个误导词。在第一届人工生命会议上，克雷格·雷诺兹展示出他是如何利用三个简单的规则就使无数的电脑动画鸟在计算机中自发地成群结队地飞行——所有的人都能看到一个真实的群飞画面。<b>这是人工鸟真正在群飞。</b>朗顿总结这个经验说——</p><div class="aband"><q>关于人工生命，要记住的最重要部分是，所谓人工，不是指生命，而是指材料。真实的事物出现了。我们观察真实的现象。这是人工媒介中的真实生命。</q><cite>——第十七章 17.7 生命的动词（克里斯·朗顿）</cite></div><p class="prose">生物学这门对生命普遍原理进行研究的学科正经历着剧变。朗顿说，生物学面临着「无法从单一实例中推论出普遍原理的根本障碍」：地球上的生命只有单一的集体实例，而它们又有着共同的起源。比如，我们对生命的看法在多大程度上是取决于生命由碳链结构组成的事实？</p><p class="prose">如果连一个建立在非碳链结构上的生命实例都没有，我们又怎能弄清这个问题？朗顿主张，我们需要一整套实例来做出结论——既然在可见将来，外来生命形式都不太可能自己送上门来供我们研究，那么唯一的选择就是靠自己的努力制造出另一种生命形式。这是朗顿的使命。</p><p class="prose">这种雄心勃勃的挑战在一开始就将人工生命从生物学中分离出来：生物学设法通过剖析生物将其分解为部分来了解生物体，而人工生命没什么可解剖——它只能通过将生物聚合在一起、把部分组装成整体的方式取得进展，<b>它是在合成生命，而不是分解生命。</b>朗顿解释说——</p><div class="aband"><q>人工生命相当于是合成生物学的实践。</q><cite>——第十七章 17.7 生命的动词（克里斯·朗顿）</cite></div></section><section id="s16"><div class="h2"><span class="cn">拾陸</span><h2>17.8 在超生命的国度中安家落户</h2><span class="en">HOMESTEADING HYPERLIFE</span></div><p class="prose">人工生命承认存在新的生命形式以及对生命的新定义。所谓「新」生命，其实也是旧瓶装新酒：是用旧的力量以新的方式来组织物质和能量。我们开始认识到那些一度被比喻为活着的系统确实活着——不过，它们所拥有的是一种范围更大、定义更广的生命。凯利将之称为「超生命」：</p><div class="aband"><q>超生命是一种特殊形式的活系统，它完整、强健、富有凝聚力，是一种强有力的活系统。</q><cite>——第十七章 17.8 在超生命的国度中安家落户</cite></div><p class="prose">一片热带雨林和一枝长春花，一个电子网络和一个自动驾驶装置，模拟城市游戏和纽约城，都是某种意义上的超生命。<b>生物学定义的生命不过是超生命中的一个物种罢了；电话网络则是另一个物种。</b>将来某一天，超生命将会在汽车、建筑物、电视和试管中发展壮大。</p><p class="prose">这并不是说有机生命和机器生命是完全相同的——水黾将永远保留某些碳基生命独一无二的特点；不过，有机的和人工的生命共享一套我们刚刚开始学会辨别的特性。</p><p class="prose">人类为创造生命而做的每一次尝试都是在探索可能存在的超生命空间：激励朗顿进行探索的，是描绘出所有可能存在的生命空间的渴望——超生命这座图书馆包含了所有的活物、所有的活系统、所有的生命薄片、所有抵制热力学第二定律的东西，以及某种我们还说不清楚的非凡之物。</p><p class="prose">探索这个未知领域的唯一方法是建立众多实例，然后看看它们是否适合于这个空间。</p><p class="prose">一天晚上，在首届人工生命大会的一次午夜演讲之后，人们眺望着沙漠夜空中的繁星，数学家鲁迪·鲁克尔讲出了一番研究人工生命的动机——这是凯利听到过的最高远的动机——</p><div class="aband"><q>目前，普通的计算机程序可能有一千行长，能运行几分钟。而制造人工生命的目的是要找到一种计算机代码，它只有几行长，却能运行一千年。</q><cite>——第十七章 17.8 在超生命的国度中安家落户（鲁迪·鲁克尔）</cite></div><p class="prose">与以往学术界「不能发表就是垃圾」的模式不同，多数从事人工生命研究的实验者都支持新的学术信条：「演示或死亡。」——要想在人工生命和超生命上取得任何一点进展，唯一的办法就是运行一个有效的实例。前苹果公司雇员肯·卡拉科提西乌斯正试图编写出最大最好的生命游戏，一个终极的「活」程序——</p><div class="aband"><q>要知道，宇宙是唯一足够大能运行终极生命游戏的地方。然而，将宇宙作为平台的唯一难题是，眼下它正在运行别人的程序。</q><cite>——第十七章 17.8 在超生命的国度中安家落户（肯·卡拉科提西乌斯）</cite></div><p class="prose">在苹果公司任职的拉里·雅格创造了多边形世界——数以百计的多边形物飞来飞去，交配、繁殖、消耗资源、学习、适应并进化。「一开始，我的设定是繁殖并不消耗能量……但我不断地得到这么一类家伙，游手好闲的食人族：它们只是相互交配，相互争斗，相互吞食。既然能靠吃孩子过日子还干什么活呢！」——这意味着，某种超生命形态出现了。</p><p class="prose">「研究人工生命的核心动机是为了扩大生物学的领域，使之能囊括比地球上现有生命形式种类更多的物种。」多恩·法默轻描淡写地描述了人工生命之神所拥有的无穷乐趣。</p><p class="prose">当我们忙于创造一个个超生命的新形式时，我们的脑海中悄然出现了一个令人不安的想法。<b>生命在利用我们。</b>有机的碳基生命只不过是超生命进化为物质形式的第一步而已：生命征服了碳，而如今，在池塘杂草和翠鸟的伪装下，生命骚动着想侵入水晶、电线、生化凝胶、以及神经和硅的组合物。</p><p class="prose">发育生物学家刘易斯·海尔德说——「胚细胞只不过是经过伪装的机器人。」第二届人工生命会议上，汤姆·雷在其报告写道——「虚拟生命就在那里，等着我们为其建立进化的环境。」朗顿告诉史蒂文·列维——</p><div class="aband"><q>其他形式的生命——人造生命——正试图来到这个世界。它们在利用我来繁衍和实现它们。</q><cite>——第十七章 17.8 在超生命的国度中安家落户（克里斯·朗顿）</cite></div><p class="prose">生命，特别是超生命，想要探索所有可能的生物学和所有可能的进化方式；而它利用我们创造它们，因为这是唯一探索它们的途径。而人类的地位——既可能仅仅是超生命匆匆路过的驿站，也可能是通往开放宇宙的必经之门。多恩·法默在其宣言式的著作中写道——</p><div class="aband"><q>随着人工生命的出现，我们也许是第一个创造自己接班人的物种。</q><cite>——第十七章 17.8 在超生命的国度中安家落户（多恩·法默）</cite></div><p class="prose">克里斯·朗顿办公室的斜对面是洛斯阿拉莫斯原子博物馆——它警示着人类所具有的破坏力。那种力量使朗顿不安：「20世纪中期，人类已经获得了毁灭生命的力量，」他在自己的一篇学术论文中写道——「而到20世纪末期，人类将能够拥有创造生命的力量。」</p><div class="aband"><q>而到20世纪末期，人类将能够拥有创造生命的力量。压在我们肩头的这两付重担中，很难说哪一付更沉重。</q><cite>——第十七章 17.8 在超生命的国度中安家落户（克里斯·朗顿）</cite></div><p class="prose">我们到处为其他生命种类的出现创造空间：少年黑客放出了威力巨大的计算机病毒；日本工业家组装了灵敏的绘画机器人；好莱坞导演创造了虚拟的恐龙；生物化学家把自行进化的分子塞进微小的塑料试管。终有一天，我们会打造出一个能够持续运行并能够创造恒新的开放世界。</p><p class="prose">丹尼·希利斯说他想制造一台以他为荣的计算机，这可不是玩笑话——还有什么能比赋予生命更具人性？我想我知道答案：<b>赋予生命和自由。</b>赋予开放的生命；对它说，这是你的生命，这是汽车钥匙；然后，让它做我们正在做的事情——在前进的路上，一切由它自主。汤姆·雷曾经对凯利说——</p><div class="aband"><q>我不要把生命下载到计算机中。我要将计算机上传到生命中。</q><cite>——第十七章 17.8 在超生命的国度中安家落户（汤姆·雷）</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>16.1–16.4 多处｜</b>「可以在电影《石头城乐园》」「作为工业光魔公司」「不过有朝一日，这些恐龙会像匹诺曹」「说这话的是迈克尔·凯斯」「凯斯和他在苹果公司的同事盖文·米勒」「所有制造品都将通过计算机辅助设计」「普鲁辛凯维奇」「迪斯尼正在制作他们的第一部完全数字化的动画」「在动画片《妙妙探》」「在《美女与野兽》」「我在皮克斯公司的制作主管拉尔夫·古根海姆」「克洛萨尔图像工作室，布莱德·格拉夫」「计算机都是由硅谷图形公司」「试验性质的《科米蛙》」「麻省理工学院媒体实验室的戴维·塞尔彻」「另外一个学生史蒂文·斯特拉斯曼」「塞尔彻和他的同事迈克尔·麦肯纳」「动物观察三人组——康拉德·劳伦兹」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>16.5–16.7 多处｜</b>「约瑟夫·贝茨虚构了一个叫作『奥兹』」「派蒂·梅斯」（5 字残段）《谁陷害了兔子罗杰》《蒸汽船威利号》两处控制问题叙述、「皮特·利特维诺维兹」（9 字残段）、《终结者II》的导演詹姆斯·卡梅隆等处句子未收尾，均不补写。</span></div><div class="note" id="n3"><span class="nn">截断</span><span class="nd"><b>17.2–17.6 多处｜</b>「是一种计算机语言(LISP)」「要煮这锅汤」、西姆斯 478 字符 LISP 代码、柯扎测试问题清单「在tictac-toe」、「鲁宾·戈德堡」、820 字符进化公式、「类似牛顿的F=ma那样简单的公式」、《代达罗斯》、「让一种简单的核酶」「洛斯阿拉莫斯国家实验室」「他找到了元胞自动机」等处句子未收尾或为源文公式截断段，均不补写、公式存目。</span></div><div class="note" id="n4"><span class="nn">结构说明</span><span class="nd"><b>公式与清单｜</b>17.2 西姆斯进化代码（478 字符）与 17.3 柯扎双螺旋公式（820 字符）为源文截断的公式段，本篇存目不引；17.7 法默生命特征八条清单以 chips 呈现、16.5 三个控制前沿与 17.5 进化三件事以 check 呈现，均逐字照抄源文。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">控制之部｜控制的未来·开放的宇宙</span><a href="../09-人工进化/index.html">← 人工进化</a><a href="../11-变化架构与后达尔文主义/index.html">变化架构·后达尔文主义 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>

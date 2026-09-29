@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>变化之部·水往高处流 · 预言机 · 内发送与伪生命体｜失控 精读</title>
+<meta name="description" content="第二十一·二十二章写两种力量的合流：上升之流在熵的海洋里微微上涨，以万变求不变；而预测——从接住棒球到内视行动——则是活系统掌控命运的另一种方式。有机体存在的目的就是揭示未来。">
+<style>
+:root{
+  --paper:#F4F2ED;      /* 暖纸底 */
+  --paper-2:#E7E3DA;    /* 纸色深一档 */
+  --card:#FBFAF6;
+  --ink:#2A2420;        /* 机械主墨（主色） */
+  --ink-2:#453B32;
+  --ink-deep:#130E07;   /* 深褐黑（hero 底） */
+  --gold:#C46A1E;       /* 蜂群橙（强调 · 蜂群思维与涌现） */
+  --gold-b:#E09A5E;     /* 高亮橙 */
+  --gold-soft:rgba(196,106,30,.16);
+  --cinnabar:#A02B2B;   /* 失控红（警示 · 失控与失序） */
+  --teal:#46566B;       /* 机械钢蓝（对照 · 机械与秩序） */
+  --tx:#332C24;
+  --tx-2:#554a3f;
+  --tx-3:#8A7F72;
+  --line:rgba(42,36,32,.13);
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--tx);
+  font-family:var(--serif);font-size:17px;line-height:1.95;
+  -webkit-font-smoothing:antialiased;overflow-anchor:none;
+}
+body::before{ /* 纸纹 */
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(42,36,32,.035) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+img{max-width:100%}
+
+/* ---------- 进度条 ---------- */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold-b))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 78% 8%,#453B32 0%,var(--ink-deep) 62%);
+  color:#F2EFE9;padding:74px 32px 62px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:16px;pointer-events:none}
+.hero::before{border:1px solid rgba(224,154,94,.42)}
+.hero::after{inset:22px;border:1px solid rgba(224,154,94,.16)}
+.hero .wm{position:absolute;right:-3%;top:-14%;font-family:var(--serif);
+  font-size:300px;line-height:1;color:rgba(224,154,94,.058);pointer-events:none;
+  user-select:none;letter-spacing:0}
+.hero .stamp{width:74px;height:74px;margin:0 auto 22px;border:1.5px solid var(--gold-b);
+  color:var(--gold-b);display:flex;align-items:center;justify-content:center;
+  font-size:19px;letter-spacing:.16em;text-indent:.16em;transform:rotate(-2deg);
+  background:rgba(160,43,43,.16);border-radius:3px;line-height:1.25;padding:6px}
+.hero .stamp.s3{font-size:15px;letter-spacing:.06em;text-indent:.06em}
+.hero .stamp.s4{font-size:13.5px;letter-spacing:0;text-indent:0}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,52px);margin:0;
+  letter-spacing:.12em;text-indent:.12em;font-weight:600;color:#F5F1EA}
+.hero .sub{margin:20px auto 0;max-width:760px;font-size:15.5px;line-height:1.85;
+  color:rgba(235,240,242,.76)}
+.hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.04em}
+.hero .meta span{border:1px solid rgba(224,154,94,.34);color:rgba(235,240,242,.82);
+  padding:4px 12px;border-radius:20px}
+.hero .meta span.k{border-color:rgba(160,43,43,.6);background:rgba(160,43,43,.2)}
+
+/* ---------- 骨架 ---------- */
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;padding:0 26px 90px}
+aside{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+  padding:38px 0 30px;font-family:var(--sans);min-width:0}
+aside .t{font-size:11.5px;letter-spacing:.22em;color:var(--tx-3);margin:0 0 14px;
+  border-bottom:1px solid var(--line);padding-bottom:9px}
+aside a{display:block;font-size:13.5px;color:var(--tx-2);padding:6.5px 11px;
+  border:0;border-left:2px solid transparent;border-radius:0 4px 4px 0;line-height:1.5;
+  transition:.18s}
+aside a:hover{background:var(--gold-soft);color:var(--ink)}
+aside a.on{border-left-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+aside .cn{color:var(--gold);margin-right:7px;font-family:var(--serif)}
+main{min-width:0;padding-top:42px;overflow-wrap:anywhere}
+
+/* ---------- 篇首题记 ---------- */
+.epis{margin:0 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0}
+.epi{margin:0 0 18px;padding-left:18px;border-left:3px solid var(--gold)}
+.epi:last-child{margin-bottom:0}
+.epi p{margin:0;font-size:16.5px;line-height:1.9;color:var(--ink)}
+.epi cite{display:block;margin-top:6px;font-style:normal;font-size:13px;color:var(--tx-3);
+  font-family:var(--sans)}
+
+/* ---------- 章 ---------- */
+section{margin:0 0 58px;scroll-margin-top:18px}
+.h2{display:flex;align-items:baseline;gap:14px;margin:0 0 26px;
+  border-bottom:1px solid var(--line);padding-bottom:14px}
+.h2 .cn{font-family:var(--serif);font-size:26px;color:var(--gold);letter-spacing:.06em;
+  flex:0 0 auto;position:relative;padding-right:16px}
+.h2 .cn::after{content:"";position:absolute;right:0;top:50%;width:56px;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(196,106,30,0))}
+.h2 h2{font-family:var(--serif);font-size:clamp(21px,2.6vw,27px);margin:0;
+  letter-spacing:.05em;font-weight:600;color:var(--ink)}
+.h2 .en{font-family:var(--sans);font-size:12px;color:var(--tx-3);letter-spacing:.08em;
+  margin-left:auto;white-space:nowrap}
+.h3{font-family:var(--serif);font-size:18.5px;color:var(--ink);margin:30px 0 12px;
+  padding-left:12px;border-left:3px solid var(--gold);letter-spacing:.03em}
+
+/* ---------- 正文 ---------- */
+.prose{max-width:44em;margin:0 0 15px;font-size:16.8px;line-height:2.0;color:var(--tx)}
+.prose b{color:var(--ink);font-weight:600}
+.prose em{font-style:normal;background:linear-gradient(transparent 62%,var(--gold-soft) 62%)}
+
+/* ---------- 一篇之图 ---------- */
+.map{background:var(--ink);color:#F0ECE4;border-radius:10px;padding:30px 28px 26px;
+  position:relative;overflow:hidden}
+.map::after{content:"";position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;
+  border:1px solid rgba(224,154,94,.16);border-radius:50%}
+.map .mt{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;
+  color:var(--gold-b);margin:0 0 12px}
+.map .thesis{font-family:var(--serif);font-size:17.5px;line-height:1.95;margin:0 0 24px;
+  color:#F3EDE2;max-width:40em}
+.map .chain{display:grid;gap:0;position:relative;z-index:1}
+.map .node{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:13px 0;
+  border-top:1px dashed rgba(224,154,94,.26)}
+.map .node:first-child{border-top:0}
+.map .node .n{font-family:var(--sans);font-size:12px;color:var(--gold-b);
+  letter-spacing:.06em;padding-top:5px}
+.map .node .tt{font-family:var(--serif);font-size:15.5px;color:#F3EDE2;margin:0 0 3px;
+  letter-spacing:.04em}
+.map .node .dd{font-size:14px;line-height:1.8;color:rgba(232,238,240,.7);margin:0}
+
+/* ---------- 金句 ---------- */
+.aband{border-left:3px solid var(--gold);background:linear-gradient(90deg,var(--gold-soft),transparent);
+  padding:16px 20px 14px;margin:22px 0;border-radius:0 6px 6px 0}
+.aband q{display:block;font-family:var(--serif);font-size:17.5px;line-height:1.9;
+  color:var(--ink);quotes:none}
+.aband cite{display:block;margin-top:8px;font-style:normal;font-family:var(--sans);
+  font-size:12.5px;color:var(--tx-3)}
+
+/* ---------- 卡片组 ---------- */
+.grid{display:grid;gap:14px;margin:20px 0}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px 17px 16px;position:relative;transition:.2s}
+.card:hover{border-color:rgba(196,106,30,.5);box-shadow:0 4px 18px rgba(42,36,32,.06)}
+.card .idx{font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1;
+  margin-bottom:9px;letter-spacing:.02em}
+.card h3{font-family:var(--serif);font-size:16px;margin:0 0 8px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.55}
+.card .cp{font-size:14.6px;line-height:1.88;color:var(--tx-2);margin:0}
+.card .cp b{color:var(--ink)}
+.card.num .idx{font-family:var(--sans);font-size:12px;letter-spacing:.1em;
+  color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;
+  display:inline-block;padding:2px 9px;margin-bottom:10px}
+
+/* ---------- 阶梯 ---------- */
+.ladder{margin:20px 0;position:relative;padding-left:30px}
+.ladder::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(var(--gold),rgba(196,106,30,.15))}
+.step{position:relative;padding:0 0 20px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-30px;top:5px;width:19px;height:19px;border-radius:50%;
+  background:var(--paper);border:1.5px solid var(--gold);color:var(--gold);
+  font-family:var(--sans);font-size:10.5px;display:flex;align-items:center;justify-content:center}
+.step h4{margin:0 0 5px;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em}
+.step p{margin:0;font-size:14.8px;line-height:1.88;color:var(--tx-2)}
+
+/* ---------- 双列对照 ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:22px 0;
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.duo>div{padding:20px 19px}
+.duo>div+div{border-left:1px solid var(--line)}
+.duo .colL{background:rgba(70,86,107,.055)}
+.duo .colR{background:rgba(160,43,43,.05)}
+.duo h4{margin:0 0 12px;font-family:var(--serif);font-size:16.5px;letter-spacing:.05em}
+.duo .colL h4{color:var(--teal)}
+.duo .colR h4{color:var(--cinnabar)}
+.duo ul{margin:0;padding-left:0;list-style:none}
+.duo li{position:relative;padding-left:17px;font-size:14.6px;line-height:1.86;
+  color:var(--tx-2);margin-bottom:9px}
+.duo li:last-child{margin-bottom:0}
+.duo .colL li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--teal)}
+.duo .colR li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--cinnabar)}
+
+/* ---------- 案例卡（点击展开互斥） ---------- */
+.cases{margin:20px 0;display:grid;gap:11px}
+.case{border:1px solid var(--line);border-radius:8px;background:var(--card);
+  overflow:hidden;transition:.2s}
+.case .ch{display:flex;align-items:center;gap:11px;padding:14px 17px;cursor:pointer;
+  user-select:none}
+.case .ch:hover{background:var(--gold-soft)}
+.case .tag{font-family:var(--sans);font-size:11px;letter-spacing:.06em;padding:2.5px 9px;
+  border-radius:20px;flex:0 0 auto}
+.case .tag.bad{background:rgba(160,43,43,.1);color:var(--cinnabar);border:1px solid rgba(160,43,43,.28)}
+.case .tag.good{background:rgba(70,86,107,.1);color:var(--teal);border:1px solid rgba(70,86,107,.28)}
+.case .tag.mid{background:rgba(128,118,106,.1);color:var(--tx-3);border:1px solid var(--line)}
+.case .ch h4{margin:0;font-family:var(--serif);font-size:16px;color:var(--ink);
+  letter-spacing:.03em;flex:1;line-height:1.5}
+.case .ch .ar{font-family:var(--sans);font-size:12px;color:var(--gold);transition:.25s}
+.case.on .ch .ar{transform:rotate(90deg)}
+.case .cb{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.case .cb .in{padding:0 17px 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2)}
+.case .cb .in b{color:var(--ink)}
+
+/* ---------- 表格 ---------- */
+.tbwrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14.4px;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);line-height:1.75}
+th{font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;color:var(--ink);
+  background:var(--paper-2);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+
+/* ---------- 自测清单 ---------- */
+.check{margin:22px 0;border:1px solid var(--line);border-radius:8px;background:var(--card);
+  padding:18px 19px 15px}
+.check .ct{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--gold);
+  margin:0 0 13px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:9px 0;
+  border-top:1px dashed var(--line);cursor:pointer;font-size:15px;line-height:1.8;
+  color:var(--tx-2)}
+.check label:first-of-type{border-top:0}
+.check input{margin:6px 0 0;flex:0 0 auto;width:16px;height:16px;accent-color:var(--gold)}
+.check label.done{color:var(--tx-3);text-decoration:line-through;
+  text-decoration-color:var(--gold-soft)}
+.check .cf{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin-top:12px;
+  border-top:1px solid var(--line);padding-top:10px}
+.check .cf b{color:var(--gold);font-size:15px}
+
+/* ---------- 折叠延伸 ---------- */
+details.ext{margin:18px 0;border:1px solid var(--line);border-radius:8px;
+  background:var(--paper-2);padding:0 17px}
+details.ext summary{cursor:pointer;padding:14px 0;font-family:var(--serif);font-size:15.5px;
+  color:var(--ink);list-style:none;letter-spacing:.03em}
+details.ext summary::-webkit-details-marker{display:none}
+details.ext summary::before{content:"▸";color:var(--gold);margin-right:9px;display:inline-block;
+  transition:.2s}
+details.ext[open] summary::before{transform:rotate(90deg)}
+details.ext .ex{padding:2px 0 16px;font-size:14.8px;line-height:1.9;color:var(--tx-2);
+  border-top:1px dashed var(--line)}
+details.ext .ex b{color:var(--ink)}
+
+/* ---------- 人物档案 ---------- */
+.prof{margin:20px 0;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;background:var(--card);padding:18px 19px}
+.prof .pn{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:.04em;
+  margin:0 0 3px}
+.prof .pm{font-family:var(--sans);font-size:12.5px;color:var(--tx-3);margin:0 0 13px}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:14.6px}
+.prof dt{font-family:var(--sans);font-size:12.5px;color:var(--gold);white-space:nowrap;
+  padding-top:3px;letter-spacing:.03em}
+.prof dd{margin:0;color:var(--tx-2);line-height:1.85}
+
+/* ---------- 金句墙 ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.chip{border:1px solid rgba(196,106,30,.45);background:rgba(196,106,30,.07);
+  color:var(--ink);border-radius:20px;padding:6px 15px;font-size:14.2px;
+  font-family:var(--serif);letter-spacing:.02em}
+
+/* ---------- 源文缺陷提示 ---------- */
+.broken-tip{margin:20px 0;border:1px dashed rgba(160,43,43,.55);border-radius:8px;
+  background:rgba(160,43,43,.045);padding:14px 17px;font-family:var(--sans);
+  font-size:13.4px;line-height:1.8;color:rgba(128,32,32,.95)}
+.broken-tip b{color:var(--cinnabar)}
+
+/* ---------- 校勘区 ---------- */
+.notes{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.note{display:flex;gap:13px;padding:11px 0;border-bottom:1px dashed var(--line);
+  font-size:14.2px;line-height:1.85;color:var(--tx-2)}
+.note:last-child{border-bottom:0}
+.note .nn{flex:0 0 auto;font-family:var(--sans);font-size:11.5px;color:var(--cinnabar);
+  border:1px solid rgba(160,43,43,.35);border-radius:4px;padding:4px 8px;height:fit-content;
+  letter-spacing:.03em;white-space:nowrap}
+.note .nd b{color:var(--ink)}
+.note.flash{animation:fl 1.5s ease}
+@keyframes fl{0%,100%{background:transparent}25%,60%{background:rgba(196,106,30,.18)}}
+
+/* ---------- footer ---------- */
+footer{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.6px;line-height:1.95;color:var(--tx-3)}
+footer p{margin:0 0 7px}
+footer b{color:var(--tx-2)}
+
+/* ---------- 移动端 ---------- */
+@media(max-width:1080px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 20px 70px}
+  aside{position:static;max-height:none;overflow:visible;padding:24px 0 4px;
+    border-bottom:1px solid var(--line);margin-bottom:22px}
+  aside .lst{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  aside a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;
+    border-radius:0;padding:6px 10px}
+  aside a.on{border-left:0;border-bottom-color:var(--gold)}
+  main{padding-top:22px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 20px 44px}
+  .hero .wm{font-size:200px}
+  .g2,.g3{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .duo>div+div{border-left:0;border-top:1px solid var(--line)}
+  .h2{flex-wrap:wrap}
+  .h2 .en{margin-left:0;width:100%}
+  .prof dl{grid-template-columns:1fr;gap:3px}
+  .prof dt{padding-top:7px}
+}
+@media print{aside,#pbar{display:none}.wrap{grid-template-columns:1fr}}
+
+.bknav{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  font-size:13px;letter-spacing:.02em;background:rgba(244,242,237,.94);
+  border-bottom:1px solid rgba(42,36,32,.12);backdrop-filter:saturate(1.2) blur(6px)}
+.bknav.top{position:sticky;top:0;z-index:50}
+.bknav.bot{border-bottom:0;border-top:1px solid rgba(42,36,32,.12);margin-top:8px}
+.bknav .inner{max-width:1180px;margin:0 auto;padding:0 26px;height:44px;
+  display:flex;align-items:center;gap:14px;min-width:0}
+.bknav a{color:#453B32;text-decoration:none;border:0;padding:5px 11px;border-radius:5px;
+  transition:.16s;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.bknav a:hover{background:rgba(196,106,30,.16)}
+.bknav .home{font-weight:600;flex:0 0 auto}
+.bknav .sp{flex:1;min-width:0}
+.bknav .dis{color:rgba(42,36,32,.28);padding:5px 11px;pointer-events:none;
+  border:1px dashed rgba(42,36,32,.14);border-radius:5px;white-space:nowrap}
+.bknav .cur{color:#8A7F72;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:38vw}
+/* 移动端：篇名可能很长（如「封闭系统·冒出的生态圈」），窄屏下横向排不下。
+   flex 弹性项不会因为 min-width:0 就自动收缩到内容宽度以下并换行——
+   必须允许换行，否则导航条会把整页撑宽（_qc 的「移动端横向溢出」会挂）。
+   做法：去掉撑开用的 .sp、允许 flex-wrap、给每个链接限宽 46vw。 */
+@media(max-width:760px){.bknav .inner{padding:5px 12px;gap:6px;height:auto;
+    min-height:44px;flex-wrap:wrap;justify-content:space-between}
+  .bknav .sp{display:none}
+  .bknav .cur{display:none}
+  .bknav a{padding:5px 9px;font-size:12.5px;max-width:46vw}
+  .bknav .dis{padding:5px 9px;font-size:12.5px}}
+</style></head>
+<body>
+<nav class="bknav top"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><a href="../11-变化架构与后达尔文主义/index.html">← 变化架构·后达尔文主义</a><a href="../13-整体空洞空间与九律/index.html">整体·空洞·空间与九律 →</a></div></nav>
+<div id="pbar"></div>
+<header class="hero">
+  <div class="wm">预</div>
+  <div class="stamp s3">预言机</div>
+  <h1>水往高处流 · 预言机 · 内发送与伪生命体</h1>
+  <p class="sub">第二十一·二十二章写两种力量的合流：上升之流在熵的海洋里微微上涨，以万变求不变；而预测——从接住棒球到内视行动——则是活系统掌控命运的另一种方式。有机体存在的目的就是揭示未来。</p>
+  <div class="meta"><span>变化之部</span>
+    <span class="k">可预测性范围</span>
+    <span>正文 42,422 字</span>
+    <span>15 节</span></div>
+</header>
+<div class="wrap">
+  <aside><p class="t">本篇目次</p><div class="lst"><a href="#s1" data-t="s1"><span class="cn">壹</span>一篇之图</a><a href="#s2" data-t="s2"><span class="cn">貳</span>上升之流</a><a href="#s3" data-t="s3"><span class="cn">叁</span>进化目的</a><a href="#s4" data-t="s4"><span class="cn">肆</span>七大趋势</a><a href="#s5" data-t="s5"><span class="cn">伍</span>土狼进化</a><a href="#s6" data-t="s6"><span class="cn">陸</span>接球的大脑</a><a href="#s7" data-t="s7"><span class="cn">柒</span>混沌另一面</a><a href="#s8" data-t="s8"><span class="cn">捌</span>正面意义的短视</a><a href="#s9" data-t="s9"><span class="cn">玖</span>可预测性范围</a><a href="#s10" data-t="s10"><span class="cn">拾</span>内视行动</a><a href="#s11" data-t="s11"><span class="cn">拾壹</span>预测的多样性</a><a href="#s12" data-t="s12"><span class="cn">拾贰</span>以万变求不变</a><a href="#s13" data-t="s13"><span class="cn">拾叁</span>揭示未来</a><a href="#s14" data-t="s14"><span class="cn">拾肆</span>全球模型</a><a href="#s15" data-t="s15"><span class="cn">拾伍</span>舵手是大家</a>
+    <a href="#kan" data-t="kan"><span class="cn">附</span>源文校勘</a>
+  </div></aside>
+  <main>
+    <div class="epis"><div class="epi"><p>它以这种方式在混沌中孕育出反混沌，我们称之为生命。</p><cite>——第二十一章 21.1 四十亿年的庞氏骗局</cite></div><div class="epi"><p>有机体存在的目的就是揭示未来。</p><cite>——第二十二章 22.8 系统存在的目的就是揭示未来</cite></div></div>
+    <section id="s1"><div class="h2"><span class="cn">壹</span><h2>一篇之图</h2><span class="en">ONE MAP</span></div><div class="map"><p class="mt">两章合写一场对抗与一场和解：二十一章写上升之流对抗卡诺第二定律的四十年骗局，二十二章写活系统用预测把未来前馈到现在</p><p class="thesis">宇宙中并存着两个趋势：永远下行的热寂，与在无序中构建有序的上升之流——它以这种方式在混沌中孕育出反混沌，我们称之为生命。而预测是控制的一种形式，尤其适合分布式系统：<b>有机体存在的目的就是揭示未来</b>。但舵手是大家——没人来当家，我们能够学会预测即将发生的事情，学习就意味着生存。</p><div class="chain"><div class="node"><div class="n">上升流</div><div><p class="tt">四十亿的骗局</p><p class="dd">生物秩序作为游戏的杠杆套取更多的生物秩序——若不能持续扩张，便只有崩溃</p></div></div><div class="node"><div class="n">趋势</div><div><p class="tt">超进化七趋势</p><p class="dd">不可逆性、复杂性、多样性、个体数量、专业性、相互依存、进化力——变自生变</p></div></div><div class="node"><div class="n">接球</div><div><p class="tt">归纳的预言机</p><p class="dd">复杂自适应系统所做的就是预测——大脑用经验数据而不是 F=ma 接住棒球</p></div></div><div class="node"><div class="n">混沌</div><div><p class="tt">唱片的另一面</p><p class="dd">看起来完全无序的东西在短期内可以预测——可预测性范围里能挣大钱</p></div></div><div class="node"><div class="n">内视</div><div><p class="tt">预演的战争</p><p class="dd">内视行动在萨达姆入侵前两周就模拟了一场为期 30 天的战争——空中力量是决定性因素</p></div></div><div class="node"><div class="n">舵手</div><div><p class="tt">大家来掌舵</p><p class="dd">自我制造系统之外不存在控制——没人来当家，学习就意味着生存</p></div></div></div></div></section><section id="s2"><div class="h2"><span class="cn">貳</span><h2>21.1 四十亿年的庞氏骗局</h2><span class="en">THE FORTY-BILLION-YEAR PONZI SCHEME</span></div><p class="prose">19 世纪初，「热」还是令人费解的深奥难题：最广为认同的理论认为热是一种无孔不入的弹性流体——是一种物质以太（源文在此截断）。1824 年，法国军事工程师卡诺（源文此句截断）。</p><p class="prose">而生物学却没有如此显赫的理论：复杂性研究员中间最流行的笑话就是，今天的生物科学正在「等待戈多」——生物学家讨论复杂性问题却没有衡量标准，提出进化假说却无法重现实例，正像研究热问题却没有卡路里、做功甚至能量概念的情形。</p><p class="prose">探索深度进化和找寻超生命的背后，大多都藏有对生物学第二定律的探索——有人说它是反熵，有人说是「负熵」。格雷戈里·贝特森就曾经问道：「是否也有一个生物物种的熵？」</p><p class="prose">从大爆炸迄今 100 亿年来，宇宙慢慢冷却。当这一漫长的历史走到大约三分之二的时候，一种贪得无厌的力量开始强迫正在慢慢消散的热和秩序在局部形成更好的秩序——它是自给自足的，也是自强化的。自此之后，宇宙中就并存着两个趋势——</p><div class="duo"><div class="colL"><h4>下行之流：卡诺第二定律</h4><ul><li>所有规律中最残酷的法则</li><li>所有秩序都终归于混沌，所有火焰都将熄灭</li><li>所有变异都趋于平淡，所有结构都终将自行消亡</li></ul></div><div class="colR"><h4>上升之流：生命的第二种力量</h4><ul><li>在热量消散前将其转移，在无序中构建有序</li><li>借助趋微之势，逆流而上</li><li>是衰退的熵的海洋里微微的上涨，永远处在坍塌的边缘</li></ul></div></div><div class="aband"><q>这就是令人沮丧的卡诺第二定律，所有规律中最残酷的法则：所有秩序都终归于混沌，所有火焰都将熄灭，所有变异都趋于平淡，所有结构都终将自行消亡。</q><cite>——第二十一章 21.1 四十亿年的庞氏骗局</cite></div><div class="aband"><q>它以这种方式在混沌中孕育出反混沌，我们称之为生命。</q><cite>——第二十一章 21.1 四十亿年的庞氏骗局</cite></div><p class="prose">这就像一个金字塔骗局：生物秩序作为游戏的杠杆，其功用便是用来套取更多的生物秩序，若不能持续扩张，便只有崩溃——生命也许应该被定义为逃避处罚的艺术（沃丁顿语）。生物的秩序如同冲浪者一般踏浪滑翔，利用外来的能量将自己送入更加有序的领域。</p><p class="prose">但「上升流」意味着宇宙中存在某种方向性，这导致了某种怀疑论：进步之死基本上已盖棺定论。凯利用一个气球图景动摇了进步式进化——把所有后裔想象成一个越吹越大的气球，每个物种是球面上的一个点：在球面上，所有点与最初生命起点的距离都是相同的，因此没有哪个物种优于其他物种——</p><div class="aband"><q>说穿了，人类并不比大多数细菌进化得更多。</q><cite>——第二十一章 21.1 四十亿年的庞氏骗局</cite></div><div class="aband"><q>事实上，进化没有顶点，只有数十亿个分布在球面上的不同的点。</q><cite>——第二十一章 21.1 四十亿年的庞氏骗局</cite></div></section><section id="s3"><div class="h2"><span class="cn">叁</span><h2>21.2 进化的目的是什么</h2><span class="en">WHAT IS EVOLUTION FOR</span></div><p class="prose">就算进化没有展示出任何进步的迹象，那它也会有个大致的方向吧？古尔德用倒放《奇妙的生命》录像带的方法给出新达尔文主义的答案：倒放的影片中，生物越来越稀少、形体逐渐缩小，最后一个活物在大结局中演变成一个单一、微小且形状不定的小球——新达尔文主义者相信进化是不可预测的——</p><div class="aband"><q>既然有机界的进化没有定向的趋势，那么生命的未来便无法预测。因此，进化不可预测的本质倒是我们有把握作出的少数几个预测之一。</q><cite>——第二十一章 21.2 进化的目的是什么</cite></div><p class="prose">另一方面，后达尔文主义者不断提及「必然性」。古尔德把生命的可能性空间比作一个「宽广、低洼、均匀的巨大斜坡」：水滴随机地落在斜坡上侵蚀出许多杂乱无章的细小沟壑，并最终成为更大的峡谷。而凯利按古尔德的假想实验在沙盘上实地重复，结果却暗示了另外一个相悖的观点——</p><div class="aband"><q>你得到的地貌类型是所有可能形成的类型中非常有限的子集。</q><cite>——第二十一章 21.2 进化的目的是什么</cite></div><div class="aband"><q>尽管进化在某些点上对于初始条件是敏感的（寒武纪生命大爆发就是其一），但是这绝不能排除大趋势的影响。</q><cite>——第二十一章 21.2 进化的目的是什么</cite></div><p class="prose">在过去几十年里，视神为无物的工程师们已经制造出了可以自己设定目标且似乎有自己动机的机器。控制论的始创人诺伯特·维纳在 1950 年写道——「不仅是人类可以为机器设定目标，而且在绝大多数情况下，一台被设计来用于预防某些故障的机器，会找寻自己能够达成的目标。</p><p class="prose">」我们自己的意识是一个无意识因子的集合：一个最低端的恒温调节器也有它的目标和方向；布鲁克斯的成吉思这个虫形机器人「想要」爬过厚厚的电话簿。当进化论者把上帝从进化中抖落掉的时候，他们认为自己已经抖落掉了所有目的和方向的痕迹——但复杂性研究的理论家马克·贝多和诺曼·帕卡德仔细评判了许多进化系统，并得出结论——</p><div class="aband"><q>正如最近混沌研究的结果所表明，确定性系统可能是不可预测的，我们相信确定性系统是有目的性的。</q><cite>——第二十一章 21.2 进化的目的是什么（马克·贝多和诺曼·帕卡德）</cite></div><p class="prose">对于那些被「目的和进化」的争论吵昏了头的人们来说，这个解释有助于把目的性理解为「驱使」或「势头」，而非一种自觉的、有意的目标或计划。在下一节里，凯利列出了进化可能存在的大规模、自发性势头——从教科书中常见的原理「柯普法则」（源文此句截断）说起。</p></section><section id="s4"><div class="h2"><span class="cn">肆</span><h2>21.3 超进化的7个趋势</h2><span class="en">SEVEN TRENDS OF HYPEREVOLUTION</span></div><p class="prose">凯利注意到，在一刻不停的生物进化中涌现出了 7 个主要趋势，当人工进化踏上漫漫征途时，这 7 个趋势也将伴随其左右——</p><div class="aband"><q>它们是：不可逆性、递增的复杂性、递增的多样性、递增的个体数量、递增的专业性、递增的相互依存关系，以及递增的进化力。</q><cite>——第二十一章 21.3 超进化的7个趋势</cite></div><p class="prose"><b>不可逆性</b>：进化不可倒退（多洛氏不可逆法则）——某个活系统一旦进化出了语言或者记忆，就再也不会放弃它。生命一旦在某种环境中安顿下来，就会顽强地维持着某种程度的存在，正如沃尔纳德斯基所写——「原子一旦卷入生命物质的洪流，就别想能轻易离开。</p><p class="prose">」想象一个方圆 8000 英里、装满高温灭菌鸡汤的大碗，滴入一个细胞，第二天它便以指数级增长布满巨碗——</p><div class="aband"><q>生命诞生了，就在一瞬间！生命势不可挡。</q><cite>——第二十一章 21.3 超进化的7个趋势</cite></div><div class="aband"><q>同样，人工生命一经渗入计算机，就永远留在计算机的某处，永远不会消失。</q><cite>——第二十一章 21.3 超进化的7个趋势</cite></div><p class="prose"><b>递增的复杂性</b>：几乎每个人都知道进化朝着更加复杂的方向发展，但古尔德却断然地对凯利说——「日趋复杂化的幻觉是人为的现象。因为你必须先建立一些简单的东西，如此一来，随后产生的自然就是复杂的东西了。」然而，有许多简单的事情大自然从未做过：它为什么不停留在细菌时代？为什么要把事情搞得更复杂？</p><p class="prose">如果复杂化是一个真正的趋势，那么一定有某种事物推动了它——</p><div class="tbwrap"><table><thead><tr><th>提出时间</th><th>复杂化的解释理论</th></tr></thead><tbody><tr><td>1871</td><td>对部件的复制以及复制中的意外导致复杂性</td></tr><tr><td>1890</td><td>真实环境的苛刻导致部件的分化，分化集合成为复杂性</td></tr><tr><td>1960</td><td>复杂性更具热力学效率</td></tr><tr><td>1960</td><td>复杂性只是（自然）选择其他属性时偶然产生的副产品</td></tr><tr><td>1969 年</td><td>复杂的有机体能不断聚集周围更多的复杂性；因此复杂性是一个自身不断放大的正反馈循环</td></tr><tr><td>1972</td><td>非均衡系统在熵消散或热消耗时积累复杂性</td></tr><tr><td>1976 年</td><td>相对而言，一个系统增加一个部件比减少一个部件容易，因此复杂性是累积的</td></tr><tr><td>1986</td><td>意外本身产生复杂性</td></tr><tr><td>1986</td><td>无休止的军备竞赛逐步增强复杂性</td></tr></tbody></table></div><p class="prose"><b>递增的多样性</b>：伯吉斯页岩化石群展现了寒武纪生命大爆发时期一系列令人瞩目的新生物——其基本类型要比我们的先祖生物的基本类型更富有多样性。古尔德这样解释：「三只不同种类的盲鼠构不成一个多样的生态动物群落，而一头大象、一棵树加一只蚂蚁就可以构成这样的群落——尽管这一个组合只包含了三个物种。</p><p class="prose">」——「生命史的惊人事实就是它标记着多样性的锐减，以及继之而来的在少数幸存物种中激增的多样性」。<b>递增的个体数量</b>：从层级的角度看，超群和子群也构成了个体——正如斯坦利·塞尔斯所描述的，如果个体可以相互嵌套，那么在一个有限的世界里，就有可能存在不计其数的独一无二的生命个体。</p><p class="prose"><b>递增的专业性</b>：赫伯特·斯宾塞把进化定义为「通过不断的分化和整合，从不明确、不连贯的同质性状态转变成明确、连贯的异质形态的变化过程」——细胞一旦分化，就难以回归到更通用的状态。</p><p class="prose"><b>递增的相互依存关系</b>：随着时间的推移，生命与大地和矿物质的亲密关系逐渐被对其他生物的依赖所取代——人类正是一个越来越依赖生命而不是非生物的极端例子。</p><p class="prose"><b>递增的进化力</b>：1987 年，道金斯在第一届人工生命研讨会上发表了题为《进化性的进化》的论文。他提出了更高一层的自然选择——「它所偏爱的类型，不仅仅能成功地适应环境，而且能朝着既定的方向进化，或者只要保持进化就好」。换言之——</p><div class="aband"><q>进化不仅选择生存力，也选择进化力。</q><cite>——第二十一章 21.3 超进化的7个趋势</cite></div><div class="cases"><div class="case"><div class="ch"><span class="tag mid">案例</span><h4>以石头为食的地衣</h4><span class="ar">▶</span></div><div class="cb"><div class="in">原始生物直接依赖于自然环境：有些细菌生活在岩石之中，有些地衣以石头为食，栖息地稍有扰动就会对其产生强大冲击——正因为如此，地衣可以被用作酸雨污染的天然监测器。随着演变，生命逐渐解脱无机物的束缚：寄生虫舒适地生活在动物温暖的消化系统里，可能永远没有机会接触外部的环境；蚂蚁虽可居于地下，其个体生命更依赖的是其他蚂蚁而不是土壤。</div></div></div><div class="case"><div class="ch"><span class="tag mid">新解</span><h4>道金斯的「进化的怀孕」</h4><span class="ar">▶</span></div><div class="cb"><div class="in">道金斯的灵感源于他在生物形态领域创造人工进化的尝试。他意识到，在扮演上帝时，偶尔为之的创新不但给个体提供直接进步的机会，还可以看作是一种「进化的怀孕」，使后代能够在更大的范围内变异。他拿现实中第一个分化出来的动物为例，把它看作是「一个怪物……而并非一个成功的个体」——但动物分化这个事件是生命进化的一个分水岭，由此分化出的一系列后裔成为了进化的赢家。</div></div></div></div><p class="prose">进化之进化就像是一个阿拉丁神灯不会给予你的愿望：即获得另外三个愿望的愿望。明斯基认为，仅仅依靠不断地积累越来越多的新知识，心智不能真正很好地成长——「心理发育过程中的一些最关键的步骤，不仅仅建立于获取新技能的基础之上，而且建立于获取运用已知知识的新的应用方法的基础之上」（派普特原理）。</p><p class="prose">进化系统的本质，是一种产生永恒变化的机制——它意味着对变化做出变化。正所谓，变自生变。</p></section><section id="s5"><div class="h2"><span class="cn">伍</span><h2>21.4 土狼般的自我进化</h2><span class="en">COYOTE SELF-EVOLUTION</span></div><p class="prose">对进化之进化可作如下概述：起初进化启动了各色自我复制，产生足够的数量以诱发自然选择；随后定向突变、共生、形态制约、内部选择、物种级选择依次登场；最终智力萌芽，拉马克式的文明进化取而代之。</p><p class="prose">耶鲁大学生物学家利奥·巴斯称，在进化之进化的每一个阶段，受制于自然选择的单位层级在提高——「生命的历史就是一个选择不同单位的历史」。巴斯认为——</p><div class="aband"><q>在每一个转型期——在生命发展史中每一个有新的自我复制单位出现的阶段，涉及自然选择运作模式的规则都发生了彻底改变</q><cite>——第二十一章 21.4 土狼般的自我进化（利奥·巴斯）</cite></div><div class="aband"><q>简而言之，大自然的进化本身也进化了。</q><cite>——第二十一章 21.4 土狼般的自我进化</cite></div><p class="prose">人工进化也将经历同样的演变过程，既是人工的，也是自然的——但任何一个种类，都绝对不会完全接受我们的控制，它们拥有自己的进化日程。如果真的存在超进化，它又通往何方？凯利核对证据，确定进化的目标正是它自己——「它既是来源，又是结果」。</p><p class="prose">进化的数学并非驱使它造出更多的火烈鸟，多产不过是进化的副产品；相反，进化的方向是实现自我——</p><div class="aband"><q>所有自进化者必须是像土狼一样高明的魔术师。</q><cite>——第二十一章 21.4 土狼般的自我进化</cite></div><div class="aband"><q>它总是抓住自己的尾巴，把自己里外翻转，变成更复杂、更柔韧、更花俏、更依赖自己的东西，然后会再次无休无止地努力去抓自己的尾巴。</q><cite>——第二十一章 21.4 土狼般的自我进化</cite></div><p class="prose">宇宙容忍这种几近残酷的进化积蓄更为强大的进化力，究竟得到了什么？我所能看到的，就是可能性——而且，在我看来，可能性是蛮不错的终点。</p></section><section id="s6"><div class="h2"><span class="cn">陸</span><h2>22.1 接球的大脑</h2><span class="en">THE MIND CATCHES THE BALL</span></div><p class="prose">「给我说说未来吧，」我恳请道。凯利坐在导师多恩·法默的办公室里——这位又高又瘦的导师是人工生命运动之父，曾穿着装在鞋底的计算机去拉斯维加斯赢庄家的钱，现在正着手开办一家通过计算机模拟来预测股价的公司。</p><p class="prose">凯利之所以探询预测未来的问题，是因为预测是控制的一种形式，是一种尤其适合分布式系统的控制形式——通过预期未来，活系统能够改变其姿态，预先适应未来。约翰·霍兰德说——「复杂自适应系统所做的，就是预测。」</p><div class="aband"><q>复杂自适应系统所做的，就是预测。</q><cite>——第二十二章 22.1 接球的大脑（约翰·霍兰德）</cite></div><p class="prose">法丰最喜欢用接球来说明预测机制：「来，接着!」说着就朝你扔过来一个棒球。你抓住了球——你知道你是怎么接住这个球的吗？通过预测。</p><p class="prose">你的大脑并没有存储 F=ma 这样的基本物理学算式，而是直接依照经验数据建立起一个模型：棒球手成千次观察、成千次调整预测，不知怎么的，他的大脑就逐渐编制出一个几乎跟 F=ma 不相上下的落点模型——在逻辑学领域中，这样的过程统称为归纳，它与导出 F=ma 的推演过程截然不同。</p><p class="prose">这很像托勒密的嵌套圆形轨道模型：尽管有各种严重错误，这个巴洛克风格的模拟装置仍然行得通，而且还会「学习」，为天象预测服务了 1400 年。「你可以用 F=ma 来求解飞行中的棒球问题，但你不能在外场实时解决问题。」法默说。</p><div class="aband"><q>你可以用F=ma来求解飞行中的棒球问题，但你不能在外场实时解决问题。</q><cite>——第二十二章 22.1 接球的大脑（多恩·法默）</cite></div><p class="prose">法默又扔出一个充好气的气球——这东西像喝醉了酒似的在房间里放肆地漂来弹去，谁也接不住。这正是混沌的一种经典表现：一个对初始条件具有敏感依赖的系统。可是，一个玩任天堂游戏长大的十几岁小孩，却可以学会如何接气球——只要接过几十次之后，他的大脑就开始构筑某种直觉、某种归纳，探查出飞行物的飞行意向。</p><p class="prose">关于抓气球，你还能有什么更高的要求呢？某些游戏里，并不需要太多的信息就可以做出有效的预测——比如逃离狮口或者投资股票的时候，哪怕只是比纯粹的运气高那么一点点，也是有重大意义的。几乎可以明确地说，「活系统」都是不可预测的；不过——</p><div class="grid g3"><div class="card num"><div class="idx">一</div><h3>接球即预测</h3><p class="cp">大脑没有存储 F=ma 算式，而是依照经验数据建立落点模型——成千次观察与调整，归纳出几乎不相上下的模型。</p></div><div class="card num"><div class="idx">二</div><h3>归纳非推演</h3><p class="cp">这一过程统称为归纳，与导出 F=ma 的推演截然不同——像托勒密的嵌套圆形轨道模型，行得通而且还会学习。</p></div><div class="card num"><div class="idx">三</div><h3>混沌接得住</h3><p class="cp">气球漂来弹去谁也接不住——但玩任天堂长大的小孩，接过几十次之后，大脑就开始构筑归纳的直觉。</p></div><div class="card num"><div class="idx">四</div><h3>一点即有价值</h3><p class="cp">逃离狮口或者投资股票，并不需要太多的信息就可以做出有效的预测——哪怕只比纯粹的运气高那么一点点。</p></div></div><div class="aband"><q>整个系统却能够充当分布式装置，对未来做近似的推测。</q><cite>——第二十二章 22.1 接球的大脑</cite></div><div class="aband"><q>市场的可爱之处就是，其实不需要太多的预测，就可以做很多事情。</q><cite>——第二十二章 22.1 接球的大脑（多恩·法默）</cite></div></section><section id="s7"><div class="h2"><span class="cn">柒</span><h2>22.2 混沌的另一面</h2><span class="en">THE OTHER SIDE OF CHAOS</span></div><p class="prose">流行的观点认为，混沌理论证明了高维复杂系统本质上无法预测。可是，人们大大地误解了混沌理论——它还有另外一个面孔。法默用黑胶唱片打了个比方：混沌就好像是一个双面都录有音乐的热门唱片。正面——「根据混沌定律，初始秩序可以分解为原不可预测性。你无法做出远期预测。」另一面——</p><div class="aband"><q>根据混沌定律，那些看起来完全无序的东西，在短期内可以预测到。你可以做出近期预测。</q><cite>——第二十二章 22.2 混沌的另一面</cite></div><div class="aband"><q>而无论是高维系统的长期的不可预测性，还是低维系统的短期的可预测性，都来源于同一个事实，即“混沌”和“随机”是两回事。</q><cite>——第二十二章 22.2 混沌的另一面</cite></div><p class="prose">早在混沌形成科学理论之前，法默就是探索这一黑暗领域的先驱：20 世纪 70 年代，他和诺曼·帕卡德在圣克鲁斯建立了计算机迷嬉皮士公社「混沌社」，研究滴水的水龙头的古怪物理学。法默对轮盘赌特别着迷——他坚信表面上随机旋转的轮盘里，一定隐藏着某种秩序。</p><p class="prose">1977 年，混沌社造出了一组可手动编程的小微机，装在皮鞋底部、用脚趾键入信息，功能是预测轮盘赌中小球的走向：在小球落下到最终停下来之间的短短 15 秒左右的时间里，鞋计算机就模拟完成了这个球的整个混沌运行过程——其速度要比真球落到号码杯中的速度快上大约 100 万倍。</p><p class="prose">预测装置预报出的从来不是准确号码，而是轮盘的一个小扇面——而参赌的同伙在这个区域内遍撒筹码，最后往往能赢。</p><p class="prose">后来，因为这个系统的硬件不可靠，小组把整个系统卖给了别的赌博者。不过，从这次冒险中，法默却学到了三件对于预测未来非常重要的事情——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>首先，你可以抽取混沌系统内在的固有模式，取得良好的预测。</span></label><label><input type="checkbox"><span>其次，进行一次有用的预测用不着看得太远。</span></label><label><input type="checkbox"><span>第三，即使是一点点有关未来的信息，也是非常有价值的。</span></label><div class="cf">已勾选 <b>0</b> / 3</div></div></section><section id="s8"><div class="h2"><span class="cn">捌</span><h2>22.3 具有正面意义的短视</h2><span class="en">POSITIVELY MYOPIC</span></div><p class="prose">法默牢记着这些经验，又跟另外 5 个物理学家组建了一个新公司，要破解所有赌徒的梦想：华尔街。他们挂出了新招牌：预测公司。圣塔菲研究所最近的研究就解释了「看得远并不意味着看得好」——那么，为什么看得更深更远还并不是更好呢？</p><p class="prose">简单答案就是：当极小的误差（由有限的信息引起的）持续到非常遥远的未来的时候，将会汇聚成极为严重的误差。经济学家用国际象棋的计算机程序（比如顶级的「深思」）作为预报工作的试验台。结果却和预料完全相反——</p><div class="aband"><q>无论是“深思”程序，还是人类的象棋大师，其实都不需要看得太远就能下出非常好的棋。</q><cite>——第二十二章 22.3 具有正面意义的短视</cite></div><div class="aband"><q>首选那些增加选择余地的着法；避开那些结果不错但要求弃子求兑的着法；从那些毗邻多个有利位置的有利位置着手。</q><cite>——第二十二章 22.3 具有正面意义的短视</cite></div><p class="prose">在对局势的前瞻与切实通盘关注当前状况之间取得平衡——这种有限的前瞻就是所谓的「有正面意义的短视」。我们每一天都会遇到类似的折中：我们从来都得不到充足的信息来做出完全有见地的决策，我们在黑暗中经营。</p><p class="prose">常识使这种短视具体化：与其花费数年搞一本付印之际就过时的员工手册，不如先设计出一些一般的指导原则来应对那些看起来一定会在「下一步」发生的事情，等那些极端事例真的发生的时候再来应付。如果你在陌生城市的交通高峰时段出行，通常的做法是——一直向西，到达沿河路时，再左转：由经验规则引导的有限的前瞻。</p><div class="aband"><q>预测机制即使看起来没有先知的样子也一样好使，只要它能从随机和复杂的伪装背后发现有限的模式——几乎什么样的模式都行。</q><cite>——第二十二章 22.3 具有正面意义的短视</cite></div></section><section id="s9"><div class="h2"><span class="cn">玖</span><h2>22.4 从可预测性范围里挣大钱</h2><span class="en">MAKING A LIVING IN THE POCKETS</span></div><p class="prose">按照法默的说法，有两种不同的复杂性——</p><div class="duo"><div class="colL"><h4>内在的复杂性</h4><ul><li>混沌系统「真正的」复杂性</li><li>造成晦暗的不可预测性</li><li>位于方框的上角——都是些难题</li></ul></div><div class="colR"><h4>表面的复杂性</h4><ul><li>混沌的另一面，掩盖着可利用秩序</li><li>表面的复杂性很高，而真正的复杂性仍然保持比较低的水平</li><li>复杂的难题中有些成分是可以预测的——正是要在股票市场中找的东西</li></ul></div></div><p class="prose">预测公司希望借助占了混沌另一面便宜的工具来消灭金融市场中的简单问题：把得到验证的各种来路的模式搜寻策略都变成数据，然后「不断地敲打它们」，以此对算法进行最优化。激励法默和帕卡德的信念是从轮盘赌试验中挣到的实实在在的钞票——《幸福的馅饼》一书里大声疾呼：「干嘛不在鞋里穿上计算机去玩轮盘赌？</p><p class="prose">」他们现在还在测试自己最狂野、最有争议的理论：帕卡德把这些区域称为「可预测性范围」或者「局部可预测性」——不可预测性在整个系统中的分布并不是统一的，其中一小部分也许可以进行短期预报。他们是在金融的宇宙中寻找秩序的迹象——任何秩序。戴维·拜瑞比曾在《发现》杂志上用一个非常可爱的比喻来形容这种寻找的过程——</p><div class="aband"><q>看着市场中的混沌，就好像看着波涛汹涌、浪花四溅的河流，它充满了狂野的、翻滚着的波涛，还有那些不可预料的、不断盘旋着的漩涡。但是，突然之间，在河流的某个部分，你认出一道熟悉的涡流，在之后的5~10秒内，就知道了河流这个部分中的水流方向。</q><cite>——第二十二章 22.4 从可预测性范围里挣大钱（戴维·拜瑞比）</cite></div><p class="prose">预测公司的算法，就是抓住飞逝的一点点秩序，然后利用这个转瞬即逝的原型来挣钱。在他们构造的归纳式模型中，事件并不需要抽象的原因——就像具有意念之中的棒球飞行路线的外野手一样。应该操心的，不是因与果之间模糊不清的关系——法默说：「要击败股票市场，关键性的问题是，你应该关注哪些模式？」——</p><div class="aband"><q>要击败股票市场，关键性的问题是，你应该关注哪些模式？</q><cite>——第二十二章 22.4 从可预测性范围里挣大钱（多恩·法默）</cite></div><div class="aband"><q>学会识别秩序而不是原因，才是关键。</q><cite>——第二十二章 22.4 从可预测性范围里挣大钱</cite></div><p class="prose">「只要我们能够超过市场盈利5个百分点，那么我们的投资者就能挣到钱了。」帕卡德说——他们能够预测出 55% 的市场走向，比随机猜测高出 5 个百分点，而最终得到的结果会高出 200%。花旗银行、米兰银行也加入了这场竞赛。</p><p class="prose">法默举了华尔街上像乔治·索罗斯这样的人作为「现实存在的例子」：成功的交易者在无意识中学会识别局部可预测性的模式，对自己的模型的了解并不比对自己如何抓住飞球的了解更多——这两种模型都是基于经验，以同样的托勒密式归纳法建立起来的。困难之处是要保持算法的简洁——</p><div class="aband"><q>问题越复杂，最后要用到的模型就越简单。跟数据严丝合缝其实并不难，但如果你真的去做了，那你最后一定只是侥幸成功。概括是关键。</q><cite>——第二十二章 22.4 从可预测性范围里挣大钱（多恩·法默）</cite></div><p class="prose">说到底，预测机制其实是生产理论的机制。法默宣称，预测是建立科学理论之后最有用、最实在的结果；他把这种神秘的「概括模式搜寻能力」称为「直觉」——华尔街那些「走运的」交易员，利用的恰恰就是这种能力。法默的长期目标并不是市场：「最终，」他说——「我们希望能够使计算机感染上某种粗略形态的直觉」。</p><p class="prose">至 1993 年年底，预测公司已公开报告用「计算机化的直觉」对市场进行了真钱交易——「我们确实在金融数据中找到了在统计上非常重要的模式。确实存在着可预测性范围。」</p></section><section id="s10"><div class="h2"><span class="cn">拾</span><h2>22.5 前瞻：内视行动</h2><span class="en">OPERATION INTERNAL LOOK</span></div><p class="prose">在对预测和模拟机制进行调研的过程中，凯利获得了一个去喷气推进实验室的机会——那里正在开发一种最先进的战争模拟系统。他没能看到那场战争模拟，却听到了一个离奇的故事：实验室过去差不多一年里都在泛泛推演的那个情节——「我们选择那个游戏纯属偶然，根本没有预测的意思，现在却真的打起来了。</p><p class="prose">我们开始测试这个计算机算法的时候，总要选择一些情节，随便什么情节，来试用模拟的效果。所以我们就挑了一个模拟的沙漠战争，参战的……有伊拉克和科威特。」海湾战争结束一年后，凯利发现并不只有喷气推进实验室一个地方偶然预演了那场战争。</p><p class="prose">美国的任何一次军事行动，其神经中枢都会设在佛罗里达州的中央司令部。20 世纪 80 年代，施瓦茨科夫将军到任时提出了一种新看法——「苏联狗不出猎」，将作战计划制定者们的注意力引向替代战局，高居榜单前列的就是伊拉克边境沿线的沙漠战争。</p><p class="prose">1989 年初，中央司令部的加里·威尔开始以此为基础建立战争模型，代号「内视行动」：收集近十万条驻中东部队的细节数据、编制整个海湾地区的光碟地图、输入 TACWAR 战争游戏主体模拟程序。</p><p class="prose">1990 年 7 月，威尔向他的上级概述了「内视行动」的各种成果：伊拉克入侵沙特、美国/沙特反击——<b>威尔的模拟恰恰预测了一场为期 30 天的战争。</b>就在两周之后，萨达姆·侯赛因突然入侵了科威特。</p><p class="prose">萨达姆入侵之后，战事推演员立刻把「内视」转向运行变化无穷的「真实」局势的模拟——对预测到的 30 天内的战事做迭代运算，威尔的电脑只花了大概 15 分钟的时间。通过在多个方向上运行这些模拟，威尔的团队很快就得出了结论：空中力量将是这场战争的决定性因素；如果空战打赢了，美国就能取胜。加里·威尔说——</p><div class="aband"><q>如果等到侵略发动时才开始着手去干的话，那我们就永远都赶不上趟了。</q><cite>——第二十二章 22.5 前瞻：内视行动（加里·威尔）</cite></div><div class="aband"><q>在保持我们部队的绝对最小伤亡这方面，施瓦茨科夫非常强硬，以至于低伤亡变成了我们所有分析工作的基准。</q><cite>——第二十二章 22.5 前瞻：内视行动（加里·威尔）</cite></div><p class="prose">「模拟绝对影响了我们（在中央司令部）的思维。不是说施瓦茨科夫事前对此没有强烈的感受，而是模型给了我们信心去贯彻这些理念。」作为预测，内视行动确实获得了非常好的成绩：模拟出的 30 天空中与地面的战役与真正发生的战事非常接近。</p><p class="prose">威尔说——「不过，我得告诉你，我们当时并没料到能在100个小时的时间里［在战场上］取得这样的进展。根据我的回忆，我们当时预测的是要用6天的时间来进行地面战，而不是100个小时。」唯一的偏差是：所有的战斗模拟都会假设敌对方会全力以赴——战事推演员曾经厚着脸皮开玩笑说，没有一种模型会把举白旗纳入武器序列。</p></section><section id="s11"><div class="h2"><span class="cn">拾壹</span><h2>22.6 预测的多样性</h2><span class="en">A MENU OF PREDICTION</span></div><p class="prose">如果硅芯片足以引导一场超级军事战争、算法足以看透股票市场，那么——如果人类社会只是一个由各种人和机器组成的大型分布式系统，为什么不装配一个能够预测其未来的设备呢？答案是：过去那些传统的预测还不如随机的猜测。为了强调试图预言无可救药的不可靠性，有些未来学家宁愿蓄意夸张地陈述他们的偏见——「所有的预测都是错误的。</p><p class="prose">」他们说得也有一定的道理：</p><div class="aband"><q>而根据同样的统计计量，正确的短期预测是如此之多，因此所有的短期预测都是对的。</q><cite>——第二十二章 22.6 预测的多样性</cite></div><p class="prose">对于复杂系统最有把握的说法，莫过于说它下一刻跟这一刻完全一样——它们明天会跟今天差不多。尽管基本上长期预测还是不可能，但是对于复杂系统来说，短期预测不仅可能，而且必要。</p><p class="prose">凯利奉行席奥多·莫迪斯（源文此句截断）的做法，归纳出三种可以抓住的模式——<b>不变量</b>：自然的、无意识的趋势逐渐向有机体行为中注入了随时间推移极少变化的「不变量」（烹饪、旅行、打扫卫生——源文在后文航班例处截断）。</p><p class="prose"><b>成长曲线</b>：所有成长的东西都拥有 S 形曲线的生命周期——缓慢地诞生、迅速地成长、缓慢地衰败。莫迪斯写道——「S形曲线所具有的预测能力，既非魔法，也非无用」——在 S 形曲线那优雅的形状下面，隐藏着一个事实——</p><div class="aband"><q>S形曲线所具有的预测能力，既非魔法，也非无用</q><cite>——第二十二章 22.6 预测的多样性（席奥多·莫迪斯）</cite></div><div class="aband"><q>自然的生长过程遵循着一种严格的定律。</q><cite>——第二十二章 22.6 预测的多样性（席奥多·莫迪斯）</cite></div><p class="prose"><b>循环波</b>：系统明显的复杂行为，部分地反映了系统环境的复杂结构——赫伯特·西蒙曾以一只蚂蚁在地面的运动轨迹作为例证：蚂蚁歪来扭去的线路，反映出的并不是蚂蚁自己复杂的移动，而是它所处环境的复杂结构。</p><p class="prose">这三种预测模式表明，在系统提高了能见度的某些特定时刻，秩序的无形模式对关注者来说会变得清晰起来——就好像下一个鼓点，几乎可以预先听到它将要发出的声音。图表分析师从数据中寻找模式，并不关心模式存在的理由；基本面分析师则要找的是一个理论：F=ma。</p><p class="prose">法默自己也承认，他和他那些预测公司的同事是「统计意义上的严格的图表分析师」。再过 50 年，计算机化的归纳法、基于算法的图表分析以及可预测性范围，将会成为值得尊敬的人类事业——但在股票市场中，成功会激发起强烈的、自我取消的反馈流：只要法默的团队靠某个预测性范围挣到了大钱，其他人都会冲进来，把挣钱的机会拉平。</p></section><section id="s12"><div class="h2"><span class="cn">拾贰</span><h2>22.7 以万变求不变</h2><span class="en">CHANGE TO REMAIN THE SAME</span></div><p class="prose">最早的控制论学者诺伯特·维纳曾经殚精竭虑地要说明反馈控制的巨大力量——他当时脑子里想的就是简单的冲水马桶型的反馈。在 1954 年，他这样写道——</p><div class="aband"><q>反馈是控制系统的一种方式，它把系统过去的运行结果重新输入系统，从而完成对系统的控制。</q><cite>——第二十二章 22.7 以万变求不变（诺伯特·维纳）</cite></div><p class="prose">一个系统——不管是有机体、企业、公司、还是计算机程序——之所以花费精力把过去发生的事情反馈到现在，是因为这是系统在应对未来时比较经济的做法：<b>要想预见未来，你就必须了解过去。</b>沿着反馈回路不断冲击的过去，给未来提供信息，并控制着未来。</p><p class="prose">不过，对于一个系统来说，时间平移还有另一条通往未来的途径：身体中的感觉器官更像是对未来进行衡量的量具——地理位置遥远的事件，从实用的角度来说，是来自未来的事件。一个正在靠近的捕猎者的图像，现在就变成了关于未来的信息——</p><div class="aband"><q>一个动物的眼睛就是把发生在时/空远处的信息“前馈”到位于此处/现在的身体中。</q><cite>——第二十二章 22.7 以万变求不变</cite></div><p class="prose">有些哲学家认为，生命能够起源于一个笼罩着空气和水这两种介质的行星上并不是一件偶然的事情——因为水和空气在绝大多数光谱下都具有令人惊讶的透明度。清洁、透明的环境，使得器官能够接收来自「远处」（未来）的含有丰富数据的信号。因此，眼睛、耳朵和鼻子都是能够窥视时间的预测机制。</p><p class="prose">迈克尔·康拉德写道——「归根结底，适应性，就是利用信息来应付环境的不确定性。」格雷戈里·贝特森则用电报文体简洁地说——</p><div class="aband"><q>适应就是以万变求不变。</q><cite>——第二十二章 22.7 以万变求不变（格雷戈里·贝特森）</cite></div><p class="prose">一个系统（根据定义是不变的）适应（变化）的目的就是为了存续（不变）——火烈鸟改变自己就是为了继续生存。如此来说，那些被卡在当下动弹不得的系统，更常受到变化的奇袭而死去——</p><div class="aband"><q>一个透明的环境，会奖励预测机制的进化，因为预测机制把生命力赋予复杂性。</q><cite>——第二十二章 22.7 以万变求不变</cite></div><p class="prose">复杂系统之所以能够存活下来，因为它们具有进行预测的能力，而一种透明的介质，则能够帮助它们进行预测；相反，浑浊却会完全阻碍复杂的活系统的预测、适应以及进化。</p></section><section id="s13"><div class="h2"><span class="cn">拾叁</span><h2>22.8 系统存在的目的就是揭示未来</h2><span class="en">SYSTEMS REVEAL THE FUTURE</span></div><p class="prose">后现代人类在成形的第三种透明介质中畅游：每一种现实都能够数字化，人类每一次集群活动的测量都可以通过网络传输。这个联网的行星，已经变成了比特的洪流，在玻璃纤维、数据库和各种输入设备组成的清澈壳体里流动——</p><div class="aband"><q>数据一旦流动，就创造出透明。社会一旦联网，就可以了解自己。</q><cite>——第二十二章 22.8 系统存在的目的就是揭示未来</cite></div><p class="prose">预测公司的那些火箭科学家，能够比老派的图表分析师获利更多，那是因为他们工作在一个更为透明的介质里：网络化金融机构抛出的数以十亿计的数字信息凝结为一种透明的氛围，预测公司据此侦测出那些正在演变中的模式。</p><p class="prose">与此同时，各种工厂大批生产摄像机、录音机、硬盘、文本扫描仪、电子表格、调制解调器和卫星电视天线信号接收器——这些东西分别是眼睛、耳朵或者神经元，连接起来就形成了一个由数十亿个裂片组成的感觉器官。美国中央司令部那些战争博弈者可以利用科威特的数字化地形、实时传输的卫星图像以及全球定位信息预测即将到来的战斗过程。</p><p class="prose">归根结底——</p><div class="aband"><q>有机体存在的目的就是揭示未来。</q><cite>——第二十二章 22.8 系统存在的目的就是揭示未来</cite></div><p class="prose">凯利给复杂系统的工作定义是一个「跟自己对话的东西」。那么：复杂系统跟自己说些什么呢？</p><div class="aband"><q>它们给自己讲未来的故事，讲接下来也许会发生的故事——无论这个“接下来”是以纳秒还是以年计算。</q><cite>——第二十二章 22.8 系统存在的目的就是揭示未来</cite></div></section><section id="s14"><div class="h2"><span class="cn">拾肆</span><h2>22.9 全球模型的诸多问题</h2><span class="en">PROBLEMS WITH GLOBAL MODELS</span></div><p class="prose">20 世纪 70 年代，地球行星上的居民开始讲述第一个关于未来可能发生的故事：来自太空的图像组成了一面分布式的镜子，整个生物圈越来越透明。我们需要一种全球预测装置。</p><p class="prose">在麻省理工学院的计算机实验室里，杰伊·福瑞斯特拼凑了第一份全球电子数据表——他凭借直觉正确地意识到，级联反馈回路是接近财富、人口和资源之间互相影响网络的唯一途径。1970 年，他在返程飞机上草拟了「世界动态」模型的第一个公式；随后与丹尼斯·梅多斯共同改进，并满世界地淘选最近的数据。</p><p class="prose">「增长的极限」模型的发现要点是——</p><div class="aband"><q>如果当前的世界在人口、工业化、污染、食品生产以及资源消耗方面的增长趋势保持不变的话，那么这个星球将会在接下来的100年之内的某个时刻达到其增长极限。</q><cite>——第二十二章 22.9 全球模型的诸多问题</cite></div><p class="prose">一幅大字标题惊呼：「计算机预测未来令人不寒而栗。」这个模型极具争议性，但它永久性地把有关资源和人类活动的讨论提升到了必要的全球范围。活系统必须为存活而预期，可是预测机制的复杂性绝不能盖过活系统本身。</p><p class="prose">凯利详细考查了「增长的极限」模型的弱点：有限的总体情景、错误的假设（资源并未按预期减少，1992 年重新发布时连关键假设都改了）、没有为学习留下余地（批评者用它模拟 1800～1900 年，结果发现「街上堆了一层有20英尺高的马粪」）、世界平均化——<b>一个没有地理的全球模型根本不是这个世界</b>。</p><p class="prose">以及任何终端开放的增长都不能模仿：从 1600 年起点返溯运行这个模型的事从未发生过。梅多斯告诉凯利——</p><div class="aband"><q>我们的模型异常‘强健’</q><cite>——第二十二章 22.9 全球模型的诸多问题（丹娜·梅多斯）</cite></div><div class="aband"><q>你得千方百计来阻止它的崩溃</q><cite>——第二十二章 22.9 全球模型的诸多问题（丹娜·梅多斯）</cite></div><p class="prose">凯利曾问程序员肯·卡拉科迪西乌斯——他建造了生态和进化的微型世界（后来变成了 SimLife 游戏）——你让你的世界最长运行了多长时间？</p><div class="aband"><q>只有一天。你知道，要保证这种复杂的世界不断运行下去确实是一件困难的事情。它们确实喜欢崩溃。</q><cite>——第二十二章 22.9 全球模型的诸多问题（肯·卡拉科迪西乌斯）</cite></div><p class="prose">「增长的极限」里面的那些情景之所以会崩溃，是因为这个仿真模型善于崩溃：几乎每一个初始条件都要么导致大灾难，要么导致某种稳定状态——从来不会产生任何新的结构。梅多斯承认——「它也不可能把这个世界从工业革命带向任何一种接下来会出现的、超越工业革命的阶段。</p><p class="prose">」凯利问：不能搞一个更好的拥有自身转换能力、可以自动转换到另一个层级的世界模型吗？梅多斯回答：「当我想到，这种结局是系统设计好让它发生的，而我们只是这么往后一靠然后作壁上观，就觉得有点宿命的感觉。但相反，我们在建立模型的时候，实际上把自己也放在里面。</p><p class="prose">」——这个工作发生在全球 60 亿个大脑里，是每天发生、每个时代都发生的事情：任何不能包容这种每日在数十亿头脑中进行的分布式微型进化的预测模型，都注定会崩溃。这个模型所突出的——</p><div class="aband"><q>不是增长的极限，而是某些特定的模拟的极限。</q><cite>——第二十二章 22.9 全球模型的诸多问题</cite></div><p class="prose">梅多斯的梦想，同样是福瑞斯特的梦想，是战争博弈者的梦想，是法默和预测公司的梦想，也是凯利的梦想：创造出一个系统，它能够充分反映出真实的、进化着的世界，以比真实世界跑得更快的速度运转，把结果投射到未来。为了做到这一点，模型就必须拥有「必要的复杂性」——控制论专家罗斯·艾希比创造的术语。</p><p class="prose">杰拉尔德·温伯格在《论稳定系统的设计》中给了一个贴切的比喻：制导导弹瞄准敌机——导弹自己并非一定也是一架飞机，但——</p><div class="aband"><q>如果这枚导弹不具备至少与目标飞机一样的速度，而且在空气动力学方面的敏捷程度也不如那架目标敌机，那它肯定打不中目标。</q><cite>——第二十二章 22.9 全球模型的诸多问题（杰拉尔德·温伯格）</cite></div><p class="prose">一个真正的全球社会的预测模型，应该满足下面这些条件——</p><div class="check" data-k="k"><p class="ct">自 测</p><label><input type="checkbox"><span>能够大量运行各式各样的情景，</span></label><label><input type="checkbox"><span>从一些更灵活、更有根据的假设开始，</span></label><label><input type="checkbox"><span>实施分布式学习，</span></label><label><input type="checkbox"><span>包含局部性和地区性的差异，</span></label><label><input type="checkbox"><span>如果可能的话，展现不断增长的复杂性。</span></label><div class="cf">已勾选 <b>0</b> / 5</div></div></section><section id="s15"><div class="h2"><span class="cn">拾伍</span><h2>22.10 舵手是大家</h2><span class="en">HELM OF MANY</span></div><p class="prose">那些以 Stella 为基础的模型，显而易见过量拥有反馈电路。不过，在反馈引发最初的兴奋激情的 40 年之后，我们已经知道——</p><div class="aband"><q>仅有反馈回路是不足以培育出那些我们最感兴趣的活系统行为的。</q><cite>——第二十二章 22.10 舵手是大家</cite></div><p class="prose">要想生成功能齐备的活系统，还必须拥有另外两种类型的复杂性：分布式存在，以及无止境的进化。通过研究复杂系统得出的主要洞见就是：一个系统要想进化成某种新的东西，唯一的途径就是要有一个柔性结构——</p><div class="aband"><q>小蝌蚪可以变成青蛙，而一架747喷气式飞机即使只增加六英寸的长度，也会把它变成残废。</q><cite>——第二十二章 22.10 舵手是大家</cite></div><p class="prose">这就是为什么分布式存在对具有学习、进化能力的系统如此重要的原因：<b>一个分散化、冗余的组织能够在功能不受影响的前提下收放自如，因此它能够适应。它能够控制变化。我们称之为「成长」。</b>直接反馈的模型，比如「增长的极限」，能够获得系统稳定，但是它们不能学习，不能成长，也不能变化。</p><p class="prose">而要引入进化和学习，不抽离这个系统的控制是不行的——梅多斯指出的正是这个模型最大的错误所在：它那线性、机械、不可行的控制意念。</p><div class="aband"><q>自我制造系统之外不存在控制。</q><cite>——第二十二章 22.10 舵手是大家</cite></div><p class="prose">活系统，比如经济、生态和人类文化，无论从哪个位置下手都难加以控制——它们可以被刺激，可以被干扰、可以被哄骗、可以被驱动，充其量也就是可以从内部进行协调。</p><p class="prose">大型、群集状态下的系统，比如人类社会的导向，是由一大堆相互联结、自相矛盾的成员控制的；很多活跃的成员根本就不是个体人类智能，而是公司实体、集团、体制、技术系统，甚至还包括地球本身的那些非生物系统。有歌云——</p><div class="aband"><q>没人来当家。未来不可测。</q><cite>——第二十二章 22.10 舵手是大家</cite></div><div class="aband"><q>现在来听唱片的背面：舵手是大家。而且，我们能够学会预测即将发生的事情。学习就意味着生存。</q><cite>——第二十二章 22.10 舵手是大家</cite></div></section>
+    <section id="kan"><div class="h2"><span class="cn">附</span><h2>源文校勘</h2><span class="en">逐字比对源文 · 缺者不补</span></div><div class="notes"><div class="note" id="n1"><span class="nn">截断</span><span class="nd"><b>21.1–21.3 多处｜</b>「是一种物质以太」「1824年，法国军事工程师卡诺」「古尔德其科普作品《奇妙的生命》」「颇有影响力的著作《为大脑而设计》」「我们以教科书中常见的原理『柯普法则』」「（当然，某些情况下千分之一也是一个很疯狂的比例。）」等处句子未收尾，均不补写。</span></div><div class="note" id="n2"><span class="nn">截断</span><span class="nd"><b>22.1–22.6 多处｜</b>「（最初就是因为在气象预测上的失败才发现了混沌理论。）」「（最好的计算机象棋程序……击败除几个最顶尖的大师之外的所有人类棋手。）」「（我的女儿们，这里注意了……）」「我奉行席奥多·莫迪斯」「乘坐0201483408航班」「莫迪斯曾经为经济学家康德拉基耶夫」「一些专业学者，比如理查德·斯威尼」等处句子未收尾，均不补写。</span></div><div class="note" id="n3"><span class="nn">结构说明</span><span class="nd"><b>清单与对比｜</b>21.3 复杂化的九种解释理论以年表 table 呈现（年份与表述逐字照抄源文）；22.2 法默三条经验与 22.9 全球模型五条件以 check 呈现（逐字）；两种趋势、两种复杂性以 duo 呈现（编者归纳）；「苏联狗不出猎」「变自生变」等不足 10 字的短句以 prose 加粗保留，不计入严格档引文。</span></div></div></section>
+    <footer>
+      <p><b>数据来源</b>｜凯文·凯利《失控》（新星出版社）微信读书版本，经本地结构化解析。</p>
+      <p><b>校勘口径</b>｜本页正文与源文逐段逐字符一致（去空白比对），源文缺失处如实标注、不补写；分析性文字均由源文内容推出，不引入书外观点。</p>
+      <p><b>操作提示</b>｜左栏目录可跳转；案例卡点击展开；自测清单勾选状态存在本机浏览器；标注<span class="sup" data-n="1">1</span> 处可点击跳至校勘区。</p>
+    </footer>
+  </main>
+<nav class="bknav bot"><div class="inner"><a class="home" href="../index.html">≡ 目录首页</a><span class="sp"></span><span class="cur">变化之部｜水往高处流·预言机</span><a href="../11-变化架构与后达尔文主义/index.html">← 变化架构·后达尔文主义</a><a href="../13-整体空洞空间与九律/index.html">整体·空洞·空间与九律 →</a></div></nav>
+</div>
+<script>
+(function(){
+  // 进度条
+  var bar=document.getElementById('pbar');
+  function prog(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h*100):0)+'%';
+  }
+  window.addEventListener('scroll',prog,{passive:true});prog();
+
+  // 目录高亮（用 offsetTop 比较，单页更稳）
+  var links=[].slice.call(document.querySelectorAll('aside a[data-t]'));
+  var secs=links.map(function(a){return document.getElementById(a.dataset.t)}).filter(Boolean);
+  function hl(){
+    var y=window.scrollY+130,cur=null;
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.dataset.t===cur)});
+  }
+  window.addEventListener('scroll',hl,{passive:true});
+  window.addEventListener('resize',hl);hl();
+
+  // 点击目录：instant 滚动（CSS smooth 会覆盖默认参数）
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.dataset.t);if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.offsetTop-14,behavior:'instant'});
+      history.replaceState(null,'','#'+a.dataset.t);
+    });
+  });
+
+  // 案例卡：点击展开 + 互斥收起
+  [].forEach.call(document.querySelectorAll('.case'),function(c){
+    var h=c.querySelector('.ch'),b=c.querySelector('.cb');
+    h.addEventListener('click',function(){
+      var on=c.classList.contains('on');
+      [].forEach.call(document.querySelectorAll('.case.on'),function(o){
+        o.classList.remove('on');o.querySelector('.cb').style.maxHeight='0px';
+      });
+      if(!on){c.classList.add('on');b.style.maxHeight=b.scrollHeight+40+'px'}
+    });
+  });
+
+  // 自测清单
+  [].forEach.call(document.querySelectorAll('.check'),function(c){
+    var key='ooc-'+c.dataset.k,ins=[].slice.call(c.querySelectorAll('input'));
+    var cnt=c.querySelector('.cf b');
+    try{var saved=JSON.parse(localStorage.getItem(key)||'[]');
+      ins.forEach(function(i,x){if(saved.indexOf(x)>=0)i.checked=true})}catch(e){}
+    function upd(){
+      var n=0;ins.forEach(function(i){n+=i.checked?1:0;
+        i.closest('label').classList.toggle('done',i.checked)});
+      if(cnt)cnt.textContent=n;
+      try{localStorage.setItem(key,JSON.stringify(
+        ins.map(function(i,x){return i.checked?x:-1}).filter(function(x){return x>=0})))}catch(e){}
+    }
+    ins.forEach(function(i){i.addEventListener('change',upd)});upd();
+  });
+
+  // 校勘跳转
+  [].forEach.call(document.querySelectorAll('[data-n]'),function(s){
+    s.style.cursor='pointer';
+    s.addEventListener('click',function(){
+      var t=document.getElementById('n'+s.dataset.n);if(!t)return;
+      window.scrollTo({top:t.offsetTop-120,behavior:'instant'});
+      t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');
+    });
+  });
+})();
+</script>
+</body></html>
