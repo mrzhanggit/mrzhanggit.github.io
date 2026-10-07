@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>辩证思维 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx15-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../14-因果思维/index.html">← 上一篇 · 因果思维</a><a href="../16-系统思维/index.html">下一篇 · 系统思维 →</a><span class="sp"></span><span class="cur">辩证思维</span></div></nav>
+<header class="hero" id="top"><div class="wm">辩</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第五章《思维模式》第三节</div>
+  <div class="no">拾陆</div>
+  <h1>辩证思维</h1>
+  <div class="sub">不是凡事有两面 · 而是关系、张力与转化</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>辩证思维不是「正反都能说」，也不是「什么事情都有两面性」，<br>而是用<b>关系、变化、矛盾和过程</b>——而不是孤立、静止、一次性结论——来看问题。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 先纠正两个起点错误</a><a href="#s3">叁 · 矛盾怎么办</a><a href="#s4">肆 · 把「矛盾」理解具体</a><a href="#s5">伍 · 辩证思维与因果思维差在哪里</a><a href="#s6">陆 · 「三大规律」需要特别校正</a><a href="#s7">柒 · 扬弃 · 理解辩证法最关键的词</a><a href="#s8">捌 · 量变—质变的正确打开方式</a><a href="#s9">玖 · 比喻与「证明」的边界</a><a href="#s10">拾 · 用于生活 · 人 ≠ 当前状态</a><a href="#s11">拾壹 · 学习与管理 · 阶段会转换</a><a href="#s12">拾貳 · 两个实用工具 · 四问与四步法</a><a href="#s13">拾叁 · 最容易被滥用成什么</a><a href="#s14">拾肆 · 四种思维真正区分开</a><a href="#s15">拾伍 · 如果只记住六句话</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线 · 点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>问题起点</b><span>事物内部有哪些相互制约的力量？它正在怎样变化？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>先校正</b><span>学费悖论主人公 · 悖论 ≠ 二律背反</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>差异 · 张力</b><span>相互依赖、又相互制约的力量</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>变化</b><span>力量消长 · 推动因素产生自己的反作用</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>临界点</b><span>积累到阈值，出现结构性变化</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>转化</b><span>扬弃：否定 + 保留 + 提升</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s15"><b>新状态</b><span>阶段判断 · 不把当前状态当永久本质</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第五章《思维模式》第三节 · 和前两节相比的明显升级</div><p class="prose">这一课是第五章《思维模式》的第三节。和前两节相比，它发生了一个明显升级——四种思维各自问不同的问题：</p><div class="cards g2"><div class="card"><div class="idx">感</div><h4>感性思维</h4><p>问：<b>发生了什么？</b></p></div><div class="card"><div class="idx">因</div><h4>因果思维</h4><p>问：<b>为什么发生？</b></p></div><div class="card"><div class="idx">辩</div><h4>辩证思维</h4><p>问：<b>事物内部有哪些相互制约的力量，它正在怎样变化？</b>（本讲）</p></div><div class="card"><div class="idx">系</div><h4>系统思维</h4><p>下一步会进一步问：<b>这些关系放进整体系统后会产生什么结果？</b></p></div></div><p class="prose">所以，辩证思维真正要解决的不是「正面能说、反面也能说」，更不是「什么事情都有两面性」这么简单，而是——</p><div class="quote"><div class="q">用关系、变化、矛盾和过程，而不是孤立、静止、一次性结论来看问题。</div><div class="src">本讲对辩证思维的核心定义</div></div><p class="prose">整理者认为，这一课真正值得留下来的主线可以压缩成一条六步链——它也是本页「一篇之图」的骨架：</p><div class="ladder"><div class="step"><div class="t">差异</div><div class="d">事物内部存在不同的力量与要求</div></div><div class="step hot"><div class="t">张力</div><div class="d">相互依赖、又相互制约</div></div><div class="step"><div class="t">变化</div><div class="d">哪一边正在增强？哪些条件正在改变？</div></div><div class="step"><div class="t">临界点</div><div class="d">不断积累，到某个阈值以后</div></div><div class="step hot"><div class="t">转化</div><div class="d">扬弃——既取消又保留，向对立面过渡</div></div><div class="step"><div class="t">新状态</div><div class="d">在更高层次上重新整合</div></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>先纠正两个起点错误</h2></div><div class="sd">整理者对开篇内容的校正 · 学费悖论主人公 · 悖论与二律背反之辨</div><p class="prose">老师讲的「老师和学生因为学费打官司」的故事，整理者首先指出一处很明显的哲学史错误——主人公不是毕达哥拉斯。</p><div class="warn"><div class="wt">哲学史校正 · 学费悖论的主人公</div><ul><li>主人公是<b>普罗泰戈拉（Protagoras）与学生欧阿特鲁斯（Euathlus）</b>，不是毕达哥拉斯</li><li>故事大意确实是学生约定「赢第一场官司后才付学费」，后来师生围绕「如果我赢/输官司到底要不要付款」产生著名悖论，古典文献中确有这个故事</li><li>毕达哥拉斯则是与「万物皆数」、数学与毕达哥拉斯学派联系更紧密的人物</li></ul></div><div class="quote"><div class="q">学费悖论：普罗泰戈拉，不是毕达哥拉斯。</div><div class="src">整理者对开篇哲学史错误的校正 · 以后不要记混</div></div><p class="prose">而且，这类例子更适合叫<b>「两难 / 悖论」</b>，并不能直接等同于康德的「二律背反」。老师想表达的是「从不同出发点似乎可以分别推出相反结论」，这个直觉有一定联系，但康德所谓「二律背反」更加专门，主要是指——</p><div class="quote"><div class="q">理性试图把整个世界作为一个完整对象来认识时，会分别推出看似有充分理由、却彼此冲突的命题。</div><div class="src">康德「二律背反」的含义 · 例如康德讨论：世界是否有时间开端？自由是否存在？</div></div><div class="warn"><div class="wt">不要直接画等号</div><ul><li>普通逻辑悖论 ≠ 康德二律背反</li><li>「两难 / 悖论」并不能直接等同于康德的「二律背反」，这是两个不同层次的问题</li></ul></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>矛盾怎么办</h2></div><div class="sd">从悖论进入「矛盾」，再进入黑格尔 · 这一节真正有价值的哲学问题</div><p class="prose">老师从悖论进入「矛盾」，然后进入黑格尔。这里真正有价值的问题是——</p><div class="quote"><div class="q">当一个概念、制度或事物内部出现相互冲突的要求时，我们应该怎么办？</div><div class="src">整理者提炼的、这一节真正有价值的哲学问题</div></div><div class="duo"><div class="col neg"><h4>传统形式逻辑 ✕</h4><ul><li>高度重视<b>避免矛盾</b></li><li>「今天下雨」和「今天没有下雨」，如果在完全相同时间、相同地点、相同意义下说，不能同时都是真的</li></ul></div><div class="col pos"><h4>黑格尔关心的「矛盾」 ✓</h4><ul><li>经常不是这种简单逻辑错误</li><li>更关心一个概念或事物<b>内部的规定</b>，而非两个外在命题的真假</li></ul></div></div><div class="quote"><div class="q">一个概念或事物内部的规定是否会因为自身的局限而推动它发生变化。</div><div class="src">黑格尔关心的「矛盾」· SEP 对黑格尔辩证法的概括</div></div><p class="prose">SEP 的概括很清楚：一个最初看似稳定的规定，会暴露其片面性，并向其对立面过渡；随后在更高层次上发生「扬弃」，即既取消又保留此前的部分内容。所以更适合记成一条链：</p><div class="ladder"><div class="step"><div class="t">稳定状态</div></div><div class="step"><div class="t">暴露局限</div></div><div class="step"><div class="t">出现张力</div></div><div class="step hot"><div class="t">转化</div></div><div class="step"><div class="t">新状态</div><div class="d">在更高层次上，既取消又保留此前的部分内容</div></div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>把「矛盾」理解具体</h2></div><div class="sd">「矛盾就是运动」不要机械理解 · 相互依赖、又相互制约的力量或要求</div><p class="prose">老师反复说：「运动的本质就是矛盾。」这是典型的辩证法教学语言。但现实应用时，整理者建议把「矛盾」理解得更具体——<b>相互依赖、又相互制约的力量或要求。</b></p><div class="case"><div class="h"><span class="tag">张力</span><span class="ht">医院管理里的两对张力</span><span class="ar">▸</span></div><div class="sm"><div class="inner">提高服务量：希望患者更多；同时控制质量风险：又不能无限扩张。这两者不是「谁对谁错」，而是——效率与质量之间存在张力。再比如：员工希望收入提高，机构又必须控制成本，这就是：激励 ↔ 成本。</div></div></div><p class="prose">真正的辩证思考不是说「双方都有道理」，而是进一步追问三个问题——</p><div class="quote"><div class="q">它们为什么会同时存在？现在谁占主导？什么条件改变以后，两者关系会变化？</div><div class="src">真正进入辩证思维的三个追问</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>辩证思维与因果思维差在哪里</h2></div><div class="sd">假设中心门诊量下降 · 两种思维问的不是同一个问题</div><p class="prose">这个区别非常重要。假设中心门诊量下降——</p><div class="duo"><div class="col neg"><h4>因果思维问 ✕</h4><ul><li><b>「为什么下降？」</b></li><li>可能找：宣传不足、医生变动、天气、竞争机构……</li><li>模式：<b>原因 → 结果</b></li></ul></div><div class="col pos"><h4>辩证思维进一步问 ✓</h4><ul><li><b>「这些因素之间是什么关系？哪一种力量正在增强？哪些条件正在发生变化？」</b></li><li>最初推动增长的因素，可能逐渐产生自己的反作用</li></ul></div></div><div class="ladder"><div class="step"><div class="t">患者增加</div></div><div class="step"><div class="t">等候时间变长</div></div><div class="step"><div class="t">满意度下降</div></div><div class="step hot"><div class="t">患者流失</div><div class="d">最初推动增长的因素，产生自己的反作用</div></div></div><p class="prose">于是问题从「什么导致什么？」升级到：<b>「这些相互作用的力量怎样推动整个状态变化？」</b>这就是辩证思维真正高于单纯线性因果的地方。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>「三大规律」需要特别校正</h2></div><div class="sd">老师讲的三大规律 ≠ 黑格尔自己正式提出的定理 · 黑格尔的三个「环节」</div><div class="warn"><div class="wt">整理者校正 · 「三大规律」的归属</div><ul><li>老师讲的「对立统一、量变质变、否定之否定」，确实是我们熟悉的<b>辩证唯物主义教材体系</b>中的经典「三大规律」</li><li>但不能说「这是黑格尔自己正式提出的三大定理」</li><li>「三大规律」适合作为后来的辩证法教学框架，而不是简单署名「黑格尔三大定理」</li></ul></div><p class="prose">黑格尔自己对辩证法更典型的描述，是三个「环节」：</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>知性环节</h4><p>把概念固定下来</p></div><div class="card"><div class="idx">②</div><h4>辩证 / 否定性理性环节</h4><p>发现其片面性，它向对立面转化</p></div><div class="card"><div class="idx">③</div><h4>思辨 / 肯定性理性环节</h4><p>把对立双方放进更高层次的统一中理解</p></div></div><div class="ladder"><div class="step"><div class="t">确定</div></div><div class="step hot"><div class="t">否定 / 对立</div></div><div class="step"><div class="t">扬弃后的统一</div><div class="d">把对立双方放进更高层次的统一中理解</div></div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>扬弃 · 理解辩证法最关键的词</h2></div><div class="sd">Aufheben 同时包含否定、保留、提升三个意思</div><p class="prose">老师讲「否定之否定」，容易让人以为「先否定一次，再否定一次，就成功了。」其实黑格尔非常重要的词是——<b>Aufheben（扬弃）</b>，它同时包含三个意思：</p><div class="cards g3"><div class="card"><div class="idx">否</div><h4>否定</h4><p>旧规定的片面性被取消</p></div><div class="card"><div class="idx">留</div><h4>保留</h4><p>其中有效部分被保留下来</p></div><div class="card"><div class="idx">升</div><h4>提升</h4><p>在新层次上重新整合</p></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">从「严格执行制度」到「制度 + 人性化管理」</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一个人原来认为：「做管理只要严格执行制度就够了。」后来发现不够，于是出现否定：「还必须考虑人的感受。」成熟状态并不是「制度全部不要」，而是：制度 + 人性化管理，在新层次上重新整合。旧认识没有完全被扔掉，而是其中有效部分被保留下来——这才是扬弃。</div></div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>量变—质变的正确打开方式</h2></div><div class="sd">积累、阈值与结构性变化 · 提醒我们关注临界点的思维工具</div><div class="quote"><div class="q">很多变化并不是立即显现，而是不断积累，到某个阈值以后表现出性质上的明显改变。</div><div class="src">「量变—质变」真正有现实价值的地方</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">每天读 10 页书</span><span class="ar">▸</span></div><div class="sm"><div class="inner">第一天：没感觉。第十天：可能也没感觉。100 天以后：概念开始连接。某一天突然发现：「这个问题我终于看懂了。」——并不是那一天突然获得全部知识，而是：前期积累 → 达到阈值 → 出现结构性变化。</div></div></div><div class="ladder"><div class="step"><div class="t">前期积累</div><div class="d">每天读 10 页书，长期没感觉</div></div><div class="step hot"><div class="t">达到阈值</div></div><div class="step"><div class="t">出现结构性变化</div><div class="d">概念开始连接，「突然看懂」</div></div></div><div class="warn"><div class="wt">但不要认为所有变化都严格服从「量变必然质变」</div><ul><li>在现代科学中，我们确实能发现大量阈值、临界点、相变、非线性变化</li><li>但不能因此说「哲学上的量变质变已经被现代物理学全面证明」</li><li>哲学模型和具体科学理论不是一回事</li></ul></div><p class="prose">更适合把「量变—质变」当作<b>提醒我们关注积累和临界点的思维工具</b>。使用时应该问：现在积累的是什么量？临界点在哪里？有没有证据证明存在这样的阈值？——这就会从哲学口号变成真正分析。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>比喻与「证明」的边界</h2></div><div class="sd">太极图、老子与黑格尔、量子力学、中医 · 好的类比不能当成等同（整理者逐处校正）</div><p class="prose">老师用<b>阴阳太极图</b>来对应对立统一、量变质变、否定之否定。作为教学视觉比喻，整理者认为很好：太极图确实非常适合表现两极关系、相互包含、动态变化、整体统一；周敦颐的《太极图说》也确实通过太极、阴阳、五行等结构说明宇宙生成过程，对后来的宋明理学影响很大。但要注意——</p><div class="warn"><div class="wt">中国阴阳思想 ≠ 黑格尔辩证法</div><ul><li>它们可以比较，不能直接说成同一个理论</li><li>两边的问题意识、概念体系、历史背景都不同</li></ul></div><div class="warn"><div class="wt">「量变质变就是太极图中间那条线」属于老师自己的解释</div><ul><li>当阴增强、阳减弱，边界发生变化，最终主导状态发生转换——很适合做课堂比喻</li><li>但这不是《太极图说》或者黑格尔哲学里的标准说法</li><li>可以作为<b>理解工具</b>，不要作为<b>哲学史事实</b>记下来</li></ul></div><div class="quote"><div class="q">老子偏“无→有”，黑格尔偏“有→无/变”。</div><div class="src">老师的概括 · 整理者认为这种说法也比较粗糙，但他实际上是在提醒一个重要问题</div></div><p class="prose">相似的「变化思想」背后，可能存在完全不同的哲学问题。老子讨论道、无、有、自然以及万物生成；黑格尔则建立一个逻辑—形而上学体系，讨论概念自身怎样通过否定和扬弃展开。所以不能看到阴阳、对立、变化、统一这些词相似，就简单判断「黑格尔抄了中国哲学」——更成熟的比较应该是：<b>它们哪里相似？又在哪里根本不同？</b>这本身就是一种辩证思维。</p><div class="warn"><div class="wt">量子力学不能拿来直接「证明」辩证法</div><ul><li>波粒二象性，是量子对象在不同实验条件下表现出波动与粒子相关性质</li><li>它不是「哲学意义上的两个矛盾力量互相斗争」；原子核与电子之间的物理关系，也不等于哲学意义上的「矛盾」</li><li>可以用这些科学现象启发我们不要用单一经典图景理解自然，但不能说「量子物理已经证明黑格尔辩证法是真理」——这是两个不同层次的问题</li></ul></div><div class="warn"><div class="wt">中医「辨证施治」和哲学「辩证法」也不要直接混起来</div><ul><li>中文里特别容易混淆两个词：<b>辨证</b>（辨别证候）／<b>辩证</b>（哲学方法）</li><li>传统中医学说中的「辨证论治」，主要是按照症状、体征等信息进行证候辨识和治疗决策</li><li>它和哲学辩证思维可以存在某些方法上的类比，但不是「因为中医使用黑格尔辩证法，所以中医成立」——具体诊疗方法是否有效，最终仍需要相应的医学证据</li></ul></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>用于生活 · 人 ≠ 当前状态</h2></div><div class="sd">老师后半段整课最有价值的部分 · 但「人有无限可能」也需要稍微收一点</div><p class="prose">老师后半段这一部分是整课最有价值的。它要求你不要把任何一个状态看成<b>「永远如此」</b>。比如一个孩子这一次考试很差——</p><div class="duo"><div class="col neg"><h4>静态思维 ✕</h4><ul><li>「这个孩子就是不行。」</li><li>把一次考试成绩，当成孩子的永久本质</li></ul></div><div class="col pos"><h4>辩证思维 ✓</h4><ul><li>「当前成绩差只是一个状态。哪些因素造成？哪些因素正在改变？能力能否通过学习积累发生变化？」</li><li>于是：<b>人 ≠ 当前状态</b>，<b>人 = 一个正在变化的过程</b></li></ul></div></div><p class="prose">这就是辩证思维很重要的实际价值。但老师从「人会变化」推出「所以人有无限可能」——哲学上很鼓舞人，现实中应该理解成——</p><div class="quote"><div class="q">人的未来不是由当前状态完全锁死，但改变受到能力、环境、资源和时间等条件约束。</div><div class="src">整理者对「人有无限可能」的收敛</div></div><div class="warn"><div class="wt">「人有无限可能」也需要稍微收一点</div><ul><li>更成熟的说法：<b>不要把阶段性状态误认为永久本质</b></li><li>「现在不会」 ≠ 「永远不会」——这比「人人都有无限可能」更精确，也更实用</li></ul></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>学习与管理 · 阶段会转换</h2></div><div class="sd">知识是网络 · 关键问题会随阶段变化 · 管理者最危险的一件事</div><p class="prose">老师这个例子非常好：刚开始学习哲学，概念很多，感觉混乱，于是「我是不是学不会？」但知识往往是网络——</p><div class="ladder"><div class="step"><div class="t">10 个概念</div><div class="d">彼此分开</div></div><div class="step"><div class="t">30 个概念</div><div class="d">出现连接</div></div><div class="step"><div class="t">100 个概念</div><div class="d">框架形成</div></div><div class="step hot"><div class="t">某一天突然：「懂了。」</div><div class="d">长期积累以后，认知结构发生重新组织</div></div></div><p class="prose">所以学习最忌讳的是：<b>用今天的理解能力给未来下永久结论。</b></p><p class="prose">在管理里，老师讲到主要矛盾和次要矛盾会转换。把术语换成现代管理语言，其实非常实用——<b>不同阶段，关键问题会变化。</b>例如一个新项目：</p><div class="tl"><div class="ev"><div class="dyn">初期</div><p>最重要：<b>有没有人参与？</b>——核心矛盾：触达不足</p></div><div class="ev"><div class="dyn">中期</div><p>人来了以后：<b>服务能力够不够？</b>——关键问题变成：流程和资源</p></div><div class="ev"><div class="dyn">后期</div><p>业务量起来以后：<b>质量和成本怎么控制？</b>——问题又发生转换</p></div></div><div class="quote"><div class="q">用昨天最重要的问题，指导今天。</div><div class="src">管理者最危险的一件事 ✕ · 辩证思维提醒：关键问题会随阶段变化</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>两个实用工具 · 四问与四步法</h2></div><div class="sd">把「主要矛盾」转成动态管理模型 · 遇到复杂问题可以直接这样思考</div><p class="prose">每次遇到复杂工作，整理者建议把「主要矛盾」转成管理工具，不妨问四个问题（点击展开思考角度）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">当前最主要的张力是什么？</span></summary><div class="body">增长 vs 质量？成本 vs 服务？速度 vs 稳定？先给眼前的工作找到那对相互制约的力量。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">哪一边目前占主导？</span></summary><div class="body">判断天平现在偏向哪一侧，才知道当下的关键问题是什么。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">什么变量正在积累？</span></summary><div class="body">人员？需求？成本？满意度？——参照「量变—质变」：现在积累的是什么量？</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">什么条件变化以后，主要问题会转换？</span></summary><div class="body">参照新项目的三阶段：触达 → 服务能力 → 质量与成本，提前预判下一阶段。</div></details><p class="prose">这样，「矛盾」就从抽象哲学变成<b>动态管理模型</b>。以后遇到复杂问题，还可以直接用整理者压缩的「四步法」：</p><div class="ladder"><div class="step"><div class="t">第一步 · 找关系</div><div class="d">它和什么因素相互依赖？——不要孤立看一个东西</div></div><div class="step"><div class="t">第二步 · 找张力</div><div class="d">哪两种要求、力量或趋势正在互相制约？例如：增长 ↔ 质量</div></div><div class="step"><div class="t">第三步 · 看变化</div><div class="d">哪一边正在增强？哪些条件正在改变？——不要用静态照片看动态问题</div></div><div class="step hot"><div class="t">第四步 · 找转折点</div><div class="d">到什么程度以后，整个问题性质会改变？</div></div></div><p class="prose">于是：<b>关系 → 张力 → 变化 → 转折</b>。这就是非常实用的辩证思维。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>最容易被滥用成什么</h2></div><div class="sd">三种典型错误 · 辩证法不是自相矛盾的挡箭牌</div><p class="prose">辩证思维最容易被滥用成三种典型错误——</p><div class="cards g3"><div class="card"><div class="idx">误一</div><h4>什么都说「两面性」</h4><p>「有好就有坏嘛。」这不叫分析。真正需要说明：好在哪里？坏在哪里？在什么条件下转化？</p></div><div class="card"><div class="idx">误二</div><h4>把逻辑矛盾说成「辩证」</h4><p>有人前后说法互相冲突，就说「这叫辩证。」不对——辩证法不是允许一个人随意自相矛盾。</p></div><div class="card"><div class="idx">误三</div><h4>用「不断变化」逃避结论</h4><p>「事情都是变化的，所以不能判断。」也不对——恰恰相反，见下方引文。</p></div></div><div class="quote"><div class="q">根据当前条件做阶段性判断，同时保留修正空间。</div><div class="src">辩证思维的真正要求 · 非常重要</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>四种思维真正区分开</h2></div><div class="sd">第五章已经非常清楚 · 看见 → 解释 → 动态理解 → 整体整合</div><div class="cards g2"><div class="card"><div class="idx">感</div><h4>感性思维 · 看现象</h4><p>核心问题：发生了什么？——输出：描述、问题</p></div><div class="card"><div class="idx">因</div><h4>因果思维 · 看因果</h4><p>核心问题：为什么发生？——输出：原因、预测</p></div><div class="card"><div class="idx">辩</div><h4>辩证思维 · 看变化与张力</h4><p>核心问题：它正在怎样变化？——输出：转化、阶段判断</p></div><div class="card"><div class="idx">系</div><h4>系统思维 · 看整体关系</h4><p>核心问题：放进系统意味着什么？——输出：整体结果、价值</p></div></div><div class="ladder"><div class="step"><div class="t">看见</div><div class="d">感性思维</div></div><div class="step"><div class="t">解释</div><div class="d">因果思维</div></div><div class="step hot"><div class="t">动态理解</div><div class="d">辩证思维 · 前三节已经形成</div></div><div class="step"><div class="t">整体整合</div><div class="d">下一节系统思维应该继续完成</div></div></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>如果只记住六句话</h2></div><div class="sd">整理者的全课压缩 · 复习时先默背再看原文</div><div class="quote"><div class="q">① 辩证思维不是“正反都能说”，而是把事物放在关系和变化中理解。</div><div class="src">全课六句话 · 其一</div></div><div class="quote"><div class="q">② 黑格尔辩证法关注一个规定怎样暴露自身片面性，并通过否定与“扬弃”进入更丰富的结构。</div><div class="src">全课六句话 · 其二（据 SEP 对黑格尔辩证法的概括）</div></div><div class="quote"><div class="q">③ 所谓扬弃，不是简单消灭旧东西，而是“否定 + 保留 + 提升”。</div><div class="src">全课六句话 · 其三</div></div><div class="quote"><div class="q">④ 量变质变最值得我们的启发，是关注长期积累、阈值和状态转换，而不是把它当作可以解释一切的科学定律。</div><div class="src">全课六句话 · 其四</div></div><div class="quote"><div class="q">⑤ 辩证看人和看工作，就是不要把当前状态当作永久本质，而要寻找正在发生变化的条件和关键张力。</div><div class="src">全课六句话 · 其五</div></div><div class="quote"><div class="q">⑥ 管理中的关键问题会随阶段转换；真正的辩证能力，是及时发现“现在最重要的问题已经变了”。</div><div class="src">全课六句话 · 其六</div></div><p class="prose">如果只留一句作为以后信息图的中心金句，整理者建议用——<b>「辩证思维不是告诉你“凡事都有两面”，而是让你看见：关系中的力量如何变化，并在什么条件下发生转化。」</b>（即本页尾声那句话）而整课最应该形成视觉记忆的就是：</p><div class="quote"><div class="q">关系 → 张力 → 积累 → 临界点 → 转化 → 新状态</div><div class="src">整课最应该形成的视觉记忆 · 比背三大规律更容易用起来</div></div></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="6">0</div><div class="l">主线六步</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">实用四步法</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">扬弃三义</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">典型滥用</div></div></div><div class="panel"><h3><span class="no2">①</span>两种眼光分档练习</h3><div class="pd">判断下列表述是「孤立静止看」还是「关系过程看」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文静态思维的原话——把一次考试成绩当成孩子的永久本质"><div class="st">1. 这个孩子就是不行。</div><div class="opts"><button data-ok="1">孤立静止看 ✕</button><button data-ok="0">关系过程看 ✓</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文辩证思维的原话——追问因素与变化，不把状态当本质"><div class="st">2. 当前成绩差只是一个状态。哪些因素造成？哪些因素正在改变？</div><div class="opts"><button data-ok="0">孤立静止看 ✕</button><button data-ok="1">关系过程看 ✓</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文指出这是管理者最危险的事——关键问题会随阶段变化"><div class="st">3. 用昨天最重要的问题，指导今天。</div><div class="opts"><button data-ok="1">孤立静止看 ✕</button><button data-ok="0">关系过程看 ✓</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文辩证之问——看力量消长，不要用静态照片看动态问题"><div class="st">4. 哪一边正在增强？哪些条件正在改变？</div><div class="opts"><button data-ok="0">孤立静止看 ✕</button><button data-ok="1">关系过程看 ✓</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文提醒：学习最忌讳用今天的理解能力给未来下永久结论"><div class="st">5. 我是不是学不会？</div><div class="opts"><button data-ok="1">孤立静止看 ✕</button><button data-ok="0">关系过程看 ✓</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文结论——人 ≠ 当前状态，能力能否通过学习积累发生变化"><div class="st">6. 人 = 一个正在变化的过程</div><div class="opts"><button data-ok="0">孤立静止看 ✕</button><button data-ok="1">关系过程看 ✓</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>辩证四步通关清单</h3><div class="pd">选一个你正关注的复杂问题（工作 / 学习 / 对一个人的判断），逐步检验自己能否回答</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">第一步 · 找关系：我能说出它和哪些因素相互依赖</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">第二步 · 找张力：我能指出当前最主要的一对张力（如增长 ↔ 质量、激励 ↔ 成本）</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">第三步 · 看变化：我能判断哪一边正在增强、什么变量正在积累</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">第四步 · 找转折点：我能估到什么程度以后，整个问题性质会改变</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">看人不贴标签：我不把当前状态当永久本质（「现在不会」≠「永远不会」）</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">敢下判断：根据当前条件做阶段性判断，同时保留修正空间</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>「老师和学生因为学费打官司」的学费悖论，主人公到底是谁？</div><div class="ans"><button data-ok="0">A. 毕达哥拉斯和他的学生</button><button data-ok="1">B. 普罗泰戈拉与学生欧阿特鲁斯</button><button data-ok="0">C. 苏格拉底与柏拉图</button><button data-ok="0">D. 康德与黑格尔</button></div><div class="exp">整理者开篇校正：「学费悖论：普罗泰戈拉，不是毕达哥拉斯。」毕达哥拉斯是与「万物皆数」、数学与毕达哥拉斯学派联系更紧密的人物。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>「扬弃」（Aufheben）同时包含哪三层意思？</div><div class="ans"><button data-ok="0">A. 否定、批判、斗争</button><button data-ok="1">B. 否定、保留、提升</button><button data-ok="0">C. 推翻、重建、重复</button><button data-ok="0">D. 回避、搁置、观察</button></div><div class="exp">源文：它同时包含否定、保留、提升三个意思。旧认识没有完全被扔掉，而是其中有效部分被保留下来。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>对「对立统一、量变质变、否定之否定」这三大规律，更准确的理解是？</div><div class="ans"><button data-ok="0">A. 黑格尔自己正式提出的三大定理</button><button data-ok="0">B. 康德二律背反的另一种说法</button><button data-ok="1">C. 辩证唯物主义教材体系中的经典教学框架</button><button data-ok="0">D. 已被量子力学全面证明的科学定律</button></div><div class="exp">源文：这确实是我们熟悉的辩证唯物主义教材体系中的经典「三大规律」，但不能说「这是黑格尔自己正式提出的三大定理」。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>中心门诊量下降时，辩证思维比因果思维多问了什么？</div><div class="ans"><button data-ok="0">A. 为什么下降——去找宣传不足、天气等原因</button><button data-ok="1">B. 这些因素之间是什么关系？哪一种力量正在增强？</button><button data-ok="0">C. 到底该怪谁</button><button data-ok="0">D. 要不要立刻换负责人</button></div><div class="exp">源文：因果思维问「为什么下降？」；辩证思维进一步问「这些因素之间是什么关系？哪一种力量正在增强？哪些条件正在发生变化？」</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>用「事情都是变化的，所以不能判断」逃避结论，错在哪里？</div><div class="ans"><button data-ok="0">A. 没错，变化确实不可判断</button><button data-ok="1">B. 辩证思维要求根据当前条件做阶段性判断，同时保留修正空间</button><button data-ok="0">C. 应该等一切稳定后再判断</button><button data-ok="0">D. 下判断与辩证思维无关</button></div><div class="exp">源文错误三：恰恰相反——辩证思维要求「根据当前条件做阶段性判断，同时保留修正空间」。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">用关系、变化、矛盾和过程，而不是孤立、静止、一次性结论来看问题。</div><div class="src">本讲对辩证思维的核心定义</div></div><div class="quote"><div class="q">不要把阶段性状态误认为永久本质。</div><div class="src">比「人人都有无限可能」更精确、也更实用的说法</div></div><div class="quote"><div class="q">它们为什么会同时存在？现在谁占主导？什么条件改变以后，两者关系会变化？</div><div class="src">进入辩证思维的三个追问</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../14-因果思维/index.html">← 上一篇 · 因果思维</a><a href="../16-系统思维/index.html">下一篇 · 系统思维 →</a><span class="sp"></span><span class="cur">辩证思维</span></div></nav>
+<footer class="coda"><div class="wm2">化</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">辩证思维不是告诉你“凡事都有两面”，<br>而是让你看见：<b>关系中的力量如何变化，并在什么条件下发生转化</b>。<br><br>关系 → 张力 → 积累 → 临界点 → 转化 → 新状态。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十六讲《辩证思维》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s2", "#s4", "#s5", "#s8", "#s7", "#s15"], "sortok": [0, 1, 0, 1, 0, 1], "quizok": [1, 1, 2, 1, 1], "ckkey": "zx15-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

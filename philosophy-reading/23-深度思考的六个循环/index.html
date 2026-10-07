@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深度思考的六个循环 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx23-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../22-问题意识的五个构建/index.html">← 上一篇 · 问题意识的五个构建</a><a href="../24-人的生物性/index.html">下一篇 · 人的生物性 →</a><span class="sp"></span><span class="cur">深度思考的六个循环</span></div></nav>
+<header class="hero" id="top"><div class="wm">循</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第七章《思路》第三节（收束）</div>
+  <div class="no">貳拾肆</div>
+  <h1>深度思考的六个循环</h1>
+  <div class="sub">从「我有个问题」 · 到「知道下一步怎么办」</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>一个问题已经定义出来以后，怎样一步一步把它想深，并最后形成决策？<br>答案是六个环节组成的一个循环：<b>情绪调节 → 主动觉察 → 多元设问 → 定义问题 → 创造路径 → 批判选择</b>，再用<b>行动与反馈</b>让它真正转起来。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 第一步 · 情绪调节：不是消灭情感</a><a href="#s3">叁 · 第二步 · 唤醒觉知</a><a href="#s4">肆 · 第三步 · 多元设问：打破第一解释</a><a href="#s5">伍 · 第四步 · 定义问题</a><a href="#s6">陆 · 第五步 · 创造路径</a><a href="#s7">柒 · 第六步 · 批判选择</a><a href="#s8">捌 · 决策 · 给领导选择题，而不是论述题</a><a href="#s9">玖 · 为什么是“循环”，而不是“步骤”</a><a href="#s10">拾 · 什么叫“深度思考”</a><a href="#s11">拾壹 · 三个校正 · 比较 · 因果 · 证伪</a><a href="#s12">拾貳 · 因果是一张网 · 深度 ≠ 时间</a><a href="#s13">拾叁 · 升级版六循环 · 实战一遍</a><a href="#s14">拾肆 · 第七章的收束</a><a href="#s15">拾伍 · 纠偏清单 · 只记住六句话</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s2"><b>情绪调节</b><span>识别情绪 · 不让第一反应变成结论</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>主动觉察</b><span>从自动反应切换到主动观察</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>多元设问</b><span>多角度提问 · 打破第一解释</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>定义问题</b><span>现状与目标之间的真正差距</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>创造路径</b><span>至少生成三个明显不同的方案</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>批判选择</b><span>主动寻找它为什么可能失败</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s9"><b>行动反馈 · 再循环</b><span>让六步真正转起来 · 形成决策</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第七章《思路》的收束课 · 从“我有个问题”走到“我知道下一步怎么办”</div><p class="prose">这一课是第七章《思路》的第三节，也是这一章真正的收束课。前两节已经完成了两个准备动作，第三节才正式进入正题：</p><div class="cards g3"><div class="card"><div class="idx">概</div><h4>第一节 · 概念的九层</h4><p>把<b>“这是什么”</b>弄清楚</p></div><div class="card"><div class="idx">问</div><h4>第二节 · 问题意识</h4><p>把<b>“到底要解决什么”</b>弄清楚</p></div><div class="card"><div class="idx">循</div><h4>第三节 · 六个循环</h4><p>把<b>“怎样一步一步想深并形成决策”</b>弄清楚</p></div></div><div class="quote"><div class="q">一个问题已经定义出来以后，我究竟怎样一步一步把它想深，并最后形成决策？</div><div class="src">第三节正式进入的引导问题 · 也是整个第七章的收束之问</div></div><p class="prose">老师开头提出：“所有深度思考都有对象，也有目的。”这个方向非常重要。普通的“想东西”可以是联想、幻想、回忆、走神；而这里的“深度思考”更接近——</p><div class="quote"><div class="q">围绕一个明确对象和问题，不断形成假设、比较路径、检验判断，最终形成更可靠的认识或行动方案。</div><div class="src">整理者对这一课“深度思考”的定义</div></div><p class="prose">所以这一课真正回答的是：<b>怎样从“我有个问题”，一直走到“我知道下一步应该怎么办”。</b>和第二节的关系很清楚——上一节<b>把感觉变成问题</b>，这一节<b>把问题变成决策</b>。把讲稿重新梳理后，整理者认为老师真正设计出的是这样一条链：</p><div class="ladder"><div class="step"><div class="t">情绪调节</div><div class="d">识别情绪，不让第一反应直接变成结论</div></div><div class="step"><div class="t">主动觉察</div><div class="d">从被动反应切换到主动观察</div></div><div class="step hot"><div class="t">多元设问</div><div class="d">整套方法开始进入“深度”的地方</div></div><div class="step hot"><div class="t">定义问题</div><div class="d">问题定义清楚，问题已经解决了一半</div></div><div class="step"><div class="t">创造路径</div><div class="d">重要问题至少生成三个明显不同的方案</div></div><div class="step"><div class="t">批判选择</div><div class="d">检验每个方案，最终形成决策</div></div></div><p class="prose">而如果想让它真正成为“循环”，还必须补上“行动 → 反馈 → 重新定义问题”——完整版本其实是：<b>觉察 → 发问 → 定义 → 创造 → 选择 → 行动 → 反馈 → 再循环</b>（整理者补全的版本，见「为什么是循环」一节展开）。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>第一步 · 情绪调节：不是消灭情感</h2></div><div class="sd">老师叫“控制情感” · 更成熟的理解是识别情绪、暂缓结论 · 附态度ABC校正</div><p class="prose">老师把第一步称为“控制情感”。他的逻辑是：遇到一个问题，你可能喜欢/不喜欢，愿意/不愿意，高兴/生气。如果情绪完全占据判断，很可能还没有分析就已经得出结论——</p><div class="quote"><div class="q">我不喜欢，所以这件事不好。</div><div class="src">情绪完全占据判断时的典型结论 · 深度思考的大敌</div></div><div class="duo"><div class="col neg"><h4>最好不要理解成 ✕</h4><ul><li>把情绪压下去</li><li>情绪 = 错误</li></ul></div><div class="col pos"><h4>更成熟的是 ✓</h4><ul><li><b>识别情绪，但不让情绪直接替你做判断</b></li><li>情绪本身也携带信息，只是不能直接等同于事实</li></ul></div></div><div class="case"><div class="h"><span class="tag">对照</span><span class="ht">领导安排一件你不喜欢的任务</span><span class="ar">▸</span></div><div class="sm"><div class="inner">低层反应：“烦死了，不想干。”<br><br>深度思考：“我确实不喜欢。先把这种情绪和任务本身分开——这件事为什么要做？我承担什么责任？真正的问题在哪里？”</div></div></div><div class="ladder"><div class="step"><div class="t">情绪识别</div><div class="d">先承认“我确实不喜欢”</div></div><div class="step"><div class="t">情绪调节</div><div class="d">把情绪和任务本身分开</div></div><div class="step hot"><div class="t">暂缓结论</div><div class="d">不让第一反应直接变成结论</div></div></div><div class="h3blk">态度ABC · 这部分是有心理学背景的</div><div class="cards g3"><div class="card"><div class="idx">A</div><h4>Affect 情感</h4><p>觉得累、讨厌——“我不喜欢跑步”里的感受成分</p></div><div class="card"><div class="idx">B</div><h4>Behavior 行为</h4><p>很少主动跑步——行为倾向</p></div><div class="card"><div class="idx">C</div><h4>Cognition 认知</h4><p>认为跑步枯燥——认知评价</p></div></div><div class="warn"><div class="wt">校正 · “态度里最重要的是情感”不能作为普遍规律</div><ul><li>社会心理学中确实存在常见的态度三成分模型：一个人对某个对象的态度，可以从感受、行为倾向和认知评价三个方面理解。</li><li>但不同态度中三种成分的重要程度可能不同，三者也未必始终一致。</li><li>所以老师说“态度里最重要的是情感”不能当作普遍规律记忆（整理者据 Simply Psychology 等资料的校正）。</li></ul></div><div class="quote"><div class="q">思考之前，先意识到自己已经带着什么态度进入问题。</div><div class="src">态度ABC这部分真正需要留下的一句</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第二步 · 唤醒觉知</h2></div><div class="sd">从自动反应切换到主动观察 · 与第五章《感性思维》完全接上</div><div class="quote"><div class="q">情绪调节以后，要唤醒觉知，让心从被动变主动。</div><div class="src">老师对第二步的表述 · 比较哲学化</div></div><p class="prose">翻译成现代思考语言，其实就是：<b>从自动反应切换到主动观察。</b></p><div class="case"><div class="h"><span class="tag">觉察</span><span class="ht">看到一个员工连续两次没完成任务</span><span class="ar">▸</span></div><div class="sm"><div class="inner">自动反应：“这个人执行力不行。”<br><br>主动觉察则会问：到底发生了什么？他不会做？没有时间？不知道标准？资源不足？还是确实没有执行意愿？</div></div></div><div class="duo"><div class="col neg"><h4>马上解释 ✕</h4><ul><li>看到现象 → 立刻贴标签</li><li>“这个人执行力不行。”</li></ul></div><div class="col pos"><h4>重新观察 ✓</h4><ul><li>先问“到底发生了什么”</li><li>把事实弄清，再决定怎样解释</li></ul></div></div><p class="prose">这和第五章《感性思维》中<b>“先描述发生了什么，再解释为什么发生”</b>完全接上了。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>第三步 · 多元设问：打破第一解释</h2></div><div class="sd">整套方法开始进入“深度”的地方 · 不要爱上你的第一个答案</div><div class="quote"><div class="q">不要只从一个方向问，要从多个角度提出问题。</div><div class="src">老师对第三步的要求 · 整理者认为非常重要</div></div><p class="prose">这是整套方法开始进入<b>“深度”</b>的地方。例如“员工执行力下降”，不要只有“为什么他们不积极？”，还可以从三个角度问：</p><div class="cards g3"><div class="card"><div class="idx">主</div><h4>主体角度</h4><p>员工自己遇到了什么？</p></div><div class="card"><div class="idx">客</div><h4>客体角度</h4><p>任务本身设计合理吗？</p></div><div class="card"><div class="idx">关</div><h4>关系角度</h4><p>员工和制度、管理者、绩效之间是什么关系？</p></div></div><p class="prose">再结合前面课程，还可以继续问——感性：具体发生了什么？因果：为什么发生？辩证：哪些因素正在变化？系统：调整这里会影响哪里？于是：<b>一个问题 → 多组问题</b>。这一步的真正作用是——</p><div class="quote"><div class="q">打破第一解释。</div><div class="src">多元设问这一步的真正作用</div></div><div class="h3blk">为什么“第一解释”特别危险</div><div class="ladder"><div class="step"><div class="t">看到一个结果</div></div><div class="step"><div class="t">马上找一个原因</div></div><div class="step hot"><div class="t">觉得问题已经解决</div><div class="d">实际上可能什么都没解释</div></div></div><div class="case"><div class="h"><span class="tag">陷阱</span><span class="ht">“业绩不好，因为员工不积极。”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">看起来有解释，实际上可能什么都没解释。因为“为什么不积极”还可以继续追问：激励？能力？市场？流程？目标不现实？管理方式？资源不足？<br><br>所以深度思考首先要求：<b>不要爱上你的第一个答案</b>，先允许存在多个解释。</div></div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>第四步 · 定义问题</h2></div><div class="sd">问题 = 现状与目标之间的差距 · 错误的问题定义＋完美执行＝错误结果</div><p class="prose">这一块直接继承上一课“问题五要素”。老师继续坚持：<b>问题 = 现状与目标之间的差距。</b>例如：当前收入400万元/月，目标450万元/月，差距50万元。</p><div class="quote"><div class="q">问题定义清楚，问题已经解决了一半。</div><div class="src">老师坚持的原则 · 管理场景非常实用</div></div><p class="prose">整理者注：这不是严格数学意义上的“50%”，但作为管理原则非常有价值。因为很多所谓“解决问题失败”，其实从一开始解决的就是<b>错误的问题</b>。</p><p class="prose">而真正完整的问题还包括：目标为什么是450万元？哪些业务可能增加？当前制约在哪里？有什么资源？能力够不够？——第二节形成的<b>现状｜目标｜路径｜资源｜能力</b>五要素，到这里开始正式用于深度思考。</p><div class="case"><div class="h"><span class="tag">案例</span><span class="ht">错误的问题定义 + 完美执行 = 错误结果</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一个机构发现“患者满意度下降了”，管理者马上决定：加强员工服务态度培训。看似在解决问题。<br><br>但如果深入调查发现真正下降的是“候诊时间过长”，那么服务态度培训可能完全没有抓到核心——错误的问题定义＋完美执行，仍然可能得到错误结果。</div></div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>第五步 · 创造路径</h2></div><div class="sd">深度思考开始进入创造力 · 可想象 ≠ 可执行</div><p class="prose">问题定义以后，老师的两问是“我在哪里？”“我要去哪？”接下来就是：<b>怎样过去？</b></p><div class="quote"><div class="q">路径不要只有一条。</div><div class="src">老师这一点讲得很好</div></div><p class="prose">整理者建议以后形成一个固定习惯：<b>重要问题至少生成3个明显不同的方案，再决定。</b>而且不是——</p><div class="duo"><div class="col neg"><h4>假的三方案 ✕</h4><ul><li>方案A</li><li>方案A加强版</li><li>方案A缩小版</li></ul></div><div class="col pos"><h4>真正不同的路径 ✓（例：业务量不足）</h4><ul><li>路径A：提高现有居民复诊率</li><li>路径B：发展新的优势专科</li><li>路径C：加强医联体转诊协作</li></ul></div></div><p class="prose">这样才能真正<b>比较</b>——没有替代方案，实际上也就没有真正的“选择”。</p><div class="h3blk">为什么老师反复强调“资源和能力匹配”</div><p class="prose">因为<b>可想象 ≠ 可执行。</b>一个方案很漂亮，但如果需要20个人你只有5个人、需要500万元你只有50万元、需要一种专业能力而团队没人具备——它就只是<b>想法</b>，而不是<b>方案</b>。所以路径必须经过：<b>路径 × 资源 × 能力</b>三项匹配，这和第二节完全衔接。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>第六步 · 批判选择</h2></div><div class="sd">创造方案与批判方案是一对能力 · 批判性思维真正进入实际流程</div><p class="prose">好不容易设计一个方案，接下来不是马上行动，而是<b>批判</b>——这是非常好的思维习惯。</p><div class="quote"><div class="q">主动寻找它为什么可能失败。</div><div class="src">老师对“批判”的解释</div></div><div class="chips"><span class="chip">支持它的证据是什么？</span><span class="chip">最重要的假设是什么？</span><span class="chip">可能失败在哪里？</span><span class="chip">最大的副作用是什么？</span><span class="chip">还有没有更好的替代方案？</span></div><div class="cards g2"><div class="card"><div class="idx">创</div><h4>创造力负责</h4><p>“还有什么可能？”</p></div><div class="card"><div class="idx">批</div><h4>批判力负责</h4><p>“这个可能可靠吗？”</p></div></div><p class="prose">第四章讲过“批判不是简单否定”，到这里终于进入实际流程——每个方案都经过检验：</p><div class="ladder"><div class="step"><div class="t">方案A ↓ 检验</div><div class="d">保留 / 修改 / 否定</div></div><div class="step"><div class="t">方案B ↓ 检验</div><div class="d">保留 / 修改 / 否定</div></div><div class="step"><div class="t">方案C ↓ 检验</div><div class="d">保留 / 修改 / 否定</div></div><div class="step hot"><div class="t">形成决策</div></div></div><p class="prose">所以批判真正服务的不是“证明别人错”，而是<b>提高自己的决策质量</b>。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>决策 · 给领导选择题，而不是论述题</h2></div><div class="sd">优秀员工带方案而不是只带问题 · 深度思考的终点是行动判断</div><div class="quote"><div class="q">优秀员工给老板汇报，应该带方案，而不是只带问题。</div><div class="src">老师的管理场景原则 · 非常实用</div></div><div class="case"><div class="h"><span class="tag">汇报</span><span class="ht">不要论述题，要选择题</span><span class="ar">▸</span></div><div class="sm"><div class="inner">不要只汇报：“主任，现在床位不够怎么办？”<br><br>而可以汇报：当前床位不足有三种处理方式——<br>A：优化床位周转；<br>B：调整病区结构；<br>C：依法推进增床备案。<br>三种方案各有什么收益、成本和风险，建议优先采用……<br><br>这就从“报告问题”升级成“辅助决策”。</div></div></div><p class="prose">整理者提醒：也不能机械规定“必须三个方案”——有些问题确实只有一两个合理路径。真正原则应该是：<b>重要决策尽量避免只有一个未经比较的方案。</b></p><p class="prose">老师最后把“批判选择”推到<b>决断 / 决策</b>，这是整个六步的出口：<b>事实不能替你决策，分析也不能自动替你决策。</b>最终你还是需要选择某一条路径、接受相应成本、然后行动。</p><div class="duo"><div class="col neg"><h4>深度思考的终点不是 ✕</h4><ul><li>想得越来越复杂</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li>形成<b>足够可靠的行动判断</b></li></ul></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>为什么是“循环”，而不是“步骤”</h2></div><div class="sd">原讲稿没讲透的一点 · 真正让六步成为循环的，是行动后的反馈（整理者补全）</div><p class="prose">原讲稿实际上没有把这一点讲得特别清楚（整理者指出）。如果只是“情绪 → 觉察 → 设问 → 定义 → 路径 → 决策”，这其实是<b>流程</b>，还不是<b>循环</b>。真正让它成为循环的，是<b>行动后的反馈</b>。</p><div class="case"><div class="h"><span class="tag">反馈</span><span class="ht">方案实施以后——</span><span class="ar">▸</span></div><div class="sm"><div class="inner">结果与预期不符 ↓ 重新观察 ↓ 出现新问题 ↓ 重新设问 ↓ 重新定义 ↓ 重新设计路径。<br><br>行动反馈不是第七种思考，而是让前六步真正循环起来。</div></div></div><div class="ladder"><div class="step"><div class="t">觉察</div></div><div class="step"><div class="t">发问</div></div><div class="step"><div class="t">定义</div></div><div class="step"><div class="t">创造</div></div><div class="step"><div class="t">选择</div></div><div class="step"><div class="t">行动</div></div><div class="step hot"><div class="t">反馈</div><div class="d">真正让六步成为循环的枢纽</div></div><div class="step"><div class="t">再循环</div><div class="d">回到觉察，重新开始</div></div></div><p class="prose">以上八环节是<b>整理者补全的完整版本</b>。对应到老师的表述，完整结构升级为：情绪调节 → 主动觉察 → 多元设问 → 定义问题 → 创造路径 → 批判决策 → <b>行动验证 → 反馈修正 ↺</b>。整理者认为，补上这一点以后，“六个循环”才真正成立。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>什么叫“深度思考”</h2></div><div class="sd">从“逼近本质”到“构建认识模型” · 三种值得长期记忆的浅思考</div><div class="quote"><div class="q">不断逼近事物本质。</div><div class="src">老师对深度思考的定义 · 很有哲学味道</div></div><p class="prose">但在现实工作中，整理者建议改成——</p><div class="quote"><div class="q">不断构建一个更能解释事实、更能预测结果、更能指导行动的认识模型。</div><div class="src">整理者建议的改写</div></div><p class="prose">为什么？因为并不是所有问题都有唯一一个“本质”。例如“为什么一个员工表现不好”，可能不是藏着一个唯一原因，而是<b>能力 × 激励 × 工作设计 × 家庭情况 × 团队关系 × 时间</b>共同作用。深度更可能意味着：<b>看见更多关键关系，同时抓住真正可行动的变量。</b></p><div class="h3blk">三种“浅思考”，值得长期保留</div><div class="cards g3"><div class="card"><div class="idx">情</div><h4>情绪替代判断</h4><p>“我讨厌，所以它不好。”——情绪即结论</p></div><div class="card"><div class="idx">比</div><h4>简单比较替代分析</h4><p>A比B差，于是“A错，B对。”——比较即结论</p></div><div class="card"><div class="idx">因</div><h4>单一因果替代复杂解释</h4><p>发生结果B，找到原因A，于是“全部都是A导致的。”——故事即因果</p></div></div><p class="prose">整理者认为这三种浅思考非常适合长期记忆：<b>情绪化、比较化、单因化</b>——深度思考恰恰是在不断抵抗这三种倾向。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>三个校正 · 比较 · 因果 · 证伪</h2></div><div class="sd">比较不是浅思考 · 果中求因不是低级思维 · 证伪要更准确（整理者校正）</div><div class="h3blk">校正一 · 老师批评“比较差异性判断”</div><p class="prose">比较本身不是坏事，科学研究、管理分析每天都在比较。问题是<b>只比较表面结果，而不比较条件和机制</b>——A医院收入比B医院高，就说“B医院管理差”，这是错误的：至少还要比较规模、病种、人口、政策、人员、医保支付方式等条件。</p><div class="quote"><div class="q">同口径、同条件、同维度，并解释差异产生的机制。</div><div class="src">整理者给出的成熟比较标准 · 问题不是比较，而是脱离条件的比较</div></div><div class="h3blk">校正二 · 老师批评“果中求因”</div><p class="prose">上一章老师自己还说“果→因是‘智’”，不能到了这里又说“果中求因就是低级思维”。真正的问题不是从结果找原因，而是<b>只找到一个原因就停止思考</b>——复杂现实通常存在多重原因、中间机制、条件变量、相互作用、反馈关系，应从单因解释升级成<b>因果网络</b>。</p><div class="h3blk">校正三 · 老师说科学靠“证伪”</div><p class="prose">这明显来自波普尔。可证伪性确实是区分科学与非科学的重要标准：一个科学理论必须允许某些可能的经验事实与它发生冲突，而不能“无论发生什么都解释得通”。但现实科学方法也比“找到一个反例立即推翻理论”复杂——测量误差、辅助假设等都会影响判断（整理者注）。</p><p class="prose">这对深度思考特别有价值。你提出一个解释——“员工积极性差是因为绩效低。”不要只找支持材料，应该主动问：<b>什么证据出现时，我愿意承认这个解释错了？</b>这叫<b>反证意识</b>：好的思考不仅寻找支持证据，也主动寻找可能推翻自己的证据。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>因果是一张网 · 深度 ≠ 时间</h2></div><div class="sd">交互关系让系统思维再次进入 · 黑格尔校正 · 深度＝认知结构不断被修正</div><div class="quote"><div class="q">一个结果往往不是一个原因造成的。</div><div class="src">老师讲“交互关系” · 系统思维再次进入</div></div><div class="case"><div class="h"><span class="tag">多因</span><span class="ht">员工离职，不只是工资</span><span class="ar">▸</span></div><div class="sm"><div class="inner">不能简单归为“工资低 → 离职”。还可能是工资、领导关系、职业发展、工作压力、家庭变化、团队氛围共同作用——而且这些因素之间还会相互影响。</div></div></div><p class="prose">这时上一章系统思维重新出现：<b>因果不是一条线，而是一张网。</b>深度思考其实是在不断调用前面已经学过的所有工具：感性、因果、辩证、系统。</p><div class="warn"><div class="wt">黑格尔“矛盾就是运动”不要再次机械化</div><ul><li>老师继续用“世界运动 → 运动来自矛盾 → 问题就是矛盾”作为课程主线。</li><li>黑格尔的辩证法确实把对立、否定和概念发展放在核心位置，也曾把运动描述为一种“存在着的矛盾”。</li><li>但学界也明确指出，黑格尔辩证发展中的很多“对立”并不是严格形式逻辑意义上的矛盾。</li><li>实际应用时最好转换成：<b>复杂问题通常包含相互制约的要求、力量与条件</b>——比把所有问题都叫“矛盾”更加实用。</li></ul></div><div class="h3blk">真正高级的深度思考，不是“想很久”</div><div class="chips"><span class="chip">概念是否越来越清楚？</span><span class="chip">问题是否越来越准确？</span><span class="chip">解释是否考虑更多替代假设？</span><span class="chip">有没有寻找反证？</span><span class="chip">是否看到因果网络而非单因？</span><span class="chip">方案有没有比较？</span><span class="chip">判断有没有经过现实反馈？</span></div><div class="cards g2"><div class="card"><div class="idx">≠</div><h4>深度 ≠ 时间长度</h4><p>一个人坐着想三个小时，未必叫深度思考</p></div><div class="card"><div class="idx">=</div><h4>深度 = 认知结构不断被修正和升级</h4><p>整理者认为最值得补进去的一句话</p></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>升级版六循环 · 实战一遍</h2></div><div class="sd">整理者把六循环升级成真正可用的版本 · 拿“某项工作推进慢”跑一遍</div><p class="prose">整理者建议把老师的“六个循环”升级成真正可用的版本——每个阶段对应一个核心问题、一个目标（点击展开）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">① 情绪调节</span></summary><div class="body">核心问题：我现在带着什么情绪和偏见？目标：不让第一反应变成结论。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">② 主动觉察</span></summary><div class="body">核心问题：事实究竟是什么？目标：从被动反应转向主动观察。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">③ 多元设问</span></summary><div class="body">核心问题：还可以从哪些角度问？目标：打破单一解释。</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">④ 定义问题</span></summary><div class="body">核心问题：现状、目标和真正差距是什么？目标：找对问题。</div></details><details class="qa"><summary><span class="qn">问伍</span><span class="qt">⑤ 创造路径</span></summary><div class="body">核心问题：有哪些不同解决方案？目标：扩大可能性。</div></details><details class="qa"><summary><span class="qn">问陆</span><span class="qt">⑥ 批判决策</span></summary><div class="body">核心问题：哪个方案证据最好、代价可接受？目标：做出选择。</div></details><details class="qa"><summary><span class="qn">问柒</span><span class="qt">循环闭环</span></summary><div class="body">核心问题：结果符合预期吗？目标：用反馈重新开始。</div></details><p class="prose">其中最后的“行动反馈”不是第七种思考，而是让前六步<b>真正循环起来</b>。</p><div class="h3blk">实战：拿一个现实问题跑一遍</div><div class="case"><div class="h"><span class="tag">实战</span><span class="ht">“某项工作推进慢。”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">① 情绪调节：不先说“这些人就是不积极”。<br>② 主动觉察：计划完成100，目前完成45——哪些人完成多？哪些少？<br>③ 多元设问：是能力？时间？目标？资源？激励？流程？居民配合？<br>④ 定义问题：工作要求每周完成，但可入户时段与居民在家时间高度错位——问题不再是“员工积极性低”，而是“工作时间设计与服务对象时间不匹配”。<br>⑤ 创造路径：A调整入户时间；B电话预约后入户；C周末集中服务。<br>⑥ 批判选择：比较成本、人员、效果、风险，选择B+C组合。<br>反馈：两周后完成率上升还是没变化？如果没变化，重新进入观察 → 设问 → 定义——这就是真正的循环。</div></div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>第七章的收束</h2></div><div class="sd">概念清晰 → 问题准确 → 思考深入 → 决策可靠</div><p class="prose">到这里，整个第七章终于形成一个非常完整的体系：</p><div class="ladder"><div class="step"><div class="t">第一节｜概念</div><div class="d">把“是什么”弄清楚</div></div><div class="step"><div class="t">第二节｜问题</div><div class="d">把“哪里不对”弄清楚</div></div><div class="step"><div class="t">第三节｜深度思考</div><div class="d">把“怎样解决”想清楚</div></div><div class="step hot"><div class="t">第七章主轴</div><div class="d">概念清晰 → 问题准确 → 思考深入 → 决策可靠</div></div></div><p class="prose">再和前面课程连接起来，就是：</p><div class="ladder"><div class="step"><div class="t">感觉</div></div><div class="step"><div class="t">概念</div></div><div class="step"><div class="t">问题</div></div><div class="step"><div class="t">多元解释</div></div><div class="step"><div class="t">方案</div></div><div class="step"><div class="t">决策</div></div><div class="step"><div class="t">行动</div></div><div class="step hot"><div class="t">反馈</div><div class="d">用反馈回到问题，循环重新开始</div></div></div><p class="prose">这已经是一套相当完整的<b>认知—行动模型</b>。</p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>纠偏清单 · 只记住六句话</h2></div><div class="sd">整理者的七条校正 · 以及整堂课压缩后的六句话</div><div class="warn"><div class="wt">这一课最需要纠偏的几个地方（整理者）</div><ul><li>一、“所有思考都必须从问题开始”说得过强。探索、想象、反思也可以没有明确问题；但对深度问题解决而言，从问题开始是非常有效的原则。</li><li>二、“控制情感”最好改成“调节情感”。情绪并非思考的敌人，它能提供价值和风险信号；要避免的是让情绪直接替代证据和判断。</li><li>三、ABC态度模型确实存在，但不能说所有态度永远按情感→认知→行为固定顺序运行，它主要描述态度的情感、行为和认知三个成分。</li><li>四、比较不是浅思考，脱离条件和机制的比较才是。</li><li>五、从结果追原因也不是低级思维；真正的问题是“单因化”，复杂问题常常需要因果网络。</li><li>六、证伪是波普尔的重要科学哲学思想，但现实科学检验比“一证伪就结束”复杂。</li><li>七、老师最后口误说“这是第六章”，按照当前课程结构应该是第七章《思路》的结束。</li></ul></div><div class="h3blk">如果这一课只记住6句话</div><div class="cards g3"><div class="card"><div class="idx">①</div><h4>深度 ≠ 想得久</h4><p>深度思考不是想得久，而是让问题、解释和方案在不断检验中越来越清楚。</p></div><div class="card"><div class="idx">②</div><h4>第一步是识别情绪</h4><p>面对问题的第一步，不是压制情绪，而是识别自己的情绪和立场，避免让第一反应直接变成结论。</p></div><div class="card"><div class="idx">③</div><h4>打破第一个解释</h4><p>多元设问的价值，是打破第一个解释，从多个角度重新观察同一对象。</p></div><div class="card"><div class="idx">④</div><h4>比较多个路径</h4><p>问题定义清楚以后，不要只有一个答案；重要决策应该主动创造并比较多个可行路径。</p></div><div class="card"><div class="idx">⑤</div><h4>批判不是证明别人错</h4><p>批判性思维真正的作用，是主动寻找自己方案的弱点、反例和失败条件，而不是证明别人错。</p></div><div class="card"><div class="idx">⑥</div><h4>反馈才成循环</h4><p>深度思考只有经过行动和反馈重新回到问题，才真正形成循环。</p></div></div><div class="quote"><div class="q">深度思考，不是围着一个答案想得越来越多，而是不断重新观察、重新发问、重新定义，并让自己的判断越来越经得起现实检验。</div><div class="src">整理者最推荐的本课中心金句 · 也是本页页尾那句话</div></div></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="6">0</div><div class="l">六步循环</div></div><div class="cnt"><div class="v" data-c="8">0</div><div class="l">完整循环环节</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">问题五要素</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">浅思考三种</div></div></div><div class="panel"><h3><span class="no2">①</span>六循环环节归位练习</h3><div class="pd">下列心理活动分别属于「情绪调节 / 主动觉察 / 多元设问 / 定义问题」哪个环节？点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文：情绪完全占据判断，还没分析就已得出结论——第一步要拦住的就是它"><div class="st">1. “我不喜欢，所以这件事不好。”</div><div class="opts"><button data-ok="1">情绪调节</button><button data-ok="0">主动觉察</button><button data-ok="0">多元设问</button><button data-ok="0">定义问题</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：这是自动反应贴标签；主动觉察则问“到底发生了什么？”"><div class="st">2. “这个人执行力不行。”</div><div class="opts"><button data-ok="0">情绪调节</button><button data-ok="1">主动觉察</button><button data-ok="0">多元设问</button><button data-ok="0">定义问题</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文多元设问的关系角度：不只问“为什么他们不积极”"><div class="st">3. “员工和制度、管理者、绩效之间是什么关系？”</div><div class="opts"><button data-ok="0">情绪调节</button><button data-ok="0">主动觉察</button><button data-ok="1">多元设问</button><button data-ok="0">定义问题</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：完整的问题包括这些追问——现状｜目标｜路径｜资源｜能力五要素"><div class="st">4. “目标为什么是450万元？当前制约在哪里？有什么资源？”</div><div class="opts"><button data-ok="0">情绪调节</button><button data-ok="0">主动觉察</button><button data-ok="0">多元设问</button><button data-ok="1">定义问题</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文案例：错误的问题定义＋完美执行＝错误结果，定义问题要找对差距"><div class="st">5. 满意度下降，深入调查发现真正问题是“候诊时间过长”</div><div class="opts"><button data-ok="0">情绪调节</button><button data-ok="0">主动觉察</button><button data-ok="0">多元设问</button><button data-ok="1">定义问题</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：主动觉察会连续追问到底发生了什么，而不是马上解释"><div class="st">6. “他不会做？没有时间？不知道标准？资源不足？”</div><div class="opts"><button data-ok="0">情绪调节</button><button data-ok="1">主动觉察</button><button data-ok="0">多元设问</button><button data-ok="0">定义问题</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>六循环通关清单</h3><div class="pd">选一个你正在推进的现实问题，逐项检验自己能否走完六步</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">步一 · 我能识别自己带着什么情绪和立场进入问题，不让第一反应直接变成结论</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">步二 · 我能从“马上解释”切换到“重新观察”，先问到底发生了什么</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">步三 · 我能从主体、客体、关系等角度设问，打破第一解释</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">步四 · 我能说清现状、目标和真正差距，不解决错误的问题</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">步五 · 我能为重要问题生成至少三个明显不同的方案，并做路径×资源×能力匹配</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">步六 · 我会对每个方案问支持证据、失败条件和副作用，再形成决策</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师说深度思考的第一步是“控制情感”，更成熟的理解是？</div><div class="ans"><button data-ok="0">A. 把情绪完全压下去</button><button data-ok="1">B. 识别情绪，但不让情绪直接替你做判断</button><button data-ok="0">C. 情绪是思考的敌人，必须清除</button><button data-ok="0">D. 先发泄完情绪再思考</button></div><div class="exp">源文：“最好不要理解成把情绪压下去……识别情绪，但不让情绪直接替你做判断。情绪本身也携带信息，只是不能直接等同于事实。”</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>“业绩不好，因为员工不积极”这句话的问题在哪里？</div><div class="ans"><button data-ok="0">A. 原因找错了，应该怪市场</button><button data-ok="1">B. 看起来有解释，实际上可能什么都没解释——为什么不积极还可以继续追问</button><button data-ok="0">C. 语法不通</button><button data-ok="0">D. 结论太乐观</button></div><div class="exp">源文：第一解释的危险在于看到一个结果、马上找一个原因、就觉得问题已解决；激励、能力、市场、流程、目标不现实、管理方式、资源不足都可能是原因。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>患者满意度下降的例子说明什么？</div><div class="ans"><button data-ok="0">A. 员工服务态度一定有问题</button><button data-ok="0">B. 培训是万能解药</button><button data-ok="1">C. 错误的问题定义＋完美执行，仍然可能得到错误结果</button><button data-ok="0">D. 满意度无法提升</button></div><div class="exp">源文：深入调查发现真正下降的是“候诊时间过长”，服务态度培训可能完全没有抓到核心。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>创造力与批判力分别负责什么？</div><div class="ans"><button data-ok="0">A. 创造力负责证明自己对</button><button data-ok="0">B. 批判力负责证明别人错</button><button data-ok="1">C. 创造力问“还有什么可能？”，批判力问“这个可能可靠吗？”</button><button data-ok="0">D. 两者是一回事</button></div><div class="exp">源文：创造力负责“还有什么可能？”，批判力负责“这个可能可靠吗？”——两者形成一对非常重要的能力。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>为什么叫“六个循环”，而不是“六个步骤”？</div><div class="ans"><button data-ok="0">A. 因为步骤太多记不住</button><button data-ok="0">B. 因为每个步骤要走六遍</button><button data-ok="1">C. 因为行动后的反馈会重新回到观察与定义，让流程真正循环起来</button><button data-ok="0">D. 老师的口误</button></div><div class="exp">源文：真正让它成为循环的，是行动后的反馈——方案实施后结果与预期不符，重新观察、设问、定义（整理者补全了这一点）。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">问题定义清楚，问题已经解决了一半。</div><div class="src">第四步 · 定义问题</div></div><div class="quote"><div class="q">不要爱上你的第一个答案。</div><div class="src">第三步 · 多元设问对深度思考的第一要求</div></div><div class="quote"><div class="q">好的思考不仅寻找支持证据，也主动寻找可能推翻自己的证据。</div><div class="src">反证意识 · 波普尔证伪思想对深度思考的价值</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../22-问题意识的五个构建/index.html">← 上一篇 · 问题意识的五个构建</a><a href="../24-人的生物性/index.html">下一篇 · 人的生物性 →</a><span class="sp"></span><span class="cur">深度思考的六个循环</span></div></nav>
+<footer class="coda"><div class="wm2">深</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">深度思考，不是围着一个答案想得越来越多，<br>而是不断<b>重新观察、重新发问、重新定义</b>，<br>并让自己的判断<b>越来越经得起现实检验</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二十四讲《深度思考的六个循环》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s2", "#s3", "#s4", "#s5", "#s6", "#s7", "#s9"], "sortok": [0, 1, 2, 3, 3, 1], "quizok": [1, 1, 2, 2, 2], "ckkey": "zx23-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

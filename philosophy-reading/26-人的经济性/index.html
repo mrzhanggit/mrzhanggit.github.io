@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人的经济性 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx26-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../25-人的社会性/index.html">← 上一篇 · 人的社会性</a><a href="../27-个体人性的八宫结构/index.html">下一篇 · 个体人性的八宫结构 →</a><span class="sp"></span><span class="cur">人的经济性</span></div></nav>
+<header class="hero" id="top"><div class="wm">选</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第八章《人性的真相》第三节（收束）</div>
+  <div class="no">貳拾柒</div>
+  <h1>人的经济性</h1>
+  <div class="sub">资源有限 · 选择 · 取舍 · 交换与合作</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>人一旦面对有限资源和多个选择，就不得不进行取舍；<br>一旦和别人合作，就会涉及交换、成本、收益与激励。<br>这个层面的行为，就是他所谓的<b>“人的经济性”</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 人的「经济性」到底是什么</a><a href="#s3">叁 · 起点是稀缺，不是贪婪</a><a href="#s4">肆 · 「三个设准」并不是三大公理</a><a href="#s5">伍 · 理性人不等于自私贪婪</a><a href="#s6">陆 · 原则一 · 权衡取舍</a><a href="#s7">柒 · 原则二 · 机会成本</a><a href="#s8">捌 · 原则三 · 边际思维</a><a href="#s9">玖 · 原则四 · 对激励作出反应</a><a href="#s10">拾 · 剥开之后：前四原则与交换</a><a href="#s11">拾壹 · 经济思维五问</a><a href="#s12">拾貳 · 把它用于创业</a><a href="#s13">拾叁 · 第八章三节串起来</a><a href="#s14">拾肆 · 最需要纠偏的八个地方</a><a href="#s15">拾伍 · 如果这一课只记住六句话</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s3"><b>稀缺</b><span>时间、金钱、资源都有限</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>选择</b><span>只要资源有限，就必须选择</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>取舍</b><span>选择A，就意味着放弃一部分B、C、D</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>机会成本</b><span>放弃的「次优选择」的价值</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>边际判断</b><span>再多一步，新增收益是否超过新增成本</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>激励反应</b><span>人会因价格、规则与激励改变行为</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s10"><b>交换合作</b><span>分工与交换，让双方价值增加</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第八章收束课 · 整理者建议的主线与曼昆框架</div><p class="prose">这一课是第八章《人性的真相》的第三节——人的经济性，也是这一章的收束课。讲稿涉及「理性人、康德、目的理性、男女差异、水饺店、大蒜、边际效应」等内容；把它们重新整理后，整理者认为老师真正想告诉大家的是：</p><div class="quote"><div class="q">人一旦面对有限资源和多个选择，就不得不进行取舍；一旦和别人合作，就会涉及交换、成本、收益与激励。这个层面的行为，就是他所谓的“人的经济性”。</div><div class="src">整理者对全课主线的重述</div></div><p class="prose">这堂课有一个非常值得注意的地方：老师后半段讲的四点，实际上几乎对应经济学入门中非常经典的四个决策原则——正是曼昆《经济学原理》的经典框架：</p><div class="cards g4"><div class="card"><div class="idx">壹</div><h4>权衡取舍</h4><p>曼昆框架：<b>人们面临权衡取舍</b></p></div><div class="card"><div class="idx">貳</div><h4>机会成本</h4><p>某物的成本是为了得到它<b>所放弃的东西</b></p></div><div class="card"><div class="idx">叁</div><h4>边际思考</h4><p><b>理性人在边际上思考</b></p></div><div class="card"><div class="idx">肆</div><h4>对激励作出反应</h4><p><b>人们会对激励作出反应</b></p></div></div><div class="warn"><div class="wt">整理者的校正</div><ul><li>这比把它记成“人的天性就是赚钱”准确得多</li><li>建议把这一课的主线记成：稀缺 → 选择 → 取舍 → 机会成本 → 边际判断 → 激励反应 → 交换合作</li></ul></div><div class="ladder"><div class="step"><div class="t">稀缺</div><div class="d">时间、金钱、资源有限</div></div><div class="step"><div class="t">选择</div><div class="d">必须决定什么更重要</div></div><div class="step"><div class="t">取舍</div><div class="d">选择A，放弃一部分B、C、D</div></div><div class="step"><div class="t">机会成本</div><div class="d">被放弃的次优选择的价值</div></div><div class="step"><div class="t">边际判断</div><div class="d">再多一步值不值得</div></div><div class="step"><div class="t">激励反应</div><div class="d">人会因激励改变行为</div></div><div class="step hot"><div class="t">交换合作</div><div class="d">分工与交换，双方价值增加</div></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>人的「经济性」到底是什么</h2></div><div class="sd">经济不只是竞争与交换 · 更基础的问题是稀缺</div><div class="quote"><div class="q">经济是通过交换让彼此价值增加的合作活动。</div><div class="src">老师对「经济」的定义</div></div><p class="prose">这个理解有一个非常好的部分：<b>经济不是只有竞争，也包含合作。</b>比如我擅长看病，你擅长种粮食；如果每个人都必须自己完成所有事情，效率极低。通过：</p><div class="ladder"><div class="step"><div class="t">分工</div><div class="d">我擅长看病，你擅长种粮食</div></div><div class="step"><div class="t">专业化</div></div><div class="step hot"><div class="t">交换</div><div class="d">双方可能都获得更大的收益</div></div></div><p class="prose">自愿交换之所以会发生，通常正是因为双方都认为自己得到的东西比放弃的东西更有价值，因此交易双方预期自己会变得更好。所以老师说「交换可以创造双方都认为增加了的价值」——这一点很值得保留。</p><div class="duo"><div class="col neg"><h4>「经济的本质就是交换」太窄 ✕</h4><ul><li>经济学研究的只是：买卖和交换</li></ul></div><div class="col pos"><h4>更基础的经济学问题 ✓</h4><ul><li><b>有限资源如何满足多种需要——也就是稀缺性</b></li><li>还包括：生产什么、怎样生产、资源怎样配置、谁获得收入、人怎样消费、公共品与外部性怎样处理</li></ul></div></div><div class="quote"><div class="q">人在时间、金钱、资源有限的情况下，为了实现自己的目标进行选择、取舍、交换和合作的行为倾向。</div><div class="src">整理者建议的「人的经济性」定义</div></div><p class="prose">这比「人的经济性就是赚钱」要完整得多。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>起点是稀缺，不是贪婪</h2></div><div class="sd">经济学真正的起点是「稀缺」· 只要资源有限，就必须选择</div><p class="prose">假设你一天只有24小时。你可以：</p><div class="chips"><span class="chip">陪孩子</span><span class="chip">工作</span><span class="chip">读书</span><span class="chip">运动</span><span class="chip">娱乐</span><span class="chip">睡觉</span></div><p class="prose">你不可能全部无限增加。所以——</p><div class="ladder"><div class="step"><div class="t">资源有限</div><div class="d">一天只有24小时</div></div><div class="step hot"><div class="t">必须选择</div><div class="d">只要资源有限，就必须选择</div></div><div class="step"><div class="t">选择A = 放弃一部分B、C、D</div><div class="d">这就是经济思维的起点</div></div></div><div class="duo"><div class="col neg"><h4>人的经济性首先不是 ✕</h4><ul><li>我想赚最多的钱</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li><b>我不能什么都要，所以必须决定什么更重要</b>——这个转变非常重要</li></ul></div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>「三个设准」并不是三大公理</h2></div><div class="sd">整理者对老师「经济学三个基本设准」的校正</div><p class="prose">老师提出「经济学三个基本设准」：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>理性人假设</h4><p>理性选择是许多经济模型的重要假设之一，但现代经济学尤其行为经济学并不认为现实人类永远完全理性</p></div><div class="card"><div class="idx">貳</div><h4>欲望与资源不匹配</h4><p>其中「稀缺性」确实非常基础</p></div><div class="card"><div class="idx">叁</div><h4>依法保护产权</h4><p>非常重要，但更接近「市场运行的重要制度条件」，而不是所有经济学理论的逻辑起点</p></div></div><div class="warn"><div class="wt">整理者的校正：不能记成「经济学公认的三大基本假设」</div><ul><li>这三个都与经济学有关，但不能说成经济学公认的「三大基本假设」</li><li>更合适的结构是下面这条链——把「产权」放到制度条件的位置：稀缺 → 选择；制度 → 约束选择；激励 → 改变选择</li></ul></div><div class="ladder"><div class="step"><div class="t">稀缺 → 选择</div></div><div class="step"><div class="t">制度 → 约束选择</div></div><div class="step hot"><div class="t">激励 → 改变选择</div></div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>理性人不等于自私贪婪</h2></div><div class="sd">本课最需要纠偏的地方之一 · 并顺带理顺康德与「目的理性」</div><div class="quote"><div class="q">利益最大化、成本最低、不劳而获。</div><div class="src">老师把理性人的目的解释成的内容 · 整理者指出这是本课最需要纠偏的地方之一</div></div><p class="prose">这个解释太容易把经济理性理解成<b>自私＋贪婪</b>。经济学里的「理性」通常更接近：</p><div class="quote"><div class="q">面对给定目标和约束条件，选择自己认为较好的方案。</div><div class="src">整理者给出的经济学「理性」的通常理解</div></div><div class="case"><div class="h"><span class="tag">例一</span><span class="ht">少赚一点钱，换更多时间陪伴家人</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这并不「不理性」——因为他的目标函数里，家庭时间本身也是价值。</div></div></div><div class="case"><div class="h"><span class="tag">例二</span><span class="ht">一个医生愿意留在基层，即使收入稍低</span><span class="ar">▸</span></div><div class="sm"><div class="inner">因为他看重职业意义、稳定、家庭距离——同样可以是理性选择。</div></div></div><div class="duo"><div class="col neg"><h4>理性 ✕</h4><ul><li>只追求金钱</li><li>自私＋贪婪</li></ul></div><div class="col pos"><h4>理性 ✓</h4><ul><li><b>在约束下，有一致地追求自己重视的目标</b></li></ul></div></div><p class="prose">老师还把它连接到康德的「目的理性」。康德确实区分纯粹理性和实践理性，但现代社会科学讲「目的—手段理性」时，更典型的参照是「给定目标以后，寻找有效手段实现目标」的工具理性（instrumental rationality）；社会学史上「Zweckrationalität」与韦伯的讨论联系非常紧密。</p><div class="warn"><div class="wt">整理者的提醒：康德部分的记法</div><ul><li>不要记成：「经济学理性人理论来源于康德隐藏的第三种目的理性。」</li><li>更适合记：经济决策经常体现工具理性——目标给定后，在有限资源中寻找成本收益更合适的路径</li></ul></div><div class="quote"><div class="q">经济决策经常体现工具理性：目标给定后，在有限资源中寻找成本收益更合适的路径。</div><div class="src">整理者建议的记法</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>原则一 · 权衡取舍</h2></div><div class="sd">经济思维最基础的能力 · Trade-off</div><p class="prose">这是经济思维最基础的能力。英文常说 <b>Trade-off</b>，意思不是简单问「选哪个好？」，而是——</p><div class="quote"><div class="q">选择一个东西时，你愿意牺牲什么？</div><div class="src">权衡取舍的真正含义</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">中心计划投入20万元</span><span class="ar">▸</span></div><div class="sm"><div class="inner">可以做设备升级；也可以做环境改造；也可以招聘人员；也可以用于宣传。如果20万元只能选一个，就必须比较：哪个用途更值得。</div></div></div><div class="duo"><div class="col neg"><h4>真正成熟的问题不是 ✕</h4><ul><li>「这个方案有没有好处？」——几乎每个方案都有好处</li></ul></div><div class="col pos"><h4>应该问 ✓</h4><ul><li><b>和其他可选方案相比，它是不是更值得？</b>——这就是经济思维</li></ul></div></div><div class="warn"><div class="wt">这一段建议完全不要记（整理者）</div><ul><li>老师原话：「男性进化时负责狩猎，所以目标明确；女性负责采集，所以逛街纠结。」</li><li>这种解释属于非常典型的过度简化的进化故事；真实人的决策风格存在巨大个体差异，不能用「男性=目标明确，女性=容易纠结」来概括</li><li>这部分既不是理解经济学的必要条件，也很容易形成性别刻板印象</li><li>真正应该留下的是：每个人面对多个选择时，都需要权衡取舍——和性别无关</li></ul></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>原则二 · 机会成本</h2></div><div class="sd">整节课最重要的经济学概念之一</div><div class="quote"><div class="q">为了选择A，而放弃的“次优选择”的价值。</div><div class="src">机会成本的标准含义</div></div><div class="duo"><div class="col neg"><h4>不是 ✕</h4><ul><li>所有其他选择加起来</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li><b>最值得的那个被放弃选项</b></li></ul></div></div><div class="case"><div class="h"><span class="tag">例一</span><span class="ht">今晚两小时，你选择看电影</span><span class="ar">▸</span></div><div class="sm"><div class="inner">你本来第二想做的是读书。那么，读书两小时带来的价值，就是看电影的机会成本。</div></div></div><div class="case"><div class="h"><span class="tag">例二</span><span class="ht">你只有100元，可以买衬衣</span><span class="ar">▸</span></div><div class="sm"><div class="inner">或者买另一个你最想买的东西。如果最终买衬衣，那么被放弃的最佳替代选择的价值，就是机会成本。——老师「衬衣与香烟」的例子是对的方向。</div></div></div><div class="quote"><div class="q">不要只看“我得到了什么”，还要看“为了它，我放弃了什么”。</div><div class="src">机会成本真正训练的东西 · 对投资、管理、学习和人生选择都非常重要</div></div><div class="warn"><div class="wt">水饺店的例子，不是机会成本（整理者的校正）</div><ul><li>原课混淆很明显：水饺店原本馅料好、面粉好，生意很好；后来为了节省2元成本，降低质量，最终顾客流失</li><li>不能说：“少放2块钱原料，他的机会成本就是28元。”——不对</li><li>它真正体现的是：短期成本下降，可能导致长期需求、口碑和利润下降</li><li>机会成本必须是：选择一个方案时放弃的次优方案价值——例如老板有10万元，方案A升级店面、方案B开第二家店；选A，B的预期净收益才可能构成A的机会成本</li></ul></div><div class="case"><div class="h"><span class="tag">另一启示</span><span class="ht">成本最低 ≠ 利润最大</span><span class="ar">▸</span></div><div class="sm"><div class="inner">很多管理者一听「降本增效」，只看到降低显性成本，却没看到顾客流失、质量下降、员工士气、品牌损害这些隐藏成本。</div></div></div><div class="quote"><div class="q">看总收益与总成本，而不是单独把某一个成本压到最低。</div><div class="src">真正经济思维 · 这点非常值得保留</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>原则三 · 边际思维</h2></div><div class="sd">这节课最容易被讲错、但最重要的一个概念</div><p class="prose">「边际」最简单的意思就是<b>再多一点点</b>。例如已经有5名工作人员，要问的是——</p><div class="quote"><div class="q">再增加第6名工作人员，会多带来多少收益？又增加多少成本？</div><div class="src">边际问题的标准问法</div></div><p class="prose">这里比较的是<b>边际收益</b>和<b>边际成本</b>，也就是「多做一单位」带来的额外变化。</p><div class="warn"><div class="wt">「送大蒜」不是边际效应的标准定义（整理者的校正）</div><ul><li>老师原话：「买韭菜送两头大蒜，于是第二天还去买。」</li><li>这个故事可能涉及免费赠品、互惠心理、顾客体验、激励、锚定、营销——但它不是「边际效应」的标准定义</li><li>真正的边际问题应该问：再多送两头大蒜，带来的新增复购收益，是否大于两头大蒜的新增成本？这才叫边际分析——同一个例子稍微改一下就正确了</li></ul></div><p class="prose">边际思维为什么如此重要？因为现实决策通常不是「做 / 不做」这么极端，更常见的是「多做一点还是少做一点？」——已经宣传10万元，是否再增加1万元？已经开5个门诊，是否增加第6个？已经安排10个人，是否再增加第11个人？这时候不能只看<b>总收益</b>，而要看新增这一单位带来的新增收益和新增成本。</p><div class="quote"><div class="q">下一步还值不值得？</div><div class="src">边际思维可以压缩成的一句话 · 特别实用</div></div><div class="warn"><div class="wt">「边际分析意味着所有企业都不赚钱」是错误的（整理者的校正）</div><ul><li>老师这里明显讲过头了</li><li>经济学中经典的利润最大化原则之一是：边际收益 MR = 边际成本 MC——企业继续增加产量，只要新增一单位带来的收益大于新增成本；当继续增加会使新增成本超过新增收益，就应该停止扩张</li><li>但 MR = MC 并不意味着总利润=0：企业在利润最大化产量下可以盈利，也可以亏损，也可能零经济利润，具体要看价格、平均成本等</li><li>这一部分以后一定不要按原课记</li></ul></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>原则四 · 对激励作出反应</h2></div><div class="sd">Incentives matter——激励会改变行为</div><p class="prose">这一点老师讲的方向是对的：</p><div class="cards g3"><div class="card"><div class="idx">价</div><h4>商品打折</h4><p>一些消费者购买增加</p></div><div class="card"><div class="idx">停</div><h4>停车收费提高</h4><p>一些人可能减少驾车</p></div><div class="card"><div class="idx">绩</div><h4>绩效奖励变化</h4><p>员工行为可能变化</p></div></div><div class="quote"><div class="q">Incentives matter——激励会改变行为</div><div class="src">第四个原则 · 曼昆经典框架第四条正是「People respond to incentives」</div></div><p class="prose">所以老师所谓「换季清仓、大甩卖让人产生反应」，确实属于<b>激励改变选择</b>。</p><div class="warn"><div class="wt">「对促销有反应=人的生物性」过度简化（整理者的校正）</div><ul><li>消费者为什么会对「最后一天」「半价」「限量」产生反应？原因可能包括价格激励、稀缺感、损失厌恶、社会比较、锚定效应等很多心理机制——不能统一还原成生物应激反应</li><li>经济决策是：生物基础＋心理机制＋社会文化＋制度环境，共同作用</li></ul></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>剥开之后：前四原则与交换</h2></div><div class="sd">把原课彻底剥开 · 老师实际上讲的是曼昆「前五原则」</div><p class="prose">把原课彻底剥开以后会非常清楚——老师后半段的四点，正对应《经济学原理》中「人们如何作出决策」的前四项：</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>权衡取舍</h4><p>更标准的表达：<b>人们面临取舍</b></p></div><div class="card"><div class="idx">貳</div><h4>机会成本</h4><p><b>成本是为了得到某物所放弃的最佳替代</b></p></div><div class="card"><div class="idx">叁</div><h4>边际量 / 边际效应</h4><p><b>理性人进行边际分析</b></p></div><div class="card"><div class="idx">肆</div><h4>对促销作出反应</h4><p><b>人们对激励作出反应</b></p></div></div><p class="prose">所以这节课真正的经济学骨架其实非常扎实。问题主要出在：<b>老师为了把它解释成「人性」，加入了太多不必要甚至错误的哲学和生物学解释。</b>而老师开头讲「交换使双方价值增加」，其实又对应第五条——<b>贸易可以使每个人状况改善</b>：分工和自愿交换可以让参与者获得收益。这节课实际上把经济学前五个原则，揉进了一套「人的经济性」模型里。</p><p class="prose">但为什么双方都觉得自己赚了？老师说「必须是唯心主义价值观」——整理者认为这个哲学标签没必要，经济学只需要承认：<b>价值评价具有主体差异。</b></p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">苹果换橙子</span><span class="ar">▸</span></div><div class="sm"><div class="inner">我手上有苹果，更想要橙子；你手上有橙子，更想要苹果。于是交换：我得到橙子，你得到苹果。双方都认为：自己得到的＞自己放弃的。这就够了——不需要从唯心主义来证明市场交换。</div></div></div><div class="duo"><div class="col neg"><h4>「等价交换」反而容易误导 ✕</h4><ul><li>市场交换不必是：「双方认为两个东西完全等价。」</li><li>如果两个东西在双方眼里价值完全一样，为什么要花时间交换？</li></ul></div><div class="col pos"><h4>更准确的理解 ✓</h4><ul><li>自愿交易发生，恰恰往往因为<b>双方主观评价不同</b></li><li><b>双方都认为自己得到的东西值得交换</b></li><li>产权明确、合同执行、防欺诈等制度能降低交易风险，是市场运行的重要条件——但产权保护 ≠ 自动产生「等价交换原则」</li></ul></div></div><div class="case"><div class="h"><span class="tag">重要补充</span><span class="ht">交易双方获益 ≠ 所有人都获益</span><span class="ar">▸</span></div><div class="sm"><div class="inner">两家企业完成一笔自愿交易，双方都赚钱；但生产过程污染河流，附近居民承担损害。交易双方受益，不代表社会整体必然受益。经济学把这种对第三方产生的影响称为：外部性 Externality。它防止我们把「双方自愿」直接等同于「社会结果一定最好」。</div></div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>经济思维五问</h2></div><div class="sd">人的经济性，真正可以浓缩成四个问题——再加入「交换」，形成第五问</div><p class="prose">以后遇到任何经济或经营问题，可以先问四个问题；如果再加入「交换」，就形成第五问（点击展开）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">第一问：我要什么？</span></summary><div class="body">目标是什么？</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">第二问：我必须放弃什么？</span></summary><div class="body">机会成本是什么？</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">第三问：再多做一点值不值？</span></summary><div class="body">边际收益是否大于边际成本？</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">第四问：规则和激励改变后，人会怎么反应？</span></summary><div class="body">行为是否会变化？</div></details><details class="qa"><summary><span class="qn">问伍</span><span class="qt">第五问：有没有一种合作方式，让双方都比不合作更好？</span></summary><div class="body">例如自己做所有事情，还是与别人分工合作？这个问题连接：比较优势、专业化、交易。</div></details><p class="prose">这四问已经非常强大。于是整课最终形成——这五个词，应该比原课大量哲学名词重要得多：</p><div class="ladder"><div class="step"><div class="t">取舍</div></div><div class="step"><div class="t">成本</div></div><div class="step"><div class="t">边际</div></div><div class="step"><div class="t">激励</div></div><div class="step hot"><div class="t">交换</div></div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>把它用于创业</h2></div><div class="sd">老师最后的作业其实非常好 · 从「我觉得不错」进入经济分析</div><p class="prose">假设真的准备开一家店。不要先问「这个项目听起来好不好？」，而可以按经济思维检查：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>取舍</h4><p>我投入这50万元，就不能拿去做什么？</p></div><div class="card"><div class="idx">貳</div><h4>机会成本</h4><p>下一个最好的投资方案收益是多少？</p></div><div class="card"><div class="idx">叁</div><h4>边际</h4><p>再增加一个员工，增加的收入是否超过工资和管理成本？</p></div><div class="card"><div class="idx">肆</div><h4>激励</h4><p>员工绩效怎么设计？顾客促销会不会改变消费？</p></div><div class="card"><div class="idx">伍</div><h4>交换</h4><p>我为顾客创造的价值是什么？为什么顾客愿意把钱交给我，而不是交给竞争对手？</p></div></div><p class="prose">到这里，创业从「我觉得不错」进入<b>经济分析</b>。但只掌握「四大原则」还不够——整理者提醒，创业还必须再补几个老师没讲的东西：</p><div class="case"><div class="h"><span class="tag">补充</span><span class="ht">创业还要看的五样东西</span><span class="ar">▸</span></div><div class="sm"><div class="inner">需求——谁真的愿意付钱？<br>竞争——为什么选择你？<br>单位经济——每新增一单到底赚还是亏？<br>现金流——账面赚钱时有没有现金活下去？<br>风险——如果销量只有预计的一半怎么办？<br><br>这些才会把经济思维真正落到企业经营。</div></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>第八章三节串起来</h2></div><div class="sd">经过纠偏以后，整个「人性」框架出来了</div><div class="tl"><div class="ev"><div class="dyn">第一节 · 生物性</div><p>人会生存、感知、学习、适应</p></div><div class="ev"><div class="dyn">第二节 · 社会性</div><p>人要与他人合作，在文化、规则和激励中行动</p></div><div class="ev"><div class="dyn">第三节 · 经济性</div><p>人在有限资源中进行选择、取舍、交换，并对激励作出反应</p></div></div><div class="ladder"><div class="step"><div class="t">生命体</div><div class="d">有需要</div></div><div class="step"><div class="t">社会人</div><div class="d">必须合作</div></div><div class="step hot"><div class="t">经济人</div><div class="d">面对稀缺进行选择</div></div></div><p class="prose">这比单独讨论「人性究竟善还是恶？」更有实际分析价值。</p><p class="prose">这比把「经济人」简单理解成「自私、逐利的人」，要准确得多，也更能真正应用于创业、投资、管理和日常决策。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>最需要纠偏的八个地方</h2></div><div class="sd">整理者的集中总结 · 以后不要按原课记</div><p class="prose">整理者参照曼昆《经济学原理》、圣路易斯联邦储备银行与 OpenStax 等公开材料，对这一课集中列出八个纠偏点，复习时逐条对照：</p><div class="warn"><div class="wt">八个纠偏 · 整理者的总结</div><ul><li>一、「经济=交换」太窄。交换是经济活动的重要组成，但经济学更广泛研究稀缺条件下的生产、分配、交换和消费。</li><li>二、「理性人=金钱利益最大化=不劳而获」不成立。理性选择更接近在目标和约束下作出相对一致的选择；目标可以包括收入，也可以包括家庭、意义、闲暇等。</li><li>三、「理性人、欲望资源矛盾、产权保护」不是经济学统一公认的三大基本假设。产权更适合理解为重要制度条件。</li><li>四、所谓「目的理性」不宜直接归为康德经济理论基础。目的—手段理性更适合从一般工具理性以及韦伯的 Zweckrationalität 来理解。</li><li>五、男女在「权衡取舍」上的猎人—采集者解释不要记。这是没有必要的性别刻板化。</li><li>六、水饺店降低质量造成顾客流失不是机会成本。机会成本是选择时所放弃的次优替代方案价值。</li><li>七、送两头大蒜使顾客复购不等于「边际效应」的定义。边际分析真正关注的是再增加一单位行动的额外成本和额外收益。</li><li>八、「按边际原则企业都不赚钱」错误。边际收益等于边际成本通常用于寻找利润最大化产量，但企业仍可能盈利、亏损或零经济利润。</li></ul></div><div class="duo"><div class="col neg"><h4>按原课记 ✕</h4><ul><li>「经济=交换」</li><li>「理性人=不劳而获」</li><li>男女差异的猎人—采集者故事</li><li>水饺店顾客流失=机会成本</li><li>送大蒜=「边际效应」的定义</li><li>按边际原则企业都不赚钱</li></ul></div><div class="col pos"><h4>按纠偏后记 ✓</h4><ul><li>经济研究稀缺条件下的生产、分配、交换和消费</li><li>理性=在目标和约束下作出相对一致的选择</li><li>每个人面对多个选择都需要权衡取舍，与性别无关</li><li>机会成本=选择时所放弃的次优替代方案价值</li><li>边际分析=再增加一单位行动的额外成本与额外收益</li><li>MR=MC 用于寻找利润最大化产量，企业仍可能盈利、亏损或零经济利润</li></ul></div></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>如果这一课只记住六句话</h2></div><div class="sd">整理者的最终压缩 · 复习时先默背再看原文</div><p class="prose">整理者在最后给出六句话，作为这一课的最终压缩：</p><div class="panel"><h3><span class="no2">⑥</span>只记住六句话</h3><div class="pd">以下六句逐字来自源文 · 复习时先默背再看原文</div><div class="quote"><div class="q">① 人的经济性不是“人天生爱钱”，而是人在资源有限、欲望和目标多样的条件下必须进行选择。</div><div class="src">整理者 · 六句话之一</div></div><div class="quote"><div class="q">② 每一次选择都意味着取舍；真正的成本不仅是付了多少钱，还包括为了这个选择放弃的最佳替代机会。</div><div class="src">整理者 · 六句话之二</div></div><div class="quote"><div class="q">③ 经济判断不要只问“总体好不好”，而要问“再增加一点行动，新增收益是否超过新增成本”。</div><div class="src">整理者 · 六句话之三</div></div><div class="quote"><div class="q">④ 人会对价格、奖惩、规则等激励作出反应，因此改变制度往往也会改变行为。</div><div class="src">整理者 · 六句话之四</div></div><div class="quote"><div class="q">⑤ 自愿交换能够让双方因为不同的主观价值判断而同时受益，但还要考虑第三方影响和社会成本。</div><div class="src">整理者 · 六句话之五</div></div><div class="quote"><div class="q">⑥ 真正成熟的经济思维不是一味追求最低成本，而是在稀缺条件下比较替代方案、机会成本、边际收益和长期结果。</div><div class="src">整理者 · 六句话之六</div></div></div><div class="quote"><div class="q">经济思维的核心，不是“怎样赚最多”，而是“资源有限时，我选择什么、放弃什么，再多做一步到底值不值得”。</div><div class="src">整理者最推荐的中心金句 · 可作为信息图中心</div></div><div class="ladder"><div class="step"><div class="t">稀缺</div></div><div class="step"><div class="t">权衡取舍</div></div><div class="step"><div class="t">机会成本</div></div><div class="step"><div class="t">边际判断</div></div><div class="step"><div class="t">激励反应</div></div><div class="step"><div class="t">交换与合作</div></div><div class="step hot"><div class="t">价值创造</div></div></div><p class="prose">这样一来，第八章三节就完全串起来了：生物性——我要生存；社会性——我要与人合作；经济性——我必须在有限资源中选择怎样合作。</p></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">经济学前五原则</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">经济思维五问</div></div><div class="cnt"><div class="v" data-c="8">0</div><div class="l">整理者纠偏</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">收束六句话</div></div></div><div class="panel"><h3><span class="no2">①</span>概念归位练习</h3><div class="pd">判断下列场景属于「权衡取舍 / 机会成本 / 边际思考 / 激励反应」哪一类，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文：「如果20万元只能选一个，就必须比较：哪个用途更值得」——权衡取舍（Trade-off）"><div class="st">1. 中心计划投入20万元，只能选一个用途，必须比较哪个用途更值得</div><div class="opts"><button data-ok="1">权衡取舍</button><button data-ok="0">机会成本</button><button data-ok="0">边际思考</button><button data-ok="0">激励反应</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「读书两小时带来的价值，就是看电影的机会成本」"><div class="st">2. 今晚两小时选择看电影，本来第二想做的是读书——读书两小时带来的价值</div><div class="opts"><button data-ok="0">权衡取舍</button><button data-ok="1">机会成本</button><button data-ok="0">边际思考</button><button data-ok="0">激励反应</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「不能只看总收益，而要看新增这一单位带来的新增收益和新增成本」——边际思维"><div class="st">3. 已经宣传10万元，是否再增加1万元？要看新增收益与新增成本</div><div class="opts"><button data-ok="0">权衡取舍</button><button data-ok="0">机会成本</button><button data-ok="1">边际思考</button><button data-ok="0">激励反应</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文原例：商品打折，一些消费者购买增加——人们会对激励作出反应"><div class="st">4. 商品打折，一些消费者购买增加</div><div class="opts"><button data-ok="0">权衡取舍</button><button data-ok="0">机会成本</button><button data-ok="0">边际思考</button><button data-ok="1">激励反应</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文对边际问题的标准问法——比较边际收益与边际成本"><div class="st">5. 再增加第6名工作人员，会多带来多少收益？又增加多少成本？</div><div class="opts"><button data-ok="0">权衡取舍</button><button data-ok="0">机会成本</button><button data-ok="1">边际思考</button><button data-ok="0">激励反应</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「如果最终买衬衣，那么被放弃的最佳替代选择的价值，就是机会成本」"><div class="st">6. 100元最终买了衬衣，被放弃的最佳替代选择的价值</div><div class="opts"><button data-ok="0">权衡取舍</button><button data-ok="1">机会成本</button><button data-ok="0">边际思考</button><button data-ok="0">激励反应</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>五问通关清单</h3><div class="pd">选一个你正面临的经济或经营决策（如一笔投资、一次跳槽、一个项目），逐问检验自己能否回答</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">第一问 · 我能说清：我要什么（目标是什么）？</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">第二问 · 我能说清：我必须放弃什么（机会成本是什么）？</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">第三问 · 我能判断：再多做一点值不值（边际收益是否大于边际成本）？</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">第四问 · 我能预判：规则和激励改变后，人会怎么反应？</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">第五问 · 我能寻找：有没有一种合作方式，让双方都比不合作更好？</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">纠偏 · 我能避开：把水饺店顾客流失记成机会成本、把送大蒜记成「边际效应」的定义</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师对「经济」的定义是什么？</div><div class="ans"><button data-ok="0">A. 经济是赚钱的活动</button><button data-ok="1">B. 经济是通过交换让彼此价值增加的合作活动</button><button data-ok="0">C. 经济是优胜劣汰的竞争</button><button data-ok="0">D. 经济是政府的分配活动</button></div><div class="exp">老师原话：「经济是通过交换让彼此价值增加的合作活动」——其中非常好的部分是：经济不是只有竞争，也包含合作。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>整理者认为，经济学真正的起点是什么？</div><div class="ans"><button data-ok="0">A. 贪婪</button><button data-ok="1">B. 稀缺</button><button data-ok="0">C. 交换</button><button data-ok="0">D. 利润</button></div><div class="exp">源文：「经济学真正的起点是稀缺，不是贪婪」；只要资源有限，就必须选择。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>机会成本的标准含义是什么？</div><div class="ans"><button data-ok="1">A. 为了选择A，而放弃的「次优选择」的价值</button><button data-ok="0">B. 所有其他选择加起来的价值</button><button data-ok="0">C. 为得到某物实际付出的金钱</button><button data-ok="0">D. 降价促销省下来的钱</button></div><div class="exp">源文：「机会成本的标准含义是：为了选择A，而放弃的次优选择的价值。不是：所有其他选择加起来。」</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>边际思维可以压缩成哪一句话？</div><div class="ans"><button data-ok="0">A. 成本压得越低越好</button><button data-ok="0">B. 规模做得越大越好</button><button data-ok="1">C. 下一步还值不值得？</button><button data-ok="0">D. 多送一点东西顾客就会回来</button></div><div class="exp">源文：「边际思维可以压缩成：下一步还值不值得？」——看新增这一单位带来的新增收益和新增成本；「多送一点东西顾客就回来」恰是整理者纠偏的记法。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者认为这节课真正的经济学骨架对应什么？</div><div class="ans"><button data-ok="0">A. 康德的三大批判</button><button data-ok="1">B. 曼昆《经济学原理》的前几个决策原则</button><button data-ok="0">C. 生物进化论</button><button data-ok="0">D. 唯心主义价值观</button></div><div class="exp">源文：老师后半段的四点几乎对应曼昆四原则（权衡取舍／机会成本／边际思考／对激励作出反应），开头的「交换使双方价值增加」又对应第五条「贸易可以使每个人状况改善」。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">我不能什么都要，所以必须决定什么更重要。</div><div class="src">稀缺是起点 · 人的经济性首先不是「我想赚最多的钱」</div></div><div class="quote"><div class="q">交换可以创造双方都认为增加了的价值</div><div class="src">老师关于交换的判断 · 很值得保留</div></div><div class="quote"><div class="q">成本最低 ≠ 利润最大。</div><div class="src">水饺店例子的另一个启示 · 隐藏成本</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../25-人的社会性/index.html">← 上一篇 · 人的社会性</a><a href="../27-个体人性的八宫结构/index.html">下一篇 · 个体人性的八宫结构 →</a><span class="sp"></span><span class="cur">人的经济性</span></div></nav>
+<footer class="coda"><div class="wm2">選</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">经济思维的核心，不是“怎样赚最多”，<br>而是<b>资源有限时，我选择什么、放弃什么，<br>再多做一步到底值不值得</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二十七讲《人的经济性》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s3", "#s3", "#s6", "#s7", "#s8", "#s9", "#s10"], "sortok": [0, 1, 2, 3, 2, 1], "quizok": [1, 1, 0, 2, 1], "ckkey": "zx26-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

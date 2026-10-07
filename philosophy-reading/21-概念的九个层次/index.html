@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概念的九个层次 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx21-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../20-艺术工具/index.html">← 上一篇 · 艺术工具</a><a href="../22-问题意识的五个构建/index.html">下一篇 · 问题意识的五个构建 →</a><span class="sp"></span><span class="cur">概念的九个层次</span></div></nav>
+<header class="hero" id="top"><div class="wm">名</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第七章《思路》第一节</div>
+  <div class="no">貳拾貳</div>
+  <h1>概念的九个层次</h1>
+  <div class="sub">把一个模糊的东西，真正想清楚</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>思考的第一步通常不是找答案，而是把正在讨论的概念弄清楚：<br>感觉 → <b>概念化</b> → 区分 → 深化 → 建立关系 → 推理 → 判断。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 先校正开头那句话 · 概念是桥梁</a><a href="#s3">叁 · 康德：分析判断与综合判断</a><a href="#s4">肆 · 为什么必须从概念开始</a><a href="#s5">伍 · 概念的有限性</a><a href="#s6">陆 · 假名 · 内涵与外延 · 家族相似</a><a href="#s7">柒 · 不同学科，定义概念的方法不同</a><a href="#s8">捌 · 九层概念的真相</a><a href="#s9">玖 · 前三层：普遍 · 特殊 · 具体</a><a href="#s10">拾 · 四到七层：从现实构成到历史变化</a><a href="#s11">拾壹 · 八九层与九问模型</a><a href="#s12">拾貳 · 很多争论其实是概念争论</a><a href="#s13">拾叁 · 第七章的路线</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>感觉</b><span>对世界只有感觉，思考尚未开始</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>概念化</b><span>概念是思考的基本单位 · 学而不思则罔</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>区分</b><span>分析判断 / 综合判断</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>深化</b><span>概念的九个层次 · 层层追问</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>建立关系</b><span>概念连成知识网络 · 九问模型</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s12"><b>推理</b><span>先定义，再争论</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s13"><b>判断</b><span>概念化 → 问题化 → 深度化，真正开始思考</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第七章的地基 · 从感觉开始，到判断形成</div><p class="prose">这一课进入第七章。如果说第五章解决的是思维模式，第六章解决的是语言、文字、数学、艺术这些思维工具，那么第七章开始训练的是：<b>怎样把一个模糊的东西，真正想清楚。</b>老师给出的三步很明确：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>概念的九层</h4><p>第一节 · <b>把东西说清楚</b>——本课内容，第七章的地基</p></div><div class="card"><div class="idx">貳</div><h4>问题意识的五个结构</h4><p>第二节 · <b>把问题找出来</b></p></div><div class="card"><div class="idx">叁</div><h4>深度思考的六个循环</h4><p>第三节 · <b>把问题想下去</b></p></div></div><p class="prose">它真正要讲的不是“背九个哲学名词”，而是——</p><div class="quote"><div class="q">一个人能不能深入思考，很大程度取决于他能不能把概念弄清楚、分层次、看结构、看变化。</div><div class="src">本课的核心命题 · 整理者认为整堂课最值得留下的判断</div></div><p class="prose">整堂课最值得留下来的主线，是这一条链：</p><div class="ladder"><div class="step"><div class="t">感觉</div><div class="d">对世界只有模糊的感受，尚未形成思考</div></div><div class="step"><div class="t">概念化</div><div class="d">把感觉提炼成概念——思考的基本单位</div></div><div class="step"><div class="t">区分</div><div class="d">分清概念的层次、边界与定义方法</div></div><div class="step"><div class="t">深化</div><div class="d">层层追问：是什么、哪一类、哪一个</div></div><div class="step"><div class="t">建立关系</div><div class="d">概念不再孤立，连成知识网络</div></div><div class="step"><div class="t">推理</div><div class="d">由已有判断推出新的判断</div></div><div class="step hot"><div class="t">判断</div><div class="d">形成可以检验的结论——真正开始思考</div></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>先校正开头那句话 · 概念是桥梁</h2></div><div class="sd">学而不思则罔 · 连接学习和思考的第一个桥梁</div><div class="warn"><div class="wt">开篇校正 · 老师引用孔子，语音稿有误</div><ul><li>语音稿里说成：“学而不思则枉，思而不学……”</li><li>准确的是：<b>学而不思则罔，思而不学则殆。</b></li><li>重点不是“学习没用”——罔是迷惘，殆是危险：只有输入没有加工，只有空想没有支撑，都成不了真正的认识。</li></ul></div><div class="quote"><div class="q">只有输入，没有加工，知识不会真正成为自己的认识；只有空想，没有知识和经验支撑，也容易陷入混乱。</div><div class="src">整理者对“学而不思则罔，思而不学则殆”的解释</div></div><p class="prose">所以这一章的任务，本质上是<b>把“学到的东西”变成“能拿来思考的东西”</b>。而连接学习和思考的第一个桥梁，就是：<b>概念。</b></p><p class="prose">老师说“认识活动就是概念、推理、判断”——整理者指出这里顺序稍乱。从传统逻辑角度，比较清楚的结构是<b>概念 → 判断 → 推理 → 新判断</b>：</p><div class="ladder"><div class="step hot"><div class="t">概念</div><div class="d">回答：这是什么？——桌子、自由、管理、健康</div></div><div class="step"><div class="t">判断</div><div class="d">把概念连接起来，形成可判断真假的命题：“这张桌子是木制的。”</div></div><div class="step"><div class="t">推理</div><div class="d">由已有判断推出新的判断：所有木材会燃烧。这张桌子是木制的。→ 在适当条件下它可以燃烧。</div></div><div class="step"><div class="t">新判断</div><div class="d">推理的产出——在实际思考里，它们会不断循环</div></div></div><p class="prose">概念不清，判断很容易模糊；判断不清，推理就没有基础。因此：<b>概念是思考的基本单位。</b></p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>康德：分析判断与综合判断</h2></div><div class="sd">谓词是否已包含在主词概念里 · 两种判断的分水岭</div><p class="prose">老师这里抓住了一个重要点——康德对判断的区分：</p><div class="cards g2"><div class="card"><div class="idx">析</div><h4>分析判断</h4><p>谓词已经包含在主词概念里。“未婚”已包含在“单身汉”的概念之中——这种判断主要是在<b>展开原有概念</b></p></div><div class="card"><div class="idx">综</div><h4>综合判断</h4><p>谓词给主体增加了原来概念里没有包含的信息。“桌子”这个概念本身并不必然包含“木制”——于是<b>增加了新的认识</b></p></div></div><div class="quote"><div class="q">综合判断才能扩展知识</div><div class="src">老师的结论 · 大方向抓住了康德的核心</div></div><p class="prose">整理者注：康德确实以“谓词是否包含于主体概念”来说明分析/综合判断的基本区别，他的认识论特别关心<b>综合判断如何可能</b>。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>为什么必须从概念开始</h2></div><div class="sd">定义一变，结论可能完全变化 · 概念能力的第一问</div><p class="prose">假设有人说：“现在年轻人都没有责任心。”——这一句里至少有三个概念：<b>年轻人、责任、责任心不足</b>。如果这些概念没有定义，后面再怎么讨论都是混乱。</p><div class="cards g3"><div class="card"><div class="idx">年</div><h4>年轻人</h4><p>指18—25岁？还是40岁以下？</p></div><div class="card"><div class="idx">责</div><h4>责任心</h4><p>指按时上班？主动解决问题？愿意承担后果？</p></div><div class="card"><div class="idx">变</div><h4>定义一变</h4><p>只要定义一变，结论可能完全变化</p></div></div><p class="prose">所以真正的深度思考第一步经常不是<b>马上发表观点</b>，而是<b>先问：你说的这个词到底是什么意思？</b>——这就是概念能力。</p><div class="quote"><div class="q">思考的第一步通常不是找答案，而是把正在讨论的概念弄清楚。</div><div class="src">整理者提炼的六句话 · 其一</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>概念的有限性</h2></div><div class="sd">名可名，非常名 · 概念是地图，不是领土</div><p class="prose">老师用老子“名可名，非常名”说明：<b>概念具有有限性。</b>世界本身非常复杂，但语言必须用有限的词、分类、名称去描述。这个启发很好。</p><p class="prose">例如“爱”，只有一个字。但现实中的爱可能包含：</p><div class="chips"><span class="chip">父母对子女</span><span class="chip">伴侣</span><span class="chip">友情</span><span class="chip">慈悲</span><span class="chip">依恋</span><span class="chip">责任</span><span class="chip">牺牲 …</span></div><p class="prose">一个词并不能穷尽所有经验。所以整理者认为这是这一节应该加入的一个非常重要的理解：</p><div class="quote"><div class="q">概念是地图，不是领土。</div><div class="src">整理者的补充理解 · 地图很有用，但永远比真实世界简单</div></div><div class="duo"><div class="col neg"><h4>很容易滑向的误区 ✕</h4><ul><li>“名称不能完全等于真实”</li><li>→ “所以概念没有意义”</li></ul></div><div class="col pos"><h4>成熟思维 ✓</h4><ul><li><b>概念必须简化现实</b></li><li>但<b>不能把概念误认为现实本身</b></li><li>没有概念，我们甚至无法有效地比较、分类、记忆、推理、交流</li></ul></div></div><div class="case"><div class="h"><span class="tag">标签</span><span class="ht">“差生”：概念遮蔽真实的人</span><span class="ar">▸</span></div><div class="sm"><div class="inner">把一个孩子定义成“差生”，是把成绩、学习习惯、兴趣、家庭环境、发展潜力全部压缩成一个标签。久而久之，概念开始遮蔽真实的人。这和前面辩证思维讲的“不要把当前状态当成永久本质”正好连接起来。</div></div></div><div class="quote"><div class="q">概念是对复杂现实的抽象和压缩，因此它非常有用，但永远不能完全等同于真实本身。</div><div class="src">整理者提炼的六句话 · 其二</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>假名 · 内涵与外延 · 家族相似</h2></div><div class="sd">三处需要谨慎的概念理论 · 维特根斯坦的补充</div><p class="prose">老师说“佛教说概念是假名”——这个方向有背景，但“假”非常容易误解。</p><div class="warn"><div class="wt">“假名”不是“名字是假东西”</div><ul><li>中观哲学里，把事物理解为依缘而有、空无固定自性，因此名称和概念是一种依赖条件的<b>约定性指称</b>。</li><li>不是说“这个词是假的，所以什么都不存在”。</li><li>龙树思想把缘起、空和依俗安立联系起来；“假名”更接近<b>依条件而建立的名称/约定</b>。</li></ul></div><div class="case"><div class="h"><span class="tag">假名</span><span class="ht">现代例子：“医院”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">医院到底是什么？是大楼吗？医生吗？执照吗？患者吗？制度吗？——这些都不是单独的“医院”。是许多条件共同构成以后，我们把这个整体命名为“医院”。这就是一个很好理解“假名”的现代例子。</div></div></div><div class="warn"><div class="wt">整理者提醒：“主体性概念 / 外延性概念”需要特别谨慎</div><ul><li>原课把爱、道、佛、性称为“主体性概念，没有外延”，把其他概念称为“外延性概念”——这<b>不是罗素和维特根斯坦的标准二分法</b>。</li><li>现代逻辑和语义学里，更常见的是<b>内涵 Intension</b> 和<b>外延 Extension</b>。</li><li>现代“内涵—外延”语义学后来由卡尔纳普等系统化，虽与罗素、早期维特根斯坦有思想关联，但不是“主体性概念 vs 外延性概念”这么简单。</li></ul></div><div class="cards g2"><div class="card"><div class="idx">内</div><h4>内涵 Intension</h4><p>我们用来理解“人”这个概念的意义、属性——概念的内容</p></div><div class="card"><div class="idx">外</div><h4>外延 Extension</h4><p>现实中所有属于“人”这个概念的对象集合——“哺乳动物”的外延就是所有哺乳动物</p></div></div><p class="prose">而且维特根斯坦恰恰提醒我们：有些概念根本没有固定本质边界。比如<b>“游戏”</b>——你很难找到一个特征：<b>所有游戏都有，而且非游戏都没有。</b>有的有竞争，有的不竞争；有的有胜负，有的没有；有的娱乐，有的非常严肃。他因此提出著名的<b>家族相似</b>：</p><div class="quote"><div class="q">概念的不同用法之间可能只是形成重叠、交叉的相似网络，不一定都有一个共同本质。</div><div class="src">维特根斯坦“家族相似”思想</div></div><p class="prose">这个思想对老师所谓“概念九层”是一个很好的补充：<b>不是所有概念都适合用同一种定义方法。</b></p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>不同学科，定义概念的方法不同</h2></div><div class="sd">老师真正很有价值的观点 · 归成六种常用定义方法</div><p class="prose">老师真正很有价值的一个观点：<b>不同学科，定义概念的方法不同。</b>这一点整理者很认同。</p><div class="cards g2"><div class="card"><div class="idx">生</div><h4>生物学</h4><p>“哺乳动物”可以通过<b>结构、遗传、分类</b>定义</p></div><div class="card"><div class="idx">物</div><h4>物理学</h4><p>“速度”不是描述“速度是什么东西”，而是<b>位移 / 时间</b>——通过关系定义</p></div><div class="card"><div class="idx">经</div><h4>经济学</h4><p>“通货膨胀”需要<b>价格水平、时间变化</b>等指标</p></div><div class="card"><div class="idx">法</div><h4>法律</h4><p>“医疗事故”需要<b>主体、行为、后果、因果关系、法律规范</b>共同界定</p></div></div><div class="quote"><div class="q">学会一个学科，首先要学会那个学科怎样使用概念。</div><div class="src">本课非常值得长期保留的观点</div></div><div class="h3blk">六种常用定义方法</div><p class="prose">老师提出的几种“概念原理”，原课比较散，整理者建议把它归成六种常用定义方法：</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>分类式</h4><p>它属于哪一类？与其他类有什么区别？——糖尿病是一类代谢性疾病</p></div><div class="card"><div class="idx">②</div><h4>结构式</h4><p>它由什么组成？——一个组织由人员、结构、制度、资源等构成</p></div><div class="card"><div class="idx">③</div><h4>因果式</h4><p>它因什么产生，会产生什么结果？——用于理解过程性对象</p></div><div class="card"><div class="idx">④</div><h4>关系式</h4><p>它和其他变量是什么关系？——速度：距离和时间之间的关系</p></div><div class="card"><div class="idx">⑤</div><h4>功能式</h4><p>它能做什么？解决什么问题？——心脏：泵血</p></div><div class="card"><div class="idx">⑥</div><h4>过程式</h4><p>它怎样形成、发展和变化？——职业能力是长期学习、实践、反馈形成的过程</p></div></div><div class="warn"><div class="wt">两个“学科定义规则”不宜记成学科共识</div><ul><li>老师说读《佛教的逻辑》后总结出“因｜果｜业”——这是他<b>个人建立的理解框架</b>。佛教内部的认识论、逻辑学、因明、中观、唯识等传统都非常复杂，并没有统一标准说所有佛教概念都必须从因、果、业三个方面定义。</li><li>“物理所有概念必须三个要素”这个说法太绝对。速度=位移/时间、密度=质量/体积确实通过其他量之间的关系定义，但不存在“所有物理概念一定是三个要素”这样的普遍规律。</li><li>真正值得保留的是：<b>物理学特别重视变量之间可以量化的关系</b>——孩子学物理如果只背“速度是什么”而不理解变量关系，确实很难真正学懂。</li></ul></div><div class="quote"><div class="q">不同学科会用不同方式形成概念：分类、结构、因果、关系、功能和过程都可能成为定义路径。</div><div class="src">整理者提炼的六句话 · 其三</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>九层概念的真相</h2></div><div class="sd">先校正，再使用 · 老师重整黑格尔的教学模型</div><p class="prose">整堂课真正进入高潮，是老师讲“黑格尔九层概念”。但这里必须先讲清楚一个关键事实——</p><div class="warn"><div class="wt">“黑格尔九层概念原理”并不是黑格尔本人列出的标准九层</div><ul><li>老师实际上把黑格尔《逻辑学》中的多个阶段<b>重新整理成了一套自己的教学模型</b>。</li><li>《逻辑学》第三部分《概念论》首先从<b>普遍性—特殊性—个别性</b>展开，然后进入对象性，涉及机械性、化学性、目的论等，最后进入“理念”，经过生命、认识而达到绝对理念。</li><li>老师的九层确实能看到黑格尔的影子，但它不是“黑格尔原著中的九级定义表”——这个一定要区分。</li></ul></div><div class="ladder"><div class="step"><div class="t">① 普遍性</div><div class="d">它是什么？——从多个具体对象中抽取共同性</div></div><div class="step"><div class="t">② 特殊性</div><div class="d">它是哪一种？——从大类进入子类</div></div><div class="step hot"><div class="t">③ 具体性</div><div class="d">究竟是哪一个？——普遍 → 特殊 → 具体</div></div><div class="step"><div class="t">④ 物质性</div><div class="d">它由什么材料和条件构成？</div></div><div class="step"><div class="t">⑤ 有机性</div><div class="d">各组成部分怎样形成一个整体？</div></div><div class="step"><div class="t">⑥ 目的性</div><div class="d">它为什么这样组织？</div></div><div class="step hot"><div class="t">⑦ 生命性</div><div class="d">它怎样随历史发展变化？</div></div><div class="step"><div class="t">⑧ 认识</div><div class="d">概念开始组成一个知识网络</div></div><div class="step hot"><div class="t">⑨ 绝对理念</div><div class="d">连接最终原则与世界观</div></div></div><p class="prose">如果不纠缠哲学史，而把它变成<b>层层深入认识一个对象的方法</b>，非常有启发性。下面逐层拆。</p><div class="quote"><div class="q">黑格尔真正经典的概念三个环节是普遍性、特殊性和个别性；课程所谓“九层概念”更适合作为老师重新设计的一套认知深化工具。</div><div class="src">整理者提炼的六句话 · 其四</div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>前三层：普遍 · 特殊 · 具体</h2></div><div class="sd">从“是什么”到“哪一个” · 前三层已经构成非常强的思考工具</div><div class="cards g3"><div class="card"><div class="idx">普遍</div><h4>它是什么？</h4><p>“桌子”不是某一张具体桌子，而是把各种具体桌子的共同特征抽象出来——会议桌、书桌、餐桌、课桌虽然不同，我们仍然把它们都叫桌子</p></div><div class="card"><div class="idx">特殊</div><h4>它是哪一种？</h4><p>知道“这是桌子”还不够，还要问：什么桌子？课桌？餐桌？手术台？办公桌？——从大类进入子类</p></div><div class="card"><div class="idx">具体</div><h4>究竟是哪一个？</h4><p>“你现在面前这一张桌子”——不是“桌子一般”，也不是“课桌这一类”，而是这个具体对象</p></div></div><div class="ladder"><div class="step"><div class="t">医疗机构</div></div><div class="step"><div class="t">基层医疗机构</div></div><div class="step"><div class="t">社区卫生服务中心</div></div><div class="step hot"><div class="t">某一类具体社区卫生机构</div><div class="d">分类越清楚，思考越精确——这是分类能力</div></div></div><p class="prose">普遍 → 特殊 → 具体，非常接近黑格尔概念论里的<b>普遍性—特殊性—个别性</b>三个基本环节。整理者建议以后把第三层叫<b>“个别性 / 具体个体”</b>，会更贴近黑格尔。</p><div class="case"><div class="h"><span class="tag">实战</span><span class="ht">“医院服务不好”——三问拆解</span><span class="ar">▸</span></div><div class="sm"><div class="inner">普遍：“服务”是什么意思？｜特殊：是哪一种服务？医疗技术？候诊？态度？流程？｜具体：哪个时间、哪个科室、哪个患者遇到了什么？——三问之后，“服务不好”这种模糊判断就变成可以分析的具体问题。这就是概念化的力量。</div></div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>四到七层：从现实构成到历史变化</h2></div><div class="sd">物质 · 有机 · 目的 · 生命 · 概念不是石头，它也有历史</div><div class="cards g2"><div class="card"><div class="idx">肆</div><h4>物质性 · 它由什么构成？</h4><p>桌子：木头？金属？石材？——问的是对象在现实里靠什么承载。换成机构：人员、床位、设备、资金、建筑、信息系统——概念开始进入现实构成</p></div><div class="card"><div class="idx">伍</div><h4>有机性 · 怎样组成整体？</h4><p>桌面、桌腿、抽屉不是简单堆在一起，组合服务于整体功能。家医团队也不是医生＋护士＋公卫人员简单相加，重要的是怎样分工、协同和反馈——从“有什么”进入“怎样组织”</p></div><div class="card"><div class="idx">陆</div><h4>目的性 · 为什么存在？</h4><p>桌子为什么有桌面、需要一定高度、有腿？因为服务某种用途。研究一个工作制度，不要只研究有哪些条文，还要问：它到底想解决什么问题？——否则容易执行手段，忘记目的</p></div><div class="card"><div class="idx">柒</div><h4>生命性 · 怎样变化？</h4><p>老师所谓“桌子概念有生命性”不能按生物学理解——他真正想说：一个概念和它所代表的对象会随历史发展。更准确的名称是历史性 / 演化性</p></div></div><div class="case"><div class="h"><span class="tag">演化</span><span class="ht">“电话”的概念史</span><span class="ar">▸</span></div><div class="sm"><div class="inner">100年前，电话主要是语音通信设备。今天，电话已经变成摄像机、地图、钱包、电脑、社交工具……如果仍然使用100年前的定义，就解释不了今天的手机。所以：概念不是石头，它也有历史。</div></div></div><div class="quote"><div class="q">不要静止地理解概念。</div><div class="src">这一层与第五章辩证思维的连接点 · 整理者认为非常重要</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>八九层与九问模型</h2></div><div class="sd">概念连成知识网络 · 第九层的谨慎处理 · 改造成可用的工具</div><p class="prose"><b>第八层“认识”</b>：当你已经理解一个对象的类别、具体形式、构成、结构、功能、变化，这些概念就不再孤立，开始和其他概念连接，<b>形成知识网络</b>。</p><div class="case"><div class="h"><span class="tag">网络</span><span class="ht">理解“糖尿病”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">最终不是背一句定义，而是能够把血糖、胰岛素、代谢、饮食、运动、并发症、药物联系起来——到这里，概念真正变成知识。</div></div></div><div class="warn"><div class="wt">第九层是最需要谨慎的一层</div><ul><li>在黑格尔体系中，“绝对理念”确实是《逻辑学》最终阶段：理念是概念与客观性的统一，并经过生命、认识等阶段进入绝对理念。</li><li>但老师说“每一个具体概念最终都包含绝对理念的一部分，再把它直接接到柏拉图的‘善’和上帝”——这属于非常强的课程式综合。</li><li>不能简单记成“黑格尔 = 柏拉图理念论 + 上帝”：两者之间确实有哲学史继承关系，但体系差异非常大。</li></ul></div><p class="prose">对普通学习，整理者建议把第九层重新解释成<b>最终原则 / 世界观层</b>：我对这个东西理解到最后，它连接到什么更大的原则？——比如讨论教育，最后可能进入：什么是人？什么是好的生活？我们希望培养什么样的人？——从一个具体概念，进入<b>价值与世界观</b>。这比直接记“绝对理念”更容易应用。</p><div class="h3blk">九层 → 九问：改造成可用的模型</div><p class="prose">老师的“九层概念”最好不要原封不动背。整理者建议把它改造成一个真正可以使用的<b>九问模型</b>：</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>是什么</h4><p>普遍性——把共同特征抽象出来</p></div><div class="card"><div class="idx">②</div><h4>哪一类</h4><p>特殊性——从大类进入子类</p></div><div class="card"><div class="idx">③</div><h4>哪一个</h4><p>个别性——定位到具体对象</p></div><div class="card"><div class="idx">④</div><h4>由什么构成</h4><p>构成性——材料、部分、条件</p></div><div class="card"><div class="idx">⑤</div><h4>怎样组织</h4><p>结构性——分工、协同、反馈</p></div><div class="card"><div class="idx">⑥</div><h4>用来做什么</h4><p>功能 / 目的——为什么存在</p></div><div class="card"><div class="idx">⑦</div><h4>怎样变化</h4><p>演化性——形成、发展、历史</p></div><div class="card"><div class="idx">⑧</div><h4>与什么连接</h4><p>关系网络——与其他概念和事物</p></div><div class="card"><div class="idx">⑨</div><h4>指向什么价值</h4><p>原则 / 价值——最终涉及的根本原则</p></div></div><div class="case"><div class="h"><span class="tag">实战</span><span class="ht">用九问分析“家庭医生签约”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一开始不要问“为什么签约率不高？”，先把概念弄清楚。①是什么：家庭医生签约是什么？②哪一类：普通签约？重点人群？有偿服务包？③具体是谁：哪一社区、哪个团队、哪一人群？④由什么构成：医生、居民、服务包、档案、信息系统。⑤怎样组织：签约—联系—服务—随访—反馈。⑥目的：持续健康管理，而不是只签一张表。⑦怎样变化：从单纯签约率逐渐转向服务质量和获得感。⑧和什么联系：公卫、医保、门诊、慢病管理、居民信任。⑨最终价值：建立持续的基层健康关系。——到这里，理解已经完全不同于“完成一个指标”。</div></div></div><div class="quote"><div class="q">一个概念只有进入构成、关系、功能和历史变化以后，才开始从“名词定义”变成真正的理解。</div><div class="src">整理者提炼的六句话 · 其五</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>很多争论其实是概念争论</h2></div><div class="sd">先定义，再争论 · 这一课最需要纠偏的七个地方</div><p class="prose">这一课还有一个隐藏的重点：很多争论其实是<b>概念争论</b>——什么叫公平？什么叫自由？什么叫成功？什么叫好的教育？很多时候双方看似在争事实，其实一开始使用的<b>概念就不同</b>。所以深度思考第一步常常是<b>先定义，再争论。</b></p><div class="quote"><div class="q">不是所有概念都能定义得边界绝对清楚；有些概念更多靠实际使用和“家族相似”来理解。</div><div class="src">维特根斯坦对“先定义”的补充提醒</div></div><div class="quote"><div class="q">知道什么时候需要精确定义，什么时候需要观察实际用法。</div><div class="src">整理者所说的成熟状态</div></div><div class="warn"><div class="wt">这一课最需要纠偏的七个地方（整理者）</div><ul><li>一、“概念—推理—判断”最好整理为“概念 → 判断 → 推理 → 新判断”，虽然现实思考会循环进行。</li><li>二、《道德经》的“名可名，非常名”可以启发我们理解概念有限性，但不能简单等同于现代概念理论。</li><li>三、中观的“假名”不是“名字是假东西”，而是强调依缘而立、约定性指称。</li><li>四、“主体性概念/外延性概念”不是罗素、维特根斯坦的标准概念二分。标准语义学里更常见的是“内涵/外延”；后期维特根斯坦反而强调语言使用与家族相似。</li><li>五、“佛教概念=因果业”“物理概念=三个变量比例关系”都更像老师个人教学模型，不是这些学科统一的定义规则。</li><li>六、所谓“黑格尔九层概念原理”并不是黑格尔原著的标准九层。真正可明确对应黑格尔的是“普遍—特殊—个别”，之后《逻辑学》进一步进入对象性、目的论、生命、认识和绝对理念。</li><li>七、老师说“康德的哲学既是存在论、逻辑论、认识论的统一”，语境上大概率是口误，因为紧接着实际讲的是黑格尔——《逻辑学》把存在、思维范畴和概念发展结合起来，更符合这里的意思。</li></ul></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>第七章的路线</h2></div><div class="sd">概念化 → 问题化 → 深度化 · 一条非常强的学习路线</div><p class="prose">最后，把第七章现在的路线先建立起来——整理者认为这一章设计得其实很好：</p><div class="ladder"><div class="step"><div class="t">第一节 · 概念能力</div><div class="d">把东西说清楚——从模糊经验中提炼：“这到底是什么？”</div></div><div class="step"><div class="t">第二节 · 问题意识</div><div class="d">把问题找出来——从概念和现实差异中发现：“究竟哪里值得追问？”</div></div><div class="step"><div class="t">第三节 · 深度思考</div><div class="d">把问题想下去——不断分析、推理、反证、修正</div></div><div class="step hot"><div class="t">概念化 → 问题化 → 深度化</div><div class="d">整个第七章大概可以先记成这一条学习路线</div></div></div><div class="quote"><div class="q">深度思考的能力，很大程度上表现为：能不能把一个模糊的大词，一层一层拆成清楚、具体、可检验的概念网络。</div><div class="src">整理者提炼的六句话 · 其六</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="9">0</div><div class="l">概念的九个层次</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">常用定义方法</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">黑格尔三环节</div></div><div class="cnt"><div class="v" data-c="2">0</div><div class="l">内涵与外延</div></div></div><div class="panel"><h3><span class="no2">①</span>概念三层次归位练习</h3><div class="pd">判断下列表述属于「普遍性 / 特殊性 / 具体性」哪一层次，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文第一层：“从多个具体对象中抽取共同性，这就是普遍性”"><div class="st">1. 把各种具体桌子的共同特征抽象出来，形成“桌子”这个概念</div><div class="opts"><button data-ok="1">普遍性</button><button data-ok="0">特殊性</button><button data-ok="0">具体性</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第二层：“从大类进入子类”——这是分类能力"><div class="st">2. 知道“这是桌子”还不够，还要问：课桌？餐桌？手术台？办公桌？</div><div class="opts"><button data-ok="0">普遍性</button><button data-ok="1">特殊性</button><button data-ok="0">具体性</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第三层：不是“桌子一般”，也不是“课桌这一类”，而是这个具体对象"><div class="st">3. 你现在面前这一张桌子</div><div class="opts"><button data-ok="0">普遍性</button><button data-ok="0">特殊性</button><button data-ok="1">具体性</button></div><div class="verdict"></div></div><div class="sort-it" data-why="从多个具体对象中抽取共同性——普遍性的典型例子"><div class="st">4. 会议桌、书桌、餐桌、课桌虽然不同，我们仍然把它们都叫桌子</div><div class="opts"><button data-ok="1">普遍性</button><button data-ok="0">特殊性</button><button data-ok="0">具体性</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第二层的分类链：“分类越清楚，思考越精确”"><div class="st">5. 医疗机构 → 基层医疗机构 → 社区卫生服务中心 → 某一类具体社区卫生机构</div><div class="opts"><button data-ok="0">普遍性</button><button data-ok="1">特殊性</button><button data-ok="0">具体性</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文三问实战的具体一问——追问到具体对象，模糊判断变成可以分析的具体问题"><div class="st">6. 哪个时间、哪个科室、哪个患者遇到了什么？</div><div class="opts"><button data-ok="0">普遍性</button><button data-ok="0">特殊性</button><button data-ok="1">具体性</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>概念能力通关清单</h3><div class="pd">选一个你最近正在争论或思考的问题，逐项检验自己的概念能力</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">问一 · 听到一个模糊大词，我能先问：“你说的这个词到底是什么意思？”</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">问二 · 我能区分分析判断（谓词已含于主词）与综合判断（谓词增加新信息）</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">问三 · 我能把一个模糊判断拆成：普遍（是什么）→ 特殊（哪一类）→ 具体（哪一个）</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">问四 · 我记得概念是地图不是领土，不把“差生”式标签当成真实的人</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">问五 · 我能用九问模型把一个具体对象从“是什么”一路拆到“最终价值”</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">问六 · 我知道什么时候需要精确定义，什么时候需要观察实际用法</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师引用孔子，语音稿里说成“学而不思则枉”，准确的原句是？</div><div class="ans"><button data-ok="0">A. 学而不思则枉，思而不学则怠</button><button data-ok="1">B. 学而不思则罔，思而不学则殆</button><button data-ok="0">C. 学而时习之，不亦说乎</button><button data-ok="0">D. 知之者不如好之者</button></div><div class="exp">整理者开篇即校正：语音稿误作“学而不思则枉”，准确的是“学而不思则罔，思而不学则殆”——罔是迷惘，殆是危险。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>康德所说“所有单身汉都是未婚的”属于哪种判断？</div><div class="ans"><button data-ok="0">A. 综合判断</button><button data-ok="1">B. 分析判断</button><button data-ok="0">C. 假言判断</button><button data-ok="0">D. 家族相似</button></div><div class="exp">“未婚”已经包含在“单身汉”的概念之中，谓词没有增加新信息——这是分析判断，主要在展开原有概念。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>“概念是地图，不是领土”想提醒我们什么？</div><div class="ans"><button data-ok="0">A. 概念没有意义，应该抛弃</button><button data-ok="1">B. 概念必须简化现实，但不能把概念误认为现实本身</button><button data-ok="0">C. 概念可以完全等同于真实</button><button data-ok="0">D. 领土会随地图变化</button></div><div class="exp">源文：正确关系是“概念必须简化现实，但不能把概念误认为现实本身，这才是成熟思维”。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>维特根斯坦用哪个概念说明“有些概念没有固定本质边界”？</div><div class="ans"><button data-ok="1">A. 游戏</button><button data-ok="0">B. 医院</button><button data-ok="0">C. 桌子</button><button data-ok="0">D. 自由</button></div><div class="exp">你很难找到一个特征“所有游戏都有，而且非游戏都没有”——有的有竞争有的不竞争，有的有胜负有的没有。由此提出“家族相似”。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者对“黑格尔九层概念原理”的核心校正是？</div><div class="ans"><button data-ok="0">A. 九层就是黑格尔原著的标准九级定义表</button><button data-ok="0">B. 黑格尔本人明确列出过这九层</button><button data-ok="1">C. 它并不是黑格尔本人列出的标准九层，而是老师重整的教学模型</button><button data-ok="0">D. 黑格尔《逻辑学》只有九层</button></div><div class="exp">源文：“所谓‘黑格尔九层概念原理’并不是黑格尔本人列出的标准九层”；真正可明确对应黑格尔的是“普遍—特殊—个别”三环节。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">概念是地图，不是领土。</div><div class="src">概念的有限性 · 整理者最重要的补充理解</div></div><div class="quote"><div class="q">先定义，再争论。</div><div class="src">深度思考第一步 · 很多争论其实是概念争论</div></div><div class="quote"><div class="q">不会概念化的人，只能对世界产生感觉；能够不断澄清概念的人，才真正开始思考。</div><div class="src">整理者推荐的本课中心金句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../20-艺术工具/index.html">← 上一篇 · 艺术工具</a><a href="../22-问题意识的五个构建/index.html">下一篇 · 问题意识的五个构建 →</a><span class="sp"></span><span class="cur">概念的九个层次</span></div></nav>
+<footer class="coda"><div class="wm2">名</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">不会概念化的人，只能对世界产生感觉；<br>能够不断澄清概念的人，<b>才真正开始思考</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二十二讲《概念的九个层次》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s1", "#s2", "#s3", "#s8", "#s11", "#s12", "#s13"], "sortok": [0, 1, 2, 0, 1, 2], "quizok": [1, 1, 1, 0, 2], "ckkey": "zx21-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

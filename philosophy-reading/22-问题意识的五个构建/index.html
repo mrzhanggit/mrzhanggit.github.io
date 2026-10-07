@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问题意识的五个构建 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx22-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../21-概念的九个层次/index.html">← 上一篇 · 概念的九个层次</a><a href="../23-深度思考的六个循环/index.html">下一篇 · 深度思考的六个循环 →</a><span class="sp"></span><span class="cur">问题意识的五个构建</span></div></nav>
+<header class="hero" id="top"><div class="wm">问</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第七章《思路》第二节</div>
+  <div class="no">貳拾叁</div>
+  <h1>问题意识的五个构建</h1>
+  <div class="sub">从“我很烦”到可以分析的问题</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>真正的思考，不是从答案开始，而是从“把模糊的不舒服、疑惑、愿望，转化成一个结构清楚的问题”开始。<br>这一课最核心的成果，就是老师的<b>「现状 → 目标 → 路径 → 资源 → 能力」</b>问题五要素。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 第七章的位置 · 这一讲要解决什么</a><a href="#s2">貳 · 最核心的一句话 · 把感觉转换成问题</a><a href="#s3">叁 · 三种问 · 疑问 设问 提问</a><a href="#s4">肆 · AI时代 · 会提问题为什么重要</a><a href="#s5">伍 · 疑问与焦虑 · 一条需要调整的链</a><a href="#s6">陆 · 没有问题就没有思想 · 从矛盾到差距</a><a href="#s7">柒 · 问题五要素 · 本课核心成果</a><a href="#s8">捌 · 要素详解 · 现状与目标</a><a href="#s9">玖 · 要素详解 · 路径 资源 能力</a><a href="#s10">拾 · 整理者的升级 · 问题六问与实例</a><a href="#s11">拾壹 · 问题的四种类型与五条路径</a><a href="#s12">拾貳 · 创造力的入口 · 烦恼即菩提</a><a href="#s13">拾叁 · 问题转化器 · 从“烦死了”到行动</a><a href="#s14">拾肆 · 整理者的纠偏 · 如果只记六句话</a><a href="#s15">拾伍 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>第七章的位置</b><span>概念化 → 问题化 → 深度化</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>模糊的感觉</b><span>“烦” · 焦虑 · 不知道下一步</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>转换成问题</b><span>把感觉和情绪转换成问题</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>现状与目标</b><span>我在哪里？要去哪里？差距是什么？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>路径 · 资源 · 能力</b><span>怎么过去？有什么？会不会做？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s10"><b>问题六问</b><span>整理者升级：加入约束与风险</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s13"><b>问题转化器</b><span>感觉 → 事实 → 结构 → 行动</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>第七章的位置 · 这一讲要解决什么</h2></div><div class="sd">概念意识 → 问题意识 → 深度思考 · 一条完整的认知链</div><p class="prose">这一课是第七章《思路》的第二节——<b>问题意识</b>。如果把原讲稿里康德、黑格尔、AI、专业选择、烦恼与菩提这些内容重新整理，会发现老师实际上提出了一套非常实用的东西。先看第七章三节的递进：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>概念意识 · 第一节</h4><p><b>把东西说清楚</b><br>“这到底是什么？”</p></div><div class="card"><div class="idx">貳</div><h4>问题意识 · 第二节</h4><p><b>把问题找清楚</b><br>“到底哪里需要改变？”（本讲）</p></div><div class="card"><div class="idx">叁</div><h4>深度思考 · 第三节</h4><p><b>把问题想下去</b><br>“怎样分析、推理、检验和修正？”</p></div></div><div class="quote"><div class="q">概念化 → 问题化 → 深度化</div><div class="src">第七章三节构成的认知链 · 整章其实是一条非常强的认知链</div></div><p class="prose">上一节《概念意识》解决的是“不要用模糊的大词思考”；这一节继续解决——</p><div class="quote"><div class="q">不要停留在模糊的感觉和焦虑，要把它变成一个可以分析的问题。</div><div class="src">这一节《问题意识》继续解决的问题</div></div><div class="quote"><div class="q">真正的思考，不是从答案开始，而是从“把模糊的不舒服、疑惑、愿望，转化成一个结构清楚的问题”开始。</div><div class="src">整理者开篇对这一课的压缩 · 全课总纲</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>最核心的一句话 · 把感觉转换成问题</h2></div><div class="sd">不是“所有问题都能解决” · 而是把感觉和情绪转换成问题</div><div class="duo"><div class="col neg"><h4>整理者认为不是这句 ✕</h4><ul><li>“所有问题都能解决。”</li></ul></div><div class="col pos"><h4>而是老师后面这句 ✓</h4><ul><li><b>把感觉和情绪转换成问题。</b></li><li>整堂课真正最值得长期记忆的思想</li></ul></div></div><p class="prose">例如——</p><div class="quote"><div class="q">我最近工作很烦。</div><div class="src">原始信号 · 这是感觉，还不是问题</div></div><div class="ladder"><div class="step"><div class="t">再问：烦在哪里？</div><div class="d">发现“网格化工作推进不顺。”——还是太宽</div></div><div class="step"><div class="t">继续问：哪里推进不顺？</div><div class="d">把模糊的“烦”一步步收窄</div></div><div class="step hot"><div class="t">变成可以分析的问题</div><div class="d">现状、数字、困难全部落地</div></div></div><div class="quote"><div class="q">10月份目标要求每人完成30名新增居民信息采集，但目前平均只完成12名，主要困难是居民白天不在家、联系方式缺失和工作人员下社区时间不足。</div><div class="src">“烦”经过连续追问后的最终形态</div></div><p class="prose">到了这里，原来的“烦”已经变成<b>可以分析的问题</b>——这就是问题意识。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>三种问 · 疑问 设问 提问</h2></div><div class="sd">认知缺口 → 分析框架 → 沟通行为 · 主动性层层递进</div><p class="prose">老师区分了<b>疑问｜设问｜提问</b>。这个框架很好，但整理者提醒：定义需要稍微调整。</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>疑问 · 我不知道</h4><p>例：“为什么最近门诊量下降了？”<br>你已经感觉到<b>有东西解释不了</b>——它是一种认知缺口。<br>疑问 = 我发现自己不知道什么。</p></div><div class="card"><div class="idx">②</div><h4>设问 · 我决定追究什么</h4><p>设问比疑问更主动。例见下方金句——已经开始<b>界定对象、设置方向、建立分析框架</b>。<br>设问 = 把模糊疑惑变成值得系统研究的问题。</p></div><div class="card"><div class="idx">③</div><h4>提问 · 我向别人获取信息</h4><p>例：“今年没有续签家庭医生的居民，最主要原因是什么？”<br>这是沟通行为，向同事、专家、患者、AI提出。<br>提问 = 把问题表达出去，获取新的信息和视角。</p></div></div><div class="ladder"><div class="step"><div class="t">疑问</div><div class="d">发现不知道</div></div><div class="step hot"><div class="t">设问</div><div class="d">决定研究什么</div></div><div class="step"><div class="t">提问</div><div class="d">向外获取信息</div></div></div><p class="prose">康德的“先天综合判断如何可能？”确实可以看作这种高度结构化的哲学设问——这是《纯粹理性批判》的核心问题之一。</p><div class="quote"><div class="q">门诊量下降究竟来自患者需求下降，还是我们自身服务能力发生变化？</div><div class="src">设问的典型例子 · 已经开始界定对象、设置方向、建立分析框架</div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>AI时代 · 会提问题为什么重要</h2></div><div class="sd">重要的不是“会不会搜索” · 而是知不知道自己真正想解决什么</div><p class="prose">老师关于“AI时代会提问题越来越重要”的判断有现实意义。AI极大降低了查资料、初步归纳、写作、计算、比较的成本。因此人与AI协作时，越来越重要的能力不是简单的“我会不会搜索”，而是——<b>我知不知道自己真正想解决什么。</b></p><div class="duo"><div class="col neg"><h4>泛泛之问 ✕</h4><ul><li>“帮我分析一下工作。”</li><li>得到的东西可能很泛</li></ul></div><div class="col pos"><h4>结构化之问 ✓</h4><ul><li>现状、目标、资源、约束一次给齐</li><li>AI获得的<b>问题结构</b>完全不同</li></ul></div></div><div class="quote"><div class="q">目前居民档案建档率低，目标三个月提高10个百分点，现有7支家医团队，每周只能安排2小时入户。请分析主要瓶颈、可控变量和三种推进方案。</div><div class="src">同一件事，结构化之后交给AI的问法</div></div><div class="quote"><div class="q">高质量AI使用不只是会提问，还包括提供足够背景、判断答案质量、核实事实、继续追问和迭代。</div><div class="src">整理者对“AI时代提问论”的补充校正</div></div><p class="prose">所以——<b>提问能力很重要，但不是全部。</b></p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>疑问与焦虑 · 一条需要调整的链</h2></div><div class="sd">老师的传导链有道理 · 但不能绝对化</div><p class="prose">老师认为，网络带来的焦虑有一条传导链——</p><div class="ladder"><div class="step"><div class="t">网络给我们大量信息</div></div><div class="step"><div class="t">产生大量疑问</div></div><div class="step"><div class="t">解决不了</div></div><div class="step hot"><div class="t">焦虑</div></div></div><div class="warn"><div class="wt">整理者校正：这条链有一定道理，但不能绝对化</div><ul><li>更准确的表达：<b>信息过载 ＋ 不确定性 ＋ 缺乏行动路径</b>，可能增加认知紧张和焦虑</li><li>关键不在于“有疑问不好”。真正的问题是：<b>疑问长期保持模糊，而且不知道下一步能做什么</b></li><li>最好的解决路径往往不是消灭疑问，而是：<b>疑问 → 问题化 → 可行动化</b></li></ul></div><p class="prose">这和第一章《生活的焦虑》正好形成闭环。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>没有问题就没有思想 · 从矛盾到差距</h2></div><div class="sd">问题决定思考的方向 · 不要与黑格尔的“矛盾”画等号</div><p class="prose">“没有问题就没有思想”——这句话非常重要。因为真正的深度思考通常都有<b>对象</b>：你必须知道到底是什么东西值得解释。牛顿不是坐在那里“我要思考宇宙”，而是具体追问——</p><div class="quote"><div class="q">天上的月球运动和地面物体下落之间，是否存在统一规律？</div><div class="src">牛顿的具体追问——问题越清楚，思考才越可能深入</div></div><div class="quote"><div class="q">问题的质量，往往决定答案质量的上限。</div><div class="src">整理者的引申 · 问题决定思考的方向</div></div><p class="prose">老师还把问题连接到“矛盾”，进入上一章的辩证思维。他的逻辑是：</p><div class="ladder"><div class="step"><div class="t">世界在变化</div></div><div class="step"><div class="t">变化中存在差异与张力</div></div><div class="step"><div class="t">这种差异表现为矛盾</div></div><div class="step hot"><div class="t">矛盾具体到生活，就是问题</div></div></div><div class="warn"><div class="wt">整理者校正：不要把“问题”与黑格尔的“矛盾”完全画等号</div><ul><li>黑格尔的“矛盾”是一个相当特殊的哲学概念，而且其辩证过程中很多“对立”并不一定是严格形式逻辑意义上的矛盾</li><li>“现实问题 = 黑格尔矛盾”只能作为类比，不能把生活中的所有差距直接等同于哲学矛盾</li></ul></div><div class="quote"><div class="q">问题 = 当前状态与期望状态之间存在值得处理的差距。</div><div class="src">现实生活中更实用的理解 · 直接引出老师最重要的“五要素”</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>问题五要素 · 本课核心成果</h2></div><div class="sd">现状 → 目标 → 路径 → 资源 → 能力 · 差距是核心关系</div><p class="prose">这一课最核心的成果，就是老师提出的<b>“问题五要素”</b>。整理者认为这五个要素很值得保留，而且可以进一步升级成一套真正适合工作、学习和AI时代的问题分析模型。</p><div class="quote"><div class="q">现状 → 目标 → 路径 → 资源 → 能力</div><div class="src">老师提出的“问题五要素” · 本课最核心的成果</div></div><div class="ladder"><div class="step hot"><div class="t">现状</div><div class="d">我在哪里？——老师：“首先弄清楚当下”</div></div><div class="step"><div class="t">目标</div><div class="d">我要去哪里？——“那你希望变成什么样？”</div></div><div class="step"><div class="t">路径</div><div class="d">怎么过去？——路径通常不是唯一的</div></div><div class="step"><div class="t">资源</div><div class="d">我有什么？——目标必须接受资源约束</div></div><div class="step"><div class="t">能力</div><div class="d">我会不会做？——资源 ≠ 能力</div></div></div><div class="quote"><div class="q">问题 = 现状与目标之间的差距。</div><div class="src">问题的基本结构 · “差距”是连接现状与目标的核心关系</div></div><p class="prose">严格说，老师列出的“五个构件”是<b>现状｜目标｜路径｜资源｜能力</b>，而“差距”是连接现状与目标的核心关系——这就是本课最值得长期保留的模型。下面逐个展开。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>要素详解 · 现状与目标</h2></div><div class="sd">现状必须事实化 · 现状＋理想构成问题的两个端点</div><div class="quote"><div class="q">首先弄清楚当下。</div><div class="src">老师对第一要素“现状”的要求 · 非常正确</div></div><p class="prose">很多人解决问题的第一个错误：<b>还没搞清现在是什么样，就急着想办法。</b>比如“中心业务不好，要加大宣传”——先别急。应该先问：业务哪里不好？门诊？住院？公卫？哪个科室？什么时候开始？和去年相比？</p><div class="duo"><div class="col neg"><h4>感觉化的现状 ✕</h4><ul><li>“我感觉……”</li><li>“中心业务不好，要加大宣传”</li></ul></div><div class="col pos"><h4>事实化的现状 ✓</h4><ul><li><b>现状必须事实化</b></li><li>变成数据、事实、行为和具体情境</li></ul></div></div><div class="quote"><div class="q">那你希望变成什么样？</div><div class="src">老师对第二要素“目标”的追问——否则根本没有“问题”</div></div><p class="prose">有了现状，必须问目标。比如当前收入<b>400万元/月</b>：如果目标也是400万元，那就没有差距；如果目标<b>450万元/月</b>，问题出现——<b>差距 = 50万元</b>。老师说，现状＋理想构成问题的两个端点，这是非常有价值的。</p><div class="duo"><div class="col neg"><h4>“理想”容易太抽象 ✕</h4><ul><li>“我要成为成功的人。”——很难解决</li></ul></div><div class="col pos"><h4>改成“目标状态” ✓</h4><ul><li>“三年内完成某项专业能力建设。”——更容易分析、拆解、行动</li><li><b>现状 Current State ＋ 目标 Target State → Gap 差距</b></li></ul></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>要素详解 · 路径 资源 能力</h2></div><div class="sd">路径通常不是唯一的 · 目标必须接受资源约束 · 资源 ≠ 能力</div><p class="prose">知道我在哪里、我要去哪，还不够，必须问：<b>怎么过去？</b>例如目标是“提升居民健康档案完整率”，路径可能有——</p><div class="chips"><span class="chip">入户</span><span class="chip">电话补录</span><span class="chip">门诊同步采集</span><span class="chip">社区集中活动</span><span class="chip">与物业合作</span></div><p class="prose">这时候老师强调：<b>路径通常不是唯一的。</b>低质量思维往往是“只有这个办法”；高质量思维会问“还有没有第二条、第三条路径？”</p><p class="prose">路径不是想出来就能走，还必须问<b>我有什么？</b>——人员、资金、时间、设备、政策、信息、关系网络。老师用高考专业选择举例：不同学生可使用的分数、家庭条件、地区、学校资源不同。</p><div class="warn"><div class="wt">整理者校正：原课关于专业选择的说法过于绝对</div><ul><li>原课有一句：“成绩不高，学生物学就学不出来；一定要很高排名大学才有机会。”——这个说法过于绝对</li><li>专业发展受到学校平台、个人能力、研究机会、兴趣、学历路径、行业变化等多因素影响，不能只按学校层级下结论</li><li>这里真正应该留下的是：<b>目标必须接受资源约束</b></li></ul></div><div class="cards g2"><div class="card"><div class="idx">资</div><h4>资源</h4><p>“我可以调用什么？”<br>人员、资金、时间、设备、政策、信息、关系网络</p></div><div class="card"><div class="idx">能</div><h4>能力</h4><p>“我能够把这些资源转化成什么结果？”<br><b>资源 ≠ 能力</b>，非常值得区分</p></div></div><p class="prose">有数据，但不会分析；有资金，但没有项目管理能力；有AI，但不会定义问题。同样100万元预算，不同团队可能得到完全不同结果——这就是<b>能力差异</b>。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>整理者的升级 · 问题六问与实例</h2></div><div class="sd">在五要素外增加“约束” · 从模糊感觉到可决策模型</div><p class="prose">在真实工作里，整理者建议在五要素之外再增加一个<b>“约束”</b>，把模型升级成“问题六问”：</p><div class="ladder"><div class="step"><div class="t">① 现在怎样？</div><div class="d">现状</div></div><div class="step"><div class="t">② 想到哪里？</div><div class="d">目标</div></div><div class="step"><div class="t">③ 差多少？</div><div class="d">问题差距</div></div><div class="step"><div class="t">④ 可以怎么走？</div><div class="d">路径</div></div><div class="step"><div class="t">⑤ 有什么可调用？</div><div class="d">资源与能力</div></div><div class="step hot"><div class="t">⑥ 什么不能忽视？</div><div class="d">约束、风险、规则</div></div></div><p class="prose">于是，问题从模糊感觉变成<b>真正可以决策的模型</b>。举一个实际管理例子——</p><div class="quote"><div class="q">老年人体检工作推进不好。</div><div class="src">问题化之前的原始感觉</div></div><div class="case"><div class="h"><span class="tag">实例</span><span class="ht">老年人体检 · 经过问题化之后</span><span class="ar">▸</span></div><div class="sm"><div class="inner"><b>现状</b>：本月每人要求3人，目前平均完成1.2人<br><b>目标</b>：月底前每人完成3人<br><b>差距</b>：平均每人差1.8人<br><b>路径</b>：入户、电话邀约、集中体检、家属协助、门诊同步<br><b>资源</b>：网格人员、居民档案、家庭医生联系方式、社区场地<br><b>能力</b>：谁擅长联系居民？谁熟悉楼栋？谁可以完成体检？<br><b>约束</b>：时间、居民配合、人员排班</div></div></div><div class="case"><div class="h"><span class="tag">延伸</span><span class="ht">职业选择也是一个问题结构</span><span class="ar">▸</span></div><div class="sm"><div class="inner">原课“喜欢人就学经济政治，喜欢物就做研究”——这分类太粗。真正值得留下的是：选择专业不要只问“哪个专业热门？”，而应该同时看：<b>我现在是谁？我想成为什么？有哪些现实路径？我有什么资源？我有什么能力和兴趣？</b></div></div></div><p class="prose">到了这里，问题就不再是“大家不积极”，而开始变成<b>可以管理的结构</b>。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>问题的四种类型与五条路径</h2></div><div class="sd">“所有问题都能解决”过强 · “时间解决一切”不成立 · 三路径升级为五</div><div class="quote"><div class="q">一旦转换成问题，就一定可解决。</div><div class="src">老师的原话 · 整理者认为这一句最好改掉</div></div><div class="warn"><div class="wt">整理者校正：并非所有问题都有完全解</div><ul><li>这种表达很有激励性，但现实并非所有问题都有完全解。有些问题只能：<b>改善、管理、权衡、接受、延缓、降低损失</b></li><li>例如：衰老、不可逆损失、价值冲突、资源不足</li></ul></div><div class="cards g4"><div class="card"><div class="idx">解</div><h4>可解决问题</h4><p>找到方案</p></div><div class="card"><div class="idx">改</div><h4>可改善问题</h4><p>降低程度</p></div><div class="card"><div class="idx">衡</div><h4>两难问题</h4><p>进行权衡</p></div><div class="card"><div class="idx">受</div><h4>不可控问题</h4><p>调整关系与接受</p></div></div><p class="prose">所以成熟的问题意识应该是：<b>先判断这个问题属于哪一种。</b>这其实与第一章《生活的焦虑》高度一致。</p><div class="quote"><div class="q">时间会改变问题，但不保证自动解决问题。</div><div class="src">整理者对“时间可以解决一切问题”的校正</div></div><p class="prose">时间有时候确实会改变条件、关系、优先级，但时间也可能<b>让问题恶化</b>——感染不治疗，时间不会自动治好所有患者；债务持续累积，拖延可能越来越严重。真正需要问：<b>随着时间推移，这个问题是在自我缓解，还是自我强化？</b>这就是系统思维。</p><div class="ladder"><div class="step"><div class="t">① 自我行动</div><div class="d">改变自己可控的变量</div></div><div class="step"><div class="t">② 借助系统</div><div class="d">调用他人的知识、资源、组织和AI</div></div><div class="step"><div class="t">③ 改变时间策略</div><div class="d">等待时机、分阶段解决</div></div><div class="step"><div class="t">④ 调整目标</div><div class="d">如果目标不现实，重新设定</div></div><div class="step hot"><div class="t">⑤ 接受不可控部分</div><div class="d">不是所有变量都必须改变</div></div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>创造力的入口 · 烦恼即菩提</h2></div><div class="sd">问题 → 张力 → 探索 → 创造 → 新方案 · “烦恼即菩提”只作比喻</div><p class="prose">“问题调动创造力”是这一课第二个非常好的观点。为什么创新通常从问题开始？因为没有问题时，“原来的方法还能工作”，人没有强烈理由改变。当出现<b>现状 ≠ 目标</b>，就形成<b>张力</b>——传统路径不够用，于是开始寻找新办法、新资源、新组合。</p><div class="ladder"><div class="step"><div class="t">问题</div><div class="d">现状 ≠ 目标，出现差距</div></div><div class="step"><div class="t">张力</div><div class="d">传统路径不够用</div></div><div class="step"><div class="t">探索</div><div class="d">寻找新办法、新资源、新组合</div></div><div class="step hot"><div class="t">创造</div><div class="d">新组合诞生</div></div><div class="step"><div class="t">新方案</div><div class="d">问题也可能是创造力的入口</div></div></div><p class="prose">所以问题并不只是负担——问题也可能是<b>创造力的入口</b>。</p><div class="quote"><div class="q">烦恼就是问题，菩提就是解决问题的能力。</div><div class="src">老师对“烦恼即菩提”的解释 · 很现代、很工具化</div></div><div class="warn"><div class="wt">整理者校正：“烦恼即菩提”适合作为比喻，不宜机械解释</div><ul><li>这不是佛教原意的严格定义。“烦恼即菩提”在大乘佛教语境中并不是简单说“遇到困难 → 想办法 → 智慧”，更深地涉及烦恼与觉悟并非两个具有独立自性的实体，以及如何转化对烦恼的认识</li><li>作为生活语言，可以理解成“困扰也可能成为觉察和成长的入口”；但不要直接背成“烦恼=问题，菩提=问题解决能力”</li></ul></div><div class="quote"><div class="q">困扰也可能成为觉察和成长的入口。</div><div class="src">“烦恼即菩提”作为生活语言的稳妥理解</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>问题转化器 · 从“烦死了”到行动</h2></div><div class="sd">七步框架 · 这一课与前面所有课程连成总链</div><div class="quote"><div class="q">烦死了。</div><div class="src">转化器的入口——脑子里出现的原始信号</div></div><p class="prose">以后当你脑子里出现这句话，<b>不要直接想答案</b>，按照下面走——这实际上已经是一套非常成熟的问题解决框架：</p><div class="ladder"><div class="step"><div class="t">第一步 · 感觉</div><div class="d">我哪里不舒服？</div></div><div class="step"><div class="t">第二步 · 事实</div><div class="d">具体发生了什么？</div></div><div class="step"><div class="t">第三步 · 现状</div><div class="d">现在到底是什么状态？</div></div><div class="step"><div class="t">第四步 · 目标</div><div class="d">我希望变成什么状态？</div></div><div class="step"><div class="t">第五步 · 差距</div><div class="d">阻止我达到目标的是什么？</div></div><div class="step"><div class="t">第六步 · 路径</div><div class="d">有哪些办法？</div></div><div class="step"><div class="t">第七步 · 资源 / 能力</div><div class="d">我现在能调用什么、缺什么？</div></div><div class="step hot"><div class="t">最后才进入：行动</div><div class="d">感觉 → 事实 → 结构 → 行动</div></div></div><p class="prose">你会发现，这一课和前面所有课程开始连起来了——整门课正在形成一条很长的链：</p><div class="tl"><div class="ev"><div class="dyn">第一章</div><p>有焦虑</p></div><div class="ev"><div class="dyn">第五章 · 感性思维</div><p><b>把感觉说清</b></p></div><div class="ev"><div class="dyn">第七章第一节</div><p><b>把概念弄清</b></p></div><div class="ev"><div class="dyn">第七章第二节</div><p><b>把疑问变成问题</b>（本讲）</p></div><div class="ev"><div class="dyn">下一节 · 深度思考</div><p><b>把问题持续想下去</b></p></div></div><div class="quote"><div class="q">感觉 → 概念 → 问题 → 思考 → 行动</div><div class="src">整门课真正训练的路径 · 非常值得保存的总框架</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>整理者的纠偏 · 如果只记六句话</h2></div><div class="sd">这一课最需要纠偏的6点 · 六句话压缩全课</div><div class="warn"><div class="wt">这一课最需要纠偏的6点（整理者）</div><ul><li>哲学不必定义为“源于设问”，更稳妥地说哲学高度依赖<b>惊异、质疑和系统追问</b></li><li>“疑问—设问—提问”是一个很好用的课程框架，但不是哲学或心理学统一认可的标准三分法</li><li>康德确实以“先天综合判断如何可能？”作为《纯粹理性批判》的核心问题之一，这可以很好说明高度结构化的哲学设问</li><li>“现实问题=黑格尔矛盾”只能作为类比——黑格尔的矛盾与辩证运动有特殊哲学含义，不能简单把生活中的所有差距直接等同于哲学矛盾</li><li>“所有问题都能解决”过强——更成熟的是区分可解决、可改善、需权衡和需接受的问题</li><li>“时间解决一切”不成立——时间只是一个变量，它既可能缓解问题，也可能使问题恶化</li></ul></div><p class="prose">如果这一课只记住6句话——</p><div class="quote"><div class="q">深度思考不是从答案开始，而是从发现并定义一个真正值得解决的问题开始。</div><div class="src">六句话 · ①</div></div><div class="quote"><div class="q">疑问是“我不知道”，设问是“我要研究什么”，提问是“我向别人或AI获取什么信息”。</div><div class="src">六句话 · ②</div></div><div class="quote"><div class="q">一个完整的问题至少应该包含：现状、目标、路径、资源和能力；现实决策中还应加入约束与风险。</div><div class="src">六句话 · ④</div></div><div class="quote"><div class="q">把模糊的感觉和情绪转化成清晰的问题，本身就会显著提高行动感，因为你终于知道下一步可以分析什么。</div><div class="src">六句话 · ⑤</div></div><p class="prose">③（问题最基本的结构，是现状与目标之间存在一个值得处理的差距）与⑥（真正的问题意识）已收入下方“带走三句”。</p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">问题五要素</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">三种问</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">问题六问</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">问题四类型</div></div></div><div class="panel"><h3><span class="no2">①</span>五要素归类练习</h3><div class="pd">判断下列表述属于问题结构的哪个要素，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="数字化描述当下完成情况——“现状必须事实化”"><div class="st">1. 10月份目标要求每人完成30名新增居民信息采集，目前平均只完成12名</div><div class="opts"><button data-ok="1">现状</button><button data-ok="0">目标</button><button data-ok="0">路径</button><button data-ok="0">资源与能力</button></div><div class="verdict"></div></div><div class="sort-it" data-why="把抽象的“我要成为成功的人”换成可分析、可拆解、可行动的目标状态"><div class="st">2. 三年内完成某项专业能力建设</div><div class="opts"><button data-ok="0">现状</button><button data-ok="1">目标</button><button data-ok="0">路径</button><button data-ok="0">资源与能力</button></div><div class="verdict"></div></div><div class="sort-it" data-why="从现状到目标的具体走法——老师强调“路径通常不是唯一的”"><div class="st">3. 入户、电话补录、门诊同步采集、社区集中活动、与物业合作</div><div class="opts"><button data-ok="0">现状</button><button data-ok="0">目标</button><button data-ok="1">路径</button><button data-ok="0">资源与能力</button></div><div class="verdict"></div></div><div class="sort-it" data-why="可调用的人员与时间——“目标必须接受资源约束”"><div class="st">4. 7支家医团队，每周只能安排2小时入户</div><div class="opts"><button data-ok="0">现状</button><button data-ok="0">目标</button><button data-ok="0">路径</button><button data-ok="1">资源与能力</button></div><div class="verdict"></div></div><div class="sort-it" data-why="“我会不会做”的追问——能力是“我能够把这些资源转化成什么结果”"><div class="st">5. 谁擅长联系居民？谁熟悉楼栋？谁可以完成体检？</div><div class="opts"><button data-ok="0">现状</button><button data-ok="0">目标</button><button data-ok="0">路径</button><button data-ok="1">资源与能力</button></div><div class="verdict"></div></div><div class="sort-it" data-why="期望达到的状态——它与现状的差距（平均每人差1.8人）才是问题本身"><div class="st">6. 月底前每人完成3人体检</div><div class="opts"><button data-ok="0">现状</button><button data-ok="1">目标</button><button data-ok="0">路径</button><button data-ok="0">资源与能力</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>问题意识通关清单</h3><div class="pd">拿一个你正在烦的具体问题，逐项检验能否做到（勾选进度自动保存在本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能把一句“我很烦”追问成有数字、有情境的可分析问题</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能分清：疑问是发现不知道，设问是决定研究什么，提问是向外获取信息</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我描述现状用的是数据与事实，而不是“我感觉……”</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我的目标是可分析、可拆解、可行动的目标状态，而不是抽象的“理想”</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我列出了至少两条路径，并核对过资源与能力的约束</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我判断过这个问题属于哪一类：可解决、可改善、两难、不可控</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>这一课最核心的成果是什么？</div><div class="ans"><button data-ok="0">A. 三种问：疑问、设问、提问</button><button data-ok="1">B. 问题五要素：现状、目标、路径、资源、能力</button><button data-ok="0">C. 四种问题类型</button><button data-ok="0">D. 五条解决路径</button></div><div class="exp">老师提出的“问题五要素”——现状 → 目标 → 路径 → 资源 → 能力，是本课最核心的成果；整理者认为可以升级成适合工作、学习和AI时代的问题分析模型。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>整理后，疑问、设问、提问分别对应什么？</div><div class="ans"><button data-ok="0">A. 疑问＝向外获取信息，设问＝不知道，提问＝决定研究什么</button><button data-ok="1">B. 疑问＝发现不知道，设问＝决定研究什么，提问＝向外获取信息</button><button data-ok="0">C. 疑问＝决定研究什么，设问＝发现不知道，提问＝表达情绪</button><button data-ok="0">D. 三者没有区别</button></div><div class="exp">疑问：发现不知道 → 设问：决定研究什么 → 提问：向外获取信息。整理者同时提醒：这是好用的课程框架，但不是哲学或心理学统一认可的标准三分法。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>当前收入400万元/月，目标450万元/月——按照本课的框架，“问题”是什么？</div><div class="ans"><button data-ok="0">A. 收入太低，需要加大宣传</button><button data-ok="1">B. 差距 = 50万元</button><button data-ok="0">C. 目标定得不合理</button><button data-ok="0">D. 这不算一个问题</button></div><div class="exp">问题 = 现状与目标之间的差距。目标也是400万元就没有差距；目标450万元，问题出现——差距 = 50万元。现状＋理想构成问题的两个端点。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>对老师“一旦转换成问题，就一定可解决”这句话，整理者的校正是？</div><div class="ans"><button data-ok="0">A. 完全正确，可以照背</button><button data-ok="0">B. 改成“所有问题最终都能自动解决”</button><button data-ok="1">C. 并非所有问题都有完全解，应先区分可解决、可改善、两难与不可控</button><button data-ok="0">D. 这句话毫无价值</button></div><div class="exp">有些问题只能改善、管理、权衡、接受、延缓、降低损失——例如衰老、不可逆损失、价值冲突、资源不足。成熟的问题意识是先判断问题属于哪一种。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>与AI协作时，越来越重要的能力是什么？</div><div class="ans"><button data-ok="0">A. 会不会搜索</button><button data-ok="0">B. 打字与提示词技巧</button><button data-ok="1">C. 知不知道自己真正想解决什么</button><button data-ok="0">D. 记住更多知识</button></div><div class="exp">“帮我分析一下工作”得到的东西可能很泛；结构化的问题让AI获得的问题结构完全不同。整理者补充：高质量AI使用还包括提供足够背景、判断答案质量、核实事实、继续追问和迭代。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">问题不是“我感觉不对”，而是我知道自己现在在哪里、想去哪里，以及两者之间究竟差什么。</div><div class="src">整理者最推荐的这一课信息图中心金句</div></div><div class="quote"><div class="q">现状 → 目标 → 路径 → 资源 → 能力</div><div class="src">本课最值得形成长期视觉记忆的模型</div></div><div class="quote"><div class="q">真正的问题意识不是“到处找麻烦”，而是能够看见差距、界定问题，并找到其中可以改变的变量。</div><div class="src">六句话 · ⑥</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../21-概念的九个层次/index.html">← 上一篇 · 概念的九个层次</a><a href="../23-深度思考的六个循环/index.html">下一篇 · 深度思考的六个循环 →</a><span class="sp"></span><span class="cur">问题意识的五个构建</span></div></nav>
+<footer class="coda"><div class="wm2">問</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">问题不是“我感觉不对”，<br>而是我知道自己<b>现在在哪里、想去哪里，以及两者之间究竟差什么</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二十三讲《问题意识的五个构建》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15"], "mnodes": ["#s1", "#s2", "#s2", "#s7", "#s9", "#s10", "#s13"], "sortok": [0, 1, 2, 3, 3, 1], "quizok": [1, 1, 1, 2, 2], "ckkey": "zx22-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

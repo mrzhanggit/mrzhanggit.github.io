@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人的社会性 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx25-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../24-人的生物性/index.html">← 上一篇 · 人的生物性</a><a href="../26-人的经济性/index.html">下一篇 · 人的经济性 →</a><span class="sp"></span><span class="cur">人的社会性</span></div></nav>
+<header class="hero" id="top"><div class="wm">群</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第八章《人性的真相》第二节</div>
+  <div class="no">貳拾陆</div>
+  <h1>人的社会性</h1>
+  <div class="sub">个体与群体 · 善恶之外 · 三种治理机制</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>人进入群体以后，问题就从「善恶」变成了「协调」：<br>文化解决<b>为什么愿意做</b>，制度解决<b>什么不能做</b>，绩效解决<b>做到什么程度</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 第八章的定位：从生物性到社会性</a><a href="#s2">貳 · 课堂模型：善 · 恶 · 非善非恶</a><a href="#s3">叁 · 真问题：自利如何与合作兼容</a><a href="#s4">肆 · 三种管理手段：文化｜制度｜绩效</a><a href="#s5">伍 · 不贴标签：人 × 情境</a><a href="#s6">陆 · 泰勒与霍桑：两段被简化的管理学史</a><a href="#s7">柒 · 文化管理的真相：不在墙上，在行动里</a><a href="#s8">捌 · 绩效的真正价值：设计条件，而不只是考核</a><a href="#s9">玖 · 权变与阿米巴：管理没有标准答案</a><a href="#s10">拾 · 数字与标签：三剂预防针</a><a href="#s11">拾壹 · 管理最大的升级：从评价人性到设计情境</a><a href="#s12">拾貳 · 实战与贯通：把框架用起来</a><a href="#s13">拾叁 · 全课纠偏八条与六句话</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现实困境</b><span>独立个体 ↔ 依赖他人</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>课堂模型</b><span>善 · 恶 · 非善非恶</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>真问题</b><span>自利如何与合作兼容</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>三种手段</b><span>文化 · 制度 · 绩效</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>管理的升级</b><span>评价人性 → 设计情境</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>最终目的</b><span>设计让正确行为更容易发生的系统</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>第八章的定位：从生物性到社会性</h2></div><div class="sd">第八章的三级结构 · 社会性的核心矛盾</div><p class="prose">这一课是第八章《人性的真相》的第二节。上一节讨论<b>人的生物性</b>——人首先是生命体：代谢、感知、反应、学习、成长。这一节继续追问：这样一个生命体进入群体以后，会发生什么？于是进入<b>人的社会性</b>。</p><div class="tl"><div class="ev"><div class="dyn">生物性</div><p>作为生命，我有什么倾向？（上一节）</p></div><div class="ev"><div class="dyn">社会性</div><p>和别人生活，我怎样合作？（本节）</p></div><div class="ev"><div class="dyn">经济性</div><p>资源有限，我怎样选择与交换？（下一节）</p></div></div><p class="prose">老师主要从管理角度讲社会性。其实社会性远远不只是“接受管理”——人具有下面这些社会行为特征：</p><div class="chips"><span class="chip">依恋关系</span><span class="chip">合作</span><span class="chip">竞争</span><span class="chip">模仿</span><span class="chip">语言沟通</span><span class="chip">群体认同</span><span class="chip">规则学习</span><span class="chip">公平感</span><span class="chip">声誉</span><span class="chip">互惠</span><span class="chip">权力关系</span></div><p class="prose">所以人的社会性最核心的矛盾其实是：</p><div class="cards g2"><div class="card"><div class="idx">独</div><h4>我是一个独立个体</h4><p>有自己的意愿、利益与节奏</p></div><div class="card"><div class="idx">依</div><h4>我又必须依赖别人才能生活</h4><p>合作、分工、交换都离不开他人</p></div></div><div class="quote"><div class="q">一个人进入群体以后，为什么不能只凭自己的意愿行动？一个组织又应该通过什么方式，让不同的人能够合作？</div><div class="src">本课要解决的非常现实的问题</div></div><div class="quote"><div class="q">社会性 = 个体进入群体以后，在利益、规则、关系和共同目标之间不断协调。</div><div class="src">老师给出的答案 · 全课主线</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>课堂模型：善 · 恶 · 非善非恶</h2></div><div class="sd">老师的分类逻辑 · 以及本课最需要修正的一点</div><p class="prose">老师为什么要用“善、恶、非善非恶”分类？他的逻辑是：人的表现太复杂，无法直接研究，所以先分类。他给出三类，作为课堂模型非常容易理解——</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>善</h4><p>倾向<b>利他、利群体</b></p></div><div class="card"><div class="idx">貳</div><h4>恶</h4><p>倾向<b>利己、损群体</b></p></div><div class="card"><div class="idx">叁</div><h4>非善非恶</h4><p>行为取决于<b>环境和条件</b></p></div></div><p class="prose">但这里第一个重要纠偏是——这也是本课最需要修正的一点：</p><div class="warn"><div class="wt">本课最需要修正的一点</div><ul><li><b>利己 ≠ 恶</b></li><li><b>利他 ≠ 必然善</b></li></ul></div><div class="case"><div class="h"><span class="tag">纠偏</span><span class="ht">两个例子，击碎简单二分</span><span class="ar">▸</span></div><div class="sm"><div class="inner">医生希望工资更高，这是利己。但只要通过提高专业能力、提供更好服务、获得合理报酬来实现，显然不能叫“恶”。反过来：一个人为了帮助自己的小团体，损害其他人的合法权益。虽然他对小团体利他，却未必具有公共意义上的善。</div></div></div><p class="prose">所以更成熟的判断，应该同时考虑五个维度，而不是简单二分：</p><div class="chips"><span class="chip">自己利益</span><span class="chip">他人权益</span><span class="chip">规则</span><span class="chip">公平</span><span class="chip">长期结果</span></div><div class="quote"><div class="q">自利=恶，利他=善。</div><div class="src">源文明确否定的简单二分式判断</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>真问题：自利如何与合作兼容</h2></div><div class="sd">比“善恶”更有管理意义的问题</div><p class="prose">社会真正需要解决的，是“自利如何与合作兼容”——这个问题比“善恶”更有管理意义。每个人都有自己的工资、发展、家庭、尊严、时间、兴趣；组织也有质量、成本、效率、发展目标。</p><div class="duo"><div class="col neg"><h4>好的制度不是要求所有人 ✕</h4><ul><li>不要有个人利益。</li></ul></div><div class="col pos"><h4>而是努力做到 ✓</h4><ul><li><b>个人目标与组织目标尽可能一致。</b></li></ul></div></div><div class="ladder"><div class="step"><div class="t">员工提高服务质量</div></div><div class="step"><div class="t">患者更满意</div></div><div class="step"><div class="t">机构发展更好</div></div><div class="step hot"><div class="t">员工得到合理认可和回报</div><div class="d">个人利益和组织利益形成正向连接</div></div></div><p class="prose">这时候，<b>个人利益和组织利益形成正向连接</b>——这其实比“压制人性恶”更接近现代管理。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>三种管理手段：文化｜制度｜绩效</h2></div><div class="sd">全课最有价值的管理框架 · 附整理者关键校正</div><div class="warn"><div class="wt">整理者的关键校正 · 全课必读</div><ul><li>原课把三种手段分别绑定「人性善、人性恶、非善非恶」，是<b>过度简化</b></li><li>更成熟的理解：<b>文化解决“为什么愿意做”</b> / <b>制度解决“什么不能做”</b> / <b>绩效解决“做到什么程度”</b></li><li>三者不是针对三类固定的人，而是<b>任何成熟组织都需要同时存在的三种治理机制</b></li></ul></div><p class="prose">如果把“性善性恶”的绑定去掉，老师提出的“文化—制度—绩效”其实很有价值——它会成为一个非常好用的管理框架：</p><div class="cards g3"><div class="card"><div class="idx">制</div><h4>制度：什么必须做</h4><p>回答<b>什么必须做？什么绝不能做？</b>——建立底线、程序、责任、权利、边界；例如医疗核心制度、处方管理、感染管理、财务规范。核心是<b>建立最低行为边界</b></p></div><div class="card"><div class="idx">绩</div><h4>绩效：做到什么程度</h4><p>例如<b>完成率、质量、效率、时效、结果</b>。核心是<b>目标 + 测量 + 反馈</b></p></div><div class="card"><div class="idx">文</div><h4>文化：为什么值得做</h4><p>涉及<b>价值观、共同使命、团队规范、身份认同</b>，希望产生<b>内在认同</b></p></div></div><div class="quote"><div class="q">制度守底线 · 绩效管结果 · 文化给方向</div><div class="src">整理者认为应该成为本课真正留下来的三句话</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>不贴标签：人 × 情境</h2></div><div class="sd">管理行为，不审判本质</div><p class="prose">为什么不能说“恶人用制度，善人用文化，中间人用绩效”？因为现实中的同一个人，在不同情境里都会变化：一个非常敬业的员工，也必须遵守医疗安全制度；一个价值观非常认同组织的人，也需要明确目标和反馈；而一个偶尔偷懒的人，也并不意味着“这个人本质就是恶”。</p><div class="duo"><div class="col neg"><h4>管理不要轻易做 ✕</h4><ul><li>给人贴<b>善人 / 恶人</b>的本质标签</li></ul></div><div class="col pos"><h4>管理最好管理 ✓</h4><ul><li><b>行为</b>——这是非常重要的管理伦理</li></ul></div></div><div class="quote"><div class="q">行为 = 个人倾向 × 情境条件</div><div class="src">一个更好的模型 ·「人 × 情境」</div></div><div class="chips"><span class="chip">能力</span><span class="chip">激励</span><span class="chip">规则</span><span class="chip">文化</span><span class="chip">反馈</span></div><p class="prose">所以同一个人在不同领导、不同团队、不同绩效机制、不同工作负荷下，可能表现完全不同。这也正好符合上一节课程强调的——</p><div class="quote"><div class="q">不要把人当前的状态看成永久本质。</div><div class="src">上一节《人的生物性》的提醒 · 本节再次呼应</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>泰勒与霍桑：两段被简化的管理学史</h2></div><div class="sd">老师讲对了方向 · 但历史不能这样画等号</div><div class="quote"><div class="q">泰勒建立了“制度管理学派”，通过摄像工人的动作制定流程。</div><div class="src">老师在课上的原话 · 核心方向接近，但需要纠正</div></div><div class="warn"><div class="wt">整理者的纠正 · 泰勒到底做了什么</div><ul><li>弗雷德里克·泰勒是<b>科学管理</b>的重要奠基人物：时间研究、职能分工、工作标准化、书面操作指导、成本控制和激励，希望提高生产效率（据 OpenStax 开源教材）</li><li>并不能简单把他的理论概括成<b>“因为人性恶，所以靠制度管人”</b></li><li>泰勒真正适合本课的关键词是<b>标准化｜流程｜测量｜效率</b>，不是<b>惩恶</b></li></ul></div><p class="prose">老师讲霍桑实验的逻辑是一条链：科学管理只看到人的动作 → 霍桑实验发现人还有人际关系 → 于是出现文化管理。这个方向有启发性，但历史上不能直接这样画等号——</p><div class="warn"><div class="wt">霍桑部分的两个校正</div><ul><li>霍桑研究确实促使管理学更重视<b>群体关系、员工态度、管理关注、非正式组织、社会需求</b>，推动了人际关系学派的发展（据 OpenStax 开源教材）</li><li>但<b>人际关系学派 ≠ 今天所谓企业文化管理</b>——两者有历史联系，却不是同一个概念</li><li>霍桑研究本身的方法和传统解释后来也受到大量质疑，甚至“梅奥亲自主持全部实验”的流行说法都过度简化</li></ul></div><p class="prose">所以以后记：<b>泰勒提醒管理者关注工作结构，人际关系研究提醒管理者关注人的社会关系</b>，就够了。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>文化管理的真相：不在墙上，在行动里</h2></div><div class="sd">文化不是墙上贴标语 · 而是遇事时的实际做法</div><div class="quote"><div class="q">真正的组织文化不是“墙上写什么”，而是“大家遇到事情时实际上怎么做”。</div><div class="src">老师说文化不是统一服装、墙上贴标语 · 整理者非常赞成</div></div><div class="case"><div class="h"><span class="tag">例子</span><span class="ht">墙上写着“患者至上”，真实文化却未必</span><span class="ar">▸</span></div><div class="sm"><div class="inner">墙上写“患者至上”。但出现患者投诉时，大家首先考虑：怎样把投诉压下来。那么真实文化显然不是“患者至上”。</div></div></div><p class="prose">所以文化最真实的表现，是这五个问题——</p><div class="chips"><span class="chip">什么行为得到表扬？</span><span class="chip">什么错误可以容忍？</span><span class="chip">出问题先追责还是先解决？</span><span class="chip">领导自己怎么做？</span><span class="chip">制度没写、人人皆知不能做的事</span></div><p class="prose">文化最重要的作用，是降低“每件事都靠监督”的成本。如果每个人必须有人盯着才工作，组织管理成本会非常高；文化发挥作用时，一些规则会被成员<b>内化</b>——例如“病人安全优先”，如果真正进入团队共同认知，没人监督时，工作人员仍然会主动执行。</p><div class="ladder"><div class="step"><div class="t">制度：外部约束</div></div><div class="step hot"><div class="t">文化：内部约束</div><div class="d">规则被成员内化，没人监督时仍然主动执行</div></div></div><p class="prose">但二者必须同时存在——不能因为文化好，就不需要制度。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>绩效的真正价值：设计条件，而不只是考核</h2></div><div class="sd">行为受条件影响 · 管理就是在设计条件</div><div class="quote"><div class="q">很多人的行为会受到条件影响。</div><div class="src">老师把“非善非恶”连接到绩效管理时，真正有价值的发现</div></div><div class="cards g2"><div class="card"><div class="idx">顺</div><h4>条件顺</h4><p>目标清楚，反馈及时，努力有合理回报，资源也够——<b>很多人会表现得更好</b></p></div><div class="card"><div class="idx">逆</div><h4>条件逆</h4><p>干多干少一样，责任不清，奖励随机，努力得不到认可——<b>行为可能发生变化</b></p></div></div><div class="quote"><div class="q">管理不仅是在评价人，还在设计条件。</div><div class="src">本节很值得带走的思想</div></div><p class="prose">老师对“绩效=考核”的批评非常有价值：很多机构一说绩效就是<b>扣钱、排名、打分</b>。实际上，成熟的绩效管理至少应该包含六个环节：</p><div class="ladder"><div class="step hot"><div class="t">目标</div><div class="d">我们要去哪？</div></div><div class="step"><div class="t">支持</div><div class="d">你需要什么资源？</div></div><div class="step"><div class="t">执行</div><div class="d">怎么推进？</div></div><div class="step"><div class="t">反馈</div><div class="d">哪里需要改善？</div></div><div class="step"><div class="t">评价</div><div class="d">做到什么程度？</div></div><div class="step"><div class="t">发展</div><div class="d">下一阶段怎样提高？</div></div></div><div class="warn"><div class="wt">只剩考核，绩效就被压缩成了奖惩工具</div><ul><li>如果只留下<b>考核</b>，绩效管理就被压缩成了<b>奖惩工具</b></li><li>确实很容易引起<b>防御、短期行为甚至指标游戏</b></li></ul></div><div class="warn"><div class="wt">麦克利兰纠错 · 明确纠正</div><ul><li>David McClelland（戴维·麦克利兰）最著名的是<b>成就需要、权力需要、亲和需要</b>——“三种需要理论”（据维基百科）</li><li>他研究的是人的<b>动机结构</b>，而不是“非善非恶的人应该用绩效管理”</li><li>不要记：麦克利兰 = 权变管理 = 绩效管理——这是几套不同理论被课程混在了一起</li></ul></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>权变与阿米巴：管理没有标准答案</h2></div><div class="sd">管理没有绝对正确，只有合不合适</div><div class="quote"><div class="q">管理没有绝对正确，只有合不合适。</div><div class="src">老师的一句话 · 与现代管理中的 Contingency Approach（权变观点）很接近</div></div><p class="prose">权变观点的核心思想是——</p><div class="quote"><div class="q">没有一种管理方式在所有组织、所有人员、所有环境里永远最好。</div><div class="src">权变观点 · 应根据任务、环境、人员、技术、组织阶段选择管理方式</div></div><p class="prose">老师批评“国内有些企业把阿米巴只学成考核”，这个方向确实值得重视。稻盛和夫官方资料对阿米巴管理的描述其实丰富得多：</p><div class="case"><div class="h"><span class="tag">京瓷官方</span><span class="ht">阿米巴管理到底包含什么？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">把组织拆分为小型自主经营单元；培养具有经营意识的领导者；让员工参与经营；建立独立核算；让组织成员围绕共同目标进行“全员参与经营”。官方资料还特别强调：哲学是阿米巴管理的基础，并不是复制一套数字考核表就能运行。（据 KYOCERA 官方资料）</div></div></div><div class="quote"><div class="q">如果只剩考核，就把阿米巴学歪了。</div><div class="src">老师的评价 · 有京瓷官方资料的现实依据</div></div><div class="ladder"><div class="step"><div class="t">不是“老板给员工定KPI”</div></div><div class="step"><div class="t">让小团队理解收入、成本、效率、目标与自身工作的关系</div></div><div class="step hot"><div class="t">员工从执行者 → 部分经营者</div></div></div><div class="quote"><div class="q">真实管理体系很少只属于“文化、制度、绩效”其中一个盒子。</div><div class="src">阿米巴同时包含绩效＋自主＋文化＋核算 · 好的管理常常是几种机制组合</div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>数字与标签：三剂预防针</h2></div><div class="sd">20/60/20 · 淘汰“恶人” · 层级机械化 · 扬善惩恶</div><div class="warn"><div class="wt">“20%善、20%恶、60%条件性”尤其不要当作人性定律</div><ul><li>老师把它归到 James March（詹姆斯·马奇）；但目前能找到的相近“20/60/20诚信规则”，有文献明确把“20%诚实、20%不诚实、60%视情境而定”归于 <b>Bologna（1980）</b></li><li>它更像一个<b>经验性、启发式规则</b>，在不同场景也被用来描述欺诈、变革支持或绩效分布，并不是经过普遍验证的“人类永恒比例”</li></ul></div><div class="quote"><div class="q">群体中通常既有高度自驱者，也有明显偏离者，而大量人的行为会受到情境和管理方式影响。</div><div class="src">更合理的记忆方式 · 把 20/60/20 只当一个管理提醒</div></div><div class="warn"><div class="wt">“最恶的20%直接淘汰”在管理上非常危险</div><ul><li>最大的问题是：<b>谁来判断一个人是“恶”？</b></li><li>一个员工绩效差，可能是能力不匹配、资源不足、岗位设计不合理、家庭事件、管理问题</li><li>成熟的人力管理应该判断<b>具体行为和岗位匹配度</b>——是否违规？是否达到岗位标准？经过支持和改进后是否仍无法胜任？——而不是判断“这个人的本质善不善”</li></ul></div><p class="prose">原课“基层、中层、高层分别用不同绩效逻辑”也不能机械化。不同层级的工作特点确实不同：基层岗位更容易流程标准化、数量化；中层管理需要兼顾团队、协同、结果；高层更需要长期战略、组织整体结果。所以<b>绩效指标应该随岗位改变</b>是正确的——但不能固定成“基层一定怎么管，中层一定怎么管，高层一定怎么奖”。最核心还是：<b>指标必须匹配岗位真正创造的价值。</b></p><div class="warn"><div class="wt">老师最后“社会就是扬善惩恶”，太窄了</div><ul><li>社会当然需要法律、道德、奖励、惩罚，但社会的作用远不只<b>扬善惩恶</b></li><li>还需要解决合作、分工、权利、公共资源、冲突、信任、交换、安全、公共服务等问题</li><li>“扬善惩恶”只是其中一个维度</li></ul></div><div class="quote"><div class="q">人在群体中需要学习如何在个人需要与共同生活之间建立稳定、可持续的合作秩序。</div><div class="src">人的社会性更成熟的总结</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>管理最大的升级：从评价人性到设计情境</h2></div><div class="sd">三种驱动力 · 治理三角 · 补上能力与资源</div><p class="prose">这节课真正隐藏着一个很好的管理问题。它不是——“人究竟善还是恶？”——而应该改成：</p><div class="quote"><div class="q">什么环境更容易让人做出好的行为？</div><div class="src">这节课真正隐藏着的一个很好的管理问题 · 这个问题一下就现代化了</div></div><p class="prose">比如你想让员工主动负责，不要只问“为什么他们责任心差？”，而要连续追问：</p><div class="chips"><span class="chip">权限够吗？</span><span class="chip">目标清楚吗？</span><span class="chip">做好有反馈吗？</span><span class="chip">犯错能学习还是只会受罚？</span><span class="chip">主动承担后有没有收益？</span><span class="chip">领导是不是也承担责任？</span></div><div class="ladder"><div class="step"><div class="t">“评价人性”</div><div class="d">先判断这个人善还是恶</div></div><div class="step hot"><div class="t">“设计情境”</div><div class="d">这才是管理最大的升级</div></div></div><p class="prose">整理者据此把老师的“三分法”改造成“社会行为三种驱动力”——既保留课程结构，又避免给人贴善恶标签：</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>价值驱动</h4><p>因为<b>“我认同这件事。”</b>→ 对应<b>文化</b></p></div><div class="card"><div class="idx">②</div><h4>规则驱动</h4><p>因为<b>“这是必须遵守的边界。”</b>→ 对应<b>制度</b></p></div><div class="card"><div class="idx">③</div><h4>激励驱动</h4><p>因为<b>“行为和结果存在明确反馈。”</b>→ 对应<b>绩效</b></p></div></div><div class="cards g3"><div class="card"><div class="idx">文</div><h4>只有文化</h4><p>容易<b>靠口号</b></p></div><div class="card"><div class="idx">制</div><h4>只有制度</h4><p>容易<b>机械僵化</b></p></div><div class="card"><div class="idx">绩</div><h4>只有绩效</h4><p>容易<b>短期主义和指标内卷</b></p></div></div><p class="prose">在“组织治理三角”里，文化回答<b>为什么做</b>，制度回答<b>什么必须做</b>，绩效回答<b>做到什么程度</b>，三者中央是<b>人的行为</b>，好的组织需要三者平衡。这三种驱动也可以同时存在于同一个人身上——一个医生规范诊疗，既可能因为认同职业伦理，也因为法律制度要求，同时还有质量绩效考核，这才是真实的人。</p><p class="prose">而且还应该补第四个东西：<b>能力支持</b>。员工没有能力，再怎么文化教育、制度要求、绩效考核也没有用——要求基层工作人员做高质量的数据分析，但没人培训、没有工具、没有数据，最终结果可能只能是假数据或应付。成熟管理至少是<b>文化 + 制度 + 绩效 + 能力</b>，甚至再加<b>资源</b>。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>实战与贯通：把框架用起来</h2></div><div class="sd">每周下社区的完整分析 · 与《人的生物性》的回环</div><div class="case"><div class="h"><span class="tag">实战</span><span class="ht">“要求职工每周必须下社区”，怎样才算管对了？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">不能只“不去扣500元”——这是制度/绩效。还需要：文化，让大家理解为什么一定要触达居民——只有走出去，才能真正掌握居民健康资料，家庭医生关系才不是纸面签约；制度，明确每周时间、工作要求、报告格式、责任；绩效，完成与否如何反馈；能力，怎么入户？怎么沟通？怎么采集信息？资源，名单、电话、宣传物料、设备是否准备？这样整个管理逻辑才闭合。</div></div></div><div class="quote"><div class="q">不要只管人，要设计一个让正确行为更容易发生的系统。</div><div class="src">用这套框架分析实际管理问题的收束句</div></div><p class="prose">这一课与上一课《人的生物性》的关系也终于出来了——生物倾向进入社会后，被规则、文化、激励反过来塑造：</p><div class="ladder"><div class="step"><div class="t">生物倾向</div><div class="d">趋利避害、学习、适应</div></div><div class="step"><div class="t">进入社会</div><div class="d">环境中出现规则、文化、奖励、惩罚、他人评价</div></div><div class="step"><div class="t">规则 + 文化 + 激励</div></div><div class="step"><div class="t">行为学习</div></div><div class="step hot"><div class="t">形成社会行为模式</div></div></div><div class="quote"><div class="q">社会不是压在人性外面的东西；我们长期生活的社会环境，本身会塑造我们的行为和习惯。</div><div class="src">“人的社会性”真正非常有意思的地方</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>全课纠偏八条与六句话</h2></div><div class="sd">整理者总结的 8 点纠偏 · 与最该带走的 6 句话</div><p class="prose">整理者在全课末尾集中列出了这一课最需要纠偏的 8 点，逐条保留（也是本页各处警示的总索引）：</p><div class="warn"><div class="wt">这一课最需要纠偏的 8 点（整理者总结）</div><ul><li>一、“利己=恶、利他=善”不能成立——道德评价必须考虑权益、公平、规则和结果，而不仅仅看自利还是利他</li><li>二、“善、恶、非善非恶”可以作为课程分类，但不是社会科学公认的人性三分法</li><li>三、泰勒代表科学管理，核心是标准化、工作研究和效率，而不是建立“针对恶人的制度管理”</li><li>四、霍桑研究推动的是人际关系运动，不能直接等同于现代企业文化管理；它本身的经典解释也受到很多方法学质疑</li><li>五、麦克利兰的核心理论是成就、权力、亲和三种需要，而不是老师所说的权变理论或绩效管理理论</li><li>六、“20/60/20诚信比例”不能归给 James March，也不能视为普遍人性定律——相近说法至少有文献归于 Bologna（1980）</li><li>七、阿米巴管理确实强调数字核算，但同时强调自主经营、领导者培养、全员参与和共同哲学，不能压缩成考核体系</li><li>八、“管理没有对错，只有合适”虽抓住权变思想，但仍不能绝对化——管理仍有合法性、伦理、证据和效果上的好坏之分，“适合情境”不能替不合理管理开脱</li></ul></div><p class="prose">而如果这一课只记住 6 句话，其中最凝练的两句是：</p><div class="quote"><div class="q">① 人的社会性，最核心的问题不是“人究竟善还是恶”，而是独立个体怎样在群体中建立合作秩序。</div><div class="src">如果只记住 6 句话 · 其一</div></div><div class="quote"><div class="q">⑤ 很多行为不是固定人性直接决定的，而是个人倾向与制度、激励、文化、能力和环境共同作用的结果。</div><div class="src">如果只记住 6 句话 · 其五</div></div><p class="prose">其余几句在前面各节已逐一展开；② 与④见「课堂模型」「不贴标签」两节，③ 与⑥见下方「带走三句」。整理者还建议：长期视觉记忆的模型不要再用“善—恶—中间人”，而应换成——<b>人的行为 = 文化（为什么做）＋制度（什么必须做）＋绩效（做到什么程度）＋能力与资源（能不能做到）</b>。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">治理机制</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">绩效环节</div></div><div class="cnt"><div class="v" data-c="8">0</div><div class="l">纠偏要点</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">成熟判断维度</div></div></div><div class="panel"><h3><span class="no2">①</span>管理场景归类练习</h3><div class="pd">判断下列管理场景属于「文化 / 制度 / 绩效」哪一种治理机制，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文：「第一层：制度……例如：医疗核心制度、处方管理、感染管理、财务规范」，核心是建立最低行为边界"><div class="st">1. 医疗核心制度、处方管理、感染管理、财务规范</div><div class="opts"><button data-ok="0">文化</button><button data-ok="1">制度</button><button data-ok="0">绩效</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「第二层：绩效……例如：完成率、质量、效率、时效、结果」，核心是目标 + 测量 + 反馈"><div class="st">2. 完成率、质量、效率、时效、结果</div><div class="opts"><button data-ok="0">文化</button><button data-ok="0">制度</button><button data-ok="1">绩效</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「第三层：文化……涉及价值观、共同使命、团队规范、身份认同」，希望产生内在认同"><div class="st">3. 价值观、共同使命、团队规范、身份认同</div><div class="opts"><button data-ok="1">文化</button><button data-ok="0">制度</button><button data-ok="0">绩效</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「① 价值驱动：因为“我认同这件事。”对应文化」"><div class="st">4. 因为“我认同这件事”而行动</div><div class="opts"><button data-ok="1">文化</button><button data-ok="0">制度</button><button data-ok="0">绩效</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「② 规则驱动：因为“这是必须遵守的边界。”对应制度」"><div class="st">5. 因为“这是必须遵守的边界”而行动</div><div class="opts"><button data-ok="0">文化</button><button data-ok="1">制度</button><button data-ok="0">绩效</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「③ 激励驱动：因为“行为和结果存在明确反馈。”对应绩效」"><div class="st">6. 因为“行为和结果存在明确反馈”而行动</div><div class="opts"><button data-ok="0">文化</button><button data-ok="0">制度</button><button data-ok="1">绩效</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>治理机制通关清单</h3><div class="pd">拿你所在组织的一项真实管理要求，逐条检验自己能否回答</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能不再用“利己=恶、利他=善”评价人，而是看权益、公平、规则与长期结果</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能从「文化」回答：这项要求为什么值得做？</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能从「制度」划出边界：什么必须做？什么绝不能做？</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能从「绩效」设计目标、测量与反馈，而不只做扣钱、排名、打分</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能检查能力与资源：员工有没有培训、工具、数据去做到？</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">遇到表现差的情况，我先排查情境（权限/目标/反馈/激励），不先贴善恶标签</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>本课认为，人的社会性最核心的问题是什么？</div><div class="ans"><button data-ok="0">A. 人究竟是善还是恶</button><button data-ok="1">B. 独立个体怎样在群体中建立合作秩序</button><button data-ok="0">C. 怎样挑选出本质善良的员工</button><button data-ok="0">D. 怎样用制度压制人性之恶</button></div><div class="exp">源文：“人的社会性，最核心的问题不是‘人究竟善还是恶’，而是独立个体怎样在群体中建立合作秩序。”</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>按整理者校正后的理解，「制度」解决的是什么？</div><div class="ans"><button data-ok="0">A. 为什么愿意做</button><button data-ok="1">B. 什么不能做</button><button data-ok="0">C. 做到什么程度</button><button data-ok="0">D. 能不能做到</button></div><div class="exp">更成熟的理解是：文化解决“为什么愿意做”，制度解决“什么不能做”，绩效解决“做到什么程度”。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>泰勒真正适合本课的关键词是？</div><div class="ans"><button data-ok="0">A. 惩恶</button><button data-ok="1">B. 标准化｜流程｜测量｜效率</button><button data-ok="0">C. 企业文化</button><button data-ok="0">D. 权变管理</button></div><div class="exp">泰勒是科学管理的重要奠基人物，核心是时间研究、工作标准化与效率——并不是“因为人性恶，所以靠制度管人”。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>霍桑研究在管理思想史上真正推动的是什么？</div><div class="ans"><button data-ok="0">A. 现代企业文化管理</button><button data-ok="0">B. 科学管理学派</button><button data-ok="1">C. 人际关系学派的发展</button><button data-ok="0">D. 权变理论</button></div><div class="exp">霍桑研究促使管理学更重视群体关系、员工态度、非正式组织等，推动了人际关系学派的发展；但人际关系学派 ≠ 今天所谓企业文化管理。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>这一课所说的「管理最大的升级」是指什么？</div><div class="ans"><button data-ok="1">A. 从评价人性转向设计情境</button><button data-ok="0">B. 从绩效管理转向文化管理</button><button data-ok="0">C. 从基层管理转向高层管理</button><button data-ok="0">D. 从制度约束转向淘汰恶人</button></div><div class="exp">源文：“‘评价人性’转向‘设计情境’，这才是管理最大的升级。”——不是只要求人改变，而是设计一个让正确行为更容易发生的系统。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">成熟组织通常同时需要文化、制度和绩效：文化回答“为什么做”，制度回答“什么必须做”，绩效回答“做到什么程度”。</div><div class="src">如果只记住 6 句话 · 其三</div></div><div class="quote"><div class="q">真正高级的管理，不只是要求人改变，而是设计一个让正确行为更容易发生、错误行为更难发生的系统。</div><div class="src">如果只记住 6 句话 · 其六</div></div><div class="quote"><div class="q">社会性不是消灭人的自我，而是通过文化、规则和激励，让个人选择与群体合作尽可能形成一致。</div><div class="src">整理者推荐的全课中心金句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../24-人的生物性/index.html">← 上一篇 · 人的生物性</a><a href="../26-人的经济性/index.html">下一篇 · 人的经济性 →</a><span class="sp"></span><span class="cur">人的社会性</span></div></nav>
+<footer class="coda"><div class="wm2">合</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">社会性不是消灭人的自我，<br>而是通过文化、规则和激励，<br>让<b>个人选择与群体合作尽可能形成一致</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二十六讲《人的社会性》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s11", "#s12"], "sortok": [1, 2, 0, 0, 1, 2], "quizok": [1, 1, 1, 2, 0], "ckkey": "zx25-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

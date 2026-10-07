@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>系统思维 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx16-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../15-辩证思维/index.html">← 上一篇 · 辩证思维</a><a href="../17-语言工具/index.html">下一篇 · 语言工具 →</a><span class="sp"></span><span class="cur">系统思维</span></div></nav>
+<header class="hero" id="top"><div class="wm">连</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第五章《思维模式》第四节（收束）</div>
+  <div class="no">拾柒</div>
+  <h1>系统思维</h1>
+  <div class="sub">看现象 · 找原因 · 观变化 · 连成整体</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>感性看现象、因果找原因、辩证看变化，系统思维则进一步追问：<br>这些因素连接起来，整体会怎样？答案不是把所有因素都列出来，<br>而是看清<b>哪些因素、通过什么关系和反馈，共同塑造了整体结果</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 四种思维的递进</a><a href="#s2">貳 · 什么叫系统</a><a href="#s3">叁 · 第一步 · 目的与边界</a><a href="#s4">肆 · 第二步 · 要素与「系统决定要素」</a><a href="#s5">伍 · 第三步 · 要素不是重点，关系才是重点</a><a href="#s6">陆 · 补上反馈 · 因果不是直线，而可能是环</a><a href="#s7">柒 · 关键条件 · 驱动力与阻力</a><a href="#s8">捌 · 第六步 · 一定要加入时间</a><a href="#s9">玖 · 七问 · 重整系统分析模型</a><a href="#s10">拾 · 哲学概念的校正</a><a href="#s11">拾壹 · 领导者思维与战略思维</a><a href="#s12">拾貳 · 实战 · 画一张系统图</a><a href="#s13">拾叁 · 第五章收束 · 看因变联</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">系统分析模型主线（目的/功能 → 边界 → 要素 → 关系 → 关键条件 → 驱动力/阻力 → 时间变化）· 点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s3"><b>目的/功能 → 边界</b><span>你怎样定义问题，就看见哪些因素</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>要素</b><span>系统决定要素的价值</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>关系</b><span>A↔B↔C↔D，不是 A+B+C+D</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>反馈</b><span>因果不是直线，而可能是环</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>关键条件</b><span>必要条件 · 冗余 · 瓶颈</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>驱动力/阻力</b><span>有时最好的干预是减少阻力</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>时间变化</b><span>系统不是照片，而是一部电影</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s9"><b>七问成模</b><span>目的·边界·要素·关系·反馈·驱动/约束·时间</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>四种思维的递进</h2></div><div class="sd">第五章收官定位 · 系统思维不淘汰前三种，而是把它们装进去</div><p class="prose">这一课是第五章《思维模式》的第四节，也是整个第五章的收束。前面三节分别解决「看到了什么、为什么发生、怎样变化」，这一节进一步追问：</p><div class="quote"><div class="q">这些因素放到同一个整体里以后，彼此怎样连接、怎样相互影响，整个系统为什么能够存在，又会走向哪里？</div><div class="src">本讲开篇的核心问题</div></div><p class="prose">四节课全部讲完，现在可以真正看清第五章的总体结构——四种思维各自回答一个核心问题：</p><div class="cards g2"><div class="card"><div class="idx">感</div><h4>感性思维</h4><p>主要看现象与特征 —— <b>发生了什么？</b></p></div><div class="card"><div class="idx">因</div><h4>因果思维</h4><p>主要看原因与结果 —— <b>为什么发生？</b></p></div><div class="card"><div class="idx">辩</div><h4>辩证思维</h4><p>主要看张力与变化 —— <b>它正在怎样变化？</b></p></div><div class="card"><div class="idx">系</div><h4>系统思维</h4><p>主要看整体关系与反馈 —— <b>这些因素连接起来，整体会怎样？</b></p></div></div><p class="prose">所以第五章并不是简单地把四种思维按「低级→高级」排列。更准确的理解是一条认知递进链：</p><div class="ladder"><div class="step"><div class="t">观察</div><div class="d">感性思维 · 看现象</div></div><div class="step"><div class="t">解释</div><div class="d">因果思维 · 找原因</div></div><div class="step"><div class="t">动态理解</div><div class="d">辩证思维 · 看变化</div></div><div class="step hot"><div class="t">整体整合</div><div class="d">系统思维 · 看整体</div></div></div><div class="duo"><div class="col neg"><h4>常见误解 ✕</h4><ul><li>系统思维比前三种「更高级」，淘汰了前三种思维</li></ul></div><div class="col pos"><h4>更准确的理解 ✓</h4><ul><li>系统思维之所以强，是因为<b>它需要把前三种思维全部装进去</b>：系统里仍然需要观察现象、找到因果、理解矛盾和变化，最后再研究它们怎样组成一个整体</li></ul></div></div><div class="quote"><div class="q">它需要把前三种思维全部装进去。</div><div class="src">整理者认为这是老师这一课最值得保留的观点</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>什么叫系统</h2></div><div class="sd">整体行为不能通过孤立研究单个部分得到</div><p class="prose">老师不断强调「存在」「条件」「价值」。如果用现代系统语言表达，可以先记住这个定义：</p><div class="quote"><div class="q">一组彼此连接的组成部分，它们通过相互作用形成一个整体，并表现出单个部分本身没有的整体行为。</div><div class="src">整理者用现代系统语言对「系统」的定义</div></div><p class="prose">例如一个社区卫生服务中心，不只是：医生 + 护士 + 药品 + 房屋。真正的系统还包括——</p><div class="chips"><span class="chip">患者</span><span class="chip">医保政策</span><span class="chip">流程</span><span class="chip">绩效机制</span><span class="chip">信息系统</span><span class="chip">转诊关系</span><span class="chip">公卫任务</span><span class="chip">社区居民</span><span class="chip">时间安排 …</span></div><p class="prose">这些因素之间相互影响以后，才形成<b>「这个中心实际上怎样运行」</b>。系统的整体行为，不能简单通过孤立研究单个部分得到——这是应用型系统思维的基本共识。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第一步 · 目的与边界</h2></div><div class="sd">你怎样定义问题，就决定了你会看见哪些因素</div><p class="prose">系统思维最重要的第一步，不是马上列因素，而是先确定<b>「我们研究的是哪个系统」</b>——这是老师讲「功能、目的、边界」时真正触及的核心。同一个医院，两种问法就是两个系统：</p><div class="cards g2"><div class="card"><div class="idx">问一</div><h4>怎样提高医院收入？</h4><p>这是一个系统</p></div><div class="card"><div class="idx">问二</div><h4>怎样提高医疗服务能力，同时控制医保风险、保证质量和患者满意度？</h4><p>系统边界已经完全不同</p></div></div><div class="quote"><div class="q">你怎样定义问题，就决定了你会看见哪些因素。</div><div class="src">整理者对「边界」的提炼 · 本节主旨</div></div><p class="prose">现代系统实践同样强调：系统边界并不是永远客观固定在那里，而是与观察者研究什么问题、承担什么责任有关。因此第一问应该是<b>「我的目标到底是什么？」</b>接着问：为了回答这个目标，哪些东西应该放进系统？哪些暂时放在系统外？——这才是「边界」。</p><p class="prose">老师还说<b>「价值=目的」</b>。整理者提醒：目的、功能和价值非常相关，但最好不要完全等同。以一把刀为例：</p><div class="cards g3"><div class="card"><div class="idx">功</div><h4>功能</h4><p>切割 —— <b>它能做什么</b></p></div><div class="card"><div class="idx">目</div><h4>目的</h4><p>医生拿它做手术，厨师拿它切菜 —— <b>我们希望它做什么</b></p></div><div class="card"><div class="idx">价</div><h4>价值</h4><p>取决于它对某个主体、某个目标产生什么意义 —— <b>这个功能对目标意味着什么</b></p></div></div><div class="warn"><div class="wt">整理者的校正 ·「价值=目的」需要拆开</div><ul><li>目的、功能和价值非常相关，但最好不要完全等同</li><li>这样拆开记更容易实际使用：功能＝它能做什么；目的＝我们希望它做什么；价值＝这个功能对目标意味着什么</li></ul></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>第二步 · 要素与「系统决定要素」</h2></div><div class="sd">不能只抓住最显眼的一个原因</div><div class="quote"><div class="q">系统存在需要条件，条件就是要素。</div><div class="src">老师原话 · 整理者认为方向基本正确</div></div><p class="prose">比如分析「居民家庭医生签约触达率低」这个系统，可能涉及：居民认知、家庭医生团队、社区网格、联系方式、上门时间、宣传材料、居民需求、信息系统、绩效机制……</p><div class="duo"><div class="col neg"><h4>普通分析 ✕</h4><ul><li>「工作人员积极性不足。」—— 只抓住最显眼的一个原因，就此停住</li></ul></div><div class="col pos"><h4>系统思维 ✓</h4><ul><li>继续追问<b>「为什么积极性不足？」</b>——可能又与任务设计、资源、反馈、激励、工作量相关，于是一个「原因」，又进入了更大的关系网</li></ul></div></div><div class="quote"><div class="q">不能只抓住最显眼的一个原因。</div><div class="src">系统思维与普通分析最大的差别之一</div></div><div class="quote"><div class="q">系统决定要素的价值。</div><div class="src">老师原话 · 整理者认为很有启发性</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">门锁与医生：同一个东西，在不同系统里价值完全不同</span><span class="ar">▸</span></div><div class="sm"><div class="inner">教室的门锁平时不起眼，但上课前打不开门时，它突然成为关键因素。一名医生：如果研究的是门诊服务系统，他的诊疗能力很关键；如果研究的是疫苗冷链管理系统，冷链设备、温控记录可能比这位医生更关键。</div></div></div><p class="prose">真正说明的是：<b>一个要素的重要性取决于它在特定系统、目标和时间点中的作用。</b></p><div class="warn"><div class="wt">重要提醒 · 功能价值 ≠ 人格价值</div><ul><li>「某人在某个系统暂时不是关键要素」绝不等于「这个人没有价值」</li><li>不要把「系统中的功能价值」扩大成「整体人格价值」——这是两个不同层面</li></ul></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>第三步 · 要素不是重点，关系才是重点</h2></div><div class="sd">系统是 A↔B↔C↔D，不是 A+B+C+D</div><div class="duo"><div class="col neg"><h4>要素堆叠 ✕</h4><ul><li>一个系统是 A + B + C + D —— 医生、患者、医保、宣传、床位各列一行</li></ul></div><div class="col pos"><h4>关系结构 ✓</h4><ul><li>一个系统是 <b>A ↔ B ↔ C ↔ D</b> —— 更重要的是画出它们怎样相互影响</li></ul></div></div><p class="prose">老师列出了四种关系类型，这已经比简单列因素前进了一大步：</p><div class="chips"><span class="chip">并列关系</span><span class="chip">因果关系</span><span class="chip">对立关系</span><span class="chip">调控关系</span></div><p class="prose">比如分析中心业务增长，与其罗列因素，不如把相互影响的链条画出来：</p><div class="ladder"><div class="step"><div class="t">宣传增加</div></div><div class="step"><div class="t">居民认知增加</div></div><div class="step"><div class="t">就诊增加</div></div><div class="step"><div class="t">工作负荷增加</div></div><div class="step"><div class="t">等待时间延长</div></div><div class="step"><div class="t">满意度下降</div></div><div class="step hot"><div class="t">后续就诊减少</div></div></div><p class="prose">链条画完，这时候你才真正看见：<b>结构</b>。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>补上反馈 · 因果不是直线，而可能是环</h2></div><div class="sd">整理者建议一定要补进去的现代系统思维关键概念</div><p class="prose">这是源文整理者明确建议补上的概念：<b>Feedback——反馈</b>。它的意思是——一个结果产生以后，又回来影响自己的原因。两个方向都要看见：</p><div class="case"><div class="h"><span class="tag">增强</span><span class="ht">增强反馈：越转越好</span><span class="ar">▸</span></div><div class="sm"><div class="inner">服务质量提高 → 居民口碑提高 → 患者增加 → 收入增加 → 有更多资源投入服务 → 服务质量进一步提高。</div></div></div><div class="case"><div class="h"><span class="tag">平衡</span><span class="ht">平衡/抑制反馈：转过头会自动收紧</span><span class="ar">▸</span></div><div class="sm"><div class="inner">患者增加 → 医务人员负荷增加 → 等待时间增加 → 满意度下降 → 患者减少。</div></div></div><p class="prose">控制论的重要贡献就是研究这种「信息—反馈—调节」结构——维纳1948年的《控制论》，把反馈放在机器、生物甚至社会系统的控制与通信中讨论。</p><div class="quote"><div class="q">因果不是一条直线，而可能是一个环。</div><div class="src">系统思维真正比普通因果分析强大的地方</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>关键条件 · 驱动力与阻力</h2></div><div class="sd">最少必要条件、冗余与瓶颈 · 有时最好的干预是减少阻力</div><p class="prose">老师讲的「要素的容易」，整理者从语境判断，大概率说的是「冗余」，也可能是在表达「最低必要条件」。这里可以拆成两个系统概念：</p><div class="cards g2"><div class="card"><div class="idx">必要</div><h4>必要条件</h4><p>没有它，系统就不能正常运行 —— 比如门诊必须有合格医生</p></div><div class="card"><div class="idx">冗余</div><h4>冗余</h4><p>即使一个部分失败，系统还有备用能力 —— 只有一台关键设备，坏了业务就完全停止；有备用设备，系统韧性就更强</p></div></div><p class="prose">成熟的系统分析不仅问「哪些要素必不可少？」还要问：<b>哪些地方没有冗余，一旦失效整个系统就会中断？</b>——这对医院管理其实非常重要。</p><p class="prose">第五步是找「驱动力」和「阻力」。一个项目为什么推进？因为存在推动因素。为什么推进不动？因为同时存在阻碍因素。例如推动网格化工作：</p><div class="cards g2"><div class="card"><div class="idx">推</div><h4>驱动力</h4><p>绩效要求 · 居民需求 · 领导推动 · 家医团队责任 · 信息建档需要</p></div><div class="card"><div class="idx">阻</div><h4>阻力</h4><p>工作量大 · 居民不在家 · 联系方式不全 · 职工积极性不足 · 时间冲突</p></div></div><p class="prose">系统思维真正要问：<b>如果不改变阻力，只增加驱动力，会发生什么？</b>很可能压力越来越大，系统反而出现疲劳。因此有时最好的干预不是「更用力推」，而是<b>「减少阻力」</b>——这就是系统思维比单纯「加强管理力度」更高级的地方。</p><div class="warn"><div class="wt">整理者的校正 ·「焓=驱动力、熵=阻力」这部分建议不要记</div><ul><li>严格来说并不成立：恒温恒压下判断一个过程是否自发，通常使用吉布斯自由能 ΔG = ΔH − TΔS —— 焓与熵共同参与，熵并不是简单意义上的「阻力」，焓也不是普遍意义上的「驱动力」</li><li>「衰老就是熵大于焓」也不能作为生物学解释</li><li>可以把「驱动力—阻力」当作管理分析模型使用，不要把它当成热力学公式</li></ul></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>第六步 · 一定要加入时间</h2></div><div class="sd">系统的关键要素会随时间变化</div><div class="quote"><div class="q">系统不是照片，而是一部电影。</div><div class="src">老师讲得特别好的一点</div></div><p class="prose">今天某个因素可能不重要，三个月后可能成为主要瓶颈。例如一个业务刚开展：</p><div class="ladder"><div class="step"><div class="t">第一阶段</div><div class="d">缺患者</div></div><div class="step"><div class="t">第二阶段</div><div class="d">患者增加，缺人手</div></div><div class="step"><div class="t">第三阶段</div><div class="d">人手增加，医保费用压力出现</div></div><div class="step hot"><div class="t">第四阶段</div><div class="d">业务稳定以后，又开始关心质量、品牌、效率</div></div></div><p class="prose">所以，<b>系统的关键要素会随时间变化。</b>真正的系统思维必须不断问：<b>现在这个系统处于哪个阶段？</b>——这也正好把上一节辩证思维整合了进来。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>七问 · 重整系统分析模型</h2></div><div class="sd">整理者建议丢开原课散乱顺序，直接记这一套</div><p class="prose">这一课真正值得长期掌握的，不是老师讲的「体用、缘起、偶性、焓、熵」等大量概念，而是他实际上已经搭出的一套很有价值的系统分析模型——再补上「反馈」，就会变得相当实用：</p><div class="ladder"><div class="step"><div class="t">目的/功能</div><div class="d">我们究竟希望实现什么？</div></div><div class="step"><div class="t">边界</div><div class="d">哪些因素属于这个问题？</div></div><div class="step"><div class="t">要素</div><div class="d">哪些人、资源、条件参与？</div></div><div class="step"><div class="t">关系</div><div class="d">它们怎样相互影响？</div></div><div class="step"><div class="t">反馈</div><div class="d">结果会不会反过来强化或抑制原因？</div></div><div class="step"><div class="t">关键条件</div><div class="d">最少必要条件与冗余在哪里？</div></div><div class="step"><div class="t">驱动力/阻力</div><div class="d">什么推动系统？什么限制系统？</div></div><div class="step hot"><div class="t">时间</div><div class="d">这些关系将怎样随时间变化？</div></div></div><p class="prose">整理者的原话：<b>「我认为，这套七问比讲稿里大量『体用、偶性、缘起、焓熵』更值得长期掌握。」</b></p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>哲学概念的校正</h2></div><div class="sd">康德、体用缘起、系统思维源流 · 整理者的批判性提醒，不要当标准定义记忆</div><p class="prose">原课把康德的「关系范畴」与因果、体用、缘起联系得非常紧，还谈了系统思维与控制论的历史——但有几处需要明显纠偏，<b>以下都不要作为标准定义记忆</b>。</p><div class="warn"><div class="wt">校正一 · 康德「关系范畴」不能这样直接对译</div><ul><li>康德十二范畴中的「关系」确实有三组：实体—偶性、原因—结果、共同体/交互作用</li><li>老师讲的「偶性」，更准确来说是哲学传统中的「实体与偶性」——例如一个苹果作为对象，「红色」「甜」等性质可以作为它的属性或偶性来讨论，而不是「偶然遇上一个东西，它的特性就发挥出来」</li><li>把康德三种关系直接翻译成「因果＝因果思维、偶性＝体用、共同体＝缘起」，是老师自己的比较性解释，不能作为康德哲学的标准定义记忆</li></ul></div><p class="prose">虽然不能与康德范畴一一对应，但这三种思想仍然可以成为三个观察角度。这三个问题组合起来其实非常好：<b>原因 + 功能 + 条件网络</b>，然后再进入系统。</p><div class="cards g3"><div class="card"><div class="idx">因果</div><h4>问：为什么发生？</h4><p>追问原因与结果</p></div><div class="card"><div class="idx">体用</div><h4>问：这个东西是什么，它能够发挥什么作用？</h4><p>追问本体与功能</p></div><div class="card"><div class="idx">缘起</div><h4>问：哪些条件共同出现，才使这个现象成立？</h4><p>追问成立的条件网络</p></div></div><div class="quote"><div class="q">同一个对象，可以从不同关系类型进行观察。</div><div class="src">整理者认为这才是老师真正有价值的地方</div></div><div class="warn"><div class="wt">校正二 · 系统思维不是某一个人发明的</div><ul><li>原课语音里说「杰克的生物学家」，这里应该有识别错误——20世纪一般系统论的重要代表人物，是奥地利生物学家路德维希·冯·贝塔朗菲（Ludwig von Bertalanffy），1968年的《General System Theory》影响很大</li><li>但说「系统思维就是一个生物学家发明的」仍然过度简化——现代系统思想还来自控制论、运筹学、系统动力学、系统工程、复杂性理论等多条传统</li><li>「自动控制理论来自系统思维」也应调整：现代控制论的重要奠基人物是数学家诺伯特·维纳（Norbert Wiener），1948年《控制论》系统讨论机器和动物中的控制、通信与反馈</li><li>更合理的说法：一般系统论 + 控制论 + 系统工程等共同推动了现代系统思维，而不是单向的「系统思维 → 自动控制」</li></ul></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>领导者思维与战略思维</h2></div><div class="sd">局部最优 ≠ 整体最优 · 系统思维是战略思维的重要基础之一</div><p class="prose">为什么老师说「系统思维是领导者思维」？这句话虽然不是严格理论定义，但非常有管理意义：</p><div class="duo"><div class="col neg"><h4>基层执行者关注</h4><ul><li>我这一件事怎么做好？</li></ul></div><div class="col pos"><h4>领导者必须进一步看到</h4><ul><li>这件事情改变以后，会不会影响其他部门？</li></ul></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">增加住院患者，不能只看到「收入增加」</span><span class="ar">▸</span></div><div class="sm"><div class="inner">还必须看到：床位、护士负荷、药占比、耗材、医保额度、质量安全、患者满意度都会同时变化。很多管理错误都来自——一个科室指标变好了，但整个机构反而变差。系统思维就是要防止这种问题。</div></div></div><div class="quote"><div class="q">局部最优 ≠ 整体最优。</div><div class="src">「领导者思维」的本质</div></div><p class="prose">战略思维为什么离不开系统思维？因为战略不是问<b>「今天怎么解决一个问题？」</b>而是在问<b>「改变A以后，半年、一年、三年后整个系统会变成什么样？」</b>——因此必须考虑要素、关系、时间、反馈、资源约束、外部环境。</p><div class="warn"><div class="wt">整理者的校正</div><ul><li>更准确的说法是：系统思维是战略思维的重要基础之一</li><li>而不是「没有系统思维就绝对不可能做领导」——现实中的领导能力还包括沟通、执行、判断、伦理、组织、专业能力等</li></ul></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>实战 · 画一张系统图</h2></div><div class="sd">老师最后布置的作业，也是本课最实用的部分</div><p class="prose">整理者认为老师最后布置的作业非常好：<b>选一个真实问题，不要写文章，而是画系统图。</b>这个方法很适合实际工作，例如「为什么老年人体检完成率不高？」</p><div class="case"><div class="h"><span class="tag">三步</span><span class="ht">画系统图的操作顺序</span><span class="ar">▸</span></div><div class="sm"><div class="inner">① 中央写「老年人体检完成率」，周围先放：居民认知、家庭医生、网格负责人、时间安排、体检流程、距离、联系方式、家属支持、绩效、宣传。<br>② 然后画箭头：哪些是因果？哪些相互强化？哪些互相制约？<br>③ 再标：哪些是可控因素？哪些是关键瓶颈？</div></div></div><p class="prose">到了这里，你对问题的理解会比「大家要加强宣传、提高积极性」高一个层级。</p><p class="prose">一个真正实用的系统图，至少应该包含：<b>目的、边界、要素、关系、反馈、驱动力/阻力和时间</b>。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>第五章收束 · 看因变联</h2></div><div class="sd">四种思维记成四个问题，再压成四个字</div><p class="prose">第五章现在终于可以完整收束了。整理者建议把四种思维记成四个问题：</p><div class="ladder"><div class="step"><div class="t">感性思维 · 看</div><div class="d">发生了什么？</div></div><div class="step"><div class="t">因果思维 · 找</div><div class="d">为什么发生？</div></div><div class="step"><div class="t">辩证思维 · 变</div><div class="d">它正在怎样变化？</div></div><div class="step hot"><div class="t">系统思维 · 连</div><div class="d">所有因素连接起来以后，整体会怎样？</div></div></div><p class="prose">也可以进一步压缩成四个字：<b>看｜因｜变｜联</b>——这非常适合作为整个第五章的最终认知框架。整理者还建议，如果这一课只记住6句话：</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>系统不是要素的简单相加</h4><p>而是要素通过关系形成的整体</p></div><div class="card"><div class="idx">貳</div><h4>先明确目的和边界</h4><p>否则你根本不知道哪些因素应该纳入分析</p></div><div class="card"><div class="idx">叁</div><h4>列出要素只是开始</h4><p>真正重要的是找出因果、制约、调节以及反馈关系</p></div><div class="card"><div class="idx">肆</div><h4>局部重要不等于整体重要</h4><p>同一个要素的重要性会随着系统目标和时间变化</p></div><div class="card"><div class="idx">伍</div><h4>警惕局部最优导致整体变差</h4><p>因此系统思维是战略和管理的重要基础</p></div><div class="card"><div class="idx">陆</div><h4>真正实用的系统图</h4><p>至少应该包含：目的、边界、要素、关系、反馈、驱动力/阻力和时间</p></div></div><div class="quote"><div class="q">感性看现象 → 因果找原因 → 辩证看变化 → 系统看整体。</div><div class="src">第五章最终最值得长期记忆的主线</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="4">0</div><div class="l">第五章四种思维</div></div><div class="cnt"><div class="v" data-c="7">0</div><div class="l">系统模型七问</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">关系类型（并列/因果/对立/调控）</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">只记住的6句话</div></div></div><div class="panel"><h3><span class="no2">①</span>系统模型环节归位</h3><div class="pd">判断下列问题属于系统分析模型的哪个环节，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="七问之1「目的」：我们究竟希望实现什么？"><div class="st">1. 我们究竟希望实现什么？</div><div class="opts"><button data-ok="1">目的/边界</button><button data-ok="0">要素/条件</button><button data-ok="0">关系/反馈</button><button data-ok="0">驱动/时间</button></div><div class="verdict"></div></div><div class="sort-it" data-why="七问之2「边界」：哪些因素属于这个问题？——你怎样定义问题，就决定了你会看见哪些因素"><div class="st">2. 哪些因素属于这个问题？</div><div class="opts"><button data-ok="1">目的/边界</button><button data-ok="0">要素/条件</button><button data-ok="0">关系/反馈</button><button data-ok="0">驱动/时间</button></div><div class="verdict"></div></div><div class="sort-it" data-why="七问之3「要素」：哪些人、资源、条件参与？——系统存在需要条件，条件就是要素"><div class="st">3. 哪些人、资源、条件参与？</div><div class="opts"><button data-ok="0">目的/边界</button><button data-ok="1">要素/条件</button><button data-ok="0">关系/反馈</button><button data-ok="0">驱动/时间</button></div><div class="verdict"></div></div><div class="sort-it" data-why="「关键条件」环节：必要条件与冗余——没有冗余的地方就是关键瓶颈"><div class="st">4. 哪些地方没有冗余，一旦失效整个系统就会中断？</div><div class="opts"><button data-ok="0">目的/边界</button><button data-ok="1">要素/条件</button><button data-ok="0">关系/反馈</button><button data-ok="0">驱动/时间</button></div><div class="verdict"></div></div><div class="sort-it" data-why="七问之5「反馈」：一个结果产生以后，又回来影响自己的原因——因果不是直线，而可能是环"><div class="st">5. 结果会不会反过来强化或抑制原因？</div><div class="opts"><button data-ok="0">目的/边界</button><button data-ok="0">要素/条件</button><button data-ok="1">关系/反馈</button><button data-ok="0">驱动/时间</button></div><div class="verdict"></div></div><div class="sort-it" data-why="「时间」环节：系统的关键要素会随时间变化——这正是战略思维要问的问题"><div class="st">6. 改变A以后，半年、一年、三年后整个系统会变成什么样？</div><div class="opts"><button data-ok="0">目的/边界</button><button data-ok="0">要素/条件</button><button data-ok="0">关系/反馈</button><button data-ok="1">驱动/时间</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>系统分析通关清单</h3><div class="pd">选一个你正面对的真实问题（如某项业务、某个指标），逐项检验自己能否做到</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说清楚：我的目标到底是什么？哪些放进系统、哪些暂放系统外（目的与边界）</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能列全参与的人、资源、条件，且不只抓住最显眼的一个原因（要素）</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能画出它们之间的因果、并列、对立、调控关系，而不只是罗列清单（关系）</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能找到反馈环：哪些结果会反过来强化或抑制自己的原因（反馈）</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能找出最少必要条件与缺乏冗余的瓶颈，并分辨驱动力与阻力——知道有时减少阻力胜过更用力推（条件与驱动）</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能判断：现在这个系统处于哪个阶段？关键要素将怎样随时间变化（时间）</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>系统思维之所以强，强在哪里？</div><div class="ans"><button data-ok="0">A. 它比前三种思维更高级，淘汰了它们</button><button data-ok="0">B. 它只关注整体，忽略现象与因果</button><button data-ok="1">C. 它需要把前三种思维全部装进去</button><button data-ok="0">D. 它把所有因素全部平列出来</button></div><div class="exp">源文：「系统思维之所以强，不是因为它『淘汰』前三种思维，而是因为：它需要把前三种思维全部装进去。」系统里仍然需要观察现象、找到因果、理解矛盾和变化。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>「你怎样定义问题，就决定了……」这句话的后半句是什么？</div><div class="ans"><button data-ok="0">A. 你会用哪种工具</button><button data-ok="1">B. 你会看见哪些因素</button><button data-ok="0">C. 你会投入多少资源</button><button data-ok="0">D. 系统边界是否固定</button></div><div class="exp">源文：「你怎样定义问题，就决定了你会看见哪些因素。」「怎样提高医院收入」与「提高医疗服务能力＋控制医保风险＋保证质量和满意度」是两个边界完全不同的系统。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>在因果问题上，系统思维真正比普通因果分析强大在哪里？</div><div class="ans"><button data-ok="0">A. 因果是一条直线</button><button data-ok="1">B. 因果不是一条直线，而可能是一个环</button><button data-ok="0">C. 因果之间毫无关系</button><button data-ok="0">D. 因果等于相关</button></div><div class="exp">源文：「因果不是一条直线，而可能是一个环。」一个结果产生以后，又回来影响自己的原因——这就是反馈，包括增强反馈与平衡/抑制反馈。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>对原课「焓是驱动力，熵是阻力」的说法，整理者的建议是什么？</div><div class="ans"><button data-ok="0">A. 当作热力学公式背下来</button><button data-ok="0">B. 当作生物学衰老的解释</button><button data-ok="1">C. 不要记；「驱动力—阻力」只作为管理分析模型使用</button><button data-ok="0">D. 用它替换吉布斯自由能公式</button></div><div class="exp">整理者明确说「这部分建议你不要记」：恒温恒压下判断过程是否自发烧用吉布斯自由能 ΔG = ΔH − TΔS，熵并不是简单的「阻力」；但「驱动力—阻力」作为管理分析模型仍然实用。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>老师最后布置的作业是什么？</div><div class="ans"><button data-ok="0">A. 写一篇系统思维的心得文章</button><button data-ok="0">B. 背熟七问与四种关系类型</button><button data-ok="1">C. 选一个真实问题，不写文章，画系统图</button><button data-ok="0">D. 做一个对照实验</button></div><div class="exp">源文：「选一个真实问题，不要写文章，而是：画系统图。」中央写问题，周围放要素，画箭头标关系，再标可控因素与关键瓶颈——理解会比「加强宣传、提高积极性」高一个层级。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">系统不是要素的简单相加，而是要素通过关系形成的整体。</div><div class="src">6句话之首 · 本课第一原则</div></div><div class="quote"><div class="q">因果不是一条直线，而可能是一个环。</div><div class="src">系统思维超越普通因果分析之处</div></div><div class="quote"><div class="q">系统思维不是把所有因素都列出来，而是看清：哪些因素通过什么关系和反馈，共同塑造了整体结果。</div><div class="src">整理者建议的信息图中心金句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../15-辩证思维/index.html">← 上一篇 · 辩证思维</a><a href="../17-语言工具/index.html">下一篇 · 语言工具 →</a><span class="sp"></span><span class="cur">系统思维</span></div></nav>
+<footer class="coda"><div class="wm2">系</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">系统思维不是把所有因素都列出来，而是看清：<br><b>哪些因素通过什么关系和反馈，共同塑造了整体结果</b>。<br><br>感性看现象 → 因果找原因 → 辩证看变化 → 系统看整体。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十七讲《系统思维》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s3", "#s4", "#s5", "#s6", "#s7", "#s7", "#s8", "#s9"], "sortok": [0, 0, 1, 1, 2, 3], "quizok": [2, 1, 1, 2, 2], "ckkey": "zx16-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

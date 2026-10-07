@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赵蕤的五仪解释 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx29-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../28-中国文化的九征判断/index.html">← 上一篇 · 中国文化的九征判断</a><a class="dis">已是最后一篇 →</a><span class="sp"></span><span class="cur">赵蕤的五仪解释</span></div></nav>
+<header class="hero" id="top"><div class="wm">仪</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第九章《知人的智慧》第三节（收束）</div>
+  <div class="no">叁拾</div>
+  <h1>赵蕤的五仪解释</h1>
+  <div class="sub">庸士君贤圣 · 五重人格层次 · 照自己的镜子</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>观察之后，怎样评价一个人？「五仪」给出的答案，不是把人永久分成五类，<br>而是一套<b>人格成熟的修养阶梯</b>——从「从物如流」的庸人，一路指向「德合天地」的圣人。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 观察之后，怎样评价一个人</a><a href="#s2">貳 · 规范性人格模型，不是人格测验</a><a href="#s3">叁 · 庸人 · 从物如流，不知所执</a><a href="#s4">肆 · 士人 · 心有所定，计有所守</a><a href="#s5">伍 · 知、言、行三审</a><a href="#s6">陆 · 君子 · 从「有守」到「践行」</a><a href="#s7">柒 · 贤人 · 泽及他人</a><a href="#s8">捌 · 圣人 · 德合天地的理想型</a><a href="#s9">玖 · 五层结构总图</a><a href="#s10">拾 · 正确用法 · 五种状态不是五种人</a><a href="#s11">拾壹 · 九章收束 · 证据验证</a><a href="#s12">拾貳 · 纠偏清单与六句话</a><a href="#s13">拾叁 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全课主线 · 点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>观察之后的问题</b><span>怎样评价人格与修养层次？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s1"><b>九章三层框架</b><span>八宫 → 九征 → 五仪</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>庸人 → 士人</b><span>从物如流 → 心有所定</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>君子 → 贤人</b><span>践行原则 → 泽及他人</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>圣人</b><span>德合天地的古典理想型</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s10"><b>正确用法</b><span>五种状态，不是五种人</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>最终目的</b><span>借认识别人这面镜子，认识自己</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>观察之后，怎样评价一个人</h2></div><div class="sd">九章三层框架 · 先纠正一个重要的史料问题</div><p class="prose">这一课是第九章《知人的智慧》的第三节（收束）。核心不是继续「观察一个人」，而是进一步回答——</p><div class="quote"><div class="q">观察之后，怎样评价一个人的人格与修养层次？</div><div class="src">本课要回答的核心问题</div></div><p class="prose">如果把第九章三节课连起来，老师其实搭了三层框架——</p><div class="ladder"><div class="step"><div class="t">八宫</div><div class="d">从哪些方面了解一个人</div></div><div class="step"><div class="t">九征</div><div class="d">从哪些外在表现观察一个人</div></div><div class="step hot"><div class="t">五仪</div><div class="d">怎样对一个人的稳定品格与社会作用进行评价</div></div></div><p class="prose">所以这一课的关键词不是「相人」，而是：<b>人格层次。</b>不过，这一节有一个非常重要的史料问题需要先纠正——</p><div class="warn"><div class="wt">史料纠正 · 五仪的解释权</div><ul><li>老师说“孔子只提出五仪、没有具体解释，后来赵蕤给出内容”——这个并不准确。</li><li>《孔子家语·五仪解》本身就详细解释了<b>庸人、士人、君子、贤人、圣人</b>五类。</li><li>赵蕤《长短经·品目》基本上<b>直接引用了这一整段</b>，并在后面加入其他人才分类材料。</li></ul></div><p class="prose">人名和书名也先纠正：课程里反复说的「赵瑞」，正确是<b>赵蕤（ruí）</b>——「蕤」不是「瑞」。</p><div class="cards g3"><div class="card"><div class="idx">唐</div><h4>赵蕤其人</h4><p>唐代人物，字太宾，史料记载他<b>「博学韬钤，长于经世」</b>，唐开元年间受召而不赴</p></div><div class="card"><div class="idx">书</div><h4>《长短经》</h4><p>后来也常被称为《反经》——「反经」是<b>别称</b>，不是说有人把《长短经》「翻译」成《反经》</p></div><div class="card"><div class="idx">仪</div><h4>五仪次序</h4><p>依次为<b>庸人 → 士人 → 君子 → 贤人 → 圣人</b>，在《孔子家语》和《长短经》中都有较完整的文字</p></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>规范性人格模型，不是人格测验</h2></div><div class="sd">五仪的真正性质 · 修养阶梯</div><div class="quote"><div class="q">世界上所有人都可以永久塞进五个盒子。</div><div class="src">最容易走偏的一种理解——先立靶子</div></div><p class="prose">如果把「五仪」理解成这样，那就容易走偏。它更适合作为中国传统政治伦理中的一种<b>规范性人格模型</b>。它不是在问——</p><div class="quote"><div class="q">“你天生属于第几类？”</div><div class="src">五仪不是在问的问题</div></div><p class="prose">而是在问——</p><div class="quote"><div class="q">一个人在见识、原则、行为、道德影响力上，可以达到怎样的成熟程度？</div><div class="src">五仪真正在问的问题</div></div><div class="duo"><div class="col neg"><h4>误读 ✕</h4><ul><li>现代心理学意义上的<b>人格测验</b></li><li>给所有人<b>永久定级</b>的五个盒子</li></ul></div><div class="col pos"><h4>正解 ✓</h4><ul><li>中国传统政治伦理中的<b>规范性人格模型</b></li><li>更像一个<b>修养阶梯</b>——问的是成熟程度</li></ul></div></div><p class="prose">这和我们前两节反复强调的<b>「人是可变化的」</b>反而是一致的——五仪量的不是天生的类别，而是修养可以达到的层次。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>庸人 · 从物如流，不知所执</h2></div><div class="sd">第一层 · 真正的问题不是「普通」，而是没有稳定原则</div><div class="quote"><div class="q">无念而胡言、嫉贤、见利忘义、随波逐流。</div><div class="src">老师对「庸人」的解释——这里加入了不少老师自己的改写</div></div><div class="warn"><div class="wt">原文核校</div><ul><li>《孔子家语》和《长短经》原文真正强调的，是下面十二个字——<b>并没有老师所说「嫉贤」「见利忘义」这些固定原句</b>。</li></ul></div><div class="quote"><div class="q">“见小暗大”“从物如流”“不知所执”。</div><div class="src">《孔子家语》《长短经》原文真正强调的</div></div><div class="cards g2"><div class="card"><div class="idx">一</div><h4>只见局部</h4><p>见小暗大——<b>看不到整体</b></p></div><div class="card"><div class="idx">二</div><h4>不知轻重</h4><p>不知道<b>真正重要的事情</b></p></div><div class="card"><div class="idx">三</div><h4>随环境漂移</h4><p>从物如流——<b>容易跟着环境走</b></p></div><div class="card"><div class="idx">四</div><h4>没有原则</h4><p>不知所执——<b>没有稳定坚持的原则</b></p></div></div><div class="warn"><div class="wt">「庸」不是社会阶层——这点必须纠正</div><ul><li>把庸人简单理解成“学历不高、社会基层、收入普通的人”是错的——这里的「庸」<b>不是社会阶层</b>。</li><li>一个很有钱、有地位的人，如果没有独立判断、只看眼前小利、随环境改变原则，按这套古典标准<b>同样可能属于「庸」</b>。</li><li>反过来，一个普通劳动者如果有稳定原则、知道自己该做什么、不随波逐流，<b>也不能因为职业普通就叫「庸人」</b>。</li></ul></div><div class="case"><div class="h"><span class="tag">从众</span><span class="ht">从物如流的日常样子</span><span class="ar">▸</span></div><div class="sm"><div class="inner">庸人的真正特征可以压缩成一句话：<b>没有形成稳定的「自我原则」。</b>他的问题不是能力低，而更像判断容易被外部牵着走——别人买房，我也买；别人投资什么，我跟；网上今天流行一个观点，我相信；明天流行相反观点，又跟着转。</div></div></div><div class="quote"><div class="q">没有自己的概念、判断、问题意识，就很容易只能跟随环境。</div><div class="src">与上一章「问题意识」的直接关联</div></div><div class="quote"><div class="q">庸：从物如流，不知所执。</div><div class="src">第一层真正应该记住的一句话</div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>士人 · 心有所定，计有所守</h2></div><div class="sd">第二层 · 五仪结构发生第一次质变的地方 · 两处原文纠正</div><p class="prose">从「庸人」到「士人」，是整个五仪结构发生<b>第一次质变</b>的地方——从「随波逐流」进入「心有所定」。《长短经》原文：</p><div class="quote"><div class="q">“心有所定，计有所守。”</div><div class="src">《长短经·品目》对士人的表述</div></div><div class="quote"><div class="q">知不务多，要审其所知；言不务多，要审其所谓；行不务多，要审其所由。</div><div class="src">《长短经》对士人的进一步说明——「知、言、行三审」的出处</div></div><div class="quote"><div class="q">“计有所出”。</div><div class="src">老师的口误——原文是「计有所守」，一字之差意思全变</div></div><div class="warn"><div class="wt">一字之差的纠正</div><ul><li>「有所守」强调的是<b>有原则、有边界</b>——不是「有计谋」。</li><li>所以士人最重要的并不是很聪明、会算计，而是：<b>开始成为一个有定见、有边界的人。</b></li></ul></div><div class="quote"><div class="q">“富贵不足以益，贫贱不足以损。”</div><div class="src">《孔子家语·五仪解》原文——地位财富增加，不因此改变本性；贫困卑微，也不因此损害自己的原则</div></div><div class="quote"><div class="q">“富贵不能淫，贫贱不能移，威武不能屈”</div><div class="src">《孟子》讨论「大丈夫」的著名表达——不是《五仪解》原句，老师误放到士人名下</div></div><p class="prose">不过两者精神上确实相近——<b>外部条件改变，不轻易改变内在原则。</b>所以士人的核心可以记成：<b>心有定，行有守。</b></p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>知、言、行三审</h2></div><div class="sd">整理者认为整堂课现实价值最高的一段</div><p class="prose">士人的部分，是整堂课现实价值最高的一段。「知、言、行三审」可以直接改造成三句自问——</p><div class="cards g3"><div class="card"><div class="idx">知</div><h4>知：我是否真的知道？</h4><p>知不务多，<b>要审其所知</b></p></div><div class="card"><div class="idx">言</div><h4>言：这句话是否值得说？</h4><p>言不务多，<b>要审其所谓</b></p></div><div class="card"><div class="idx">行</div><h4>行：这个行为是否有理由？</h4><p>行不务多，<b>要审其所由</b></p></div></div><p class="prose">这实际上是一套非常成熟的自我约束。很多人知道一点就以为全懂，情绪来了就马上说，想做就立即行动；而「士」开始出现<b>自我审查</b>——</p><div class="ladder"><div class="step"><div class="t">环境驱动</div><div class="d">判断被外部牵着走</div></div><div class="step"><div class="t">自我审查</div><div class="d">知、言、行三审——「士」开始出现</div></div><div class="step hot"><div class="t">原则驱动</div><div class="d">从随波逐流进入心有所定</div></div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>君子 · 从「有守」到「践行」</h2></div><div class="sd">第三层 · 不只是有原则，还要把原则稳定活出来</div><p class="prose">《长短经》引用的「五仪」里，君子有几个非常重要的特点——</p><div class="quote"><div class="q">言必忠信；<br>仁义在身；<br>思虑通明；<br>笃行信道；<br>自强不息。</div><div class="src">《长短经》对君子的表述</div></div><div class="quote"><div class="q">不诱于誉，不怨于诽，率道而行，端然正己。</div><div class="src">赵蕤在这段后面的注文引《荀子》的一套话</div></div><p class="prose">这就是老师讲的「不被赞誉诱惑，也不太在乎毁谤」。从士到君子的变化可以理解成——士人已经知道<b>「我该守什么」</b>；君子进一步做到：</p><div class="quote"><div class="q">即使别人赞美、攻击、误解，我仍然按照认可的原则行动。</div><div class="src">从士人到君子的关键跃迁</div></div><div class="cards g2"><div class="card"><div class="idx">士</div><h4>士人的关键词：有守</h4><p>已经知道「我该守什么」</p></div><div class="card"><div class="idx">君</div><h4>君子的关键词：践行</h4><p>把认可的原则<b>长期活出来</b>——这两者区别非常重要</p></div></div><p class="prose">君子的重点不是「别人怎么看我」，而是：<b>我有没有成为自己认可的那种人。</b>如果一个人的行为主要由点赞、评价、领导态度、朋友圈反馈决定，那么他的自我依然非常外部化。</p><div class="duo"><div class="col neg"><h4>外部化的自我 ✕</h4><ul><li>行为主要由<b>点赞、评价、领导态度、朋友圈反馈</b>决定</li><li>把<b>别人喜欢不喜欢我</b>作为唯一判断标准</li></ul></div><div class="col pos"><h4>古典君子 ✓</h4><ul><li><b>评价中心逐渐内移</b>——不是不听别人意见，而是不把它作为唯一判断标准</li><li>这和康德前面讲过的「自主」，可以形成一个非常有意思的中西对照（源文未展开此点）</li></ul></div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>贤人 · 泽及他人</h2></div><div class="sd">第四层 · 从完成自己到影响别人</div><p class="prose">老师讲贤人时说——</p><div class="quote"><div class="q">德合法度，仁义在身，言满天下，道化百姓，还能全身而退。</div><div class="src">老师讲贤人时的表述——前半来自原文，「全身而退」并非原句</div></div><div class="warn"><div class="wt">原文核校</div><ul><li>前半部分来自原文，「全身而退」则<b>不是《五仪解》的直接原句</b>——是对「不伤于身、不伤于本」的现代化解释。</li></ul></div><div class="quote"><div class="q">“德不逾闲，行中规绳，言足以法于天下而不伤于身，道足以化于百姓而不伤于本。”</div><div class="src">《孔子家语·五仪解》原文</div></div><p class="prose">意思大致可以理解为：<b>自己的行为合乎规范</b>；<b>言行已经能够成为别人参照</b>；进一步<b>对社会产生教化和公共影响</b>。整理者认为，从君子到贤人的关键跃迁在于——<b>君子主要完成自己，贤人开始影响别人。</b></p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">一个优秀医生的跃迁</span><span class="ar">▸</span></div><div class="sm"><div class="inner">如果只是医术好、守原则、认真工作，已经很不错。但如果进一步培养年轻医生、建立规范、改善整个科室、让更多患者获益，他产生的就不只是<b>个人价值</b>，而是<b>公共价值</b>——非常接近古典意义中「道足以化于百姓」所强调的层次。所以贤人的关键词建议记：<b>泽及他人。</b></div></div></div><div class="warn"><div class="wt">经典文本 ≠ 老师的历史人物类比</div><ul><li>《五仪》本身没有说“某个近现代政治人物就是贤人”。</li><li>老师把邓小平放到这一格，是他基于自己价值判断做的解释，<b>不属于《长短经》或《孔子家语》的结论</b>。</li><li>学习时不需要接受或反对这个人物归类，而应该问：<b>需要哪些具体、可核实的行为证据？</b></li><li><b>模型可以用来提问题，但不能因为老师举了例子，就变成历史事实。</b></li></ul></div><div class="quote"><div class="q">如果要用“五仪”评价一个真实历史人物，需要哪些具体、可核实的行为证据？</div><div class="src">面对老师的历史人物类比，学习时应该问的问题</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>圣人 · 德合天地的理想型</h2></div><div class="sd">第五层 · 古典理想型，不是现代人员测评等级</div><p class="prose">原文对圣人的表述非常高——</p><div class="quote"><div class="q">“德合天地，变通无方，穷万事之终始，协庶品之自然”</div><div class="src">《孔子家语·五仪解》对圣人的表述（前半）</div></div><div class="quote"><div class="q">化行若神。</div><div class="src">同段的收束之语——影响极深，却不必时时依赖强制</div></div><div class="cards g3"><div class="card"><div class="idx">德</div><h4>德合天地</h4><p>价值与秩序<b>高度统一</b></p></div><div class="card"><div class="idx">通</div><h4>变通无方</h4><p>不被固定方法束缚</p></div><div class="card"><div class="idx">终</div><h4>穷万事终始</h4><p>能够理解事物的<b>完整过程</b></p></div><div class="card"><div class="idx">协</div><h4>协庶品自然</h4><p>顺应不同事物<b>自身特点</b></p></div><div class="card"><div class="idx">化</div><h4>化行若神</h4><p>影响极深，却<b>不必时时依赖强制</b></p></div></div><p class="prose">这里已经明显不是普通的「工作能力很强的人」，而是在构造一个<b>最高政治—道德理想人格</b>。所以「圣人」更多是——</p><div class="duo"><div class="col neg"><h4>「圣人」不是 ✕</h4><ul><li>现实中用表格打分就能确定的<b>第五级人才</b></li><li>现代人员测评的<b>最高等级</b></li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li>一个<b>古典理想型</b>——最高政治—道德理想人格</li><li>不适合作为现代现实人物的简单等级标签</li></ul></div></div><div class="warn"><div class="wt">这段应作为修辞，而不是作为事实论证</div><ul><li>老师把毛泽东作为「圣人」示例，列举战略应变、研究问题、农业水利等社会治理实践——属于老师的<b>政治—伦理评价</b>，应当和「五仪」原典分开来看。</li><li>尤其把1976年的吉林陨石、唐山地震、天气现象与毛泽东逝世联系起来解释「德合天地」——<b>这一段不应该作为历史或哲学证据记忆。</b></li><li>吉林陨石雨发生于<b>1976年3月8日</b>，唐山大地震发生于<b>1976年7月28日</b>，毛泽东在北京逝世则是<b>1976年9月9日</b>——这些是不同时间发生的自然事件和历史事件，目前没有科学依据证明它们彼此具有因果联系，更不能据此证明某个人「德合天地」。</li><li>最好的处理方式：<b>作为老师借古典语言表达尊崇的修辞，而不是作为事实论证。</b></li></ul></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>五层结构总图</h2></div><div class="sd">五仪不是能力越来越大 · 一条自定→自守→自成→成人→化人的修养路线</div><p class="prose">五仪不是简单的<b>「能力越来越大」</b>，而更像：<b>自我越来越稳定，行为越来越有原则，影响范围越来越大。</b>每一层的核心问题可以列成一张表——</p><div class="cards g3"><div class="card"><div class="idx">庸</div><h4>庸人</h4><p>原文：「见小暗大」「从物如流」「不知所执」<br>——我有没有自己的稳定判断？</p></div><div class="card"><div class="idx">士</div><h4>士人</h4><p>原文：「心有所定，计有所守」<br>——我有没有原则和边界？</p></div><div class="card"><div class="idx">君</div><h4>君子</h4><p>原文：「言必忠信」「笃行信道」「自强不息」<br>——我能不能长期践行原则？</p></div><div class="card"><div class="idx">贤</div><h4>贤人</h4><p>原文：「言足以法于天下」「道足以化于百姓」<br>——我的德行与能力能不能造福别人？</p></div><div class="card"><div class="idx">圣</div><h4>圣人</h4><p>原文：「德合天地」「变通无方」「化行若神」<br>——能不能把原则、智慧与广泛社会秩序高度统一？</p></div></div><div class="ladder"><div class="step"><div class="t">自定</div><div class="d">庸人 → 士人：有了自己的稳定判断</div></div><div class="step"><div class="t">自守</div><div class="d">士人：有原则和边界</div></div><div class="step"><div class="t">自成</div><div class="d">君子：长期把原则活出来</div></div><div class="step"><div class="t">成人</div><div class="d">贤人：开始影响别人</div></div><div class="step hot"><div class="t">化人</div><div class="d">圣人：原则、智慧与广泛社会秩序高度统一</div></div></div><p class="prose">整理者认为，这是这一课最值得提炼的新结构。另外，「变通无方」也非常容易误解——</p><div class="quote"><div class="q">今天一套、明天一套，怎么方便怎么来。</div><div class="src">对「变通无方」的常见误读——如果没有稳定原则，反而又回到庸人的「从物如流」</div></div><p class="prose">真正成熟的「变通」应该是：<b>原则稳定，方法灵活；底线不变，路径可变。</b></p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">医院里的「变通无方」</span><span class="ar">▸</span></div><div class="sm"><div class="inner">目标：保障患者安全——这个原则<b>不能变</b>。但实现方式可以：优化流程、改变人员配置、引入信息系统、调整排班。整理者认为，这是「变通无方」特别适合现代管理的一种解释。</div></div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>正确用法 · 五种状态不是五种人</h2></div><div class="sd">从贴标签到自我修炼 · 五级成熟度模型</div><div class="quote"><div class="q">张三是庸人，李四是士人，我是君子。</div><div class="src">如果学完开始这样造句——这堂课其实学反了</div></div><div class="warn"><div class="wt">这种分类最危险的问题</div><ul><li>产生<b>人格优越感</b>。</li><li>而且一个人在不同领域完全可能表现不同：专业上很有原则，人际关系上却容易从众；工作中是君子型，涉及投资时可能又被情绪带走。</li><li>真正好的用法应该是：<b>用于反省行为层次</b>，而不是给人<b>永久定级</b>。</li></ul></div><p class="prose">整理者建议把「五仪」从「人分五类」改造成「<b>五种状态</b>」——这样更符合整门课程前面强调的人具有可塑性的原则。</p><div class="duo"><div class="col neg"><h4>不要说 ✕</h4><ul><li>“他是庸人。”</li><li>“我是君子。”</li></ul></div><div class="col pos"><h4>改成 ✓</h4><ul><li>“这件事上，他处于<b>从物如流</b>的状态。”</li><li>在这件利益冲突中，我有没有做到“不诱于誉、不怨于诽、率道而行”？</li></ul></div></div><div class="quote"><div class="q">在这件利益冲突中，我有没有做到“不诱于誉、不怨于诽、率道而行”？</div><div class="src">把「我是君子」换成可以检验的自问——一下就从贴标签变成自我修炼</div></div><p class="prose">如果完全现代化，整理者会把五仪改成一套<b>「五级成熟度模型」</b>——</p><div class="ladder"><div class="step"><div class="t">第一级｜依附</div><div class="d">行为主要被环境带着走（从众）</div></div><div class="step"><div class="t">第二级｜自定</div><div class="d">开始有自己的原则与边界</div></div><div class="step"><div class="t">第三级｜自律</div><div class="d">能够长期让认知、语言和行为一致</div></div><div class="step"><div class="t">第四级｜利他</div><div class="d">能力与品格开始持续造福他人和组织</div></div><div class="step hot"><div class="t">第五级｜整合</div><div class="d">原则、智慧、变化能力和公共影响达到高度统一</div></div></div><p class="prose">这样就比「庸人 &lt; 士人 &lt; 君子……」更加容易转化到现实生活。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>九章收束 · 证据验证</h2></div><div class="sd">八宫、九征、五仪之间必须插入的环节 · 用九征反省自己</div><div class="cards g3"><div class="card"><div class="idx">宫</div><h4>八宫——内容维度</h4><p>我需要了解一个人的什么？包括行为、情绪、认知、动机、历史、未来……</p></div><div class="card"><div class="idx">征</div><h4>九征——观察线索</h4><p>我怎样从外部表现获得初步信息？神、精、筋、骨、气、色、仪、容、言。</p></div><div class="card"><div class="idx">仪</div><h4>五仪——价值与成熟度</h4><p>这些长期表现最终反映出怎样的<b>原则稳定性、修养和公共影响</b>？</p></div></div><p class="prose">三节课合起来，是一个三层模型。但是三者之间一定要插入：<b>证据验证。</b>所以真正完整的现代版应该是——</p><div class="ladder"><div class="step"><div class="t">多维观察</div></div><div class="step"><div class="t">形成假设</div></div><div class="step hot"><div class="t">长期行为验证</div></div><div class="step"><div class="t">关键情境检验</div></div><div class="step"><div class="t">形成概率判断</div></div><div class="step"><div class="t">决定是否合作 / 任用</div></div><div class="step"><div class="t">继续修正</div></div></div><p class="prose">而不是——</p><div class="quote"><div class="q">看一眼 → 五仪定级。</div><div class="src">应当避免的捷径</div></div><p class="prose">老师这一章最后布置「用九征反省自己」，反而非常有价值——相比用来判断别人，用来<b>观察自己</b>风险低得多。例如可以问：我遇到压力时是躁还是静？讲话是急还是缓？情绪是不是一直写在脸上？面对困难有没有韧性？</p><div class="quote"><div class="q">我最近有没有“从物如流”？<br>我有没有真正“心有所定”？<br>有没有因为别人赞美就改变方向？<br>我的能力有没有真正给别人创造价值？</div><div class="src">把五仪一起加入自我反省的四问</div></div><p class="prose">这种自我提问，比「我到底属于五仪里的第几类？」<b>有价值很多。</b></p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>纠偏清单与六句话</h2></div><div class="sd">本课8处纠偏 · 九章完整压缩 · 最终指向的问题</div><p class="prose">这一课信息密度高，老师的口误与改动也多。整理者最后把它压成一份纠偏清单——</p><div class="warn"><div class="wt">这一课最需要纠偏的8个地方</div><ul><li>第一，正确人名是<b>赵蕤（ruí）</b>，《长短经》又称《反经》，并不是后人简单「翻译」出来的另一个名字。</li><li>第二，「五仪」<b>并不是孔子只列名称、赵蕤才补充内容</b>——《孔子家语·五仪解》已经详细解释五类；《长短经·品目》基本直接引录。</li><li>第三，庸人的原文核心是「<b>见小暗大、从物如流、不知所执</b>」，并没有老师所说「嫉贤」「见利忘义」这些固定原句。</li><li>第四，士人是「<b>计有所守</b>」，不是「计有所出」；核心是有原则、有边界，而不只是有计谋。</li><li>第五，「富贵不能淫、贫贱不能移、威武不能屈」属于<b>《孟子》大丈夫思想</b>，不是《五仪解》的原句。</li><li>第六，贤人的原文并没有直接说「全身而退」，老师是对「不伤其身、不伤于本」的<b>现代化解释</b>。</li><li>第七，把具体近现代政治人物直接归类为「贤人」或「圣人」属于老师自己的<b>价值判断</b>，不是《长短经》的历史结论。</li><li>第八，陨石、地震、天气等自然现象不能作为某个历史人物「德合天地」的证据；1976年的吉林陨石、唐山地震和毛泽东逝世分别发生在<b>3月8日、7月28日和9月9日</b>，时间不同，也没有科学因果证据。</li></ul></div><p class="prose">纠偏之后，如果这一课只记住6句话——</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>模型的性质</h4><p>五仪不是现代人格测验，而是一套古代政治伦理中的人格成熟模型。</p></div><div class="card"><div class="idx">②</div><h4>庸—士分界</h4><p>庸人与士人的真正分界，不在聪明程度，而在有没有稳定的原则和自我判断。</p></div><div class="card"><div class="idx">③</div><h4>士—君分界</h4><p>士人与君子的分界，是从“我知道并坚持什么”进一步走向“我能够长期把原则活出来”。</p></div><div class="card"><div class="idx">④</div><h4>君—贤分界</h4><p>君子与贤人的分界，是从完成自己进一步走向产生稳定的公共价值、帮助和影响别人。</p></div><div class="card"><div class="idx">⑤</div><h4>圣人定位</h4><p>圣人是古典文化构造的最高理想人格，不适合作为现代现实人物的简单等级标签。</p></div><div class="card"><div class="idx">⑥</div><h4>现代用途</h4><p>五仪最好的现代用途不是给别人分等级，而是反省：我当前的判断和行为，是随波逐流、心有所定、坚持原则，还是已经能够真正造福他人？</p></div></div><p class="prose">而整个第九章，现在已经可以完整压缩成——</p><div class="ladder"><div class="step"><div class="t">八宫——看什么</div></div><div class="step"><div class="t">九征——怎么观察</div></div><div class="step"><div class="t">五仪——怎么看成熟度</div></div><div class="step"><div class="t">证据——怎么验证</div></div><div class="step hot"><div class="t">情境——放在哪里最合适</div></div></div><div class="quote"><div class="q">我怎样认识别人，同时又借认识别人这面镜子，越来越清楚地认识自己。</div><div class="src">整个第九章最终指向的问题——不只是「如何看透别人」</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">五仪层次</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">九章三层框架</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">成熟度五级</div></div><div class="cnt"><div class="v" data-c="8">0</div><div class="l">纠偏要点</div></div></div><div class="panel"><h3><span class="no2">①</span>五仪归位练习</h3><div class="pd">判断下列描述属于哪一层（圣人是古典理想型，不设标签），点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="《五仪解》原文对庸人的核心表述——只见局部、随环境漂移、没有稳定坚持的原则"><div class="st">1. 见小暗大，从物如流，不知所执</div><div class="opts"><button data-ok="1">庸人</button><button data-ok="0">士人</button><button data-ok="0">君子</button><button data-ok="0">贤人</button></div><div class="verdict"></div></div><div class="sort-it" data-why="判断被外部牵着走，没有稳定的自我原则——正是「从物如流」的日常样子"><div class="st">2. 别人买房我也买；今天流行一个观点我相信，明天流行相反观点又跟着转</div><div class="opts"><button data-ok="1">庸人</button><button data-ok="0">士人</button><button data-ok="0">君子</button><button data-ok="0">贤人</button></div><div class="verdict"></div></div><div class="sort-it" data-why="《长短经》对士人的原文——有定见、有边界，开始自我审查"><div class="st">3. 心有所定，计有所守；知不务多，要审其所知</div><div class="opts"><button data-ok="0">庸人</button><button data-ok="1">士人</button><button data-ok="0">君子</button><button data-ok="0">贤人</button></div><div class="verdict"></div></div><div class="sort-it" data-why="《长短经》对君子的表述——不只是「有守」，而是长期把原则活出来的「践行」"><div class="st">4. 言必忠信；仁义在身；笃行信道；自强不息</div><div class="opts"><button data-ok="0">庸人</button><button data-ok="0">士人</button><button data-ok="1">君子</button><button data-ok="0">贤人</button></div><div class="verdict"></div></div><div class="sort-it" data-why="赵蕤注文引《荀子》——即使别人赞美、攻击、误解，仍按认可的原则行动，评价中心内移"><div class="st">5. 不诱于誉，不怨于诽，率道而行，端然正己</div><div class="opts"><button data-ok="0">庸人</button><button data-ok="0">士人</button><button data-ok="1">君子</button><button data-ok="0">贤人</button></div><div class="verdict"></div></div><div class="sort-it" data-why="《五仪解》原文对贤人——言行成为别人参照、产生教化，从完成自己走向影响别人、泽及他人"><div class="st">6. 德不逾闲，行中规绳，言足以法于天下而不伤于本</div><div class="opts"><button data-ok="0">庸人</button><button data-ok="0">士人</button><button data-ok="0">君子</button><button data-ok="1">贤人</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>五仪用法通关清单</h3><div class="pd">逐项检验——六条全部来自本讲的方法论</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能依次说出五仪：庸人、士人、君子、贤人、圣人——并知道《孔子家语·五仪解》已详细解释五类</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能说出庸人的原文核心「见小暗大」「从物如流」「不知所执」——并知道「庸」不是社会阶层</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能用「知、言、行三审」自问：知是否真的知道、言是否值得说、行是否有理由</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能区分士人的「有守」（知道该守什么）与君子的「践行」（长期把原则活出来）</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能说出从君子到贤人的关键跃迁：从完成自己，到影响别人、泽及他人</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能说清「变通无方」＝原则稳定、方法灵活——底线不变，路径可变</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>课程里反复说的「赵瑞」，正确的人名与其著作是？</div><div class="ans"><button data-ok="0">A. 赵瑞，著有《长短经》</button><button data-ok="1">B. 赵蕤（ruí），著有《长短经》，又称《反经》</button><button data-ok="0">C. 赵蕤，著有《孔子家语》</button><button data-ok="0">D. 赵瑞，《反经》是后人翻译出来的另一本书</button></div><div class="exp">「蕤」不是「瑞」。赵蕤是唐代人物，字太宾，著有《长短经》；它后来也常被称为《反经》——「反经」是别称，不是翻译出来的另一个名字。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>关于五仪的出处，准确的说法是？</div><div class="ans"><button data-ok="0">A. 孔子只提出五仪名称，具体内容由赵蕤补充</button><button data-ok="1">B. 《孔子家语·五仪解》本身就详细解释了五类，赵蕤《长短经·品目》基本直接引用</button><button data-ok="0">C. 五仪是赵蕤的原创分类</button><button data-ok="0">D. 五仪出自《孟子》</button></div><div class="exp">老师说「孔子只列名称、赵蕤补充内容」并不准确——《孔子家语·五仪解》本身就详细解释了庸人、士人、君子、贤人、圣人五类；《长短经·品目》基本上直接引用了这一整段。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>老师把「计有所守」说成了「计有所出」。整理者纠正的重点是——「有所守」强调什么？</div><div class="ans"><button data-ok="0">A. 有计谋</button><button data-ok="1">B. 有原则、有边界</button><button data-ok="0">C. 有出身高低</button><button data-ok="0">D. 有财富</button></div><div class="exp">一字之差意思全变：原文「心有所定，计有所守」强调的是有原则、有边界，不是有计谋——士人是开始成为一个有定见、有边界的人。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>「富贵不能淫，贫贱不能移，威武不能屈」出自哪里？</div><div class="ans"><button data-ok="0">A. 《孔子家语·五仪解》</button><button data-ok="0">B. 《长短经·品目》</button><button data-ok="0">C. 《荀子》</button><button data-ok="1">D. 《孟子》讨论「大丈夫」的著名表达</button></div><div class="exp">《五仪解》原文是「富贵不足以益，贫贱不足以损」；「富贵不能淫」三句是《孟子》大丈夫思想，不是《五仪解》原句——不过两者精神相近：外部条件改变，不轻易改变内在原则。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者认为，五仪最好的现代用途是什么？</div><div class="ans"><button data-ok="0">A. 给身边的人评定等级</button><button data-ok="0">B. 用九征看一眼就给人定级</button><button data-ok="1">C. 反省自己当前处于随波逐流、心有所定还是造福他人的状态</button><button data-ok="0">D. 判断谁是圣人</button></div><div class="exp">「五仪最好的现代用途不是给别人分等级，而是反省：我当前的判断和行为，是随波逐流、心有所定、坚持原则，还是已经能够真正造福他人？」——从贴标签变成自我修炼。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">五仪不是现代人格测验，而是一套古代政治伦理中的人格成熟模型。</div><div class="src">如果这一课只记住6句话 · 其一</div></div><div class="quote"><div class="q">庸人与士人的真正分界，不在聪明程度，而在有没有稳定的原则和自我判断。</div><div class="src">如果这一课只记住6句话 · 其二</div></div><div class="quote"><div class="q">知人的最高层次，不是给人贴上“庸、士、君子、贤、圣”的标签，而是看一个人能否从随波逐流走向内有原则、外有行动，并最终把自己的能力转化为对他人的价值。</div><div class="src">整理者最推荐的中心金句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../28-中国文化的九征判断/index.html">← 上一篇 · 中国文化的九征判断</a><a class="dis">已是最后一篇 →</a><span class="sp"></span><span class="cur">赵蕤的五仪解释</span></div></nav>
+<footer class="coda"><div class="wm2">镜</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">知人的最高层次，不是给人贴上“庸、士、君子、贤、圣”的标签，<br>而是看一个人能否<b>从随波逐流走向内有原则、外有行动</b>，<br>并最终把自己的能力转化为对他人的价值。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第三十讲《赵蕤的五仪解释》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13"], "mnodes": ["#s1", "#s1", "#s3", "#s6", "#s8", "#s10", "#s12"], "sortok": [0, 0, 1, 2, 2, 3], "quizok": [1, 1, 1, 3, 2], "ckkey": "zx29-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

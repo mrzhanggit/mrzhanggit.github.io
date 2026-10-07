@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国文化的九征判断 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx28-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../27-个体人性的八宫结构/index.html">← 上一篇 · 个体人性的八宫结构</a><a href="../29-赵蕤的五仪解释/index.html">下一篇 · 赵蕤的五仪解释 →</a><span class="sp"></span><span class="cur">中国文化的九征判断</span></div></nav>
+<header class="hero" id="top"><div class="wm">征</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第九章《知人的智慧》第二节</div>
+  <div class="no">貳拾玖</div>
+  <h1>中国文化的九征判断</h1>
+  <div class="sub">由外察内 · 九征识人 · 长期验证</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>人的内在情性看不见，却会通过身体、神态、气色、言谈流露为外在征象；<br>《人物志》由此建立<b>「由外察内」</b>的识人路径——而现代视角必须补上一句：<br><b>外在表现只是线索，不是人格定论。</b></div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 先纠正人物与书名</a><a href="#s3">叁 · 何谓九征 · 由外察内</a><a href="#s4">肆 · 刘劭原版九征一览</a><a href="#s5">伍 · 神与精 · 状态可以看，人格不能断</a><a href="#s6">陆 · 筋与骨 · 从骨相到行为证据</a><a href="#s7">柒 · 气、色、仪 · 节奏、情绪与仪态</a><a href="#s8">捌 · 容与言 · 态度变化与思维外化</a><a href="#s9">玖 · 中和与偏才 · 识人不是排名</a><a href="#s10">拾 · 三条方法论与现代边界</a><a href="#s11">拾壹 · 九征的现代转译 · 观察假设生成器</a><a href="#s12">拾貳 · 与八宫组合 · 防确认偏误</a><a href="#s13">拾叁 · 八处纠偏清单</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>看不见的内在</b><span>情性微而玄，能否由外察内？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>九类外在征象</b><span>神 精 筋 骨 气 色 仪 容 言</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>综合判断人才</b><span>不求单项越强越好，求中和协调</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s10"><b>现代补充原则</b><span>外在只是线索，不是人格定论</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s12"><b>观察→假设→验证→修正</b><span>长期行为才是证据，防确认偏误</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>识人的目的</b><span>不是定性排名，而是因材任用</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第九章第二节 · 基于《人物志》的九征判断 · 先立最高原则</div><p class="prose">这一课进入第九章《知人的智慧》第二节，比上一课“八宫识人法”更值得仔细区分——因为它直接借用古代经典，需要边学边辨。</p><div class="warn"><div class="wt">整理者的辨析 · 学习本课前先知道</div><ul><li>老师确实借用了曹魏刘劭《人物志》的经典内容，但在讲授过程中又做了大量重新排序、现代化解释，甚至把原文中的几个概念改成了另一套含义。</li><li>因此学习这一课时，要把老师重新组织的版本与刘劭原版分开。</li></ul></div><p class="prose">如果先把所有古代术语放开，这一课真正想解决的是一个问题：</p><div class="quote"><div class="q">人的内在性格、能力和状态看不见，我们能不能通过他长期呈现出来的语言、神态、行为和身体状态，间接认识这个人？</div><div class="src">这一课真正想解决的核心问题</div></div><p class="prose">《人物志》的回答是“可以尝试”。它的基本路径就是：<b>内在情性 → 外在征象 → 综合判断人才</b>。</p><div class="quote"><div class="q">外在表现可以提供线索，但不能成为“一眼定人格”的证据。</div><div class="src">现代视角需要补上的一句 · 本课最高原则</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>先纠正人物与书名</h2></div><div class="sd">刘劭其人 · 《人物志》其书 · 英译本的真相</div><div class="warn"><div class="wt">人物纠正 · “刘绍”“刘少”都是语音识别问题</div><ul><li>正确是<b>刘劭</b>，字孔才，曹魏时期人物，《人物志》作者。传统资料记其为邯郸人。</li><li>《人物志》全书十二篇，第一篇就是《九征》，整部书主要讨论怎样观察、辨别人材及如何因材任用。</li></ul></div><div class="duo"><div class="col neg"><h4>它不是 ✕</h4><ul><li>现代意义上的“算命书”</li></ul></div><div class="col pos"><h4>它本来的现实背景 ✓</h4><ul><li><b>人才识别与官员任用理论</b>——这一点很重要</li></ul></div></div><p class="prose">老师说美国学者把《人物志》译成《人类能力研究》，这件事基本有出处：1937年，John K. Shryock 确实出版了英文研究译本 <b>The Study of Human Abilities: The Jen Wu Chih of Liu Shao</b>，由 American Oriental Society 出版。所以“《人物志》被译成《The Study of Human Abilities》”是可以确认的。</p><div class="warn"><div class="wt">销量数字不可当史实</div><ul><li>原课说“在美国一年卖100多万册”——整理者没有查到可靠证据支持这个数字。</li><li>1937年的这本实际上是相当专业的汉学著作，属于 American Oriental Series，不适合把“百万销量”当作史实记忆。以后记“英文经典译本确有其事”即可，“年销百万”先删掉。</li></ul></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>何谓九征 · 由外察内</h2></div><div class="sd">“征”不是九种人格，而是九类外在征象</div><p class="prose">“征”在这里不是九种人格，而是<b>九类外在征象</b>。刘劭的基本假设是：人的内在情性虽然看不见，但会通过身体、神态、气色、言谈等表现出来，所以可以<b>由外察内</b>。</p><p class="prose">《九征》原文一开始就说“人物之本，出乎情性”，但“情性之理甚微而玄”，因此试图通过“有形质”的外在表现去观察——这就是整套理论真正的逻辑。</p><p class="prose">但要注意：老师课堂里的九征顺序，与刘劭原文并不完全一样。</p><div class="duo"><div class="col neg"><h4>老师课堂顺序 ✕</h4><ul><li>精 → 气 → 神 → 筋 → 骨 → 言 → 意 → 容 → 色</li></ul></div><div class="col pos"><h4>刘劭原版九征 ✓</h4><ul><li><b>神｜精｜筋｜骨｜气｜色｜仪｜容｜言</b></li><li>原文甚至直接把每一项对应的两端都写出来了</li></ul></div></div><div class="quote"><div class="q">平陂之质在于神，明暗之实在于精，勇怯之势在于筋，彊弱之植在于骨，躁静之决在于气，惨怿之情在于色，衰正之形在于仪，态度之动在于容，缓急之状在于言。</div><div class="src">《人物志·九征》原文 · 九征各自对应的两端</div></div><div class="warn"><div class="wt">“意”应为“仪”</div><ul><li>老师讲到第七项时说“意，衰正。”其实原文不是“意”，而是“仪”。</li><li>这应该是语音转写或课堂重新排列造成的混乱，学习原典时要特别改正。</li></ul></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>刘劭原版九征一览</h2></div><div class="sd">把原文按现代语言重新翻译 · 建议以此表为准</div><p class="prose">把原文按照现代语言重新翻译，大致可以得到下面九项——这才是刘劭原来意义上的“九征”：</p><div class="cards g3"><div class="card"><div class="idx">神</div><h4>平 ↔ 陂</h4><p>整体精神状态是否平和、偏激失衡</p></div><div class="card"><div class="idx">精</div><h4>明 ↔ 暗</h4><p>眼神与精神是否明澈、有无神采</p></div><div class="card"><div class="idx">筋</div><h4>勇 ↔ 怯</h4><p>行动力、勇气、承压与退缩倾向</p></div><div class="card"><div class="idx">骨</div><h4>强 ↔ 弱</h4><p>坚定性、支撑性、是否容易动摇</p></div><div class="card"><div class="idx">气</div><h4>躁 ↔ 静</h4><p>整体活动节奏是躁动还是沉静</p></div><div class="card"><div class="idx">色</div><h4>惨 ↔ 怿</h4><p>面部呈现的忧苦或喜悦状态</p></div><div class="card"><div class="idx">仪</div><h4>衰 ↔ 正</h4><p>整体仪态是萎靡还是端正</p></div><div class="card"><div class="idx">容</div><h4>态度之动</h4><p>神情、动作、姿态怎样变化</p></div><div class="card"><div class="idx">言</div><h4>缓 ↔ 急</h4><p>语言节奏快慢、表达状态</p></div></div><p class="prose">学习这一课时，强烈建议把老师重新组织的版本与<b>刘劭原版</b>分开。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>神与精 · 状态可以看，人格不能断</h2></div><div class="sd">平陂不是正邪 · 明暗只能读出当前状态</div><p class="prose"><b>第一征：神。</b>老师把“平、陂”进一步解释成“正、邪”——这个跨得太远了。“陂”在这里更接近不平、偏斜、失去平衡，所以“神之平陂”更适合理解成一个人整体精神气象是否相对平衡。</p><div class="quote"><div class="q">观人察质，必先察其平淡，而后求其聪明。</div><div class="src">《九征》原文 · 刘劭特别推崇“中和”</div></div><p class="prose">也就是说，在他的理想人才标准里，<b>稳定、中和</b>甚至比<b>锋芒毕露</b>更重要——这才是理解“神”的关键。</p><div class="warn"><div class="wt">“婴儿见你哭说明你邪，见你笑说明你正”完全不能作为识人依据</div><ul><li>婴幼儿面对陌生人产生哭、笑、回避，受到很多因素影响：陌生人焦虑、声音、动作、距离、疲劳、依恋状态等等。</li><li>孩子哭 ≠ 你有邪气；孩子笑 ≠ 你有正气。把这种反应拿来判断道德品质，就已经从人物观察滑向相术——这一点最好直接删掉。</li></ul></div><p class="prose"><b>第二征：精。</b>老师说“眼睛发光说明精足；眼神暗淡说明精不足”，作为古代人物品鉴语言可以理解。但在现代意义上，眼神状态可能受睡眠、疲劳、情绪、疾病、光线、药物等很多因素影响。</p><p class="prose">所以今天最多可以观察<b>当前精神状态</b>，不能看到眼神以后就判断“这个人的内在人格怎样”。这也是整个九征现代应用时必须保持的边界：<b>状态线索 ≠ 人格定论。</b></p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>筋与骨 · 从骨相到行为证据</h2></div><div class="sd">勇怯转译为行动与承压 · “强弱”不是骨相大小</div><p class="prose"><b>第三征：筋。</b>“勇怯”真正可以转化为“行动与承压”——面对压力时，他是进入行动，还是持续退缩？突发问题出现以后：有人马上进入分析和行动；有人陷入慌乱；有人逃避；有人寻求支持。</p><p class="prose">这些长期稳定的行为证据，确实能够帮助我们认识<b>韧性、勇气、压力应对</b>。这一征有很好的现代应用价值——但不要真的去研究一个人的“筋”。</p><div class="warn"><div class="wt">“当过兵的人筋一定强”仍然过度泛化</div><ul><li>经历可以影响行为，但不能根据一个身份直接推出人格。</li></ul></div><p class="prose"><b>第四征：骨。</b>这是本课非常需要纠偏的一处。刘劭原文说的是<b>“彊弱之植在于骨”</b>——用“骨”象征坚定、支撑、强弱等品质，而不是“骨头大就有担当”。</p><div class="warn"><div class="wt">骨相推人格 · 没有可靠科学依据</div><ul><li>老师进一步讲成“企业家头颅肩膀骨相大，所以有担当、有决断力”，这已经明显属于骨相推人格。“头大、肩宽”不能推出担当、决策力、领导能力。</li><li>现代化应该完全舍弃“骨相大小”，改成<b>原则稳定性 / 决断韧性</b>，然后通过长期行为去判断：压力下是否守原则？困难时是否承担责任？作出决定后能否推进？这才可用。</li></ul></div><div class="warn"><div class="wt">“西藏造像师雕三年罗刹面相就变恶，雕三年佛像又变祥和”不要当事实</div><ul><li>这属于故事性材料。一个人长期皱眉、微笑、紧张，确实可能影响表情习惯、肌肉状态、给人的印象。</li><li>但从“雕塑对象”直接推出“骨相改变”，再推出“善恶改变”，没有科学依据。作为文化故事听即可，不要纳入识人方法。</li></ul></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>气、色、仪 · 节奏、情绪与仪态</h2></div><div class="sd">躁静看行为节奏 · 惨怿看情绪呈现 · 衰正看整体仪态</div><p class="prose"><b>第五征：气。</b>刘劭观察躁 ↔ 静，这一点放在今天依然可以作为<b>行为节奏</b>来观察：比如一个人说话快、动作快、经常打断别人、不断切换任务；另一个人慢、稳、停顿多——这些确实是可观察行为差异。</p><p class="prose">但老师说“静就是贵气”，就属于古代价值评价。现代工作中，快的人可能非常适合应急、销售、创业；慢的人可能适合审计、科研、质量控制。所以真正成熟的判断不是“躁不好，静才贵”，而是<b>“这种节奏与什么任务匹配？”</b>——与上一课强调的“人岗匹配”完全一致。</p><p class="prose"><b>第六征：色。</b>惨 ↔ 怿大致是在看忧苦 / 愉悦怎样通过脸色、表情显现。这一点可以和现代心理学比较容易对接：<b>情绪确实会通过面部、声音和姿态呈现。</b></p><p class="prose">老师举“算命先生看到你脸上有忧郁之色，所以能算准”，实际上更可能说明一个现象：人可以通过可见情绪线索猜到对方当前状态——这不需要超自然解释。但当前忧郁，也不能直接推断长期人格、命运、未来。</p><p class="prose"><b>第七征：仪。</b>原文<b>“衰正之形在于仪”</b>，可以理解为整体仪态是萎靡、衰弱，还是端正、有支撑感。这里的“仪”是仪态，不是意志、意义。现代可以转成<b>整体职业状态</b>：姿态、整洁、注意力、状态管理——但仍然只说明当前呈现，不要直接给人做道德评判。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>容与言 · 态度变化与思维外化</h2></div><div class="sd">容看情境下的态度变化 · 言是九征中现代应用价值很高的一项</div><p class="prose"><b>第八征：容。</b>老师把“容”进一步解释成“态度真假”，但原文只是<b>“态度之动在于容”</b>——意思更接近：人的情态、动作、容貌变化，会表现其内在状态。它并没有直接说容貌可以判真假。</p><div class="quote"><div class="q">同一个人在不同情境下，态度怎样变化？</div><div class="src">第八征“容”的现代观察法 · 比看一瞬间表情判断“真诚不真诚”可靠得多</div></div><p class="prose">例如：面对上级，面对下属，面对弱者，面对利益冲突——看态度在不同情境间怎样变化。</p><p class="prose"><b>第九征：言。</b>原文是缓 ↔ 急，这是九征里现代应用价值很高的一项。老师在这里做了一个很好的扩展：<b>不只看快慢，还看能不能把问题说清楚。</b></p><p class="prose">整理者认为可以继续升级——真正观察语言，不只是快 / 慢，而是：</p><div class="chips"><span class="chip">清不清楚</span><span class="chip">有没有重点</span><span class="chip">有没有逻辑</span><span class="chip">能不能听别人</span><span class="chip">能不能根据对象调整表达</span></div><p class="prose">因为语言本身就是<b>思维结构的外化</b>——这一点正好连接第六章《语言作为思维利器》。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>中和与偏才 · 识人不是排名</h2></div><div class="sd">九项不是越强越好 · 承认偏长才是《人物志》的精彩处</div><p class="prose">刘劭真正追求的并不是“九项全部越强越好”——这一点老师讲得不够清楚。《人物志》强调的最高状态是<b>中和</b>：不是眼神越亮越好、越勇越好、越强越好、越静越好。</p><div class="quote"><div class="q">直而不柔则木，劲而不精则力</div><div class="src">《九征》原文（节引）· 优点走到极端，也会变成缺点</div></div><p class="prose">刘劭最终认为“九征皆至”而又协调的，才接近<b>“纯粹之德”</b>；偏于某一项，则是“偏材”。这一点其实特别现代。</p><p class="prose">《人物志》真正精彩的地方是：它承认<b>“偏才”</b>。不是所有人都要成为全能人才——有人果断，有人细密；有人善谋，有人善执行；有人善辩，有人善组织。</p><div class="quote"><div class="q">不同的人才有不同的偏长，识人的目的不是排名，而是任用。</div><div class="src">整理者认为《人物志》真正有管理价值的一句话</div></div><div class="warn"><div class="wt">“九征之后分成十二种人，三个级别”混了《人物志》不同章节</div><ul><li>《体别》讲十二类个性，《流业》又讲十二类人才（清节家、法家、术家、国体、器能、臧否、伎俩、智意、文章、儒学、口辩、雄杰）。</li><li>而《九征》本身更直接讲的是中庸、德行、偏材、依似、间杂等不同层次。所以不要记成“九征 = 十二人 × 三等级”——这是把全书不同结构揉到了一起。</li></ul></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>三条方法论与现代边界</h2></div><div class="sd">经过现代化以后，真正值得留下的是什么</div><p class="prose">《人物志》最值得学习的，不一定是“看脸”，而是三条方法论：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>不要单点判断</h4><p>不能因为说话慢就说聪明、眼神亮就说能力强——要<b>多维综合</b></p></div><div class="card"><div class="idx">貳</div><h4>不要只看强弱，要看协调</h4><p>非常勇敢但不谨慎可能是鲁莽；非常聪明但没有责任未必适合重要岗位——<b>能力不是越强越好，而要看组合</b></p></div><div class="card"><div class="idx">叁</div><h4>识人最终是为了“用人”</h4><p>不是为了给别人定性，更不是为了显得自己会看人</p></div></div><div class="quote"><div class="q">这个人的特点放到什么位置，最容易发挥？</div><div class="src">《人物志》最有现实价值的一问</div></div><p class="prose">现代心理学对“看外表识人”的态度应该这样理解：不是简单说“所有第一印象完全没信息”——有些短时间行为样本确实可能包含少量人格相关信息，且随观察时间增加，某些判断可能改善。</p><p class="prose">但如果只根据<b>脸本身</b>去判断诚信、善恶、可靠性，准确程度总体很有限：一项关于“脸部可信度判断”的元分析发现，相关准确度即使存在也只是 modest（较弱）的水平，不足以具有实际应用价值。</p><div class="quote"><div class="q">外在可以用于提出假设，不能用于宣布结论。</div><div class="src">现代心理学对“看外表识人”的最安全结论</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>九征的现代转译 · 观察假设生成器</h2></div><div class="sd">不是“相人术”，而是结构化观察提示词</div><p class="prose">“九征”最好的现代使用方式不是“相人术”，而是<b>结构化观察提示词</b>：看到一个人状态紧张，不要说“此人气躁，不可用”，而应该形成一个问题——“他在压力场景下是否经常出现冲动行为？”然后观察实际工作。</p><p class="prose">看到一个人语言急，不要说“言急，性格有问题”，而应该问——“快节奏是否影响信息准确性和倾听？”然后找行为证据。这样<b>古代征象</b>就转化成<b>现代验证问题</b>。</p><p class="prose">如果把“九征”重新设计成现代识人九维，可以这样改：</p><div class="cards g3"><div class="card"><div class="idx">神</div><h4>整体稳定性</h4><p>原征：平 ↔ 陂</p></div><div class="card"><div class="idx">精</div><h4>注意力与精神状态</h4><p>原征：明 ↔ 暗</p></div><div class="card"><div class="idx">筋</div><h4>压力下的行动与韧性</h4><p>原征：勇 ↔ 怯</p></div><div class="card"><div class="idx">骨</div><h4>原则性与决断稳定度</h4><p>原征：强 ↔ 弱</p></div><div class="card"><div class="idx">气</div><h4>行为节奏与自我调节</h4><p>原征：躁 ↔ 静</p></div><div class="card"><div class="idx">色</div><h4>情绪表达</h4><p>原征：惨 ↔ 怿</p></div><div class="card"><div class="idx">仪</div><h4>职业状态与自我管理</h4><p>原征：衰 ↔ 正</p></div><div class="card"><div class="idx">容</div><h4>情境变化下的人际态度</h4><p>原征：态度之动</p></div><div class="card"><div class="idx">言</div><h4>表达、逻辑与倾听</h4><p>原征：缓 ↔ 急</p></div></div><p class="prose">然后最关键的是：<b>每一项都必须通过长期行为验证。</b>这样，古人的九征就不会变成“看相”，而会变成一套<b>观察假设生成器</b>。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>与八宫组合 · 防确认偏误</h2></div><div class="sd">两节识人课串成完整方法 · 高手不是看人准，而是修正快</div><p class="prose">这一节与上一节“八宫”可以很好地组合：八宫更多是看<b>你要了解一个人的哪些领域</b>；九征更像<b>和这个人接触的时候，可以观察哪些外在表现</b>。所以两节可以形成“八宫 = 看什么，九征 = 怎么观察”，但两者之间一定还要加上第三层：<b>证据验证</b>。</p><div class="ladder"><div class="step"><div class="t">八宫 · 看什么</div><div class="d">状态、行为、情绪、价值、认知、动机、历史、未来</div></div><div class="step"><div class="t">九征 · 怎么观察</div><div class="d">接触过程中可以观察的外在表现</div></div><div class="step"><div class="t">行为证据</div><div class="d">这些表现长期真实吗？</div></div><div class="step"><div class="t">关键情境</div><div class="d">压力、利益、权力下是否一致？</div></div><div class="step hot"><div class="t">岗位匹配</div><div class="d">这种特点放在哪里最适合？</div></div></div><p class="prose">识人时最需要防范的是<b>确认偏误</b>：假如第一次见一个人，你觉得“这个人眼神不正”，接下来大脑很容易只注意支持这个判断的行为，忽略反例——他说错一句话，“你看，我就说他不可靠”；但他做了十件诚信的事情，你可能完全不记得。</p><div class="quote"><div class="q">什么证据能够证明我的第一印象是错的？</div><div class="src">真正成熟的识人要问的问题 · 与前面深度思考讲的“反证意识”连接</div></div><p class="prose">所以真正的高手不是“看人特别准”，而是<b>修正判断特别快</b>：第一次判断 60% 可能，出现新证据就调整，再观察继续调整——“我第一眼就知道他是什么人”这种“我看人最准”的自信反而很危险，研究也显示人根据脸形成判断时容易产生过度自信。真正高级的知人智慧应该具有<b>概率意识</b>。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>八处纠偏清单</h2></div><div class="sd">学习本课之前 · 把课堂说法与可确认事实分开</div><p class="prose">这一课最需要纠偏的，一共 8 个地方——建议作为学习前的清单：</p><div class="warn"><div class="wt">本课八处纠偏 · 逐条保留</div><ul><li>第一，作者应为“刘劭”，不是刘绍；《人物志》第一篇确为《九征》。</li><li>第二，1937年 J. K. Shryock 确实以《The Study of Human Abilities》为题出版英文译研本；但“美国年销100多万册”没有查到可靠依据。</li><li>第三，原版九征是“神、精、筋、骨、气、色、仪、容、言”，不是课堂排列的“精气神筋骨言意容色”。</li><li>第四，“仪”不是“意”；原文对应“衰正之形在于仪”。</li><li>第五，“骨”原文对应“强弱”，没有“骨相大的人更有担当”这个结论。</li><li>第六，“神平陂”不能直接翻译成“正邪”，“容”也不能直接等于“真假”。老师在这里进行了明显的现代化再解释。</li><li>第七，婴儿见你哭笑、骨相大小、面相变化等都不能作为道德品质或能力判断的可靠证据。脸部可信度判断即使有少量统计信号，也弱到不适合实际识人决策。</li><li>第八，《人物志》的重要价值更在“综合察材、辨别偏长、因材任用”，而不是建立一套现代意义上的科学人格测评。</li></ul></div><p class="prose">这样学习《人物志》，就既保留了中国古代人物品鉴思想中非常有意思的<b>整体性、中和、因材任用</b>，又避免把它误学成“看眼神、看骨相就能看穿一个人”的相术。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="9">0</div><div class="l">外在征象（九征）</div></div><div class="cnt"><div class="v" data-c="12">0</div><div class="l">《人物志》全书篇数</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">现代化方法论</div></div><div class="cnt"><div class="v" data-c="8">0</div><div class="l">本课纠偏清单</div></div></div><div class="panel"><h3><span class="no2">①</span>九征归类练习</h3><div class="pd">把下列《人物志·九征》原文表述归入对应的征象组，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="原文“平陂之质在于神”——观察整体精神状态是否平和、偏激失衡，属神·精组"><div class="st">1. 平陂之质在于神</div><div class="opts"><button data-ok="1">神 · 精</button><button data-ok="0">筋 · 骨</button><button data-ok="0">气 · 色</button><button data-ok="0">仪 · 容 · 言</button></div><div class="verdict"></div></div><div class="sort-it" data-why="原文“勇怯之势在于筋”——行动力、勇气、承压与退缩倾向，可转译为压力下进入行动还是持续退缩"><div class="st">2. 勇怯之势在于筋</div><div class="opts"><button data-ok="0">神 · 精</button><button data-ok="1">筋 · 骨</button><button data-ok="0">气 · 色</button><button data-ok="0">仪 · 容 · 言</button></div><div class="verdict"></div></div><div class="sort-it" data-why="原文“彊弱之植在于骨”——坚定性、支撑性，现代化为原则性与决断稳定度，而非骨相大小"><div class="st">3. 彊弱之植在于骨</div><div class="opts"><button data-ok="0">神 · 精</button><button data-ok="1">筋 · 骨</button><button data-ok="0">气 · 色</button><button data-ok="0">仪 · 容 · 言</button></div><div class="verdict"></div></div><div class="sort-it" data-why="原文“躁静之决在于气”——整体活动节奏是躁动还是沉静，今天可作为行为节奏观察"><div class="st">4. 躁静之决在于气</div><div class="opts"><button data-ok="0">神 · 精</button><button data-ok="0">筋 · 骨</button><button data-ok="1">气 · 色</button><button data-ok="0">仪 · 容 · 言</button></div><div class="verdict"></div></div><div class="sort-it" data-why="原文“惨怿之情在于色”——忧苦或愉悦通过脸色、表情显现，对接现代的情绪表达"><div class="st">5. 惨怿之情在于色</div><div class="opts"><button data-ok="0">神 · 精</button><button data-ok="0">筋 · 骨</button><button data-ok="1">气 · 色</button><button data-ok="0">仪 · 容 · 言</button></div><div class="verdict"></div></div><div class="sort-it" data-why="原文“缓急之状在于言”——语言节奏快慢，现代还可观察清不清楚、有没有逻辑、能不能听别人"><div class="st">6. 缓急之状在于言</div><div class="opts"><button data-ok="0">神 · 精</button><button data-ok="0">筋 · 骨</button><button data-ok="0">气 · 色</button><button data-ok="1">仪 · 容 · 言</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>九征识人通关清单</h3><div class="pd">对照下列六项，检验自己是否真正掌握了本讲的识人方法</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能背出刘劭原版九征：神、精、筋、骨、气、色、仪、容、言</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我记得第七项是“仪”（衰正之形在于仪），不是“意”</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能区分老师课堂版本与刘劭原版：顺序不同、部分概念经过现代化再解释</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我理解“中和”：某一种品质过强而缺少其他品质调节，优点也会变成缺点</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我把外在表现当作“假设”而非“结论”，用长期行为、关键情境和实际结果验证</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我会主动反问：什么证据能够证明我的第一印象是错的？</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>“九征”的“征”指的是什么？</div><div class="ans"><button data-ok="0">A. 九种人格类型</button><button data-ok="1">B. 九类外在征象</button><button data-ok="0">C. 九个命运等级</button><button data-ok="0">D. 九种面相</button></div><div class="exp">“征”在这里不是九种人格，而是九类外在征象——内在情性虽看不见，但会通过身体、神态、气色、言谈表现出来，所以可以由外察内。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>《人物志》的作者、朝代与第一篇分别是？</div><div class="ans"><button data-ok="0">A. 刘绍 · 西晋 · 《体别》</button><button data-ok="1">B. 刘劭 · 曹魏 · 《九征》</button><button data-ok="0">C. 刘少 · 东汉 · 《流业》</button><button data-ok="0">D. 刘歆 · 西汉 · 《材能》</button></div><div class="exp">讲稿里的“刘绍”“刘少”都是语音识别问题，正确是刘劭，字孔才，曹魏时期人物；《人物志》全书十二篇，第一篇就是《九征》。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>刘劭推崇的理想人才标准是什么？</div><div class="ans"><button data-ok="0">A. 锋芒毕露、单项极强</button><button data-ok="0">B. 九项全部越强越好</button><button data-ok="1">C. 中和、平淡而协调</button><button data-ok="0">D. 骨相壮大、气象威猛</button></div><div class="exp">《九征》说“观人察质，必先察其平淡，而后求其聪明”；“九征皆至”而又协调才接近“纯粹之德”——稳定、中和甚至比锋芒毕露更重要。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>现代视角下，对“看外表识人”最安全的结论是什么？</div><div class="ans"><button data-ok="0">A. 第一印象完全没信息</button><button data-ok="1">B. 外在可以用于提出假设，不能用于宣布结论</button><button data-ok="0">C. 脸可以可靠判断诚信与命运</button><button data-ok="0">D. 眼神亮就能断定能力强</button></div><div class="exp">“脸部可信度判断”元分析发现相关准确度即使存在也只是 modest（较弱）水平——外在可以用于提出假设，不能用于宣布结论。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者认为《人物志》真正有管理价值的一句话是什么？</div><div class="ans"><button data-ok="0">A. 看人准的人天生适合领导</button><button data-ok="0">B. 九征越全越接近圣人</button><button data-ok="1">C. 不同的人才各有偏长，识人的目的不是排名，而是任用</button><button data-ok="0">D. 面由心生，改面可改命</button></div><div class="exp">《人物志》承认偏才——有人果断、有人细密、有人善谋、有人善执行；识人的落点是“这个人的特点放到什么位置，最容易发挥？”。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">九征真正值得学习的不是“看脸断人”，而是提醒我们认识一个人要多维观察，不能因为某一个表现就下结论。</div><div class="src">本课六句总结 · 第三句</div></div><div class="quote"><div class="q">外貌、眼神、骨相、脸色只能反映有限的当下信息，不能可靠推出善恶、诚信、能力和命运。</div><div class="src">本课六句总结 · 第五句</div></div><div class="quote"><div class="q">现代识人最合理的方法，是把外在表现当作“假设”，再通过长期行为、关键情境和实际结果反复验证和修正。</div><div class="src">本课六句总结 · 第六句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../27-个体人性的八宫结构/index.html">← 上一篇 · 个体人性的八宫结构</a><a href="../29-赵蕤的五仪解释/index.html">下一篇 · 赵蕤的五仪解释 →</a><span class="sp"></span><span class="cur">中国文化的九征判断</span></div></nav>
+<footer class="coda"><div class="wm2">察</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">知人的智慧，不是从一个人的脸上读出他的命运，<br>而是<b>从多个征象提出假设，再用长期行为不断验证和修正</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二十九讲《中国文化的九征判断》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s1", "#s3", "#s9", "#s10", "#s12", "#s12"], "sortok": [0, 1, 1, 2, 2, 3], "quizok": [1, 1, 2, 1, 2], "ckkey": "zx28-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

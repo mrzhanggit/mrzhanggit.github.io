@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>因果思维 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx14-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../13-感性思维/index.html">← 上一篇 · 感性思维</a><a href="../15-辩证思维/index.html">下一篇 · 辩证思维 →</a><span class="sp"></span><span class="cur">因果思维</span></div></nav>
+<header class="hero" id="top"><div class="wm">因</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第五章《思维模式》第二节</div>
+  <div class="no">拾伍</div>
+  <h1>因果思维</h1>
+  <div class="sub">相关≠因果 · 果→因解释 · 因→果预测决策</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>感性思维解决“发生了什么”，因果思维开始解决<b>“为什么会发生，以及接下来可能发生什么”</b>。<br>真正的因果思维是双向的：<b>果→因解释过去，因→果推演未来</b>，最终落到「目标果→可控因」的决策。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 放回第五章：从“发生了什么”到“为什么”</a><a href="#s2">貳 · 什么叫因果思维</a><a href="#s3">叁 · 休谟：我们真的“看见”因果了吗</a><a href="#s4">肆 · 第三变量：现代人的因果警觉</a><a href="#s5">伍 · 康德的回应与科学的边界</a><a href="#s6">陆 · 野狐禅与因缘：条件网络</a><a href="#s7">柒 · 学哲学的例子：条件的四个位置</a><a href="#s8">捌 · “偶然就是必然”要修正</a><a href="#s9">玖 · 两个方向：解释与预测决策</a><a href="#s10">拾 · 因果思维的三个层次</a><a href="#s11">拾壹 · 智与慧：解释能力与预见能力</a><a href="#s12">拾貳 · 最容易犯的错误与反事实</a><a href="#s13">拾叁 · 实战：本月住院收入下降</a><a href="#s14">拾肆 · 因果网络：不只是找一个原因</a><a href="#s15">拾伍 · 两层认知与最终模型</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现象确认</b><span>感性思维：发生了什么？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>追问因果</b><span>为什么会这样？· 双向思维</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>休谟的警觉</b><span>相关地发生 ≠ 因果被证明</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>野狐禅与因缘</b><span>不昧因果 · 条件网络</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>两个方向</b><span>果→因：解释 / 因→果：预测与决策</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s10"><b>三个层次</b><span>解释 · 预测 · 决策</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s15"><b>最终模型</b><span>目标果→可控因 → 行动与智慧</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>放回第五章：从“发生了什么”到“为什么”</h2></div><div class="sd">与上一节《感性思维》的交接 · 全章问题链的位置</div><p class="prose">上一课《感性思维》最后留下的是<b>“发生了什么？”</b>——先观察、描述，把模糊感觉变成清晰问题。两节课的交接处是这样的：</p><div class="case"><div class="h"><span class="tag">交接</span><span class="ht">从模糊感觉到清晰问题</span><span class="ar">▸</span></div><div class="sm"><div class="inner">“最近感觉中心业务不太好。”——经过感性思维处理以后 →“近两个月门诊量下降了15%。”现在真正的问题才开始：为什么下降？于是进入本节：因果思维。</div></div></div><div class="ladder"><div class="step"><div class="t">感性思维</div><div class="d">现象是什么？</div></div><div class="step hot"><div class="t">因果思维</div><div class="d">为什么会这样？</div></div><div class="step"><div class="t">辩证思维</div><div class="d">矛盾和变化机制是什么？</div></div><div class="step"><div class="t">系统思维</div><div class="d">放在整个系统里会造成什么影响？</div></div></div><div class="quote"><div class="q">感性思维解决“发生了什么”，因果思维开始解决“为什么会发生，以及接下来可能发生什么”。</div><div class="src">两节课衔接的核心句</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>什么叫因果思维</h2></div><div class="sd">最简定义 · 双向的完整形态</div><div class="quote"><div class="q">看到一个变化以后，寻找导致这个变化的条件和机制。</div><div class="src">因果思维的最简定义</div></div><p class="prose">门诊量下降，这只是<b>结果</b>。接下来会问：是不是居民减少？医生调整？天气影响？宣传不足？医保政策变化？周边竞争机构增加？服务体验下降？——这就是“结果 → 寻找可能原因”，因果思维最常见的形式。但它还有另一半：<b>如果我现在改变某个因素，将来可能产生什么结果？</b></p><div class="cards g2"><div class="card"><div class="idx">果→因</div><h4>结果 → 寻找可能原因</h4><p>门诊量下降 → 排查居民、医生、天气、宣传、政策、竞争、体验</p></div><div class="card"><div class="idx">因→果</div><h4>原因 → 推演结果</h4><p>如果增加夜间门诊 → 年轻上班族就诊量会不会增加？</p></div></div><p class="prose">所以真正完整的因果思维是<b>“双向”</b>的。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>休谟：我们真的“看见”因果了吗</h2></div><div class="sd">本课的哲学起点 · 恒常结合与习惯性联想</div><p class="prose">老师讲的“修默”就是<b>大卫·休谟（David Hume）</b>。我们平时看到：A发生以后，B总是发生——按下开关→灯亮；火出现→产生热；太阳升起→天亮。于是自然会认为：A导致了B。但休谟提出一个非常麻烦的问题：</p><div class="quote"><div class="q">我们真的“看见”了因果关系本身吗？</div><div class="src">休谟提出的核心问题</div></div><div class="duo"><div class="col neg"><h4>自然的想法 ✕</h4><ul><li>A发生以后，B总是发生</li><li>于是：A导致了B（按下开关→灯亮；火出现→产生热；太阳升起→天亮）</li></ul></div><div class="col pos"><h4>休谟的追问 ✓</h4><ul><li>直接经验到的只是<b>恒常结合</b>：A发生，然后B发生，反复很多次</li><li>并没有感官直接看到一种叫“必然联系”的东西</li><li>因果推断与<b>习惯/惯常联想</b>密切相关</li></ul></div></div><p class="prose">这就是本节第一个真正重要的问题：<b>相关地发生 ≠ 已经证明存在因果。</b></p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>第三变量：现代人的因果警觉</h2></div><div class="sd">两个例子 · 两条最基本的警觉</div><p class="prose">这其实是现代人特别需要的一种能力。比如你发现“成绩好的孩子都喜欢阅读”，于是说“阅读导致成绩好”——未必。</p><div class="case"><div class="h"><span class="tag">例一</span><span class="ht">成绩与阅读：第三变量</span><span class="ar">▸</span></div><div class="sm"><div class="inner">也可能：家庭教育好，同时造成孩子阅读更多和成绩更好——这就出现了第三变量。</div></div></div><div class="case"><div class="h"><span class="tag">例二</span><span class="ht">医院业务量与短视频</span><span class="ar">▸</span></div><div class="sm"><div class="inner">某家医院业务量增长，与此同时做了短视频宣传，于是说“短视频导致业务增长”。也可能同时发生了：医生团队调整、新业务开展、周边机构停诊、季节变化、政策变化。</div></div></div><div class="cards g2"><div class="card"><div class="idx">警一</div><h4>先后发生 ≠ 因果</h4><p>两件事一前一后出现，不等于前一件导致后一件</p></div><div class="card"><div class="idx">警二</div><h4>一起变化 ≠ 因果</h4><p>两个指标同涨同跌，背后可能有<b>第三变量</b>同时推动两者</p></div></div><p class="prose">这是因果思维最基本的警觉。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>康德的回应与科学的边界</h2></div><div class="sd">从“独断论的迷梦”中唤醒 · 对“科学的基础就是因果必然性”的校正</div><p class="prose">休谟的问题非常有破坏力：如果我们永远只能说“过去A后面经常跟着B”，而不能说“A和B之间存在必然因果联系”，那么科学中的“自然规律”到底凭什么具有普遍性？康德明确把休谟对因果概念的挑战看作对形而上学极具决定意义的冲击，并试图回答它。</p><p class="prose">老师说康德看到休谟以后“吓出一身汗”。更准确的经典说法是——</p><div class="quote"><div class="q">休谟把康德从“独断论的迷梦”中唤醒。</div><div class="src">对老师“吓出一身汗”说法的校正 · 经典表述</div></div><div class="quote"><div class="q">因果性并不是简单从重复经验里抽出来的习惯，而是人的知性组织客观经验所需要的一种先天范畴。</div><div class="src">康德对休谟的回应</div></div><p class="prose">在康德那里，只有按照规则把前后事件理解成因果关系，我们才能把单纯“我先看到A、后来看到B”的主观知觉序列理解成<b>客观事件序列</b>。</p><div class="warn"><div class="wt">老师说“科学的基础就是因果必然性”，要稍微调整</div><ul><li>经典科学确实高度重视：规律、因果、预测——这个方向可以理解</li><li>但如果把它绝对化成“科学必须证明一切结果都是严格必然的”，就不准确了</li><li>现代科学也大量研究：概率关系、随机过程、统计规律、不确定性——尤其量子力学中，随机性本身就是重要研究主题</li></ul></div><div class="quote"><div class="q">科学需要稳定、可检验的关系和规律，但这种规律不一定都是经典意义下“一因必然产生一个确定结果”的决定论。</div><div class="src">整理者对“科学的基础就是因果必然性”的校正表述</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>野狐禅与因缘：条件网络</h2></div><div class="sd">不落因果 vs 不昧因果 · 多个条件共同作用产生一个结果</div><p class="prose">老师用佛教“百丈野狐”的公案来连接因果。故事中的老者过去回答修行者“不落因果”，结果受野狐身；后来百丈回答<b>“不昧因果”</b>，老者因此觉悟。这个公案在禅宗传统中非常著名。</p><div class="duo"><div class="col neg"><h4>不落因果 ✕</h4><ul><li>容易理解成：开悟以后完全不受因果约束</li></ul></div><div class="col pos"><h4>不昧因果 ✓</h4><ul><li>更接近：<b>不遮蔽、不忽视、不昧于因果</b></li></ul></div></div><p class="prose">这里的关键不是“信不信因果”。这个公案最值得借用到现代思维里的意思是——不要因为复杂性和偶然性存在，就否认因果条件。</p><div class="quote"><div class="q">不要因为复杂性和偶然性存在，就否认因果条件。</div><div class="src">野狐禅公案对现代思维的意义</div></div><div class="h3blk">因缘：结果由条件网络产生</div><p class="prose">老师接着讲到“缘”，这是很重要的一步。现实中几乎没有“一个原因 → 一个结果”这么简单，更常见的是<b>多个条件共同作用 → 一个结果</b>。比如一个人身体健康，不是“因为吃了某一种保健品”，而是很多因素共同作用：</p><div class="chips"><span class="chip">饮食</span><span class="chip">运动</span><span class="chip">睡眠</span><span class="chip">基因</span><span class="chip">年龄</span><span class="chip">环境</span><span class="chip">医疗 …</span></div><div class="warn"><div class="wt">佛教“四缘”部分：老师讲稿语音识别有明显错乱</div><ul><li>佛教传统中常见“四缘”分类：因缘、所缘缘、等无间缘、增上缘等</li><li>讲稿此处文字系语音转写错乱，不宜当作老师原话记忆</li><li>公案强调的“不昧因果”，也正适合帮助理解：世界的生成条件复杂，并不意味着可以取消因果</li></ul></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>学哲学的例子：条件的四个位置</h2></div><div class="sd">触发 · 过程 · 预期 · 附带 —— 因果链上的四种要素</div><p class="prose">老师举“学哲学”的例子，其实是在区分因果链条上四个不同的东西：</p><div class="cards g4"><div class="card"><div class="idx">触</div><h4>触发条件</h4><p>你偶然刷到这门哲学课程</p></div><div class="card"><div class="idx">过</div><h4>过程条件</h4><p>然后你产生兴趣，开始看书、学习</p></div><div class="card"><div class="idx">预</div><h4>预期结果</h4><p>你的原目标：希望自己更通透、更自由</p></div><div class="card"><div class="idx">超</div><h4>附带结果</h4><p>最后你因为新的认知，工作判断变好，收入增加——<b>超预期结果</b></p></div></div><div class="ladder"><div class="step"><div class="t">初始条件</div></div><div class="step"><div class="t">中间机制</div></div><div class="step"><div class="t">目标结果</div></div><div class="step hot"><div class="t">非预期结果</div><div class="d">因果思维不能只问“原因是什么？”</div></div></div><p class="prose">这已经开始接近系统思维了。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>“偶然就是必然”要修正</h2></div><div class="sd">黑格尔与量子力学不能这样用 · 因果性 ≠ 决定论</div><p class="prose">老师把黑格尔和量子力学都拿来证明“偶然就是必然”——这里需要特别谨慎。</p><div class="warn"><div class="wt">“偶然就是必然”不能直接这样记</div><ul><li>黑格尔确实深入讨论必然性与偶然性的关系，但不能压缩成“二者完全是一回事”</li><li>量子力学更没有“证明偶然性就是必然性”——现代量子理论涉及概率与随机性</li><li>物理学和哲学中还需要区分：<b>因果性</b>和<b>决定论</b>不是同一个概念</li></ul></div><div class="quote"><div class="q">现实既可能存在稳定规律，也可能存在概率、不确定性和偶然因素。</div><div class="src">对“偶然就是必然”的更稳妥表述</div></div><p class="prose">成熟的因果思维应该接受：<b>因果 ≠ 所有事情都可以精确预测。</b></p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>两个方向：解释与预测决策</h2></div><div class="sd">本课最值得留下的框架 · 果→因 与 因→果 完全不同</div><p class="prose">老师后半段提出了本课最值得留下的框架——两个完全不同的思维方向。</p><div class="cards g2"><div class="card"><div class="idx">释</div><h4>果 → 因：解释</h4><p>已经看到结果，向过去寻找“为什么会这样？”——<b>解释性思维</b>，也称<b>诊断思维</b>。老师所谓“事后诸葛亮”指的就是这类能力，但不一定是贬义：医学诊断、事故调查、质量分析，本来就大量依赖果→因</p></div><div class="card"><div class="idx">推</div><h4>因 → 果：预测与决策</h4><p>现在还没有结果，只有一些已知条件A、B、C，问：“它们未来可能导致什么？”——<b>预测性思维</b>；进一步问“为了得到我想要的结果，现在应该改变哪个条件？”——就进入<b>决策思维</b>，已经比“为什么会这样”高了一层</p></div></div><div class="case"><div class="h"><span class="tag">推演</span><span class="ht">因→果的例子：社区医疗需求</span><span class="ar">▸</span></div><div class="sm"><div class="inner">老龄人口增加 ＋ 慢病患病率上升 ＋ 医保支付方式变化 → 未来社区医疗需求可能怎样变化？这就是预测性思维。</div></div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>因果思维的三个层次</h2></div><div class="sd">解释 · 预测 · 决策 —— 建议直接这样记</div><div class="cards g3"><div class="card"><div class="idx">释</div><h4>解释｜果 → 因</h4><p>核心问题：<b>为什么会这样？</b></p></div><div class="card"><div class="idx">测</div><h4>预测｜因 → 果</h4><p>核心问题：<b>如果这样，会发生什么？</b></p></div><div class="card"><div class="idx">策</div><h4>决策｜目标果 → 找可控因</h4><p>核心问题：<b>我要得到这个结果，现在应该改变什么？</b></p></div></div><p class="prose">第三层尤其重要。比如不是只问“为什么家庭医生签约触达率不高”，而是进一步——</p><div class="quote"><div class="q">如果希望三个月后触达率明显提高，现在最值得改变哪几个可控因素？</div><div class="src">从解释进入管理的一问</div></div><p class="prose">这个时候因果思维已经真正进入<b>管理</b>。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>智与慧：解释能力与预见能力</h2></div><div class="sd">“果中识为智，因中识为慧” · 及其修正</div><div class="quote"><div class="q">果中识为智，因中识为慧。</div><div class="src">老师提出的记忆模型</div></div><div class="warn"><div class="wt">整理者提醒：这不是哲学史通行的“智慧”定义</div><ul><li>“果中识为智，因中识为慧”不是哲学史上通行的标准定义</li><li>更适合作为老师自己设计的记忆模型——但这个模型很有启发性</li></ul></div><div class="cards g2"><div class="card"><div class="idx">智</div><h4>智：解释能力</h4><p>已经发生以后，能够<b>理解为什么发生</b>——看懂过去和现在</p></div><div class="card"><div class="idx">慧</div><h4>慧：预见能力</h4><p>事情还没发生，能够<b>根据现在的条件，看见未来可能发生什么</b>——提前看见未来的可能</p></div></div><div class="warn"><div class="wt">老师说“智慧能够把未来无限的可能变成确定”，要修正</div><ul><li>这句话有感染力，但不够准确——真正高级的思维不是“我能百分之百确定未来”</li><li>现实里永远存在：未知因素、他人行为、环境变化、偶然事件、黑天鹅</li><li>所以智慧不应该是“准确预言未来”，而是：在不确定的未来中，提高判断概率和行动质量</li></ul></div><div class="quote"><div class="q">识别关键因果关系，在不确定性中做出更好的选择。</div><div class="src">对“把无限未来变成确定”的修正表述</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>最容易犯的错误与反事实</h2></div><div class="sd">原讲稿未充分展开 · 整理者补上的因果检验四问</div><p class="prose">这一课原讲稿没有充分展开，但学习时必须补上。最大的错误就是：<b>看到A和B一起出现，就认为A导致B。</b></p><div class="case"><div class="h"><span class="tag">陷阱</span><span class="ht">住院人数上涨，同时收入上涨</span><span class="ar">▸</span></div><div class="sm"><div class="inner">并不能立刻说“增床一定造成收入增加”。因为可能还有：病种变化、医生增加、医保政策、季节因素。</div></div></div><p class="prose">所以真正因果分析至少需要问这四个问题（点击展开）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">A真的发生在B之前吗？</span></summary><div class="body">先后发生 ≠ 因果——时间顺序只是必要条件，不是充分证明。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">A和B之间有没有合理机制？</span></summary><div class="body">两个变量先后出现还不够，还需要一条说得通的传导路径。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">有没有第三个因素同时影响A和B？</span></summary><div class="body">如“家庭教育好”同时造成“阅读更多”和“成绩更好”——第三变量。</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">如果没有A，B还会不会发生？</span></summary><div class="body">最后这一问特别重要——反事实，这是现代因果推断的核心思想之一。</div></details><div class="quote"><div class="q">如果没有这个原因，结果还会发生吗？</div><div class="src">反事实之问 · 现代因果推断的核心思想之一</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>实战：本月住院收入下降</h2></div><div class="sd">一个完整的现实工作例子 · 三层依次展开</div><p class="prose">假设“本月住院收入下降”。感性思维先确认：到底下降多少？什么时候开始？然后因果思维分三层展开：</p><div class="cards g3"><div class="card"><div class="idx">一层</div><h4>果→因</h4><p>收入为什么下降？患者减少？床位使用率下降？CMI下降？病种结构改变？医保支付影响？手术业务减少？——寻找证据</p></div><div class="card"><div class="idx">二层</div><h4>因→果</h4><p>如果提高床位周转率，或者增加某类优势病种，预计会怎样影响收入？——预测结果</p></div><div class="card"><div class="idx">三层</div><h4>目标→可控因</h4><p>目标：三个月后提升有效业务量。哪几个因素真正可以由中心改变？患者触达、转诊协作、服务流程、优势专科、排班</p></div></div><p class="prose">这时候你才从<b>解释问题</b>进入<b>解决问题</b>。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>因果网络：不只是找一个原因</h2></div><div class="sd">背景条件 · 直接原因 · 可控因素 —— 管理真正关心什么</div><p class="prose">因果思维并不是“寻找一个原因”。真正复杂问题往往是<b>因果网络</b>。比如患者为什么不到中心？可能是这些因素共同作用：</p><div class="chips"><span class="chip">距离</span><span class="chip">认知不足</span><span class="chip">不知道家庭医生是谁</span><span class="chip">认为大医院更可靠</span><span class="chip">服务时间不方便</span><span class="chip">缺少主动触达</span></div><div class="cards g3"><div class="card"><div class="idx">背</div><h4>背景条件</h4><p>长期存在、难以直接改变的环境性原因（源文未逐一指明归类）</p></div><div class="card"><div class="idx">直</div><h4>直接原因</h4><p>直接导致结果发生的原因（源文未逐一指明归类）</p></div><div class="card"><div class="idx">控</div><h4>可控因素</h4><p>我们可以着手改变的原因——决策真正要找的就是它们</p></div></div><p class="prose">管理真正关心的往往不是“所有原因是什么？”而是：<b>哪些原因最重要，而且我们可以改变？</b>这才是从哲学因果思维走向现实决策的关键一步。</p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>两层认知与最终模型</h2></div><div class="sd">现象→因果→矛盾→系统 · 一张可背诵的完整模型</div><div class="ladder"><div class="step"><div class="t">感性思维</div><div class="d">发生了什么？→ 输出：现象、特征、明确问题</div></div><div class="step hot"><div class="t">因果思维</div><div class="d">为什么发生？接下来可能发生什么？→ 输出：原因、机制、预测、决策</div></div><div class="step"><div class="t">辩证思维</div><div class="d">预计将继续问：内部矛盾怎样推动变化？</div></div><div class="step"><div class="t">系统思维</div><div class="d">进一步问：各因素连接起来，整体会怎样？</div></div></div><p class="prose">所以整个第五章越来越清楚：<b>现象 → 因果 → 矛盾 → 系统</b>。而这一课可以最终压缩成一个完整模型：</p><div class="ladder"><div class="step"><div class="t">结果 / 现象</div><div class="d">先有已经发生的变化</div></div><div class="step"><div class="t">果 → 因</div><div class="d">寻找原因 · 回答：为什么发生？</div></div><div class="step"><div class="t">因果机制</div><div class="d">建立条件与机制的解释</div></div><div class="step"><div class="t">因 → 果</div><div class="d">推演未来 · 回答：如果这样，会发生什么？</div></div><div class="step hot"><div class="t">目标果 → 可控因</div><div class="d">回答：为了得到想要的结果，现在应该改变什么？</div></div><div class="step"><div class="t">行动与智慧</div><div class="d">这最后一步才是真正进入行动与智慧</div></div></div><div class="quote"><div class="q">因果思维的最高价值，不只是解释过去，而是找到今天哪些条件值得改变，从而提高未来出现理想结果的可能性。</div><div class="src">本课的中心金句</div></div></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="2">0</div><div class="l">思维方向</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">因果三层次</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">反事实四问</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">收束六句</div></div></div><div class="panel"><h3><span class="no2">①</span>两个方向 · 三层归位</h3><div class="pd">判断下列场景属于「果→因·解释 / 因→果·预测 / 目标果→可控因·决策」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="已看到结果向过去寻找原因——源文“结果 → 寻找可能原因”，属果→因解释"><div class="st">1. 今天门诊量下降，排查人员、服务、政策、患者、竞争、季节</div><div class="opts"><button data-ok="1">果→因·解释</button><button data-ok="0">因→果·预测</button><button data-ok="0">目标果→可控因·决策</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文明确说这些领域“本来就大量依赖果→因”，是解释性/诊断思维"><div class="st">2. 医学诊断、事故调查、质量分析</div><div class="opts"><button data-ok="1">果→因·解释</button><button data-ok="0">因→果·预测</button><button data-ok="0">目标果→可控因·决策</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文例：改变某个因素，问“将来可能产生什么结果”——因→果预测"><div class="st">3. 如果增加夜间门诊，年轻上班族就诊量会不会增加？</div><div class="opts"><button data-ok="0">果→因·解释</button><button data-ok="1">因→果·预测</button><button data-ok="0">目标果→可控因·决策</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文例：由已知条件问“它们未来可能导致什么？”——预测性思维"><div class="st">4. 由老龄人口增加、慢病患病率上升、医保支付变化推演社区医疗需求</div><div class="opts"><button data-ok="0">果→因·解释</button><button data-ok="1">因→果·预测</button><button data-ok="0">目标果→可控因·决策</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：先定目标果，再回头找可控因——决策思维"><div class="st">5. 如果希望三个月后触达率明显提高，现在最值得改变哪几个可控因素？</div><div class="opts"><button data-ok="0">果→因·解释</button><button data-ok="0">因→果·预测</button><button data-ok="1">目标果→可控因·决策</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文实战例第三层：目标→可控因，从解释问题进入解决问题"><div class="st">6. 为了三个月后提升有效业务量，找出患者触达、转诊协作、服务流程等可改变因素</div><div class="opts"><button data-ok="0">果→因·解释</button><button data-ok="0">因→果·预测</button><button data-ok="1">目标果→可控因·决策</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>因果思维通关清单</h3><div class="pd">拿一个你正面对的具体变化（如业绩下滑、某个指标异常），逐条检验自己能否做到</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">看到变化时，我先问“为什么会发生”，列出可能原因再寻找证据</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我警觉“先后发生≠因果、一起变化≠因果”，主动排查第三变量</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我用四问检验因果：A在B前吗 / 有无合理机制 / 有无第三因素 / 没有A还会发生吗</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我不找“一个原因”，而是把结果看作条件网络共同作用的产物</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能分清三个层次：解释（果→因）、预测（因→果）、决策（目标果→可控因）</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我不追求百分之百确定未来，而是在不确定性中识别关键因果、做出更好选择</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>休谟对因果思维提出的核心问题是什么？</div><div class="ans"><button data-ok="0">A. A导致B是可以直接看见的</button><button data-ok="1">B. 我们真的“看见”了因果关系本身吗？</button><button data-ok="0">C. 因果就等于必然联系</button><button data-ok="0">D. 因果是人与生俱来的直觉</button></div><div class="exp">源文：休谟提出“我们真的‘看见’了因果关系本身吗？”——我们直接经验到的只是恒常结合与重复，“必然联系”并未被感官直接看到。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>“成绩好的孩子都喜欢阅读”，为什么不能直接推出“阅读导致成绩好”？</div><div class="ans"><button data-ok="0">A. 因为样本数量太少</button><button data-ok="0">B. 因为阅读量无法准确测量</button><button data-ok="1">C. 因为可能存在第三变量：家庭教育好同时造成阅读更多和成绩更好</button><button data-ok="0">D. 因为相关性还不够强</button></div><div class="exp">源文：也可能家庭教育好，同时造成孩子阅读更多和成绩更好——这就出现了第三变量。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>康德如何回应休谟的因果挑战？</div><div class="ans"><button data-ok="0">A. 承认因果只是心理习惯</button><button data-ok="1">B. 因果性是人的知性组织客观经验所需要的先天范畴</button><button data-ok="0">C. 因果可以被感官直接看见</button><button data-ok="0">D. 彻底放弃必然性概念</button></div><div class="exp">源文：康德认为“因果性并不是简单从重复经验里抽出来的习惯，而是人的知性组织客观经验所需要的一种先天范畴”。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>野狐禅公案中，“不昧因果”更接近什么意思？</div><div class="ans"><button data-ok="0">A. 开悟以后完全不受因果约束</button><button data-ok="0">B. 不必相信因果</button><button data-ok="1">C. 不遮蔽、不忽视、不昧于因果</button><button data-ok="0">D. 因果报应确有其事</button></div><div class="exp">源文：“不昧因果”更接近“不遮蔽、不忽视、不昧于因果”——不要因为复杂性和偶然性存在，就否认因果条件。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>按本课的修正，真正的智慧应该是什么？</div><div class="ans"><button data-ok="0">A. 准确预言未来</button><button data-ok="0">B. 把未来无限的可能完全变成确定</button><button data-ok="0">C. 百分之百消除不确定性</button><button data-ok="1">D. 识别关键因果关系，在不确定性中做出更好的选择</button></div><div class="exp">源文：智慧不应该是“准确预言未来”，而是“识别关键因果关系，在不确定性中做出更好的选择”。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">因果思维的最高价值，不只是解释过去，而是找到今天哪些条件值得改变，从而提高未来出现理想结果的可能性。</div><div class="src">本课的中心金句</div></div><div class="quote"><div class="q">果中识为智，因中识为慧。</div><div class="src">老师的记忆模型 · 智对应解释能力，慧对应预见能力</div></div><div class="quote"><div class="q">识别关键因果关系，在不确定性中做出更好的选择。</div><div class="src">对“智慧把无限可能变成确定”的修正</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../13-感性思维/index.html">← 上一篇 · 感性思维</a><a href="../15-辩证思维/index.html">下一篇 · 辩证思维 →</a><span class="sp"></span><span class="cur">因果思维</span></div></nav>
+<footer class="coda"><div class="wm2">慧</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">因果思维的最高价值，不只是解释过去，<br>而是找到<b>今天哪些条件值得改变</b>，<br>从而提高未来出现理想结果的可能性。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十五讲《因果思维》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s2", "#s3", "#s6", "#s9", "#s10", "#s15"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 2, 1, 2, 3], "ckkey": "zx14-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
