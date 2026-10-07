@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>感性思维 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx13-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../12-哲学的功能与目的/index.html">← 上一篇 · 哲学的功能与目的</a><a class="dis">已是最后一篇 →</a><span class="sp"></span><span class="cur">感性思维</span></div></nav>
+<header class="hero" id="top"><div class="wm">感</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第五章《思维模式》总纲 · 感性思维</div>
+  <div class="no">拾肆</div>
+  <h1>感性思维</h1>
+  <div class="sub">信息相同 · 判断不同 · 感性是思考的入口</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>人与人真正拉开差距的，不只是知道多少，而是面对同一个对象时，<br>用什么规则去看、去判断、去处理。<br>感性思维是一切思考的入口：<b>感觉 → 注意 → 表象 → 描述 → 概念 → 问题</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 学者 · 商人 · 政治家</a><a href="#s3">叁 · 人与人的三种差别</a><a href="#s4">肆 · 四种思维模式 · 整章地图</a><a href="#s5">伍 · 什么是感性思维</a><a href="#s6">陆 · 现象与特征 · 先描述，再解释</a><a href="#s7">柒 · 感性成情</a><a href="#s8">捌 · 快思考 · 优势与风险</a><a href="#s9">玖 · 感觉会骗人</a><a href="#s10">拾 · 传闻不是事实</a><a href="#s11">拾壹 · 具身的认识</a><a href="#s12">拾貳 · 把感觉变成问题</a><a href="#s13">拾叁 · 纠偏与学习提醒</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线 · 感觉 → 注意 → 表象 → 描述 → 概念 → 问题，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>同一信息</b><span>信息相同 ≠ 判断相同</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>差别所在</b><span>目的不同 → 思维规则不同</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>感觉</b><span>外界变化通过感觉进入意识</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>注意</b><span>你关注什么，决定看见什么</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>表象</b><span>世界向我们呈现的样子</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>描述</b><span>现象 + 特征，不是解释</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s12"><b>概念</b><span>给现象命名</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>问题</b><span>把感觉变成可分析的问题</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第五章《思维模式》总纲 · 人和人的差别到底在哪里</div><p class="prose">这一课进入第五章《思维模式》。老师的开课之问很直接：</p><div class="quote"><div class="q">人和人的差别在哪里？</div><div class="src">老师的开课之问</div></div><p class="prose">他的回答不是学历、知识量或聪明程度，而是<b>思维模式不同</b>。这个观点很值得保留，因为同样面对一件事——</p><div class="chips"><span class="chip">有人首先看到事实</span><span class="chip">有人首先寻找原因</span><span class="chip">有人寻找矛盾和变化</span><span class="chip">有人把事情放进整个系统中考虑</span></div><p class="prose">于是即使掌握相同的信息，也可能做出完全不同的判断。中间真正起作用的，是<b>思维模式</b>。</p><div class="quote"><div class="q">信息相同 ≠ 判断相同。</div><div class="src">本课的基本论点</div></div><div class="quote"><div class="q">人与人真正拉开差距的，不只是知道多少，而是面对同一个对象时，用什么规则去看、去判断、去处理。</div><div class="src">整理者提炼的本课核心问题 · 第五章总纲所在</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>学者 · 商人 · 政治家</h2></div><div class="sd">同一个问题，因为目标不同，思考规则也会不同</div><p class="prose">老师用了一个很夸张的比喻。同样是“1+1”，三种人的追求完全不同：</p><div class="cards g3"><div class="card"><div class="idx">学</div><h4>学者 · 1 + 1 = 2</h4><p>追求<b>确定性</b></p></div><div class="card"><div class="idx">商</div><h4>商人 · 1 + 1 &gt; 2</h4><p>追求<b>增值</b></p></div><div class="card"><div class="idx">政</div><h4>政治家 · 1 + 1 要等于什么，就寻找论证让它成立</h4><p>强调<b>目的与博弈</b></p></div></div><div class="quote"><div class="q">同一个问题，因为目标不同，思考规则也会不同。</div><div class="src">这个比喻真正想说明的东西</div></div><p class="prose">整理者提醒：这个比喻不能当作对学者、商人和政治家的严格定义，但它很适合说明上面的金句。比如一项医院业务改革，五种思维的问法完全不同（点击展开）：</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">一项医院业务改革 · 五种思维怎么问</span><span class="ar">▸</span></div><div class="sm"><div class="inner">科学思维可能问：数据证明有效吗？<br>经济思维会问：投入和产出怎么样？<br>管理思维会问：怎么组织人和资源？<br>政治思维会问：谁支持、谁反对，怎样形成共识？<br>系统思维会问：对医疗、医保、公卫、患者、人员会产生什么连锁反应？</div></div></div><div class="ladder"><div class="step"><div class="t">目的不同</div></div><div class="step"><div class="t">观察重点不同</div></div><div class="step hot"><div class="t">思维模式不同</div></div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>人与人的三种差别</h2></div><div class="sd">理念观念 · 思维规则 · 心灵内容 —— 本章集中解决第二层</div><p class="prose">老师提出，人与人的差别可以整理成三层：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>理念和观念不同</h4><p>即“你怎么看世界”。同一件事，有人觉得是机会，有人觉得是风险</p></div><div class="card"><div class="idx">貳</div><h4>思维活动规则不同</h4><p>面对同一个对象，你采用什么认知规则 —— <b>思维模式</b>，本章重点研究</p></div><div class="card"><div class="idx">叁</div><h4>心灵内容不同</h4><p>知识、经验、概念是否丰富、信息有没有结构、内在认知是否有秩序 —— 老师说以后再讲</p></div></div><div class="quote"><div class="q">你怎么看世界。</div><div class="src">第一层差别的关键问题</div></div><p class="prose">老师把第一层联系到康德的“模态”：</p><div class="chips"><span class="chip">可能 / 不可能</span><span class="chip">现实 / 非现实</span><span class="chip">必然 / 偶然</span></div><div class="quote"><div class="q">一个人的世界有多大，很大程度取决于他认为哪些事情是“可能的”。</div><div class="src">对康德模态的应用式理解 · 整理者认为很有启发性</div></div><p class="prose">整理者提醒：康德的模态范畴不能简单等同于“人的视野”，但作为应用模型可以这样理解。这一章暂时集中解决第二层——<b>“我用什么方式思考？”</b>老师把思维模式暂时分成四层，下一节展开。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>四种思维模式 · 整章地图</h2></div><div class="sd">感性 → 因果 → 辩证 → 系统 —— 是工具分工，不是等级高下</div><p class="prose">虽然这一节主要讲第一种，但老师已经把整章框架透露出来了。四种思维模式，各自回答一个不同的问题：</p><div class="cards g2"><div class="card"><div class="idx">感</div><h4>① 感性思维</h4><p>核心问题：<b>发生了什么？</b><br>认识：现象、特征<br>主要依靠：感觉、直觉、观察</p></div><div class="card"><div class="idx">因</div><h4>② 因果思维</h4><p>核心问题：<b>为什么会发生？</b><br>认识：变化及其原因<br>主要寻找：原因 → 结果</p></div><div class="card"><div class="idx">辩</div><h4>③ 辩证思维</h4><p>核心问题：<b>矛盾在哪里？它怎样变化？</b><br>关注：对立、关系、变化、转化<br>借此进一步认识：本质</p></div><div class="card"><div class="idx">系</div><h4>④ 系统思维</h4><p>核心问题：<b>它在整个系统中发挥什么作用？</b><br>关注：结构、关系、反馈、整体结果<br>进一步进入：价值</p></div></div><p class="prose">所以老师实际上构造了一条<b>认知升级链</b>：</p><div class="ladder"><div class="step"><div class="t">现象</div><div class="d">感性思维 · 发生了什么</div></div><div class="step"><div class="t">原因</div><div class="d">因果思维 · 为什么发生</div></div><div class="step"><div class="t">矛盾 / 本质</div><div class="d">辩证思维 · 矛盾在哪里，怎样变化</div></div><div class="step hot"><div class="t">系统 / 价值</div><div class="d">系统思维 · 在整个系统中的作用</div></div></div><p class="prose">但不要把这四种思维理解成简单的“等级”。老师用了“降维打击”这个词，容易让人产生一种印象：系统思维 &gt; 辩证思维 &gt; 因果思维 &gt; 感性思维。其实更合理的是——<b>四种工具解决不同层面的问题。</b></p><div class="duo"><div class="col neg"><h4>容易产生的印象 ✕</h4><ul><li>系统思维 &gt; 辩证思维 &gt; 因果思维 &gt; 感性思维</li><li>感性思维低级，要淘汰</li></ul></div><div class="col pos"><h4>更好的理解 ✓</h4><ul><li><b>四种工具解决不同层面的问题</b></li><li>感性是入口，因果是解释，辩证是动态理解，系统是整体整合</li></ul></div></div><p class="prose">系统思维再厉害，也必须先准确观察事实。一个医生如果连患者脸色、症状、体征都观察不清，谈再高级的系统思维也没有用。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>什么是感性思维</h2></div><div class="sd">康德的“感性” · 外界变化首先通过感觉进入意识 · 最终形成描述</div><p class="prose">老师用康德的“感性”来解释。最核心可以概括成一句：</p><div class="quote"><div class="q">外界变化首先通过感觉进入我们的意识。</div><div class="src">老师对康德“感性”的概括</div></div><p class="prose">比如：</p><div class="chips"><span class="chip">看到 · 一个人脸红</span><span class="chip">听到 · 他说话声音变大</span><span class="chip">闻到 · 烟味</span><span class="chip">感觉 · 地面震动</span></div><p class="prose">这些还不是完整理论，只是<b>世界向我们呈现出来的样子</b>。所以感性思维主要回答：</p><div class="quote"><div class="q">它是什么样？发生了什么？</div><div class="src">感性思维主要回答的问题</div></div><p class="prose">最终形成的是<b>描述</b>。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>现象与特征 · 先描述，再解释</h2></div><div class="sd">感性观察得到的是现象和特征 · 很多认知错误来自把解释当成观察</div><div class="h3blk">感性思维得到的是：现象 + 特征</div><p class="prose">这一点非常重要。例如你看到一个病人（点击展开）：</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">看到一个病人 · 从感性观察到深层分析</span><span class="ar">▸</span></div><div class="sm"><div class="inner">面色苍白、出汗、呼吸急促、走路不稳 —— 这是<b>感性观察</b>。<br>如果你说“他可能低血糖。” —— 已经开始进入<b>因果 / 判断</b>。<br>再进一步问“为什么反复低血糖？” —— 则进入更深层分析。</div></div></div><p class="prose">所以一定要区分两种说法：</p><div class="duo"><div class="col neg"><h4>解释 ✕（最容易被当成观察）</h4><ul><li>“他是因为低血糖所以脸白。”</li></ul></div><div class="col pos"><h4>描述 ✓</h4><ul><li>“他脸色很白。”</li></ul></div></div><div class="quote"><div class="q">把解释当成了观察。</div><div class="src">很多认知错误的来源 · 这一点非常值得日常工作使用</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>感性成情</h2></div><div class="sd">外部刺激 → 感觉 → 反应 → 情绪 · 感觉不等于你赋予它的意义</div><div class="quote"><div class="q">“感性成情。”</div><div class="src">老师的一句原话</div></div><p class="prose">它可以重新解释成一条链：</p><div class="ladder"><div class="step"><div class="t">外部刺激</div></div><div class="step"><div class="t">感觉</div></div><div class="step"><div class="t">身体和心理反应</div></div><div class="step hot"><div class="t">情绪</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">别人提高声音 · 你身上发生了什么</span><span class="ar">▸</span></div><div class="sm"><div class="inner">你首先听到：<b>音量变大</b>。<br>然后你可能解释：他在针对我。<br>接下来产生：<b>愤怒</b>。</div></div></div><div class="quote"><div class="q">感觉本身和你赋予感觉的意义不是同一个东西。</div><div class="src">这一段真正值得注意的地方</div></div><p class="prose">很多冲突来自<b>观察 → 解释 → 情绪</b>发生得太快，让我们误以为“我的感觉就是事实”——其实不是。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>快思考 · 优势与风险</h2></div><div class="sd">卡尼曼《思考，快与慢》· 快是生存优势，快也是偏差来源</div><p class="prose">老师提到了卡尼曼《思考，快与慢》。这里整理者需要稍微校正：卡尼曼所谓<b>系统1</b>，确实具有快速、自动、直觉、低努力等特点，但不能简单等同于“感性思维”。系统1还包括：</p><div class="chips"><span class="chip">快速联想</span><span class="chip">模式识别</span><span class="chip">熟练判断</span><span class="chip">自动计算</span><span class="chip">情绪反应</span></div><div class="quote"><div class="q">感性判断常常具有系统1式的快速、自动特征，但二者不是完全等同的概念。</div><div class="src">整理者的校正 · 更准确的说法</div></div><div class="h3blk">为什么“快”既是优势，也是风险？</div><div class="case"><div class="h"><span class="tag">快·优势</span><span class="ht">汽车冲过来</span><span class="ar">▸</span></div><div class="sm"><div class="inner">看到汽车冲过来，你不会先分析速度、质量、碰撞概率。<br>你马上躲。这是生存优势。</div></div></div><div class="cards g2"><div class="card"><div class="idx">优</div><h4>优势：快</h4><p>立即反应，生存优势</p></div><div class="card"><div class="idx">险</div><h4>风险：也是快</h4><p>来不及检查证据；来不及区分事实和解释；容易受到注意力、经验和情绪影响</p></div></div><p class="prose">所以：<b>感性思维 = 高效率，但容易偏差。</b>这是这一节非常重要的平衡。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>感觉会骗人</h2></div><div class="sd">红色宝马 · 选择性注意 · 观念 → 注意 → 信息 → 判断</div><p class="prose">老师举了“红色宝马”的例子，说这是“视网膜效应”。整理者指出：更常见、更准确的心理学解释其实接近<b>频率错觉（Baader–Meinhof phenomenon）</b>或<b>选择性注意</b>。</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">红色宝马</span><span class="ar">▸</span></div><div class="sm"><div class="inner">你刚买了一辆红色宝马，突然觉得：怎么大街上全是红色宝马？<br>并不是红色宝马突然增加了，而是<b>你的注意系统改变了</b>。过去也有，只是你没注意。</div></div></div><div class="quote"><div class="q">我突然大量看见某件事，不代表它突然大量发生。</div><div class="src">重要的认知原则 · 特别适合互联网时代</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">刷到连续几个医疗投诉视频</span><span class="ar">▸</span></div><div class="sm"><div class="inner">你可能产生：“现在医疗纠纷是不是爆炸式增长？”<br>未必。可能只是算法和注意力把相关内容集中呈现给你。</div></div></div><p class="prose">我们看世界不是摄像机。大脑会<b>选择</b>：亿万条信息进入环境，你只注意其中极少部分。这就连接到老师前面说的“视野”：</p><div class="quote"><div class="q">你看到什么，与世界有什么有关，也与你关注什么有关。</div><div class="src">连接“视野”的关键结论</div></div><div class="ladder"><div class="step"><div class="t">观念 / 目标</div></div><div class="step"><div class="t">影响注意</div></div><div class="step"><div class="t">影响观察</div></div><div class="step hot"><div class="t">影响判断</div></div></div><p class="prose">所以两个人站在同一个会议现场，回来以后可能讲出两个完全不同的会议。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>传闻不是事实</h2></div><div class="sd">从“我听说”到证据思维 · 苏格拉底三个筛子的用法与校正</div><p class="prose">老师从耳朵讲到了传闻、八卦、沟通。核心其实很好：</p><div class="quote"><div class="q">听见别人说了，不等于事情是真的。</div><div class="src">听觉部分真正值得保留的核心</div></div><p class="prose">所以需要从<b>“我听说”</b>进一步区分：</p><div class="cards g2"><div class="card"><div class="idx">谁</div><h4>谁说的？</h4><p>信息的第一来源</p></div><div class="card"><div class="idx">知</div><h4>他怎么知道？</h4><p>来源的依据</p></div><div class="card"><div class="idx">证</div><h4>有没有原始证据？</h4><p>能否回溯到事实</p></div><div class="card"><div class="idx">转</div><h4>信息是否被转述过？</h4><p>转述可能走样</p></div></div><p class="prose">这本质上已经从感性思维向<b>证据思维</b>过渡。</p><div class="h3blk">苏格拉底“三个筛子”</div><div class="cards g3"><div class="card"><div class="idx">真</div><h4>真实吗？</h4><p></p></div><div class="card"><div class="idx">善</div><h4>善意吗？</h4><p></p></div><div class="card"><div class="idx">用</div><h4>有用吗？</h4><p></p></div></div><div class="warn"><div class="wt">整理者校正 · 三个筛子不要当作确定史实</div><ul><li>这个故事在网络上传播非常广，但没有可靠依据证明它真的是苏格拉底说过的</li><li>不要把它作为苏格拉底的确切思想史事实</li></ul></div><p class="prose">但作为现代沟通原则，它还是很有用：<b>真不真？善不善？重要不重要？</b>尤其适合处理八卦、传闻、群聊信息。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>具身的认识</h2></div><div class="sd">我们通过身体进入世界 · 感觉系统远不止五种</div><p class="prose">嗅觉、味觉、身体感觉这一大段，其实不需要记蛇、香水、辣椒、盐这些例子。老师真正想说明的是：<b>我们的认识最初离不开身体。</b></p><p class="prose">眼睛、耳朵、鼻子、舌头、皮肤以及身体内部的感觉系统，都在持续告诉大脑：世界正在发生什么。所以认知不是一个纯粹抽象的大脑在真空里思考，它首先是<b>具身的</b>。这一点非常值得记：</p><div class="quote"><div class="q">我们通过身体进入世界。</div><div class="src">具身认知部分最值得记的一句</div></div><div class="h3blk">人其实不只有“五种感觉”</div><p class="prose">原课沿用了“眼、耳、鼻、舌、身”这种传统分类。现代生理学里，人的感觉系统远不止通常所说的“五感”，例如：</p><div class="cards g2"><div class="card"><div class="idx">体</div><h4>本体感觉</h4><p>知道身体姿势</p></div><div class="card"><div class="idx">衡</div><h4>前庭觉</h4><p>平衡和加速度</p></div><div class="card"><div class="idx">温</div><h4>温度觉</h4><p>源文未展开此点</p></div><div class="card"><div class="idx">痛</div><h4>痛觉</h4><p>源文未展开此点</p></div><div class="card"><div class="idx">内</div><h4>内感受</h4><p>心跳、饥饿等身体内部状态</p></div></div><p class="prose">老师讲“蹦极”的部分，真正涉及<b>“身体—情绪关系”</b>：蹦极、运动、速度感等活动会产生强烈的前庭刺激、本体感觉、心率变化、肾上腺素反应，从而改变情绪和主观体验。所以老师想说——身体感觉本身也会影响情绪。这个方向是对的，也说明：<b>感性不仅帮助我们认识外部世界，也塑造我们内部的情绪世界。</b></p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>把感觉变成问题</h2></div><div class="sd">本课最值得带走的东西 · 训练五步法 · 四层问</div><p class="prose">老师最后说——</p><div class="quote"><div class="q">“怎样把你的感觉变成问题？”</div><div class="src">老师的结尾之问 · 整理者认为这才是这一课最值得带走的东西</div></div><p class="prose">因为普通状态是<b>我感觉不对</b>；成熟思考要进一步变成——</p><div class="quote"><div class="q">到底哪里不对？</div><div class="src">成熟思考的追问方向</div></div><div class="ladder"><div class="step"><div class="t">描述事实</div></div><div class="step"><div class="t">形成概念</div></div><div class="step hot"><div class="t">提出问题</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">“最近中心工作不顺” · 感觉如何变成问题</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这是<b>感觉</b>。进一步：<br>“具体哪里不顺？” → “门诊量下降。”<br>“是所有科室下降，还是部分科室？”<br>“从什么时候开始？”<br>“哪些患者减少？”<br>到这里，感觉才真正变成<b>可以分析的问题</b>。</div></div></div><div class="h3blk">感性思维的训练 · 整理者建议的五步法</div><div class="ladder"><div class="step"><div class="t">看见</div><div class="d">发生了什么？</div></div><div class="step"><div class="t">描述</div><div class="d">只说能观察到的事实</div></div><div class="step"><div class="t">区分</div><div class="d">哪些是事实，哪些是我的感受？</div></div><div class="step"><div class="t">概念化</div><div class="d">这个现象应该叫什么？</div></div><div class="step hot"><div class="t">问题化</div><div class="d">真正需要回答的问题是什么？</div></div></div><p class="prose">也就是：<b>感觉 → 描述 → 区分 → 概念 → 问题</b>。这比记“五官分别感知什么”重要得多。</p><div class="h3blk">四层问 · 为后面三种思维模式打基础</div><div class="ladder"><div class="step"><div class="t">感性思维</div><div class="d">发生了什么？</div></div><div class="step"><div class="t">因果思维</div><div class="d">为什么发生？</div></div><div class="step"><div class="t">辩证思维</div><div class="d">它内部有哪些矛盾，怎样变化？</div></div><div class="step hot"><div class="t">系统思维</div><div class="d">它在整个系统中会产生什么影响和价值？</div></div></div><div class="quote"><div class="q">是什么样？<br>为什么？<br>怎样变化？<br>放到整体里意味着什么？</div><div class="src">面对任何复杂工作问题，都可以按四层问</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>纠偏与学习提醒</h2></div><div class="sd">这节课最需要纠偏的 5 处 · 抓住模型，校正事实</div><p class="prose">这节课很有启发性，但也混合了一些比喻和简化。整理者指出五处需要纠偏：</p><div class="warn"><div class="wt">这一课最需要纠偏的 5 处</div><ul><li>“科学思维 &lt; 经济学思维 &lt; 政治学思维”不是客观等级 —— 它们解决的问题不同，不适合排成统一高低</li><li>“1+1大于2=商业思维”是比喻，不是经济学基础定义</li><li>“感性思维=卡尼曼快思考”过度简化</li><li>“视网膜效应”这个例子更接近选择性注意或频率错觉</li><li>“五感”只是传统方便分类，人类感觉系统远比五种复杂</li></ul></div><p class="prose">所以仍然坚持前面一直使用的学习原则：<b>抓住模型，校正事实；保留启发，不机械接受。</b>整理者另外选出了这一课值得记住的几句话：</p><div class="quote"><div class="q">人和人的差距，不只在知识量，还在于面对同一个问题时采用什么思维规则。</div><div class="src">如果只记住6句话 · 其一</div></div><div class="quote"><div class="q">本章可以把思维模式暂时分成：感性、因果、辩证、系统四种。</div><div class="src">如果只记住6句话 · 其二</div></div><div class="quote"><div class="q">成熟思考首先要区分：我观察到了什么、我怎么解释它、我因此产生了什么感受。</div><div class="src">如果只记住6句话 · 其五</div></div><p class="prose">而第五章现在最重要的总框架，可以先记成：<b>感性看现象 → 因果看变化 → 辩证看矛盾 → 系统看整体。</b>这应该会成为后面整个《思维模式》章节最重要的一条主线。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="4">0</div><div class="l">种思维模式</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">步主线</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">步训练法</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">个筛子</div></div></div><div class="panel"><h3><span class="no2">①</span>心理活动归位练习</h3><div class="pd">判断下列心理活动属于「感觉 / 注意 / 表象·描述 / 概念·判断」哪个环节，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文：“外界变化首先通过感觉进入我们的意识”——看到脸红是感觉层面的呈现"><div class="st">1. 看到一个人脸红</div><div class="opts"><button data-ok="1">感觉</button><button data-ok="0">注意</button><button data-ok="0">表象/描述</button><button data-ok="0">概念/判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：并不是红色宝马突然增加了，而是“你的注意系统改变了”"><div class="st">2. 刚买了红色宝马，觉得满街都是红色宝马</div><div class="opts"><button data-ok="0">感觉</button><button data-ok="1">注意</button><button data-ok="0">表象/描述</button><button data-ok="0">概念/判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文把“他脸色很白。”作为描述的例子——描述属于表象/描述环节"><div class="st">3. 他脸色很白。</div><div class="opts"><button data-ok="0">感觉</button><button data-ok="0">注意</button><button data-ok="1">表象/描述</button><button data-ok="0">概念/判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：说“他可能低血糖。”已经开始进入因果 / 判断——这是解释而非观察"><div class="st">4. 他是因为低血糖所以脸白。</div><div class="opts"><button data-ok="0">感觉</button><button data-ok="0">注意</button><button data-ok="0">表象/描述</button><button data-ok="1">概念/判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文把“听到他说话声音变大”列为外界变化通过感觉进入意识的例子"><div class="st">5. 听到他说话声音变大</div><div class="opts"><button data-ok="1">感觉</button><button data-ok="0">注意</button><button data-ok="0">表象/描述</button><button data-ok="0">概念/判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：“感觉本身和你赋予感觉的意义不是同一个东西”——这是赋予感觉以意义，属于解释环节"><div class="st">6. 我觉得他在针对我</div><div class="opts"><button data-ok="0">感觉</button><button data-ok="0">注意</button><button data-ok="0">表象/描述</button><button data-ok="1">概念/判断</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>感性思维通关清单</h3><div class="pd">选一件你最近“感觉不对”的事，逐项检验自己能否做到</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">面对一件事，我能先问“发生了什么”，再问“为什么”</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能区分“我观察到了什么”和“我怎么解释它”</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">当某类信息突然大量出现，我会先怀疑“注意系统改变”而非“事情突然增多”</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">听到传闻，我会追问：谁说的？他怎么知道？有没有原始证据？信息是否被转述过？</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能觉察“观察→解释→情绪”的发生，不把感觉直接当成事实</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能把“我感觉不对”推进为“到底哪里不对”，变成可描述、可分析的问题</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师认为，人和人的差别在哪里？</div><div class="ans"><button data-ok="0">A. 学历高低</button><button data-ok="0">B. 知识量的多少</button><button data-ok="1">C. 思维模式不同</button><button data-ok="0">D. 聪明程度</button></div><div class="exp">源文：他的回答不是学历、知识量或聪明程度，而是“思维模式不同”。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>政治家对待“1+1”的方式说明了什么？</div><div class="ans"><button data-ok="0">A. 追求确定性</button><button data-ok="0">B. 追求增值</button><button data-ok="1">C. 先有想要的答案，再寻找论证让它成立</button><button data-ok="0">D. 完全不讲逻辑</button></div><div class="exp">源文：政治家是“1 + 1 要等于什么，就寻找论证让它成立”，强调目的与博弈。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>感性思维首先得到的是什么？</div><div class="ans"><button data-ok="0">A. 原因和结果</button><button data-ok="1">B. 现象和特征</button><button data-ok="0">C. 矛盾和变化</button><button data-ok="0">D. 结构和反馈</button></div><div class="exp">源文：感性思维认识“现象、特征”，它回答“发生了什么？”</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>买了红色宝马后觉得满街都是红色宝马，说明什么？</div><div class="ans"><button data-ok="0">A. 红色宝马突然增加了</button><button data-ok="1">B. 你的注意系统改变了</button><button data-ok="0">C. 宝马降价了</button><button data-ok="0">D. 大家都在模仿你</button></div><div class="exp">源文：并不是红色宝马突然增加了，而是你的注意系统改变了。过去也有，只是你没注意。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者认为，这一课最值得带走的一句话是什么？</div><div class="ans"><button data-ok="0">A. 五官分别感知什么</button><button data-ok="1">B. 怎样把你的感觉变成问题</button><button data-ok="0">C. 记住所有哲学术语</button><button data-ok="0">D. 感觉就是事实</button></div><div class="exp">源文：老师最后说“怎样把你的感觉变成问题？”整理者认为这才是这一课最值得带走的东西。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">感性思维首先得到的是对象的现象和特征，它是后续思考的入口。</div><div class="src">如果只记住6句话 · 其三</div></div><div class="quote"><div class="q">感觉很快，但注意、经验和情绪会影响我们“看见什么”，所以感觉不能自动等于事实。</div><div class="src">如果只记住6句话 · 其四</div></div><div class="quote"><div class="q">感性思维真正的升级，是把“我感觉有问题”转化成一个能够描述、概念化和分析的问题。</div><div class="src">如果只记住6句话 · 其六</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../12-哲学的功能与目的/index.html">← 上一篇 · 哲学的功能与目的</a><a class="dis">已是最后一篇 →</a><span class="sp"></span><span class="cur">感性思维</span></div></nav>
+<footer class="coda"><div class="wm2">感</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">思考的第一步，不是急着解释，<br>而是先把<b>“感觉”变成清楚的问题</b>。<br><br>感性看现象 → 因果看变化 → 辩证看矛盾 → 系统看整体。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十四讲《感性思维》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s1", "#s2", "#s5", "#s9", "#s5", "#s6", "#s12", "#s12"], "sortok": [0, 1, 2, 3, 0, 3], "quizok": [2, 2, 1, 1, 1], "ckkey": "zx13-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

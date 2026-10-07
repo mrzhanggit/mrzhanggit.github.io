@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生活的焦虑 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx02-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../01-社会的撕扯/index.html">← 上一篇 · 社会的撕扯</a><a href="../03-唯物主义/index.html">下一篇 · 唯物主义 →</a><span class="sp"></span><span class="cur">生活的焦虑</span></div></nav>
+<header class="hero" id="top"><div class="wm">焦</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第一章《日常哲思》第三节</div>
+  <div class="no">叁</div>
+  <h1>生活的焦虑</h1>
+  <div class="sub">越想越焦虑 · 动而无果 · 清晰与行动</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>当意识持续运转、却迟迟得不到可行动的结果，焦虑便由此产生；<br>降低焦虑的重要路径，是把模糊的担忧重新变成<b>清楚的现实、目标、路径和行动</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 主线 · 时代 → 社会 → 自我</a><a href="#s2">貳 · 什么是焦虑：意识的两种活动</a><a href="#s3">叁 · 核心概念：动而无果</a><a href="#s4">肆 · 成因一：没有确定答案的问题</a><a href="#s5">伍 · 成因二：欲望无限，资源有限</a><a href="#s6">陆 · 成因三：方向与目标不明</a><a href="#s7">柒 · 焦虑的定义：反面是清晰</a><a href="#s8">捌 · 什么叫生活：相续与承受</a><a href="#s9">玖 · 什么叫事：从现实到目标</a><a href="#s10">拾 · 焦虑从哪里产生：五不清</a><a href="#s11">拾壹 · 行动为什么能缓解焦虑</a><a href="#s12">拾貳 · 焦虑处理模型：五问</a><a href="#s13">拾叁 · 海德格尔与时间结构</a><a href="#s14">拾肆 · 三节课的闭环 · 批判性提醒</a><a href="#s15">拾伍 · 五句话与核心逻辑图</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现实困境</b><span>知道很多道理，却越想越焦虑</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>意识模型</b><span>动而有果 vs 动而无果</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>核心概念</b><span>动而无果 → 持续紧张 → 焦虑</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>三类成因</b><span>无答案 · 欲望无限 · 方向不明</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>生活的真相</b><span>相续 · 承受 · 事 = 现实到目标</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s10"><b>焦虑的产生</b><span>五不清 + 行动不足</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>行动的切换</b><span>从无限思考到具体行动</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>哲学的任务</b><span>焦虑 → 问题 → 目标 → 差距 → 行动</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>主线 · 时代 → 社会 → 自我</h2></div><div class="sd">先把三节课串起来 · 看不懂 → 难选择 → 很焦虑</div><p class="prose">这一课是第一章《日常哲思》的收束。前两课解决的是“外部世界为什么让我困惑”，第三课终于回到了个人内部——</p><div class="quote"><div class="q">为什么我明明一直在想，却越想越焦虑？</div><div class="src">本课开篇之问</div></div><div class="quote"><div class="q">焦虑往往来自“意识持续运转，却迟迟得不到可行动的结果”；而降低焦虑的重要路径，是把模糊的担忧重新变成清楚的现实、目标、路径和行动。</div><div class="src">整理者概括的本课核心</div></div><p class="prose">先把第一章三节课串起来——每一节都在回答一个问题：</p><div class="cards g3"><div class="card"><div class="idx">看</div><h4>时代的纷扰</h4><p>我为什么看不懂这个世界？——时代变化太快 → 旧认知框架失效；核心任务：<b>看清趋势</b></p></div><div class="card"><div class="idx">择</div><h4>社会的撕扯</h4><p>为什么社会生活经常让我左右为难？——不同规则同时作用 → 权、利、情、理、法发生冲突；核心任务：<b>学会判断规则</b></p></div><div class="card"><div class="idx">焦</div><h4>生活的焦虑</h4><p>为什么我知道很多道理，仍然焦虑？——意识不停活动，但没有形成清晰结果和行动；核心任务：<b>找到方向并行动</b></p></div></div><div class="ladder"><div class="step"><div class="t">看不懂</div><div class="d">时代层面——旧认知框架失效</div></div><div class="step"><div class="t">难选择</div><div class="d">社会层面——规则冲突、左右为难</div></div><div class="step hot"><div class="t">很焦虑</div><div class="d">自我层面——本课所在</div></div></div><p class="prose">整个第一章其实就是<b>时代 → 社会 → 自我</b>；而哲学试图帮助你：<b>看清 → 判断 → 行动</b>。这是第一章最值得记住的大结构。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>什么是焦虑：意识的两种活动</h2></div><div class="sd">老师的基本模型 · 意识活动的两种结局</div><div class="quote"><div class="q">人的意识只要清醒，就会不断活动。</div><div class="src">老师给出的基本模型</div></div><p class="prose">而意识活动可以分成两种，结局完全不同：</p><div class="cards g2"><div class="card"><div class="idx">果</div><h4>第一种：动而有果</h4><p>饿了 → 决定去吃饭 → 找到餐厅 → 吃饭 → 事情结束。意识得到一个明确结论「问题解决」，这件事不再继续消耗注意力</p></div><div class="card"><div class="idx">耗</div><h4>第二种：动而无果</h4><p>不断地想，<b>但没有答案</b>——意识没有办法结束这件事情，最终长期处于「高耗能、高紧张状态」</p></div></div><div class="ladder"><div class="step"><div class="t">意识活动</div></div><div class="step"><div class="t">得到结果</div></div><div class="step"><div class="t">形成判断</div></div><div class="step"><div class="t">行动完成</div></div><div class="step"><div class="t">意识安静下来</div></div></div><div class="case"><div class="h"><span class="tag">对照</span><span class="ht">「动而无果」的典型问题：你不断地想，但是没有答案</span><span class="ar">▸</span></div><div class="sm"><div class="inner">我以后怎么办？<br>我的工作有没有前途？<br>我会不会失败？<br>我什么时候才能赚很多钱？<br>人为什么会死？<br>我的选择到底对不对？<br><br>于是：想 → 没答案 → 继续想 → 还是没有答案 → 继续想……</div></div></div><p class="prose">老师把这种状态理解为<b>焦虑产生的重要机制</b>——这部分是整节课最重要的思想。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>核心概念：动而无果</h2></div><div class="sd">整节课最重要的思想 · 如果只记一个词，就记它</div><p class="prose">如果以后只记一个词，整理者建议记——</p><div class="h3blk">动而无果</div><div class="quote"><div class="q">意识一直在运转，却没有形成可以结束思考的结果。</div><div class="src">「动而无果」的定义</div></div><div class="ladder"><div class="step"><div class="t">问题出现</div></div><div class="step"><div class="t">不断思考</div></div><div class="step"><div class="t">没有结论</div></div><div class="step"><div class="t">无法行动</div></div><div class="step"><div class="t">问题仍然存在</div></div><div class="step"><div class="t">继续思考</div></div><div class="step"><div class="t">意识持续紧张</div></div><div class="step hot"><div class="t">焦虑</div></div></div><div class="quote"><div class="q">一个人反复想同一个问题，却没有产生新的信息、判断或者行动。</div><div class="src">整理者指出：这个模型和今天说的“反刍思维”非常接近</div></div><div class="duo"><div class="col neg"><h4>真正消耗人的不是 ✕</h4><ul><li>事情很多</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li><b>大量事情悬而未决</b></li></ul></div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>成因一：没有确定答案的问题</h2></div><div class="sd">动而无果成因之一 · 死亡、孔子与海德格尔</div><p class="prose">老师讲了三种「动而无果」的情况。第一类：<b>本来就没有确定答案的问题</b>。他举的是「死亡」——你不停地想：我什么时候死？死亡之后是什么？怎样才能不死？这些问题很多并不存在一个可以通过日常行动彻底解决的答案。</p><div class="quote"><div class="q">未知生，焉知死。</div><div class="src">老师引用孔子</div></div><p class="prose">核心意思不是不允许思考死亡，而是：<b>与其无限纠缠不可确定的死亡，不如回到如何生活。</b>又引用海德格尔「向死而生」——正因为生命有限，所以今天才值得认真生活。由此可以提炼出一条重要原则：<b>区分“需要解决的问题”和“需要接受的问题”。</b></p><div class="cards g2"><div class="card"><div class="idx">解</div><h4>需要解决的问题</h4><p>可以通过行动缩小差距、拿到结果</p></div><div class="card"><div class="idx">受</div><h4>需要接受的问题</h4><p>并不存在通过日常行动彻底解决的答案——如死亡</p></div></div><div class="quote"><div class="q">你试图解决一个只能接受的问题。</div><div class="src">很多焦虑的来源——这一课非常有价值的一层</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>成因二：欲望无限，资源有限</h2></div><div class="sd">动而无果成因之二 · 无限欲望 vs 有限资源</div><p class="prose">第二类讲得很现实。人的欲望可能是：</p><div class="chips"><span class="chip">想赚更多钱</span><span class="chip">想住更大的房子</span><span class="chip">想有更好的工作</span><span class="chip">想获得更多认可</span><span class="chip">想更自由</span><span class="chip">想更快成功</span></div><p class="prose">但资源永远有限——时间有限、金钱有限、能力有限、机会有限、注意力有限。于是形成：<b>无限欲望 vs 有限资源</b>。如果一个人一直想「我要更多」，却没有把愿望转换成具体目标与行动，就很容易陷入：</p><div class="ladder"><div class="step"><div class="t">想得很多</div></div><div class="step"><div class="t">行动很少</div></div><div class="step"><div class="t">差距越来越明显</div></div><div class="step hot"><div class="t">更焦虑</div></div></div><div class="quote"><div class="q">只有欲望，没有行动。</div><div class="src">老师批评的并不是“有欲望”，而是这个</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>成因三：方向与目标不明</h2></div><div class="sd">动而无果成因之三 · 现代人最常见的一种</div><p class="prose">第三类是现代人最常见的：你可能非常努力，但不知道「我到底想去哪？」；或者知道大概方向，却不知道「下一步做什么？」于是形成——</p><div class="cards g3"><div class="card"><div class="idx">向</div><h4>想改变人生</h4><p>但<b>目标模糊</b></p></div><div class="card"><div class="idx">好</div><h4>想做得更好</h4><p>但不知道<b>“更好”是什么</b></p></div><div class="card"><div class="idx">力</div><h4>想努力</h4><p>但不知道<b>努力在哪里</b></p></div></div><div class="quote"><div class="q">忙碌并不等于前进。</div><div class="src">第三类成因的点睛之句</div></div><p class="prose">这种情况下，即使人在忙，意识仍然会焦虑。真正让意识稳定下来的不是“做很多事”，而是：<b>知道自己为什么做，以及下一步做什么。</b></p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>焦虑的定义：反面是清晰</h2></div><div class="sd">焦虑的定义 · 它的反面不是快乐</div><div class="quote"><div class="q">焦虑是意识在“动而无果”状态下形成的持续紧张。</div><div class="src">按这一课的逻辑给「焦虑」下的定义</div></div><div class="ladder"><div class="step"><div class="t">问题出现</div></div><div class="step"><div class="t">意识启动</div></div><div class="step"><div class="t">无法形成结果</div></div><div class="step"><div class="t">持续思考</div></div><div class="step"><div class="t">不断消耗注意力</div></div><div class="step"><div class="t">意识高度紧张</div></div><div class="step hot"><div class="t">焦虑</div></div></div><div class="duo"><div class="col neg"><h4>焦虑的反面并不是 ✕</h4><ul><li>快乐</li></ul></div><div class="col pos"><h4>而更接近 ✓</h4><ul><li><b>清晰</b>——知道发生了什么、知道我要什么、知道下一步怎么办</li></ul></div></div><p class="prose">达到这三个「知道」，人的焦虑通常就会下降。整理者认为，这是这节课最值得留下来的观点。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>什么叫生活：相续与承受</h2></div><div class="sd">从焦虑转向生活 · 相续、承受与成熟</div><p class="prose">接下来老师从「焦虑」转向「生活」，这个转折的逻辑非常重要：</p><div class="quote"><div class="q">焦虑不是悬空存在的，它发生在生活的一件又一件事情里。</div><div class="src">从“焦虑”转向“生活”的过渡句</div></div><p class="prose">老师喜欢用佛教里的一个概念——<b>相续</b>：一件事 → 又一件事 → 再一件事，永远继续。他把生活描述成「好事、坏事，一件接着一件」。很多人会说「最近事情太多了，好烦」；老师反过来说：有事情，恰恰说明你正在生活。<b>生活的本质不是“没有事情”，而是事情不断发生。</b></p><div class="cards g3"><div class="card"><div class="idx">顺</div><h4>有好事</h4><p>也有坏事</p></div><div class="card"><div class="idx">成</div><h4>有成功</h4><p>也有失败</p></div><div class="card"><div class="idx">定</div><h4>有确定</h4><p>也有不确定</p></div></div><div class="quote"><div class="q">生活就是承受。</div><div class="src">老师提出的一句很有力量的话</div></div><p class="prose">整理者把它理解得更准确一点：<b>生活就是持续承担一件又一件到来的事情。</b>成熟并不是让人生从此只有好事，而是——</p><div class="quote"><div class="q">事情来了，我有能力处理它。</div><div class="src">成熟的定义——与“心理韧性”非常接近（源文未展开此点）</div></div><p class="prose">这更多是一种人生观，而不是严格定义。但它提供了一个很好的认知转换：<b>不要期待一个“从此什么麻烦都没有”的人生</b>——因为那种生活几乎不存在。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>什么叫事：从现实到目标</h2></div><div class="sd">这一课第二重要的框架 · 现实 → 目标 → 差距 → 行动</div><div class="quote"><div class="q">事，就是从现实到目标的过程。</div><div class="src">老师给出的定义——这一课第二重要的框架</div></div><p class="prose">现实与目标之间存在<b>差距</b>；差距就是矛盾，矛盾就是问题，而解决问题的过程就是做事。整条逻辑：</p><div class="ladder"><div class="step"><div class="t">现实</div></div><div class="step"><div class="t">与目标存在差距</div></div><div class="step"><div class="t">产生问题</div></div><div class="step"><div class="t">采取行动</div></div><div class="step"><div class="t">缩小差距</div></div><div class="step hot"><div class="t">达到目标</div></div></div><p class="prose">这就是<b>做事</b>。于是「工作是什么」也被重新定义了。老师说：工作就是做事；进一步：<b>工作就是解决问题</b>——因为只要存在「现实状态 ≠ 目标状态」，就存在问题。所以工作可以理解成：</p><div class="quote"><div class="q">不断把现实状态推进到目标状态。</div><div class="src">工作的定义——这对于管理工作其实非常实用</div></div><p class="prose">比如任何一项任务都可以问四句话：</p><div class="cards g4"><div class="card"><div class="idx">现</div><h4>现在在哪里？</h4><p><b>现实</b></p></div><div class="card"><div class="idx">标</div><h4>要到哪里？</h4><p><b>目标</b></p></div><div class="card"><div class="idx">差</div><h4>差多少？</h4><p><b>问题</b></p></div><div class="card"><div class="idx">行</div><h4>怎么过去？</h4><p><b>行动</b></p></div></div><p class="prose">这已经是一个很实用的问题解决模型了。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>焦虑从哪里产生：五不清</h2></div><div class="sd">焦虑的生产机制 · 五个不清 + 行动不足</div><p class="prose">把前面的内容合起来，老师实际上给出了一个很清楚的模型。焦虑往往不是单一问题，而是一连串「不清」叠加：</p><div class="ladder"><div class="step"><div class="t">对当下不清</div><div class="d">我现在到底是什么状态？不清楚</div></div><div class="step"><div class="t">对目标不明</div><div class="d">我到底想达到什么结果？不清楚</div></div><div class="step"><div class="t">路径不清</div><div class="d">我该怎么做到？不清楚</div></div><div class="step"><div class="t">资源不清</div><div class="d">我有什么时间、能力、钱、人脉？不知道</div></div><div class="step"><div class="t">能力不确定</div><div class="d">我到底做不做得到？没有信心</div></div><div class="step hot"><div class="t">焦虑</div></div></div><p class="prose">所以焦虑是一团：<b>现实模糊 + 目标模糊 + 路径模糊 + 资源模糊 + 行动不足</b>，形成的认知混乱。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>行动为什么能缓解焦虑</h2></div><div class="sd">为什么“明天早晨跑五公里”有道理</div><div class="quote"><div class="q">焦虑怎么办？明天早晨跑五公里。</div><div class="src">老师举的例子</div></div><p class="prose">他的重点其实不一定是「跑步」本身，真正想表达的是：</p><div class="quote"><div class="q">从无限思考切换到具体行动。</div><div class="src">这个例子的真正含义</div></div><div class="duo"><div class="col neg"><h4>行动开始前 ✕</h4><ul><li>「我要怎么办？」——巨大的、模糊的问题</li><li>「未来怎么办？」——无限思考</li></ul></div><div class="col pos"><h4>行动开始后 ✓</h4><ul><li>「今天先做这一件事。」</li><li>「下一步怎么办？」——具体、有限、可完成</li></ul></div></div><p class="prose">一个巨大的、模糊的问题，被转换成一个<b>具体、有限、可完成的问题</b>，意识的负担就会降低。所以这里真正值得记住的是：<b>行动是结束无效思考的一种方式。</b></p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>焦虑处理模型：五问</h2></div><div class="sd">整节课最值得带走的工具 · 遇到焦虑就问这五问</div><p class="prose">整理者把这一课提炼成一个非常实用的「焦虑处理模型」。以后你自己遇到焦虑，可以直接问五个问题（点击展开）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">① 我到底在担心什么？</span></summary><div class="body">把模糊焦虑变成一个具体问题。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">② 这个问题有答案吗？</span></summary><div class="body">如果没有答案：学习接受。如果有：继续。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">③ 我想达到什么结果？</span></summary><div class="body">把欲望变成目标。</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">④ 从现在到目标，差距是什么？</span></summary><div class="body">把焦虑变成问题。</div></details><details class="qa"><summary><span class="qn">问伍</span><span class="qt">⑤ 下一步最小行动是什么？</span></summary><div class="body">不要继续想全部人生。只问：下一步是什么？</div></details><div class="quote"><div class="q">焦虑 → 问题 → 目标 → 差距 → 行动</div><div class="src">整理者：这可能是整节课最值得你带走的工具</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>海德格尔与时间结构</h2></div><div class="sd">向死而生 · 被抛 · 投射 · 操心 · 现在 → 未来</div><p class="prose">逐字稿里关于海德格尔的内容有一些口语简化和识别错误，整理后大概涉及四个概念：</p><div class="cards g4"><div class="card"><div class="idx">死</div><h4>向死而生</h4><p>意识到生命有限，反而更加认真地活</p></div><div class="card"><div class="idx">抛</div><h4>被抛</h4><p>人并没有选择自己的全部出生条件——出生在哪里、什么家庭、什么时代，很多东西已经存在</p></div><div class="card"><div class="idx">投</div><h4>投射</h4><p>人可以把自己“投向未来”——<b>通过目标定义未来的自己</b></p></div><div class="card"><div class="idx">牵</div><h4>操心 / 关怀</h4><p>人在世界中永远对自己的存在、未来和各种事情有所牵挂</p></div></div><div class="quote"><div class="q">人从当下，通过目标，把自己投向未来。</div><div class="src">老师把这些思想重新组织成的一句——对这门入门课程已经足够</div></div><p class="prose">这里还藏着一个非常重要的时间结构：人的生活永远处于<b>现在 → 未来</b>。我们之所以有目标，就是因为「现在还不是我想要的未来」——今天不会某项技能，未来想会，于是出现差距。</p><p class="prose">这个差距并不是坏东西，反而是<b>行动产生的理由</b>。所以：<b>没有差距，就没有目标；没有问题，也就没有行动。</b>问题本身不一定让人焦虑，真正让人焦虑的是——</p><div class="quote"><div class="q">看见差距，却不知道怎么办。</div><div class="src">真正让人焦虑的，不是差距本身</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>三节课的闭环 · 批判性提醒</h2></div><div class="sd">时代判断 → 社会判断 → 个人行动 · 附批判性提醒</div><p class="prose">现在把三节课放在一起，会发现非常漂亮的闭环：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>目标不能脱离时代</h4><p>第一节：如果看不懂时代，可能选错方向</p></div><div class="card"><div class="idx">貳</div><h4>行动不能脱离社会规则</h4><p>第二节：做事情，必须理解规则与社会环境</p></div><div class="card"><div class="idx">叁</div><h4>方向和规则必须落实为行动</h4><p>第三节：否则知道再多，仍会陷入“动而无果”</p></div></div><p class="prose">所以三节课实际上构成：<b>时代判断 → 社会判断 → 个人行动</b>。这是第一章最重要的整体逻辑。</p><div class="warn"><div class="wt">批判性提醒：老师的框架有启发性，但不宜当作普适结论</div><ul><li>老师把焦虑主要解释为意识「动而无果」产生的紧张状态——作为哲学解释很有启发性，但不能理解成「所有焦虑都是因为想不明白或者没有行动」</li><li>现实中的焦虑还可能受到生理因素、长期压力、创伤、睡眠、疾病、环境、人格以及其他心理因素影响</li><li>「跑五公里就能解决焦虑」更适合理解成：运动和具体行动有助于缓解一部分紧张，而不是所有焦虑问题的通用治疗方案</li></ul></div><p class="prose">所以仍沿用前两课的学习方法：<b>事实 → 理论模型 → 老师的解释 → 自己的判断</b>，这样学习会更加扎实。</p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>五句话与核心逻辑图</h2></div><div class="sd">复习先默这五句 · 再背这张核心逻辑图</div><p class="prose">整理者建议，如果只记住这一课的 5 句话：</p><div class="ladder"><div class="step"><div class="t">焦虑往往来自意识持续运转，却迟迟得不到结果。</div></div><div class="step"><div class="t">有些问题需要解决，有些问题需要接受。</div></div><div class="step"><div class="t">生活不是没有事情，而是一件又一件事情持续发生。</div></div><div class="step"><div class="t">做事，就是把现实状态推进到目标状态。</div></div><div class="step hot"><div class="t">缓解焦虑的重要办法之一，是把模糊担忧转化为清晰目标、具体问题和下一步行动。</div></div></div><p class="prose">把第三课压缩成一张最核心的逻辑图——意识不断活动，分两条路：</p><div class="cards g2"><div class="card"><div class="idx">稳</div><h4>有结果</h4><p>问题 → 目标 → 行动 → 反馈 → 结束<br>→ 意识趋于稳定</p></div><div class="card"><div class="idx">焦</div><h4>无结果</h4><p>问题 → 反复想 → 无答案 → 无行动 → 继续想<br>→ 意识持续紧张 → <b>焦虑</b></p></div></div><p class="prose">然后给出解决路径：<b>看清当下 → 明确目标 → 找到差距 → 设计路径 → 开始行动</b>。最终——</p><div class="quote"><div class="q">真正减少焦虑的，不是把人生所有问题一次想明白，而是知道自己此刻在哪里、准备去哪里，以及下一步做什么。</div><div class="src">整理者：最适合作为第三课中心金句的一句</div></div></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">章内三节串联</div></div><div class="cnt"><div class="v" data-c="2">0</div><div class="l">意识活动两型</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">动而无果成因</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">焦虑处理五问</div></div></div><div class="panel"><h3><span class="no2">①</span>焦虑成因归类练习</h3><div class="pd">判断下列表述属于哪一类「动而无果」的成因，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文第一类：「本来就没有确定答案的问题」，老师举的正是死亡"><div class="st">1. 不停地想「我什么时候死？死亡之后是什么？」</div><div class="opts"><button data-ok="1">无确定答案</button><button data-ok="0">欲望与资源失衡</button><button data-ok="0">方向目标不明</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第二类：「无限欲望 vs 有限资源」的经典表述"><div class="st">2. 想更自由、想更快成功，但时间、金钱、能力、机会、注意力都有限</div><div class="opts"><button data-ok="0">无确定答案</button><button data-ok="1">欲望与资源失衡</button><button data-ok="0">方向目标不明</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第三类：「不知道方向，也不知道目标」——现代人最常见的一种"><div class="st">3. 知道大概方向，却不知道「下一步做什么？」</div><div class="opts"><button data-ok="0">无确定答案</button><button data-ok="0">欲望与资源失衡</button><button data-ok="1">方向目标不明</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：「只有欲望，没有行动」→ 想得很多、行动很少、更焦虑"><div class="st">4. 一直想「我要更多」，却没有把愿望转换成具体目标与行动</div><div class="opts"><button data-ok="0">无确定答案</button><button data-ok="1">欲望与资源失衡</button><button data-ok="0">方向目标不明</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：这些问题很多并不存在一个可以通过日常行动彻底解决的答案"><div class="st">5. 「人为什么会死？」——并不存在可以通过日常行动彻底解决的答案</div><div class="opts"><button data-ok="1">无确定答案</button><button data-ok="0">欲望与资源失衡</button><button data-ok="0">方向目标不明</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第三类的原话：「想改变人生但目标模糊……不知道努力在哪里」"><div class="st">6. 想改变人生但目标模糊，想努力但不知道努力在哪里</div><div class="opts"><button data-ok="0">无确定答案</button><button data-ok="0">欲望与资源失衡</button><button data-ok="1">方向目标不明</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>焦虑处理五问 · 通关清单</h3><div class="pd">拿一件最近让你焦虑的事，逐问检验自己能否回答（进度自动保存）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">问一 · 我能把模糊的焦虑变成一个具体问题：我到底在担心什么？</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">问二 · 我能判断：这个问题需要解决，还是需要接受？</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">问三 · 我能把欲望翻译成明确目标：我想达到什么结果？</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">问四 · 我能说清从现在到目标的差距是什么</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">问五 · 我能给出下一步最小行动，而不是继续想全部人生</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能用「现在在哪里 → 要到哪里 → 差多少 → 怎么过去」四问拆解手头的一项工作</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>按这一课的逻辑，老师把「焦虑」定义为什么？</div><div class="ans"><button data-ok="0">A. 欲望太多而得不到满足</button><button data-ok="1">B. 意识在“动而无果”状态下形成的持续紧张</button><button data-ok="0">C. 外部世界变化太快带来的不安全感</button><button data-ok="0">D. 身体疲惫导致的精神紧张</button></div><div class="exp">原文：“焦虑是意识在‘动而无果’状态下形成的持续紧张。”——先有动而无果，后有焦虑。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>在老师看来，焦虑的反面更接近什么？</div><div class="ans"><button data-ok="0">A. 快乐</button><button data-ok="0">B. 平静</button><button data-ok="0">C. 富足</button><button data-ok="1">D. 清晰</button></div><div class="exp">原文：“焦虑的反面并不是快乐，而更接近清晰。”——知道发生了什么、知道我要什么、知道下一步怎么办。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>老师引用孔子“未知生，焉知死”，核心意思是什么？</div><div class="ans"><button data-ok="0">A. 不允许思考死亡</button><button data-ok="1">B. 与其无限纠缠不可确定的死亡，不如回到如何生活</button><button data-ok="0">C. 必须先想清楚死亡才能生活</button><button data-ok="0">D. 死亡是无法讨论的禁忌</button></div><div class="exp">原文：“核心意思不是不允许思考死亡，而是：与其无限纠缠不可确定的死亡，不如回到如何生活。”</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>「焦虑怎么办？明天早晨跑五公里」——老师的重点是什么？</div><div class="ans"><button data-ok="0">A. 跑步是最有效的解药</button><button data-ok="0">B. 早起能改变人生状态</button><button data-ok="1">C. 从无限思考切换到具体行动</button><button data-ok="0">D. 身体好了就不会焦虑</button></div><div class="exp">原文：“他的重点其实不一定是‘跑步’本身。真正想表达的是：从无限思考切换到具体行动。”</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整节课最值得带走的「焦虑处理模型」是哪条链？</div><div class="ans"><button data-ok="0">A. 焦虑 → 压抑 → 遗忘</button><button data-ok="0">B. 焦虑 → 休息 → 放松</button><button data-ok="1">C. 焦虑 → 问题 → 目标 → 差距 → 行动</button><button data-ok="0">D. 焦虑 → 求助 → 治疗</button></div><div class="exp">原文第十四节：“焦虑 → 问题 → 目标 → 差距 → 行动。这可能是整节课最值得你带走的工具。”</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">焦虑往往来自意识持续运转，却迟迟得不到结果。</div><div class="src">五句话之一 · 焦虑的机制</div></div><div class="quote"><div class="q">有些问题需要解决，有些问题需要接受。</div><div class="src">五句话之二 · 对问题的分拣</div></div><div class="quote"><div class="q">做事，就是把现实状态推进到目标状态。</div><div class="src">五句话之四 · 事的定义</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../01-社会的撕扯/index.html">← 上一篇 · 社会的撕扯</a><a href="../03-唯物主义/index.html">下一篇 · 唯物主义 →</a><span class="sp"></span><span class="cur">生活的焦虑</span></div></nav>
+<footer class="coda"><div class="wm2">静</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">真正减少焦虑的，<br>不是把人生所有问题一次想明白，<br><br>而是知道自己<b>此刻在哪里、准备去哪里，以及下一步做什么</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第三讲《生活的焦虑》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s8", "#s10", "#s11", "#s12"], "sortok": [0, 1, 2, 1, 0, 2], "quizok": [1, 3, 1, 2, 2], "ckkey": "zx02-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

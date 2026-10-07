@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唯物主义 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx03-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../02-生活的焦虑/index.html">← 上一篇 · 生活的焦虑</a><a href="../04-唯心主义/index.html">下一篇 · 唯心主义 →</a><span class="sp"></span><span class="cur">唯物主义</span></div></nav>
+<header class="hero" id="top"><div class="wm">洞</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第二章《世界的洞见》第一节</div>
+  <div class="no">肆</div>
+  <h1>唯物主义</h1>
+  <div class="sub">洞见 = 从某个路径看见更深层结构</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>世界只有一个，但「看见」世界的方式不止一种。<br>唯物主义选择从<b>物质、运动、因果、规律</b>去看——它孕育了科学与生产力，<br>也在「间接知识」与「意识问题」处，照见自己的边界。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 洞见：从哪个「洞口」看世界</a><a href="#s2">貳 · 世界是一个自动系统</a><a href="#s3">叁 · 唯物主义最核心的问题</a><a href="#s4">肆 · 从牛顿到量子力学</a><a href="#s5">伍 · 校正 · 老师的部分科学表述</a><a href="#s6">陆 · 唯物主义真正要寻找的：因果关系</a><a href="#s7">柒 · 以物观物</a><a href="#s8">捌 · 工具带来的哲学问题</a><a href="#s9">玖 · 本质能不能被认识</a><a href="#s10">拾 · 唯物主义怎么解释「人」</a><a href="#s11">拾壹 · 科学 ≠ 技术</a><a href="#s12">拾貳 · 唯物主义最大的历史力量</a><a href="#s13">拾叁 · 这节课在训练「认识论意识」</a><a href="#s14">拾肆 · 全篇逻辑图</a><a href="#s15">拾伍 · 复习法 · 三层分档与六句话</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>什么是洞见</b><span>不是穿透现象 · 而是选择路径</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>什么是世界</b><span>自动系统 · 时间 × 空间 × 能量</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>唯物主义怎么看</b><span>物质 · 运动 · 因果 · 规律</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>它如何形成科学</b><span>牛顿 → 爱因斯坦 → 量子力学</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>科学如何变成技术</b><span>发现规律 → 技术应用 → 生产力</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>反思支线</b><span>间接知识 · 能否认识本质 · 意识问题</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>力量与边界</b><span>现代科学的哲学基础 · 也照见认识的边界</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>洞见：从哪个「洞口」看世界</h2></div><div class="sd">第二章总问题 · 纠正“透过现象看本质”</div><p class="prose">这一课从第一章“日常哲思”进入第二章“世界的洞见”。如果说第一章是在回答“人在现实中怎么活”，那么第二章开始追问一个更基础的问题——</p><div class="quote"><div class="q">我们究竟是通过什么方式认识世界？我们看到的，真的是世界本身吗？</div><div class="src">第二章开篇的总问题（整理稿引言）</div></div><p class="prose">老师一开头就在纠正一句常见的话：<b>“透过现象看本质。”</b>他的意思是：不是简单穿透现象，就自动看到了本质。真正关键的是——</p><div class="quote"><div class="q">你是通过什么路径、什么工具、什么框架去看？</div><div class="src">老师对「洞见」的关键追问</div></div><p class="prose">这就是他所谓的<b>洞见</b>。“洞”在这堂课里其实是个比喻：你站在同一个世界面前，从不同“洞口”看出去，看到的世界可能完全不一样。比如——</p><div class="cards g2"><div class="card"><div class="idx">物</div><h4>唯物主义</h4><p>用<b>物质和科学</b>去看</p></div><div class="card"><div class="idx">心</div><h4>唯心主义</h4><p>用<b>意识、心灵</b>去看</p></div><div class="card"><div class="idx">宗</div><h4>宗教视角</h4><p>用<b>宗教和上帝</b>去看</p></div><div class="card"><div class="idx">数</div><h4>数字主义</h4><p>用<b>数字、信息、计算</b>去看（后面课程所谓）</p></div></div><div class="quote"><div class="q">不同认知框架，会让我们看见世界的不同层面。</div><div class="src">第二章非常重要的总纲</div></div><div class="duo"><div class="col neg"><h4>第二章真正的问题不是 ✕</h4><ul><li>“世界到底只有一个答案是什么？”</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li>三个观察世界的镜头：<b>物质 → 心灵 → 数字</b>。第四课只讲第一个——唯物主义视角</li></ul></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>世界是一个自动系统</h2></div><div class="sd">老师给出的定义 · 时间 + 空间 + 能量</div><p class="prose">面对这个问题，老师这堂课给出了一个自己的定义——</p><div class="quote"><div class="q">世界是一个自动系统。</div><div class="src">老师对「世界」的定义</div></div><p class="prose">然后进一步拆成三个基本维度：<b>时间 + 空间 + 能量</b>。所有事物都在时间中变化、在空间中存在、在能量作用中运动——人、树木、星球、社会，都可以被理解为某种运行中的系统。</p><div class="cards g3"><div class="card"><div class="idx">世</div><h4>时间</h4><p>“世”对应时间 —— 事物在其中<b>变化</b>（借自佛教对“世界”一词的解释）</p></div><div class="card"><div class="idx">界</div><h4>空间</h4><p>“界”对应空间 —— 事物在其中<b>存在</b></p></div><div class="card"><div class="idx">能</div><h4>能量</h4><p>老师自己加上的第三个维度 —— 事物在能量作用中<b>运动</b></p></div></div><p class="prose">于是形成：<b>世界 = 时间 × 空间 × 能量构成的运行系统。</b>整理稿特别提醒：这更适合作为本课程的哲学模型，而不是严格物理学定义。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>唯物主义最核心的问题</h2></div><div class="sd">因果性 · 必然性 —— 本课最重要的两个关键词</div><p class="prose">第二章里，唯物主义指从<b>物质、运动、因果、规律</b>理解世界的视角。它最核心的问题，老师的回答可以压缩成：<b>世界中的事物为什么会这样运动？</b>它关注的是这样一条链——</p><div class="ladder"><div class="step"><div class="t">客观存在</div></div><div class="step"><div class="t">相互作用</div></div><div class="step"><div class="t">运动变化</div></div><div class="step"><div class="t">寻找规律</div></div><div class="step hot"><div class="t">建立因果</div></div></div><p class="prose">也就是说，它希望发现<b>世界变化背后的必然性</b>。因此这一课最重要的两个关键词是——</p><div class="cards g2"><div class="card"><div class="idx">因</div><h4>因果性</h4><p>A → B：对运动的<b>稳定、必然、可重复</b>的解释</p></div><div class="card"><div class="idx">必</div><h4>必然性</h4><p>世界变化背后的必然性 —— 唯物主义希望发现的东西</p></div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>从牛顿到量子力学</h2></div><div class="sd">它如何形成科学 · 世界有规律 → 时空也要解释 → 尺度之分</div><p class="prose">老师为什么从牛顿讲起？因为牛顿代表了一种非常典型的唯物主义式科学视角——<b>世界不是随意发生的，而是按照可以描述的规律运行。</b></p><p class="prose">牛顿通过经典力学和万有引力，把苹果下落、月球运动、行星轨道这些看起来彼此无关的现象，放到同一套规律下解释。这件事情真正重要的哲学意义是——</p><div class="quote"><div class="q">复杂世界背后可能存在稳定、可重复、可计算的规律。</div><div class="src">牛顿工作的真正哲学意义</div></div><div class="ladder"><div class="step"><div class="t">现象</div></div><div class="step"><div class="t">观察</div></div><div class="step"><div class="t">测量</div></div><div class="step"><div class="t">数学</div></div><div class="step hot"><div class="t">规律</div><div class="d">现代科学最重要的思维方式之一</div></div></div><p class="prose">牛顿之后，人类发现原有的时空观并不是最终答案。爱因斯坦的重要突破之一，是重新理解<b>时间和空间</b>：它们并不是完全独立、绝对不变的背景，而与运动状态、引力、能量和物质分布存在深刻关系——<b>连时间和空间本身，也属于需要解释的世界结构。</b></p><p class="prose">接下来为什么讲量子力学？因为经典力学在非常微观的尺度上并不足够——进入原子、电子、光子等尺度，需要另一套理论框架。老师提到海森堡，是想说明——</p><div class="quote"><div class="q">同一个物质世界，在不同尺度上，会呈现出不同规律。</div><div class="src">提到海森堡时想说明的要点</div></div><div class="cards g3"><div class="card"><div class="idx">宏</div><h4>宏观尺度</h4><p>经典力学非常有效</p></div><div class="card"><div class="idx">强</div><h4>高速、强引力等场景</h4><p>相对论非常重要</p></div><div class="card"><div class="idx">微</div><h4>微观尺度</h4><p>量子力学成为核心理论</p></div></div><p class="prose">于是唯物主义和现代科学不是一套固定结论，而是<b>不断寻找更准确的自然规律</b>。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>校正 · 老师的部分科学表述</h2></div><div class="sd">口语化的讲法并不准确 · 学习时最好分开</div><p class="prose">这一课里有一些讲法比较口语化，甚至并不准确。这一点学习时最好分开。比如他说——</p><div class="warn"><div class="wt">三处不宜当作科学事实的表述</div><ul><li>“牛顿解决宏观世界，爱因斯坦解决微观世界。”</li><li>“爱因斯坦构建了原子力学。”</li><li>“海森堡研究没有时间和空间的能量子。”</li></ul></div><div class="case"><div class="h"><span class="tag">校正</span><span class="ht">牛顿 / 爱因斯坦的分工</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这个说法不准确。牛顿力学主要适用于<b>低速、弱引力、宏观尺度</b>；相对论主要处理<b>高速、强引力以及时空结构</b>；微观世界主要由<b>量子力学</b>描述。爱因斯坦当然对量子理论也有巨大贡献，但不能简单说成“爱因斯坦解决微观世界”。</div></div></div><div class="case"><div class="h"><span class="tag">校正</span><span class="ht">“爱因斯坦原子力学”？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这不是标准物理学说法。爱因斯坦最重要的是<b>狭义相对论、广义相对论、光电效应解释</b>等，并不存在标准意义上的“爱因斯坦原子力学”。</div></div></div><div class="case"><div class="h"><span class="tag">校正</span><span class="ht">海森堡与“没有时间和空间的能量子”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这也不能作为现代量子力学的准确表述。海森堡最重要的贡献包括<b>矩阵力学、不确定性原理、量子力学基础</b>；量子理论仍然要描述物理系统在时空中的状态和变化。</div></div></div><div class="quote"><div class="q">保留它的哲学结构，不把具体物理表述全部当成科学事实。</div><div class="src">整理者对这些内容的建议</div></div><p class="prose">这句话值得抄在笔记本第一页：分清课程里的<b>哲学结构</b>与<b>物理表述</b>两个层次。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>唯物主义真正要寻找的：因果关系</h2></div><div class="sd">观察 → 测量 → 比较 → 因果 → 规律 → 理论</div><p class="prose">这一节后半段最核心的哲学概念就是<b>因果性</b>。老师试图表达：如果 A 发生、紧接着 B 发生，并且这种关系具有稳定、必然、可重复的规律，我们就会尝试建立 <b>A → B</b> 这种解释。</p><div class="duo"><div class="col neg"><h4>直觉 ✕</h4><ul><li>“A 先发生，B 后发生” → 自动证明 A 导致 B</li></ul></div><div class="col pos"><h4>现代科学更谨慎 ✓</h4><ul><li>还需要<b>实验、机制、控制变量、重复验证</b></li></ul></div></div><p class="prose">但老师真正想强调的是：<b>科学希望从纷繁现象中找出稳定关系。</b>所以可以把唯物主义的认知链条整理为——</p><div class="ladder"><div class="step"><div class="t">观察</div></div><div class="step"><div class="t">测量</div></div><div class="step"><div class="t">比较</div></div><div class="step"><div class="t">因果</div></div><div class="step"><div class="t">规律</div></div><div class="step hot"><div class="t">理论</div></div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>以物观物</h2></div><div class="sd">这一课非常重要的概念 · 工具延长人的感官</div><p class="prose">老师用了一个非常值得记忆的表达——</p><div class="quote"><div class="q">以物观物。</div><div class="src">这一课非常重要的概念 · 老师的表达</div></div><p class="prose">什么意思？就是：<b>用客观工具研究客观世界。</b></p><div class="cards g2"><div class="card"><div class="idx">显</div><h4>显微镜</h4><p>肉眼看不到细胞怎么办？→ 显微镜</p></div><div class="card"><div class="idx">望</div><h4>望远镜</h4><p>看不到遥远星系怎么办？→ 望远镜</p></div><div class="card"><div class="idx">仪</div><h4>精密仪器</h4><p>测不到非常短的时间怎么办？→ 精密仪器</p></div><div class="card"><div class="idx">算</div><h4>计算机</h4><p>观察不到复杂数据关系怎么办？→ 计算机</p></div></div><p class="prose">所以现代科学不是只依赖人的感觉，而是<b>不断延长人的感官</b>。可以把它理解成：<b>人类感官 + 工具 = 更强大的观察能力</b>——这就是科学极其强大的原因。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>工具带来的哲学问题</h2></div><div class="sd">我们看到的，是世界本身吗？</div><p class="prose">这是这节课最有哲学味的部分之一。我们通过显微镜、望远镜、仪器、实验、数学模型去认识世界，那么问题来了——</p><div class="quote"><div class="q">我们看到的是“世界本身”，还是“经过工具和理论过滤之后的世界”？</div><div class="src">这节课最有哲学味的问题</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">望远镜 ≠ 恒星本身</span><span class="ar">▸</span></div><div class="sm"><div class="inner">望远镜给你的不是恒星本身。它给你的是<b>光经过仪器之后形成的数据和图像</b>。</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">CT ≠ 器官本身</span><span class="ar">▸</span></div><div class="sm"><div class="inner">医学检查也是如此：CT 不是器官本身，它是<b>通过X射线和计算重建出来的影像</b>。</div></div></div><p class="prose">于是出现一个非常深刻的认识论问题：<b>人的知识是不是永远带有中介？</b>这才是老师所谓“唯物主义获得的是间接知识”背后真正值得思考的地方。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>本质能不能被认识</h2></div><div class="sd">柏拉图 · 康德 · 黑格尔的三条路线</div><p class="prose">这里开始进入“本质能不能被认识”的问题。老师引用了几位哲学家——虽然原话不一定完全准确，但思想方向可以整理成三种路线。</p><div class="cards g3"><div class="card"><div class="idx">柏</div><h4>柏拉图</h4><p>真正的本质不在表面现象，而在<b>理念</b>。现实中有无数个圆，没有一个完全完美；“完美的圆”作为理念，反而成为理解现实圆形的标准</p></div><div class="card"><div class="idx">康</div><h4>康德</h4><p>区分<b>现象</b>与<b>物自身</b>。我们能认识世界如何向我们显现，但“物自身到底是什么”并不能直接被经验认识——<b>人的认识有边界</b></p></div><div class="card"><div class="idx">黑</div><h4>黑格尔</h4><p>不像康德那样把本质永远放在不可认识的彼岸：<b>本质要通过现象表现自身</b>，现象和本质并不是完全割裂</p></div></div><div class="duo"><div class="col neg"><h4>割裂式理解 ✕</h4><ul><li>本质永远放在不可认识的彼岸，与现象完全割裂</li></ul></div><div class="col pos"><h4>黑格尔的推进 ✓</h4><ul><li>本质隐藏在<b>关系、变化、历史发展</b>的过程中，因此研究现象仍然可以逐渐理解本质</li></ul></div></div><p class="prose">三条路线合起来，正是「我们能否认识本质」的完整地图。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>唯物主义怎么解释「人」</h2></div><div class="sd">意识问题 —— 力量所在，也是边界所在</div><p class="prose">真正的问题开始出现。唯物主义对于星球、机械、物体、化学、生物非常强大；但当我们研究——</p><div class="chips"><span class="chip">意识</span><span class="chip">自我</span><span class="chip">主观体验</span><span class="chip">爱</span><span class="chip">意义</span><span class="chip">自由意志</span></div><p class="prose">问题就变复杂了。你可以测量大脑、可以看到神经元活动，但——</p><div class="quote"><div class="q">为什么神经活动会产生“我正在疼”这种主观体验？</div><div class="src">意识问题的典型追问 · 现代哲学和认知科学里非常著名</div></div><p class="prose">这就是<b>意识问题</b>。老师的意思是：<b>唯物主义解释物质世界非常强，但解释人的主观精神经验时，存在困难。</b>这个问题是合理而且重要的。</p><p class="prose">但这里也需要保持判断：「唯物主义解释不了意识」不能直接等于「唯物主义失败」。</p><div class="warn"><div class="wt">整理者的校正</div><ul><li>现代神经科学、心理学、认知科学、AI、计算神经科学都在不断研究<b>大脑与意识究竟是什么关系</b></li><li>目前确实没有解决所有问题，但这和“物质无法解释意识”<b>不是同一个结论</b></li><li>更稳妥的说法：<b>意识如何从物理过程产生，仍是一个尚未完全解决的重大科学与哲学问题</b></li></ul></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>科学 ≠ 技术</h2></div><div class="sd">这一节最值得留下来的另一个区分</div><p class="prose">老师这一点讲得很好——科学与技术回答的是两个不同的问题：</p><div class="cards g2"><div class="card"><div class="idx">科</div><h4>科学</h4><p>回答：<b>世界为什么这样运行？</b>——建立理论、发现规律</p></div><div class="card"><div class="idx">技</div><h4>技术</h4><p>回答：<b>我怎样利用这些规律解决现实问题？</b></p></div></div><div class="ladder"><div class="step"><div class="t">自然现象</div></div><div class="step"><div class="t">科学研究</div></div><div class="step"><div class="t">发现规律</div></div><div class="step"><div class="t">形成理论</div></div><div class="step"><div class="t">技术应用</div></div><div class="step hot"><div class="t">改变现实</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">电磁学理论 → 现代电气社会</span><span class="ar">▸</span></div><div class="sm"><div class="inner">电磁学理论 → 发电机 → 电网 → 现代电气社会。这条逻辑非常重要。</div></div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>唯物主义最大的历史力量</h2></div><div class="sd">生产力 —— 从神话解释走向规律解释</div><p class="prose">老师最终给出的答案其实非常明确：<b>生产力</b>。唯物主义推动这样一条链——</p><div class="ladder"><div class="step"><div class="t">观察世界</div></div><div class="step"><div class="t">发现规律</div></div><div class="step"><div class="t">数学化</div></div><div class="step"><div class="t">科学理论</div></div><div class="step"><div class="t">技术应用</div></div><div class="step"><div class="t">改造自然</div></div><div class="step hot"><div class="t">提高生产力</div></div><div class="step"><div class="t">改变生活</div></div></div><p class="prose">所以这节课并不是要否定唯物主义。相反，老师承认——</p><div class="quote"><div class="q">唯物主义是现代科学体系最重要的哲学基础之一。</div><div class="src">老师最终给出的承认</div></div><div class="duo"><div class="col neg"><h4>它帮助人类从</h4><ul><li>神话解释</li></ul></div><div class="col pos"><h4>走向</h4><ul><li><b>规律解释</b>——这是它极其重要的历史贡献</li></ul></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>这节课在训练「认识论意识」</h2></div><div class="sd">表面很散 · 背后一直在问同一个问题</div><p class="prose">如果只听表面内容，你会觉得牛顿、爱因斯坦、海森堡、科学、技术……很散。但背后其实一直在问——</p><div class="quote"><div class="q">我凭什么相信我看到的世界是真的？</div><div class="src">全课背后真正在问的问题</div></div><details class="qa"><summary><span class="qn">问壹</span><span class="qt">我用什么看？</span></summary><div class="body"><b>工具。</b>以物观物——显微镜、望远镜、精密仪器、计算机：人类感官 + 工具 = 更强大的观察能力。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">我看到什么？</span></summary><div class="body"><b>现象和数据。</b>望远镜给的是光经过仪器之后形成的数据和图像，不是恒星本身。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">我怎么解释？</span></summary><div class="body"><b>因果和规律。</b>科学希望从纷繁现象中找出稳定关系。</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">我怎样验证？</span></summary><div class="body"><b>实验、测量、数学。</b>观察 → 测量 → 比较 → 因果 → 规律 → 理论。</div></details><details class="qa"><summary><span class="qn">问伍</span><span class="qt">我得到的是本质吗？</span></summary><div class="body"><b>不一定。</b>唯物主义获得的是间接知识——人的知识可能永远带有中介。</div></details><details class="qa"><summary><span class="qn">问陆</span><span class="qt">人的认识有没有边界？</span></summary><div class="body"><b>有可能。</b>康德区分现象与物自身；意识如何从物理过程产生，仍未完全解决。</div></details><p class="prose">这就是<b>认识论</b>。第四课其实是在把学生从“生活哲学”带进“认识论”。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>全篇逻辑图</h2></div><div class="sd">把整节课压缩成一张可背诵的骨架 · 建议先记这张图</div><div class="ladder"><div class="step"><div class="t">世界</div></div><div class="step"><div class="t">时间｜空间｜能量</div></div><div class="step"><div class="t">唯物主义视角</div></div><div class="step"><div class="t">物质是客观的</div></div><div class="step"><div class="t">物质不断运动</div></div><div class="step"><div class="t">运动存在规律</div></div><div class="step"><div class="t">规律表现为因果关系</div></div><div class="step"><div class="t">借助工具观察和测量</div></div><div class="step"><div class="t">数学化、精确化</div></div><div class="step"><div class="t">科学理论</div></div><div class="step"><div class="t">技术应用</div></div><div class="step hot"><div class="t">改变自然与人类生活</div></div></div><p class="prose">同时旁边再开一条「反思支线」——</p><div class="ladder"><div class="step"><div class="t">工具获得的是间接知识</div></div><div class="step"><div class="t">我们能否认识本质？</div></div><div class="step"><div class="t">意识能否完全由物质解释？</div></div><div class="step hot"><div class="t">唯物主义的边界</div></div></div><p class="prose">这两条线合起来，就是整节课。</p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>复习法 · 三层分档与六句话</h2></div><div class="sd">不是所有内容都能直接当成事实 · 批判性提醒</div><p class="prose">以后复习时，整理稿建议把这一课严格分成三层——</p><div class="cards g3"><div class="card"><div class="idx">层一</div><h4>科学史事实</h4><p>例如：牛顿建立经典力学体系、爱因斯坦建立相对论、海森堡参与创建量子力学——<b>这些要追求准确</b></p></div><div class="card"><div class="idx">层二</div><h4>哲学解释</h4><p>例如：“科学通过工具、实验、数学寻找自然规律”——这是<b>哲学和科学方法论</b></p></div><div class="card"><div class="idx">层三</div><h4>老师个人观点</h4><p>例如：“世界就是时间、空间、能量构成的自动系统”“唯物主义知识只能是间接知识，不能达到本质”——属于<b>课程作者的解释框架</b>，可以思考，但不要自动等同于学界共识</p></div></div><p class="prose">如果只记住这一课的 6 句话，整理稿建议记住——</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>洞见</h4><p>不是简单“透过现象看本质”，而是<b>选择一种认识世界的路径</b></p></div><div class="card"><div class="idx">貳</div><h4>唯物主义</h4><p>主要从<b>物质、运动、因果和规律</b>理解世界</p></div><div class="card"><div class="idx">叁</div><h4>科学的方法</h4><p>借助<b>工具、观察、实验和数学</b>寻找稳定规律</p></div><div class="card"><div class="idx">肆</div><h4>科学与技术</h4><p>科学解决“世界怎样运行”，技术解决“<b>如何利用规律改变现实</b>”</p></div><div class="card"><div class="idx">伍</div><h4>力量与边界</h4><p>极大推动了现代科学与生产力，但<b>意识和主观体验</b>仍然提出更复杂的问题</p></div><div class="card"><div class="idx">陆</div><h4>真正的哲学问题</h4><p>不只问“世界是什么”，还要问“<b>我是通过什么方式认识世界的</b>”</p></div></div><p class="prose">而整节课的关键词，可以最终压缩成九个词：<b>洞见｜世界｜时空｜能量｜因果｜工具｜科学｜技术｜认识边界</b>——这九个词基本可以把第四课完整地重新唤醒。自测区的分类练习，会把三层分档直接练成肌肉记忆。</p></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">世界的基本维度</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">观察世界的镜头</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">认识论六问</div></div><div class="cnt"><div class="v" data-c="9">0</div><div class="l">唤醒全课的关键词</div></div></div><div class="panel"><h3><span class="no2">①</span>三层分档练习</h3><div class="pd">判断下列表述属于「科学史事实 / 哲学解释 / 老师个人观点」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文第一层举例——科学史事实，“这些要追求准确”"><div class="st">1. 牛顿建立经典力学体系</div><div class="opts"><button data-ok="1">科学史事实</button><button data-ok="0">哲学解释</button><button data-ok="0">老师个人观点</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第一层举例——同属科学史事实"><div class="st">2. 爱因斯坦建立相对论</div><div class="opts"><button data-ok="1">科学史事实</button><button data-ok="0">哲学解释</button><button data-ok="0">老师个人观点</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第二层举例——“这是哲学和科学方法论”"><div class="st">3. 科学通过工具、实验、数学寻找自然规律</div><div class="opts"><button data-ok="0">科学史事实</button><button data-ok="1">哲学解释</button><button data-ok="0">老师个人观点</button></div><div class="verdict"></div></div><div class="sort-it" data-why="对牛顿工作哲学意义的概括，属于哲学解释层"><div class="st">4. 复杂世界背后可能存在稳定、可重复、可计算的规律</div><div class="opts"><button data-ok="0">科学史事实</button><button data-ok="1">哲学解释</button><button data-ok="0">老师个人观点</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第三层举例——课程作者的解释框架，勿当学界共识"><div class="st">5. 世界就是时间、空间、能量构成的自动系统</div><div class="opts"><button data-ok="0">科学史事实</button><button data-ok="0">哲学解释</button><button data-ok="1">老师个人观点</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第三层举例——老师个人观点层，可以思考但不要自动等同"><div class="st">6. 唯物主义知识只能是间接知识，不能达到本质</div><div class="opts"><button data-ok="0">科学史事实</button><button data-ok="0">哲学解释</button><button data-ok="1">老师个人观点</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>认识论六问通关清单</h3><div class="pd">拿一个你正接触的知识/新闻/仪器结论，逐问检验自己能否回答</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">问一 · 我能回答：我用什么看？——工具（以物观物）</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">问二 · 我能回答：我看到什么？——现象和数据，而非世界本身</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">问三 · 我能回答：我怎么解释？——因果和规律</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">问四 · 我能回答：我怎样验证？——实验、测量、数学</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">问五 · 我能分清：科学史事实 / 哲学解释 / 老师个人观点三个层次</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">问六 · 我能说清：科学解决“世界怎样运行”，技术解决“如何利用规律改变现实”</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师纠正「透过现象看本质」之后，对「洞见」给出的更准确理解是什么？</div><div class="ans"><button data-ok="0">A. 穿透现象就能自动看到本质</button><button data-ok="1">B. 通过某种路径，看见事物更深层结构</button><button data-ok="0">C. 用直觉直接把握世界的本体</button><button data-ok="0">D. 把现象全部排除，只留下本质</button></div><div class="exp">整理稿原句：“洞见 = 通过某种路径，看见事物更深层结构”——关键在于“你是通过什么路径、什么工具、什么框架去看”。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>老师对「世界」给出的定义是什么？</div><div class="ans"><button data-ok="0">A. 一个按神意运转的秩序</button><button data-ok="1">B. 一个自动系统：时间 + 空间 + 能量</button><button data-ok="0">C. 一个巨大的数字模拟</button><button data-ok="0">D. 意识的外化投影</button></div><div class="exp">“世界是一个自动系统”，再拆成三个基本维度：“世”对应时间、“界”对应空间（借用佛教解释），能量是老师自己加的第三维度。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>这一课最重要的两个关键词是什么？</div><div class="ans"><button data-ok="0">A. 现象与本质</button><button data-ok="0">B. 时间与空间</button><button data-ok="1">C. 因果性与必然性</button><button data-ok="0">D. 工具与技术</button></div><div class="exp">唯物主义希望发现“世界变化背后的必然性”——这一课最重要的两个关键词是因果性和必然性。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>「以物观物」的意思是什么？</div><div class="ans"><button data-ok="0">A. 用主观直觉体会万物</button><button data-ok="0">B. 以万物为尺度反观自身</button><button data-ok="1">C. 用客观工具研究客观世界</button><button data-ok="0">D. 用数学模型取代一切观察</button></div><div class="exp">以物观物即用客观工具研究客观世界：显微镜看细胞、望远镜看星系——人类感官 + 工具 = 更强大的观察能力。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>科学与技术的分工，按这一课的说法是？</div><div class="ans"><button data-ok="1">A. 科学回答“世界为什么这样运行”，技术回答“怎样利用规律解决现实问题”</button><button data-ok="0">B. 科学负责想象，技术负责验证</button><button data-ok="0">C. 科学是理论，技术只是科学的另一个名称</button><button data-ok="0">D. 科学属于唯物主义，技术属于唯心主义</button></div><div class="exp">科学建立理论、发现规律；技术利用规律解决现实问题。例如电磁学理论 → 发电机 → 电网 → 现代电气社会。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">我们看到什么，不只取决于世界是什么，也取决于我们通过什么路径、什么工具去看世界。</div><div class="src">整理稿：这一课最适合的最终金句</div></div><div class="quote"><div class="q">不同的“洞”，看见不同的世界。</div><div class="src">中心金句的再短版本</div></div><div class="quote"><div class="q">真正的哲学问题不是只问“世界是什么”，还要问“我是通过什么方式认识世界的”。</div><div class="src">「只记住六句话」的第六句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../02-生活的焦虑/index.html">← 上一篇 · 生活的焦虑</a><a href="../04-唯心主义/index.html">下一篇 · 唯心主义 →</a><span class="sp"></span><span class="cur">唯物主义</span></div></nav>
+<footer class="coda"><div class="wm2">觀</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">我们看到什么，不只取决于世界是什么，<br>也取决于我们<b>通过什么路径、什么工具去看世界</b>。<br><br>不同的「洞」，看见不同的世界。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第四讲《唯物主义》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s11", "#s8", "#s12"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 1, 2, 2, 0], "ckkey": "zx03-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

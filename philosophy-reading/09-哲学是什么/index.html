@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哲学是什么 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx09-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../08-肉体与灵魂/index.html">← 上一篇 · 肉体与灵魂</a><a href="../10-哲学的构成/index.html">下一篇 · 哲学的构成 →</a><span class="sp"></span><span class="cur">哲学是什么</span></div></nav>
+<header class="hero" id="top"><div class="wm">问</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第四章《哲学启智》第一节</div>
+  <div class="no">拾</div>
+  <h1>哲学是什么</h1>
+  <div class="sub">先问什么叫「智」· 再问哲学是什么</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>前三章一直在「用」哲学：处理时代、社会、生活，认识世界，理解思想如何改变人与自然、人与人、人与自己。<br>到了第四章，老师回过头来问：我们用的这个「哲学」到底是什么？<br>这一课的答案——哲学是一种帮助人<b>重新审视已有思想、形成新思想，并进一步指导判断和行动</b>的方法。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 开篇之问</a><a href="#s2">貳 · 什么叫「智」</a><a href="#s3">叁 · 学哲学的最终标准</a><a href="#s4">肆 · 普通人能不能学哲学</a><a href="#s5">伍 · 专业哲学与生活哲学</a><a href="#s6">陆 · 黑屋子与导游</a><a href="#s7">柒 · 章之四问与「是什么」四问法</a><a href="#s8">捌 · 「哲学是什么」的四种答案</a><a href="#s9">玖 · 思维思维 · 反思</a><a href="#s10">拾 · 思想工厂与炸药工厂</a><a href="#s11">拾壹 · 不是什么都怀疑</a><a href="#s12">拾貳 · 与第一章的闭环</a><a href="#s13">拾叁 · 批判性提醒</a><a href="#s14">拾肆 · 四种能力与完整模型</a><a href="#s15">拾伍 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>开篇之问</b><span>前三章一直在用哲学 —— 它到底是什么？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>什么叫「智」</b><span>信息/知识 → 进入理解 → 用于实践 → 解决问题</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>学的标准</b><span>哲学能不能改变你的判断和行动？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>谁能学</b><span>普通人完全可以 —— 思考不是哲学家的专利</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>「是什么」四问法</b><span>现象 · 结构 · 变化 · 功能</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>四种答案</b><span>世界观 · 哲学史 · 形而上学 · 方法论</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>核心动作：反思</b><span>思想对思想本身的反思 → 新思想</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s14"><b>哲学的方法</b><span>重新审视已有思想 → 形成新思想 → 指导判断与行动</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>开篇之问</h2></div><div class="sd">第四章《哲学启智》第一节 · 前三章在「用」，这一章回头「问」</div><p class="prose">这一课进入第四章《哲学启智》。和前三章相比，课程终于开始正面回答一个最根本的问题：<b>哲学到底是什么？普通人为什么要学哲学？</b></p><div class="quote"><div class="q">我们前面一直在用的这个“哲学”，到底是什么东西？</div><div class="src">第四章开篇之问</div></div><div class="cards g3"><div class="card"><div class="idx">一</div><h4>第一章 · 日常哲思</h4><p>用哲学处理<b>时代、社会、生活</b></p></div><div class="card"><div class="idx">二</div><h4>第二章 · 世界的洞见</h4><p>用哲学<b>认识世界</b></p></div><div class="card"><div class="idx">三</div><h4>第三章 · 思想的力量</h4><p>用哲学理解思想如何改变<b>人与自然、人与人、人与自己</b></p></div></div><p class="prose">这一课真正的核心，不是背几个哲学定义，而是理解——</p><div class="quote"><div class="q">哲学是一种帮助人重新审视已有思想、形成新思想，并进一步指导判断和行动的方法。</div><div class="src">整理者认为的本课核心</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>什么叫「智」</h2></div><div class="sd">哲学启智的起点 · 老师先定义「智」，再谈哲学</div><p class="prose">老师首先不是问“哲学是什么”，而是先问：<b>什么叫“智”？</b>他给出了一个非常实用主义的定义——</p><div class="ladder"><div class="step"><div class="t">信息 / 知识</div><div class="d">起点：还只是材料</div></div><div class="step"><div class="t">真正进入人的理解</div></div><div class="step"><div class="t">能够用于实践</div></div><div class="step"><div class="t">解决现实问题</div></div><div class="step hot"><div class="t">智</div><div class="d">这条链走完，才叫「智」</div></div></div><div class="quote"><div class="q">知道 ≠ 智慧。</div><div class="src">本课对「知道」与「智慧」的区分</div></div><div class="case"><div class="h"><span class="tag">例子</span><span class="ht">知道很多管理学理论，为什么仍然只是「知识」？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">你知道很多管理学理论，但真正遇到团队冲突的时候完全不知道怎么办，那这些仍然主要停留在“知识”。只有当知识可以帮助你：判断问题 → 找到路径 → 做出行动，才开始转化成智慧。这和整个课程一直强调的“怎么看 → 怎么想 → 怎么做”完全连起来了。</div></div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>学哲学的最终标准</h2></div><div class="sd">不是懂多少哲学家 · 而是能不能改变判断和行动</div><p class="prose">所以哲学学习的最终标准，不是“懂多少哲学家”，而是——</p><div class="quote"><div class="q">哲学能不能改变你的判断和行动？</div><div class="src">哲学学习的最终标准</div></div><p class="prose">老师甚至用了一个很世俗的问题：“学哲学能不能赚钱？”他的答案是：<b>可以。</b>但这当然不能理解成“学完康德，收入一定上涨”。整理成对照——</p><div class="duo"><div class="col neg"><h4>误读 ✕</h4><ul><li>学完康德，收入一定上涨</li><li>哲学「保证」赚钱</li></ul></div><div class="col pos"><h4>真正想表达的是 ✓</h4><ul><li>看问题更清楚</li><li>少犯判断错误</li><li>更能识别长期趋势</li><li>更清楚自己想要什么</li><li>做决策更有结构</li><li>→ 确实可能<b>间接</b>影响工作和人生结果</li></ul></div></div><p class="prose">所以这里真正值得留下来的不是“哲学保证赚钱”，而是：<b>哲学的价值必须能够回到现实判断。</b></p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>普通人能不能学哲学</h2></div><div class="sd">本课的一条重要主线 · 反驳一种传统印象</div><p class="prose">这是这一课非常重要的一条主线。老师在反驳一种传统印象——“哲学是少数聪明人、专业哲学家才学的东西”</p><p class="prose">他的答案非常明确：<b>普通人完全可以学哲学。</b>而且他给出的理由不是“每个人都要成为哲学教授”，而是——</p><div class="quote"><div class="q">哲学首先是一种思考能力，而思考并不是哲学家的专利。</div><div class="src">老师给出的理由 · 非常值得保留的一点</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>专业哲学与生活哲学</h2></div><div class="sd">普通人学哲学 ≠ 研究专业哲学 · 两个层次要分清</div><p class="prose">普通人学哲学，不等于去研究专业哲学。这里最好区分两个层次：</p><div class="cards g2"><div class="card"><div class="idx">层一</div><h4>专业哲学</h4><p>研究哲学史、原典、概念史、逻辑、认识论、伦理学、形而上学——目标可能是<b>学术研究</b></p></div><div class="card"><div class="idx">层二</div><h4>生活哲学</h4><p>概念澄清、判断前提、分辨事实和价值、理解不同视角、识别逻辑错误、反思自己的假设、形成行动原则——目标是<b>把人生想清楚一点</b></p></div></div><p class="prose">所以老师说自己是“导游”。他并不是想把每个人培养成哲学家，而是“<b>告诉你哲学这座森林有哪些入口、哪些路径、哪些危险。</b>”</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>黑屋子与导游</h2></div><div class="sd">做学问的四种状态 · 老师为什么自称导游</div><p class="prose">这一段虽然很口语化，但很有意思。老师把“做学问”比喻成进入黑屋子，可以整理成四种状态：</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>困在里面</h4><p>进入专业以后越来越细，最后只知道一个狭窄领域</p></div><div class="card"><div class="idx">貳</div><h4>专家</h4><p>找不到正常出口，但能<b>“自己打一个洞出来。”</b>——在一个非常具体的问题上做出突破</p></div><div class="card"><div class="idx">叁</div><h4>大家</h4><p>不仅知道屋子里面有什么，还能够找到窗户，<b>“从专业内部看到更大的世界。”</b></p></div><div class="card"><div class="idx">肆</div><h4>大师</h4><p>知道门在哪里、窗在哪里、屋子怎样构造，最后还能<b>“从原来的门走出来。”</b>——真正掌握整体，又能回到普通世界</p></div></div><p class="prose">老师给自己定位：<b>导游。</b>不是把你永久关进哲学黑屋，而是——</p><div class="quote"><div class="q">带你进去看看，再把你带出来。</div><div class="src">导游定位的真正含义 —— 哲学普及，而不是专业哲学训练</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>章之四问与「是什么」四问法</h2></div><div class="sd">第四章的结构 · 以及老师偷偷教你的通用分析法</div><p class="prose">第四章准备回答四个问题——这部分非常值得记住，因为它其实已经给出整章结构：</p><div class="cards g4"><div class="card"><div class="idx">01</div><h4>哲学是什么？</h4><p><b>定义</b>问题</p></div><div class="card"><div class="idx">02</div><h4>哲学由什么组成？</h4><p><b>结构</b>问题</p></div><div class="card"><div class="idx">03</div><h4>哲学怎样变化？</h4><p><b>历史、发展</b>问题</p></div><div class="card"><div class="idx">04</div><h4>哲学有什么目的和功能？</h4><p><b>价值</b>问题</p></div></div><div class="quote"><div class="q">老师不只是告诉你“哲学是什么”，还在偷偷教你“怎样分析一个东西是什么”。</div><div class="src">这一课更深的一层</div></div><p class="prose">老师最后自己点出来了。当我们问 <b>X是什么？</b> 可以从四个角度回答：</p><div class="cards g2"><div class="card"><div class="idx">①</div><h4>从现象 / 特征看</h4><p>它表现成什么样？有什么特征？——<b>外在描述</b></p></div><div class="card"><div class="idx">②</div><h4>从结构看</h4><p>它由哪些部分组成？部分之间是什么关系？——<b>结构描述</b></p></div><div class="card"><div class="idx">③</div><h4>从变化看</h4><p>它从哪里来？经历了怎样的发展？未来可能怎样变化？——<b>动态描述</b></p></div><div class="card"><div class="idx">④</div><h4>从目的 / 功能看</h4><p>它解决什么问题？为什么存在？有什么作用？——<b>功能描述</b></p></div></div><p class="prose">这个框架其实非常有价值。以后你分析一个组织、一项制度、AI、医院、家庭医生制度、一种商业模式，都可以问：<b>现象｜结构｜变化｜功能</b></p><div class="chips"><span class="chip">组织</span><span class="chip">制度</span><span class="chip">AI</span><span class="chip">医院</span><span class="chip">家庭医生制度</span><span class="chip">商业模式</span></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>「哲学是什么」的四种答案</h2></div><div class="sd">表面上互相矛盾 · 其实是从不同角度看哲学</div><p class="prose">原课给出了好几种“哲学是什么”的答案。表面上互相矛盾，其实是在从不同角度看哲学。</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>世界观、人生观、价值观的学说</h4><p>比较传统的教材式定义。强调哲学处理<b>“最总体、最根本的问题。”</b>例如：世界是什么？人是什么？什么是好的生活？我应该怎样行动？</p></div><div class="card"><div class="idx">貳</div><h4>哲学史 / 思想史</h4><p>“哲学就是哲学史。”——很多哲学问题不能脱离前人的思想争论理解。比如“自由是什么”：从柏拉图、亚里士多德，到康德、黑格尔，再到现代哲学，不同思想不断回应彼此</p></div><div class="card"><div class="idx">叁</div><h4>形而上学</h4><p>研究<b>经验世界背后的根本结构</b>：什么叫存在？时间是什么？因果是什么？自由存在吗？心灵是什么？世界有没有最终根据？</p></div><div class="card"><div class="idx">肆</div><h4>方法论</h4><p><b>“哲学教的不是固定答案，而是怎样思考。”</b>——这是这一课老师明显最喜欢的定义之一</p></div></div><div class="quote"><div class="q">哲学不过瘾，形而上学才过瘾。</div><div class="src">老师借牟宗三谈哲学与形而上学</div></div><p class="prose">这里真正涉及一个传统问题：<b>哲学是否主要研究经验世界背后的根本结构？</b>但需要注意，不能简单说“哲学 = 形而上学”——</p><div class="duo"><div class="col neg"><h4>不准确的等式 ✕</h4><ul><li>哲学 = 形而上学</li></ul></div><div class="col pos"><h4>更准确地说 ✓</h4><ul><li>形而上学是哲学的<b>重要核心领域之一</b>，而不是全部哲学</li><li>现代哲学还包括：伦理学、逻辑学、认识论、科学哲学、政治哲学、语言哲学……</li></ul></div></div><div class="case"><div class="h"><span class="tag">追问</span><span class="ht">方法论：看到一个现象，不马上下结论</span><span class="ar">▸</span></div><div class="sm"><div class="inner">而是问：为什么？概念是什么？证据是什么？前提是什么？还有没有另一种解释？我的判断能不能普遍成立？这就是哲学的方法论价值。</div></div></div><div class="quote"><div class="q">哲学不只是“知道什么”，更是“怎样知道”。</div><div class="src">方法论定义最点题的一句 · 这一点非常重要</div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>思维思维 · 反思</h2></div><div class="sd">黑格尔的绕口表达 · 哲学非常核心的一种能力</div><p class="prose">老师用了一个非常绕口的表达：“思维思维。”原课试图解释成“思想自动成为思想”——这不是最清楚的表达。更容易理解的方式是：</p><div class="h3blk">哲学是思想对思想本身的反思</div><div class="duo"><div class="col neg"><h4>普通思考 ✕</h4><ul><li>我怎么把这个项目做好？</li></ul></div><div class="col pos"><h4>哲学进一步问 ✓</h4><ul><li>我为什么认为“做好”是这样？</li><li>我的判断标准是什么？</li><li>我用的概念是否合理？</li><li>我的前提从哪里来？</li></ul></div></div><p class="prose">也就是说——普通思考是<b>想事情</b>，哲学是<b>想自己是怎么想事情的</b>。这就是“反思”。也因此，哲学为什么能产生“新思想”？因为它不是只接受已有思想，而是把已有思想拿回来审视：</p><div class="ladder"><div class="step"><div class="t">已有观点</div></div><div class="step"><div class="t">检查概念</div></div><div class="step"><div class="t">检查前提</div></div><div class="step"><div class="t">发现矛盾</div></div><div class="step"><div class="t">重新连接</div></div><div class="step"><div class="t">提出新的解释</div></div><div class="step hot"><div class="t">新思想</div></div></div><p class="prose">这就和前面课程讲的想象、判断、推理连起来了。所以可以说：<b>哲学 = 对已有思想进行加工、检验与重构。</b></p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>思想工厂与炸药工厂</h2></div><div class="sd">两个比喻 · 哲学如何「生产」新思想</div><div class="quote"><div class="q">哲学是生产思想的工厂。</div><div class="src">老师最后非常喜欢的一个比喻 · 无论这句话具体归于谁，作为课程比喻很好理解</div></div><div class="ladder"><div class="step"><div class="t">原料</div><div class="d">已有知识、经验、问题</div></div><div class="step"><div class="t">加工</div><div class="d">怀疑、分析、比较、推理、反思</div></div><div class="step"><div class="t">产品</div><div class="d">新的概念、新的判断、新的方法</div></div><div class="step hot"><div class="t">应用</div><div class="d">指导现实行动</div></div></div><p class="prose">于是：<b>经验 / 知识 → 哲学加工 → 新思想 → 行动。</b>这就是哲学“启智”的真正逻辑。</p><p class="prose">老师进一步把哲学比喻成“<b>生产思想炸药的工厂</b>”。这里的“炸药”不是物理意义的，而是“把阻碍我们理解世界的旧观念炸开”。</p><div class="case"><div class="h"><span class="tag">炸开</span><span class="ht">哪些旧观念曾被新思想「炸开」？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">过去有人认为“地球一定是宇宙中心”——新思想炸开它；过去有人认为“王权天然来自神”——新的政治哲学重新挑战它；过去可能认为“人只能服从命运”——新的自由思想重新定义个人。所以思想的“爆炸性”在于：它能够摧毁原本被认为理所当然的前提。这个比喻是有力量的。</div></div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>不是什么都怀疑</h2></div><div class="sd">拆解 → 检验 → 重构 · 不是为了破坏而破坏</div><p class="prose">但哲学真正的目标不是“什么都怀疑”。如果只理解成“哲学就是不断推翻别人”，那也不对。更完整的过程是：</p><div class="ladder"><div class="step"><div class="t">拆解</div><div class="d">先拆掉一个错误观念</div></div><div class="step"><div class="t">检验</div></div><div class="step hot"><div class="t">重构</div><div class="d">必须回答：新的、更好的解释是什么？</div></div></div><p class="prose">所以真正成熟的哲学不是“这个不对，那个也不对”，而是——</p><div class="quote"><div class="q">在质疑之后，重新建立更清楚、更有理由的判断。</div><div class="src">对「真正成熟的哲学」的界定</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>与第一章的闭环</h2></div><div class="sd">看 → 想 → 做 · 前四章串成一条线</div><p class="prose">第一章开头其实问过三个问题：<b>怎么看？怎么想？怎么做？</b>到了第四章，老师又重新把哲学定义为“教会你如何看、如何想、应该怎么做”——整门课开始形成闭环：</p><div class="ladder"><div class="step"><div class="t">看</div><div class="d">认识事实、现象、结构</div></div><div class="step"><div class="t">想</div><div class="d">分析前提、概念、关系、可能</div></div><div class="step hot"><div class="t">做</div><div class="d">形成判断，进入行动</div></div></div><p class="prose">所以哲学不是最后停留在“想”，而应该完成<b>看 → 想 → 做</b>。把前四章串起来，课程的大结构也越来越清楚：</p><div class="tl"><div class="ev"><div class="dyn">第一章 · 日常哲思</div><p><b>面对生活</b>——看清现实</p></div><div class="ev"><div class="dyn">第二章 · 世界的洞见</div><p><b>认识世界</b>——建立认知框架</p></div><div class="ev"><div class="dyn">第三章 · 思想的力量</div><p><b>改变世界与自己</b>——思想提供方向</p></div><div class="ev"><div class="dyn">第四章 · 哲学启智</div><p><b>反思思想本身</b>——学习怎样思考</p></div></div><p class="prose">也就是：<b>生活 → 认识 → 思想 → 反思。</b>这实际上已经开始进入哲学真正的核心区域。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>批判性提醒</h2></div><div class="sd">关于「普通人能不能学哲学」的引文 · 要谨慎</div><p class="prose">老师谈到罗素、熊十力等人的话，这些内容明显带有课堂转述色彩。整理者特别提醒：</p><div class="warn"><div class="wt">课堂转述的引文，不宜当作原话记忆</div><ul><li>尤其“哲学不给普通人学”以及更极端的版本，不建议作为罗素的准确原话记忆，除非后续找到可靠出处</li><li>历史上大量哲学作品本身就是围绕怎样生活、怎样判断、怎样做人、怎样理解世界这些普通人都面对的问题展开</li></ul></div><div class="quote"><div class="q">你不需要依赖某位哲学家是否说过这句话，才能判断普通人能不能学哲学。</div><div class="src">整理者的批判性提醒</div></div><p class="prose">所以更稳妥的结论是：<b>专业哲学有门槛，但哲学思考不是专业哲学家的专利。</b></p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>四种能力与完整模型</h2></div><div class="sd">这一课真正值得普通人学的 · 从知识到智慧</div><p class="prose">这一课真正值得普通人学的，不是记住“康德说了什么，黑格尔说了什么”，而是四种能力：</p><div class="cards g2"><div class="card"><div class="idx">①</div><h4>概念能力</h4><p>别人说“公平”，你会问：“这里的公平到底什么意思？”</p></div><div class="card"><div class="idx">②</div><h4>前提意识</h4><p>别人说“只要努力一定成功”，你会问：“这句话成立需要什么条件？”</p></div><div class="card"><div class="idx">③</div><h4>多视角能力</h4><p>一件事情，除了我的角度，还有没有别的解释？</p></div><div class="card"><div class="idx">④</div><h4>反思能力</h4><p>最重要的是：“我为什么会这样想？”——我的判断来自事实？经验？习惯？情绪？利益？偏见？</p></div></div><div class="h3blk">把这一课压缩成一个完整模型</div><div class="ladder"><div class="step"><div class="t">知识</div></div><div class="step"><div class="t">进入人的理解</div></div><div class="step"><div class="t">反思</div><div class="d">对已有思想重新审视：概念澄清 · 检查前提 · 分析结构 · 比较观点 · 重新推理</div></div><div class="step"><div class="t">新思想</div></div><div class="step"><div class="t">指导</div><div class="d">怎么看 · 怎么想 · 怎么做</div></div><div class="step"><div class="t">解决现实问题</div></div><div class="step hot"><div class="t">智慧</div></div></div><p class="prose">这就是这堂课从“哲学”到“启智”的完整逻辑：<b>知识 → 反思 → 新思想 → 判断 → 行动 → 智慧。</b>另一个值得长期记忆的模型，是老师无意中教给你的“一个东西‘是什么’的四层分析法”——现象、结构、变化、功能。从普通人的角度看，它比“哲学就是形而上学”更值得长期记忆。</p><div class="h3blk">如果这一课只记 6 句话</div><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>从知识到智慧</h4><p>知识只有进入实践、帮助我们解决问题，才开始转化成智慧。</p></div><div class="card"><div class="idx">貳</div><h4>谁能学</h4><p>普通人不必成为专业哲学家，但每个人都可以学习哲学式思考。</p></div><div class="card"><div class="idx">叁</div><h4>不止一个定义</h4><p>哲学不是只有一个定义，它可以从世界观、思想史、形而上学、方法论等不同角度理解。</p></div><div class="card"><div class="idx">肆</div><h4>核心动作</h4><p>哲学最重要的动作之一，是“思想反思思想”——不仅想问题，还要检查自己为什么这样想。</p></div><div class="card"><div class="idx">伍</div><h4>不只是破坏</h4><p>哲学不是只破坏旧观点，而是经过拆解、检验之后重新建立更好的思想。</p></div><div class="card"><div class="idx">陆</div><h4>回到现实</h4><p>对普通人而言，哲学最终应该回到“怎么看、怎么想、怎么做”。</p></div></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="4">0</div><div class="l">「哲学是什么」答案</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">「是什么」四问法</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">黑屋子四种状态</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">一课带走六句话</div></div></div><div class="panel"><h3><span class="no2">①</span>「是什么」四问分类练习</h3><div class="pd">判断下列问题属于「外在 / 结构 / 动态 / 功能」哪种描述，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文①：从现象 / 特征看——它表现成什么样、有什么特征，这是外在描述"><div class="st">1. 它表现成什么样？有什么特征？</div><div class="opts"><button data-ok="1">外在描述</button><button data-ok="0">结构描述</button><button data-ok="0">动态描述</button><button data-ok="0">功能描述</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文②：从结构看——组成与部分间关系，这是结构描述"><div class="st">2. 它由哪些部分组成？部分之间是什么关系？</div><div class="opts"><button data-ok="0">外在描述</button><button data-ok="1">结构描述</button><button data-ok="0">动态描述</button><button data-ok="0">功能描述</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文③：从变化看——来历、发展、未来，这是动态描述"><div class="st">3. 它从哪里来？经历了怎样的发展？未来可能怎样变化？</div><div class="opts"><button data-ok="0">外在描述</button><button data-ok="0">结构描述</button><button data-ok="1">动态描述</button><button data-ok="0">功能描述</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文④：从目的 / 功能看——解决什么问题、为什么存在、有什么作用，这是功能描述"><div class="st">4. 它解决什么问题？为什么存在？有什么作用？</div><div class="opts"><button data-ok="0">外在描述</button><button data-ok="0">结构描述</button><button data-ok="0">动态描述</button><button data-ok="1">功能描述</button></div><div class="verdict"></div></div><div class="sort-it" data-why="「组成」问的是部分与部分之间的关系——对应结构描述（结构问题）"><div class="st">5. 第四章第二问：「哲学由什么组成？」</div><div class="opts"><button data-ok="0">外在描述</button><button data-ok="1">结构描述</button><button data-ok="0">动态描述</button><button data-ok="0">功能描述</button></div><div class="verdict"></div></div><div class="sort-it" data-why="「目的和功能」问它解决什么问题、为什么存在——对应功能描述（价值问题）"><div class="st">6. 第四章第四问：「哲学有什么目的和功能？」</div><div class="opts"><button data-ok="0">外在描述</button><button data-ok="0">结构描述</button><button data-ok="0">动态描述</button><button data-ok="1">功能描述</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>四种能力通关清单</h3><div class="pd">对照本课四种能力与「智」的生成链，检验自己是否已经上手（勾选进度自动保存本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能复述「智」的生成链：信息/知识 → 真正进入理解 → 用于实践 → 解决现实问题</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">概念能力 · 别人说“公平”时，我会问：这里的公平到底什么意思？</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">前提意识 · 听到“只要努力一定成功”，我会问：这句话成立需要什么条件？</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">多视角 · 一件事除了我的角度，我还会找有没有别的解释</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">反思 · 我会问自己：我为什么会这样想？我的判断来自事实、经验、习惯，还是情绪、利益、偏见？</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">四问法 · 分析任何“X是什么”，我能从现象、结构、变化、功能四个角度展开</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>在这门课里，「智」的生成链是什么？</div><div class="ans"><button data-ok="0">A. 读书 → 听课 → 记笔记 → 考试</button><button data-ok="1">B. 信息/知识 → 真正进入人的理解 → 能够用于实践 → 解决现实问题</button><button data-ok="0">C. 天赋 → 学习 → 积累 → 声望</button><button data-ok="0">D. 疑问 → 查资料 → 记住 → 复述</button></div><div class="exp">源文对「智」的定义是一条链：信息/知识 ↓ 真正进入人的理解 ↓ 能够用于实践 ↓ 解决现实问题 ↓ 智。所以“知道 ≠ 智慧”。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>老师用「学哲学能不能赚钱」这个很世俗的问题，真正想表达什么？</div><div class="ans"><button data-ok="0">A. 学完康德，收入一定上涨</button><button data-ok="0">B. 哲学能保证财富自由</button><button data-ok="1">C. 哲学的价值必须能够回到现实判断</button><button data-ok="0">D. 学哲学不如学一门手艺</button></div><div class="exp">源文明确说“这当然不能理解成：学完康德，收入一定上涨”；真正想表达的是——哲学的价值必须能够回到现实判断。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>老师把「做学问」比喻成进入黑屋子，「大师」的状态是？</div><div class="ans"><button data-ok="0">A. 困在里面，只知道一个狭窄领域</button><button data-ok="0">B. 自己打一个洞出来</button><button data-ok="0">C. 从专业内部看到更大的世界</button><button data-ok="1">D. 从原来的门走出来</button></div><div class="exp">源文第四种：大师知道门在哪里、窗在哪里、屋子怎样构造，最后还能“从原来的门走出来”——真正掌握整体，又能回到普通世界。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>牟宗三「哲学不过瘾，形而上学才过瘾」引出的传统问题是什么？</div><div class="ans"><button data-ok="1">A. 哲学是否主要研究经验世界背后的根本结构</button><button data-ok="0">B. 哲学能不能赚钱</button><button data-ok="0">C. 哲学是否等于哲学史</button><button data-ok="0">D. 哲学是否已经过时</button></div><div class="exp">源文：这里真正涉及一个传统问题——哲学是否主要研究经验世界背后的根本结构？比如什么叫存在、时间是什么、自由存在吗。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>黑格尔「思维思维」更容易理解的方式是？</div><div class="ans"><button data-ok="0">A. 思维速度变得更快</button><button data-ok="0">B. 思想自动成为思想</button><button data-ok="1">C. 哲学是思想对思想本身的反思</button><button data-ok="0">D. 用思想控制思想</button></div><div class="exp">源文：原课试图解释成“思想自动成为思想”，这不是最清楚的表达；更容易理解的方式是——哲学是思想对思想本身的反思。普通思考是“想事情”，哲学是“想自己是怎么想事情的”。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">知识只有进入实践、帮助我们解决问题，才开始转化成智慧。</div><div class="src">六句话 · ①</div></div><div class="quote"><div class="q">哲学最重要的动作之一，是“思想反思思想”——不仅想问题，还要检查自己为什么这样想。</div><div class="src">六句话 · ④</div></div><div class="quote"><div class="q">对普通人而言，哲学最终应该回到“怎么看、怎么想、怎么做”。</div><div class="src">六句话 · ⑥</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../08-肉体与灵魂/index.html">← 上一篇 · 肉体与灵魂</a><a href="../10-哲学的构成/index.html">下一篇 · 哲学的构成 →</a><span class="sp"></span><span class="cur">哲学是什么</span></div></nav>
+<footer class="coda"><div class="wm2">智</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">哲学不是替你准备答案，<br>而是训练你<b>怎样产生、检验和重构自己的思想</b>。<br><br>知识 → 反思 → 新思想 → 判断 → 行动 → 智慧</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十讲《哲学是什么》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s7", "#s8", "#s9", "#s14"], "sortok": [0, 1, 2, 3, 1, 3], "quizok": [1, 2, 3, 0, 2], "ckkey": "zx09-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

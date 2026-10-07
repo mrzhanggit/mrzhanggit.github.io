@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哲学的变化 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx11-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../10-哲学的构成/index.html">← 上一篇 · 哲学的构成</a><a href="../12-哲学的功能与目的/index.html">下一篇 · 哲学的功能与目的 →</a><span class="sp"></span><span class="cur">哲学的变化</span></div></nav>
+<header class="hero" id="top"><div class="wm">转</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第四章《哲学启智》第三节</div>
+  <div class="no">拾貳</div>
+  <h1>哲学的变化</h1>
+  <div class="sub">上一课画内部地图 · 这一课画演化地图</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>哲学为什么不会停在一个答案上？因为旧框架出现问题之后，<br>新哲学总会重新定义问题，并产生新的思考方法——<b>认识论转向、辩证与实践转向、逻辑与语言转向</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一课要解决什么</a><a href="#s2">貳 · 开头第一个重要校正</a><a href="#s3">叁 · 康德 · 认识论转向</a><a href="#s4">肆 · 费希特与谢林 · 观念论的推进</a><a href="#s5">伍 · 黑格尔 · 辩证运动</a><a href="#s6">陆 · 马克思 · 实践转向</a><a href="#s7">柒 · 语言转向与罗素</a><a href="#s8">捌 · 维特根斯坦 · 从界限到语言游戏</a><a href="#s9">玖 · 20世纪图景与两处修正</a><a href="#s10">拾 · 学科分化与哲学的新角色</a><a href="#s11">拾壹 · 哲学为什么不断变化</a><a href="#s12">拾貳 · 演化骨架 · 七人与四阶段</a><a href="#s13">拾叁 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>思想怎样修正思想</b><span>旧框架出现问题 → 新哲学重新定义问题</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>认识论转向</b><span>康德：人凭什么能够认识世界？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>辩证推进</b><span>费希特 → 谢林 → 黑格尔：寻找更高层次的统一</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>实践转向</b><span>马克思：思想怎样进入现实历史？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>逻辑与语言转向</b><span>罗素 → 维特根斯坦：语言如何塑造哲学问题？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>演化的动力</b><span>问题 → 回答 → 新问题 → 新回答</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>掌握演化线</b><span>存在 → 认识 → 实践 → 语言/方法</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一课要解决什么</h2></div><div class="sd">放回第四章 · 从哲学内部地图到哲学演化地图</div><p class="prose">这一课是第四章《哲学启智》的第三节。上一课回答“哲学由什么组成”，画的是<b>哲学内部地图</b>；这一课回答“哲学怎样变化”，画的是<b>哲学演化地图</b>。开篇的引导问题是：</p><div class="quote"><div class="q">哲学为什么不会停在一个答案上？后来的哲学家为什么总要重新处理前人的问题？</div><div class="src">整理者开篇提出的全课之问</div></div><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>第一节 · 哲学是什么</h4><p>回答“哲学这东西究竟是什么”</p></div><div class="card"><div class="idx">貳</div><h4>第二节 · 哲学由什么组成</h4><p>回答“形而上学、认识论、价值论、美学分别研究什么”</p></div><div class="card"><div class="idx">叁</div><h4>第三节 · 哲学怎样变化</h4><p>也就是今天——<b>“哲学思想为什么一代一代地变？”</b></p></div></div><p class="prose">所以这节课真正研究的是<b>“思想怎样修正思想”</b>——这恰好呼应第一节我们总结的：</p><div class="quote"><div class="q">哲学就是“思想反思思想”。</div><div class="src">第一节的总结 · 也是理解本课的钥匙</div></div><p class="prose">整理者把口语和一些不准确的哲学史表述整理以后，认为这一课真正值得掌握的主线是——<b>哲学的变化，本质上是“旧框架出现问题 → 新哲学重新定义问题 → 产生新的思考方法”</b>：</p><div class="ladder"><div class="step"><div class="t">旧框架出现问题</div><div class="d">旧理论解决了一些问题，又暴露出新问题</div></div><div class="step"><div class="t">新哲学重新定义问题</div><div class="d">后来的哲学家总要重新处理前人的问题</div></div><div class="step hot"><div class="t">产生新的思考方法</div><div class="d">由此浓缩出三个重大转向 ↓</div></div></div><div class="cards g3"><div class="card"><div class="idx">一</div><h4>认识论转向</h4><p>康德 · 人凭什么能够认识世界？</p></div><div class="card"><div class="idx">二</div><h4>辩证与实践转向</h4><p>费希特 · 谢林 · 黑格尔 · 马克思 · 对立如何在发展与实践中获得统一</p></div><div class="card"><div class="idx">三</div><h4>逻辑与语言转向</h4><p>罗素 · 维特根斯坦 · 哲学问题能否被逻辑与语言澄清</p></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>开头第一个重要校正</h2></div><div class="sd">“柏拉图以后都是注脚”不是海德格尔说的 · 出处必须记对</div><p class="prose">老师开头说——</p><div class="quote"><div class="q">“海德格尔说，柏拉图以后的哲学都是对柏拉图哲学的解释。”</div><div class="src">老师开头的说法 · 整理者随后立即校正出处</div></div><div class="warn"><div class="wt">整理者校正 · 这句话的真正出处</div><ul><li>这个著名说法通常归于英国哲学家、数学家<b>阿尔弗雷德·诺思·怀特海（Alfred North Whitehead）</b></li><li>他著名地说，欧洲哲学传统最稳妥的概括，就是“由一系列对柏拉图的注脚组成”</li><li>所以这个出处<b>不要记成海德格尔</b></li></ul></div><div class="quote"><div class="q">“由一系列对柏拉图的注脚组成。”</div><div class="src">怀特海对欧洲哲学传统的著名概括 · 真正出处</div></div><div class="warn"><div class="wt">整理者再校正 · 一句类似的引申</div><ul><li>至于<b>“康德以后的哲学都是对康德哲学的解释”</b>——更适合作为一种高度概括，而不是某个同样确定的经典原话</li></ul></div><p class="prose">但老师想表达的思想本身是对的——</p><div class="quote"><div class="q">重大哲学家常常重新定义一个问题，之后很长时间的哲学都不得不回应它。</div><div class="src">整理者对老师用意的还原 · 也是理解全课的钥匙</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>康德 · 认识论转向</h2></div><div class="sd">“哥白尼式革命” · 从“世界是什么”到“人凭什么能够认识世界”</div><p class="prose">为什么这堂课从康德开始？因为康德确实是近现代哲学的一个大转折点——老师前面几节已经反复提到康德的<b>“哥白尼式革命”</b>。过去一个直觉式认识论模型是：</p><div class="ladder"><div class="step"><div class="t">外部世界已经在那里</div></div><div class="step"><div class="t">人去认识它</div></div><div class="step"><div class="t">我们的思想如果符合对象</div></div><div class="step"><div class="t">得到知识</div></div></div><p class="prose">康德则转而问——</p><div class="quote"><div class="q">对象之所以能够成为我们经验中的对象，需要满足什么样的人类认知条件？</div><div class="src">康德翻转认识方向的一问</div></div><p class="prose">他认为空间、时间以及知性的基本范畴<b>参与构成</b>我们能够经验到的世界，因此我们认识的是<b>现象</b>，而不是事物脱离我们认知条件时“自身是什么”。康德真正改变的问题是：</p><div class="quote"><div class="q">不只问“世界是什么”，还问“人的认识结构如何参与我们所经验到的世界”。</div><div class="src">整理者对“认识论转向”的概括</div></div><div class="h3blk">康德留下的“大麻烦”：现象与物自身</div><div class="cards g2"><div class="card"><div class="idx">现</div><h4>现象</h4><p>进入人类可能经验范围的对象——<b>我们可以认识</b></p></div><div class="card"><div class="idx">物</div><h4>物自身</h4><p>原则上<b>不能成为经验知识对象</b>——因为只能通过“人的感性形式＋知性结构”去认识</p></div></div><div class="warn"><div class="wt">整理者辨析 · 别记成“两个世界”</div><ul><li>严格说，不是简单<b>“有两个世界，一个现象世界，一个物自身世界。”</b></li><li>康德究竟是在讲“两种对象”还是“同一对象的两种考察方式”，哲学界长期存在解释争论</li></ul></div><p class="prose">但对这门课，记住核心张力就够了：<b>我们认识的世界 ≠ 必然等于世界脱离我们的认识条件时自身是什么。</b>这个问题直接引爆了后来的德国观念论。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>费希特与谢林 · 观念论的推进</h2></div><div class="sd">从“自我活动”到“自然与精神” · 这是第一个推进</div><p class="prose">问题来了——如果现象是我们能够认识的，而“物自身”原则上不能认识，那么费希特要问：</p><div class="quote"><div class="q">哲学为什么还要保留这个不可认识的“东西”？</div><div class="src">费希特对康德结构的不满 · 认为它不够彻底</div></div><p class="prose">于是他试图从<b>自我活动</b>出发重新构造整个认识体系。老师说的——</p><div class="quote"><div class="q">“自我产生非我”</div><div class="src">老师的表述 · 确实抓到了费希特《知识学》的著名结构</div></div><p class="prose">更准确地说，费希特从“自我的自我设定”出发，再讨论“非我”的对置，以及自我和非我的相互限制；他试图从主体的活动解释我们为什么会经验到一个具有客观性的世界。最简单地记：</p><div class="cards g2"><div class="card"><div class="idx">康</div><h4>康德</h4><p>主体有认识结构，但<b>仍保留物自身</b></p></div><div class="card"><div class="idx">费</div><h4>费希特</h4><p>能不能更彻底，<b>从主体活动本身解释主客关系</b>？——这是第一个推进</p></div></div><div class="warn"><div class="wt">整理者提醒 · “矛盾律→同一律→统一律”不要机械背</div><ul><li>老师为了讲课进行了<b>很强的简化</b></li><li>费希特的结构确实包括自我设定、非我的对置、二者的相互限制，但不能简单等同于<b>“同一律、矛盾律、统一律三步公式”</b></li><li>尤其不要进一步记成<b>“正—反—合”</b>——这是后人经常用来简化德国观念论的框架，并不是理解费希特或黑格尔最可靠的方法</li><li>真正要记：<b>哲学试图解决主体与客体为什么既对立又能够统一的问题</b></li></ul></div><p class="prose">谢林在这条链中扮演<b>过渡人物</b>（费希特 → 黑格尔）——这个方向可以保留。费希特比较突出“自我的活动”；谢林则越来越重视：</p><div class="quote"><div class="q">自然本身不能仅仅被看成“非我”或主体的对面。</div><div class="src">谢林的推进方向</div></div><p class="prose">他试图让<b>自然与精神</b>成为同一个更深层绝对者的不同展开——因此谢林确实成为德国观念论中，从费希特走向更强整体性哲学的重要人物。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>黑格尔 · 辩证运动</h2></div><div class="sd">矛盾不一定意味着思考失败 · 从二元张力到更高层次的统一</div><p class="prose">老师把黑格尔总结成<b>“矛盾的对立统一”</b>——这有启发性，但如果以后真正学黑格尔，必须再精确一点。黑格尔真正重要的是：</p><div class="quote"><div class="q">矛盾并不一定意味着思考失败；一个概念自身的局限和矛盾，可能推动它转化为更丰富的概念。</div><div class="src">黑格尔部分最值得记住的判断</div></div><p class="prose">所以黑格尔的辩证运动更像一条链：</p><div class="ladder"><div class="step"><div class="t">一个概念</div></div><div class="step"><div class="t">暴露自身限制</div></div><div class="step"><div class="t">产生内在否定和矛盾</div></div><div class="step"><div class="t">被扬弃到更丰富的结构</div></div><div class="step hot"><div class="t">新的结构再次发生运动</div></div></div><div class="warn"><div class="wt">整理者提醒 · “正—反—合”不是黑格尔本人的公式</div><ul><li>SEP（斯坦福哲学百科全书）特别提醒：黑格尔本人并没有把自己的哲学简单描述成后来流行的<b>“正题—反题—合题”</b>公式</li><li>这点很重要——记住“矛盾可能是发展的动力”即可，不要靠三步公式去背</li></ul></div><div class="quote"><div class="q">矛盾不是纯粹错误，而可能是发展的动力。</div><div class="src">老师“矛盾的对立统一”总结的内核</div></div><div class="h3blk">从康德到黑格尔，究竟发生了什么？</div><div class="ladder"><div class="step"><div class="t">康德 · 划了一条边界</div><div class="d">“我们能认识现象，不能认识物自身。”</div></div><div class="step"><div class="t">费希特 · 追问</div><div class="d">能不能从主体自身的活动解释主客关系？</div></div><div class="step"><div class="t">谢林 · 进一步</div><div class="d">自然与精神能否来自一个更统一的基础？</div></div><div class="step hot"><div class="t">黑格尔 · 进一步</div><div class="d">主客、有限无限、思维存在之间的对立本身，能不能通过辩证发展获得统一？</div></div></div><p class="prose">因此整个过程可以概括成：<b>从二元张力 → 寻找更高层次的统一</b>。这才是老师所谓“一元论追求”的真正主线。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>马克思 · 实践转向</h2></div><div class="sd">哲学不能只在思想里完成统一 · 要进入实践</div><p class="prose">老师在这里讲了一句非常值得留下来的话：</p><div class="quote"><div class="q">哲学不能只在思想里完成统一，要进入实践。</div><div class="src">马克思部分最值得保留的一句</div></div><div class="warn"><div class="wt">整理者的分寸提醒</div><ul><li>直接说<b>“马克思哲学的本质就是实践哲学”</b>，仍然属于一种解释路径</li><li>但“实践”确实是马克思哲学<b>非常重要的概念</b></li></ul></div><p class="prose">马克思吸收了黑格尔的历史性、辩证性，同时把分析重心转向<b>现实的人、物质生产、社会关系、历史实践</b>（据斯坦福哲学百科全书）。所以转折可以这样理解：</p><div class="duo"><div class="col neg"><h4>黑格尔</h4><ul><li><b>思想</b>如何运动</li></ul></div><div class="col pos"><h4>马克思</h4><ul><li><b>现实社会的人</b>怎样在实践中改变世界，也改变自己</li></ul></div></div><p class="prose">老师还把王阳明的“知行合一”拿来类比马克思的实践——这是一个很有启发性、<b>但不能简单等同</b>的比较。两者确实有一个共同问题意识：</p><div class="quote"><div class="q">思想怎样进入行动？</div><div class="src">知行合一与实践的共同问题意识</div></div><p class="prose">但<b>王阳明的心学</b>和<b>马克思的历史唯物主义</b>理论背景完全不同——王阳明强调真正的“知”不能脱离“行”；马克思强调实践，反对把哲学停留在抽象思想里。最合适的表述是：</p><div class="quote"><div class="q">两者都强调思想不能与行动完全割裂，但不能因此说两套哲学本质相同。</div><div class="src">整理者对“知行合一≈实践”类比的裁定</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>语言转向与罗素</h2></div><div class="sd">哲学第二次大变化 · 从“世界是什么”转向“语言怎么说世界”</div><p class="prose">老师后面突然从康德、黑格尔、马克思，跳到<b>罗素与维特根斯坦</b>——这其实是在进入20世纪哲学的一次重大转向：<b>语言转向</b>。过去哲学家大量直接讨论：</p><div class="quote"><div class="q">世界是什么？<br>存在是什么？</div><div class="src">传统形而上学之问</div></div><p class="prose">20世纪分析哲学越来越多地问：</p><div class="quote"><div class="q">我们表达这些问题所使用的语言结构是否清楚？<br>很多哲学难题，会不会其实来自语言误导？</div><div class="src">语言转向的两个新问题</div></div><div class="h3blk">罗素的重要性在哪里？</div><p class="prose">罗素和弗雷格等人推动了现代逻辑和分析哲学的发展。老师说——</p><div class="quote"><div class="q">罗素把形式逻辑变成“数理逻辑”。</div><div class="src">老师的说法 · 方向大致可以理解</div></div><p class="prose">罗素确实用现代逻辑来分析<b>数学基础、语言、指称、知识、世界结构</b>——他认为逻辑分析能够帮助哲学家穿透日常语言的表面结构，得到更清晰的哲学问题（据斯坦福哲学百科全书）。于是哲学的方法开始变化：</p><div class="duo"><div class="col neg"><h4>过去更多是</h4><ul><li><b>构建宏大体系</b></li></ul></div><div class="col pos"><h4>逐渐增加</h4><ul><li><b>分析概念、命题与语言结构</b></li></ul></div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>维特根斯坦 · 从界限到语言游戏</h2></div><div class="sd">早期：语言的界限就是世界的界限 · 后期：意义在使用中</div><p class="prose">老师说——</p><div class="quote"><div class="q">“语言的世界就是人的世界。”</div><div class="src">老师对维特根斯坦的概括</div></div><p class="prose">这更接近维特根斯坦早期《逻辑哲学论》的一句名言：</p><div class="quote"><div class="q">“我的语言的界限意味着我的世界的界限。”</div><div class="src">早期《逻辑哲学论》的名言</div></div><p class="prose">而后期维特根斯坦进一步转变——他不再试图寻找一种唯一理想语言，而是强调<b>语言游戏</b>和<b>意义在使用中</b>。一个词是什么意思，不能总靠寻找某个隐藏“本质”来解决，而要看：</p><div class="quote"><div class="q">人实际上在什么生活情境中怎样使用它。</div><div class="src">后期维特根斯坦的答案 · 意义在使用中</div></div><p class="prose">后期维特根斯坦甚至把哲学看成一种<b>“治疗”</b>：很多哲学困惑来自我们错误使用语言，哲学任务之一是把这种纠结解开（据斯坦福哲学百科全书）。这是真正值得记住的“语言转向”。</p><div class="cards g2"><div class="card"><div class="idx">早</div><h4>早期维特根斯坦</h4><p>《逻辑哲学论》：语言的界限意味着世界的界限——寻找理想语言</p></div><div class="card"><div class="idx">后</div><h4>后期维特根斯坦</h4><p>语言游戏 · <b>意义在使用中</b> · 哲学作为“治疗”</p></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>20世纪图景与两处修正</h2></div><div class="sd">方法转向不是一条师承直线 · “价值论变化不大”不太成立</div><p class="prose">老师把“结构主义、心理学、社会、科学哲学”全放在一条线上——整理者认为这部分原课<b>有点混杂</b>。20世纪哲学确实出现了大量“方法转向”：</p><div class="chips"><span class="chip">语言分析</span><span class="chip">现象学</span><span class="chip">解释学</span><span class="chip">结构主义</span><span class="chip">后结构主义</span><span class="chip">科学哲学</span><span class="chip">心灵哲学</span><span class="chip">社会哲学</span></div><div class="warn"><div class="wt">整理者校正 · 这些不是一条直线发展出来的</div><ul><li>这些并不是简单从<b>“维特根斯坦 → 结构主义 → 解构主义”</b>一条直线发展出来的</li><li>结构主义更多与<b>索绪尔语言学、人类学</b>等传统相关；解构则与<b>德里达及大陆哲学传统</b>有关；分析哲学与<b>弗雷格、罗素、早晚期维特根斯坦</b>等关系更密切</li><li>真正应该记住：<b>20世纪以后，哲学越来越多地研究“我们是通过什么语言、结构和方法理解世界的”</b>——而不是记一条过度简化的师承链</li></ul></div><p class="prose">整理者认为，以后复习最应该记的是两个最大的“哲学转向”：</p><div class="cards g2"><div class="card"><div class="idx">一</div><h4>第一转向 · 认识论转向</h4><p>康德：不只问“世界是什么？”，开始问<b>“人凭什么能够认识世界？”</b></p></div><div class="card"><div class="idx">二</div><h4>第二转向 · 语言/方法转向</h4><p>20世纪：不只问“我认识到了什么？”，开始进一步问<b>“我用什么概念和语言表达我的认识？”</b></p></div></div><p class="prose">于是哲学问题越来越出现一条线：<b>世界 → 认识 → 语言</b>。这条线非常重要。</p><div class="h3blk">价值论部分：原课的判断需要明显修正</div><div class="warn"><div class="wt">整理者修正 · “价值论变化不大”不太成立</div><ul><li>近现代伦理学、政治哲学、价值理论发生了<b>非常大的变化</b>：康德义务论、功利主义、尼采价值重估、存在主义、现代德性伦理复兴、元伦理学、罗尔斯正义论、女性主义伦理、关怀伦理、生命伦理、科技伦理、AI伦理……</li><li>不能理解成“形而上学、认识论不断变化，而价值论基本没变”</li><li>更准确应该说：<b>价值问题一直存在，但“什么是善、谁的价值、如何证明价值判断”一直在不断改变</b></li></ul></div><div class="warn"><div class="wt">整理者修正 · “实践理性 → 目的理性 → 精致利己主义”不能直接成立</div><ul><li>老师把康德的实践理性和今天所谓“目的理性”“精致利己主义”连在一起——这个讲法<b>过于跳跃</b></li><li>康德实践理性的核心恰恰不是“怎样最有效实现我的私人目的”，而是<b>“理性能否给行为制定普遍有效的道德法则。”</b></li><li>现代社会学里的“工具理性”“目的理性”等概念，通常与<b>韦伯</b>等传统关系更密切；“精致的利己主义”更是一种社会批评性表达</li><li>不能说“它直接是康德实践理性演化出来的”——这一段建议以后<b>不要当作严格哲学史知识记忆</b></li></ul></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>学科分化与哲学的新角色</h2></div><div class="sd">应用边界有所缩小 · 但哲学退到更基础的问题</div><p class="prose">老师最后这一部分其实非常值得思考。早期很多今天独立的学科，都曾经属于哲学：</p><div class="chips"><span class="chip">物理学</span><span class="chip">心理学</span><span class="chip">政治学</span><span class="chip">经济学</span><span class="chip">社会学</span></div><p class="prose">随着知识越来越精细，分化有一条清晰的链：</p><div class="ladder"><div class="step"><div class="t">哲学提出问题</div></div><div class="step"><div class="t">形成研究方法</div></div><div class="step"><div class="t">经验积累越来越多</div></div><div class="step hot"><div class="t">独立成为学科</div><div class="d">例如：“自然哲学”后来发展出现代自然科学；心理研究逐渐形成实验心理学</div></div></div><p class="prose">所以老师说哲学的<b>“应用边界有所缩小”</b>，有一定道理。但哲学并没有因此越来越没用——恰恰相反，当某个领域已经有成熟方法时，哲学往往<b>退到更基础的问题</b>。点击查看两个例子：</p><div class="case"><div class="h"><span class="tag">科学</span><span class="ht">科学已经非常强大</span><span class="ar">▸</span></div><div class="sm"><div class="inner">哲学不再替科学家计算粒子轨迹，但它会问：<br>“什么算科学？”<br>“什么叫因果？”<br>“模型和现实是什么关系？”<br>“AI的判断算知识吗？”</div></div></div><div class="case"><div class="h"><span class="tag">医学</span><span class="ht">医学越来越强大</span><span class="ar">▸</span></div><div class="sm"><div class="inner">哲学不会替医生做手术，但会问：<br>“什么叫死亡？”<br>“病人自主权到哪里？”<br>“基因编辑应该允许到什么程度？”</div></div></div><div class="duo"><div class="col neg"><h4>哲学的角色（过去）</h4><ul><li><b>直接提供具体知识</b></li></ul></div><div class="col pos"><h4>逐渐更多转为</h4><ul><li><b>澄清概念、检查前提、讨论边界、提供方法和价值判断</b></li></ul></div></div><p class="prose">这正好和第四章第一节<b>“哲学是思想工厂”</b>连上。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>哲学为什么不断变化</h2></div><div class="sd">因为旧思想永远会暴露新的问题</div><p class="prose">把整堂课提升一层，真正答案其实只有一个——</p><div class="quote"><div class="q">因为旧思想永远会暴露新的问题。</div><div class="src">整堂课提升一层后的真正答案</div></div><p class="prose">整理者把它写成一条环环相扣的链——每个大哲学家都解决了旧问题，又留下新问题：</p><div class="ladder"><div class="step"><div class="t">康德解决了一些问题</div><div class="d">却留下“物自身问题”——于是费希特回应</div></div><div class="step"><div class="t">费希特解决一些问题</div><div class="d">又留下“自我与自然的问题”——谢林、黑格尔回应</div></div><div class="step"><div class="t">黑格尔的体系又引出</div><div class="d">“抽象精神与现实社会的问题”——马克思回应</div></div><div class="step hot"><div class="t">宏大形而上学继续发展，又暴露</div><div class="d">“语言本身是否制造哲学问题？”——罗素、维特根斯坦回应</div></div></div><div class="duo"><div class="col neg"><h4>哲学的发展不是</h4><ul><li><b>旧哲学错了 → 新哲学完全正确</b></li></ul></div><div class="col pos"><h4>而是</h4><ul><li><b>问题 → 回答 → 新问题 → 新回答</b></li></ul></div></div><p class="prose">这一点非常重要——<b>每一个答案都会产生新的问题</b>，而哲学就是不断重新定义问题、检查前提和创造新思想。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>演化骨架 · 七人与四阶段</h2></div><div class="sd">一张表恢复整堂课 · 静态地图 + 动态地图</div><p class="prose">这一课可以整理成一条非常清晰的哲学演化链——<b>这张表基本就是整节课最需要保留的骨架</b>：</p><div class="tl"><div class="ev"><div class="dyn">康德 Kant</div><p>人怎样可能认识世界？——<b>认识论转向</b></p></div><div class="ev"><div class="dyn">费希特 Fichte</div><p>如何突破主体/物自身裂缝？——<b>自我活动</b></p></div><div class="ev"><div class="dyn">谢林 Schelling</div><p>自然与精神怎样统一？——<b>整体 / 绝对</b></p></div><div class="ev"><div class="dyn">黑格尔 Hegel</div><p>对立如何在发展中获得统一？——<b>辩证运动</b></p></div><div class="ev"><div class="dyn">马克思 Marx</div><p>思想怎样进入现实历史？——<b>实践与社会</b></p></div><div class="ev"><div class="dyn">罗素 Russell</div><p>哲学问题能否逻辑澄清？——<b>逻辑分析</b></p></div><div class="ev"><div class="dyn">维特根斯坦 Wittgenstein</div><p>语言如何塑造哲学问题？——<b>语言转向</b></p></div></div><p class="prose">如果把哲学变化再压缩成4个阶段：</p><div class="ladder"><div class="step"><div class="t">① 世界是什么</div><div class="d">传统形而上学</div></div><div class="step"><div class="t">② 我怎么知道</div><div class="d">康德认识论革命</div></div><div class="step"><div class="t">③ 思想怎样进入现实</div><div class="d">黑格尔 → 马克思</div></div><div class="step hot"><div class="t">④ 我用什么语言和方法理解世界</div><div class="d">罗素 → 维特根斯坦 → 当代各种方法</div></div></div><p class="prose">也就是——<b>存在 → 认识 → 实践 → 语言/方法</b>。这个结构非常漂亮。</p><div class="h3blk">上一课 + 这一课：静态地图 + 动态地图</div><div class="cards g2"><div class="card"><div class="idx">静</div><h4>上一课 · 静态结构图</h4><p>哲学由什么组成？——<b>形而上学｜认识论｜价值论｜美学</b></p></div><div class="card"><div class="idx">动</div><h4>这一课 · 动态演化图</h4><p>哲学怎样变化？——康德 → 费希特 → 谢林 → 黑格尔 → 马克思 → 罗素 → 维特根斯坦……</p></div></div><p class="prose">所以两课放在一起，你才能真正理解哲学——</p><div class="quote"><div class="q">哲学既有结构，又有历史；每一种结构都会随着问题变化而被重新解释。</div><div class="src">整理者的收束 · 两课合读的结论</div></div><div class="quote"><div class="q">形而上 → 认识 → 辩证 → 实践 → 逻辑 → 语言 → 多元方法</div><div class="src">这一课最核心的演化线 · 掌握它，看似散乱的人物和概念就基本全部串起来</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">重大转向</div></div><div class="cnt"><div class="v" data-c="7">0</div><div class="l">哲学家链条</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">演化阶段</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">最该记住的句子</div></div></div><div class="panel"><h3><span class="no2">①</span>归入转向练习</h3><div class="pd">把下列命题归入「认识论转向 / 辩证与实践转向 / 逻辑与语言转向」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="康德翻转认识方向的核心之问——从“世界是什么”转向“人凭什么能够认识世界”，属认识论转向"><div class="st">1. 对象之所以能够成为我们经验中的对象，需要满足什么样的人类认知条件？</div><div class="opts"><button data-ok="1">认识论转向</button><button data-ok="0">辩证与实践转向</button><button data-ok="0">逻辑与语言转向</button></div><div class="verdict"></div></div><div class="sort-it" data-why="整理者“只记住6句话”之一——现象与物自身正是认识论转向留下的核心张力"><div class="st">2. 康德把哲学重心进一步推向“人的认识如何可能”，并区分现象与物自身。</div><div class="opts"><button data-ok="1">认识论转向</button><button data-ok="0">辩证与实践转向</button><button data-ok="0">逻辑与语言转向</button></div><div class="verdict"></div></div><div class="sort-it" data-why="马克思把黑格尔式辩证思想放入物质条件和社会历史结构之中——思想进入现实历史与实践，属辩证与实践转向"><div class="st">3. 哲学不能只在思想里完成统一，要进入实践。</div><div class="opts"><button data-ok="0">认识论转向</button><button data-ok="1">辩证与实践转向</button><button data-ok="0">逻辑与语言转向</button></div><div class="verdict"></div></div><div class="sort-it" data-why="黑格尔的辩证运动——从二元张力寻找更高层次的统一，属辩证与实践转向"><div class="st">4. 矛盾并不一定意味着思考失败；一个概念自身的局限和矛盾，可能推动它转化为更丰富的概念。</div><div class="opts"><button data-ok="0">认识论转向</button><button data-ok="1">辩证与实践转向</button><button data-ok="0">逻辑与语言转向</button></div><div class="verdict"></div></div><div class="sort-it" data-why="维特根斯坦早期《逻辑哲学论》名言——语言如何塑造哲学问题，属逻辑与语言转向"><div class="st">5. 我的语言的界限意味着我的世界的界限。</div><div class="opts"><button data-ok="0">认识论转向</button><button data-ok="0">辩证与实践转向</button><button data-ok="1">逻辑与语言转向</button></div><div class="verdict"></div></div><div class="sort-it" data-why="20世纪分析哲学的新问法——检查语言本身怎样影响我们的问题，属逻辑与语言转向"><div class="st">6. 我们表达这些问题所使用的语言结构是否清楚？</div><div class="opts"><button data-ok="0">认识论转向</button><button data-ok="0">辩证与实践转向</button><button data-ok="1">逻辑与语言转向</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>演化地图通关清单</h3><div class="pd">逐项检验：这一课的主线、链条与校正，你能否不看书回答</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能背出全课主线：旧框架出现问题 → 新哲学重新定义问题 → 产生新的思考方法</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能按顺序说出七人链条：康德 → 费希特 → 谢林 → 黑格尔 → 马克思 → 罗素 → 维特根斯坦</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能解释康德的“哥白尼式革命”：不只问“世界是什么”，还问“人的认识结构如何参与我们所经验到的世界”</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能说清黑格尔的辩证运动：矛盾不一定意味着思考失败，而可能是发展的动力</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能摆正哲学演化的图景：问题 → 回答 → 新问题 → 新回答，而不是“旧哲学错了 → 新哲学完全正确”</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我记得三处校正的分寸：注脚说出自怀特海；“正—反—合”不是黑格尔本人的公式；价值论并非“变化不大”</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>“柏拉图以后的哲学都是对柏拉图哲学的解释”——按整理者的校正，这个说法的真正出处是谁？</div><div class="ans"><button data-ok="0">A. 海德格尔</button><button data-ok="1">B. 怀特海（Alfred North Whitehead）</button><button data-ok="0">C. 罗素</button><button data-ok="0">D. 康德</button></div><div class="exp">整理者明确校正：这个著名说法通常归于英国哲学家、数学家怀特海——“由一系列对柏拉图的注脚组成”，出处不要记成海德格尔。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>康德的“哥白尼式革命”真正改变的问题是什么？</div><div class="ans"><button data-ok="0">A. 只问“世界是什么”，追问万物的本原</button><button data-ok="1">B. 问“对象成为经验中的对象，需要满足什么样的人类认知条件”</button><button data-ok="0">C. 论证物自身可以被彻底认识</button><button data-ok="0">D. 用实验方法研究人的心灵</button></div><div class="exp">原文：康德转而问“对象之所以能够成为我们经验中的对象，需要满足什么样的人类认知条件？”——认识的方向被翻转，这是认识论转向的起点。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>老师用“自我产生非我”概括的是谁的结构？</div><div class="ans"><button data-ok="0">A. 黑格尔</button><button data-ok="0">B. 谢林</button><button data-ok="1">C. 费希特</button><button data-ok="0">D. 马克思</button></div><div class="exp">整理者说这“确实抓到了费希特《知识学》的著名结构”——他从自我活动出发重新构造整个认识体系，追问能否更彻底地从主体活动解释主客关系。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>按照整理者的校正，黑格尔的辩证运动应该怎么记？</div><div class="ans"><button data-ok="0">A. 矛盾意味着思考失败，必须回避</button><button data-ok="0">B. 背下“正题—反题—合题”三步公式即可</button><button data-ok="1">C. 矛盾可能推动概念转化为更丰富的概念</button><button data-ok="0">D. 思想与行动完全可以割裂</button></div><div class="exp">原文：“矛盾并不一定意味着思考失败；一个概念自身的局限和矛盾，可能推动它转化为更丰富的概念。”SEP 特别提醒：黑格尔本人并没有把自己的哲学描述成“正题—反题—合题”公式。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>这一课最核心的演化线是哪一条？</div><div class="ans"><button data-ok="0">A. 旧哲学错了 → 新哲学完全正确</button><button data-ok="1">B. 形而上 → 认识 → 辩证 → 实践 → 逻辑 → 语言 → 多元方法</button><button data-ok="0">C. 维特根斯坦 → 结构主义 → 解构主义</button><button data-ok="0">D. 政治事件决定哲学更替</button></div><div class="exp">原文：这一课最核心的演化线就是“形而上 → 认识 → 辩证 → 实践 → 逻辑 → 语言 → 多元方法”——这条线一旦掌握，看似非常散的哲学人物和概念就基本全部串起来了。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">整理者“如果只记住6句话”中最该带走的 · 复习时先默背再看原文</div><div class="quote"><div class="q">哲学的发展不是简单推翻旧哲学，而是旧理论解决一些问题后，又暴露出新的问题。</div><div class="src">整理者“只记住6句话”之一</div></div><div class="quote"><div class="q">哲学之所以永远会变化，是因为每一个答案都会产生新的问题，而哲学就是不断重新定义问题、检查前提和创造新思想。</div><div class="src">整理者“只记住6句话”之六</div></div><div class="quote"><div class="q">哲学不是一条不断更换答案的历史，而是一条不断重新发现问题、重构思想工具的历史。</div><div class="src">整理者说：如果只留一句作为中心，就用这句</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../10-哲学的构成/index.html">← 上一篇 · 哲学的构成</a><a href="../12-哲学的功能与目的/index.html">下一篇 · 哲学的功能与目的 →</a><span class="sp"></span><span class="cur">哲学的变化</span></div></nav>
+<footer class="coda"><div class="wm2">變</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">哲学不是一条不断更换答案的历史，<br>而是一条<b>不断重新发现问题、重构思想工具</b>的历史。<br><br>因为<b>问题 → 回答 → 新问题 → 新回答</b>，<br>旧思想永远会暴露新的问题。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十二讲《哲学的变化》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13"], "mnodes": ["#s1", "#s3", "#s4", "#s6", "#s7", "#s11", "#s12"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 1, 2, 2, 1], "ckkey": "zx11-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

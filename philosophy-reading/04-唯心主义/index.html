@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唯心主义 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx04-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../03-唯物主义/index.html">← 上一篇 · 唯物主义</a><a href="../05-数字人生/index.html">下一篇 · 数字人生 →</a><span class="sp"></span><span class="cur">唯心主义</span></div></nav>
+<header class="hero" id="top"><div class="wm">想</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第二章《世界的洞见》第二节</div>
+  <div class="no">伍</div>
+  <h1>唯心主义</h1>
+  <div class="sub">看有限 · 想无限 · 四个终极之问</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>唯物主义以「看」认识有限的世界，唯心主义以「想」追问无限——<br>人的思想能不能<b>超越眼前经验</b>，进入自由、上帝、灵魂、无限与意义的世界？</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 从「看」到「想」</a><a href="#s2">貳 · 想的三层 · 再现与重组</a><a href="#s3">叁 · 第三层 · 带着目的去判断</a><a href="#s4">肆 · 看有限，想无限</a><a href="#s5">伍 · 终极问题一 · 自由</a><a href="#s6">陆 · 终极问题二 · 上帝与道</a><a href="#s7">柒 · 终极问题三 · 灵魂</a><a href="#s8">捌 · 终极问题四 · 无限世界</a><a href="#s9">玖 · 康德的校正 · 划边界</a><a href="#s10">拾 · 「世界更大」的辨析与三层认知</a><a href="#s11">拾壹 · 想象力的力量与风险</a><a href="#s12">拾貳 · 事实与价值 · 老师最后的话</a><a href="#s13">拾叁 · 全篇逻辑图与两课对照</a><a href="#s14">拾肆 · 如果只允许记住六句话</a><a href="#s15">拾伍 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>从「看」到「想」</b><span>唯物看世界 · 唯心想世界</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>想的三个层次</b><span>再现 → 重组 → 判断</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>看有限 · 想无限</b><span>超越经验边界</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>四个终极问题</b><span>自由 · 上帝 · 灵魂 · 无限世界</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>康德的校正</b><span>能够想象 ≠ 已经证明</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>力量与风险</b><span>让想象提出可能 · 让理性筛选</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>人生意义</b><span>对自然用唯物 · 对人生用唯心</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>从「看」到「想」</h2></div><div class="sd">承第四课唯物主义 · 确立本课的问题意识</div><p class="prose">这一课是第二章《世界的洞见》的第二节。上一课讲“唯物主义怎么看世界”，这一课把视角从外部世界转向了人的内部。所以，这一课真正研究的不是简单的“唯心主义是什么”，而是在讨论——</p><div class="quote"><div class="q">如果“看”依靠感官、仪器和事实，那么“想”能够把我们带到哪里？</div><div class="src">全课的开篇之问</div></div><p class="prose">上一节“唯物主义”强调<b>看</b>，也就是借助观察、实验、工具和数学认识客观世界；核心路径是<b>物质 → 运动 → 因果 → 规律 → 科学</b>，它擅长回答“世界实际上怎样运行？”。这一节则转向<b>想</b>——</p><div class="quote"><div class="q">人能够在经验之外重新组合概念、设想可能、追问终极问题。</div><div class="src">这一节对「想」的规定</div></div><div class="duo"><div class="col neg"><h4>唯物主义（上一课）</h4><ul><li>看</li><li>客观对象</li><li>工具、实验</li><li>有限经验</li><li>因果规律</li><li>科学</li></ul></div><div class="col pos"><h4>本节所谓唯心主义（这一课）</h4><ul><li>想</li><li>主观意识</li><li>想象、推理</li><li>超越经验</li><li>自由、意义</li><li>哲学、伦理、宗教等</li></ul></div></div><p class="prose">整堂课的逻辑其实很漂亮：<b>想象力 → 超越经验 → 无限推论 → 自由 / 上帝 / 灵魂 / 无限世界 → 人生意义</b>——即上方一篇之图的主线。</p><div class="warn"><div class="wt">入门对照，不是严格定义（整理者的提醒）</div><ul><li>这个对照很适合帮助入门，但真正的哲学史比这个复杂得多</li><li>不能把「唯物主义=看」「唯心主义=想」当成严格定义</li></ul></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>想的三层 · 再现与重组</h2></div><div class="sd">整课最值得抓住的地方 · 康德意义上的「想」</div><p class="prose">老师花了很大篇幅讲康德意义上的“想”，把人的“想”大概拆成三个层次。第一层<b>再现</b>：过去见过的东西，可以重新出现在意识中——闭上眼睛，可以想起家里的客厅、一个人的脸、昨天发生的事情。</p><div class="quote"><div class="q">人的认识不仅依靠眼前看到的东西，还能调用过去经验。</div><div class="src">老师借柏拉图「学习即回忆」所作的说明</div></div><p class="prose">再现 ≈ 记忆唤回，<b>记忆让思想摆脱“眼前”</b>。第二层<b>自由组合</b>是比记忆更重要的一步：你不仅能回忆已有内容，还可以把原本没有联系的概念组合起来。点击看课程里的三个例子：</p><div class="case"><div class="h"><span class="tag">例一</span><span class="ht">马 + 翅膀 → ？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">可以构成<b>飞马</b>——现实中并没有飞马，但头脑能把两个旧概念连接成一个新形象。</div></div></div><div class="case"><div class="h"><span class="tag">例二</span><span class="ht">手机 + 眼镜 → ？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">可以想到<b>AR眼镜</b>——两个已有事物组合出新的产品可能。</div></div></div><div class="case"><div class="h"><span class="tag">例三</span><span class="ht">汽车 + 人工智能 → ？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">可以想到<b>自动驾驶</b>——技术概念重新连接产生的设想。</div></div></div><div class="quote"><div class="q">人能够把已有概念重新连接，产生现实中还没有出现的可能性。</div><div class="src">自由组合真正的力量所在</div></div><p class="prose">这才是想象力真正强大的地方，可以概括成：<b>旧概念 + 旧概念 → 新可能</b>。所以老师说——</p><div class="quote"><div class="q">想象力决定学习能力。</div><div class="src">老师的判断</div></div><div class="quote"><div class="q">想象力是创造、假设、模型构建和创新的重要基础之一。</div><div class="src">整理稿补充的更准确表述</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第三层 · 带着目的去判断</h2></div><div class="sd">想象 → 连接 → 判断 · 本课第一个可背诵框架</div><p class="prose">人不是只会胡思乱想。我们还会问：这个组合有没有意义？它能不能解决问题？它是不是我真正想要的？</p><div class="ladder"><div class="step"><div class="t">想象</div></div><div class="step"><div class="t">连接</div></div><div class="step hot"><div class="t">判断</div><div class="d">最终形成一个完整的思维过程</div></div></div><p class="prose">老师把它和康德的“反思判断”等概念联系起来。如果把课程语言重新整理，这一课最值得长期记住的第一个框架是：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>再现</h4><p>调用过去经验——<b>记忆唤回</b></p></div><div class="card"><div class="idx">貳</div><h4>重组</h4><p>概念自由连接——<b>旧概念 + 旧概念 → 新可能</b></p></div><div class="card"><div class="idx">叁</div><h4>判断</h4><p>根据目的进行选择——有没有意义、能不能解决问题</p></div></div><p class="prose">同一条链也可以记成：<b>记忆 → 想象 → 判断</b>。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>看有限，想无限</h2></div><div class="sd">一个重要转折 · 观察的边界与思想的超越</div><p class="prose">老师接下来做了一个重要转折。人的观察受到限制：你不能亲眼看到宇宙边缘、几百亿年前、死亡之后、所有可能存在的文明。所以——<b>看受到经验边界限制。</b></p><div class="cards g2"><div class="card"><div class="idx">看</div><h4>看受到经验边界限制</h4><p>宇宙边缘、几百亿年前、死亡之后、所有可能存在的文明——都不能亲眼看到</p></div><div class="card"><div class="idx">想</div><h4>想具有超越经验的能力</h4><p>不受眼前经验的限制，可以继续追问下去</p></div></div><div class="chips"><span class="chip">宇宙有没有边界？</span><span class="chip">时间有没有起点？</span><span class="chip">世界之外是什么？</span><span class="chip">如果我永远活着呢？</span><span class="chip">有没有外星文明？</span><span class="chip">有没有绝对自由？</span><span class="chip">有没有上帝？</span></div><div class="quote"><div class="q">理性能够超出经验多远？</div><div class="src">这实际上触碰到的哲学根本问题</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>终极问题一 · 自由</h2></div><div class="sd">自由意志之问 · 康德的自律</div><p class="prose">老师认为，当思想不受眼前经验限制以后，人首先可以想到<b>自由</b>——这是西方哲学非常重要的问题：</p><div class="quote"><div class="q">我能不能不完全被自然因果决定，而真正自己决定自己？</div><div class="src">自由问题的核心之问</div></div><div class="case"><div class="h"><span class="tag">推演</span><span class="ht">“我”还自由吗？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">如果人的每一个念头都是「基因 + 环境 + 神经元 + 过去经历」必然产生的结果，那么“我”还自由吗？——于是「自由意志」问题出现，这是唯物主义和心灵哲学之间非常重要的争论之一。</div></div></div><div class="h3blk">康德为什么如此重视「自由」？</div><p class="prose">整理稿提醒：这一课讲康德时实际上混合了几个不同概念，真正值得掌握的是——康德认为，道德真正成立，需要把人理解为能够：</p><div class="quote"><div class="q">按照自己认可的道德法则行动。</div><div class="src">康德论道德成立的前提</div></div><div class="duo"><div class="col neg"><h4>任性 ✕</h4><ul><li>我想干什么就干什么</li></ul></div><div class="col pos"><h4>自律 ✓</h4><ul><li>我能够不被欲望完全支配，而按照理性认可的原则要求自己</li><li>自己给自己立法，并且能够遵守</li></ul></div></div><p class="prose">所以，<b>任性 ≠ 自由</b>。真正更高级的自由是<b>自己给自己立法，并且能够遵守</b>——这个思想非常值得记。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>终极问题二 · 上帝与道</h2></div><div class="sd">莱布尼茨充足理由律 · 西方上帝与中国道的分途</div><p class="prose">第二个终极问题，老师从莱布尼茨讲到了<b>充足理由律</b>——任何存在、变化，都要寻找理由：</p><div class="quote"><div class="q">为什么事情是这样，而不是另外那样？</div><div class="src">充足理由律的核心思想</div></div><div class="ladder"><div class="step"><div class="t">A 为什么存在？</div><div class="d">因为 B</div></div><div class="step"><div class="t">B 为什么存在？</div><div class="d">因为 C</div></div><div class="step"><div class="t">C 为什么存在？</div><div class="d">因为 D……</div></div><div class="step hot"><div class="t">如果一直追问下去呢？</div><div class="d">原因 → 原因的原因 → 原因的原因的原因……</div></div></div><div class="quote"><div class="q">有没有一个最终原因，本身不需要其他原因？</div><div class="src">无限追问之后的哲学之问</div></div><p class="prose">老师把它称为<b>自因</b>，然后把这个“终极原因”人格化——<b>上帝</b>。这实际上是一种经典的形而上学思路。</p><p class="prose">接下来是很有意思的跨文化比较：西方宗教传统容易把终极存在理解成人格化的上帝（具有意志、创造、目的）；而中国哲学传统里，终极根据往往不一定人格化——例如<b>道</b>。</p><div class="duo"><div class="col neg"><h4>西方宗教传统</h4><ul><li>终极原因 → <b>上帝</b></li><li>人格化：具有意志、创造、目的</li></ul></div><div class="col pos"><h4>中国哲学传统</h4><ul><li>终极根据 → <b>道</b></li><li>更接近“世界本身运行的根本原则”</li></ul></div></div><div class="quote"><div class="q">道生一，一生二，二生三，三生万物。</div><div class="src">《道德经》</div></div><p class="prose">虽然这是高度简化，但作为文化比较框架很容易理解。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>终极问题三 · 灵魂</h2></div><div class="sd">死亡之问 · 思想对生命有限性的突破</div><p class="prose">人的肉体必然会死亡。于是意识会面对一个极大的问题：<b>我死了以后呢？</b></p><p class="prose">如果一个人无法接受“肉体死亡 = 我的全部彻底消失”，人类就会自然产生一个设想——</p><div class="quote"><div class="q">是否存在一个不随身体死亡而消失的“我”？</div><div class="src">灵魂观念的起源之问</div></div><p class="prose">于是出现<b>灵魂</b>。很多文明都出现过：</p><div class="chips"><span class="chip">灵魂</span><span class="chip">来世</span><span class="chip">轮回</span><span class="chip">天堂</span><span class="chip">祖灵</span></div><div class="quote"><div class="q">思想能够突破生命有限性，构造关于永恒的意义框架。</div><div class="src">老师真正想表达的 · 也是宗教能够回应死亡焦虑的原因</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>终极问题四 · 无限世界</h2></div><div class="sd">从外星生命到宇宙论 · 四个终极问题合观</div><p class="prose">接下来老师又把“想”推向宇宙。科学会问“有没有外星生命？”，然后寻找液态水、温度、恒星、行星、化学条件等证据——这是经验性的研究。但是哲学想象可以继续问：</p><div class="quote"><div class="q">即使目前没有证据，宇宙如此广大，是否可能存在其他生命？</div><div class="src">哲学想象对经验证据的超越</div></div><div class="chips"><span class="chip">有没有其他世界？</span><span class="chip">世界是不是无限的？</span><span class="chip">是否存在不同层次的世界？</span></div><p class="prose">于是人的思想就进入<b>宇宙论</b>，甚至<b>宗教宇宙观</b>——老师用了佛教世界观作为例子（源文未展开此点）。</p><div class="h3blk">这一课引出的四个巨大哲学问题</div><p class="prose">如果把大量口语删掉，这一课的核心就是这四个词——它们几乎都属于传统形而上学的核心主题，而康德的哲学恰恰大量讨论过自由、上帝、灵魂不朽、世界整体这些超越经验的问题：</p><div class="cards g4"><div class="card"><div class="idx">壹</div><h4>自由</h4><p>我能否决定自己？</p></div><div class="card"><div class="idx">貳</div><h4>上帝</h4><p>世界有没有最终根据？</p></div><div class="card"><div class="idx">叁</div><h4>灵魂</h4><p>死亡之后还有没有“我”？</p></div><div class="card"><div class="idx">肆</div><h4>世界</h4><p>宇宙是否存在无限可能？</p></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>康德的校正 · 划边界</h2></div><div class="sd">本课最需要保持批判性的地方 · 能够想象 ≠ 已经证明</div><p class="prose">这是这一课最需要你保持批判性的地方。课程容易让人产生一种感觉：因为可以无限思考，所以我们可以从理性推导出自由、上帝、灵魂。</p><div class="warn"><div class="wt">康德恰恰非常警惕这一点（整理者的重要校正）</div><ul><li>康德的核心工作之一，是告诉我们理论理性不能简单证明灵魂不死、上帝存在或者整个宇宙究竟如何</li><li>康德并不是简单扩大“想”的能力，恰恰同时在给理性划边界</li></ul></div><p class="prose">因为人的认识需要<b>感性经验 + 认知结构</b>——一旦完全离开可能经验，我们很容易进入<b>理性自己制造的问题</b>。</p><p class="prose">那么在康德那里，“自由、上帝、灵魂不朽”更接近什么？在《实践理性批判》等著作中，它们和他的道德哲学密切相关。特别是<b>自由</b>，对于道德责任极其重要：如果人完全没有自由，“你应该这样做”就失去了很大意义。</p><div class="quote"><div class="q">道德实践要求我们从某种意义上把自己理解成自由者。</div><div class="src">整理者的校准——这一点比课程原来的表达准确得多</div></div><p class="prose">因此康德的重点不是“我通过想象证明自由”，而是道德实践的要求。与此同时必须守住一条警戒线：<b>能够想象 ≠ 已经证明</b>。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>「世界更大」的辨析与三层认知</h2></div><div class="sd">两种认识方式各有所长 · 已知 / 可能 / 信念不能混用</div><p class="prose">老师最后给出了一个非常鲜明的判断：</p><div class="quote"><div class="q">唯物主义研究有限，唯心主义研究无限，所以唯心主义的世界更大。</div><div class="src">老师最后给出的鲜明判断</div></div><div class="warn"><div class="wt">这句话很有感染力，但不要当成严格哲学结论（整理者的提醒）</div><ul><li>不是「唯心主义 &gt; 唯物主义」，而是两种认识方式处理的问题不同</li><li>科学的「有限」恰恰往往是它可靠性的来源</li><li>想象的「无限」既是创造力来源，也同时意味着更容易脱离证据</li></ul></div><div class="cards g2"><div class="card"><div class="idx">证</div><h4>经验科学的优势</h4><p>要求<b>证据、测量、验证</b>——所以它对自己能说什么有严格边界</p></div><div class="card"><div class="idx">问</div><h4>哲学与想象的优势</h4><p>能够提出<b>经验之外的问题</b>——因此问题空间可以极其巨大</p></div></div><p class="prose">这一课最值得学习的，其实不是“相信唯心主义”，而是一个更普遍的认识论能力：</p><div class="quote"><div class="q">事实告诉我什么？想象允许我探索什么？我又凭什么相信自己的想象？</div><div class="src">比唯心主义本身更值得掌握的认识论能力</div></div><div class="cards g3"><div class="card"><div class="idx">层一</div><h4>已知</h4><p>有证据支持</p></div><div class="card"><div class="idx">层二</div><h4>可能</h4><p>目前不能证明，但逻辑上可以设想</p></div><div class="card"><div class="idx">层三</div><h4>信念</h4><p>无法经验验证，但对人生可能具有意义</p></div></div><p class="prose">这三层千万不要混在一起。“宇宙可能存在其他生命”属于科学上的可能性问题；而“人的灵魂死后永存”则属于哲学、宗教和信仰问题——它们的证据标准不能混用。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>想象力的力量与风险</h2></div><div class="sd">比「唯心主义」更值得掌握的主线 · 五个超越与一条警戒线</div><p class="prose">整理稿认为，这一课实际上在讨论<b>「想象力的力量与风险」</b>——这是比“唯心主义”更值得你掌握的主线。想象力让人能够：</p><div class="ladder"><div class="step"><div class="t">超越过去</div><div class="d">不只是回忆</div></div><div class="step"><div class="t">超越当下</div><div class="d">设想未来</div></div><div class="step"><div class="t">超越现实</div><div class="d">构造可能世界</div></div><div class="step"><div class="t">超越自我</div><div class="d">思考他人的处境</div></div><div class="step hot"><div class="t">超越生命</div><div class="d">思考死亡与永恒</div></div></div><div class="quote"><div class="q">没有想象力，就没有哲学，也很难有创新。</div><div class="src">这条超越链的结论</div></div><div class="warn"><div class="wt">但另一面：如果「想象 ≠ 证据」这一点被忘掉，无限想象也可能导致</div><ul><li>迷信</li><li>虚假因果</li><li>阴谋论</li><li>无法验证的断言</li></ul></div><p class="prose">所以真正成熟的思想不是压制想象，而是——</p><div class="quote"><div class="q">让想象提出可能，让理性和证据负责筛选。</div><div class="src">整句话非常值得记住</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>事实与价值 · 老师最后的话</h2></div><div class="sd">对自然用唯物主义 · 对人生用唯心主义</div><p class="prose">老师说：</p><div class="quote"><div class="q">对自然，我们得用唯物主义；对人生，需要用唯心主义，让你的生命有所安放，也有所方向。</div><div class="src">老师最后的话 · 整理稿认为是这一课真正的价值主张</div></div><p class="prose">如果稍微修改得更加严谨，可以变成：</p><div class="quote"><div class="q">面对自然事实，我们优先尊重证据和规律；面对人生意义，我们还需要价值、理想和想象。</div><div class="src">整理者改写的严谨版本</div></div><div class="case"><div class="h"><span class="tag">对照</span><span class="ht">科学能回答什么，不能回答什么</span><span class="ar">▸</span></div><div class="sm"><div class="inner">科学可以告诉你「人平均能活多久」，医学可以告诉你「怎样延长生命」；但科学本身无法直接替你回答「我这一生为什么值得活？」，医学也不能单独决定「什么样的生命值得追求」——这就是<b>事实与价值</b>之间的重要区别。</div></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>全篇逻辑图与两课对照</h2></div><div class="sd">把第五课压缩成一张可背诵的骨架 · 建议先记这张图</div><p class="prose">整理稿把第五课压缩成一张完整逻辑图：</p><div class="ladder"><div class="step"><div class="t">“想”</div><div class="d">第五课的全部起点</div></div><div class="step"><div class="t">再现 → 重组 → 判断</div><div class="d">调用过去经验 · 概念自由连接 · 根据目的进行选择</div></div><div class="step"><div class="t">想象力</div><div class="d">突破眼前经验</div></div><div class="step"><div class="t">四个终极问题</div><div class="d">自由 · 上帝 · 灵魂 · 无限世界</div></div><div class="step hot"><div class="t">意义世界</div><div class="d">让生命有所安放，也有所方向</div></div></div><p class="prose">与此同时必须有一条警戒线：<b>能够想象 ≠ 已经证明</b>——这条线非常重要。</p><p class="prose">把上一课和这一课放在一起，第二章现在已经形成一个非常漂亮的对照：</p><div class="duo"><div class="col neg"><h4>第一节 · 唯物主义</h4><ul><li>核心：<b>看</b></li><li>依靠：工具｜实验｜数据｜数学</li><li>追求：因果｜规律｜科学</li><li>优势：可靠地解释自然</li><li>风险：可能难以单独回答意义问题</li></ul></div><div class="col pos"><h4>第二节 · 唯心主义</h4><ul><li>核心：<b>想</b></li><li>依靠：记忆｜想象｜推理｜判断</li><li>探索：自由｜上帝｜灵魂｜无限</li><li>优势：能够超越现实，创造意义与可能</li><li>风险：如果脱离证据，容易把可能当事实</li></ul></div></div><div class="quote"><div class="q">用“看”约束事实，用“想”打开可能。</div><div class="src">整理者认为比争论「谁更大」更有学习价值的一句话</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>如果只允许记住六句话</h2></div><div class="sd">复习索引 · 九个关键词可恢复全课</div><p class="prose">整理稿建议，以后复习这一课时记住这六句话：</p><div class="cards g2"><div class="card"><div class="idx">①</div><h4>构造世界</h4><p>人不仅能看世界，也能够在头脑中重新构造世界。</p></div><div class="card"><div class="idx">②</div><h4>想象力三环</h4><p>想象力包含再现、组合与判断，它让人超越眼前经验。</p></div><div class="card"><div class="idx">③</div><h4>四个追问</h4><p>人的思想可以进一步追问自由、上帝、灵魂和无限世界。</p></div><div class="card"><div class="idx">④</div><h4>警戒线</h4><p>能够想到一个东西，并不等于已经证明它存在。</p></div><div class="card"><div class="idx">⑤</div><h4>分工</h4><p>科学擅长回答事实与规律，哲学和价值思考还要回答意义与方向。</p></div><div class="card"><div class="idx">⑥</div><h4>成熟认知</h4><p>成熟的认知不是只会“看”或只会“想”，而是让事实约束想象，让想象突破事实的边界。</p></div></div><p class="prose">而第五课最值得做成信息图的关键词，就是这九个词——记住它们，基本就能把整堂课恢复出来：</p><div class="chips"><span class="chip">再现</span><span class="chip">重组</span><span class="chip">判断</span><span class="chip">自由</span><span class="chip">上帝</span><span class="chip">灵魂</span><span class="chip">无限</span><span class="chip">意义</span><span class="chip">边界</span></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">想的层次</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">终极问题</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">想象力的超越</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">认知分层</div></div></div><div class="panel"><h3><span class="no2">①</span>三层次分档练习</h3><div class="pd">判断下列活动属于「再现 / 重组 / 判断」哪一层，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="过去见过的东西重新出现在意识中——「再现 ≈ 记忆唤回」"><div class="st">1. 闭上眼睛，想起家里的客厅</div><div class="opts"><button data-ok="1">再现</button><button data-ok="0">重组</button><button data-ok="0">判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="同样是调用过去经验，属于第一层再现"><div class="st">2. 想起一个人的脸、昨天发生的事情</div><div class="opts"><button data-ok="1">再现</button><button data-ok="0">重组</button><button data-ok="0">判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="把原本没有联系的概念组合起来——旧概念 + 旧概念 → 新可能"><div class="st">3. 马 + 翅膀，构成飞马</div><div class="opts"><button data-ok="0">再现</button><button data-ok="1">重组</button><button data-ok="0">判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="人能够把已有概念重新连接，产生现实中还没有出现的可能性"><div class="st">4. 手机 + 眼镜，想到AR眼镜</div><div class="opts"><button data-ok="0">再现</button><button data-ok="1">重组</button><button data-ok="0">判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="带着目的去选择——「想象 → 连接 → 判断」的最后一环"><div class="st">5. 追问这个组合有没有意义、能不能解决问题</div><div class="opts"><button data-ok="0">再现</button><button data-ok="0">重组</button><button data-ok="1">判断</button></div><div class="verdict"></div></div><div class="sort-it" data-why="根据目的进行选择，属于第三层判断"><div class="st">6. 问“它是不是我真正想要的”</div><div class="opts"><button data-ok="0">再现</button><button data-ok="0">重组</button><button data-ok="1">判断</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>本讲通关清单</h3><div class="pd">把本讲方法论转成自我检验 · 勾选进度自动保存（本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能复述「想」的三层框架：再现 → 重组 → 判断</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能说清「看」受到经验边界限制，而「想」具有超越经验的能力</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能区分「任性」与「自律」：真正的自由是自己给自己立法，并且能够遵守</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能复述充足理由律的追问链：为什么事情是这样，而不是另外那样 → 自因</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能守住警戒线：能够想到一个东西，并不等于已经证明它存在</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能把一个判断分进「已知 / 可能 / 信念」三层，不混用证据标准</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>整理稿认为，这一课真正的起点是什么？</div><div class="ans"><button data-ok="0">A. 唯心主义的严格定义</button><button data-ok="1">B. 康德意义上的「想」（想象力）</button><button data-ok="0">C. 上帝存在的证明</button><button data-ok="0">D. 灵魂不朽的科学证据</button></div><div class="exp">整理稿开篇即说：「这一课真正的起点不是唯心主义，而是想象力」——老师花了很大篇幅讲康德意义上的「想」。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>整理稿建议长期记住的第一个框架是什么？</div><div class="ans"><button data-ok="0">A. 物质 → 运动 → 因果 → 规律</button><button data-ok="0">B. 看 → 想 → 做</button><button data-ok="1">C. 再现 → 重组 → 判断</button><button data-ok="0">D. 感性 → 知性 → 理性</button></div><div class="exp">「如果把课程语言重新整理，我建议记成：再现 → 重组 → 判断（或者：记忆 → 想象 → 判断）」——这是这一课最值得长期记住的第一个框架。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>康德意义上，真正更高级的自由是什么？</div><div class="ans"><button data-ok="0">A. 我想干什么就干什么</button><button data-ok="0">B. 完全不受任何约束</button><button data-ok="1">C. 不被欲望完全支配，按照理性认可的原则要求自己</button><button data-ok="0">D. 跟随感觉、随心所欲</button></div><div class="exp">真正的自由不是「我想干什么就干什么」，而更接近「我能够不被欲望完全支配，而按照理性认可的原则要求自己」——即自律：自己给自己立法，并且能够遵守。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>沿着充足理由律追问「为什么事情是这样，而不是另外那样」，最终会到哪里？</div><div class="ans"><button data-ok="0">A. 世界根本没有原因</button><button data-ok="1">B. 有一个最终原因，本身不需要其他原因（自因）</button><button data-ok="0">C. 原因链条到此中断，不必再问</button><button data-ok="0">D. 科学实验可以最终证明</button></div><div class="exp">追问形成「原因 → 原因的原因 → 原因的原因的原因……」，于是哲学会问：「有没有一个最终原因，本身不需要其他原因？」老师称为自因，再人格化为上帝。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>对老师「唯心主义的世界更大」的判断，整理稿提醒应该怎么对待？</div><div class="ans"><button data-ok="0">A. 当作严格哲学结论背下来</button><button data-ok="1">B. 很有感染力，但不要当成严格哲学结论</button><button data-ok="0">C. 用它证明唯心主义优于唯物主义</button><button data-ok="0">D. 当作物理学定律接受</button></div><div class="exp">整理稿建议重新理解：不是唯心主义 &gt; 唯物主义，而是两种认识方式处理的问题不同——科学的「有限」恰恰往往是它可靠性的来源，想象的「无限」也意味着更容易脱离证据。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">能够想到一个东西，并不等于已经证明它存在。</div><div class="src">六句复习之④ · 全课最重要的警戒线</div></div><div class="quote"><div class="q">对自然，我们得用唯物主义；对人生，需要用唯心主义，让你的生命有所安放，也有所方向。</div><div class="src">老师最后的价值主张</div></div><div class="quote"><div class="q">让想象提出可能，让理性和证据负责筛选。</div><div class="src">成熟思想对待想象的方式</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../03-唯物主义/index.html">← 上一篇 · 唯物主义</a><a href="../05-数字人生/index.html">下一篇 · 数字人生 →</a><span class="sp"></span><span class="cur">唯心主义</span></div></nav>
+<footer class="coda"><div class="wm2">想</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">想象的伟大，在于它让我们超越眼前；<br>理性的责任，在于提醒我们：<b>能够想象，并不等于已经证明</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第五讲《唯心主义》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15"], "mnodes": ["#s1", "#s2", "#s4", "#s5", "#s9", "#s11", "#s12"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 2, 2, 1, 1], "ckkey": "zx04-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

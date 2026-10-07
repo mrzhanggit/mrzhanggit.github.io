@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社会的撕扯 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx01-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../00-时代的纷扰/index.html">← 上一篇 · 时代的纷扰</a><a href="../02-生活的焦虑/index.html">下一篇 · 生活的焦虑 →</a><span class="sp"></span><span class="cur">社会的撕扯</span></div></nav>
+<header class="hero" id="top"><div class="wm">撕</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第一章《日常哲思》第二节</div>
+  <div class="no">貳</div>
+  <h1>社会的撕扯</h1>
+  <div class="sub">多套规则 · 同时生效 · 左右为难</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>社会的本质是一种合作组织，而合作必须依靠规则；<br>当一个人同时生活在<b>多套彼此冲突的规则</b>之中，就产生了「撕扯」——<br>哲学要给你的不是万能答案，而是<b>识别规则、比较规则、排列优先级</b>的能力。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一课要解决什么</a><a href="#s2">貳 · 什么叫「社会的撕扯」</a><a href="#s3">叁 · 这比「矛盾」更进一步</a><a href="#s4">肆 · 什么是社会 · 组织分析四问</a><a href="#s5">伍 · 社会的八套规则</a><a href="#s6">陆 · 为什么现代人的撕扯越来越严重</a><a href="#s7">柒 · 真正需要建立的是「规则意识」</a><a href="#s8">捌 · 四个解决方法 · 前两条</a><a href="#s9">玖 · 四个解决方法 · 后两条</a><a href="#s10">拾 · 个人与社会 · 系统决定价值</a><a href="#s11">拾壹 · 五步模型</a><a href="#s12">拾貳 · 把第一课和第二课连起来</a><a href="#s13">拾叁 · 批判性提醒</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现实困境</b><span>看懂了时代，为何仍左右为难</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>核心命题</b><span>多套规则同时要求你做不同的事</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>八套规则</b><span>社会同时运行的多重规则系统</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>撕扯的机制</b><span>权、利、情、理、法给出不同答案</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>规则意识</b><span>先问场景，再问规则，最后排优先级</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>四条解决路径</b><span>社会观 · 媒体 · 原理 · 参与时代</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>五步模型</b><span>识别 → 规则 → 冲突 → 优先级 → 选择</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s10"><b>哲学的任务</b><span>识别规则、理解原理 → 加入社会、保持主体性</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一课要解决什么</h2></div><div class="sd">承接第一课 · 从「看不懂时代」推进到「在社会中左右为难」</div><p class="prose">第二课比第一课更贴近日常生活。第一课解决的是「世界变化太快，我为什么看不懂」；第二课进一步问：「即使我看懂了时代，为什么生活在社会中还是经常左右为难？」这一课真正的核心，不是「社会很复杂」，而是——</p><div class="quote"><div class="q">一个人同时生活在多套规则之中，而这些规则经常彼此冲突。所谓“社会的撕扯”，就是不同规则同时要求你做不同的事。</div><div class="src">第二课开篇的核心命题</div></div><p class="prose">整理者把整节课压缩成这样一条逻辑链，这就是全篇骨架：</p><div class="ladder"><div class="step"><div class="t">社会是什么</div><div class="d">先澄清概念</div></div><div class="step"><div class="t">社会本质上是一种合作组织</div></div><div class="step"><div class="t">任何组织都必须依靠规则运行</div></div><div class="step"><div class="t">社会同时存在多套规则</div></div><div class="step"><div class="t">不同规则之间可能发生冲突</div></div><div class="step hot"><div class="t">个人因此陷入左右为难</div></div><div class="step"><div class="t">这就是“社会的撕扯”</div></div><div class="step"><div class="t">真正的解决办法不是逃离社会</div></div><div class="step"><div class="t">而是识别规则、理解原理、形成自己的社会判断</div></div><div class="step hot"><div class="t">最后学会加入社会、适应社会，同时保持主体性</div></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>什么叫「社会的撕扯」</h2></div><div class="sd">两个日常例子 · 撕扯的本质是规则系统叠加</div><p class="prose">老师一开始举了两个非常日常的例子，正好能展示「撕扯」的结构。点击卡片查看：</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">同事向你借钱</span><span class="ar">▸</span></div><div class="sm"><div class="inner">你可能同时面对：<b>友情</b>（朋友有困难应该帮）· <b>利益</b>（钱借出去可能收不回来）· <b>责任</b>（家庭资金是否允许）· <b>规则</b>（借贷有没有边界）——所以你会左右为难。</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">夫妻之间到底讲情，还是讲理？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">如果完全按照逻辑、规则、对错处理亲密关系，就可能<b>伤害感情</b>；但如果什么事情都只讲感情，也可能<b>失去边界</b>。</div></div></div><div class="quote"><div class="q">撕扯不是“事情太难”，而是同一件事情同时落入了不同的规则系统。</div><div class="src">第二课最重要的概念</div></div><p class="prose">难的不是事情本身，而是<b>同一件事同时被好几套规则管辖</b>，每套规则给出的指令还不一样。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>这比「矛盾」更进一步</h2></div><div class="sd">从「谁对谁错」到「规则冲突与规则排序」</div><div class="duo"><div class="col neg"><h4>普通人的第一问 ✕</h4><ul><li>这件事到底谁对谁错？</li></ul></div><div class="col pos"><h4>老师想训练的思考 ✓</h4><ul><li>先问：<b>双方分别在遵循什么规则？</b></li></ul></div></div><p class="prose">比如夫妻争论：一方讲的是<b>理</b>，另一方讲的是<b>情</b>——两个人可能都没有错。真正的问题是：</p><div class="quote"><div class="q">在这个具体场景里，应该优先调用哪一种规则？</div><div class="src">老师认为真正要回答的问题</div></div><p class="prose">所以社会撕扯的核心问题，可以转化成——</p><div class="h3blk">规则冲突与规则排序</div><p class="prose">整理者认为，这是这一节最值得真正学会的东西：先看双方各自在遵循什么规则，再判断这个场景里哪一种规则应该优先。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>什么是社会 · 组织分析四问</h2></div><div class="sd">先澄清概念，再进行判断 · 一个可以迁移的分析框架</div><div class="quote"><div class="q">先澄清概念，再进行判断。</div><div class="src">哲学的一个非常重要的训练</div></div><p class="prose">「社会」这个词我们天天说，但如果突然问「什么叫社会？」很多人反而说不清楚。老师给出的定义是：</p><div class="quote"><div class="q">社会是基于文化合作形成的一种自发组织。</div><div class="src">老师给出的定义一；后面又换说成「社会是人和规则构成的自发组织」</div></div><div class="duo"><div class="col neg"><h4>直觉理解 ✕</h4><ul><li>社会 = 一群人的简单集合</li></ul></div><div class="col pos"><h4>这套课程的理解 ✓</h4><ul><li>社会是<b>一套让人能够持续合作的组织系统</b>——由人、共同文化、合作、规则构成</li></ul></div></div><div class="h3blk">组织分析四问</div><div class="cards g2"><div class="card"><div class="idx">一</div><h4>目的是什么？</h4><p>这个组织想干什么</p></div><div class="card"><div class="idx">二</div><h4>怎么运行？</h4><p>运行规则是什么</p></div><div class="card"><div class="idx">三</div><h4>怎么评价？</h4><p>怎么判断好坏 · 评价标准是什么</p></div><div class="card"><div class="idx">四</div><h4>怎么分配？</h4><p>得到的东西怎么分 · 分配规则是什么</p></div></div><p class="prose">只要是组织，就必须回答这几个问题。这个框架不只是研究社会有用——拿来分析<b>单位、医院、企业、家庭、科室、团队、国家</b>，都可以。比如一个科室：为什么存在？怎么协作？什么算做得好？绩效怎么分？其实马上就能看出很多管理问题。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>社会的八套规则</h2></div><div class="sd">整节课信息量最大的部分 · 也是撕扯的来源</div><p class="prose">老师认为社会同时存在<b>八套规则系统</b>。前四套是：</p><div class="cards g2"><div class="card"><div class="idx">①</div><h4>生命规则</h4><p>最基础的规则：生、老、病、死——人的所有社会活动最终都不能脱离<b>生命条件</b></p></div><div class="card"><div class="idx">②</div><h4>自然 / 科学规则</h4><p>自然世界有自己的规律；不能只凭<b>情绪、愿望、立场</b>去改变客观规律</p></div><div class="card"><div class="idx">③</div><h4>政治规则</h4><p>围绕<b>安全、权力和公共合作</b>形成的规则 · 核心关键词：权力｜秩序｜安全</p></div><div class="card"><div class="idx">④</div><h4>经济规则</h4><p>资源有限，但人的欲望很多，怎么办？涉及利益、产权、交换、供需、分配——关键词是一个「利」字</p></div></div><div class="cards g2"><div class="card"><div class="idx">⑤</div><h4>宗教规则</h4><p>提供信仰、终极意义、共同价值、道德约束；不同社会宗教传统不同，行为方式也不同</p></div><div class="card"><div class="idx">⑥</div><h4>文化规则</h4><p>决定很多「默认规则」：什么叫孝、礼貌、成功、体面——不是法律规定，却深刻影响人的行为</p></div><div class="card"><div class="idx">⑦</div><h4>家庭规则</h4><p>家庭有大量<b>亲情、责任、照顾、牺牲、信任</b>，不能完全按市场规则、单位规则、法律规则运行</p></div><div class="card"><div class="idx">⑧</div><h4>网络规则</h4><p>老师结合第一课新增的一条：互联网出现以后，正在重新改造前面所有规则</p></div></div><div class="quote"><div class="q">不能把所有社会规则都带回家。</div><div class="src">家庭规则部分最值得记住的一句</div></div><p class="prose">家庭这一条非常重要：你在单位可以讲绩效，在家庭里如果每件事情都计算投入产出，关系一定会出问题。</p><div class="case"><div class="h"><span class="tag">网络+</span><span class="ht">网络正在改造前面所有规则</span><span class="ar">▸</span></div><div class="sm"><div class="inner"><b>网络 + 政治</b>：改变公共讨论和政治传播；<b>网络 + 经济</b>：产生电商、平台经济、数字支付；<b>网络 + 文化</b>：改变信息传播和价值形成；<b>网络 + 家庭</b>：改变亲密关系和代际关系。</div></div></div><div class="quote"><div class="q">它正在重新改写其他七种规则。</div><div class="src">网络规则部分的核心判断 · 这就是第一课和第二课真正连接起来的地方</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>为什么现代人的撕扯越来越严重</h2></div><div class="sd">权、利、情、理、法 · 同一件事的不同答案</div><p class="prose">因为以前已经有很多规则，现在又加入网络，而且社会变化越来越快。于是我们经常同时面对：<b>权、利、情、理、法……</b>（整理者注：老师原文这一段有明显语音识别错误，真正想表达的大概就是这一组基本社会力量。）比如一件事，放进五个框架里看：</p><div class="cards g3"><div class="card"><div class="idx">情</div><h4>从「情」来看</h4><p>应该帮助朋友</p></div><div class="card"><div class="idx">利</div><h4>从「利」来看</h4><p>可能不划算</p></div><div class="card"><div class="idx">理</div><h4>从「理」来看</h4><p>应该具体问题具体分析</p></div><div class="card"><div class="idx">法</div><h4>从「法」来看</h4><p>应该按照合同和制度办</p></div><div class="card"><div class="idx">权</div><h4>从「权」来看</h4><p>还要考虑谁有决策权</p></div></div><div class="quote"><div class="q">同一件事情，放进不同规则里，可能得到完全不同的答案。</div><div class="src">社会撕扯的机制</div></div><p class="prose">这就是社会撕扯。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>真正需要建立的是「规则意识」</h2></div><div class="sd">面对问题的三个追问 · 哲学给的是能力，不是答案</div><div class="duo"><div class="col neg"><h4>表面理解 ✕</h4><ul><li>我以后多学几个规则就行了</li></ul></div><div class="col pos"><h4>更深一层 ✓</h4><ul><li>面对问题时先问三件事：<b>什么场景 → 哪些规则在起作用 → 哪条优先</b></li></ul></div></div><div class="ladder"><div class="step"><div class="t">第一问：这是什么场景？</div><div class="d">家庭？工作？市场？法律？公共事务？</div></div><div class="step"><div class="t">第二问：有哪些规则同时在起作用？</div><div class="d">情？理？法？利？权？文化习惯？</div></div><div class="step hot"><div class="t">第三问：哪一条规则应该优先？</div><div class="d">最困难的地方</div></div></div><p class="prose">第三问是最困难的地方——哲学并不能给你一个万能答案。哲学真正给你的，是：</p><div class="quote"><div class="q">识别规则、比较规则、排列规则优先级的能力。</div><div class="src">哲学真正给你的东西 · 整理者认为这是这一课最重要的「可迁移能力」</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>四个解决方法 · 前两条</h2></div><div class="sd">盘点自己的社会观 · 对媒体信息分类</div><p class="prose">前半节是在「诊断问题」，后半节是在回答：<b>那么我们应该怎么办？</b>老师给了四条路径——</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>盘点自己的社会观</h4><p>你怎么看社会：悲观、愤怒、犬儒、乐观、批判、建设？</p></div><div class="card"><div class="idx">貳</div><h4>对媒体信息分类</h4><p>媒体展示的社会 ≠ 社会本身</p></div><div class="card"><div class="idx">叁</div><h4>回到「原理」进行判断</h4><p>不同问题调用不同模型 · 多模型思维</p></div><div class="card"><div class="idx">肆</div><h4>相信时代，并参与时代</h4><p>不要把自己放在时代之外</p></div></div><p class="prose">第一条：盘点自己的社会观。老师特别反对一种状态：「社会这里不好、那里不好，所以整个社会一无是处。」因为这样很容易走向<b>只批判、不参与</b>，最后把自己变成局外人。批判社会当然可以，问题是：</p><div class="quote"><div class="q">你的批判，是为了更好地理解和参与，还是为了证明自己什么都不用做？</div><div class="src">整理者提出的分界之问 · 这是两种完全不同的状态</div></div><div class="quote"><div class="q">媒体展示的社会，不等于社会本身。</div><div class="src">第二条路径的核心提醒 · 非常重要的一点</div></div><p class="prose">现代人大量的「社会认知」来自短视频、自媒体、新闻推送、朋友圈，而媒体天然偏好<b>冲突、异常、愤怒、猎奇、极端</b>。长期只通过算法推荐观察社会，很容易产生「世界怎么到处都是坏事？」的错觉——问题可能不是整个世界突然恶化，而是<b>你的信息入口持续给你展示最有刺激性的5%</b>。这一点与第一课的「信息纷扰」又连接起来了。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>四个解决方法 · 后两条</h2></div><div class="sd">回到「原理」进行判断 · 相信时代并参与时代</div><div class="h3blk">第三：回到「原理」进行判断</div><p class="prose">经济问题，尽量用经济学原理判断；权力问题，用政治和权力理论判断；情感问题，用心理学和关系原理判断；法律问题，回到法律制度——而不是所有问题都只凭「我觉得」。这其实可以概括成一句非常重要的话：</p><div class="quote"><div class="q">不要用一个规则解释整个世界。</div><div class="src">这一课非常重要的方法论</div></div><p class="prose">不能所有问题都用「利益」解释，也不能都用「人情」解释，更不能都归因于「权力」。成熟的社会认知应该是<b>「多模型思维」</b>——不同问题调用不同模型。</p><div class="h3blk">第四：相信时代，并参与时代</div><div class="quote"><div class="q">不要把自己放在时代之外。</div><div class="src">老师这一课最有价值观色彩的一部分</div></div><p class="prose">人必须：<b>进入社会 → 参与社会 → 获得位置 → 产生价值</b>。老师用了一个非常形象的比喻——</p><div class="case"><div class="h"><span class="tag">喻</span><span class="ht">社会就像高速公路上不断向前行驶的汽车</span><span class="ar">▸</span></div><div class="sm"><div class="inner">社会不会因为某一个人：停下来、掉头、等你。个人真正要解决的问题是：<b>我怎样登上这辆车？</b>（整理者注：这个比喻虽然不是严格的社会学理论，但很容易记。）</div></div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>个人与社会 · 系统决定价值</h2></div><div class="sd">这一课隐藏的第二主题 · 能力如何变成价值</div><p class="prose">老师后面实际上从「社会规则」转到了这一课隐藏的第二主题：<b>人与社会究竟是什么关系？</b>他的答案是一组双向关系：</p><div class="cards g2"><div class="card"><div class="idx">入</div><h4>个人 → 社会：加入</h4><p>你希望进入社会系统</p></div><div class="card"><div class="idx">筛</div><h4>社会 → 个人：规范与筛选</h4><p>社会有规则——必须拥有能力、行为、信用、资格、合作能力，才能获得相应的位置</p></div></div><p class="prose">老师说了一句很有意思的话：<b>「系统决定价值。」</b>一颗螺丝脱离机器，价值很低；进入关键设备以后，它可能非常重要。</p><p class="prose">人的知识和能力也是这样：一个人拥有能力，却没有进入任何组织、项目、市场、关系网络、社会系统，能力就很难转化成实际价值。因此——</p><div class="quote"><div class="q">能力本身 ≠ 社会价值。</div><div class="src">由「系统决定价值」推出的关键结论</div></div><div class="chips"><span class="chip">能力 × 系统位置 × 合作关系</span><span class="chip">→ 才能形成现实价值</span></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>五步模型</h2></div><div class="sd">遇到左右为难的问题，直接套这一课形成的模型</div><p class="prose">这一课真正可以提炼成一个<b>五步模型</b>。以后遇到左右为难的问题，整理者建议直接套：</p><div class="ladder"><div class="step"><div class="t">① 识别场景</div><div class="d">我现在面对的究竟是什么问题？</div></div><div class="step"><div class="t">② 找出规则</div><div class="d">这里有哪些规则同时在起作用？</div></div><div class="step hot"><div class="t">③ 找到冲突</div><div class="d">情 vs 理？情 vs 法？利 vs 情？权 vs 法？个人利益 vs 公共利益？</div></div><div class="step"><div class="t">④ 排列优先级</div><div class="d">在这个具体场景中，哪条规则应该优先？</div></div><div class="step"><div class="t">⑤ 做出选择</div><div class="d">接受选择对应的成本</div></div></div><div class="chips"><span class="chip">情 vs 理</span><span class="chip">情 vs 法</span><span class="chip">利 vs 情</span><span class="chip">权 vs 法</span><span class="chip">个人利益 vs 公共利益</span></div><p class="prose">这其实比单纯记「八套社会规则」有用得多。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>把第一课和第二课连起来</h2></div><div class="sd">整门课逐层收缩 · 世界 → 社会 → 自我</div><div class="cards g3"><div class="card"><div class="idx">一</div><h4>时代的纷扰</h4><p>世界为什么越来越难看懂——核心矛盾：外部世界变化 vs 内部认知框架 · 关键词「看不懂」</p></div><div class="card"><div class="idx">二</div><h4>社会的撕扯</h4><p>为什么人在社会中经常左右为难——核心矛盾：不同社会规则之间发生冲突 · 关键词「难选择」</p></div><div class="card"><div class="idx">三</div><h4>生活的焦虑</h4><p>（按前面结构推测）「我知道世界复杂，也知道规则冲突，但我到底应该怎样生活？」</p></div></div><div class="ladder"><div class="step"><div class="t">时代的纷扰</div><div class="d">外部世界看不懂</div></div><div class="step"><div class="t">社会的撕扯</div><div class="d">社会关系难选择</div></div><div class="step"><div class="t">生活的焦虑</div><div class="d">个人内心不知道怎么办</div></div><div class="step hot"><div class="t">世界 → 社会 → 自我</div><div class="d">整门课逐层收缩</div></div></div><p class="prose">现在可以看到，整门课正在逐层收缩，这一章<b>「世界 → 社会 → 自我」</b>的三层结构已经开始显现出来了。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>批判性提醒</h2></div><div class="sd">哪些内容要「理解」，但不要直接当成标准结论</div><p class="prose">和第一课一样，这一课也混合了<b>哲学框架 + 老师个人定义 + 修辞性表达</b>。以下内容适合帮助思考，但不宜当成学术定律：</p><div class="warn"><div class="wt">不宜直接当成标准结论的表述</div><ul><li>「社会就是基于文化合作形成的自动、自发组织。」——有启发性的定义，但不是社会学唯一或标准定义</li><li>「政治就是安全的合作。」——作者自己的高度压缩</li><li>「社会像一辆不会停车的高速汽车」——帮助思考的比喻</li><li>「你的未来由你决定，而不是社会决定」——价值主张</li></ul></div><p class="prose">学习这门课，整理者仍然建议采用上一课建立的方法，把四层分开：</p><div class="cards g4"><div class="card"><div class="idx">层一</div><h4>事实</h4><p>可直接验证的部分</p></div><div class="card"><div class="idx">层二</div><h4>理论解释</h4><p>学科原理对事实的解释</p></div><div class="card"><div class="idx">层三</div><h4>作者观点</h4><p>老师的个人定义与修辞性表达</p></div><div class="card"><div class="idx">层四</div><h4>个人判断</h4><p>把前三层分开后，你形成的判断</p></div></div><p class="prose">把这四层分开，你就不会只是「听懂老师」，而会真正形成自己的思考。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="8">0</div><div class="l">社会规则系统</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">撕扯五步模型</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">组织分析四问</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">解决路径</div></div></div><div class="panel"><h3><span class="no2">①</span>规则视角练习</h3><div class="pd">判断下列表述出自哪种规则的视角（情 / 利 / 理 / 法），点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文：从“情”来看，应该帮助朋友"><div class="st">1. 朋友有困难应该帮</div><div class="opts"><button data-ok="1">情</button><button data-ok="0">利</button><button data-ok="0">理</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：从“利”来看，可能不划算"><div class="st">2. 钱借出去可能收不回来</div><div class="opts"><button data-ok="0">情</button><button data-ok="1">利</button><button data-ok="0">理</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：从“理”来看，应该具体问题具体分析"><div class="st">3. 应该具体问题具体分析</div><div class="opts"><button data-ok="0">情</button><button data-ok="0">利</button><button data-ok="1">理</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：从“法”来看，应该按照合同和制度办"><div class="st">4. 应该按照合同和制度办</div><div class="opts"><button data-ok="0">情</button><button data-ok="0">利</button><button data-ok="0">理</button><button data-ok="1">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：家庭有大量亲情、责任、照顾、牺牲、信任——「不能把所有社会规则都带回家」"><div class="st">5. 在家庭里每件事都计算投入产出，关系一定会出问题</div><div class="opts"><button data-ok="1">情</button><button data-ok="0">利</button><button data-ok="0">理</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：回到“原理”进行判断——经济问题用经济学原理，法律问题回到法律制度，而不是只凭“我觉得”"><div class="st">6. 经济问题，尽量用经济学原理判断</div><div class="opts"><button data-ok="0">情</button><button data-ok="0">利</button><button data-ok="1">理</button><button data-ok="0">法</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>规则意识通关清单</h3><div class="pd">遇到左右为难的问题时，逐项检验自己能否做到</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">第一步 · 我能识别：这是什么场景？（家庭 / 工作 / 市场 / 法律 / 公共事务）</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">第二步 · 我能找出：现在有哪些规则同时在起作用？（情 / 理 / 法 / 利 / 权 / 文化习惯）</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">第三步 · 我能判断：哪一条规则在这个场景应该优先</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我不用一个规则解释整个世界——不同问题调用不同模型</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能分清：媒体展示的社会 ≠ 社会本身</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我的批判是为了更好地理解和参与，而不是证明自己什么都不用做</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>「社会的撕扯」的本质是什么？</div><div class="ans"><button data-ok="0">A. 事情本身太难，超出了个人能力</button><button data-ok="1">B. 不同规则同时要求你做不同的事</button><button data-ok="0">C. 社会太复杂，信息过载</button><button data-ok="0">D. 人与人之间缺乏信任</button></div><div class="exp">源文：「所谓‘社会的撕扯’，就是不同规则同时要求你做不同的事。」撕扯不是“事情太难”，而是同一件事落入了不同的规则系统。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>老师给出的「社会」定义，正确的是？</div><div class="ans"><button data-ok="0">A. 一群人的简单集合</button><button data-ok="1">B. 基于文化合作形成的一种自发组织</button><button data-ok="0">C. 国家机器的总和</button><button data-ok="0">D. 为了生存而互相竞争的丛林</button></div><div class="exp">源文：「社会是基于文化合作形成的一种自发组织」，后又换说成「社会是人和规则构成的自发组织」——社会不是一群人的简单集合，而是一套让人能够持续合作的组织系统。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>老师认为社会存在几套规则系统？</div><div class="ans"><button data-ok="0">A. 三套</button><button data-ok="0">B. 五套</button><button data-ok="1">C. 八套</button><button data-ok="0">D. 十套</button></div><div class="exp">源文：老师认为社会存在八套规则——生命、自然/科学、政治、经济、宗教、文化、家庭、网络。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>哪一条规则「正在重新改写其他七种规则」？</div><div class="ans"><button data-ok="0">A. 政治规则</button><button data-ok="0">B. 经济规则</button><button data-ok="0">C. 家庭规则</button><button data-ok="1">D. 网络规则</button></div><div class="exp">源文：网络不仅增加了一条规则，更重要的是「它正在重新改写其他七种规则」——这就是第一课和第二课真正连接起来的地方。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>面对规则冲突，哲学真正给你的是什么？</div><div class="ans"><button data-ok="0">A. 一个万能的标准答案</button><button data-ok="1">B. 识别规则、比较规则、排列规则优先级的能力</button><button data-ok="0">C. 逃离社会关系的智慧</button><button data-ok="0">D. 更多的规则知识</button></div><div class="exp">源文：「哲学并不能给你一个万能答案。哲学真正给你的，是识别规则、比较规则、排列规则优先级的能力。」</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">同一件事放在“权、利、情、理、法”等不同框架里，会得到不同答案。</div><div class="src">整理者建议记住的第二课五句话之三</div></div><div class="quote"><div class="q">成熟的判断不是寻找一条万能规则，而是识别场景、调用正确规则、决定优先级。</div><div class="src">整理者建议记住的第二课五句话之四</div></div><div class="quote"><div class="q">人不能只站在社会外面评价社会，还必须学会理解规则、加入社会并创造自己的价值。</div><div class="src">整理者建议记住的第二课五句话之五</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../00-时代的纷扰/index.html">← 上一篇 · 时代的纷扰</a><a href="../02-生活的焦虑/index.html">下一篇 · 生活的焦虑 →</a><span class="sp"></span><span class="cur">社会的撕扯</span></div></nav>
+<footer class="coda"><div class="wm2">撕</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">社会之所以让人左右为难，不是因为没有规则，而是因为规则太多；<br>真正的智慧，是知道在什么场景下，<b>该让哪一种规则优先</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第二讲《社会的撕扯》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s1", "#s2", "#s5", "#s6", "#s7", "#s8", "#s11", "#s10"], "sortok": [0, 1, 2, 3, 0, 2], "quizok": [1, 1, 2, 3, 1], "ckkey": "zx01-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

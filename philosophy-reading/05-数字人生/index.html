@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数字人生 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx05-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../04-唯心主义/index.html">← 上一篇 · 唯心主义</a><a href="../06-人与自然/index.html">下一篇 · 人与自然 →</a><span class="sp"></span><span class="cur">数字人生</span></div></nav>
+<header class="hero" id="top"><div class="wm">连</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第二章《世界的洞见》第三节</div>
+  <div class="no">陆</div>
+  <h1>数字人生</h1>
+  <div class="sub">连接｜跨界｜互动｜重构</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>唯物主义看现实，唯心主义想可能，<br>数字主义的任务是<b>把「现实」和「可能」连接起来</b>——并在连接中重构世界。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 第二章的完整结构</a><a href="#s2">貳 · 数字世界的起点</a><a href="#s3">叁 · 第一种能力：跨界</a><a href="#s4">肆 · 双向转换：现实与理想</a><a href="#s5">伍 · 链接：连接成本与六度分隔</a><a href="#s6">陆 · 全球化：加速器，而非全部原因</a><a href="#s7">柒 · 生活方式被重新组织</a><a href="#s8">捌 · AI：从身体工具到认知工具</a><a href="#s9">玖 · 无力感与认知杠杆</a><a href="#s10">拾 · 数字身份与新人类</a><a href="#s11">拾壹 · 智慧就是跨界</a><a href="#s12">拾貳 · 三种世界观合璧</a><a href="#s13">拾叁 · 三问作业</a><a href="#s14">拾肆 · 批判性提醒</a><a href="#s15">拾伍 · 全课逻辑图与六句话</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>唯物 · 看现实</b><span>观察、工具、实验、数据 → 规律、科学、技术</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s1"><b>唯心 · 想可能</b><span>记忆、想象、推理、判断 → 自由、灵魂、无限、价值</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s1"><b>数字 · 连接</b><span>算 + 连 + 转化：把现实和可能连接起来</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>跨界</b><span>跨时间 · 跨空间 · 跨行业 · 跨组织</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>互动</b><span>现实与理想双向转换</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>AI 延伸认知</b><span>身体工具 → 认知工具</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s11"><b>重构</b><span>智慧就是跨界 → 能力边界被重新定义</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>第二章的完整结构</h2></div><div class="sd">三节课各管一段：看现实 · 想可能 · 连接与重构</div><p class="prose">这一课是第二章《世界的洞见》的第三节。真正的主题不是简单介绍「数字技术」，而是试图回答一个更大的问题：</p><div class="quote"><div class="q">当现实世界、思想世界和数字世界开始彼此连接之后，人类会进入一种什么样的新世界？</div><div class="src">本课开篇提出的真正问题</div></div><p class="prose">如果说前两课分别是「唯物主义：看现实」「唯心主义：想可能」，那么这一课就是——<b>数字主义：把「现实」和「可能」连接起来</b>。它的核心关键词不是「数字」，而是：<b>连接｜跨界｜互动｜重构</b>。</p><div class="cards g3"><div class="card"><div class="idx">看</div><h4>唯物主义</h4><p>依靠<b>观察、工具、实验、数据</b>，解决「世界事实上怎样运行」→ 得到规律、科学、技术</p></div><div class="card"><div class="idx">想</div><h4>唯心主义</h4><p>依靠<b>记忆、想象、推理、判断</b>，追问「还有哪些可能？人生有什么意义？」→ 进入自由、灵魂、无限、价值</p></div><div class="card"><div class="idx">连</div><h4>数字主义</h4><p>核心动作是<b>算 + 连 + 转化</b>，解决「怎样把现实世界和思想世界数字化以后连接起来」</p></div></div><p class="prose">所以第二章可以高度概括成：<b>看现实 → 想可能 → 连接并重构现实</b>。这就是这一课在整章中的位置。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>数字世界的起点</h2></div><div class="sd">从「信息互动」到「可计算、可传输的统一表达」</div><div class="quote"><div class="q">数字世界的本质是信息互动。</div><div class="src">老师延续前面课程的定义</div></div><p class="prose">整理者认为这个观点可以保留，但最好更精确一点：数字系统最核心的特点，是现实世界中的某些东西，可以被——</p><div class="ladder"><div class="step"><div class="t">编码</div></div><div class="step"><div class="t">数据化</div></div><div class="step"><div class="t">计算</div></div><div class="step"><div class="t">传输</div></div><div class="step hot"><div class="t">重组</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">一张照片与一张地图的数字化之旅</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一张照片：现实光线 → 数字编码 → 文件 → 网络传输 → 屏幕重新呈现。地图也是如此：道路、地点、交通情况 → 数据化 → 算法计算 → 导航结果。</div></div></div><div class="quote"><div class="q">数字化让不同类型的事物进入同一种可计算、可传输的表达体系。</div><div class="src">整理者认为这一课真正应该抓住的一句话</div></div><p class="prose">这才是<b>「万物互联」</b>的基础之一。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第一种能力：跨界</h2></div><div class="sd">为什么数字世界特别容易跨界 · 四种「跨」</div><div class="quote"><div class="q">一旦所有东西都数字化，就能进入同一个系统进行运算。</div><div class="src">老师的说法 · 整理者认为这个思路很重要</div></div><p class="prose">现实世界本来有很多边界。但当文字、图片、声音、位置、身份、支付、社交关系……都变成数字信息后，它们都可以在同一种信息基础设施里流动。</p><div class="chips"><span class="chip">地理边界</span><span class="chip">行业边界</span><span class="chip">时间边界</span><span class="chip">信息边界</span><span class="chip">组织边界</span></div><div class="cards g2"><div class="card"><div class="idx">时</div><h4>跨时间</h4><p>录播课可以反复观看</p></div><div class="card"><div class="idx">空</div><h4>跨空间</h4><p>你可以和另一个国家的人实时交流</p></div><div class="card"><div class="idx">业</div><h4>跨行业</h4><p>手机同时是电话、相机、地图、银行、商场、课堂、办公室</p></div><div class="card"><div class="idx">组</div><h4>跨组织</h4><p>不同公司、不同国家的人可以临时组成一个项目团队</p></div></div><p class="prose">所以这一课「数字主义」的第一个核心能力就是：<b>跨界</b>。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>双向转换：现实与理想</h2></div><div class="sd">现实理想化 · 理想现实化 · 数字世界是中介层</div><div class="quote"><div class="q">把现实的有限变成理想的无限。</div><div class="src">老师谈数字世界的第一种跨界</div></div><p class="prose">原话比较玄。整理者把它具体理解成：<b>数字技术可以把现实对象抽象、模拟、优化</b>。例如设计一栋楼，真正建造之前，可以先在电脑里建模、改尺寸、换材料、模拟光照、模拟结构、模拟人员流动——现实有限而昂贵，数字模型里可以反复试错。</p><div class="ladder"><div class="step"><div class="t">现实</div><div class="d">有限而昂贵</div></div><div class="step"><div class="t">数据化</div></div><div class="step"><div class="t">模拟</div><div class="d">建模 · 换材料 · 光照 · 结构 · 人流</div></div><div class="step"><div class="t">优化</div><div class="d">反复试错</div></div><div class="step hot"><div class="t">理想方案</div><div class="d">老师所谓「现实理想化」</div></div></div><p class="prose">反过来也成立。一个人先在头脑里产生一个想法——「我要设计一辆新的汽车」。以前可能只能画草图，现在可以走完一整条链：</p><div class="ladder"><div class="step"><div class="t">想法</div></div><div class="step"><div class="t">数字模型</div></div><div class="step"><div class="t">仿真</div></div><div class="step"><div class="t">协同设计</div></div><div class="step"><div class="t">自动加工</div></div><div class="step hot"><div class="t">现实产品</div></div></div><p class="prose">也就是说：<b>思想 → 数字表达 → 现实制造</b>。这是数字时代最强大的能力之一，所以老师提出「理想可以变成现实」。</p><div class="duo"><div class="col neg"><h4>把数字世界理解成 ✕</h4><ul><li>一个单独的第三个世界</li><li>「数字世界混同唯物和唯心」的简单说法</li></ul></div><div class="col pos"><h4>更准确的理解 ✓</h4><ul><li><b>数字世界是「想法」和「现实」之间的中介层</b></li><li>现实 → 数据 → 模型；想法 → 模型 → 行动 → 现实</li></ul></div></div><div class="quote"><div class="q">现实世界和思想世界之间的巨大转换器。</div><div class="src">整理者对数字世界的定位 · 本课最值得保留的核心观点之一</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>链接：连接成本与六度分隔</h2></div><div class="sd">组织方式之变 · 距离不只由公里决定</div><p class="prose">老师提到了《链接》和「六度分隔」。他真正想说明的是：</p><div class="quote"><div class="q">互联网使人与人的连接成本大幅下降。</div><div class="src">老师提到《链接》一书时真正想说明的</div></div><p class="prose">过去认识一个国外专家可能很困难，现在可以通过社交平台、邮件、社区、GitHub、学术平台、视频会议迅速找到对方。因此人类的组织方式发生了一个重大变化：</p><div class="duo"><div class="col neg"><h4>地理组织（过去）</h4><ul><li>你和附近的人一起工作、学习、交流</li></ul></div><div class="col pos"><h4>兴趣 / 专业 / 项目组织（现在）</h4><ul><li>世界各地互不认识的人，可以因为同一个问题组成群体 —— 即<b>网络社群</b></li></ul></div></div><p class="prose">关于「六度分隔」，不要把重点放在「到底六个人还是三个人就能认识全世界」。真正重要的是网络科学中的思想：<b>复杂网络中，人和人之间的平均连接距离可能非常短</b>，而数字网络进一步降低了这种连接成本。</p><div class="quote"><div class="q">距离不是只由公里决定，也由网络连接决定。</div><div class="src">整理者认为「六度分隔」部分真正值得记住的一句话</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>全球化：加速器，而非全部原因</h2></div><div class="sd">互联网 → 连接增强 → 地球村 → 全球化</div><p class="prose">老师把「互联网 → 连接增强 → 地球村 → 全球化」串在一起。这个逻辑有一定道理：互联网确实显著降低了多种成本，于是形成一批新形态。</p><div class="chips"><span class="chip">信息流动成本 ↓</span><span class="chip">跨境沟通成本 ↓</span><span class="chip">跨境交易成本 ↓</span><span class="chip">协作成本 ↓</span></div><div class="chips"><span class="chip">全球供应链</span><span class="chip">跨境电商</span><span class="chip">远程团队</span><span class="chip">在线教育</span><span class="chip">全球内容平台</span></div><p class="prose">但这里需要注意：<b>全球化不只是互联网推动的</b>——还受国际贸易、资本流动、航运、制造业、政策、地缘政治等因素影响。所以互联网只是「全球化的重要加速器之一」，不是全部原因。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>生活方式被重新组织</h2></div><div class="sd">人际关系 · 工作 · 学习 · 出行：数字系统嵌入现实生活</div><p class="prose">这是这一课和个人最接近的部分。数字网络影响了至少四种生活方式。</p><div class="cards g2"><div class="card"><div class="idx">人</div><h4>人际关系</h4><p>以前「先见面，再形成关系」；现在「可以先在线认识，再形成关系」——出现网络朋友、兴趣社群、专业社区、虚拟团队</p></div><div class="card"><div class="idx">工</div><h4>工作方式</h4><p>以前意味着「人必须到固定地点」；现在可以在线协作、远程会议、云端办公、跨地区协同</p></div><div class="card"><div class="idx">学</div><h4>学习方式</h4><p>过去老师、教材、课堂是知识入口；现在还有 AI、在线课程、视频、数据库、社区</p></div><div class="card"><div class="idx">行</div><h4>出行与生活服务</h4><p>导航、打车、订票、支付、外卖、酒店——背后都是同一条逻辑链</p></div></div><div class="duo"><div class="col neg"><h4>旧组织方式</h4><ul><li>工作：<b>地点组织</b></li><li>学习：<b>等别人教我</b></li></ul></div><div class="col pos"><h4>新组织方式</h4><ul><li>工作：<b>任务组织</b>——这一点非常重要</li><li>学习：<b>我主动连接资源</b>——数字时代非常大的认知变化</li></ul></div></div><div class="quote"><div class="q">现实需求 → 数字平台 → 信息匹配 → 现实服务</div><div class="src">出行与生活服务背后的共同逻辑</div></div><div class="quote"><div class="q">数字系统已经嵌入现实生活。</div><div class="src">整理者的结论——数字世界已经不是「网络上的另一个生活」</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>AI：从身体工具到认知工具</h2></div><div class="sd">汽车延伸腿、起重机延伸力量、望远镜延伸眼睛，AI 延伸认知</div><p class="prose">老师后面开始谈 AI。他说 AI 是——</p><div class="quote"><div class="q">人的思考和学习的辅助工具。</div><div class="src">老师对 AI 的定位</div></div><p class="prose">这个方向非常重要。如果过去的工具主要是<b>延伸身体</b>：</p><div class="cards g3"><div class="card"><div class="idx">腿</div><h4>汽车</h4><p>延伸腿</p></div><div class="card"><div class="idx">力</div><h4>起重机</h4><p>延伸力量</p></div><div class="card"><div class="idx">眼</div><h4>望远镜</h4><p>延伸眼睛</p></div></div><p class="prose">那么 AI 有一个非常不同的地方：<b>它开始延伸认知。</b></p><div class="chips"><span class="chip">搜索信息</span><span class="chip">总结材料</span><span class="chip">写作</span><span class="chip">编程</span><span class="chip">分析数据</span><span class="chip">提供方案</span><span class="chip">模拟讨论</span></div><p class="prose">所以 AI 可以看成<b>认知工具</b>——这是数字时代非常值得记住的变化。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>无力感与认知杠杆</h2></div><div class="sd">AI 帮你完成任务 ≠ 你真正掌握能力</div><p class="prose">这一部分老师提出了一个很好的问题：当工具越来越会「思考」，人的价值在哪里？以前我们害怕机器取代体力，今天人开始担心「机器会不会取代脑力？」于是产生四种焦虑：</p><div class="chips"><span class="chip">学习焦虑</span><span class="chip">职业焦虑</span><span class="chip">能力焦虑</span><span class="chip">身份焦虑</span></div><div class="duo"><div class="col neg"><h4>容易混淆 ✕</h4><ul><li>AI 帮学生写完文章，就等于学生已经学会分析、论证、判断、写作</li></ul></div><div class="col pos"><h4>需要区分 ✓</h4><ul><li><b>AI帮你完成任务</b>和<b>你真正掌握能力</b>，不是同一件事</li></ul></div></div><div class="quote"><div class="q">在AI时代，哪些思考必须由人自己完成？</div><div class="src">整理者认为非常值得从这一课继续追问的问题</div></div><div class="quote"><div class="q">生命的效率由思维决定。</div><div class="src">老师的说法——整理者注：不是科学定律，但作为隐喻很有启发性</div></div><p class="prose">过去一个人一天能处理10份材料，有 AI 辅助以后可能处理50份。AI 真正改变的是<b>单位时间内处理信息、形成结果的能力</b>，也就是「认知杠杆」——可以把 AI 理解成<b>人的认知放大器</b>。</p><p class="prose">但是放大的不仅是能力，还可能放大错误、偏见、懒惰、判断失误——所以依然需要人的<b>判断力</b>。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>数字身份与新人类</h2></div><div class="sd">「我」的边界 · 能力边界不再等于大脑里记住什么</div><p class="prose">老师提到，人的肉体生命之外，还有「精神生命和数字互动的存在」。这其实触及一个非常现代的问题——<b>数字身份</b>。今天一个人的存在已经不只有肉体的「我」，还有：</p><div class="chips"><span class="chip">社交账号</span><span class="chip">工作记录</span><span class="chip">内容作品</span><span class="chip">数字资产</span><span class="chip">聊天记录</span><span class="chip">知识库</span><span class="chip">网络声誉</span></div><div class="quote"><div class="q">数字时代，“我”到底只是身体里的我，还是还包含我的数字痕迹？</div><div class="src">整理者认为非常好的哲学问题</div></div><div class="h3blk">「新人类 / 旧人类」真正想表达什么</div><div class="duo"><div class="col neg"><h4>旧模式 ✕</h4><ul><li>完全依赖自身能力</li><li>能力边界由自己的身体和大脑决定</li></ul></div><div class="col pos"><h4>新模式 ✓</h4><ul><li>善于调用外部数字能力：<b>本人 + 网络 + AI + 数据 + 工具</b></li><li>能力边界越来越取决于<b>你能调用什么系统</b></li></ul></div></div><p class="prose">例如：以前不会翻译法语，今天通过 AI 几秒就能理解法语文件；以前不会编程，今天通过 AI 可能完成部分程序。所以「新人类」的真正分界线不是年龄（00后 / 80后），而是旧模式与新模式的区别——即<b>人 + 数字工具</b>。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>智慧就是跨界</h2></div><div class="sd">创新 = 在原本分离的系统之间建立新连接</div><p class="prose">老师最后说：「智慧就是跨界。」整理者认为这句话值得保留——因为真正的创新，很多时候就是把两个原本分开的系统连接起来。点击查看四个例子：</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">医学 + AI</span><span class="ar">▸</span></div><div class="sm"><div class="inner">→ AI 影像诊断</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">金融 + 网络</span><span class="ar">▸</span></div><div class="sm"><div class="inner">→ 移动支付</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">教育 + AI</span><span class="ar">▸</span></div><div class="sm"><div class="inner">→ 个性化学习</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">现实 + 数字模型</span><span class="ar">▸</span></div><div class="sm"><div class="inner">→ 数字孪生</div></div></div><div class="quote"><div class="q">很多创新，来自原本彼此分离的知识、行业和场景之间建立新的连接。</div><div class="src">整理者把「智慧就是跨界」稍作改写的表述</div></div><p class="prose">这就是<b>「跨界智慧」</b>。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>三种世界观合璧</h2></div><div class="sd">不是分别背三种主义，而是理解它们各解决什么问题</div><p class="prose">第二章最重要的，其实不是分别背三种主义，而是理解它们分别解决什么问题。</p><div class="cards g3"><div class="card"><div class="idx">物</div><h4>唯物主义</h4><p>核心：<b>事实</b>。问「世界实际上是什么？」依靠观察、实验、证据</p></div><div class="card"><div class="idx">心</div><h4>唯心主义</h4><p>核心：<b>可能与意义</b>。问「世界还可能是什么？人生应该是什么？」依靠想象、推理、价值判断</p></div><div class="card"><div class="idx">数</div><h4>数字主义</h4><p>核心：<b>连接与转化</b>。问「怎样把事实与可能连接起来并重新构造世界？」依靠数据、计算、网络、AI</p></div></div><div class="ladder"><div class="step"><div class="t">事实</div><div class="d">唯物：看</div></div><div class="step"><div class="t">可能</div><div class="d">唯心：想</div></div><div class="step hot"><div class="t">实现</div><div class="d">数字：连起来、做出来</div></div></div><p class="prose">或者说：<b>看 → 想做出来</b>。这个结构非常漂亮。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>三问作业</h2></div><div class="sd">用三种视角分析自己的工作：事实层 → 意义层 → 重构层</div><p class="prose">老师最后布置的作业非常值得做：<b>从三个视角分析自己的工作</b>。整理者把它重新整理成三问（点击展开思考清单）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">第一问｜唯物主义看我的工作：客观事实是什么？</span></summary><div class="body">包括：我的工作目标是什么？数据怎么样？实际资源是什么？哪些是客观限制？我的工作产生了什么结果？——这是<b>事实层</b>。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">第二问｜唯心主义看我的工作：这份工作对我意味着什么？</span></summary><div class="body">包括：我为什么做它？我希望成为什么样的人？我的价值是什么？我真正想实现什么？理想状态是什么？——这是<b>意义层</b>。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">第三问｜数字主义看我的工作：数字技术可以如何重构这份工作？</span></summary><div class="body">包括：哪些流程可以数字化？哪些信息可以连接？哪些工作可以AI辅助？哪些服务可以线上化？怎样提高协同效率？——这是<b>重构层</b>。</div></details><div class="ladder"><div class="step"><div class="t">事实层</div></div><div class="step"><div class="t">意义层</div></div><div class="step hot"><div class="t">重构层</div></div></div><p class="prose"><b>事实 → 意义 → 重构</b>——这一套其实非常适合现实工作分析。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>批判性提醒</h2></div><div class="sd">这一课需要特别谨慎的几个说法</div><p class="prose">和前几课一样，老师有些内容属于启发性表达，不应直接当成事实。</p><div class="warn"><div class="wt">不宜当作确定事实记忆的表述</div><ul><li>「所有东西数字化以后就都能进行加减乘除」——过度简化：数字化确实使信息可计算，但不同数据仍然有语义、尺度、结构、权限等差异，并不是简单做四则运算</li><li>「六度分隔就可以认识世界所有人」——更准确的理解是网络中可能存在较短的平均连接路径，不等于现实中一定能通过六个人联系到任何一个具体的人</li><li>「美国大学生和高中生80%的作业通过AI完成」——没有给出可靠来源，不能把这个数字作为事实记忆</li><li>「高中生在家组装核反应堆」的故事——这类故事细节需要单独核实，不能仅凭课堂口述作为事实</li></ul></div><p class="prose">因此学习时还是继续坚持四层法：</p><div class="ladder"><div class="step"><div class="t">事实</div></div><div class="step"><div class="t">模型</div></div><div class="step"><div class="t">作者判断</div></div><div class="step hot"><div class="t">自己判断</div></div></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>全课逻辑图与六句话</h2></div><div class="sd">把整课压缩成一张可背诵的骨架</div><div class="ladder"><div class="step"><div class="t">数字化</div><div class="d">现实 → 数据</div></div><div class="step"><div class="t">可计算</div><div class="d">数据 → 模型</div></div><div class="step"><div class="t">可连接</div><div class="d">人 ↔ 人 · 人 ↔ 信息 · 人 ↔ 服务 · 物 ↔ 物</div></div><div class="step"><div class="t">可转化</div><div class="d">现实 → 数字 → 理想；理想 → 数字 → 现实</div></div><div class="step"><div class="t">结果</div><div class="d">全球连接 · 新型社交 / 工作 / 学习 / 生活 · AI 认知增强</div></div><div class="step hot"><div class="t">人的能力边界被重新定义</div></div></div><p class="prose">如果只记住这一课的6句话，整理者建议是：</p><div class="cards g3"><div class="card"><div class="idx">①</div><h4>转化</h4><p>数字世界最重要的能力之一，是把不同事物转化为可传输、可计算的信息</p></div><div class="card"><div class="idx">②</div><h4>双向</h4><p>数字世界既能把现实变成模型，也能让思想通过模型逐步变成现实</p></div><div class="card"><div class="idx">③</div><h4>连接</h4><p>网络大幅降低了人与人、人与知识、人与服务之间的连接成本</p></div><div class="card"><div class="idx">④</div><h4>重组</h4><p>数字技术正在重新组织社交、工作、学习和生活方式</p></div><div class="card"><div class="idx">⑤</div><h4>认知</h4><p>AI开始从「身体工具」进一步成为「认知工具」，放大人的思维能力</p></div><div class="card"><div class="idx">⑥</div><h4>边界</h4><p>数字时代真正重要的能力，不只是掌握知识，而是连接资源、调用工具并进行跨界重构</p></div></div><div class="quote"><div class="q">数字世界真正改变的，不只是工具，而是现实、思想和行动之间的距离。</div><div class="src">整理者认为这一课最值得长期记住的一句话 · 适合作信息图中心金句</div></div></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">数字化五步链</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">种跨界方式</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">种生活方式重组织</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">问工作分析法</div></div></div><div class="panel"><h3><span class="no2">①</span>三问对号练习</h3><div class="pd">判断下列问题分别属于哪种世界观的追问——「唯物·事实 / 唯心·意义 / 数字·重构」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="唯物主义核心是事实，问「世界实际上是什么」，依靠观察、实验、证据"><div class="st">1. 世界实际上是什么？</div><div class="opts"><button data-ok="1">唯物·事实</button><button data-ok="0">唯心·意义</button><button data-ok="0">数字·重构</button></div><div class="verdict"></div></div><div class="sort-it" data-why="唯心主义核心是可能与意义，依靠想象、推理、价值判断"><div class="st">2. 世界还可能是什么？人生应该是什么？</div><div class="opts"><button data-ok="0">唯物·事实</button><button data-ok="1">唯心·意义</button><button data-ok="0">数字·重构</button></div><div class="verdict"></div></div><div class="sort-it" data-why="数字主义核心是连接与转化，依靠数据、计算、网络、AI"><div class="st">3. 怎样把事实与可能连接起来并重新构造世界？</div><div class="opts"><button data-ok="0">唯物·事实</button><button data-ok="0">唯心·意义</button><button data-ok="1">数字·重构</button></div><div class="verdict"></div></div><div class="sort-it" data-why="三问作业第一问：唯物主义看工作，问「客观事实是什么」——事实层"><div class="st">4. 我的工作目标是什么？数据怎么样？实际资源是什么？</div><div class="opts"><button data-ok="1">唯物·事实</button><button data-ok="0">唯心·意义</button><button data-ok="0">数字·重构</button></div><div class="verdict"></div></div><div class="sort-it" data-why="三问作业第二问：唯心主义看工作，问「这份工作对我意味着什么」——意义层"><div class="st">5. 我为什么做它？我希望成为什么样的人？</div><div class="opts"><button data-ok="0">唯物·事实</button><button data-ok="1">唯心·意义</button><button data-ok="0">数字·重构</button></div><div class="verdict"></div></div><div class="sort-it" data-why="三问作业第三问：数字主义看工作，问「数字技术可以如何重构这份工作」——重构层"><div class="st">6. 哪些流程可以数字化？哪些工作可以AI辅助？</div><div class="opts"><button data-ok="0">唯物·事实</button><button data-ok="0">唯心·意义</button><button data-ok="1">数字·重构</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>数字时代生存清单</h3><div class="pd">对照下列六条，检验你是否真的消化了这一课（勾选状态自动保存在本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说清第二章三节课的分工：唯物看现实 · 唯心想可能 · 数字把现实和可能连接起来</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能指出一个日常数字服务背后「现实需求 → 数字平台 → 信息匹配 → 现实服务」的逻辑</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能区分「AI帮我完成任务」和「我真正掌握能力」不是同一件事</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能说出 AI 作为认知放大器的两面：放大能力，也可能放大错误、偏见、懒惰、判断失误</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我知道互联网只是「全球化的重要加速器之一」，不是全部原因</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能用「事实 → 意义 → 重构」三问分析自己的工作</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>这一课（数字主义）的核心关键词是什么？</div><div class="ans"><button data-ok="0">A. 数字化</button><button data-ok="0">B. 智能</button><button data-ok="1">C. 连接｜跨界｜互动｜重构</button><button data-ok="0">D. 信息</button></div><div class="exp">源文：它的核心关键词不是「数字」，而是——连接｜跨界｜互动｜重构。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>整理者把「数字世界的本质是信息互动」精确化后，认为数字系统最核心的特点是什么？</div><div class="ans"><button data-ok="0">A. 上网速度更快</button><button data-ok="1">B. 现实世界中的某些东西，可以被编码、数据化、计算、传输、重组</button><button data-ok="0">C. 游戏和虚拟现实更逼真</button><button data-ok="0">D. 社交关系更紧密</button></div><div class="exp">源文：现实世界中的某些东西，可以被「编码 → 数据化 → 计算 → 传输 → 重组」，例如照片与地图。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>关于「六度分隔」，整理者认为真正值得学习的是什么？</div><div class="ans"><button data-ok="0">A. 六个人就能认识全世界所有人</button><button data-ok="0">B. 三个人就能认识全世界所有人</button><button data-ok="1">C. 复杂网络中，人和人之间的平均连接距离可能非常短</button><button data-ok="0">D. 社交平台可以无限添加好友</button></div><div class="exp">源文：不要把重点放在「到底六个人还是三个人就能认识全世界」，真正重要的是网络科学中的思想——平均连接距离可能非常短。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>AI 与汽车、起重机、望远镜这些旧工具的根本不同是？</div><div class="ans"><button data-ok="0">A. 价格更便宜</button><button data-ok="1">B. 它开始延伸认知</button><button data-ok="0">C. 使用寿命更长</button><button data-ok="0">D. 使用场景更多</button></div><div class="exp">汽车延伸腿、起重机延伸力量、望远镜延伸眼睛——过去的工具主要延伸身体，而 AI 开始延伸认知，所以可看成认知工具。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>「新人类 / 旧人类」更合理的分界线是什么？</div><div class="ans"><button data-ok="0">A. 年龄：00后是新人类，80后是旧人类</button><button data-ok="0">B. 是否生活在大城市</button><button data-ok="1">C. 旧模式完全依赖自身能力，新模式善于调用外部数字能力</button><button data-ok="0">D. 是否从事互联网行业</button></div><div class="exp">源文：更合理的区别是旧模式（完全依赖自身能力）与新模式（善于调用外部数字能力）——即「人 + 数字工具」。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">距离不是只由公里决定，也由网络连接决定。</div><div class="src">「六度分隔」部分真正值得记住的一句</div></div><div class="quote"><div class="q">很多创新，来自原本彼此分离的知识、行业和场景之间建立新的连接。</div><div class="src">整理者对「智慧就是跨界」的展开表述</div></div><div class="quote"><div class="q">数字世界真正改变的，不只是工具，而是现实、思想和行动之间的距离。</div><div class="src">整理者认为这一课最值得长期记住的一句话</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../04-唯心主义/index.html">← 上一篇 · 唯心主义</a><a href="../06-人与自然/index.html">下一篇 · 人与自然 →</a><span class="sp"></span><span class="cur">数字人生</span></div></nav>
+<footer class="coda"><div class="wm2">連</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">数字世界真正改变的，不只是工具，<br>而是<b>现实、思想和行动之间的距离</b>。<br><br>唯物主义看事实，唯心主义想可能，<b>数字主义连起来、做出来</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第六讲《数字人生》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s1", "#s1", "#s3", "#s4", "#s8", "#s11"], "sortok": [0, 1, 2, 0, 1, 2], "quizok": [2, 1, 2, 1, 2], "ckkey": "zx05-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

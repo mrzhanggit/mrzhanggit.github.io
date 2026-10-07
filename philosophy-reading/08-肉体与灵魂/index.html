@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>肉体与灵魂 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx08-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../07-人与人/index.html">← 上一篇 · 人与人</a><a href="../09-哲学是什么/index.html">下一篇 · 哲学是什么 →</a><span class="sp"></span><span class="cur">肉体与灵魂</span></div></nav>
+<header class="hero" id="top"><div class="wm">魂</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第三章《思想的力量》第三节</div>
+  <div class="no">玖</div>
+  <h1>肉体与灵魂</h1>
+  <div class="sub">身体有限 · 意识无限 · 死亡与意义</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>人的身体受到时间和空间的限制，而意识总在追求无限；<br>正是「有限生命」与「无限追求」之间的张力，催生了关于<b>死亡、灵魂、自由、永恒、传承与意义</b>的思想。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 起点 · 人与物、生物有何不同</a><a href="#s2">貳 · 意识的攀升 · 七级阶梯</a><a href="#s3">叁 · 核心矛盾 · 有限肉体 vs 无限意识</a><a href="#s4">肆 · 转折点 · 死亡的自觉</a><a href="#s5">伍 · 答案一 · 宗教超越：灵魂不死</a><a href="#s6">陆 · 校正 · 康德不是证明了灵魂永生</a><a href="#s7">柒 · 答案二 · 文化超越：精神成果长于肉体</a><a href="#s8">捌 · 校正 · 黑格尔与“集体意识”</a><a href="#s9">玖 · 答案三 · 哲学超越：庄子与“不死不生”</a><a href="#s10">拾 · “忘掉自己”到底是什么意思</a><a href="#s11">拾壹 · 答案四 · 代际超越：家文化</a><a href="#s12">拾貳 · 四种超越方式 · 总框架</a><a href="#s13">拾叁 · 最深的问题 · 不是“灵魂存在吗”</a><a href="#s14">拾肆 · 回望第三章 · 思想的力量</a><a href="#s15">拾伍 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>人的特殊性</b><span>物→生物→人：能超越眼前现实</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>意识的攀升</b><span>感觉→记忆→想象→概念→判断→推理→理性</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>核心张力</b><span>身体有限 ↔ 精神追求无限</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>死亡的自觉</b><span>个体死亡之后，有没有什么仍然继续？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>四种超越</b><span>宗教 · 文化 · 哲学 · 代际（s5–s11 逐一展开）</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s12"><b>总框架</b><span>四种超越死亡的方式一览</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s13"><b>最深的问题</b><span>有限的一生如何连接比自己更大的意义</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s14"><b>第三章收束</b><span>获得能力 · 建立秩序 · 寻找意义</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>起点 · 人与物、生物有何不同</h2></div><div class="sd">三级模型：物 → 生物 → 人 · 整理者对“动物不会想象”的校正</div><p class="prose">前两节讨论了<b>人与自然</b>（思想怎样理解、利用并重新思考自然）和<b>人与人</b>（利、权、情、理、法建立秩序）。这一节向内收缩——<b>人与自己</b>。老师用“肉体与灵魂”这个传统哲学题目开讲，起点是一个三级模型：</p><div class="ladder"><div class="step"><div class="t">物</div><div class="d">只能按照外部规律发生变化</div></div><div class="step"><div class="t">生物</div><div class="d">除受外界影响，还具有一定主动性</div></div><div class="step hot"><div class="t">人</div><div class="d">进一步拥有意识、想象、推理和创造</div></div></div><p class="prose">老师真正想强调的是：<b>人的特殊性在于能够超越眼前现实。</b>不过这里需要稍微校正——</p><div class="quote"><div class="q">动物只有主动性，人类才有想象力。</div><div class="src">对三级模型的常见简化理解 · 整理者提醒不能这样简单理解</div></div><div class="warn"><div class="wt">整理者的校正</div><ul><li>现代动物认知研究已经发现，不少动物具有记忆、规划、问题解决等能力</li><li>课程真正值得保留的不是“动物不会想象”，而是：人能够把感觉加工成概念，再通过概念构造并不存在于眼前的世界</li></ul></div><div class="quote"><div class="q">人类拥有高度发展的符号语言、抽象推理、累积文化以及大规模共同想象能力。</div><div class="src">整理者校正后更准确的差异表述</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>意识的攀升 · 七级阶梯</h2></div><div class="sd">与上一章唯心主义一课高度衔接 · 意识怎样一步步“突破现实”</div><p class="prose">这部分与上一章唯心主义那一课高度衔接，可以重新整理成一条意识的攀升链——每一级都比上一级离“眼前”更远一步：</p><div class="ladder"><div class="step"><div class="t">感觉</div><div class="d">我看见、听见、触摸到一个东西。</div></div><div class="step"><div class="t">记忆 / 再现</div><div class="d">即使东西已经不在眼前，我仍然可以重新把它想起来。</div></div><div class="step"><div class="t">想象</div><div class="d">把过去不同经验重新组合</div></div><div class="step"><div class="t">概念</div><div class="d">“树”“人”“正义”“国家”“死亡”“自由”——人给经验建立概念</div></div><div class="step"><div class="t">判断</div></div><div class="step"><div class="t">推理</div></div><div class="step hot"><div class="t">理性</div><div class="d">人的意识逐渐离开“眼前有什么”</div></div></div><div class="quote"><div class="q">现实里没有，我也可以先想出来。</div><div class="src">想象这一步的定义 · 意识开始脱离眼前的关键</div></div><p class="prose">有了概念，人就能够判断和推理。于是意识不再停留在“眼前有什么”，而开始反过来追问——</p><div class="quote"><div class="q">世界还可能是什么？</div><div class="src">这就是老师所谓的人的“创造性”</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>核心矛盾 · 有限肉体 vs 无限意识</h2></div><div class="sd">整堂课最应该抓住的中心 · 由此从意识问题进入死亡问题</div><div class="quote"><div class="q">人的身体受到时间和空间限制，但人的记忆、想象、推理和文化创造可以突破当下；正是“有限生命”与“无限追求”之间的张力，催生了关于死亡、灵魂、自由、永恒、文化传承以及人生意义的思想。</div><div class="src">整理者提炼的整课真正有价值的主线</div></div><div class="duo"><div class="col neg"><h4>肉体的现实 ✕</h4><ul><li>有出生、会衰老、会生病、最终会死亡</li></ul></div><div class="col pos"><h4>意识的倾向 ✓</h4><ul><li>可以想一百年以后；想宇宙之外；想不存在的文明；想永恒——<b>不断突破边界</b></li></ul></div></div><div class="cards g2"><div class="card"><div class="idx">时</div><h4>想一百年以后</h4><p>越过个体生命的长度</p></div><div class="card"><div class="idx">空</div><h4>想宇宙之外</h4><p>越过身体所在的空间</p></div><div class="card"><div class="idx">幻</div><h4>想不存在的文明</h4><p>构想从未存在的事物</p></div><div class="card"><div class="idx">恒</div><h4>想永恒</h4><p>意识的边界一推到底</p></div></div><p class="prose">意识甚至可以推到那个极端的一问——</p><div class="quote"><div class="q">如果我不死呢？</div><div class="src">张力被推到极致的一问 · 由此产生其他动物很少以相同形式面对的问题</div></div><div class="case"><div class="h"><span class="tag">四问</span><span class="ht">死亡四问</span><span class="ar">▸</span></div><div class="sm"><div class="inner">我会死吗？当然会。那我死后还有什么？我做的一切最后有什么意义？有没有什么东西可以超过我的死亡？——这就从“意识问题”进入了死亡问题。</div></div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>转折点 · 死亡的自觉</h2></div><div class="sd">人不仅会死亡，还知道自己终将死亡</div><p class="prose">如果人完全不知道自己会死，也许不会如此强烈地追问永恒。但人不仅会死亡，还<b>知道自己终将死亡</b>。于是出现一个非常特殊的存在状态：</p><div class="duo"><div class="col neg"><h4>生命的冲动</h4><ul><li>生命想继续</li></ul></div><div class="col pos"><h4>理性的知道</h4><ul><li>理性知道生命有限</li></ul></div></div><p class="prose">这两者形成冲突。于是很多宗教和哲学，都试图回答——</p><div class="quote"><div class="q">怎样面对死亡？</div><div class="src">老师后半节课所有内容的总问题</div></div><p class="prose">老师后面所有关于灵魂、永生、宗教、庄子、集体意识、祖先、家庭……其实都在回答同一个问题：</p><div class="quote"><div class="q">个体死亡之后，有没有什么仍然继续？</div><div class="src">贯穿整课后半段的总题眼 · 四种超越方式都由此而来</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>答案一 · 宗教超越：灵魂不死</h2></div><div class="sd">人类历史上非常典型的回答 · 身体有限，但灵魂可以永恒</div><p class="prose">这是人类历史上非常典型的回答：身体会消亡，但假定存在某种<b>灵魂／精神性自我</b>，不随肉体死亡而终结。于是——身体有限，但灵魂可以永恒。宗教由此能够发挥一个非常重要的心理和文化功能：</p><div class="quote"><div class="q">把死亡从“彻底终结”转化成“另一种存在方式”。</div><div class="src">宗教的心理与文化功能</div></div><div class="ladder"><div class="step"><div class="t">降低死亡恐惧</div></div><div class="step"><div class="t">给予生命意义</div></div><div class="step hot"><div class="t">提供面对死亡的希望</div></div></div><div class="quote"><div class="q">“慰藉心灵，超越生死”</div><div class="src">老师对宗教之用的概括 · 可以这样理解</div></div><div class="warn"><div class="wt">必须强调</div><ul><li>这是宗教和形而上学意义上的回答，并不是已经得到经验科学证明的事实</li></ul></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>校正 · 康德不是证明了灵魂永生</h2></div><div class="sd">原课把康德、二律背反、灵魂、绝对意识、自由混在了一起 · 应当拆开</div><p class="prose">原课把“康德—二律背反—灵魂—绝对意识—自由”混在了一起，整理者认为这里应该拆开：</p><div class="warn"><div class="wt">校正 · 康德部分（整理者依据斯坦福哲学百科全书）</div><ul><li>康德确实深入讨论了灵魂、自由、上帝、世界整体，但不是通过纯理性证明“灵魂一定永生。”</li><li>《纯粹理性批判》中，康德专门批判了理性心理学从“我思”直接推出灵魂作为永恒实体的论证，这部分主要属于“纯粹理性的谬误推理（Paralogisms）”，而不是简单属于“二律背反”</li><li>“二律背反”主要处理理性一旦试图把整个世界作为对象时产生的矛盾，例如世界是否有开端、自由与自然因果是否可以共存等；自由主要出现在第三二律背反中</li><li>康德后来确实讨论“灵魂不朽”，但更接近一种实践理性的信念或设准：它与道德实践和“最高善”有关，不等于理论知识已经证明灵魂客观永生</li></ul></div><div class="quote"><div class="q">康德不是证明了灵魂永生，而是在追问：理性能知道什么、不能知道什么，以及道德实践允许我们合理相信什么。</div><div class="src">整理者给出的复习要点 · 这反而更有哲学价值</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>答案二 · 文化超越：精神成果长于肉体</h2></div><div class="sd">整理者认为比“灵魂不死”更值得思考的一层</div><p class="prose">一个人肉体会死亡，但他产生的<b>思想、作品、制度、发现、教育、价值观</b>，可能继续存在。这是整理者认为这节课比“灵魂不死”更值得你思考的一层：</p><div class="case"><div class="h"><span class="tag">例证</span><span class="ht">孔子与牛顿</span><span class="ar">▸</span></div><div class="sm"><div class="inner">孔子已经不在了，但他的思想仍然影响今天。牛顿已经不在了，但经典力学仍然参与塑造现代世界。</div></div></div><p class="prose">所以可以重新定义一种“超越死亡”：<b>个体生命有限，但个体创造的意义可以进入集体文化。</b>路径是一条传导链：</p><div class="ladder"><div class="step"><div class="t">个人意识</div></div><div class="step"><div class="t">通过语言、文字、教育、作品、制度</div><div class="d">进入共同文化的通道</div></div><div class="step"><div class="t">进入共同文化</div></div><div class="step hot"><div class="t">在后人那里继续发生作用</div></div></div><p class="prose">这是一种不需要先假定“灵魂实体不灭”，也能解释“精神延续”的方式。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>校正 · 黑格尔与“集体意识”</h2></div><div class="sd">“类意识=黑格尔的集体意识”不是准确的标准概括</div><p class="prose">老师谈黑格尔和“集体意识”，想表达的是——</p><div class="quote"><div class="q">个体是暂时的，整体却可以比个体存在得更久。</div><div class="src">老师引入黑格尔的用意 · 这个方向是可以理解的</div></div><div class="warn"><div class="wt">校正 · 黑格尔部分（整理者依据斯坦福哲学百科全书）</div><ul><li>黑格尔确实讨论从个体精神到客观精神、绝对精神，以及精神如何在社会、历史、艺术、宗教、哲学中实现自己</li><li>但这不能简单等同于今天所谓“集体意识”——“类意识=黑格尔的集体意识”并不是一个准确的标准概括</li></ul></div><p class="prose">老师真正想表达的，可以改成——</p><div class="quote"><div class="q">个体精神可以通过文化进入历史性的共同精神世界。</div><div class="src">整理者改写后的表述 · 这样就容易理解多了</div></div><div class="cards g3"><div class="card"><div class="idx">文</div><h4>文字</h4><p>可以活几百年</p></div><div class="card"><div class="idx">制</div><h4>制度</h4><p>可以持续几百年</p></div><div class="card"><div class="idx">化</div><h4>文化</h4><p>可以持续几千年</p></div></div><div class="quote"><div class="q">“我”可以通过创造和传承进入一个比自己更长久的时间尺度。</div><div class="src">这一层的结论</div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>答案三 · 哲学超越：庄子与“不死不生”</h2></div><div class="sd">《庄子·大宗师》的修养路径 · 存在方式的超越，而非肉体永生</div><p class="prose">老师用了《庄子·大宗师》。这一段其实非常值得理解——《大宗师》中确实有这样一条修养路径：</p><div class="quote"><div class="q">外天下 → 外物 → 外生 → 朝彻 → 见独 → 无古今 → 不死不生。</div><div class="src">《庄子·大宗师》的修养路径（整理者依据汉典原文）</div></div><div class="warn"><div class="wt">校正 · 原课的用词与理解</div><ul><li>原课有些地方把词说成了“外其物、外其身”，并不完全准确</li><li>这里真正的哲学意思也不必理解成：修炼以后肉体真的永远不会死</li></ul></div><p class="prose">更值得理解成：<b>通过改变“我与世界”的关系，降低个体自我对于生死的执着。</b></p><div class="ladder"><div class="step"><div class="t">普通状态：我 vs 世界</div><div class="d">我一定要保存自己</div></div><div class="step"><div class="t">庄子的超越</div><div class="d">逐渐削弱以“小我”为中心的边界</div></div><div class="step hot"><div class="t">人与更大的“道”融通</div></div></div><div class="quote"><div class="q">生死不再成为绝对对立。</div><div class="src">与道融通之后 · 这种“永生”的真正含义</div></div><p class="prose">这种“永生”更多是一种<b>存在方式的超越</b>，而不必理解为生物学意义上的永久肉体生命。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>“忘掉自己”到底是什么意思</h2></div><div class="sd">老师对“忘”本身也有所保留 · “忘我”的现代版本</div><p class="prose">老师对“忘”本身也有所保留。这里建议不要理解成把自己的身份、责任、人格全部消灭，而更像——</p><div class="quote"><div class="q">暂时退出以个人得失为中心的视角。</div><div class="src">整理者对“忘”的解读</div></div><p class="prose">例如你真正投入<b>科研、艺术、救人、教育、公共事务</b>，有时候会进入一种不再时时想着“我有什么好处”的状态，注意力完全进入事情本身。这个时候——</p><div class="quote"><div class="q">小我退场，事情本身成为中心。</div><div class="src">“忘我”比较现代、也比较容易理解的版本</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>答案四 · 代际超越：家文化</h2></div><div class="sd">个人生命进入代际链条 · 含整理者两处重要校正</div><p class="prose">老师后面从哲学转到了中国的<b>家文化</b>。这里的逻辑是一条链：</p><div class="ladder"><div class="step"><div class="t">个人会死亡</div></div><div class="step"><div class="t">家庭可以延续</div></div><div class="step"><div class="t">孩子、后代继续存在</div></div><div class="step hot"><div class="t">个人生命进入代际链条</div></div></div><p class="prose">这也是很多传统文化回应死亡的方法之一。中国传统文化里，这些实践都与“代际连续性”密切相关：</p><div class="chips"><span class="chip">祖先祭祀</span><span class="chip">宗族</span><span class="chip">孝道</span><span class="chip">家谱</span><span class="chip">传承</span></div><div class="warn"><div class="wt">校正 · 婚育不是“获得永恒”的必要条件</div><ul><li>原课提出“结婚生孩子可以让有限生命变成无限。”——这是老师从传统家文化出发的一种人生解释</li><li>不能把它理解成“不结婚、不生孩子的人，人生就无法超越个体或没有精神延续。”</li><li>更普遍的表达：超越个体生命的方式之一，是进入代际传承；另一种方式，是进入文化、关系和共同事业</li></ul></div><p class="prose">人仍然可以通过创作、教育、科研、工作、公共服务、友情、组织建设、帮助别人，把自己的影响进入更长时间尺度。</p><div class="case"><div class="h"><span class="tag">校正</span><span class="ht">“有本事的祖先成为神，没有本事成为鬼。”</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这显然属于一种高度概括甚至修辞化的民俗文化表达。中国传统宗教、祖先崇拜、鬼神观念非常复杂，不能如此简单分类。</div></div></div><div class="quote"><div class="q">传统文化会通过祖先记忆和仪式，使死者继续存在于共同体的精神生活之中。</div><div class="src">“祖先变神或变鬼”不作客观事实记 · 学习时只需抓住这一条</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>四种超越方式 · 总框架</h2></div><div class="sd">整理者认为最适合真正掌握的框架 · 原本很散的后半节一下就清楚了</div><p class="prose">现在整课其实可以整理成“四种超越死亡的方式”。这样一整理，原本很散的后半节一下就清楚了：</p><div class="cards g2"><div class="card"><div class="idx">宗</div><h4>宗教超越</h4><p>身体死 → 灵魂继续 · 核心：<b>信仰</b></p></div><div class="card"><div class="idx">哲</div><h4>哲学超越</h4><p>小我 → 更大的存在 / 道 · 核心：<b>超越自我</b></p></div><div class="card"><div class="idx">文</div><h4>文化超越</h4><p>个人思想 → 共同文化 · 核心：<b>创造与传承</b></p></div><div class="card"><div class="idx">代</div><h4>代际超越</h4><p>个体 → 家庭 / 后代 · 核心：<b>生命延续</b></p></div></div><div class="case"><div class="h"><span class="tag">对号</span><span class="ht">课中例子与四种方式对号入座</span><span class="ar">▸</span></div><div class="sm"><div class="inner">宗教超越——“把死亡从‘彻底终结’转化成‘另一种存在方式’”；哲学超越——《庄子·大宗师》“外天下 → … → 不死不生”与“忘我”；文化超越——孔子、牛顿的精神成果进入集体文化；代际超越——家文化：祖先祭祀、宗族、孝道、家谱、传承。</div></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>最深的问题 · 不是“灵魂存在吗”</h2></div><div class="sd">如果只停在“人死了有没有灵魂”，这堂课会非常玄</div><div class="duo"><div class="col neg"><h4>只停在这里 ✕</h4><ul><li>人死了有没有灵魂？</li></ul></div><div class="col pos"><h4>更值得讨论的问题 ✓</h4><ul><li><b>既然我一定会死，那么怎样活才能让有限生命具有超出有限生命本身的意义？</b></li></ul></div></div><p class="prose">这是一个所有人都能讨论的问题。答案可能不同——</p><div class="chips"><span class="chip">家庭</span><span class="chip">事业</span><span class="chip">知识</span><span class="chip">艺术</span><span class="chip">信仰</span><span class="chip">帮助别人</span></div><p class="prose">但这些背后的共同结构是——</p><div class="quote"><div class="q">把生命连接到比“此刻的我”更大的东西。</div><div class="src">整理者认为这才是整课最值得带走的东西</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>回望第三章 · 思想的力量</h2></div><div class="sd">把这节课和前两节连起来 · 第三章就完整了</div><p class="prose">把这节课和前两节连起来，第三章出现一个非常漂亮的三层结构：</p><div class="cards g3"><div class="card"><div class="idx">一</div><h4>人与自然</h4><p>问题：怎样超越自然带来的无力？答案：思想 → 科学 → 技术，最终提高人对自然的能动性</p></div><div class="card"><div class="idx">二</div><h4>人与人</h4><p>问题：怎样超越利益、权力、情感之间的冲突？答案：道德、政治、经济、心理、法律，最终建立合作、边界、秩序</p></div><div class="card"><div class="idx">三</div><h4>人与自己</h4><p>问题：怎样面对生命有限、死亡与意义问题？答案：宗教、哲学、文化、代际传承，最终追求生命意义的超越</p></div></div><div class="quote"><div class="q">人与自然 → 获得能力<br>人与人 → 建立秩序<br>人与自己 → 寻找意义</div><div class="src">第三章完整结构 · 以后复习第三章时最重要的总框架</div></div><div class="duo"><div class="col neg"><h4>思想的力量不是 ✕</h4><ul><li>“想得越多越厉害”</li></ul></div><div class="col pos"><h4>而是在三个层面给人方向 ✓</h4><ul><li>面对自然：从恐惧走向理解</li><li>面对别人：从冲突走向秩序</li><li>面对自己：从死亡恐惧走向意义追寻</li></ul></div></div><div class="quote"><div class="q">思想让人获得能力、建立秩序、创造意义。</div><div class="src">整理者认为这句话比任何单独哲学家的名字都更值得记住</div></div><div class="h3blk">这一课的认知骨架</div><div class="ladder"><div class="step"><div class="t">有限身体</div></div><div class="step"><div class="t">无限意识</div></div><div class="step"><div class="t">死亡自觉</div></div><div class="step"><div class="t">永恒追问</div></div><div class="step"><div class="t">宗教 / 哲学 / 文化 / 传承</div></div><div class="step hot"><div class="t">生命意义</div></div></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">三级模型</div></div><div class="cnt"><div class="v" data-c="7">0</div><div class="l">意识攀升阶梯</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">四种超越方式</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">收束六句话</div></div></div><div class="panel"><h3><span class="no2">①</span>四种超越 · 归类练习</h3><div class="pd">判断下列表述属于哪一种超越方式，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文第一种：宗教超越——身体死，灵魂继续，核心：信仰"><div class="st">1. 身体死 → 灵魂继续，核心是信仰</div><div class="opts"><button data-ok="1">宗教超越</button><button data-ok="0">哲学超越</button><button data-ok="0">文化超越</button><button data-ok="0">代际超越</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第二种：哲学超越——小我 → 更大的存在 / 道，核心：超越自我"><div class="st">2. 小我 → 更大的存在 / 道，核心是超越自我</div><div class="opts"><button data-ok="0">宗教超越</button><button data-ok="1">哲学超越</button><button data-ok="0">文化超越</button><button data-ok="0">代际超越</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第三种：文化超越——个人思想 → 共同文化，核心：创造与传承"><div class="st">3. 个人思想 → 共同文化，核心是创造与传承</div><div class="opts"><button data-ok="0">宗教超越</button><button data-ok="0">哲学超越</button><button data-ok="1">文化超越</button><button data-ok="0">代际超越</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文第四种：代际超越——个体 → 家庭 / 后代，核心：生命延续"><div class="st">4. 个体 → 家庭 / 后代，核心是生命延续</div><div class="opts"><button data-ok="0">宗教超越</button><button data-ok="0">哲学超越</button><button data-ok="0">文化超越</button><button data-ok="1">代际超越</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文以孔子、牛顿例证“个体生命有限，但个体创造的意义可以进入集体文化”"><div class="st">5. 孔子已经不在了，但他的思想仍然影响今天</div><div class="opts"><button data-ok="0">宗教超越</button><button data-ok="0">哲学超越</button><button data-ok="1">文化超越</button><button data-ok="0">代际超越</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：中国传统文化里这些实践都与“代际连续性”密切相关"><div class="st">6. 祖先祭祀、宗族、孝道、家谱、传承</div><div class="opts"><button data-ok="0">宗教超越</button><button data-ok="0">哲学超越</button><button data-ok="0">文化超越</button><button data-ok="1">代际超越</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>本讲通关清单</h3><div class="pd">逐项检验自己是否真正吃透这一讲（勾选进度自动保存在本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能复述“物 → 生物 → 人”三级模型，并说出人的特殊性在哪里</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能背出意识突破现实的阶梯：感觉→记忆→想象→概念→判断→推理→理性</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能说清“身体有限 ↔ 精神追求无限”这组张力，以及它如何通向死亡问题</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能说出四种超越死亡的方式及各自核心（信仰 / 超越自我 / 创造与传承 / 生命延续）</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能指出课中哪些说法需要校正（康德、黑格尔“集体意识”、庄子用词、“祖先变神变鬼”、婚育必要条件），不把它们当客观事实</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能回答：既然我一定会死，怎样活才能让有限生命具有超出有限生命本身的意义？</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师在课程开头建立的三级模型是？</div><div class="ans"><button data-ok="0">A. 人 → 生物 → 物</button><button data-ok="1">B. 物 → 生物 → 人</button><button data-ok="0">C. 生物 → 物 → 人</button><button data-ok="0">D. 物 → 人 → 生物</button></div><div class="exp">源文：“老师一开始试图建立一个三级模型：物 → 生物 → 人。”</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>整课最重要的一组张力是？</div><div class="ans"><button data-ok="0">A. 灵魂与肉体的彻底对立</button><button data-ok="1">B. 身体有限 ↔ 精神追求无限</button><button data-ok="0">C. 个人与社会的冲突</button><button data-ok="0">D. 知识与信仰的对立</button></div><div class="exp">源文：“于是形成整课最重要的一组张力：身体有限 ↔ 精神追求无限。”</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>孔子、牛顿的例子在支撑哪种超越方式？</div><div class="ans"><button data-ok="0">A. 宗教超越</button><button data-ok="0">B. 哲学超越</button><button data-ok="1">C. 文化超越</button><button data-ok="0">D. 代际超越</button></div><div class="exp">源文：“孔子已经不在了。但他的思想仍然影响今天……个体生命有限，但个体创造的意义可以进入集体文化。”</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>关于康德，校正后更准确的理解是？</div><div class="ans"><button data-ok="0">A. 康德通过“二律背反”证明了灵魂永生</button><button data-ok="1">B. 康德批判了从“我思”直接推出灵魂永恒实体的论证，“灵魂不朽”更接近实践理性的信念或设准</button><button data-ok="0">C. 康德已用经验科学证明灵魂不存在</button><button data-ok="0">D. 康德主张肉体可以永生</button></div><div class="exp">源文：这部分主要属于“纯粹理性的谬误推理”而非“二律背反”；“灵魂不朽”与道德实践和“最高善”有关，不等于理论知识已经证明灵魂客观永生。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>《庄子·大宗师》的“不死不生”，更值得的理解是？</div><div class="ans"><button data-ok="0">A. 修炼以后肉体真的永远不会死</button><button data-ok="1">B. 通过改变“我与世界”的关系，降低个体自我对于生死的执着</button><button data-ok="0">C. 把自己的身份、责任、人格全部消灭</button><button data-ok="0">D. 把生命完全寄托给子孙后代</button></div><div class="exp">源文：“更值得理解成：通过改变‘我与世界’的关系，降低个体自我对于生死的执着。”这种“永生”更多是一种存在方式的超越。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">人的身体受时间和空间限制，而思想能够超越当下，设想无限。</div><div class="src">整理者收束清单六句话之一</div></div><div class="quote"><div class="q">真正值得追问的，不只是“死后有没有我”，而是“有限的一生如何连接到比自己更大的意义”。</div><div class="src">整理者收束清单六句话之六</div></div><div class="quote"><div class="q">肉体的有限无法取消，但人可以通过思想、创造、关系与传承，让有限的生命进入更大的意义世界。</div><div class="src">如果最后只留一句 · 整理者选定的全课核心</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../07-人与人/index.html">← 上一篇 · 人与人</a><a href="../09-哲学是什么/index.html">下一篇 · 哲学是什么 →</a><span class="sp"></span><span class="cur">肉体与灵魂</span></div></nav>
+<footer class="coda"><div class="wm2">超</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">肉体的有限无法取消，但人可以通过思想、创造、关系与传承，<br>让有限的生命<b>进入更大的意义世界</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第九讲《肉体与灵魂》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s5", "#s12", "#s13", "#s14"], "sortok": [0, 1, 2, 3, 2, 3], "quizok": [1, 1, 2, 1, 1], "ckkey": "zx08-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人与人 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx07-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../06-人与自然/index.html">← 上一篇 · 人与自然</a><a href="../08-肉体与灵魂/index.html">下一篇 · 肉体与灵魂 →</a><span class="sp"></span><span class="cur">人与人</span></div></nav>
+<header class="hero" id="top"><div class="wm">群</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第三章《思想的力量》第二节</div>
+  <div class="no">捌</div>
+  <h1>人与人</h1>
+  <div class="sub">合作与竞争 · 五种力量 · 秩序从哪里来</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>人与人之间为什么会合作、竞争、冲突？<br>这一讲的核心框架是<b>「利｜权｜情｜理｜法」五种力量</b>，<br>而思想的力量，就是为这些力量建立<b>边界、规则与秩序</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 五种力量：利｜权｜情｜理｜法</a><a href="#s3">叁 · 理：不是只有一种“理”</a><a href="#s4">肆 · 两个方向：合作与竞争</a><a href="#s5">伍 · 什么叫“善的秩序”</a><a href="#s6">陆 · 康德：把道德变成判断题</a><a href="#s7">柒 · 孔子与王阳明</a><a href="#s8">捌 · “利”为什么会发展出经济学</a><a href="#s9">玖 · “权”与政治 · “情”与心理</a><a href="#s10">拾 · “法”在五种关系里的作用</a><a href="#s11">拾壹 · 整合地图：遇到问题先问哪个维度</a><a href="#s12">拾貳 · 思想的力量：思想→规则→秩序→合作</a><a href="#s13">拾叁 · 老师布置的作业：三年、五年</a><a href="#s14">拾肆 · 几处需要保留距离的地方</a><a href="#s15">拾伍 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现实之问</b><span>人与人为什么合作、竞争、冲突？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>五种力量</b><span>利｜权｜情｜理｜法</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>两个方向</b><span>集体性→合作 · 个体性→竞争</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>善的秩序</b><span>什么规则值得所有人共同遵守</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>道德的检验</b><span>康德普遍化 · 孔子 · 王阳明知行合一</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>五类思想</b><span>经济·政治·心理·道德/哲学·法律</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s12"><b>思想的链条</b><span>思想 → 规则 → 秩序 → 合作</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>最终目的</b><span>在竞争中保持合作，在差异中建立秩序</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">从「人与自然」转向「人与人」· 确立全讲的问题意识</div><p class="prose">这一课口语材料很多、概念跳跃也比较大，但整理之后主线很清楚。第三章《思想的力量》讲的是<b>思想怎样给人类行动提供方向</b>：上一节讨论人与自然，这一节转向人与人。</p><div class="ladder"><div class="step"><div class="t">人与自然</div><div class="d">思想如何让人类：恐惧自然 → 解释自然 → 认识自然 → 改造自然</div></div><div class="step hot"><div class="t">人与人</div><div class="d">思想如何帮助我们处理：合作、竞争、权力、情感、规则和边界</div></div></div><div class="quote"><div class="q">人与人之间为什么会合作、竞争、冲突？我们又靠什么思想，把这些复杂关系组织成一种可以共同生活的秩序？</div><div class="src">整理者点出的全课真正问题</div></div><div class="quote"><div class="q">当这五种力量发生作用时，什么思想分别负责解释它们、约束它们、协调它们？</div><div class="src">整理者的进一步追问 · 引出全课主线</div></div><p class="prose">两节课之间有一个很漂亮的递进：<b>第一节解决“怎样和世界相处”，第二节解决“怎样和别人相处”。</b>而这一课最值得抓住的，不是康德、孔子、经济学、政治学、心理学、法学这些零散知识，而是一套非常有用的<b>「社会关系地图」</b>——利｜权｜情｜理｜法。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>五种力量：利｜权｜情｜理｜法</h2></div><div class="sd">全课最值得长期记住的框架 · 现实中的大量矛盾都可从这五个维度观察</div><p class="prose">老师把复杂的人际社会关系压缩成五个字：<b>利｜权｜情｜理｜法</b>。整理者认为这是这一课最值得长期记住的框架——因为现实中的大量矛盾，确实可以从这五个维度去观察。</p><div class="cards g3"><div class="card"><div class="idx">利</div><h4>利益关系</h4><p>钱、资源、职位、机会、收入、交换、分配——围绕利益形成<b>合作</b>，也形成<b>竞争</b> → 连接<b>经济学</b></p></div><div class="card"><div class="idx">权</div><h4>谁可以决定什么</h4><p>谁制定规则？谁有最终决定权？谁可以分配资源？谁可以处罚？——国家层面也是如此 → 连接<b>政治学</b></p></div><div class="card"><div class="idx">情</div><h4>人的内心世界</h4><p>爱、友情、亲情、同情、信任、嫉妒、恐惧、依恋——情绪怎样影响行为、人为什么建立或破坏关系 → 连接<b>心理学</b></p></div></div><div class="cards g2"><div class="card"><div class="idx">理</div><h4>什么是合理、正确</h4><p>五个字里<b>最复杂</b>的一个——道理、义理、事理、情理、物理（下一节展开）</p></div><div class="card"><div class="idx">法</div><h4>边界</h4><p>“群己权界”——权利到哪里为止；通过明确权利、义务和责任边界，建立可预期秩序 → 连接<b>法学</b></p></div></div><div class="quote"><div class="q">个人和个人之间，个人和群体之间，权利到哪里为止？</div><div class="src">“法”所引用的“群己权界”思想</div></div><p class="prose">政治与经济的分工也在这里分清：<b>政治解决“谁来决定规则”的问题，经济更多解决“资源怎样配置”。</b>整理者认为这个区分很有用。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>理：不是只有一种“理”</h2></div><div class="sd">“理”为什么最复杂 · 很多争论解决不了的真正原因</div><p class="prose">“理”是这五个字里最复杂的。老师把它进一步拆成五种——这其实是在提醒：<b>我们说“你要讲理”，并不是只有一种“理”。</b></p><div class="cards g3"><div class="card"><div class="idx">道</div><h4>道理</h4><p>价值层面的正确</p></div><div class="card"><div class="idx">义</div><h4>义理</h4><p>伦理与正当性</p></div><div class="card"><div class="idx">事</div><h4>事理</h4><p>事情自身的发展规律</p></div><div class="card"><div class="idx">情</div><h4>情理</h4><p>人与人关系中合情合理</p></div><div class="card"><div class="idx">物</div><h4>物理</h4><p>自然世界的规律</p></div></div><div class="quote"><div class="q">双方说的根本不是同一种“理”。</div><div class="src">很多争论之所以解决不了的原因</div></div><p class="prose">这一点和第一讲的“社会的撕扯”高度呼应——很多冲突不是有人不讲理，而是<b>双方各讲各的理</b>。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>两个方向：合作与竞争</h2></div><div class="sd">集体性与个体性 · 社会不是只有合作，也不是只有竞争</div><p class="prose">五种关系背后，老师又提出两个更大的社会动力：<b>集体性</b>与<b>个体性</b>。整理者把它们整理成两个面向：</p><div class="cards g2"><div class="card"><div class="idx">群</div><h4>面向集体</h4><p>核心问题：“我们怎样一起生活？”——需要合作、道德、伦理、共同规则，最终追求<b>秩序</b></p></div><div class="card"><div class="idx">己</div><h4>面向个体</h4><p>核心问题：“我怎样争取自己的利益、位置和机会？”——产生竞争、利益、权力、个人选择，最终体现<b>竞争</b></p></div></div><p class="prose">所以社会不是只有“合作”或者只有“竞争”——真正的社会是<b>合作＋竞争同时存在</b>。这是这一课第二个很重要的结构：真正的问题，是<b>如何让竞争不摧毁合作</b>。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>什么叫“善的秩序”</h2></div><div class="sd">孔子、孟子、康德、王阳明为什么出现在同一堂课</div><p class="prose">老师接下来大量讨论孔子、孟子、康德、王阳明——表面看很散，其实都是在解决同一个问题：</p><div class="quote"><div class="q">当每个人都有自己的欲望时，怎样让大家还能共同生活？</div><div class="src">四位思想家共同面对的问题</div></div><div class="ladder"><div class="step"><div class="t">人人都有自己的欲望</div></div><div class="step"><div class="t">还要能共同生活</div></div><div class="step"><div class="t">什么规则值得所有人共同遵守</div></div><div class="step hot"><div class="t">道德</div><div class="d">善的秩序的入口</div></div></div><p class="prose">于是进入<b>道德</b>。下面依次看：康德为什么在这里重要、孔子的伦理直觉，以及王阳明的知行合一。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>康德：把道德变成判断题</h2></div><div class="sd">善良意志的校正 · 普遍化检验 · 比背“绝对命令”更有用的三问</div><p class="prose">老师认为康德把道德问题说得最清楚——康德非常重视<b>善良意志</b>。但整理者在此特别校正了原课的说法：</p><div class="duo"><div class="col neg"><h4>常见简化 ✕</h4><ul><li>善良意志就是“对大多数人好”</li><li>把它理解成结果主义、“多数人利益最大化”</li></ul></div><div class="col pos"><h4>更接近康德 ✓</h4><ul><li><b>因为这个行为本身是出于道德义务而去做。</b></li><li>更强调义务、普遍化和人的尊严</li></ul></div></div><div class="quote"><div class="q">只按照那些你也能够希望它成为普遍规则的原则行动。</div><div class="src">康德最著名的判断方式之一</div></div><p class="prose">换成人话：<b>如果所有人都像我这样做，这个规则还成立吗？</b>比如“为了方便，我可以撒谎”——那就问：如果所有人为了方便都可以撒谎，“承诺”和“相信”本身还能不能存在？如果不能，这个原则就难以普遍化。这就是康德道德哲学最值得日常使用的地方。</p><div class="cards g3"><div class="card"><div class="idx">问一</div><h4>我为什么要这样做？</h4><p>是为了善，还是纯粹为了自己方便？</p></div><div class="card"><div class="idx">问二</div><h4>如果所有人都这样做，会怎么样？</h4><p>普遍化检验</p></div><div class="card"><div class="idx">问三</div><h4>我有没有把别人只当成工具？</h4><p>人的尊严</p></div></div><p class="prose">整理者认为：这三个问题，其实比背“绝对命令”更有用。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>孔子与王阳明</h2></div><div class="sd">“己所不欲，勿施于人”的伦理直觉 · 知行合一：道德不是知识，而是行动</div><p class="prose">老师把孔子的“己所不欲，勿施于人”和康德联系起来。两者当然不是同一套哲学，但确实存在一种相似的伦理直觉：</p><div class="quote"><div class="q">己所不欲，勿施于人</div><div class="src">孔子 · 老师把它与康德联系起来</div></div><div class="quote"><div class="q">你不能只为自己设置特殊例外。</div><div class="src">两个传统之间相似的伦理直觉</div></div><div class="cards g2"><div class="card"><div class="idx">孔</div><h4>孔子：从关系伦理出发</h4><p>“我怎样对待别人？”——如果你不希望别人这样对待你，那么你也应该谨慎地这样对别人</p></div><div class="card"><div class="idx">康</div><h4>康德：从理性原则出发</h4><p>“我的行为准则能否普遍化？”</p></div></div><p class="prose">整理者提醒：二者可以比较，但不要简单说成<b>“其实完全是同一个思想”</b>——那就过度简化了。</p><div class="h3blk">王阳明：良知与知行合一</div><p class="prose">老师把王阳明也放进来了。去掉比较牵强的“王阳明就是康德变形”这种说法，更值得保留的是：<b>知道什么是对的，还要真正做出来。</b>“知”不能停留在“我知道应该这样”，而要进入“行”——知道诚信重要，却每次遇到利益就骗人，那么这个“知道”还没有成为真正的道德能力。</p><p class="prose">所以王阳明这一块可以压缩成：<b>道德不是知识，而是行动。</b>这和康德强调道德行为的实践性，确实有可以对话的地方。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>“利”为什么会发展出经济学</h2></div><div class="sd">从稀缺推出整条经济链条 · “三大设准”不要当成统一标准</div><p class="prose">老师接下来从道德转向经济。逻辑是：人既然既有合作、也有竞争，那么围绕稀缺资源的竞争就形成<b>经济问题</b>——经济学试图回答：在资源有限、需求很多的情况下，人们怎样选择、交换、生产和分配？</p><div class="ladder"><div class="step"><div class="t">欲望很多 · 资源有限</div></div><div class="step"><div class="t">必须选择</div></div><div class="step"><div class="t">必须交换</div></div><div class="step"><div class="t">必须分配</div></div><div class="step hot"><div class="t">形成经济秩序</div></div></div><div class="quote"><div class="q">有限资源怎样配置。</div><div class="src">经济学真正讨论的问题</div></div><p class="prose">老师讲了“理性人、欲望无限资源有限、产权保护”等设准，又讲“等价交换、供需均衡、利益最大化”等原理。整理者提醒：这些确实都与经济学的重要思想有关，但<b>不能理解成“整个经济学公认就只有这三大假设、三大原理”</b>——不同经济学教材、学派的框架不一样。</p><div class="cards g2"><div class="card"><div class="idx">记</div><h4>三个基本问题</h4><p><b>选择｜激励｜交换</b></p></div><div class="card"><div class="idx">底</div><h4>一个底层约束</h4><p><b>稀缺性</b></p></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>“权”与政治 · “情”与心理</h2></div><div class="sd">政治处理公共权力 · 心理学理解规则之下的人</div><p class="prose">一旦多人生活在一起，就会出现：<b>谁决定？谁服从？谁制定规则？谁监督？谁来修改规则？</b>——于是形成政治。</p><div class="quote"><div class="q">政治就是维持、修改、制定规则的活动。</div><div class="src">老师对政治的概括 · 整理者注：虽然不完整，但作为记忆钩子很好</div></div><div class="chips"><span class="chip">制定规则</span><span class="chip">执行规则</span><span class="chip">修改规则</span><span class="chip">分配公共权力</span></div><p class="prose">这四件事构成政治的重要部分。而“情”发展出心理学，核心非常简单：<b>人与人不是机器。</b>再合理的制度，也绕不开欲望、情绪、恐惧、依恋、潜意识、动机。心理学帮助我们理解：<b>规则之下的人，到底是怎么想、怎么感受、怎么行动的。</b>老师提弗洛伊德、詹姆斯，是想强调“人的心理也逐渐成为系统研究对象”。</p><div class="warn"><div class="wt">不必当成历史定论的表述</div><ul><li>“美国社会学源于心理学”</li><li>“意识可以被测量并通过手段改变”</li><li>整理者注：这两处表述过于宽泛</li></ul></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>“法”在五种关系里的作用</h2></div><div class="sd">设边界 · 道德追求更高的善，法律维护最低限度的秩序</div><p class="prose">如果说：利会竞争、权会冲突、情会偏向、理会争论——那么法的价值就在于：<b>设边界</b>。</p><div class="quote"><div class="q">通过明确权利、义务和责任边界，建立可预期秩序。</div><div class="src">法律的核心功能之一</div></div><div class="cards g2"><div class="card"><div class="idx">德</div><h4>道德：最好应该怎么做</h4><p>帮助陌生人可能是一种道德期待——道德追求<b>更高的善</b></p></div><div class="card"><div class="idx">法</div><h4>法律：至少必须怎么做</h4><p>不能偷别人的东西，是法律底线——法律维护<b>最低限度的秩序</b></p></div></div><p class="prose">由此可以建立一个很漂亮的关系：<b>道德追求更高的善，法律维护最低限度的秩序。</b>整理者建议长期记住这句话。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>整合地图：遇到问题先问哪个维度</h2></div><div class="sd">整堂课最核心的“地图” · 成熟判断要多维度看同一件事</div><p class="prose">整理者把老师这套模型重新整理成一张表——每个维度对应一个核心问题和一门主要思想/学科：</p><div class="cards g2"><div class="card"><div class="idx">利</div><h4>资源怎么分？</h4><p>→ 经济学</p></div><div class="card"><div class="idx">权</div><h4>谁来决定？</h4><p>→ 政治学</p></div><div class="card"><div class="idx">情</div><h4>人为什么这样感受和行动？</h4><p>→ 心理学</p></div><div class="card"><div class="idx">理</div><h4>什么是合理、正确？</h4><p>→ 哲学、伦理、科学等</p></div><div class="card"><div class="idx">法</div><h4>权利边界在哪里？</h4><p>→ 法学</p></div></div><div class="quote"><div class="q">这是利益问题？权力问题？情感问题？道理问题？还是法律边界问题？</div><div class="src">以后遇到复杂人际问题，可以先问的一句</div></div><p class="prose">很多事情一下子就会清楚很多。但整理者同时提醒：<b>真正成熟的社会关系，不能只用一个维度解决。</b></p><div class="case"><div class="h"><span class="tag">案例</span><span class="ht">单位里一个员工表现不好，怎么办？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">只用<b>利</b>（扣奖金）——可能有效，但有限；只用<b>权</b>（领导命令）——也可能解决不了根本问题。还要问：<b>情</b>：他最近是不是遇到困难？<b>理</b>：制度安排是否合理？<b>法</b>：处理程序有没有超越权力边界？</div></div></div><p class="prose">成熟判断是<b>多维度看同一件事情</b>——这与第二章讲的“从不同洞口看世界”，其实又连起来了。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>思想的力量：思想→规则→秩序→合作</h2></div><div class="sd">本课真正想说明的东西 · 整课压缩成“社会秩序模型”</div><p class="prose">这一课真正想说明的“思想的力量”，不是谁的理论名字最多，而是：当人与人之间发生冲突时，<b>不同思想为我们提供不同的解决工具</b>：</p><div class="cards g3"><div class="card"><div class="idx">德</div><h4>道德思想</h4><p>约束自己</p></div><div class="card"><div class="idx">经</div><h4>经济思想</h4><p>组织交换与激励</p></div><div class="card"><div class="idx">政</div><h4>政治思想</h4><p>安排公共权力</p></div><div class="card"><div class="idx">心</div><h4>心理思想</h4><p>理解人的情感与动机</p></div><div class="card"><div class="idx">法</div><h4>法律思想</h4><p>划定不可逾越的边界</p></div></div><div class="ladder"><div class="step"><div class="t">思想</div><div class="d">道德·经济·政治·心理·法律五种解决工具</div></div><div class="step"><div class="t">规则</div></div><div class="step"><div class="t">秩序</div></div><div class="step hot"><div class="t">合作</div><div class="d">这就是“人与人关系中的思想力量”</div></div></div><div class="h3blk">把整课压缩成“社会秩序模型”</div><div class="ladder"><div class="step"><div class="t">人与人</div><div class="d">存在五种力量：利｜权｜情｜理｜法</div></div><div class="step"><div class="t">两个基本方向</div><div class="d">个体性→竞争 · 集体性→合作</div></div><div class="step"><div class="t">五类思想</div><div class="d">利→经济 · 权→政治 · 情→心理 · 理→道德/哲学 · 法→法律</div></div><div class="step hot"><div class="t">最终目标：在竞争中保持合作，在差异中建立秩序</div></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>老师布置的作业：三年、五年</h2></div><div class="sd">从“人与人的思想”回到自己的方向 · 一个实用的五步框架</div><p class="prose">老师最后从“人与人的思想”突然转到“三年、五年的目标是什么？”表面有点跳，但放回“思想给生命方向”的第三章总主题，就很合理。老师真正想让你回答三个问题：<b>目标是什么？路径是什么？需要什么能力和资源？</b></p><div class="ladder"><div class="step"><div class="t">① 目标</div><div class="d">我要在1—3年后达到什么状态？</div></div><div class="step"><div class="t">② 差距</div><div class="d">我现在和目标之间差什么？</div></div><div class="step"><div class="t">③ 路径</div><div class="d">哪几步最可能到达？</div></div><div class="step"><div class="t">④ 能力</div><div class="d">需要补哪些能力？</div></div><div class="step hot"><div class="t">⑤ 资源</div><div class="d">需要哪些人、钱、时间、工具和机会？</div></div></div><p class="prose">这就是：<b>思想 → 方向 → 路径 → 能力 → 行动</b>。</p><div class="quote"><div class="q">思想让生命从被动漂流，变成有方向的行动。</div><div class="src">呼应本章开头的收束句</div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>几处需要保留距离的地方</h2></div><div class="sd">不是所有内容都能直接记成定论 · 抓框架，不机械接受所有细节</div><p class="prose">这堂课有几处，整理者建议你不要直接记成定论：</p><div class="warn"><div class="wt">不宜直接记成定论的五处</div><ul><li>康德“善良意志＝对大多数人好”不准确——康德并不是简单的结果主义或“多数人利益最大化”，他更强调义务、普遍化和人的尊严</li><li>王阳明与康德不能直接说成同一种理论——可以比较，但两人的哲学背景、问题意识和论证体系不同</li><li>经济学并不存在唯一公认的“三大假设、三大原理”版本——不同教材、学派的框架不一样</li><li>政治学远比“制定和修改规则”更广</li><li>“世界有八大法系”不是一个今天 universally 固定的标准分类——不同法学教材的划分会不同</li></ul></div><p class="prose">所以这节课依然适合采用我们一直使用的方法：<b>抓框架，不机械接受所有细节。</b></p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">五种力量</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">五种理</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">康德三问</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">作业五步</div></div></div><div class="panel"><h3><span class="no2">①</span>五种力量分类练习</h3><div class="pd">判断下列场景主要涉及「利 / 权 / 情 / 法」哪种力量，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文把“利”界定为利益关系：钱、资源、职位、机会、收入、交换、分配——围绕利益形成合作，也形成竞争"><div class="st">1. 围绕钱、资源、职位、机会、收入展开的交换与分配</div><div class="opts"><button data-ok="1">利</button><button data-ok="0">权</button><button data-ok="0">情</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：“权”指的是“谁可以决定什么”——谁制定规则、谁有最终决定权、谁可以分配资源、谁可以处罚"><div class="st">2. 单位里：谁制定规则？谁有最终决定权？谁可以处罚？</div><div class="opts"><button data-ok="0">利</button><button data-ok="1">权</button><button data-ok="0">情</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文把爱、友情、同情、信任、嫉妒、恐惧、依恋归入“情”——连接心理学，处理人的内心世界"><div class="st">3. 同事之间的信任、嫉妒与依恋，影响了关系的建立或破坏</div><div class="opts"><button data-ok="0">利</button><button data-ok="0">权</button><button data-ok="1">情</button><button data-ok="0">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文以此例说明“群己权界”——个人和个人之间、个人和群体之间，权利到哪里为止；法律通过明确边界建立可预期秩序"><div class="st">4. 你有言论自由，但是否意味着可以随意诽谤别人？</div><div class="opts"><button data-ok="0">利</button><button data-ok="0">权</button><button data-ok="0">情</button><button data-ok="1">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：“不能偷别人的东西，是法律底线”——法律维护最低限度的秩序"><div class="st">5. 不能偷别人的东西</div><div class="opts"><button data-ok="0">利</button><button data-ok="0">权</button><button data-ok="0">情</button><button data-ok="1">法</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文由此推出经济问题：“经济学真正讨论的是有限资源怎样配置”"><div class="st">6. 欲望很多、资源有限，于是必须选择、交换、分配</div><div class="opts"><button data-ok="1">利</button><button data-ok="0">权</button><button data-ok="0">情</button><button data-ok="0">法</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>本讲通关清单</h3><div class="pd">逐项检验：这些框架你能否真的用起来（勾选进度自动保存，本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能用「利、权、情、理、法」五个维度，拆解一件身边的人际矛盾</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">遇到争论，我会先判断双方说的是不是同一种“理”</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">面对选择，我会问康德三问：为什么这样做？所有人都这样会怎样？有没有把别人只当工具？</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我记得王阳明的提醒：知道什么是对的，还要真正做出来——道德不是知识，而是行动</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能分清道德与法律的分工：道德是“最好应该怎么做”，法律是“至少必须怎么做”</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我用五步框架检视目标：目标 → 差距 → 路径 → 能力 → 资源</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师把复杂的人际社会关系压缩成哪五个字？</div><div class="ans"><button data-ok="1">A. 利、权、情、理、法</button><button data-ok="0">B. 真、善、美、圣、俗</button><button data-ok="0">C. 身、心、知、意、物</button><button data-ok="0">D. 天、地、君、亲、师</button></div><div class="exp">源文：“老师把复杂的人际社会关系压缩成五个字：利｜权｜情｜理｜法”——整理者认为这是全课最值得长期记住的框架。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>按本课，“理”是五个字里最复杂的，因为——</div><div class="ans"><button data-ok="0">A. 它只处理价值问题</button><button data-ok="1">B. 我们说“你要讲理”时，并不是只有一种“理”</button><button data-ok="0">C. 它其实属于心理学</button><button data-ok="0">D. 它专指自然世界的规律</button></div><div class="exp">老师把“理”拆成道理、义理、事理、情理、物理五种；很多争论之所以解决不了，正因为“双方说的根本不是同一种‘理’”。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>整理者对康德“善良意志”作了校正，更接近的理解是——</div><div class="ans"><button data-ok="0">A. 对大多数人好</button><button data-ok="0">B. 追求多数人利益最大化</button><button data-ok="1">C. 因为这个行为本身是出于道德义务而去做</button><button data-ok="0">D. 遵守内心的良知直觉</button></div><div class="exp">整理者校正：善良意志并不是简单地“对大多数人好”——康德并不是简单的结果主义，他更强调义务、普遍化和人的尊严。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>道德与法律的分工是——</div><div class="ans"><button data-ok="0">A. 道德管小事，法律管大事</button><button data-ok="1">B. 道德告诉你“最好应该怎么做”，法律告诉你“至少必须怎么做”</button><button data-ok="0">C. 二者都靠国家强制执行</button><button data-ok="0">D. 法律追求更高的善，道德维护最低秩序</button></div><div class="exp">源文举例：帮助陌生人可能是一种道德期待；不能偷别人的东西，是法律底线——“道德追求更高的善，法律维护最低限度的秩序”。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>面对“单位里一个员工表现不好”，成熟的社会关系判断是——</div><div class="ans"><button data-ok="0">A. 直接扣奖金最有效</button><button data-ok="0">B. 领导下命令即可解决</button><button data-ok="0">C. 只靠感情去打动他</button><button data-ok="1">D. 多维度看同一件事情：利、权、情、理、法同时检视</button></div><div class="exp">源文：只用“利”（扣奖金）可能有效但有限，只用“权”（领导命令）可能解决不了根本问题；还要问情（他是否遇到困难）、理（制度是否合理）、法（程序有没有超越权力边界）。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">人与人之间大量关系，可以从“利、权、情、理、法”五个维度观察。</div><div class="src">整理者建议记住的六句话 · 之一</div></div><div class="quote"><div class="q">社会既有竞争，也有合作；真正的问题是如何让竞争不摧毁合作。</div><div class="src">整理者建议记住的六句话 · 之二</div></div><div class="quote"><div class="q">思想最终的力量，是把复杂的人际冲突转化成可以理解、可以协调、可以共同遵守的秩序。</div><div class="src">整理者建议记住的六句话 · 之六</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../06-人与自然/index.html">← 上一篇 · 人与自然</a><a href="../08-肉体与灵魂/index.html">下一篇 · 肉体与灵魂 →</a><span class="sp"></span><span class="cur">人与人</span></div></nav>
+<footer class="coda"><div class="wm2">序</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">人与人的难题，常常源于利、权、情、理、法的碰撞；<br>思想的力量，就是为这些力量建立<b>边界、规则与秩序</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第八讲《人与人》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15"], "mnodes": ["#s1", "#s2", "#s4", "#s5", "#s7", "#s9", "#s12", "#s12"], "sortok": [0, 1, 2, 3, 3, 0], "quizok": [0, 1, 2, 1, 3], "ckkey": "zx07-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

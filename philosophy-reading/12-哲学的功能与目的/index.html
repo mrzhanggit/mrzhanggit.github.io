@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哲学的功能与目的 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx12-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../11-哲学的变化/index.html">← 上一篇 · 哲学的变化</a><a href="../13-感性思维/index.html">下一篇 · 感性思维 →</a><span class="sp"></span><span class="cur">哲学的功能与目的</span></div></nav>
+<header class="hero" id="top"><div class="wm">省</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第四章《哲学启智》第四节</div>
+  <div class="no">拾叁</div>
+  <h1>哲学的功能与目的</h1>
+  <div class="sub">反思观念 · 改善判断 · 指导行动</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>哲学的核心作用，是帮助一个人通过反思和批判，改变自己的思想与观念，<br>进而改变<b>判断、行动和人生方向</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 哲学最重要的功能：改变思想和观念</a><a href="#s3">叁 · 观念改变必须发生在自己内部</a><a href="#s4">肆 · 核心方法：批判性思维</a><a href="#s5">伍 · 功能一 · 改变「怎么看」</a><a href="#s6">陆 · 功能二 · 改变「怎么想」</a><a href="#s7">柒 · 功能三 · 改变「怎么做」</a><a href="#s8">捌 · 生命的自动系统与知行</a><a href="#s9">玖 · 迁移到现实：管理案例</a><a href="#s10">拾 · 三个批判意识</a><a href="#s11">拾壹 · 第四章总复盘与哲学四问</a><a href="#s12">拾貳 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>收官之问</b><span>哲学的功能和目的：对普通人究竟有什么实际作用？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>个人改变机制</b><span>旧观念 → 批判性反思 → 新观念 → 新态度 → 新行为 → 新结果</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>怎么看</b><span>转换视角 · 换个角度看，也会圆满</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>怎么想</b><span>把模糊感觉变成明确问题</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>怎么做</b><span>从被动执行到自主行动</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>第四章总复盘</b><span>认识哲学 → 理解哲学 → 观察哲学变化 → 运用哲学改变自己</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s11"><b>哲学的最终目的</b><span>运用思想审视自己 · 主动塑造自己的人生</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第四章总结课 · 前三问回顾 · 本课答案与认知骨架</div><p class="prose">这一课是第四章《哲学启智》的第四节，也是整个第四章的总结课。前面三节分别回答了三个问题：</p><div class="cards g3"><div class="card"><div class="idx">问一</div><h4>哲学是什么？</h4><p>哲学是一种<b>反思思想、产生新思想</b>的活动</p></div><div class="card"><div class="idx">问二</div><h4>哲学由什么组成？</h4><p>从<b>形而上学、认识论、价值论、美学</b>四个方向理解哲学</p></div><div class="card"><div class="idx">问三</div><h4>哲学怎样变化？</h4><p>通过不断<b>发现问题、批判旧思想、重构新理论</b>而发展</p></div></div><p class="prose">第四节要回答的是：<b>哲学的功能和目的是什么？</b>——哲学对普通人究竟有什么实际作用？老师给出的答案非常明确：</p><div class="quote"><div class="q">哲学的核心作用，是帮助一个人通过反思和批判，改变自己的思想与观念，进而改变判断、行动和人生方向。</div><div class="src">老师对「哲学的功能和目的」的回答</div></div><p class="prose">整理者认为，这一课虽然涉及康德、孔子、老子、熊十力等人的思想，但真正需要掌握的并不是这些哲学家的理论细节，而是一套<b>个人改变的机制</b>——整堂课最重要的认知骨架：</p><div class="ladder"><div class="step"><div class="t">旧观念</div><div class="d">我原来如何理解这件事</div></div><div class="step hot"><div class="t">批判性反思</div><div class="d">用别人的思想来反思自己的思想</div></div><div class="step"><div class="t">新观念</div><div class="d">保留合理部分，修正不合理部分</div></div><div class="step"><div class="t">新态度</div><div class="d">我愿不愿意面对它，发生了变化</div></div><div class="step"><div class="t">新行为</div><div class="d">我实际采取的行动改变</div></div><div class="step"><div class="t">新结果</div><div class="d">行动产生了新的影响</div></div></div><p class="prose">更进一步，本课还回答了三个非常实用的问题：</p><div class="cards g3"><div class="card"><div class="idx">看</div><h4>怎么看</h4><p>学会<b>转换视角</b>，而不是被自己的第一印象困住</p></div><div class="card"><div class="idx">想</div><h4>怎么想</h4><p>把模糊感觉转化成<b>明确问题</b>，再进行分析和推理</p></div><div class="card"><div class="idx">做</div><h4>怎么做</h4><p>把被动接受外界要求，逐步转化为<b>自主选择和主动行动</b></p></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>哲学最重要的功能：改变思想和观念</h2></div><div class="sd">两条改变路径的对照 · 哲学影响现实的基本链条</div><div class="quote"><div class="q">哲学是为了改变人的思想和观念。</div><div class="src">老师开头的观点</div></div><p class="prose">我们通常认为，人生发生改变的路径是「环境改变 → 行为改变 → 人生改变」。但这节课强调另一条路径：</p><div class="duo"><div class="col neg"><h4>通常认为 ✕</h4><ul><li>环境改变 → 行为改变 → 人生改变</li></ul></div><div class="col pos"><h4>本课强调 ✓</h4><ul><li><b>认知改变</b> → 行为改变 → 人生改变</li></ul></div></div><div class="case"><div class="h"><span class="tag">对照</span><span class="ht">同样一件困难的工作，两种认为</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一个人认为：“这件事情太麻烦了，最好不要碰。”<br><br>另一个人认为：“这件事情很难，但如果解决了，我可能获得新的能力。”<br><br>两个人面对的客观问题没有变化，但因为<b>对问题的解释不同</b>，就可能产生不同的选择。</div></div></div><p class="prose">这就是哲学影响现实的基本路径：</p><div class="ladder"><div class="step"><div class="t">观念</div><div class="d">我如何理解这件事？</div></div><div class="step"><div class="t">态度</div><div class="d">我愿不愿意面对它？</div></div><div class="step"><div class="t">行为</div><div class="d">我实际采取什么行动？</div></div><div class="step hot"><div class="t">结果</div><div class="d">行动产生了什么影响？</div></div></div><div class="warn"><div class="wt">重要补充：观念改变不保证一定成功</div><ul><li>人的行为还受到资源、能力、制度和外部环境影响</li><li>哲学能够帮助我们形成更好的判断，但不能取代现实条件和实际行动</li></ul></div><div class="quote"><div class="q">哲学不直接替你改变世界，而是可能通过改善你的判断与行动，增加你改变现实的能力。</div><div class="src">由此得出的更严谨的结论</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>观念改变必须发生在自己内部</h2></div><div class="sd">为什么别人不能真正替你改变观念 · 「导游」的教育理念</div><div class="quote"><div class="q">真正的思想改变，必须发生在自己内部。</div><div class="src">老师的判断 · 整节课的重要转折</div></div><p class="prose">比如别人告诉你“你的观点错了”，即使对方说得有道理，你也可能本能地抵触。原因是，人往往已经把某些观念当成<b>自己的身份、经验和判断能力的一部分</b>。因此真正有效的学习，不只是听到一个新观点，而是经历：</p><div class="ladder"><div class="step"><div class="t">接触他人的思想</div></div><div class="step"><div class="t">理解对方在说什么</div></div><div class="step"><div class="t">与自己的思想比较</div></div><div class="step"><div class="t">保留合理部分</div></div><div class="step"><div class="t">修正不合理部分</div></div><div class="step hot"><div class="t">形成自己的新判断</div></div></div><p class="prose">这也解释了老师为什么坚持把自己称作「导游」。他的理想不是——</p><div class="quote"><div class="q">我告诉你正确答案，你接受就可以。</div><div class="src">老师的理想不是这个</div></div><div class="quote"><div class="q">我带你看到不同的思想和可能性，最终由你完成判断。</div><div class="src">而是这个</div></div><p class="prose">这背后是一个很重要的教育理念：<b>真正的学习不是被灌输，而是形成自主判断。</b></p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>核心方法：批判性思维</h2></div><div class="sd">批判 ≠ 否定 · 理解 → 比较 → 检验 → 重构</div><div class="quote"><div class="q">用别人的思想来反思自己的思想。</div><div class="src">这一课最核心的方法</div></div><div class="h3blk">批判 ≠ 否定</div><p class="prose">很多人把批判理解成“你讲得不对”。但哲学意义上的批判，更重要的是<b>检查一个观点的理由、前提、逻辑和适用范围</b>。老师特别强调对自己的思想进行肯定与否定，整理者把它完善为四步：</p><div class="cards g4"><div class="card"><div class="idx">壹</div><h4>理解</h4><p>对方究竟提出了什么观点？我是否准确理解？</p></div><div class="card"><div class="idx">貳</div><h4>比较</h4><p>这个观点和我已有的认识有什么相同、不同？</p></div><div class="card"><div class="idx">叁</div><h4>检验</h4><p>双方的证据、前提、推理是否成立？有没有反例？</p></div><div class="card"><div class="idx">肆</div><h4>重构</h4><p>保留合理部分，修正错误部分，形成更可靠的新判断</p></div></div><p class="prose">理解 → 比较 → 检验 → 重构，<b>不是为了证明谁错，而是为了形成更好的认识</b>。这里还需要纠正原课的一处表述：批判性思维并不只是批判自己，它也包括审视外部观点、权威判断和社会流行观念——既不能因为是自己原来的想法就坚决维护，也不能因为是老师或哲学家提出的就直接接受。</p><div class="quote"><div class="q">对自己的观点和别人的观点，使用同样严格的判断标准。</div><div class="src">整理者纠正原课表述后的关键纪律</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>功能一 · 改变「怎么看」</h2></div><div class="sd">碗的缺口 · 多视角分析 · 转换视角不能代替解决问题</div><p class="prose">老师用了一个很有画面感的故事讲「怎么看」：</p><div class="case"><div class="h"><span class="tag">比喻</span><span class="ht">有一个碗，正面看有缺口，旋转一个方向，缺口就看不见了</span><span class="ar">▸</span></div><div class="sm"><div class="inner">老师借此提出「<b>换个角度看，也会圆满</b>」。这个比喻最重要的意义，是说明<b>人的观察有视角限制</b>——同样一件事情，可以从不同角度理解。</div></div></div><p class="prose">比如某个科室工作人员对一项改革不积极，从不同角度看，结论完全不同：</p><div class="cards g4"><div class="card"><div class="idx">管</div><h4>管理者角度</h4><p>“执行力不足。”</p></div><div class="card"><div class="idx">员</div><h4>员工角度</h4><p>“工作量增加，激励没有跟上。”</p></div><div class="card"><div class="idx">患</div><h4>患者角度</h4><p>“改革以后服务是否更方便？”</p></div><div class="card"><div class="idx">构</div><h4>整个机构角度</h4><p>“短期成本会不会换来长期收益？”</p></div></div><p class="prose">这样一转，原来单一的判断就会变成<b>多维度分析</b>。但这里也有一个需要注意的地方：<b>转换视角不能代替解决真实问题</b>——碗换个方向，缺口虽然看不见了，但缺口仍然存在。所以真正的哲学智慧不是：</p><div class="quote"><div class="q">换个角度让自己觉得一切都好。</div><div class="src">真正的哲学智慧不是这个</div></div><div class="quote"><div class="q">通过不同视角，更完整地认识问题，发现原来忽视的解决路径。</div><div class="src">而是这个 · 这才是视角转换的价值</div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>功能二 · 改变「怎么想」</h2></div><div class="sd">从模糊感觉到明确问题 · 一条五步分析链</div><div class="quote"><div class="q">有些人向我提出的根本不是问题，而是一种感觉。</div><div class="src">老师在这一部分提出的关键问题 · 与第五章第一节《感性思维》高度衔接</div></div><p class="prose">比如：“最近工作很不顺利。”“这个社会越来越复杂。”“我感觉未来没有方向。”这些话未必没有意义，但通常<b>还不是一个足够清晰、能够直接分析的问题</b>——因为它们缺乏具体对象、判断标准和可以检验的事实。</p><div class="h3blk">必须把感觉变成问题，才能真正开始思考</div><p class="prose">整理者把老师的思路完善成下面这条分析链：</p><div class="ladder"><div class="step"><div class="t">模糊感觉</div><div class="d">“我觉得这件事有问题。”</div></div><div class="step"><div class="t">澄清事实</div><div class="d">实际发生了什么？</div></div><div class="step hot"><div class="t">形成明确问题</div><div class="d">什么现象需要解释或解决？</div></div><div class="step"><div class="t">推理与检验</div><div class="d">可能的原因是什么？证据支持吗？</div></div><div class="step"><div class="t">方案与实践</div><div class="d">尝试解决，并根据结果修正认识</div></div></div><div class="cards g4"><div class="card"><div class="idx">感</div><h4>感觉</h4><p>告诉我们<b>某件事情值得关注</b></p></div><div class="card"><div class="idx">问</div><h4>问题</h4><p>告诉我们<b>究竟需要弄清楚什么</b></p></div><div class="card"><div class="idx">推</div><h4>推理</h4><p>帮助我们<b>寻找可能答案</b></p></div><div class="card"><div class="idx">实</div><h4>实践</h4><p>帮助检验答案<b>在现实中是否有效</b></p></div></div><div class="h3blk">真正高质量的思考，往往始于高质量的问题</div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>功能三 · 改变「怎么做」</h2></div><div class="sd">从外部约束转向内在自律 · 自主性 + 自律性 + 创造性</div><div class="quote"><div class="q">哲学不能只是让外界告诉你怎么做，而是要让你主动决定怎么做。</div><div class="src">老师的提出 · 本课思想最深入的部分</div></div><div class="h3blk">从外部约束转向内在自律</div><div class="duo"><div class="col neg"><h4>被动执行 ✕</h4><ul><li>因为领导要求、制度规定、害怕处罚，所以必须做</li><li>行动的主要动力来自<b>外部约束</b></li></ul></div><div class="col pos"><h4>主动行动 ✓</h4><ul><li>理解这项工作的价值，认可目标，并主动选择承担责任</li><li>行动的主要动力来自<b>内在认同</b></li></ul></div></div><p class="prose">例如一个人按时完成工作，两种状态下<b>表面的行为可能完全一样</b>，但人的心理状态、持续性、创造性以及面对困难时的表现，可能存在明显差异。这也是老师引用康德的道德自律、中国哲学修身思想的原因——它们虽然不是同一种哲学理论，但都可以用来讨论：</p><div class="quote"><div class="q">人如何从单纯受到外部力量支配，逐步成为能够自主判断、自觉行动的人？</div><div class="src">康德道德自律与中国修身传统共同指向的问题</div></div><p class="prose">老师在这里用「自动性」这个词，整理者建议更准确地理解成三样东西：</p><div class="cards g3"><div class="card"><div class="idx">主</div><h4>自主性</h4><p>我能够<b>有理由地作出选择</b></p></div><div class="card"><div class="idx">律</div><h4>自律性</h4><p>我能够<b>按照经过反思后认可的原则</b>行动</p></div><div class="card"><div class="idx">创</div><h4>创造性</h4><p>面对新情况，我能够<b>主动寻找新办法</b></p></div></div><p class="prose">当然，自主行动并不意味着可以不遵守制度、法律或客观规律，而是在这些约束中形成<b>有理由、有责任的选择</b>。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>生命的自动系统与知行</h2></div><div class="sd">「生命就是自己创造自己的自动系统」· 熊十力的三个功能</div><div class="quote"><div class="q">生命就是自己创造自己的自动系统。</div><div class="src">老师提出 · 富有哲学意味，但并不是一个严格的生物学定义</div></div><div class="cards g3"><div class="card"><div class="idx">一层</div><h4>人不是完全被动的</h4><p>外界环境能够影响我们，但我们也能够<b>改变自己的行为和部分环境</b></p></div><div class="card"><div class="idx">二层</div><h4>人具有反思能力</h4><p>我们可以意识到自己的错误，并<b>通过学习修正已有的认知习惯</b></p></div><div class="card"><div class="idx">三层</div><h4>人能够进行自我塑造</h4><p>通过长期行动形成<b>能力、习惯、性格和新的生活方式</b></p></div></div><div class="ladder"><div class="step"><div class="t">反思自己</div></div><div class="step"><div class="t">选择行动</div></div><div class="step"><div class="t">积累经验</div></div><div class="step hot"><div class="t">改造自己</div></div></div><p class="prose">它比简单说「我的世界我做主」更严谨：一个人不能控制所有外部条件，但可以努力提高自己在现实约束下的判断和行动能力。老师引用熊十力，是为了把「自我改变」放到更深层的哲学追问中——按照课程的阐释，熊十力的思想在这里主要承担三个功能：</p><div class="cards g3"><div class="card"><div class="idx">究</div><h4>穷究万物变化的根源</h4><p>不停留于现象，<b>追问根本</b></p></div><div class="card"><div class="idx">理</div><h4>理解事物的根本原则</h4><p>从复杂变化中<b>寻找深层规律</b></p></div><div class="card"><div class="idx">行</div><h4>将理解落实于身心</h4><p>不仅知道，还要<b>内化和实践</b></p></div></div><p class="prose">这里的关键是最后一步。一个人可以阅读很多哲学著作，却依然按照原来的方式愤怒、抱怨、判断和行动——那么哲学还没有真正改变他。只有当新的理解逐渐进入自己的态度、习惯、判断、行动，哲学才真正具有实践意义。这也呼应了中国思想传统中十分重要的一个主题——<b>知行关系</b>。</p><div class="warn"><div class="wt">整理者提醒：引文使用注意</div><ul><li>原讲稿中的熊十力、王龙溪等引文可能存在口述或转写误差</li><li>具体字句不宜在未经原典核对时直接作为准确引文记忆</li></ul></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>迁移到现实：管理案例</h2></div><div class="sd">用「怎么看、怎么想、怎么做」处理一个具体管理问题</div><p class="prose">整理者建议把整个「怎么看、怎么想、怎么做」用于一个具体管理问题——假设某项工作推进缓慢，负责人发现工作人员参与度不高：</p><div class="cards g3"><div class="card"><div class="idx">看</div><h4>第一步：怎么看？</h4><p>不急着认定员工懒惰，而是从不同视角观察：任务是否明确？工作量是否合理？资源是否充足？激励是否匹配？</p></div><div class="card"><div class="idx">想</div><h4>第二步：怎么想？</h4><p>把「积极性不高」的印象转成具体问题：参与率是多少？哪些人员没有参与？主要障碍是什么？有什么事实证据？</p></div><div class="card"><div class="idx">做</div><h4>第三步：怎么做？</h4><p>明确任务、改善资源支持、建立反馈机制，并让工作人员理解工作的实际意义。实施后根据结果调整方案。</p></div></div><div class="h3blk">从「要求别人改变」到「创造促使改变发生的条件」</div><div class="quote"><div class="q">管理不仅是改变他人的行为，也是在改变自己理解和处理问题的方式。</div><div class="src">这个案例体现的本课思想</div></div><p class="prose">但这不意味着制度约束可以完全被思想教育替代。有效的管理往往需要将<b>自主性、规则、能力支持与客观激励</b>结合起来。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>三个批判意识</h2></div><div class="sd">整理者的批判性提醒 · 这三个观点需要保留批判意识</div><p class="prose">老师的讲授很有启发性，但按整理者的提醒，这一课有三个重要观点需要保留批判意识：</p><div class="warn"><div class="wt">这一课的三个批判意识（整理者补充）</div><ul><li>观念改变不等于世界必然改变。思想可以影响行为与选择，但现实还受到资源、权力、制度、偶然事件和客观规律制约</li><li>批判性思维不仅是「向内批判」。既要反思自己的观念，也要合理质疑外部信息和权威观点——批判的标准应当是证据与逻辑，而不是观点来自谁</li><li>自主性不等于无限自由。人可以逐步增强自我决定能力，但不能因为强调创造性，就忽视自身能力边界和社会责任</li></ul></div><p class="prose">把这三点补充进去，这门课的思想会更加完整。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>第四章总复盘与哲学四问</h2></div><div class="sd">四节课串成一个体系 · 老师布置的作业 · 本课中心逻辑</div><div class="cards g4"><div class="card"><div class="idx">问一</div><h4>哲学是什么？</h4><p><b>思想反思思想</b>，通过检验和重构产生新思想</p></div><div class="card"><div class="idx">问二</div><h4>由什么组成？</h4><p><b>存在｜认识｜价值｜审美</b>，从四个方向追问世界与生活</p></div><div class="card"><div class="idx">问三</div><h4>怎样变化？</h4><p><b>问题 → 回答 → 新问题 → 新理论</b>，不断重构自己的概念和方法</p></div><div class="card"><div class="idx">问四</div><h4>有什么功能？</h4><p><b>反思观念 → 改善判断 → 指导行动</b>，让思想逐步成为可以运用的智慧</p></div></div><div class="ladder"><div class="step"><div class="t">认识哲学</div></div><div class="step"><div class="t">理解哲学</div></div><div class="step"><div class="t">观察哲学变化</div></div><div class="step hot"><div class="t">运用哲学改变自己</div></div></div><div class="tl"><div class="ev"><div class="dyn">第一章</div><p>面对生活中的困惑</p></div><div class="ev"><div class="dyn">第二章</div><p>建立认识世界的不同视角</p></div><div class="ev"><div class="dyn">第三章</div><p>理解思想怎样影响世界与人生</p></div><div class="ev"><div class="dyn">第四章</div><p>学会反思和改造自己的思想</p></div><div class="ev"><div class="dyn">第五章</div><p>再进入具体思维模式训练，就有了很自然的衔接</p></div></div><div class="h3blk">哲学四问 · 实践练习</div><p class="prose">老师最后布置的作业：<b>选择生活中的一件事，使用哲学的四种角度进行思考。</b>整理者建议，以后学习任何新事物，都尝试使用这个小练习：</p><div class="cards g4"><div class="card"><div class="idx">一</div><h4>是什么？</h4><p>这件事的真实情况、核心概念是什么？</p></div><div class="card"><div class="idx">二</div><h4>由什么组成？</h4><p>涉及哪些人、因素、资源和规则？</p></div><div class="card"><div class="idx">三</div><h4>怎样变化？</h4><p>它从哪里来，为什么发展到今天，未来可能怎样？</p></div><div class="card"><div class="idx">四</div><h4>目的和功能？</h4><p>它要解决什么问题，最终希望实现什么价值？</p></div></div><p class="prose">这套方法之所以实用，是因为它要求我们不再简单地凭感觉作判断，而是<b>建立较为完整的认知框架</b>。如果只记一张图：<b>批判性反思 → 观念更新 → 看、想、做 → 自主行动</b>——它既能完整呈现这一课的核心，也是第四章的最终总结图。</p><div class="quote"><div class="q">哲学最重要的力量，不是让你掌握多少别人的思想，而是让你学会运用思想审视自己，形成更清醒的判断，并主动塑造自己的人生。</div><div class="src">整理者认为这一课最值得长期记住的一句话</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="6">0</div><div class="l">认知骨架六步</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">批判反思四步法</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">实用三问</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">哲学四问</div></div></div><div class="panel"><h3><span class="no2">①</span>三问归属练习</h3><div class="pd">判断下列情形属于「怎么看 / 怎么想 / 怎么做」哪个方向的转变，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="碗的比喻说明“人的观察有视角限制”，同一件事可以从不同角度理解，属于「怎么看」"><div class="st">1. 碗正面看有缺口，旋转一个方向，缺口就看不见了</div><div class="opts"><button data-ok="1">怎么看</button><button data-ok="0">怎么想</button><button data-ok="0">怎么做</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：这样一转，“原来单一的判断就会变成多维度分析”，是转换视角的运用"><div class="st">2. 从管理者、员工、患者、机构四个角度理解同一项改革</div><div class="opts"><button data-ok="1">怎么看</button><button data-ok="0">怎么想</button><button data-ok="0">怎么做</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：这些话“缺乏具体对象、判断标准和可以检验的事实”，必须把感觉变成问题"><div class="st">3. “最近工作很不顺利”还不是足够清晰、能够直接分析的问题</div><div class="opts"><button data-ok="0">怎么看</button><button data-ok="1">怎么想</button><button data-ok="0">怎么做</button></div><div class="verdict"></div></div><div class="sort-it" data-why="对应分析链“澄清事实 → 形成明确问题 → 推理与检验”，属于澄清问题后的思考"><div class="st">4. 追问：实际发生了什么？可能的原因是什么？证据支持吗？</div><div class="opts"><button data-ok="0">怎么看</button><button data-ok="1">怎么想</button><button data-ok="0">怎么做</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：被动执行，“行动的主要动力来自外部约束”，正是「怎么做」要转变的状态"><div class="st">5. 因为领导要求、制度规定、害怕处罚，所以必须做</div><div class="opts"><button data-ok="0">怎么看</button><button data-ok="0">怎么想</button><button data-ok="1">怎么做</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文：主动行动，“行动的主要动力来自内在认同”"><div class="st">6. 理解这项工作的价值，认可目标，并主动选择承担责任</div><div class="opts"><button data-ok="0">怎么看</button><button data-ok="0">怎么想</button><button data-ok="1">怎么做</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>三问转变通关清单</h3><div class="pd">选一个你正面对的具体问题（一项工作 / 一个困惑 / 一次冲突），逐条检验三个方向的转变</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">怎么看 · 我能至少从三个不同视角描述它，而不是停在第一印象</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">怎么想 · 我能把「感觉很糟 / 很顺」写成一句明确、可分析的问题</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">怎么想 · 我能为自己的判断说出证据与理由，而不只是「我觉得」</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">怎么做 · 我能分清这个行动是外部强制，还是理解价值后的自主选择</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">批判 · 我对自己的观点和别人的观点，使用同样严格的判断标准</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">内化 · 新的理解已经进入我的态度和行动，而不只是「听过一个道理」</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师认为哲学的核心作用是什么？</div><div class="ans"><button data-ok="0">A. 传授哲学史知识和哲学家的理论细节</button><button data-ok="1">B. 帮助人通过反思和批判改变思想与观念，进而改变判断、行动和人生方向</button><button data-ok="0">C. 提供关于世界的标准答案</button><button data-ok="0">D. 让人掌握更多别人的思想</button></div><div class="exp">原文：“哲学的核心作用，是帮助一个人通过反思和批判，改变自己的思想与观念，进而改变判断、行动和人生方向。”</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>哲学意义上的「批判」，正确的理解是什么？</div><div class="ans"><button data-ok="0">A. 指出对方讲得不对</button><button data-ok="0">B. 全盘否定旧观念</button><button data-ok="1">C. 检查一个观点的理由、前提、逻辑和适用范围</button><button data-ok="0">D. 只对自己的思想进行批判</button></div><div class="exp">源文强调“批判 ≠ 否定”，更重要的是检查观点的理由、前提、逻辑和适用范围；且批判性思维不只是批判自己。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>碗的缺口这个比喻，最重要的意义是什么？</div><div class="ans"><button data-ok="0">A. 缺陷旋转一下就能消失</button><button data-ok="1">B. 人的观察有视角限制，同一件事可以从不同角度理解</button><button data-ok="0">C. 挑东西要挑看不见缺口的角度</button><button data-ok="0">D. 换个角度一切就都好了</button></div><div class="exp">源文：“这个比喻最重要的意义，是说明人的观察有视角限制。”同时注意“碗换个方向，缺口虽然看不见了，但缺口仍然存在”。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>关于「怎么做」，老师真正想讨论的是什么转向？</div><div class="ans"><button data-ok="0">A. 从学习理论转向背诵理论</button><button data-ok="1">B. 从外部约束转向内在自律</button><button data-ok="0">C. 从工作转向生活</button><button data-ok="0">D. 从制度转向自由</button></div><div class="exp">源文：“哲学不能只是让外界告诉你怎么做，而是要让你主动决定怎么做”——从被动执行转向理解价值、主动承担责任。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>按照这一课，哲学什么时候才算真正改变了一个人？</div><div class="ans"><button data-ok="0">A. 读了很多哲学著作</button><button data-ok="0">B. 能背诵哲学家的观点</button><button data-ok="1">C. 新的理解进入了态度、习惯、判断和行动</button><button data-ok="0">D. 通过了哲学课程考试</button></div><div class="exp">源文：“一个人可以阅读很多哲学著作，却依然按照原来的方式愤怒、抱怨、判断和行动，那么哲学还没有真正改变他。”</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">哲学不直接替你改变世界，而是可能通过改善你的判断与行动，增加你改变现实的能力。</div><div class="src">对「哲学改变人生」更严谨的表述</div></div><div class="quote"><div class="q">对自己的观点和别人的观点，使用同样严格的判断标准。</div><div class="src">批判性思维的关键纪律</div></div><div class="quote"><div class="q">哲学不能只是让外界告诉你怎么做，而是要让你主动决定怎么做。</div><div class="src">「怎么做」的核心转向</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../11-哲学的变化/index.html">← 上一篇 · 哲学的变化</a><a href="../13-感性思维/index.html">下一篇 · 感性思维 →</a><span class="sp"></span><span class="cur">哲学的功能与目的</span></div></nav>
+<footer class="coda"><div class="wm2">行</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">哲学最重要的力量，不是让你掌握多少别人的思想，<br>而是让你学会<b>运用思想审视自己</b>，形成更清醒的判断，<br>并<b>主动塑造自己的人生</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十三讲《哲学的功能与目的》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12"], "mnodes": ["#s1", "#s2", "#s5", "#s6", "#s7", "#s11", "#s11"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 2, 1, 1, 2], "ckkey": "zx12-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

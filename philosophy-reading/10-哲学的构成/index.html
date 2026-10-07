@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哲学的构成 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:46vw}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx10-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../09-哲学是什么/index.html">← 上一篇 · 哲学是什么</a><a href="../11-哲学的变化/index.html">下一篇 · 哲学的变化 →</a><span class="sp"></span><span class="cur">哲学的构成</span></div></nav>
+<header class="hero" id="top"><div class="wm">構</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第四章《哲学启智》第二节</div>
+  <div class="no">拾壹</div>
+  <h1>哲学的构成</h1>
+  <div class="sub">存在 · 认识 · 价值 · 审美 —— 一张入门地图</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>把哲学拆开，它究竟由哪些基本问题构成？<br>老师给出适合入门的四分法：<b>形而上学｜认识论｜价值论｜美学</b>，<br>而全课真正的骨架是一条主线：<b>存在 → 认识 → 价值 → 审美</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一课要解决什么</a><a href="#s2">貳 · 形而上学 · 有什么</a><a href="#s3">叁 · 中国哲学的形而上进路</a><a href="#s4">肆 · 贝克莱与康德 · 唯心方向的两条路</a><a href="#s5">伍 · 认识论 · 你凭什么知道</a><a href="#s6">陆 · 康德的三层认识能力</a><a href="#s7">柒 · 价值论 · 什么值得</a><a href="#s8">捌 · 美学 · 感受与呈现</a><a href="#s9">玖 · 四问递进 · 能力地图 · 思想工厂</a><a href="#s10">拾 · 批判性提醒</a><a href="#s11">拾壹 · 全篇逻辑图 · 如果只记六句</a><a href="#s12">拾貳 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全课论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>本课之问</b><span>哲学拆开，由哪些基本问题构成？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>形而上学</b><span>世界最根本是什么？—— 存在</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>唯心两条路</b><span>贝克莱 · 康德的哥白尼式转向</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>认识论</b><span>你凭什么知道？—— 知识</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>价值论</b><span>什么值得？—— 价值</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>美学</b><span>怎样感受并呈现意义？—— 审美</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s9"><b>四问合一</b><span>四大之问 → 四种能力 → 四个车间</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s11"><b>全课骨架</b><span>存在 → 认识 → 价值 → 审美</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一课要解决什么</h2></div><div class="sd">把这一课放回第四章 · 用四分法给哲学画一张内部结构图</div><p class="prose">上一课解决“哲学是什么”，这一课进一步追问——</p><div class="quote"><div class="q">如果把哲学拆开，它究竟由哪些基本问题构成？</div><div class="src">本课开篇之问</div></div><p class="prose">老师给出的是一个很适合入门的“四分法”。虽然这不是哲学界唯一的分类方式，但作为学习地图很好用：</p><div class="cards g4"><div class="card"><div class="idx">存</div><h4>形而上学</h4><p>世界最根本是什么？—— 追问<b>存在</b></p></div><div class="card"><div class="idx">识</div><h4>认识论</h4><p>我怎么知道？—— 反思<b>认识</b></p></div><div class="card"><div class="idx">值</div><h4>价值论</h4><p>什么是好的、值得的？—— 选择<b>价值</b></p></div><div class="card"><div class="idx">美</div><h4>美学</h4><p>什么是美？艺术怎样让意义显现？—— 感受<b>审美</b></p></div></div><div class="duo"><div class="col neg"><h4>老师用的四块</h4><ul><li>形而上学</li><li>认识论</li><li>价值论</li><li>美学</li></ul></div><div class="col pos"><h4>每块最核心的问题</h4><ul><li>世界最根本是什么？</li><li>我怎么知道？</li><li>什么是好的、值得的？</li><li>什么是美？艺术怎样让意义显现？</li></ul></div></div><p class="prose">只要先记住这四问，后面大量人物和术语就不会乱。本课在第四章里的位置是给哲学画一张<b>内部结构图</b>：</p><div class="chips"><span class="chip">第一节 · 哲学是什么？</span><span class="chip">第二节 · 哲学由什么组成？（本课）</span><span class="chip">第三节 · 哲学怎样变化？</span><span class="chip">第四节 · 哲学有什么目的和功能？</span></div><div class="quote"><div class="q">世界究竟是什么 → 我怎么知道它 → 什么值得追求 → 人怎样感受并表达意义。</div><div class="src">整理者提炼的全课主线 · 也就是“存在 → 认识 → 价值 → 审美”</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>形而上学 · 有什么</h2></div><div class="sd">研究“现实最根本的结构” · 不止是追问宇宙起源</div><div class="quote"><div class="q">形而上学研究“道体”“绝对本源”“无限、永恒”。</div><div class="src">老师对形而上学的界定</div></div><p class="prose">这个方向抓到了形而上学的一部分，但如果要长期学习，整理者建议稍微扩大——形而上学更一般地是在问：<b>“现实最根本的结构是什么？”</b>例如：</p><div class="chips"><span class="chip">什么叫“存在”？</span><span class="chip">世界的根本是物质还是精神？</span><span class="chip">什么叫因果？</span><span class="chip">时间是什么？</span><span class="chip">空间是什么？</span><span class="chip">自由是否真实存在？</span><span class="chip">人和世界究竟是什么关系？</span><span class="chip">一个东西怎样保持“还是它自己”？</span></div><div class="duo"><div class="col neg"><h4>不只是寻找 ✕</h4><ul><li>“宇宙最初是什么东西？”</li></ul></div><div class="col pos"><h4>而是在追问 ✓</h4><ul><li><b>所有具体知识背后最基础的存在结构</b></li></ul></div></div><p class="prose">老师还把形而上学的基本问题压缩成一问：<b>世界最根本的是“物”，还是“心”？</b>于是出现两种路线：</p><div class="cards g2"><div class="card"><div class="idx">物</div><h4>唯物方向</h4><p>世界并不依赖我们的意识而存在。<br>物质或自然现实具有<b>客观性</b></p></div><div class="card"><div class="idx">心</div><h4>唯心方向</h4><p>意识、精神或认知结构对于我们所经验到的世界具有<b>基础性作用</b></p></div></div><p class="prose">但要注意：“唯心主义”内部差异非常大，<b>柏克莱和康德就不是一回事</b>——这正是下一节的内容。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>中国哲学的形而上进路</h2></div><div class="sd">老师为什么不断讲“道、性、心、理” · 四家各自的追问</div><p class="prose">老师不断讲“道、性、心、理”，是试图用中国哲学帮助大家理解“形而上”。可以把他的思路整理成四家：</p><div class="cards g2"><div class="card"><div class="idx">道</div><h4>道家</h4><p>问：<b>万物背后的根本原则是什么？</b><br>回答：道</p></div><div class="card"><div class="idx">儒</div><h4>儒家</h4><p>更关注：<b>人如何体现和实现“道”？</b><br>于是涉及：仁、天道、人性</p></div><div class="card"><div class="idx">佛</div><h4>佛教</h4><p>追问：<b>我们经验中的一切究竟怎样成立？</b><br>于是讨论：心、识、性、空、缘起等</p></div><div class="card"><div class="idx">理</div><h4>宋明理学</h4><p>进一步讨论：<b>理｜气｜心｜性</b>之间的关系</p></div></div><div class="quote"><div class="q">不同哲学传统，都在尝试找到现象背后更根本的解释层。</div><div class="src">老师真正想表达的意思 · 这就是形而上学的精神</div></div><div class="warn"><div class="wt">整理者的校正</div><ul><li>“人、道、性、心、理全部都是形而上学中的同一种东西”属于老师自己的高度概括，不宜直接当成中国哲学史的标准分类。</li></ul></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>贝克莱与康德 · 唯心方向的两条路</h2></div><div class="sd">存在就是被感知 · 哥白尼式转向 · “人给自然立法”的正确读法</div><p class="prose">唯心方向内部差异很大。老师提到英国哲学家乔治·贝克莱：</p><div class="quote"><div class="q">esse est percipi——存在就是被感知。</div><div class="src">贝克莱非常著名的命题 · 他主张我们直接认识的是观念，物质对象不能被理解成完全独立于心灵和感知的实体</div></div><div class="warn"><div class="wt">不能简单等同</div><ul><li>贝克莱 ≠ 佛教“唯识”的西方版本。</li><li>二者虽然都高度重视“心/意识”和经验世界之间的关系，但理论背景、核心概念和最终目标差异很大——可以比较，但不能直接等同。</li></ul></div><div class="h3blk">康德的“哥白尼式转向”</div><div class="duo"><div class="col neg"><h4>过去容易想成 ✕</h4><ul><li>人的认识 → 去适应外部世界</li></ul></div><div class="col pos"><h4>康德提出 ✓</h4><ul><li>人之所以能够经验到一个有秩序的世界，是因为人的认识能力本身具有某些<b>先天结构</b></li><li>例如<b>空间、时间</b>，以及知性的一些基本范畴</li></ul></div></div><div class="quote"><div class="q">不再只问知识怎样符合对象，而要问对象作为“我们能够经验的对象”，怎样符合我们的认识条件。</div><div class="src">康德“哥白尼式转向”的大意 · 一场认识论上的巨大变化</div></div><div class="duo"><div class="col neg"><h4>“自然怎样符合人”不能理解成 ✕</h4><ul><li>人脑把世界凭空造出来了</li><li>人给自然立法 = 人创造了自然</li></ul></div><div class="col pos"><h4>更准确的是 ✓</h4><ul><li>我们认识到的“经验世界”，必然经过人类认知结构的组织</li><li>事情总是在<b>时间中</b>和<b>空间中</b>发生，我们用因果、实体、数量等方式理解它</li></ul></div></div><div class="quote"><div class="q">康德是在研究“经验如何可能”，不是说人的思想创造了外部宇宙。</div><div class="src">整理者对康德转向的准确概括</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>认识论 · 你凭什么知道</h2></div><div class="sd">从一杯热水开始追问 · 认识论不等于方法论</div><p class="prose">如果形而上学问<b>“世界是什么？”</b>，认识论紧接着问：<b>“你凭什么知道？”</b>这就是认识论的核心。</p><div class="case"><div class="h"><span class="tag">入门例</span><span class="ht">「这杯水是热的。」</span><span class="ar">▸</span></div><div class="sm"><div class="inner">我要问：你怎么知道？摸过？测过？别人告诉你的？推理出来的？——认识论就从这个追问开始。</div></div></div><div class="chips"><span class="chip">什么叫知识？</span><span class="chip">感觉可靠吗？</span><span class="chip">理性可靠吗？</span><span class="chip">经验和先天结构是什么关系？</span><span class="chip">什么叫证据？</span><span class="chip">什么叫真理？</span><span class="chip">我们的认识有什么边界？</span></div><div class="h3blk">认识论 ≠ 方法论，但二者密切相关</div><div class="duo"><div class="col neg"><h4>教学上放在一起说 ✕</h4><ul><li>“认识论也可以称为方法论”——容易理解，但严格来说需要区分</li></ul></div><div class="col pos"><h4>严格区分 ✓</h4><ul><li>认识论：研究<b>能不能知道、凭什么知道</b>——知识和认识是怎样可能的？</li><li>方法论：研究<b>怎样去知道</b>——我们应该采用什么方法获得、检验和组织知识？</li><li>二者关系非常紧密，但不是完全同义</li></ul></div></div><p class="prose">所以听到“认识论就是方法论”时，记住这个区分，就不会把两个问题混在一起。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>康德的三层认识能力</h2></div><div class="sd">感性 → 知性 → 理性 · 以及两处需要校正的概括</div><p class="prose">老师讲了<b>感性 → 知性 → 理性</b>这个结构，是这一课非常值得记住的内容。可以通俗理解：</p><div class="ladder"><div class="step"><div class="t">感性</div><div class="d">给我们材料——眼睛看到颜色，耳朵听到声音。康德认为空间和时间是感性直观的基本形式</div></div><div class="step"><div class="t">知性</div><div class="d">把材料组织成对象和经验——“这是一个杯子”“杯子掉下来把水洒了”。涉及对象、因果、数量、关系等概念（康德著名的“十二范畴”属于知性的范畴体系）</div></div><div class="step hot"><div class="t">理性</div><div class="d">继续追问为什么？有没有最终原因？世界有没有整体？我自由吗？有没有上帝？——追求更完整、更无条件的解释</div></div></div><div class="quote"><div class="q">不断追求无条件者、整体性和最高原则</div><div class="src">康德“理性”（Vernunft）的倾向 · 也因此它容易越过经验范围</div></div><div class="warn"><div class="wt">整理者的校正</div><ul><li>老师把康德的理性解释为“目的与手段之间的批判性思维能力”——可以作为老师自己的应用性理解，但不是康德“Vernunft（理性）”的完整定义。</li><li>正因理性容易越过经验范围去追问灵魂、上帝、世界整体、自由，它既非常强大，也容易越界——这正是《纯粹理性批判》非常重要的主题。</li></ul></div><div class="h3blk">“真理就是主客合一”应该怎样理解</div><p class="prose">原课把从古希腊到黑格尔的大量真理理论都归纳成<b>“主体与客体合一”</b>。这个表述太宽了。哲学史上的真理理论至少还可以看到：</p><div class="cards g3"><div class="card"><div class="idx">合</div><h4>符合论</h4><p>判断与事实符合</p></div><div class="card"><div class="idx">贯</div><h4>融贯论</h4><p>判断与整个信念系统相互一致</p></div><div class="card"><div class="idx">用</div><h4>实用主义真理观</h4><p>强调实践、探究和结果</p></div></div><p class="prose">所以“主客合一”可以视为老师用于理解某些哲学传统的框架，但不能说“西方从古希腊到黑格尔，真理都只有‘主客合一’这一种定义”。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>价值论 · 什么值得</h2></div><div class="sd">性质完全不同的一问 · 不是只有道德 · 关系性思考模型</div><p class="prose">前面两个问题是“世界是什么？”“我怎么知道？”——接下来出现一个性质完全不同的问题：<b>什么值得？</b>比如：</p><div class="chips"><span class="chip">生命值得吗？</span><span class="chip">自由和安全哪个更重要？</span><span class="chip">公平重要还是效率重要？</span><span class="chip">知识有没有价值？</span><span class="chip">快乐是不是最高价值？</span><span class="chip">什么才叫好生活？</span></div><div class="warn"><div class="wt">整理者的校正</div><ul><li>老师说“价值论的本质是道德”——可以理解为他特别重视道德价值，但严格来说太窄。</li><li>价值理论可以讨论：道德价值、政治价值、经济价值、审美价值、幸福、知识、自由、友谊、成就等。价值论的核心不是“道德”，而是“什么是好、值得、重要以及为什么”。</li></ul></div><div class="h3blk">“价值就是相互作用”是一种思考模型</div><p class="prose">老师把“价值”与“牛顿作用力—反作用力”类比。这个比喻可以帮助我们想到：价值往往产生于某种关系——例如水在沙漠里和在河边，价值明显不同；一个能力在不同岗位上，价值也不同。</p><div class="duo"><div class="col neg"><h4>只是类比，不是定义 ✕</h4><ul><li>价值 = 牛顿第三定律（这不是严格哲学定义）</li></ul></div><div class="col pos"><h4>值得保留的洞见 ✓</h4><ul><li><b>关系性</b>很值得思考——价值往往产生于某种关系</li></ul></div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>美学 · 感受与呈现</h2></div><div class="sd">为什么单独拿出来 · 康德论美 · 海德格尔的艺术与真理</div><p class="prose">传统上，美学有时会被放在广义价值论之中，因为“美”也是一种价值；但它完全可以作为独立哲学领域研究。老师把它单列出来，是因为他认为：</p><div class="quote"><div class="q">人除了通过概念和推理认识世界，还可以通过情感和艺术接触世界。</div><div class="src">老师把美学单独拿出来的理由</div></div><p class="prose">于是前三部分分别偏向<b>存在、认识、价值</b>，第四部分则进入<b>感受与呈现</b>。</p><div class="h3blk">康德论“美” · 原课需要稍微校正</div><div class="duo"><div class="col neg"><h4>容易让人理解成 ✕</h4><ul><li>“美就是自由的愉快感”</li><li>“我喜欢，所以它就是美。”</li></ul></div><div class="col pos"><h4>康德其实比这严格 ✓</h4><ul><li>美感中的愉悦具有<b>无利害性 / 无功利性</b></li><li>觉得它美，不是因为要吃它、买它、占有它、利用它</li><li>与想象力、知性的“自由游戏”以及“无目的的合目的性”密切相关</li></ul></div></div><div class="quote"><div class="q">美是一种不以占有和功利用途为前提的愉悦，并伴随认知能力自由协调的体验。</div><div class="src">整理者给出的更好的简化</div></div><div class="h3blk">海德格尔 · 艺术与真理</div><div class="quote"><div class="q">艺术作品能不能让某种原本隐藏的存在方式显现出来？</div><div class="src">海德格尔在《艺术作品的本源》中的追问 · 他讨论“世界”和“大地”的张力，认为伟大艺术能够让真理发生、显现</div></div><div class="duo"><div class="col neg"><h4>艺术不是 ✕</h4><ul><li>给已经知道的真理加点漂亮包装</li><li>只是问“这个作品漂不漂亮？”</li></ul></div><div class="col pos"><h4>而可能是 ✓</h4><ul><li><b>让我们以前没有看见的东西第一次被看见</b></li></ul></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>四问递进 · 能力地图 · 思想工厂</h2></div><div class="sd">四个部分不是孤岛 · 从学科地图到个人能力地图</div><p class="prose">四个哲学部分其实不是四个孤岛，它们有一个非常清楚的递进关系：</p><div class="ladder"><div class="step"><div class="t">① 形而上学</div><div class="d">问：有什么？—— 世界和存在到底是什么？</div></div><div class="step"><div class="t">② 认识论</div><div class="d">问：我怎么知道？—— 什么叫知识和真理？</div></div><div class="step"><div class="t">③ 价值论</div><div class="d">问：什么值得？—— 什么是好、善、有意义？</div></div><div class="step hot"><div class="t">④ 美学</div><div class="d">问：我如何感受、呈现与体验意义？—— 美和艺术如何让世界显现？</div></div></div><p class="prose">再进一步，这四块可以对应人的<b>四种基本能力</b>——哲学就从学科地图变成了个人能力地图：</p><div class="cards g4"><div class="card"><div class="idx">追</div><h4>形而上学</h4><p>训练<b>追根究底</b>——不要只停在表象</p></div><div class="card"><div class="idx">检</div><h4>认识论</h4><p>训练<b>检查依据</b>——我凭什么这样认为？</p></div><div class="card"><div class="idx">择</div><h4>价值论</h4><p>训练<b>做出选择</b>——什么值得我投入？</p></div><div class="card"><div class="idx">感</div><h4>美学</h4><p>训练<b>感受世界</b>——怎样让生命不仅正确，而且丰富？</p></div></div><p class="prose">这和上一课“<b>哲学是思想工厂</b>”形成了一个漂亮连接——这个工厂有四个核心车间：</p><div class="chips"><span class="chip">存在车间 · 研究世界是什么</span><span class="chip">认识车间 · 研究我们怎么知道</span><span class="chip">价值车间 · 研究什么值得</span><span class="chip">审美车间 · 研究怎样感受和呈现世界</span></div><p class="prose">所以：<b>哲学思想工厂 = 形而上学 + 认识论 + 价值论 + 美学。</b></p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>批判性提醒</h2></div><div class="sd">这一课有几个内容不要直接当作学界定论</div><p class="prose">老师给出的四分法是有用的学习地图，但整理者特别标出以下几条，<b>不宜直接当作学界定论</b>记忆：</p><div class="warn"><div class="wt">整理者建议特别标出的七条</div><ul><li>①“哲学固定由形而上学、认识论、价值论、美学四部分组成”——这是一个有用的教学分类，不是唯一标准分类。</li><li>②“认识论就是方法论”——两者相关，但不是同义。</li><li>③“价值论的本质就是道德”——过窄，价值论研究范围更广。</li><li>④“贝克莱就是佛教唯识”——只能类比，不能等同。</li><li>⑤“康德说自然符合人”——需要理解为经验对象受人的先天认知条件制约，而不是人的心灵创造整个自然。</li><li>⑥“美就是我喜欢”——不符合康德审美理论的完整意思。</li><li>⑦“艺术就是世界和大地的争执”——“世界—大地之争”是海德格尔艺术哲学的重要结构，但他的关键意思是艺术作品使真理发生、显现，不宜压缩成单一句定义。</li></ul></div><p class="prose">对待这一课的正确姿势：把四分法当<b>学习地图</b>用，同时保留对每条概括的边界意识。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>全篇逻辑图 · 如果只记六句</h2></div><div class="sd">把整课压缩成一张可背诵的骨架</div><div class="ladder"><div class="step"><div class="t">哲学</div><div class="d">分成四个方向</div></div><div class="step"><div class="t">形而上学 · 存在</div><div class="d">世界是什么？</div></div><div class="step"><div class="t">认识论 · 知识</div><div class="d">我怎么知道？</div></div><div class="step"><div class="t">价值论 · 价值</div><div class="d">什么值得？</div></div><div class="step"><div class="t">美学 · 审美</div><div class="d">怎样感受和呈现意义？</div></div><div class="step hot"><div class="t">四者重新汇合</div><div class="d">存在 → 认识 → 价值 → 生活体验</div></div></div><div class="quote"><div class="q">我生活在怎样的世界？<br>我怎样理解它？<br>我准备追求什么？<br>我又希望怎样体验这一生？</div><div class="src">源文收束的四问 · 最终回到生活本身——哲学就不再只是几个抽象学科名词了</div></div><p class="prose">以后复习不用背一堆术语。如果这一课只记 6 句话，整理者建议记：</p><div class="cards g2"><div class="card"><div class="idx">①</div><h4>形而上学</h4><p>追问现实最根本是什么。</p></div><div class="card"><div class="idx">②</div><h4>认识论</h4><p>追问我们怎样获得知识，以及知识的边界在哪里。</p></div><div class="card"><div class="idx">③</div><h4>康德的转向</h4><p>研究人的认识结构怎样参与构成我们能够经验到的世界。</p></div><div class="card"><div class="idx">④</div><h4>价值论</h4><p>追问什么是好的、重要的和值得追求的，而不只是道德。</p></div><div class="card"><div class="idx">⑤</div><h4>美学</h4><p>研究美、艺术和审美经验，并提供一种不同于纯概念推理的世界理解方式。</p></div><div class="card"><div class="idx">⑥</div><h4>四问浓缩</h4><p>世界是什么？我怎么知道？什么值得？我怎样感受和呈现意义？</p></div></div><div class="quote"><div class="q">哲学的四个基本方向：追问存在，反思认识，选择价值，感受意义。</div><div class="src">整理者选作以后信息图中心的一句</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="4">0</div><div class="l">哲学基本分支</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">感性·知性·理性</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">复习只记六句</div></div><div class="cnt"><div class="v" data-c="7">0</div><div class="l">不宜当定论的提醒</div></div></div><div class="panel"><h3><span class="no2">①</span>四大分支归类练习</h3><div class="pd">判断下列问题属于「形而上学 / 认识论 / 价值论 / 美学」哪一支，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="源文形而上学问题清单原句——追问“现实最根本的结构”"><div class="st">1. 世界的根本是物质还是精神？</div><div class="opts"><button data-ok="1">形而上学</button><button data-ok="0">认识论</button><button data-ok="0">价值论</button><button data-ok="0">美学</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文以“这杯水是热的”引出“你凭什么知道？”——认识论的核心"><div class="st">2. 这杯水是热的。你怎么知道？摸过？测过？推理出来的？</div><div class="opts"><button data-ok="0">形而上学</button><button data-ok="1">认识论</button><button data-ok="0">价值论</button><button data-ok="0">美学</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文价值论举例原句——属于“什么值得”之问"><div class="st">3. 公平重要还是效率重要？</div><div class="opts"><button data-ok="0">形而上学</button><button data-ok="0">认识论</button><button data-ok="1">价值论</button><button data-ok="0">美学</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文价值论举例原句——追问什么是好、值得、重要"><div class="st">4. 快乐是不是最高价值？</div><div class="opts"><button data-ok="0">形而上学</button><button data-ok="0">认识论</button><button data-ok="1">价值论</button><button data-ok="0">美学</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文对照表中美学的最核心问题——感受与呈现"><div class="st">5. 什么是美？艺术怎样让意义显现？</div><div class="opts"><button data-ok="0">形而上学</button><button data-ok="0">认识论</button><button data-ok="0">价值论</button><button data-ok="1">美学</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文形而上学问题清单原句——追问存在的基本结构"><div class="st">6. 自由是否真实存在？</div><div class="opts"><button data-ok="1">形而上学</button><button data-ok="0">认识论</button><button data-ok="0">价值论</button><button data-ok="0">美学</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>四问通关清单</h3><div class="pd">对照本讲骨架，逐项检验自己是否真正掌握</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说出形而上学、认识论、价值论、美学各自最核心的一问</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能用「存在 → 认识 → 价值 → 审美」复述本课骨架</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">遇到断言，我能追问一句「你凭什么知道？」并检查依据（认识论训练）</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">面对选择，我能区分事实判断与「什么值得」的价值判断（价值论训练）</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能正确解释康德的转向：不是人创造了自然，而是经验世界必然经过人类认知结构的组织</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能对本课七条「不宜当定论」的概括，说出各自的校正理由</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师给出的适合入门的哲学“四分法”是哪四部分？</div><div class="ans"><button data-ok="0">A. 本体论、逻辑学、伦理学、宗教学</button><button data-ok="1">B. 形而上学、认识论、价值论、美学</button><button data-ok="0">C. 唯物论、唯心论、辩证法、实证论</button><button data-ok="0">D. 逻辑学、伦理学、美学、政治学</button></div><div class="exp">源文开篇：“形而上学｜认识论｜价值论｜美学”——虽不是哲学界唯一的分类方式，但作为学习地图很好用。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>贝克莱的著名命题“esse est percipi”的意思是？</div><div class="ans"><button data-ok="0">A. 我思故我在</button><button data-ok="1">B. 存在就是被感知</button><button data-ok="0">C. 人给自然立法</button><button data-ok="0">D. 美是自由的愉快感</button></div><div class="exp">源文：“esse est percipi——存在就是被感知。”同时提醒：不能简单把贝克莱等同于佛教“唯识”。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>康德“哥白尼式转向”的正确理解是什么？</div><div class="ans"><button data-ok="0">A. 人的思想创造了外部宇宙</button><button data-ok="0">B. 人脑把世界凭空造出来了</button><button data-ok="1">C. 对象作为我们能够经验的对象，符合我们的认识条件</button><button data-ok="0">D. 知识完全是从经验里被动抄来的</button></div><div class="exp">源文：“不再只问知识怎样符合对象，而要问对象作为‘我们能够经验的对象’，怎样符合我们的认识条件。”且“康德是在研究‘经验如何可能’，不是说人的思想创造了外部宇宙”。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>康德的三层认识能力，依次是？</div><div class="ans"><button data-ok="1">A. 感性 → 知性 → 理性</button><button data-ok="0">B. 知性 → 理性 → 感性</button><button data-ok="0">C. 理性 → 感性 → 知性</button><button data-ok="0">D. 感觉 → 印象 → 观念</button></div><div class="exp">源文：感性给我们材料；知性把材料组织成对象和经验；理性追求更完整、更无条件的解释。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>老师为什么把美学从价值论中单独拿出来？</div><div class="ans"><button data-ok="0">A. 因为美不是一种价值</button><button data-ok="1">B. 因为人除了通过概念和推理认识世界，还可以通过情感和艺术接触世界</button><button data-ok="0">C. 因为康德反对价值论</button><button data-ok="0">D. 因为美学比价值论更古老</button></div><div class="exp">源文：“人除了通过概念和推理认识世界，还可以通过情感和艺术接触世界。”前三部分偏向存在、认识、价值，第四部分进入感受与呈现。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">世界究竟是什么 → 我怎么知道它 → 什么值得追求 → 人怎样感受并表达意义。</div><div class="src">全课主线 · 存在 → 认识 → 价值 → 审美</div></div><div class="quote"><div class="q">哲学的四个基本方向：追问存在，反思认识，选择价值，感受意义。</div><div class="src">整理者选作信息图中心的一句</div></div><div class="quote"><div class="q">让我们以前没有看见的东西第一次被看见。</div><div class="src">海德格尔论艺术 · 美学部分最值得保留的思想</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../09-哲学是什么/index.html">← 上一篇 · 哲学是什么</a><a href="../11-哲学的变化/index.html">下一篇 · 哲学的变化 →</a><span class="sp"></span><span class="cur">哲学的构成</span></div></nav>
+<footer class="coda"><div class="wm2">構</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">哲学的四个基本方向：<br><b>追问存在，反思认识，选择价值，感受意义。</b><br><br>而这一课最核心的骨架就是：<b>存在 → 认识 → 价值 → 审美</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第十一讲《哲学的构成》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12"], "mnodes": ["#s1", "#s2", "#s4", "#s5", "#s7", "#s8", "#s9", "#s11"], "sortok": [0, 1, 2, 2, 3, 0], "quizok": [1, 1, 2, 0, 1], "ckkey": "zx10-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
