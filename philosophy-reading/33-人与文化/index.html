@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人与文化 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx33-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../32-人生的学说/index.html">← 上一篇 · 人生的学说</a><a href="../34-人与宗教/index.html">下一篇 · 人与宗教 →</a><span class="sp"></span><span class="cur">人与文化</span></div></nav>
+<header class="hero" id="top"><div class="wm">化</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十一章《文化的融合》第一节</div>
+  <div class="no">叁拾肆</div>
+  <h1>人与文化</h1>
+  <div class="sub">个体生命 · 集体生命 · 文化的重构</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>一个人的<b>精神</b>如何进入群体、沉淀为<b>文化</b>；<br>到了数字时代，我们又该进入什么样的<b>新文化</b>——这是全课的问题。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 中国文化的性格</a><a href="#s3">叁 · 个体生命如何进入集体生命</a><a href="#s4">肆 · 精神与文化：一体两面</a><a href="#s5">伍 · 精神的本质：唤醒创造性</a><a href="#s6">陆 · 什么叫文化</a><a href="#s7">柒 · 第一层：理念</a><a href="#s8">捌 · 第二层：价值观</a><a href="#s9">玖 · 闯红灯的故事</a><a href="#s10">拾 · 第三层：行为规范与三层模型</a><a href="#s11">拾壹 · 中国文化的群体性</a><a href="#s12">拾貳 · 转向：数字社会</a><a href="#s13">拾叁 · 数字文化的价值转变</a><a href="#s14">拾肆 · 更深的问题：工具，还是文化革命</a><a href="#s15">拾伍 · 全篇骨架与六句话</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>唐人街之问</b><span>不同民族同居一城，为何仍成独立的文化共同体</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>个体 → 集体</b><span>个体生命 → 精神 → 集体生命 → 文化</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>文化如何生成</b><span>根本观念 → 世代实践 → 生活方式</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>三层结构</b><span>理念 → 价值观 → 行为规范</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>融合的关键</b><span>开放、包容、重构 —— 不是消灭，不是拼接</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s12"><b>数字新文化</b><span>传统社会文化 × 数字社会文化</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s15"><b>最终关键词</b><span>重构 —— 个人、文化、文明不断重构自己</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">从唐人街之问出发 · 确立全课的问题意识</div><div class="quote"><div class="q">一个人的精神如何进入一个群体，并形成文化；而在数字时代，我们又应该进入什么样的新文化。</div><div class="src">这节课真正要回答的问题</div></div><p class="prose">老师从“唐人街”切入，提出一个问题：<b>为什么不同民族生活在一起以后，仍然经常形成相对独立的文化共同体？</b></p><div class="quote"><div class="q">因为文化不仅是语言、饮食、衣服和习俗不同，更深层的是不同群体具有不同的文化性格、价值体系和行为规范。</div><div class="src">作者对唐人街之问的回答</div></div><p class="prose">所以，“文化融合”不是简单地学一点别人的节日、饮食、语言，而是：<b>不同文化所承载的精神结构，如何发生理解、吸收、重构。</b>老师尤其强调一个词——重构。</p><div class="duo"><div class="col neg"><h4>文化融合不是 ✕</h4><ul><li>A 文化消灭 B 文化</li><li>A 文化 + B 文化简单拼接</li></ul></div><div class="col pos"><h4>更接近 ✓</h4><ul><li><b>吸收 → 消化 → 转化</b></li><li>形成新的文化结构</li></ul></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>中国文化的性格</h2></div><div class="sd">开放、包容、重构 · 以及一个必要的提醒</div><div class="duo"><div class="col neg"><h4>西方文化性格（老师概括）</h4><ul><li>自我</li><li>斗争</li><li>排他</li></ul></div><div class="col pos"><h4>中国文化性格（老师概括）</h4><ul><li>开放</li><li>包容</li><li><b>重构</b></li></ul></div></div><p class="prose">老师并进一步认为：中国文明能够长期延续，一个重要原因就在于它具有不断吸收外来文明并重新解释、重新组织的能力。这背后的思想是——<b>文明能否延续，不只取决于它能不能坚持自己，更取决于它能不能消化变化。</b>这一点很值得保留。</p><div class="cards g3"><div class="card"><div class="idx">佛</div><h4>古代</h4><p>佛教进入中国以后，最终形成<b>汉传佛教</b>——外来思想的本土转化</p></div><div class="card"><div class="idx">器</div><h4>历代</h4><p>外来音乐、服饰、饮食、制度不断进入中国</p></div><div class="card"><div class="idx">新</div><h4>近现代</h4><p>科学、民主、大学、现代医学、现代法律制度等不断被吸收</p></div></div><div class="quote"><div class="q">文化生命力 ≠ 一成不变。<br>文化生命力 = 保持某些核心结构，同时不断重新解释自己。</div><div class="src">从历史重构中得出的判断</div></div><div class="warn"><div class="wt">整理者的批判性提醒</div><ul><li>“中国文化开放、西方文化排他”是一种高度概括的哲学叙事，不能简单当作严格的历史事实</li><li>实际上，无论中国还是西方，都既存在开放时期，也存在排斥时期；既存在融合，也存在冲突</li><li>更准确的理解：老师不是在做严格的文明史比较，而是在借“中国/西方”两个类型，说明两种不同的文化倾向</li></ul></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>个体生命如何进入集体生命</h2></div><div class="sd">这节课最有哲学味道的部分 · 类意识</div><p class="prose">这是这节课真正比较有哲学味道的一部分。老师提出：<b>个体生命必须通过某种方式转化为集体生命。</b>否则，一个人死去以后，他的经验、思想、价值也会随之消失。</p><p class="prose">于是问题变成：<b>一个有限的个体，怎样进入一个比自己更长久的共同体？</b>老师借用“类意识”来说明——我不仅意识到“我是我”，还意识到“我是某一个更大共同体中的人”。比如：</p><div class="chips"><span class="chip">我是一个家庭成员</span><span class="chip">我是某个职业共同体成员</span><span class="chip">我是中国文化的一部分</span><span class="chip">我是人类的一员</span></div><div class="ladder"><div class="step"><div class="t">个体意识</div><div class="d">“我是我”</div></div><div class="step"><div class="t">共同体意识</div><div class="d">“我是某一个更大共同体中的人”</div></div><div class="step"><div class="t">集体生命</div><div class="d">个体的经验、思想、价值进入共同体</div></div><div class="step hot"><div class="t">文化</div><div class="d">集体生命的沉淀</div></div></div><div class="quote"><div class="q">文化是个体生命超越个人寿命的一种方式。</div><div class="src">这部分的核心结论</div></div><p class="prose">一个人会死亡，但他的语言、价值、知识、行为方式、制度和作品，可以进入后代——<b>个人有限，文化延续</b>。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>精神与文化：一体两面</h2></div><div class="sd">本课最值得抓住的一个概念</div><p class="prose">老师给出了一个非常重要的区分——</p><div class="quote"><div class="q">从个体角度看，是精神；<br>从群体角度看，是文化。</div><div class="src">这一课非常值得记住的一句话</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">「守信」如何从精神变成文化</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一个人相信“做人应该守信”——这是<b>个人精神</b>。当一个社会长期都认为“守信是值得赞扬的”，并且进入教育、家庭、制度、故事、榜样、礼仪，那么它就变成<b>文化</b>。个人层面：信念 → 精神；集体层面：共同信念 → 文化。</div></div></div><div class="quote"><div class="q">文化可以理解为被群体化、历史化、制度化了的精神。</div><div class="src">本课最值得抓住的一个概念</div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>精神的本质：唤醒创造性</h2></div><div class="sd">借海德格尔与中国哲学 · 精神 → 唤醒生命 → 创造</div><p class="prose">接下来老师借海德格尔谈“精神”。不过先提醒：原讲稿此处的转写明显有误，不建议死记。</p><div class="warn"><div class="wt">原讲稿转写有误</div><ul><li>“精神是唤醒原始本能的，有所欲的痊愈”——这应该不是准确原文，不建议死记</li><li>老师真正想表达的是：精神不是死知识，而是把人内在生命力量唤醒的东西</li></ul></div><div class="quote"><div class="q">精神不是死知识，而是一种把人内在生命力量唤醒的东西。</div><div class="src">老师真正想表达的意思</div></div><p class="prose">他又用中国哲学重新解释：<b>精神，就是唤醒人的“道性”</b>——进一步说，就是唤醒人的创造力。于是形成一条链：<b>精神 → 唤醒生命 → 创造</b>。</p><p class="prose">又联系《易经》：“天行健，君子以自强不息。”在老师的体系里，<b>人真正具有精神，不在于知道多少概念，而在于生命是否被激活</b>。</p><p class="prose">这一点其实和前面课程反复讲的“智慧不是知识，而是能够改变人的生命状态”是一致的。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>什么叫文化</h2></div><div class="sd">借牟宗三 · 从根本观念到生活世界</div><p class="prose">这里老师借牟宗三来说明文化（讲稿原转写“毛中山先生”应为转写错误，结合上下文应当是<b>牟宗三</b>）。老师将文化概括为——</p><div class="quote"><div class="q">一个民族最初、最根本的一套观念，经过无数人的生命实践和表达，最终形成文化。</div><div class="src">老师借牟宗三对文化的概括</div></div><p class="prose">因此，文化不是一个抽象名词。它可以拆成一条生成链：</p><div class="ladder"><div class="step"><div class="t">根本观念</div></div><div class="step"><div class="t">一代又一代人的实践</div></div><div class="step"><div class="t">稳定的价值评价</div></div><div class="step"><div class="t">稳定的行为方式</div></div><div class="step"><div class="t">生活世界</div></div><div class="step hot"><div class="t">文化</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">「孝」如何从思想变成文化</span><span class="ar">▸</span></div><div class="sm"><div class="inner">“孝”如果只是《论语》里的一句话，还只是<b>思想</b>。但是当它进入家庭伦理、祭祖、养老、称谓、婚姻、节日、文学、法律伦理，它就不再只是一个观念，而成为<b>文化</b>。</div></div></div><div class="quote"><div class="q">文化不是人说了什么，而是一个群体长期活成了什么。</div><div class="src">非常适合记忆的概括</div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>第一层：理念</h2></div><div class="sd">我们认为什么是一个好的世界 · 天道 · 儒与道</div><p class="prose">这一部分进入文化的三层结构。第一层是<b>理念</b>，它回答的是：<b>我们认为什么是一个好的世界？</b>这是最深的一层。</p><p class="prose">老师认为，中国文化的深层理念和“天道”有关；由“天道”又发展出不同路线。</p><div class="cards g2"><div class="card"><div class="idx">儒</div><h4>儒家</h4><p><b>内圣外王</b>。“内圣”是修养自己；“外王”是将内在德性推广到人与人、社会和政治秩序。修己 → 安人 → 安百姓</p></div><div class="card"><div class="idx">道</div><h4>道家</h4><p><b>无我 → 归真 → 真人 → 自然</b>。强调减少人为造作、执著和自我中心，让生命回到更自然的状态</p></div></div><p class="prose">两者路径不同：儒家重<b>成德、入世</b>，文化方向是<b>内在道德修养 → 外在社会秩序</b>；道家重<b>无我、自然</b>。但老师认为，二者背后都与“天道”有关。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>第二层：价值观</h2></div><div class="sd">什么值得追求 · 价值排序在思考之前完成</div><p class="prose">如果理念回答“世界应该是什么样”，那么价值观回答：<b>什么值得追求？什么不值得追求？</b>比如（点击展开）：</p><div class="case"><div class="h"><span class="tag">五问</span><span class="ht">价值排序：你把什么排在前面？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">公平重要还是效率重要？个人自由重要还是家庭责任重要？成功重要还是安稳重要？竞争重要还是合作重要？规则重要还是关系重要？——这些就是<b>价值排序</b>。</div></div></div><p class="prose">因此，文化真正厉害的地方就在这里——</p><p class="prose">它会让我们<b>在还没有认真思考以前，就已经觉得某些事情“理所当然”</b>。这就是文化的力量。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>闯红灯的故事</h2></div><div class="sd">行为本身 ≠ 行为的文化意义</div><p class="prose">为了说明价值观与行为的关系，老师讲了一个留学生的故事（点击展开）：</p><div class="case"><div class="h"><span class="tag">寓言</span><span class="ht">同一个人，两种评价</span><span class="ar">▸</span></div><div class="sm"><div class="inner">在美国：男孩闯红灯，女友认为“连交通规则都不遵守，缺乏安全感”。回中国以后：他遵守红灯，另一位女孩反而认为“这么死板，以后能做什么？”</div></div></div><div class="quote"><div class="q">同一个行为，在不同文化里可能被赋予不同意义。</div><div class="src">这个故事真正想表达的原理</div></div><div class="duo"><div class="col neg"><h4>只比较行为 ✕</h4><ul><li>把行为本身直接当作文化差异的证据</li><li>以为“遵守规则 = 可靠、自律”在任何文化中都成立</li></ul></div><div class="col pos"><h4>看价值体系 ✓</h4><ul><li>同一个行为，在不同文化里意义不同</li><li>要比较的是<b>行为背后的价值体系</b></li></ul></div></div><div class="warn"><div class="wt">整理者的批判性提醒</div><ul><li>这个故事并不是可靠的社会学证据，更接近一个用来说明概念的寓言</li><li>真正值得学习的，是“同一个行为，在不同文化里可能被赋予不同意义”这个原理</li></ul></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>第三层：行为规范与三层模型</h2></div><div class="sd">理念决定方向 · 价值观决定选择 · 规范决定行动</div><p class="prose">文化最后一定会落到行为，形成第三层<b>行为规范</b>。理念是最高层，价值观是中间层，行为规范是最外层，可以记成：<b>理念 → 判断 → 行为</b>。</p><p class="prose">更完整的说法是：<b>理念决定方向，价值观决定选择，规范决定行动</b>。这就是老师这一课最核心的文化模型：</p><div class="cards g3"><div class="card"><div class="idx">理</div><h4>理念</h4><p>回答：世界应该怎样？——仁、自由、自然、平等</p></div><div class="card"><div class="idx">值</div><h4>价值观</h4><p>回答：什么更重要？——集体/个人、秩序/自由</p></div><div class="card"><div class="idx">行</div><h4>行为规范</h4><p>回答：应该怎么做？——礼仪、法律、习俗、规则</p></div></div><div class="ladder"><div class="step"><div class="t">理念</div></div><div class="step"><div class="t">价值观</div></div><div class="step"><div class="t">行为规范</div></div><div class="step"><div class="t">生活方式</div></div><div class="step hot"><div class="t">文化</div></div></div><div class="case"><div class="h"><span class="tag">应用</span><span class="ht">用三层模型看一家医院的文化</span><span class="ar">▸</span></div><div class="sm"><div class="inner">一个医院说“以患者为中心”——这只是<b>理念</b>。真正判断它是不是文化，要继续看：员工做选择时，是患者体验优先还是部门方便优先？这是<b>价值观</b>。再看：预约、导诊、沟通、投诉、随访怎么做？这是<b>行为规范</b>。这个方法对实际管理尤其有用。</div></div></div><div class="quote"><div class="q">写在墙上的，是理念；<br>做选择时体现的，是价值观；<br>天天怎么做的，才是文化。</div><div class="src">判断文化的方法 · 对实际管理尤其有用</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>中国文化的群体性</h2></div><div class="sd">个体主义—集体主义 · 以及一个必要的校正</div><p class="prose">老师后面用了很多例子说明：中国文化比较重家庭、聚会、共同活动、参与、热闹、群体关系。因此他说：<b>中国文化在行为上具有较强的群体性</b>。</p><div class="chips"><span class="chip">吃饭喜欢围桌</span><span class="chip">节庆讲团圆</span><span class="chip">家庭关系重要</span><span class="chip">朋友聚会重要</span><span class="chip">娱乐依赖共同参与</span></div><p class="prose">他实际上是在讨论一个社会学概念：<b>个体主义—集体主义</b>。不过这里同样不能简单化理解——</p><div class="warn"><div class="wt">整理者的校正</div><ul><li>不能简单理解成“中国人都是集体主义，西方人都是个人主义”——真实情况复杂得多</li><li>更合适的理解：不同社会在“个人—家庭—群体—制度”之间，会形成不同的权重结构</li></ul></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>转向：数字社会</h2></div><div class="sd">整节课真正面向未来的部分</div><p class="prose">前面一直讲中国文化、西方文化、传统文化，但最后老师突然提出一个很重要的转向——</p><div class="quote"><div class="q">我们真正面对的，也许已经不只是中西文化融合，而是传统社会文化与数字社会文化的融合。</div><div class="src">整节课真正面向未来的转向</div></div><p class="prose">过去的问题是：中国人怎样理解西方？西方怎样理解中国？而未来可能变成——<b>人类怎样进入数字文明？</b>所以真正的新问题是：</p><div class="cards g3"><div class="card"><div class="idx">问一</div><h4>数字文明的理念是什么？</h4><p>“我们认为什么是一个好的世界”的数字版本</p></div><div class="card"><div class="idx">问二</div><h4>数字文明的价值观是什么？</h4><p>“什么值得追求、什么不值得追求”的数字版本</p></div><div class="card"><div class="idx">问三</div><h4>数字文明的行为规范是什么？</h4><p>“应该怎么做”的数字版本</p></div></div><p class="prose">这三个问题，正好对应前面的<b>文化三层结构</b>。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>数字文化的价值转变</h2></div><div class="sd">真假 → 有无 · 美丑 → 新颖 · 善恶 → 共享</div><p class="prose">这部分很有思想实验性质。老师认为，传统社会中的三个价值判断——<b>真假、美丑、善恶</b>——到了数字社会可能发生变化：</p><div class="cards g3"><div class="card"><div class="idx">真</div><h4>真假 → 有无</h4><p>有没有信息、有没有数据、有没有存在于网络系统中</p></div><div class="card"><div class="idx">美</div><h4>美丑 → 新颖</h4><p>互联网注意力机制奖励新东西、意外东西、独特东西、可传播东西——新颖、想象、好奇、惊讶</p></div><div class="card"><div class="idx">善</div><h4>善恶 → 共享</h4><p>从“这是我的知识”到能否连接、传播、协作、共享</p></div></div><div class="case"><div class="h"><span class="tag">对比</span><span class="ht">问句的变化</span><span class="ar">▸</span></div><div class="sm"><div class="inner">过去：“它是真的吗？”——现在常常变成：“它有没有被看见？”<br>过去：“它美不美？”——现在可能变成：“它够不够新？”<br>过去：“这是我的知识。”——现在越来越变成：“能否连接、传播、协作、共享？”</div></div></div><div class="warn"><div class="wt">整理者的批判性提醒</div><ul><li>这套“数字价值转型”并不是已经建立的哲学理论，更适合作为老师提出的一个“未来假说”</li><li>但它非常值得思考——因为互联网确实改变了价值产生方式</li></ul></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>更深的问题：工具，还是文化革命</h2></div><div class="sd">这一课最值得继续往下想的地方</div><p class="prose">这一课最值得继续往下想的地方，不是“数字社会一定会从真假变成有无”，而是——</p><div class="h3blk">数字技术究竟是在改变工具，还是在改变人的价值结构？</div><div class="duo"><div class="col neg"><h4>如果只是工具改变</h4><ul><li>以前看书，现在看电子书</li><li>以前写信，现在微信</li><li>那么变化并不大</li></ul></div><div class="col pos"><h4>如果价值结构被改变</h4><ul><li>我们怎么看世界、我们认为什么重要</li><li>我们如何建立关系、如何学习、如何工作、如何形成身份</li><li>那就不仅是技术革命，而是<b>文化革命</b></li></ul></div></div><p class="prose">这也是老师为什么会提到数字大学、数字企业、数字经济、数字政治——它们不是简单地把原来的东西搬到网上。真正深刻的变化是：<b>数字技术可能重新定义组织本身。</b></p></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>全篇骨架与六句话</h2></div><div class="sd">复习时记结构，不记例子 · 一年后只需唤醒六句</div><p class="prose">以后复习，不要再记几十分钟的具体例子，记下面这张结构：</p><div class="ladder"><div class="step"><div class="t">文化为什么存在</div><div class="d">个体生命有限 → 精神进入共同体 → 个体生命成为集体生命 → 文化</div></div><div class="step"><div class="t">文化是什么</div><div class="d">根本观念 → 理念 → 价值观 → 行为规范 → 生活方式</div></div><div class="step"><div class="t">中国传统文化</div><div class="d">天道 → 儒家（内圣 → 外王）/ 道家（无我 → 归真 → 真人）</div></div><div class="step"><div class="t">文化差异</div><div class="d">不同理念 → 不同价值判断 → 不同行为规范</div></div><div class="step"><div class="t">文化融合</div><div class="d">开放 + 包容 + 重构</div></div><div class="step hot"><div class="t">未来文化</div><div class="d">全球化 + 网络化 → 数字社会 → 新理念 / 新价值观 / 新规范</div></div></div><div class="h3blk">一年之后重新复习，只需唤醒这六句</div><details class="qa"><summary><span class="qn">问壹</span><span class="qt">文化是什么？</span></summary><div class="body">文化不是知识，而是一个群体长期活出来的共同精神。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">精神与文化是什么关系？</span></summary><div class="body">个体层面表现为精神，集体层面表现为文化。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">文化由哪三个层次组成？</span></summary><div class="body">文化由理念、价值观和行为规范三个层次组成。</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">文化融合是什么？</span></summary><div class="body">文化融合不是简单混合，而是吸收、消化与重构。</div></details><details class="qa"><summary><span class="qn">问伍</span><span class="qt">怎样才算真正理解文化差异？</span></summary><div class="body">真正理解文化差异，要看行为背后的价值体系，而不能只比较行为本身。</div></details><details class="qa"><summary><span class="qn">问陆</span><span class="qt">数字革命真正重要的地方是什么？</span></summary><div class="body">数字革命真正重要的地方，不是工具变化，而可能是新的文化正在形成。</div></details><p class="prose">这节课表面上是在讲文化融合；往深处看是在讲<b>人怎样超越自己的个体生命</b>，再往深处是<b>精神如何通过共同体获得延续</b>。最后，老师把问题推进到了：<b>当人类进入数字文明以后，我们究竟要成为一种什么样的人？</b></p><p class="prose">所以这一课真正的关键词，不是“中国文化”或“西方文化”，甚至不是“数字社会”，而是——<b>重构</b>：个人不断重构自己，文化不断重构自己，文明也不断重构自己。</p></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="3">0</div><div class="l">文化的层次</div></div><div class="cnt"><div class="v" data-c="6">0</div><div class="l">复习金句</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">数字价值转变</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">共同体圈层</div></div></div><div class="panel"><h3><span class="no2">①</span>三层归位练习</h3><div class="pd">判断下列内容属于文化的哪一层「理念 / 价值观 / 行为规范」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="理念层回答“世界应该怎样”——源文表格中理念的举例"><div class="st">1. 仁、自由、自然、平等</div><div class="opts"><button data-ok="1">理念</button><button data-ok="0">价值观</button><button data-ok="0">行为规范</button></div><div class="verdict"></div></div><div class="sort-it" data-why="价值排序——价值观层回答“什么更重要”"><div class="st">2. 公平重要还是效率重要</div><div class="opts"><button data-ok="0">理念</button><button data-ok="1">价值观</button><button data-ok="0">行为规范</button></div><div class="verdict"></div></div><div class="sort-it" data-why="行为规范层回答“应该怎么做”——源文表格中的举例"><div class="st">3. 礼仪、法律、习俗、规则</div><div class="opts"><button data-ok="0">理念</button><button data-ok="0">价值观</button><button data-ok="1">行为规范</button></div><div class="verdict"></div></div><div class="sort-it" data-why="写在墙上的，是理念"><div class="st">4. “以患者为中心”（挂在医院墙上的话）</div><div class="opts"><button data-ok="1">理念</button><button data-ok="0">价值观</button><button data-ok="0">行为规范</button></div><div class="verdict"></div></div><div class="sort-it" data-why="做选择时体现的，是价值观"><div class="st">5. 患者体验优先，还是部门方便优先</div><div class="opts"><button data-ok="0">理念</button><button data-ok="1">价值观</button><button data-ok="0">行为规范</button></div><div class="verdict"></div></div><div class="sort-it" data-why="天天怎么做的，才是文化——落到行动的规范层"><div class="st">6. 预约、导诊、沟通、投诉、随访怎么做</div><div class="opts"><button data-ok="0">理念</button><button data-ok="0">价值观</button><button data-ok="1">行为规范</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>三层模型通关清单</h3><div class="pd">以下六项，能做到的逐项勾选（进度自动保存在本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说清文化与知识、习俗的区别：文化是一个群体长期活出来的共同精神</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能用自己的例子说明：个体层面是精神，集体层面是文化</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能背出文化三层——理念 → 价值观 → 行为规范，并各举一例</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能用三层模型分析一个组织（医院、公司、学校）的文化，而不只看它的口号</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">面对文化差异，我先看行为背后的价值体系，而不只比较行为本身</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能把「吸收 → 消化 → 转化」的重构观，用在自己正进入的新文化（包括数字文化）上</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师对“文化融合”的理解，最接近哪一种？</div><div class="ans"><button data-ok="0">A. A 文化消灭 B 文化</button><button data-ok="0">B. A 文化和 B 文化简单拼接</button><button data-ok="1">C. 吸收、消化、转化，形成新的文化结构</button><button data-ok="0">D. 保留各自传统，互不来往</button></div><div class="exp">源文：“真正的文化融合不是 A 文化消灭 B 文化，也不是简单拼接，而更接近：吸收 → 消化 → 转化 → 形成新的文化结构。”</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>“从个体角度看，是精神；从群体角度看，是文化。”这句话说明什么？</div><div class="ans"><button data-ok="0">A. 精神和文化是两种无关的东西</button><button data-ok="1">B. 精神和文化是同一件事在个人与群体两个层面的表现</button><button data-ok="0">C. 群体没有精神</button><button data-ok="0">D. 个人没有文化</button></div><div class="exp">作者称这是“这一课非常值得记住的一句话”；文化可以理解为“被群体化、历史化、制度化了的精神”。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>文化的三层结构，由深到外依次是？</div><div class="ans"><button data-ok="0">A. 行为规范 → 价值观 → 理念</button><button data-ok="0">B. 价值观 → 理念 → 行为规范</button><button data-ok="1">C. 理念 → 价值观 → 行为规范</button><button data-ok="0">D. 理念 → 行为规范 → 价值观</button></div><div class="exp">“理念决定方向，价值观决定选择，规范决定行动”——理念是最高层，价值观是中间层，行为规范是最外层。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>闯红灯的故事，真正想说明什么？</div><div class="ans"><button data-ok="0">A. 美国人比中国人更守规则</button><button data-ok="0">B. 中国女孩更喜欢灵活的人</button><button data-ok="1">C. 同一个行为，在不同文化里可能被赋予不同意义</button><button data-ok="0">D. 两种文化各有优劣</button></div><div class="exp">源文明确指出：这个故事并不是可靠的社会学证据，真正想表达的是“同一个行为，在不同文化里可能被赋予不同意义”。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>老师最后突然讲“数字社会”，是为了提出什么问题？</div><div class="ans"><button data-ok="0">A. 如何在网络上做生意</button><button data-ok="1">B. 人类怎样进入数字文明——其理念、价值观、行为规范是什么</button><button data-ok="0">C. 中西文化如何互相理解</button><button data-ok="0">D. 如何保护传统文化</button></div><div class="exp">“我们真正面对的，也许已经不只是中西文化融合，而是传统社会文化与数字社会文化的融合”——三个新问题正好对应文化三层结构。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">文化不是知识，而是一个群体长期活出来的共同精神。</div><div class="src">六句话之一 · 文化的定义</div></div><div class="quote"><div class="q">文化融合不是简单混合，而是吸收、消化与重构。</div><div class="src">六句话之一 · 融合的关键</div></div><div class="quote"><div class="q">数字革命真正重要的地方，不是工具变化，而可能是新的文化正在形成。</div><div class="src">六句话之一 · 面向未来</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../32-人生的学说/index.html">← 上一篇 · 人生的学说</a><a href="../34-人与宗教/index.html">下一篇 · 人与宗教 →</a><span class="sp"></span><span class="cur">人与文化</span></div></nav>
+<footer class="coda"><div class="wm2">構</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">个人不断重构自己，文化不断重构自己，文明也不断重构自己。<br><br>能够<b>吸收新的东西</b>，又不<b>丧失自身判断能力</b>，<br>可能才是“文化融合”最值得保留下来的思想。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第34讲《人与文化》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s3", "#s6", "#s7", "#s2", "#s12", "#s15"], "sortok": [0, 1, 2, 0, 1, 2], "quizok": [2, 1, 2, 2, 1], "ckkey": "zx33-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

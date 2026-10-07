@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孔子的人生六个阶段 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx31-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../30-克尔凯郭尔的人生三个阶段/index.html">← 上一篇 · 克尔凯郭尔的人生三个阶段</a><a href="../32-人生的学说/index.html">下一篇 · 人生的学说 →</a><span class="sp"></span><span class="cur">孔子的人生六个阶段</span></div></nav>
+<header class="hero" id="top"><div class="wm">成</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十章《人生的真谛》第二节</div>
+  <div class="no">叁拾貳</div>
+  <h1>孔子的人生六个阶段</h1>
+  <div class="sub">十五志学 · 七十从心 · 一条人格成熟曲线</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>孔子这段自述，被课程做了一次强烈的现代化解释：<br>它描绘的其实不是年龄，而是<b>人格逐渐成熟的六层结构</b>——学、立、定、知、容、自由。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 六个阶段的整体逻辑</a><a href="#s3">叁 · 十五志于学 · 学什么</a><a href="#s4">肆 · 三十而立 · 心有主</a><a href="#s5">伍 · 四十不惑 · 稳定支点</a><a href="#s6">陆 · 五十知天命 · 知边界</a><a href="#s7">柒 · 六十耳顺 · 容纳</a><a href="#s8">捌 · 七十从心所欲 · 自由与规则合一</a><a href="#s9">玖 · 深层结构 · 六字图</a><a href="#s10">拾 · 必须保留的批判性思考</a><a href="#s11">拾壹 · 两套体系放在一起</a><a href="#s12">拾貳 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>六个阶段</b><span>《论语·为政》自述 · 一次强烈的现代化解释</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>整体逻辑</b><span>学 → 立 → 定 → 知 → 容 → 自由</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>十五志学</b><span>学什么：明明德 · 亲民 · 止于至善</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>三十而立</b><span>心有主宰 · 人生观价值观世界观</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>四十不惑</b><span>重要关系与认同稳定下来</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>五十知命</b><span>知可为，知不可为</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>六十耳顺</b><span>容纳不同声音</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s8"><b>七十从心</b><span>规则内化 · 自由与规则统一</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">原文校正 · 现代化解释的性质 · 本页阅读前提</div><p class="prose">分析稿先把今天的材料分成两个能彼此呼应的学习单元：《超越感觉》第二篇讲「人为什么会想错」，哲学课程这一节讲「人应该怎样逐步形成稳定的人生判断力」。两者其实都在回答同一个大问题——<b>一个人怎样从受本能、情绪和环境支配，逐渐成长为能够自主判断的人</b>。本页聚焦后者。</p><div class="quote"><div class="q">吾十有五而志于学，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩。</div><div class="src">《论语·为政》 · 本讲全部内容的原点</div></div><div class="warn"><div class="wt">整理者的校正与定性提醒（本页阅读前提）</div><ul><li>先纠正几处明显的语音识别错误：原文应为上句，出自《论语·为政》</li><li>课程实际上围绕这六句话进行了一次非常强烈的现代化解释</li><li>容易误以为「孔子本人就是说40岁要不惑父母、妻子、孩子、职业、文化和国家」——严格说并不是，这些属于授课者的现代诠释；但作为人生思考框架，仍然很有启发性</li></ul></div><div class="quote"><div class="q">老师很多内容并不是孔子原文的严格训诂，而是借孔子的六个阶段建立一套现代人生哲学。</div><div class="src">整理者的定性提醒</div></div><p class="prose">本页按分析的顺序展开：先看六阶段的整体逻辑，再逐段拆解每一年龄段，最后回到<b>深层结构与三层区分</b>——原文、思想史、现代发挥。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>六个阶段的整体逻辑</h2></div><div class="sd">一条人生发展路径 · 六个词的抽象</div><p class="prose">老师实际上构建了这样一条人生发展路径：</p><div class="ladder"><div class="step"><div class="t">15岁 · 找到学习方向</div></div><div class="step"><div class="t">30岁 · 建立人生主轴</div></div><div class="step"><div class="t">40岁 · 稳定重要关系与认同</div></div><div class="step"><div class="t">50岁 · 理解自己的边界</div></div><div class="step"><div class="t">60岁 · 容纳不同声音</div></div><div class="step hot"><div class="t">70岁 · 自由与规则统一</div></div></div><p class="prose">如果进一步抽象，可以记成六个词——这比单纯记年龄更重要：</p><div class="quote"><div class="q">学 → 立 → 定 → 知 → 容 → 自由</div><div class="src">六阶段的进一步抽象 · 比年龄更重要</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>十五志于学 · 学什么</h2></div><div class="sd">不是学知识拿学历 · 借《大学》的三个方向</div><div class="duo"><div class="col neg"><h4>常见理解 ✕</h4><ul><li>「学」= 学知识、拿学历</li></ul></div><div class="col pos"><h4>课程的解释 ✓</h4><ul><li>借《大学》把「学」解释为三个方向：<b>明明德 · 亲民 · 止于至善</b></li></ul></div></div><div class="cards g3"><div class="card"><div class="idx">明</div><h4>明明德</h4><p>认识并发展人的内在德性——「心、性、理逐渐统一」。背后有明显的宋明理学和阳明心学色彩；现代化理解：<b>先认识自己应该成为什么样的人</b></p></div><div class="card"><div class="idx">亲</div><h4>亲民</h4><p>课程更喜欢王阳明一系的解释——从个人修养走向现实社会。底层结构：<b>修己 → 利他</b>；老师用「为人民服务」做现代解释</p></div><div class="card"><div class="idx">止</div><h4>止于至善</h4><p>最后的目标不是「知道很多」，而是<b>形成一种值得追求的人生境界</b></p></div></div><div class="ladder"><div class="step"><div class="t">明明德</div><div class="d">我应该成为谁？</div></div><div class="step"><div class="t">亲民</div><div class="d">我应该怎样和别人发生关系？</div></div><div class="step hot"><div class="t">至善</div><div class="d">我的人生最终朝哪里走？</div></div></div><p class="prose">这实际上已经不仅是「学习理论」，而是在回答——<b>学习是为了什么？</b></p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>三十而立 · 心有主</h2></div><div class="sd">立志与自存其主 · 人生观价值观世界观</div><div class="duo"><div class="col neg"><h4>常见解释 ✕</h4><ul><li>三十而立 = 30岁必须结婚、买房、事业成功</li></ul></div><div class="col pos"><h4>课程的解释 ✓</h4><ul><li>「立」= <b>立志</b></li><li>借王夫之的说法：<b>自存其主</b>——一个人的内心开始有主宰</li><li>开始有一个<b>稳定的人生方向</b>，不再被别人的评价、环境、时尚、社会压力、偶然机会推着走</li></ul></div></div><div class="quote"><div class="q">把人生的偶然变成人生的必然。</div><div class="src">老师讲的一句很值得保留的话 · 「立」的真义</div></div><p class="prose">它的意思不是宿命论，而是——<b>没有目标时，生活是事件推动你。有目标以后，你开始选择事件。</b></p><div class="h3blk">老师进一步把「立」解释成三层</div><div class="cards g3"><div class="card"><div class="idx">观</div><h4>立人生观</h4><p>回答「<b>这一生究竟为什么活？</b>」——幸福、财富、权力、照顾家庭、实现价值、服务社会、推动某种事业，这决定人生的方向</p></div><div class="card"><div class="idx">值</div><h4>立价值观</h4><p>回答「我凭什么判断一件事情值得不值得？」喜欢只是偏好；价值观意味着<b>面对冲突时，我用什么原则排序</b>——利益与诚信、个人与集体、效率与公平、家庭与事业</p></div><div class="card"><div class="idx">世</div><h4>立世界观</h4><p>回答「我如何理解这个世界？」课程在这里提出唯物世界、唯心世界以及数字世界</p></div></div><div class="warn"><div class="wt">「数字世界观」的定位</div><ul><li>「数字世界观」明显是一种授课者自己的现代扩展</li><li>可保留其核心启发：世界观必须随着现实变化不断更新，否则一个人可能用过去的世界模型，理解已经改变的世界</li></ul></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>四十不惑 · 稳定支点</h2></div><div class="sd">父母 · 孩子 · 职业 · 不再反复重选</div><p class="prose">这是整节课中最有个人特色的一部分。老师列出的「不惑」对象包括父母、伴侣、孩子、时代、职业、文化、民族、国家——<b>注意：这些并非《论语》原意，而属于现代人生解释</b>。但其中有一个非常重要的共同逻辑：</p><div class="quote"><div class="q">人生走到一定阶段，不能什么东西都永远处于重新选择状态。</div><div class="src">「不惑」的共同逻辑</div></div><p class="prose">如果一个人40岁仍不断怀疑父母、不断否定伴侣、不断比较孩子、不断厌恶时代、不断重新选择职业、不断否定自身文化，人生就没有稳定结构。所以「不惑」更合理的理解不是「什么问题都想明白了」，而是<b>一些人生最基础的关系和责任已经稳定下来</b>。老师对三类关系分别给出了标准：</p><div class="cards g3"><div class="card"><div class="idx">亲</div><h4>对父母</h4><p><b>从索取型关系 → 责任型关系</b>——不再问父母还能为我做什么，而开始问我应该为父母承担什么</p></div><div class="card"><div class="idx">子</div><h4>对孩子</h4><p><b>从塑造转向支持</b>——比较式教育问「别人家的孩子是什么样」；发展式教育问「我的孩子最适合成为什么样」</p></div><div class="card"><div class="idx">业</div><h4>对职业</h4><p><b>从选择转向积累</b>——20岁靠可能性，30岁靠选择，40岁以后越来越靠复利</p></div></div><div class="quote"><div class="q">无所求，尽责任。</div><div class="src">对父母「不惑」的核心表达 · 非常成熟的家庭伦理</div></div><div class="case"><div class="h"><span class="tag">例子</span><span class="ht">「学做香肠」—— 别按模板改造孩子</span><span class="ar">▸</span></div><div class="sm"><div class="inner">老师举「学做香肠」的例子，本质想说明：不要按照父母预设的成功模板改造孩子，而应该识别孩子真正的特点。孩子小时候，父母的任务更多是塑造；孩子成年以后，父母的任务应该逐渐转向支持。</div></div></div><div class="warn"><div class="wt">对职业「不惑」不能机械理解</div><ul><li>不能理解成「40岁以后不能换职业」</li><li>老师自己也补充：在互联网时代仍然应该不断突破和重构</li><li>更合理的解释是：职业方向逐渐形成长期积累</li></ul></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>五十知天命 · 知边界</h2></div><div class="sd">不是认命 · 是对自身条件的现实判断</div><p class="prose">老师有一句故意反着说的话——<b>「再努力都白搭了。」</b>但随后解释得非常清楚：这不是消极宿命论，而是在说，到了一定年龄，应当对自身条件形成现实判断。所谓「天命」，在课程的现代解释中更接近一组自问：</p><div class="chips"><span class="chip">我的资源是什么？</span><span class="chip">我的能力是什么？</span><span class="chip">我的关系是什么？</span><span class="chip">我的精力如何？</span><span class="chip">我还能做什么？</span><span class="chip">什么已经很难做了？</span></div><div class="quote"><div class="q">知可为，知不可为。</div><div class="src">「知天命」真正对应的智慧</div></div><div class="duo"><div class="col neg"><h4>两种危险 ✕</h4><ul><li>年轻时最大的危险：太早给自己设限——「我什么都不行」</li><li>中年以后的另一种危险：拒绝承认客观边界——「只要努力什么都能做到」</li></ul></div><div class="col pos"><h4>成熟的人 ✓</h4><ul><li>既不能妄自菲薄，也不能无所不能</li><li>找到自己仍然可以发挥最大价值的领域</li></ul></div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>六十耳顺 · 容纳</h2></div><div class="sd">听见不同意见而不防御</div><div class="duo"><div class="col neg"><h4>耳顺不是 ✕</h4><ul><li>别人说什么我都同意</li></ul></div><div class="col pos"><h4>耳顺而是 ✓</h4><ul><li><b>我可以听见不同意见，而不需要马上防御</b></li></ul></div></div><p class="prose">一个人如果真正耳顺，就能做到：好话听得进，坏话也听得进；同意的话听得进，反对的话也听得进。然后再判断<b>「他说得有没有道理？」</b>，而不是首先判断「我喜不喜欢听」。</p><div class="quote"><div class="q">别人反对我 ≠ 别人在攻击我。</div><div class="src">用批判性思维对「耳顺」的解释</div></div><div class="quote"><div class="q">耳顺其实是一种极高水平的认知开放性。</div><div class="src">整理者对「耳顺」的评价</div></div><p class="prose">这和《超越感觉》形成了一个非常漂亮的对应：《超越感觉》说，当别人挑战我们的观点时，我们很容易出现「<b>反应的错误</b>」——观点之争变成自我保卫战；而孔子所谓「耳顺」，正是这种错误的解药。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>七十从心所欲 · 自由与规则合一</h2></div><div class="sd">六个阶段里最深的一句话</div><p class="prose">很多人以为「不逾矩」= 时时提醒自己别违规。其实如果还需要天天压制自己「不能这样，不能那样」，说明<b>规则仍然只是外在约束</b>。孔子的理想状态更接近：</p><div class="quote"><div class="q">规则已经内化成人格。</div><div class="src">孔子的理想状态</div></div><div class="quote"><div class="q">我想做的 ≈ 我应该做的。</div><div class="src">规则内化之后出现的状态</div></div><p class="prose">于是——<b>自由和道德不再冲突。</b>这才是真正的「从心所欲而不逾矩」。</p><div class="case"><div class="h"><span class="tag">类比</span><span class="ht">驾驶：规则如何从外在变成内在</span><span class="ar">▸</span></div><div class="sm"><div class="inner">刚学车：规则是外在压力。熟练以后：规则逐渐内化。真正成熟的驾驶者不会每秒念「红灯要停」，而是看到红灯自然停止。伦理成熟也是类似过程。</div></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>深层结构 · 六字图</h2></div><div class="sd">把大量例子去掉之后最值得记住的成长曲线</div><p class="prose">如果把课程中的大量例子全部去掉，最值得记住的是这一条成长曲线——它描绘的其实不是年龄：</p><div class="cards g3"><div class="card"><div class="idx">15</div><h4>志于学</h4><p>确立学习方向 · 核心能力：<b>学习</b></p></div><div class="card"><div class="idx">30</div><h4>而立</h4><p>心有主宰 · 核心能力：<b>选择</b></p></div><div class="card"><div class="idx">40</div><h4>不惑</h4><p>稳定核心关系与认同 · 核心能力：<b>坚定</b></p></div><div class="card"><div class="idx">50</div><h4>知天命</h4><p>明白能力与边界 · 核心能力：<b>取舍</b></p></div><div class="card"><div class="idx">60</div><h4>耳顺</h4><p>容纳不同声音 · 核心能力：<b>包容</b></p></div><div class="card"><div class="idx">70</div><h4>从心所欲不逾矩</h4><p>自由与规范统一 · 核心能力：<b>自由</b></p></div></div><div class="quote"><div class="q">人格逐渐成熟的六层结构。</div><div class="src">六阶段真正描绘的东西</div></div><div class="h3blk">这一课最后只记住这张「六字图」</div><div class="ladder"><div class="step"><div class="t">学</div><div class="d">我还不知道，所以学习</div></div><div class="step"><div class="t">立</div><div class="d">我知道自己为什么活</div></div><div class="step"><div class="t">定</div><div class="d">重要的人和事不再反复摇摆</div></div><div class="step"><div class="t">知</div><div class="d">知道自己能做什么、不能做什么</div></div><div class="step"><div class="t">容</div><div class="d">能够听见不同声音</div></div><div class="step hot"><div class="t">自</div><div class="d">规则已经内化，于是获得真正自由</div></div></div><p class="prose">不要死记大量案例——这其实是一条非常完整的<b>人格成熟曲线</b>。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>必须保留的批判性思考</h2></div><div class="sd">区分三层：原话 · 思想史 · 现代发挥</div><p class="prose">这一课很有启发性，但<b>不能全部当作「孔子的原意」</b>。整理者提醒：需要区分三个层次——</p><div class="ladder"><div class="step"><div class="t">第一层</div><div class="d">孔子的原话：十五志于学、三十而立……</div></div><div class="step"><div class="t">第二层</div><div class="d">中国思想史上的解释：朱熹、王阳明、王夫之、孟子等人的解释</div></div><div class="step hot"><div class="t">第三层</div><div class="d">郭老师的现代发挥</div></div></div><div class="warn"><div class="wt">属于第三层「现代发挥」的例子，不能当成孔子的原意</div><ul><li>40岁不惑父母、妻子、孩子、职业、文化、民族、国家</li><li>三十建立数字世界观</li><li>五十把资源关系能力发挥到极致</li><li>这些更多属于老师自己的现代人生哲学</li></ul></div><div class="quote"><div class="q">原始文本说了什么</div><div class="src">批判性思考要求始终区分的一端（另一端是「解释者认为它意味着什么」，两者不能混在一起）</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>两套体系放在一起</h2></div><div class="sd">批判性思考管认知 · 人生修养管人格</div><p class="prose">《超越感觉》第二篇说：人天生容易产生「我的更好」式思维。孔子六阶段则可以理解成：<b>一个成熟的人逐渐摆脱这种自我中心</b>。六个阶段正好对应一条摆脱之路：</p><div class="ladder"><div class="step"><div class="t">十五志于学</div><div class="d">承认自己需要学习</div></div><div class="step"><div class="t">三十而立</div><div class="d">开始形成自己的判断，而不是随波逐流</div></div><div class="step"><div class="t">四十不惑</div><div class="d">不再被各种外部比较反复动摇</div></div><div class="step"><div class="t">五十知天命</div><div class="d">承认自己的能力，也承认自己的边界</div></div><div class="step"><div class="t">六十耳顺</div><div class="d">能够容纳别人和自己不同</div></div><div class="step hot"><div class="t">七十从心所欲不逾矩</div><div class="d">内在欲望与外在规范逐渐统一</div></div></div><div class="quote"><div class="q">批判性思考解决"怎样不被自己的脑子欺骗"，人生修养解决"怎样让自己的心越来越成熟"。</div><div class="src">把两套体系放在一起的一句话</div></div><p class="prose">一个管<b>认知</b>，一个管<b>人格</b>——真正成熟的人，两者都需要。把这两套一起掌握，会得到一个很有价值的双层模型：</p><div class="cards g2"><div class="card"><div class="idx">外</div><h4>外层 · 我如何判断事情</h4><p>《超越感觉》第二篇的「防错系统」：警惕自我中心 → 检查立场 → 检查推理 → 检查语言 → 检查面对反驳时的反应</p></div><div class="card"><div class="idx">内</div><h4>内层 · 我正在成为怎样的人</h4><p>孔子六阶段的人格成熟曲线：学、立、定、知、容、自由——规则逐渐内化，人逐渐成熟</p></div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="6">0</div><div class="l">人生阶段</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">志学三方向</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">而立三观</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">解释三层次</div></div></div><div class="panel"><h3><span class="no2">①</span>三层区分练习</h3><div class="pd">判断下列表述属于「孔子原话或思想史 / 郭老师的现代发挥 / 整理者的批判性提醒」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="《论语·为政》原文 → 第一层"><div class="st">1. 吾十有五而志于学，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩</div><div class="opts"><button data-ok="1">原话或思想史</button><button data-ok="0">现代发挥</button><button data-ok="0">批判性提醒</button></div><div class="verdict"></div></div><div class="sort-it" data-why="中国思想史上的解释 → 第二层"><div class="st">2. 朱熹、王阳明、王夫之、孟子等人的解释</div><div class="opts"><button data-ok="1">原话或思想史</button><button data-ok="0">现代发挥</button><button data-ok="0">批判性提醒</button></div><div class="verdict"></div></div><div class="sort-it" data-why="现代人生解释 → 第三层（郭老师的现代发挥）"><div class="st">3. 40岁不惑父母、妻子、孩子、职业、文化、民族、国家</div><div class="opts"><button data-ok="0">原话或思想史</button><button data-ok="1">现代发挥</button><button data-ok="0">批判性提醒</button></div><div class="verdict"></div></div><div class="sort-it" data-why="授课者自己的现代扩展 → 第三层"><div class="st">4. 三十建立数字世界观</div><div class="opts"><button data-ok="0">原话或思想史</button><button data-ok="1">现代发挥</button><button data-ok="0">批判性提醒</button></div><div class="verdict"></div></div><div class="sort-it" data-why="整理者的定性提醒 → 批判性提醒"><div class="st">5. 老师很多内容并不是孔子原文的严格训诂，而是借孔子的六个阶段建立一套现代人生哲学</div><div class="opts"><button data-ok="0">原话或思想史</button><button data-ok="0">现代发挥</button><button data-ok="1">批判性提醒</button></div><div class="verdict"></div></div><div class="sort-it" data-why="批判性思考要求的区分 → 批判性提醒"><div class="st">6. 原始文本说了什么，和解释者认为它意味着什么，两者不能混在一起</div><div class="opts"><button data-ok="0">原话或思想史</button><button data-ok="0">现代发挥</button><button data-ok="1">批判性提醒</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>六阶段通关清单</h3><div class="pd">对照自己逐项检验：能勾选几项？（进度自动保存，本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能背出原文并说出出处：《论语·为政》「吾十有五而志于学……不逾矩」</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能用六个词概括六阶段：学、立、定、知、容、自由</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能说清「三十而立」不是成家立业，而是立志、自存其主——把偶然变成必然</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能说出对父母、孩子、职业各自的「不惑」标准：无所求尽责任 / 从塑造到支持 / 从选择到积累</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我理解「知天命」不是认命，而是知可为、知不可为</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能区分孔子原话、思想史解释、郭老师的现代发挥三层，不混为一谈</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师把「三十而立」的「立」解释为什么？</div><div class="ans"><button data-ok="0">A. 30岁成家立业、买房安家</button><button data-ok="1">B. 立志——自存其主，内心开始有主宰</button><button data-ok="0">C. 立身扬名、光耀门楣</button><button data-ok="0">D. 确立社会地位与资产</button></div><div class="exp">课程反对把「立」解释成结婚买房事业成功，而是立志，借王夫之的说法「自存其主」——把人生的偶然变成人生的必然。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>「五十知天命」的真正核心是什么？</div><div class="ans"><button data-ok="0">A. 消极认命，再努力都白搭</button><button data-ok="1">B. 知可为，知不可为</button><button data-ok="0">C. 退休养生、颐养天年</button><button data-ok="0">D. 放弃一切目标</button></div><div class="exp">「再努力都白搭了」是老师故意反着说的话——真正含义是对自身条件形成现实判断：知可为，知不可为。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>「耳顺」的正确理解是什么？</div><div class="ans"><button data-ok="0">A. 别人说什么都同意</button><button data-ok="0">B. 顺从别人的意见</button><button data-ok="1">C. 可以听见不同意见，而不需要马上防御</button><button data-ok="0">D. 年纪大了听力不好，懒得计较</button></div><div class="exp">耳顺不是同意一切，而是好话坏话、同意反对都听得进，再判断「他说得有没有道理」——一种极高水平的认知开放性。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>「七十从心所欲不逾矩」的最高境界是什么？</div><div class="ans"><button data-ok="0">A. 时时克制自己别违规</button><button data-ok="1">B. 规则已经内化成人格，自由和道德不再冲突</button><button data-ok="0">C. 远离一切规则约束</button><button data-ok="0">D. 欲望越来越少，无欲无求</button></div><div class="exp">如果还需要天天压制自己，规则仍是外在约束；理想状态是「我想做的 ≈ 我应该做的」——规则内化成人格。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者最重要的批判性提醒是什么？</div><div class="ans"><button data-ok="0">A. 课程内容没有价值，不必学习</button><button data-ok="1">B. 把孔子原话、思想史解释与郭老师的现代发挥区分开，不能混在一起</button><button data-ok="0">C. 孔子的原文不可信</button><button data-ok="0">D. 哲学课都不必当真</button></div><div class="exp">40岁不惑父母职业、三十建立数字世界观等属于现代发挥；批判性思考要求始终区分「原始文本说了什么」和「解释者认为它意味着什么」。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">吾十有五而志于学，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩。</div><div class="src">《论语·为政》 · 一切的原点</div></div><div class="quote"><div class="q">把人生的偶然变成人生的必然。</div><div class="src">「三十而立」的真义</div></div><div class="quote"><div class="q">批判性思考解决"怎样不被自己的脑子欺骗"，人生修养解决"怎样让自己的心越来越成熟"。</div><div class="src">两套体系放在一起的一句话</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../30-克尔凯郭尔的人生三个阶段/index.html">← 上一篇 · 克尔凯郭尔的人生三个阶段</a><a href="../32-人生的学说/index.html">下一篇 · 人生的学说 →</a><span class="sp"></span><span class="cur">孔子的人生六个阶段</span></div></nav>
+<footer class="coda"><div class="wm2">矩</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">学 → 立 → 定 → 知 → 容 → 自<br><br>它描绘的其实不是年龄，<br>而是<b>人格逐渐成熟的六层结构</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第32讲《孔子的人生六个阶段》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s5", "#s6", "#s7", "#s8"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 1, 2, 1, 1], "ckkey": "zx31-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

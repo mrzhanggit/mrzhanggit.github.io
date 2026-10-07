@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>化识转智 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx42-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../41-精英的八个心智特征/index.html">← 上一篇 · 精英的八个心智特征</a><a href="../43-智慧的境界/index.html">下一篇 · 智慧的境界 →</a><span class="sp"></span><span class="cur">化识转智</span></div></nav>
+<header class="hero" id="top"><div class="wm">转</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十四章《终极探究》第一节</div>
+  <div class="no">肆拾叁</div>
+  <h1>化识转智</h1>
+  <div class="sub">从有认识到有智慧 · 关键在转化</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>知识停留在头脑里，只是「识」；<br>只有当它改变了你的<b>认识方式、行动方式和生命状态</b>，才真正变成「智」。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 理解全章的钥匙：何谓「识」</a><a href="#s3">叁 · 心必须「主动地变」</a><a href="#s4">肆 · 「转识成智」的真正结构</a><a href="#s5">伍 · 第一种转化 · 人与自然</a><a href="#s6">陆 · 第二种转化 · 人与人</a><a href="#s7">柒 · 第三种转化 · 人与自己</a><a href="#s8">捌 · 为什么会讲到「哲学的批判」</a><a href="#s9">玖 · 三种关系 · 三种哲学问题</a><a href="#s10">拾 · 课程背后的三层升级</a><a href="#s11">拾壹 · 严格理解的几个区分</a><a href="#s12">拾貳 · 把这一节压缩成一张记忆卡</a><a href="#s13">拾叁 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>终极探究</b><span>知道以后呢？—— 从识到智</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>何谓「识」</b><span>了别：辨认 · 区分 · 分类</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>三种心</b><span>僵死 → 被动 → 主动</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>转识成智的结构</b><span>三种关系 · 三种转化</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>人与自然</b><span>识 → 科学 → 改造世界</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>人与人</b><span>识 → 道德 → 善的实践</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>人与自己</b><span>识 → 反思 → 重构自己</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s12"><b>终极智慧</b><span>认识世界 · 善待他人 · 创造自己</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">第十四章《终极探究》开题 · 从「有认识」到「有智慧」</div><p class="prose">这一章并不是在系统讲佛教，而是借用佛教唯识学「转识成智」的概念，讨论一个更一般的哲学问题：<b>人如何把「认识世界」提升为「运用智慧改变世界、处理关系、重塑自己」。</b>整章可以先压缩成一句话：</p><div class="quote"><div class="q">终极探究，就是研究人怎样从“有认识”走向“有智慧”，最终能够认识世界、处理关系，并主动创造自己。</div><div class="src">作者对整章的压缩</div></div><div class="warn"><div class="wt">整理者术语校正（语音转写错字）</div><ul><li>课程中的“画师转制”应为“化识转智”，更规范的佛教术语是“转识成智”</li><li>“眼耳鼻舌身意、摩纳耶、阿拉耶”指的是眼识、耳识、鼻识、舌识、身识、意识、末那识、阿赖耶识</li><li>“诗的本质是了别”应为“识的本质是了别”</li><li>佛教唯识学通常讲八识转成四智：前五识转成所作智，第六识转妙观察智，第七识转平等性智，第八识转大圆镜智；课程引用的《六祖坛经》偈颂也确实是“大圆镜智性清净，平等性智心无病；妙观察智见非功，成所作智同圆镜”</li></ul></div><div class="duo"><div class="col neg"><h4>这一章真正的问题不是 ✕</h4><ul><li>我们知道了多少东西？</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li><b>我们知道的这些东西，最后变成了什么？</b></li></ul></div></div><p class="prose">前面很多章节都在谈「怎么看世界 → 怎么思考 → 怎么理解人生」，而这一章开始追问：<b>知道以后呢？</b>如果知识只停留在头脑里，它仍然只是「识」；只有当它改变了你的认识方式、行动方式和生命状态，才真正变成「智」。因此这一章的核心转换是一条链：</p><div class="ladder"><div class="step"><div class="t">信息</div></div><div class="step"><div class="t">知识</div></div><div class="step"><div class="t">认识</div></div><div class="step"><div class="t">方法</div></div><div class="step"><div class="t">行动</div></div><div class="step hot"><div class="t">智慧</div></div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>理解全章的钥匙：何谓「识」</h2></div><div class="sd">唯识学八识 · 关键词「了别」</div><p class="prose">老师借用了唯识学。唯识学把人的认识活动分析为「八识」——但最重要的并不是背八识，而是理解老师特别强调的一个词：<b>「了别」</b>。</p><div class="chips"><span class="chip">眼识</span><span class="chip">耳识</span><span class="chip">鼻识</span><span class="chip">舌识</span><span class="chip">身识</span><span class="chip">意识</span><span class="chip">末那识</span><span class="chip">阿赖耶识</span></div><p class="prose">「识」的基本功能，就是<b>辨认、区分、分类</b>。比如你看到一个东西：苹果 / 梨子、安全 / 危险、好人 / 坏人、正确 / 错误、重要 / 不重要——这些都属于「了别」。</p><div class="quote"><div class="q">分类本身就是一种基本的认识能力。</div><div class="src">老师反复强调的一句</div></div><p class="prose">人认识世界，很大程度上就是不断走这条链：</p><div class="ladder"><div class="step"><div class="t">发现差异</div></div><div class="step"><div class="t">分类</div></div><div class="step"><div class="t">建立概念</div></div><div class="step"><div class="t">建立关系</div></div><div class="step hot"><div class="t">形成知识</div></div></div><p class="prose">但老师真正关心的问题不是「识」，而是：<b>识怎样变成智？</b>——这就是这一节所谓的「转识成智」。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>心必须「主动地变」</h2></div><div class="sd">僵死的心 · 被动的心 · 主动的心</div><p class="prose">老师一开始提出「心变」的问题。课程大致把人的心分成三种状态：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>僵死的心</h4><p>不是没有观点，而是<b>观点已经凝固</b>——无法修正自己的认知模型</p></div><div class="card"><div class="idx">貳</div><h4>被动的心</h4><p>可以改变，但变化主要取决于外界，<b>没有形成稳定的主体性</b></p></div><div class="card"><div class="idx">叁</div><h4>主动的心</h4><p><b>主动检验自己的认识，并主动重构自己的思想</b></p></div></div><div class="quote"><div class="q">你告诉他“二七十四”，他硬要认定“二七十六”。</div><div class="src">僵死的心最形象的例子</div></div><p class="prose">僵死的心，问题不是知识少，而是<b>无法修正自己的认知模型</b>——事实发生变化了，自己的思想却不允许变化，这是一种典型的<b>认知封闭</b>。被动的心则是：别人怎么说他就怎么想，环境怎么变他就怎么变，即「外界刺激 → 心被推动 → 观点变化」。</p><div class="duo"><div class="col neg"><h4>被动变化 ✕</h4><ul><li>外界刺激 → 心被推动 → 观点变化</li></ul></div><div class="col pos"><h4>真正的智慧 ✓</h4><ul><li><b>主动改变自己的认识结构</b></li></ul></div></div><div class="quote"><div class="q">我主动检验自己的认识，并主动重构自己的思想。</div><div class="src">老师真正推崇的第三种心</div></div><p class="prose">所以全章的真正关键词，其实不是「心」，也不仅仅是「智慧」，而是——<b>转化</b>。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>「转识成智」的真正结构</h2></div><div class="sd">本课最值得掌握的一张知识地图 · 三种关系</div><p class="prose">老师没有严格按照佛教教义继续讲八识四智，而是把「转识成智」重新解释成<b>人生中的三种关系</b>——这是本课最值得掌握的地方：</p><div class="ladder"><div class="step"><div class="t">人的认识</div><div class="d">落下来就是「识」</div></div><div class="step hot"><div class="t">转识成智</div><div class="d">关键在转化</div></div></div><div class="cards g3"><div class="card"><div class="idx">自然</div><h4>人与自然</h4><p>科学技术 → <b>认识世界</b></p></div><div class="card"><div class="idx">人间</div><h4>人与人</h4><p>道德实践 → <b>合作共生</b></p></div><div class="card"><div class="idx">自己</div><h4>人与自己</h4><p>自我重构 → <b>创造自己</b></p></div></div><p class="prose">这张图就是这一课最核心的知识地图：三条转化路径，下面逐一展开。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>第一种转化 · 人与自然</h2></div><div class="sd">从认识变成科学 · 识自然 → 求规律 → 成科学</div><p class="prose">人在面对自然的时候，首先依靠<b>眼、耳、鼻、舌、身</b>——也就是人的感官。但人的感官能力非常有限：</p><div class="chips"><span class="chip">看不到细菌</span><span class="chip">看不到原子</span><span class="chip">看不到遥远星系的细节</span><span class="chip">无法直接感受很多自然规律</span></div><p class="prose">所以人发明了显微镜、望远镜、实验装置、数学模型、计算机……于是——</p><div class="quote"><div class="q">人的认识能力被工具延伸了。</div><div class="src">工具的真正意义</div></div><div class="ladder"><div class="step"><div class="t">感官认识</div></div><div class="step"><div class="t">工具探索</div></div><div class="step"><div class="t">寻找因果</div></div><div class="step"><div class="t">发现规律</div></div><div class="step"><div class="t">科学知识</div></div><div class="step"><div class="t">科学技术</div></div><div class="step hot"><div class="t">改造自然</div></div></div><div class="duo"><div class="col neg"><h4>知识不能只是 ✕</h4><ul><li>我知道自然是什么。</li></ul></div><div class="col pos"><h4>而应该成为 ✓</h4><ul><li><b>我知道怎样可靠地认识自然</b>——这就是方法论</li></ul></div></div><div class="quote"><div class="q">对自然的“识”，最后应该转化为科学的态度和科学的方法。</div><div class="src">第一种转化的落点</div></div><div class="h3blk">识自然 → 求规律 → 成科学</div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>第二种转化 · 人与人</h2></div><div class="sd">从认识变成道德 · 识他人 → 懂合作 → 成道德</div><div class="duo"><div class="col neg"><h4>面对自然，我们主要问 ✕</h4><ul><li>它是什么？——真假问题</li></ul></div><div class="col pos"><h4>面对人，则必须问 ✓</h4><ul><li><b>我应该怎样对待他？——善恶问题</b></li></ul></div></div><p class="prose">老师认为人与人的一个基本关系是<b>合作</b>：单独的个人能力有限，通过合作，「个体 → 群体 → 社会」，人类才能面对复杂环境。</p><div class="ladder"><div class="step"><div class="t">人与人</div></div><div class="step"><div class="t">相互依存</div></div><div class="step"><div class="t">合作</div></div><div class="step"><div class="t">善念</div></div><div class="step"><div class="t">善的行动</div></div><div class="step hot"><div class="t">道德实践</div></div></div><p class="prose">因此人与人的关系最终不能只停留在政治知识、经济知识、社会知识、人际技巧……更深的一层是：<b>我们究竟应该怎样共同生活？</b>——于是就进入了伦理和道德。</p><div class="quote"><div class="q">知道什么是善，并不意味着你就是善的人。</div><div class="src">老师特别强调「实践」的原因</div></div><div class="duo"><div class="col neg"><h4>道德知识 ≠ 道德智慧 ✕</h4><ul><li>只是知道什么是善</li></ul></div><div class="col pos"><h4>成为人格的一部分 ✓</h4><ul><li><b>知道 → 认同 → 行动 → 习惯</b>，真正的道德必须落到行为</li></ul></div></div><div class="h3blk">识他人 → 懂合作 → 成道德</div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>第三种转化 · 人与自己</h2></div><div class="sd">整节课最深的一层 · 不断创造自己</div><p class="prose">前两个问题分别是「我怎样面对世界」「我怎样面对别人」，最后一个问题变成：<b>我怎样面对我自己？</b>老师借用了《大学》的思想：</p><div class="quote"><div class="q">“大学之道，在明明德，在亲民，在止于至善。”</div><div class="src">《大学》· 老师借用的思想资源</div></div><p class="prose">人生并不是找到一个固定的「我」，然后永远保持不变。真正的人生过程是<b>不断创造自己</b>：</p><div class="ladder"><div class="step"><div class="t">过去的我</div></div><div class="step"><div class="t">批判</div></div><div class="step"><div class="t">否定</div></div><div class="step"><div class="t">重构</div></div><div class="step hot"><div class="t">新的我</div></div><div class="step"><div class="t">再批判 · 再重构</div></div><div class="step"><div class="t">更成熟的我</div></div></div><p class="prose">这其实形成了一个<b>终身循环</b>：反思 → 发现局限 → 批判 → 重新理解 → 重新选择 → 重新行动 → 新的自己 → 再次反思……这也是老师所谓的「超度自己」——不是严格宗教意义上的「超度」，而是一种比喻：</p><div class="quote"><div class="q">让旧的自己死亡，让新的自己出现。</div><div class="src">「超度自己」的比喻义</div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>为什么会讲到「哲学的批判」</h2></div><div class="sd">不是批评别人 · 而是检查自己思想背后的前提</div><div class="duo"><div class="col neg"><h4>哲学中的“批判”不是 ✕</h4><ul><li>批评别人</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li><b>检查自己思想背后的前提</b></li></ul></div></div><div class="case"><div class="h"><span class="tag">自问</span><span class="ht">批判，从哪几个问题开始问自己？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">我为什么认为这件事是对的？<br>这个观点从哪里来的？<br>我有没有可能错？<br>有没有别的解释？<br>如果新的证据出现，我愿不愿意修改观点？</div></div></div><div class="ladder"><div class="step"><div class="t">别人的思想</div></div><div class="step"><div class="t">进入我的思想</div></div><div class="step"><div class="t">与原来的思想发生冲突</div></div><div class="step"><div class="t">检验</div></div><div class="step"><div class="t">肯定一部分</div></div><div class="step"><div class="t">否定一部分</div></div><div class="step"><div class="t">重新整合</div></div><div class="step hot"><div class="t">形成新的自己</div></div></div><p class="prose">所以哲学的批判最终不是用来<b>战胜别人</b>，而是用来<b>重构自己</b>。真正困难的批判性思考，不只是识别别人的错误，而是能够把自己的观点也放到检验台上。</p><div class="quote"><div class="q">“用别人的思想，对自己的思想进行肯定、否定和重构。”</div><div class="src">老师所谓哲学批判的用法</div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>三种关系 · 三种哲学问题</h2></div><div class="sd">把这一课再提升一级 · 结构最漂亮的一张表</div><div class="cards g3"><div class="card"><div class="idx">问一</div><h4>人—自然</h4><p>世界是什么？<br>识 → 科学方法 → <b>科学技术</b></p></div><div class="card"><div class="idx">问二</div><h4>人—人</h4><p>我们怎样共同生活？<br>识 → 善的实践 → <b>道德</b></p></div><div class="card"><div class="idx">问三</div><h4>人—自己</h4><p>我应该成为怎样的人？<br>识 → 自我反思 → <b>智慧</b></p></div></div><p class="prose">所以老师实际上把人生归纳成了三个问题：<b>如何认识世界？如何与别人共同生活？如何成为更好的自己？</b>分别对应科学、道德、智慧——这是这一节最值得记住的结构。</p><div class="quote"><div class="q">真正的智慧，不是你认识了多少，而是你的认识有没有转化为认识世界的方法、善待他人的行动，以及重新塑造自己的能力。</div><div class="src">整理者对整节课的重新提炼</div></div><div class="ladder"><div class="step"><div class="t">看法</div></div><div class="step"><div class="t">方法</div></div><div class="step"><div class="t">行为</div></div><div class="step hot"><div class="t">人格</div><div class="d">知识改变到这里，才开始成为「智」</div></div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>课程背后的三层升级</h2></div><div class="sd">从对象到关系 · 从知道到行动 · 从适应到创造</div><div class="cards g3"><div class="card"><div class="idx">层一</div><h4>从对象到关系</h4><p>哲学研究的不是「一个东西是什么」，而是<b>我与自然、我与别人、我与自己之间的关系</b></p></div><div class="card"><div class="idx">层二</div><h4>从知道到行动</h4><p>知道自然规律 → 科学实践；知道善恶 → 道德实践；知道自己的不足 → 自我改变</p></div><div class="card"><div class="idx">层三</div><h4>从适应到创造</h4><p>从「适应世界」升级为「<b>创造自己</b>」——老师最看重的「主动心」</p></div></div><div class="duo"><div class="col neg"><h4>普通的生命模式 ✕</h4><ul><li>世界变化 → 我被迫变化</li></ul></div><div class="col pos"><h4>智慧的生命模式 ✓</h4><ul><li><b>我认识变化 → 理解变化 → 主动调整 → 主动创造</b></li></ul></div></div><p class="prose">这就是「<b>主动的变</b>」。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>严格理解的几个区分</h2></div><div class="sd">很有启发性的教学框架 · 但不宜全部当作严格的哲学史结论</div><p class="prose">老师为了教学，把佛教、王阳明、贝克莱、科学哲学、道德哲学和自我成长放在同一个框架里。这种讲法很有启发性，但严格理解时最好做几个区分：</p><div class="warn"><div class="wt">整理者的三点区分</div><ul><li>贝克莱的“存在就是被感知”和佛教唯识思想不能简单画等号：贝克莱是在西方近代哲学内部讨论存在与感知的关系；唯识学有自己完整的认识论、心识理论和修行体系。课程这里更适合理解为类比和思想引入</li><li>“转识成智”在佛教中的本义比课程讲得更严格：传统唯识是八识转四智的修行与解脱理论；老师则把它现代化地重新解释为“知识向科学、道德和人生智慧的转化”</li><li>“科学技术就是认识论”严格说也需要稍作修正，更准确的说法见下</li></ul></div><div class="quote"><div class="q">科学方法属于认识世界的重要认识论方式，而科学技术则是这种认识进一步转化为实践能力的结果。</div><div class="src">整理者对「科学技术就是认识论」的校正</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>把这一节压缩成一张记忆卡</h2></div><div class="sd">复习这一课，只需要记住这个结构</div><div class="quote"><div class="q">我所知道的东西，最终改变了什么？</div><div class="src">第14章的核心问题</div></div><div class="duo"><div class="col neg"><h4>识 ✕</h4><ul><li>感知、辨别、分类、形成知识</li></ul></div><div class="col pos"><h4>智 ✓</h4><ul><li>把认识转化为<b>正确的方法、行动和生命能力</b></li></ul></div></div><div class="cards g3"><div class="card"><div class="idx">自然</div><h4>人与自然</h4><p>识 → 科学 → <b>改造世界</b></p></div><div class="card"><div class="idx">人间</div><h4>人与人</h4><p>识 → 道德 → <b>善的实践</b></p></div><div class="card"><div class="idx">自己</div><h4>人与自己</h4><p>识 → 反思 → <b>重构自己</b></p></div></div><div class="cards g3"><div class="card"><div class="idx">僵</div><h4>僵化的心</h4><p>不愿改变</p></div><div class="card"><div class="idx">被</div><h4>被动的心</h4><p>被环境改变</p></div><div class="card"><div class="idx">主</div><h4>主动的心</h4><p>主动检验并重构自己</p></div></div><div class="ladder"><div class="step"><div class="t">终极探究</div><div class="d">从“有认识”走向“有智慧”</div></div><div class="step"><div class="t">识：了别</div><div class="d">辨认 · 区分 · 分类 → 形成知识</div></div><div class="step"><div class="t">心要主动地变</div><div class="d">僵死 / 被动 / 主动</div></div><div class="step"><div class="t">三种转化</div><div class="d">自然→科学 · 他人→道德 · 自己→智慧</div></div><div class="step"><div class="t">哲学的批判</div><div class="d">检查自己思想背后的前提 → 重构自己</div></div><div class="step hot"><div class="t">终极智慧</div><div class="d">认识世界，善待他人，创造自己</div></div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="8">0</div><div class="l">唯识八识</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">转成四智</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">三种心</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">三种转化</div></div></div><div class="panel"><h3><span class="no2">①</span>三种心分档练习</h3><div class="pd">判断下列表述属于「僵死的心 / 被动的心 / 主动的心」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="观点已经凝固、无法修正 → 僵死的心"><div class="st">1. 你告诉他“二七十四”，他硬要认定“二七十六”</div><div class="opts"><button data-ok="1">僵死的心</button><button data-ok="0">被动的心</button><button data-ok="0">主动的心</button></div><div class="verdict"></div></div><div class="sort-it" data-why="变化取决于外界、没有稳定主体性 → 被动的心"><div class="st">2. 别人怎么说，他就怎么想；环境怎么变，他就怎么变</div><div class="opts"><button data-ok="0">僵死的心</button><button data-ok="1">被动的心</button><button data-ok="0">主动的心</button></div><div class="verdict"></div></div><div class="sort-it" data-why="主动检验、主动重构 → 主动的心"><div class="st">3. 我主动检验自己的认识，并主动重构自己的思想</div><div class="opts"><button data-ok="0">僵死的心</button><button data-ok="0">被动的心</button><button data-ok="1">主动的心</button></div><div class="verdict"></div></div><div class="sort-it" data-why="认知封闭、拒绝修正 → 僵死的心"><div class="st">4. 事实发生变化了，自己的思想却不允许变化</div><div class="opts"><button data-ok="1">僵死的心</button><button data-ok="0">被动的心</button><button data-ok="0">主动的心</button></div><div class="verdict"></div></div><div class="sort-it" data-why="普通的生命模式，被变化推着走 → 被动的心"><div class="st">5. 世界变化 → 我被迫变化</div><div class="opts"><button data-ok="0">僵死的心</button><button data-ok="1">被动的心</button><button data-ok="0">主动的心</button></div><div class="verdict"></div></div><div class="sort-it" data-why="智慧的生命模式，「主动的变」 → 主动的心"><div class="st">6. 我认识变化 → 理解变化 → 主动调整 → 主动创造</div><div class="opts"><button data-ok="0">僵死的心</button><button data-ok="0">被动的心</button><button data-ok="1">主动的心</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>识转智通关清单</h3><div class="pd">逐项检验：这一讲的方法论有没有真正落到自己身上</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说清「识」与「智」的区别，并指出自己哪些知识还停留在「识」</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能辨认三种心，并判断自己当前更多处于哪种状态</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">面对自然与世界，我不满足于「知道它是什么」，而是追问「怎样可靠地认识它」</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">面对他人，我明白「知道什么是善」不等于「是善的人」，能把善落到行动</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能启动「过去的我 → 批判 → 重构 → 新的我」的循环，而不是守着固定的「我」</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我用哲学的批判检查自己思想背后的前提，而不是用来批评别人</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>「识」的基本功能（了别）是什么？</div><div class="ans"><button data-ok="0">A. 记忆和储存信息</button><button data-ok="1">B. 辨认、区分、分类</button><button data-ok="0">C. 推理和论证</button><button data-ok="0">D. 想象和创造</button></div><div class="exp">源文：「识」的基本功能可以理解为辨认、区分、分类——分类本身就是一种基本的认识能力。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>老师真正推崇的「第三种心」是哪一种？</div><div class="ans"><button data-ok="0">A. 知识最丰富的心</button><button data-ok="0">B. 随环境灵活变化的心</button><button data-ok="1">C. 主动检验自己的认识并主动重构自己思想的心</button><button data-ok="0">D. 不受任何外界影响的心</button></div><div class="exp">「我主动检验自己的认识，并主动重构自己的思想」——被动变化不等于智慧，真正的智慧是主动改变自己的认识结构。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>面对自然与面对人，分别主要涉及什么问题？</div><div class="ans"><button data-ok="0">A. 都是真假问题</button><button data-ok="1">B. 自然主要涉及真假问题，人与人则进入善恶问题</button><button data-ok="0">C. 自然涉及善恶问题，人与人进入真假问题</button><button data-ok="0">D. 都是善恶问题</button></div><div class="exp">面对自然主要问「它是什么」（真假）；面对人则不能只问这个，还必须问「我应该怎样对待他」（善恶）。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>哲学中的「批判」指的是什么？</div><div class="ans"><button data-ok="0">A. 批评别人的错误</button><button data-ok="0">B. 否定一切权威</button><button data-ok="1">C. 检查自己思想背后的前提</button><button data-ok="0">D. 与别人辩论并取胜</button></div><div class="exp">哲学的批判不是批评别人，而是检查自己思想背后的前提——最终不是用来战胜别人，而是用来重构自己。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>按本讲结构，人生三个问题「如何认识世界 / 如何共同生活 / 如何成为更好的自己」分别对应什么？</div><div class="ans"><button data-ok="0">A. 知识、财富、名誉</button><button data-ok="1">B. 科学、道德、智慧</button><button data-ok="0">C. 政治、经济、文化</button><button data-ok="0">D. 感性、理性、直觉</button></div><div class="exp">人—自然对应科学技术，人—人对应道德，人—自己对应智慧——认识世界，善待他人，创造自己。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">“智慧不是知道得更多，而是把所知转化成认识世界的方法、善待他人的行动，以及重新创造自己的能力。”</div><div class="src">如果一年后只记住这一课的一句话</div></div><div class="quote"><div class="q">认识世界，善待他人，创造自己。</div><div class="src">终极智慧 · 三种转化的落点</div></div><div class="quote"><div class="q">我主动检验自己的认识，并主动重构自己的思想。</div><div class="src">主动的心 · 全章关键词「转化」的起点</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../41-精英的八个心智特征/index.html">← 上一篇 · 精英的八个心智特征</a><a href="../43-智慧的境界/index.html">下一篇 · 智慧的境界 →</a><span class="sp"></span><span class="cur">化识转智</span></div></nav>
+<footer class="coda"><div class="wm2">智</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big"><b>智慧不是知道得更多</b>，而是把所知转化成<br>认识世界的方法、善待他人的行动，<br>以及重新创造自己的能力。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第43讲《化识转智》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s5", "#s6", "#s7", "#s12"], "sortok": [0, 1, 2, 0, 1, 2], "quizok": [1, 2, 1, 2, 1], "ckkey": "zx42-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

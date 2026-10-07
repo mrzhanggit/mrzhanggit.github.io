@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成功的三角形 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx36-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../35-人与艺术/index.html">← 上一篇 · 人与艺术</a><a href="../37-五种活法/index.html">下一篇 · 五种活法 →</a><span class="sp"></span><span class="cur">成功的三角形</span></div></nav>
+<header class="hero" id="top"><div class="wm">梦</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十二章《生活的哲学》第一节</div>
+  <div class="no">叁拾柒</div>
+  <h1>成功的三角形</h1>
+  <div class="sub">从梦想出发 · 逐级收敛 · 抵达成功</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>成功不是「想要 → 得到」的直线，而是一条<b>逐级收敛</b>的长链：<br>自由产生<b>梦想</b>，理性筛选出<b>理想</b>，环境塑造<b>愿景</b>，分解产生<b>目标</b>；<br>最终由<b>目标、能力、资源</b>构成的三角形，把可能性一步步变成现实。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 成功到底是什么</a><a href="#s3">叁 · 第一层 · 自由产生梦想</a><a href="#s4">肆 · 第二层 · 理性把梦想变成理想</a><a href="#s5">伍 · 第三层 · 环境把理想变成愿景</a><a href="#s6">陆 · 第四层 · 愿景必须分解成目标</a><a href="#s7">柒 · 真正的核心 · 成功的三角形</a><a href="#s8">捌 · 这其实是一个战略模型</a><a href="#s9">玖 · 最值得记住的一张图</a><a href="#s10">拾 · 更深一层 · 从可能性到现实性</a><a href="#s11">拾壹 · 与《超越感觉》的连接 · 四问</a><a href="#s12">拾貳 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线 · 点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现实之问</b><span>如何看待人生成功 · 学以致用</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>成功的定义</b><span>一个梦想最终变成现实结果</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>逐级收敛</b><span>梦想 → 理想 → 愿景 → 目标</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>成功的三角形</b><span>目标 ＋ 能力 ＋ 资源</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>战略模型</b><span>从人生成功到战略思维 · 德鲁克</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s10"><b>深层主题</b><span>把可能性变成现实性</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s11"><b>终极四问</b><span>真的吗 · 通吗 · 去哪 · 做得到吗</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">从「学以致用」出发 · 传统哲学三领域的生活化转换</div><p class="prose">进入第十二章《生活的哲学》。老师想做一件很重要的事情——把抽象哲学转换成日常生活方法，其总原则是四个字：<b>学以致用</b>。</p><div class="quote"><div class="q">把抽象哲学转换成日常生活方法。</div><div class="src">老师在这一章想做的最重要的事情</div></div><div class="quote"><div class="q">哲学不是只解释“世界是什么”，最后还要回答“我怎样生活”。</div><div class="src">总原则「学以致用」的真正含义</div></div><p class="prose">具体做法，是把传统哲学的三个领域做一次<b>生活化转换</b>——</p><div class="cards g3"><div class="card"><div class="idx">看</div><h4>形而上学 → 如何看</h4><p>原本问题：<b>世界是什么</b></p></div><div class="card"><div class="idx">想</div><h4>认识论 → 如何想</h4><p>原本问题：<b>我们如何认识</b></p></div><div class="card"><div class="idx">做</div><h4>价值论 → 如何做</h4><p>原本问题：<b>什么值得追求</b></p></div></div><p class="prose">因此第十二章围绕三个问题展开：<b>如何看人生？如何想人生？如何过人生？</b>本节「成功的三角形」主要回答<b>如何看待人生成功</b>；后续「五种活法」偏向「如何想」，「生活应该服从哪些准则」处理「如何做」。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>成功到底是什么</h2></div><div class="sd">成功的定义 · 一条逐级收敛的长链 · 本节真正的核心</div><p class="prose">老师首先定义成功——</p><div class="quote"><div class="q">一个梦想最终变成现实结果。</div><div class="src">老师对「成功」的定义</div></div><div class="duo"><div class="col neg"><h4>简单的成功观 ✕</h4><ul><li>想要 → 得到</li></ul></div><div class="col pos"><h4>老师的理解 ✓</h4><ul><li>中间有一个<b>逐级收敛</b>的过程，每一层都要经过一次转化</li></ul></div></div><div class="quote"><div class="q">梦想 → 理想 → 愿景 → 目标 → 行动 → 结果</div><div class="src">从「梦想」到「结果」的收敛链 · 本节真正的核心</div></div><p class="prose">这条链才是本节真正的核心。接下来按四层展开：<b>自由产生梦想 → 理性把梦想变成理想 → 环境把理想变成愿景 → 愿景分解成目标。</b></p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第一层 · 自由产生梦想</h2></div><div class="sd">从「人是自由的」出发 · 梦想不需要证明可行</div><p class="prose">链条的第一环，从「<b>人是自由的</b>」开始。因为人具有自由和创造性，所以人能够设想现实中还不存在的未来——这就是梦想。</p><div class="ladder"><div class="step"><div class="t">人是自由的</div><div class="d">人具有自由和创造性</div></div><div class="step"><div class="t">设想现实中还不存在的未来</div><div class="d">梦想的来源</div></div><div class="step hot"><div class="t">梦想</div><div class="d">开放、自由、可能性非常大</div></div></div><div class="quote"><div class="q">梦想本身不需要证明可行。</div><div class="src">梦想区别于后面几层的第一特征</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">哪些可以是梦想？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">我想成为世界级企业家。我想环游世界。我想改变一个行业。——都可以是梦想。</div></div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>第二层 · 理性把梦想变成理想</h2></div><div class="sd">理性审查 · 与《超越感觉》批判性思考的吻合之处</div><p class="prose">光有梦想不够，接下来必须进行<b>理性审查</b>——也就是问：</p><div class="chips"><span class="chip">这个梦想合理吗？</span><span class="chip">值得追求吗？</span><span class="chip">符合我的价值观吗？</span><span class="chip">它内部有没有矛盾？</span></div><div class="quote"><div class="q">梦想 + 理性反思 → 理想。</div><div class="src">第二层的转化公式</div></div><div class="cards g2"><div class="card"><div class="idx">梦</div><h4>梦想属于</h4><p>回答——<b>「我想要。」</b></p></div><div class="card"><div class="idx">理</div><h4>理想进一步回答</h4><p><b>「这个想要值得吗？合理吗？」</b></p></div></div><p class="prose">整理者指出：这一点与《超越感觉》的批判性思考非常吻合——梦想停在「想要」，而理想开始接受<b>值得吗、合理吗</b>的检验。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>第三层 · 环境把理想变成愿景</h2></div><div class="sd">理想必须进入现实环境 · 未来是一个喇叭口</div><p class="prose">这是课程里非常重要的一层：<b>理想必须进入现实环境。</b>因为同一个理想，在不同国家、时代、资源条件下，可实现程度完全不同。</p><div class="chips"><span class="chip">宏观环境</span><span class="chip">政策</span><span class="chip">时代</span><span class="chip">地域</span><span class="chip">行业</span><span class="chip">资源条件</span><span class="chip">人际网络</span><span class="chip">组织平台</span></div><div class="quote"><div class="q">愿景是经过现实约束后的理想。</div><div class="src">第三层的结论 · 愿景的定义</div></div><p class="prose">为什么叫「愿景」而不直接叫目标？因为未来不是一个点，未来更像一个<b>喇叭口</b>——现在是一个点，越往未来，不确定性越大。因此愿景只是<b>未来的大方向和可能区间</b>。</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">「把中心建设成为区域有影响力的社区医疗康复中心。」</span><span class="ar">▸</span></div><div class="sm"><div class="inner">这是愿景——大方向和可能区间，但还不是目标。</div></div></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>第四层 · 愿景必须分解成目标</h2></div><div class="sd">从模糊可能性到明确行动方向 · 附整理者校正</div><p class="prose">愿景必须进一步变成<b>清楚、具体、可执行的目标</b>。</p><div class="case"><div class="h"><span class="tag">分解</span><span class="ht">愿景 → 目标的分解示范</span><span class="ar">▸</span></div><div class="sm"><div class="inner">愿景：建成区域领先的社区慢病管理中心。目标：一年内高血压规范管理率达到X%；糖尿病规范管理率达到X%；新增签约居民X人；建成X个特色门诊。</div></div></div><div class="quote"><div class="q">目标把人生的偶然性转化成一定程度的必然性。</div><div class="src">老师对目标之作用的判断</div></div><div class="warn"><div class="wt">整理者的校正</div><ul><li>源文在此句之后紧跟校正：<b>更准确地讲应该理解为——目标不能保证结果必然发生，但能够使行动从随机走向有方向。</b></li></ul></div><p class="prose">到了这里，未来开始从<b>模糊可能性</b>变成<b>明确行动方向</b>。</p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>真正的核心 · 成功的三角形</h2></div><div class="sd">目标 · 能力 · 资源 · 缺一不可的三个要素</div><p class="prose">老师最后提出本讲题目「成功的三角形」的公式——</p><div class="quote"><div class="q">成功 = 目标 + 能力 + 资源</div><div class="src">本讲的核心公式 · 三者构成一个三角形</div></div><p class="prose">为什么一定是三个？因为<b>任何一个缺失都会出问题</b>——</p><div class="cards g3"><div class="card"><div class="idx">力</div><h4>只有目标，没有能力</h4><p><b>想得到，但做不到。</b>雄心很大，执行能力不足</p></div><div class="card"><div class="idx">源</div><h4>有目标、有能力，没有资源</h4><p><b>会做，但没有条件做。</b>有技术，但缺少资金、人员、时间、设备、平台</p></div><div class="card"><div class="idx">标</div><h4>有能力、有资源，没有目标</h4><p><b>很忙，却不知道为什么忙。</b>这种情况在组织管理中非常常见</p></div></div><p class="prose">因此三者必须<b>协调</b>——目标是方向，能力是手段，资源是条件。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>这其实是一个战略模型</h2></div><div class="sd">从人生成功到战略思维 · 与德鲁克「目标管理」的连接</div><p class="prose">老师讲到后面已经不只是谈「人生成功」，而是在谈<b>战略思维</b>。整个结构是一条从梦想到结果的长链——</p><div class="ladder"><div class="step"><div class="t">梦想</div><div class="d">↓ 理性</div></div><div class="step"><div class="t">理想</div><div class="d">↓ 环境</div></div><div class="step"><div class="t">愿景</div><div class="d">↓ 分解</div></div><div class="step"><div class="t">目标</div></div><div class="step"><div class="t">路径</div></div><div class="step"><div class="t">行动</div></div><div class="step hot"><div class="t">结果</div></div></div><p class="prose">再加上两个实现条件<b>能力与资源</b>，整个模型受到三种力量约束：<b>理性、环境、能力与资源</b>——这已经是一个相当完整的战略思考框架。课程最后提到德鲁克，它们的共同点是——</p><div class="quote"><div class="q">把抽象愿望变成可管理的目标。</div><div class="src">成功三角形与德鲁克「目标管理」的共同点</div></div><div class="case"><div class="h"><span class="tag">德鲁克</span><span class="ht">「提升群众满意度。」为什么还是愿景？</span><span class="ar">▸</span></div><div class="sm"><div class="inner">管理最大的困难之一，就是组织很容易停留在愿景、口号、原则。真正的目标必须进一步回答：提升多少？在什么时间？哪些人负责？用什么资源？如何检查？</div></div></div><p class="prose">这时候哲学中的「<b>我想成为什么</b>」，才真正进入管理学中的「<b>我要完成什么</b>」。</p></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>最值得记住的一张图</h2></div><div class="sd">复习这一课只需要记住这一张图 · 附一句话记忆</div><p class="prose">以后复习这一课，其实只需要记住这一张图——</p><div class="ladder"><div class="step"><div class="t">人的自由</div></div><div class="step"><div class="t">梦想</div><div class="d">自由使人能设想尚不存在的未来</div></div><div class="step"><div class="t">理想</div><div class="d">【理性筛选】</div></div><div class="step"><div class="t">愿景</div><div class="d">【环境检验】</div></div><div class="step"><div class="t">目标</div><div class="d">【具体分解】</div></div><div class="step"><div class="t">能力 ＋ 资源</div><div class="d">支持目标</div></div><div class="step hot"><div class="t">成功</div></div><div class="step"><div class="t">路径行动</div></div></div><div class="quote"><div class="q">自由产生梦想，理性筛选梦想，环境塑造愿景，愿景转化目标，能力与资源支持目标，最终通过行动实现成功。</div><div class="src">那张图的一句话记忆</div></div></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>更深一层 · 从可能性到现实性</h2></div><div class="sd">人生是一个不断收缩的过程 · 这比成功学有价值得多</div><p class="prose">表面上这一讲在教「怎么成功」，但更深层的主题其实是——<b>怎样把可能性逐渐变成现实性。</b></p><p class="prose">人生开始于「<b>我可以成为很多种人</b>」，然后一步一步收缩——</p><div class="ladder"><div class="step"><div class="t">我可以成为很多种人</div></div><div class="step"><div class="t">我想成为什么？</div></div><div class="step"><div class="t">哪些值得追求？</div></div><div class="step"><div class="t">环境允许什么？</div></div><div class="step"><div class="t">我要具体做到什么？</div></div><div class="step"><div class="t">我有没有能力？有没有资源？</div></div><div class="step"><div class="t">应该走什么路径？</div></div><div class="step hot"><div class="t">现实中的人生</div></div></div><div class="quote"><div class="q">自由 → 选择 → 约束 → 行动 → 实现。</div><div class="src">从哲学角度看这一课的骨架</div></div><p class="prose">这比单纯的「成功学」要有价值得多。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>与《超越感觉》的连接 · 四问</h2></div><div class="sd">两门课放在一起 · 一组非常好的训练 · 终极四问</div><p class="prose">整理者把两门课放在一起，发现一个非常好的连接——</p><div class="cards g2"><div class="card"><div class="idx">思</div><h4>《超越感觉》第十一章</h4><p>教你——<b>不要被错误的语言欺骗</b></p></div><div class="card"><div class="idx">行</div><h4>这节生活哲学</h4><p>教你——<b>不要让理想停留在语言里</b></p></div></div><p class="prose">两者恰好形成一组非常好的训练：<b>思考时，要有证据；表达时，要有逻辑；规划时，要有目标；行动时，要有能力和资源。</b>最终可以浓缩成四个问题——</p><div class="cards g4"><div class="card"><div class="idx">真</div><h4>是真的吗？</h4><p>——证据</p></div><div class="card"><div class="idx">通</div><h4>说得通吗？</h4><p>——逻辑</p></div><div class="card"><div class="idx">向</div><h4>要去哪儿？</h4><p>——目标</p></div><div class="card"><div class="idx">行</div><h4>做得到吗？</h4><p>——能力与资源</p></div></div><p class="prose">如果把这四个问题真正养成习惯，其实已经构成了一个相当完整的<b>批判性思考＋战略行动模型</b>。</p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="6">0</div><div class="l">成功链环节</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">三角形要素</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">约束力量</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">终极四问</div></div></div><div class="panel"><h3><span class="no2">①</span>四层分档练习</h3><div class="pd">判断下列表述处于「梦想 / 理想 / 愿景 / 目标」哪一层，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="开放、自由、可能性非常大，不需要证明可行 → 梦想"><div class="st">1. 我想成为世界级企业家。我想环游世界。我想改变一个行业。</div><div class="opts"><button data-ok="1">梦想</button><button data-ok="0">理想</button><button data-ok="0">愿景</button><button data-ok="0">目标</button></div><div class="verdict"></div></div><div class="sort-it" data-why="梦想 + 理性反思 → 理想——理性审查后的梦想"><div class="st">2. 回答完「这个想要值得吗？合理吗？」之后得到的那个方向</div><div class="opts"><button data-ok="0">梦想</button><button data-ok="1">理想</button><button data-ok="0">愿景</button><button data-ok="0">目标</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文明说这是愿景——经过现实约束后的理想、未来的大方向和可能区间"><div class="st">3. 把中心建设成为区域有影响力的社区医疗康复中心。</div><div class="opts"><button data-ok="0">梦想</button><button data-ok="0">理想</button><button data-ok="1">愿景</button><button data-ok="0">目标</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文说这还是愿景——没有数量、时间、负责人，尚不可执行 → 愿景"><div class="st">4. 提升群众满意度。</div><div class="opts"><button data-ok="0">梦想</button><button data-ok="0">理想</button><button data-ok="1">愿景</button><button data-ok="0">目标</button></div><div class="verdict"></div></div><div class="sort-it" data-why="清楚、具体、可执行 → 目标"><div class="st">5. 一年内高血压规范管理率达到X%；糖尿病规范管理率达到X%</div><div class="opts"><button data-ok="0">梦想</button><button data-ok="0">理想</button><button data-ok="0">愿景</button><button data-ok="1">目标</button></div><div class="verdict"></div></div><div class="sort-it" data-why="愿景分解出来的可执行指标 → 目标"><div class="st">6. 新增签约居民X人；建成X个特色门诊。</div><div class="opts"><button data-ok="0">梦想</button><button data-ok="0">理想</button><button data-ok="0">愿景</button><button data-ok="1">目标</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>本讲通关清单</h3><div class="pd">对照下列六项，检验自己是否真正消化了这一讲</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能复述成功的定义：一个梦想最终变成现实结果</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能背出收敛链：梦想 → 理想 → 愿景 → 目标 → 行动 → 结果</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能说清每一层的转化力量：自由产生梦想 / 理性筛选 / 环境塑造 / 具体分解</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能画出成功三角形，并说出缺一角的三种失败情形</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能把自己手上的一个愿望，区分出它处于梦想 / 理想 / 愿景 / 目标哪一层</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能用四问检验自己的计划：是真的吗？说得通吗？要去哪儿？做得到吗？</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师如何定义成功？</div><div class="ans"><button data-ok="0">A. 拥有财富、地位与他人认可</button><button data-ok="1">B. 一个梦想最终变成现实结果</button><button data-ok="0">C. 超越他人、实现自我</button><button data-ok="0">D. 把愿望坚持到底</button></div><div class="exp">源文：老师首先定义成功——「一个梦想最终变成现实结果」，且中间有逐级收敛过程。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>「梦想 + 理性反思 → ？」这一层问的是什么问题？</div><div class="ans"><button data-ok="0">A. 环境允许什么</button><button data-ok="0">B. 提升多少、何时完成</button><button data-ok="1">C. 这个梦想合理吗、值得追求吗、符合价值观吗</button><button data-ok="0">D. 我有没有资源</button></div><div class="exp">理性审查四问：合理吗？值得追求吗？符合我的价值观吗？内部有没有矛盾？——梦想由此变成理想。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>为什么叫「愿景」而不直接叫目标？</div><div class="ans"><button data-ok="0">A. 因为愿景更宏大、更响亮</button><button data-ok="1">B. 因为未来像一个喇叭口，越往未来不确定性越大，愿景只是大方向和可能区间</button><button data-ok="0">C. 因为愿景是给组织看的，目标是个人的</button><button data-ok="0">D. 因为目标太难制定</button></div><div class="exp">未来不是一个点，而更像喇叭口——愿景是经过现实约束后的理想，是未来的大方向和可能区间，还不是目标。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>成功三角形三要素中，「有目标、有能力，没有资源」会怎样？</div><div class="ans"><button data-ok="0">A. 想得到，但做不到</button><button data-ok="1">B. 会做，但没有条件做</button><button data-ok="0">C. 很忙，却不知道为什么忙</button><button data-ok="0">D. 不敢想，也不敢做</button></div><div class="exp">缺资源：有技术，但缺少资金、人员、时间、设备、平台——会做，但没有条件做。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>这一讲更深层的主题是什么？</div><div class="ans"><button data-ok="0">A. 教人快速成功的技巧</button><button data-ok="1">B. 怎样把可能性逐渐变成现实性</button><button data-ok="0">C. 证明成功完全取决于环境</button><button data-ok="0">D. 如何获得更多资源</button></div><div class="exp">从哲学角度看是：自由 → 选择 → 约束 → 行动 → 实现。这比单纯的「成功学」要有价值得多。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">成功 = 目标 + 能力 + 资源</div><div class="src">本讲的核心公式</div></div><div class="quote"><div class="q">自由产生梦想，理性筛选梦想，环境塑造愿景，愿景转化目标，能力与资源支持目标，最终通过行动实现成功。</div><div class="src">那张图的一句话记忆</div></div><div class="quote"><div class="q">思考时，要有证据；表达时，要有逻辑；规划时，要有目标；行动时，要有能力和资源。</div><div class="src">与《超越感觉》连成一组训练后的四句话</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../35-人与艺术/index.html">← 上一篇 · 人与艺术</a><a href="../37-五种活法/index.html">下一篇 · 五种活法 →</a><span class="sp"></span><span class="cur">成功的三角形</span></div></nav>
+<footer class="coda"><div class="wm2">成</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">自由产生梦想，理性筛选梦想，环境塑造愿景，愿景转化目标，<br>能力与资源支持目标，最终通过行动实现成功。<br><br>更深一层看，这一讲讲的是：<b>怎样把可能性逐渐变成现实性。</b></div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第37讲《成功的三角形》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12"], "mnodes": ["#s1", "#s2", "#s3", "#s7", "#s8", "#s10", "#s11"], "sortok": [0, 1, 2, 2, 3, 3], "quizok": [1, 2, 1, 1, 1], "ckkey": "zx36-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

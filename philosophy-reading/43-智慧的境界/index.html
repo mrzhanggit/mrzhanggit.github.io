@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智慧的境界 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx43-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../42-化识转智/index.html">← 上一篇 · 化识转智</a><a href="../44-慧根/index.html">下一篇 · 慧根 →</a><span class="sp"></span><span class="cur">智慧的境界</span></div></nav>
+<header class="hero" id="top"><div class="wm">渡</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十四章《终极探究》第二节</div>
+  <div class="no">肆拾肆</div>
+  <h1>智慧的境界</h1>
+  <div class="sub">跨界与流动 · 五层般若 · 从懂得到活出来</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>智慧不是站得更高，而是能够在不同层次、不同知识、不同情境之间自由穿梭、融通，<br>并最终把这种认识<b>落实到自己的行为和生命状态中</b>——关键词是<b>跨界</b>与<b>流动</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 第一命题 · 智慧就是跨界</a><a href="#s3">叁 · 第二命题 · 思维自由流动（上得去）</a><a href="#s4">肆 · 真正高级的地方 · 还必须下得来</a><a href="#s5">伍 · 流动的三个方向 · 四问自检</a><a href="#s6">陆 · 第一层 · 文字般若</a><a href="#s7">柒 · 第二层 · 方便般若</a><a href="#s8">捌 · 第三层 · 实相般若</a><a href="#s9">玖 · 第四层 · 境界般若</a><a href="#s10">拾 · 境界真正改变以后</a><a href="#s11">拾壹 · 第五层 · 眷属般若</a><a href="#s12">拾貳 · 整节课讲了五次跨越</a><a href="#s13">拾叁 · 为什么强调「行住坐卧」</a><a href="#s14">拾肆 · 容易被忽略的关键 · 不要迷信高阶思维</a><a href="#s15">拾伍 · 全课认知地图 · 五个带走观点</a><a href="#s16">拾陆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>本讲之问</b><span>怎样从「读懂道理」走到「成为有智慧的人」</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>智慧＝跨界</b><span>般若波罗蜜多 · 从这一边到达另一边</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>向上 · 思维升级</b><span>感性 → 因果 → 辩证 → 系统</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>向下 · 必须下得来</b><span>复杂问题复杂思维 · 简单问题简单思维</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>五层般若</b><span>文字 → 方便 → 实相 → 境界 → 眷属</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s11"><b>落到生命</b><span>布施 持戒 忍辱 精进 禅定 —— 支撑般若</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s15"><b>智慧的境界</b><span>知道、理解、行动融为一体 · 活出来</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">从五层般若的框架出发 · 确立全讲的问题意识</div><p class="prose">这节《智慧的境界》看起来讲了很多佛学概念，但把它重新整理以后，其实有一条非常清晰的主线：</p><div class="quote"><div class="q">智慧不是“站在更高层次思考”，而是能够在不同层次、不同知识、不同情境之间自由穿梭、融通，并最终把这种认识落实到自己的行为和生命状态中。</div><div class="src">整理者重理后的全课主线 · 老师反复强调的关键词：跨界与流动</div></div><p class="prose">把老师这一课重新整理，是一条递进链——<b>知识输入 → 方法增加 → 看穿本质 → 境界改变 → 身体力行</b>。它对应老师借用佛学「般若」建立的五层结构，每层回答一个核心问题：</p><div class="cards g3"><div class="card"><div class="idx">一</div><h4>文字般若</h4><p>获得知识 —— <b>我知道什么？</b></p></div><div class="card"><div class="idx">二</div><h4>方便般若</h4><p>掌握方法 —— <b>我可以怎样思考和解决？</b></p></div><div class="card"><div class="idx">三</div><h4>实相般若</h4><p>看穿本质 —— <b>事情究竟是什么？</b></p></div><div class="card"><div class="idx">四</div><h4>境界般若</h4><p>改变看世界的层次 —— <b>我站在什么高度看它？</b></p></div><div class="card"><div class="idx">五</div><h4>眷属般若</h4><p>落实到生命实践 —— <b>我能不能真正活出来？</b></p></div></div><p class="prose">因此，这一章并不是简单地介绍五个佛学名词。它真正想回答的是——</p><div class="quote"><div class="q">一个人怎样从“读懂一些道理”，逐渐走到“成为一个有智慧的人”？</div><div class="src">这一章真正想回答的问题</div></div></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>第一命题 · 智慧就是跨界</h2></div><div class="sd">般若波罗蜜多 · 从这一边到达另一边</div><p class="prose">老师一开始用「般若波罗蜜多」说明智慧：「般若」通常译作智慧，「波罗蜜多」有「到彼岸」之意，因此老师把它形象地解释成——</p><div class="quote"><div class="q">智慧，就是让自己从这一边到达另一边。</div><div class="src">老师对「般若波罗蜜多」的形象解释</div></div><p class="prose">这里的「彼岸」，在这节课里不必完全从宗教意义理解，更重要的是理解成一种<b>认知跨越</b>——原来与后来：</p><div class="cards g2"><div class="card"><div class="idx">壹</div><h4>想法之界</h4><p>原来只能这样想 → 后来能够<b>换一种方式想</b></p></div><div class="card"><div class="idx">貳</div><h4>学科之界</h4><p>原来只能站在一个学科看 → 后来能够<b>站在多个学科看</b></p></div><div class="card"><div class="idx">叁</div><h4>现象之界</h4><p>原来只能看到现象 → 后来能够<b>穿透现象看到机制</b></p></div><div class="card"><div class="idx">肆</div><h4>知行之界</h4><p>原来知道一个道理 → 后来能够<b>把它真正活出来</b></p></div></div><p class="prose">所以老师所谓的「跨界」，本质上是——<b>突破原来的思维边界。</b>这也是老师反复说的两个关键词（跨界与流动）中的第一个。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第二命题 · 思维自由流动（上得去）</h2></div><div class="sd">这是全课最值得记住的地方 · 先看「向上」这一半</div><div class="quote"><div class="q">智慧，是思维能够上下左右自由流动。</div><div class="src">老师对智慧的定义 · 这一课最值得记住的一句</div></div><p class="prose">「流动」先分两个方向看。向上是<b>思维升级</b>——老师沿用了前面课程的思维层次：</p><div class="ladder"><div class="step"><div class="t">感性思维</div><div class="d">直接看到现象</div></div><div class="step"><div class="t">因果思维</div><div class="d">继续追问为什么</div></div><div class="step"><div class="t">辩证思维</div><div class="d">看到事情的另一面</div></div><div class="step hot"><div class="t">系统思维</div><div class="d">看到复杂系统中诸因素的关系 —— 思维越往上，越能看到复杂系统</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">“这个科室最近收入下降了。”—— 四种思维各看到什么</span><span class="ar">▸</span></div><div class="sm"><div class="inner">感性思维看到的是：收入下降。<br>因果思维继续问：为什么下降？<br>辩证思维开始看：收入下降是不是全部都是坏事？有没有质量提升、结构调整等另一面？<br>系统思维则进一步看：门诊量、住院量、病种结构、医保政策、人员配置、绩效机制、社区转诊之间是什么关系？</div></div></div><p class="prose">所以思维越往上，就越能看到复杂系统。但真正高级的地方在下一节——<b>还必须下得来。</b></p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>真正高级的地方 · 还必须下得来</h2></div><div class="sd">高阶思维并不意味着任何时候都比低阶思维好</div><p class="prose">老师用停车场的例子说明一个非常重要的问题——<b>高阶思维并不意味着任何时候都比低阶思维好。</b></p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">停车场找人：越推理，反而越远</span><span class="ar">▸</span></div><div class="sm"><div class="inner">学生明明知道老师说“在大门口等我”。如果直接按照感知、经验和现场线索行动，很容易找到。可是大脑开始过度推理：地库出口在哪？老师会从哪出来？车应该怎么绕？——越推理，反而越远。</div></div></div><div class="quote"><div class="q">复杂问题需要复杂思维，简单问题反而需要简单思维。</div><div class="src">停车场例子揭示的实用认知原则</div></div><div class="duo"><div class="col neg"><h4>不是这样的智慧 ✕</h4><ul><li>感性 → 因果 → 辩证 → 系统，然后永远停在系统思维</li><li>任何时候都用高阶思维处理问题</li></ul></div><div class="col pos"><h4>真正的智慧 ✓</h4><ul><li><b>感性 ⇄ 因果 ⇄ 辩证 ⇄ 系统</b></li><li>可以随时升维，也可以随时降维 —— 思维能够自由、丝滑地流动</li></ul></div></div><p class="prose">因此这一节的智慧公式是：<b>智慧 ≠ 思维层次高；智慧 = 能选择最合适的思维层次。</b>这个区别非常重要。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>流动的三个方向 · 四问自检</h2></div><div class="sd">把老师没有完全展开的部分继续推演（整理者注）</div><p class="prose">如果把老师没有完全展开的东西继续推演，「流动」至少有三个方向：</p><div class="cards g3"><div class="card"><div class="idx">上</div><h4>上下流动</h4><p>不同思维层次之间切换<br>感性 → 因果 → 系统 → 重新回到直觉</p></div><div class="card"><div class="idx">左</div><h4>左右流动</h4><p>不同学科之间融通<br>医学 ＋ 管理学 ＋ 心理学 ＋ 经济学</p></div><div class="card"><div class="idx">内</div><h4>内外流动</h4><p>从认识进入实践<br>知道 → 理解 → 行动 → 形成习惯</p></div></div><p class="prose">这比单纯说「知识多就是智慧」深得多。一个知识很多的人，可能只能在一个领域里面转圈；而真正有智慧的人，会连续追问自己（点击展开思考角度）：</p><details class="qa"><summary><span class="qn">问壹</span><span class="qt">这个问题能不能换一个学科解释？</span></summary><div class="body">「左右流动」的运用——突破学科之界，把多个学科的视角叠加到同一个问题上。</div></details><details class="qa"><summary><span class="qn">问貳</span><span class="qt">这个复杂问题能不能先还原成一个简单问题？</span></summary><div class="body">「上下流动」的运用——复杂问题需要复杂思维，但有时先降维简化，反而看得更清楚。</div></details><details class="qa"><summary><span class="qn">问叁</span><span class="qt">我现在需要系统分析，还是应该相信已经训练成熟的经验？</span></summary><div class="body">「选择合适层次」的运用——高阶思维并不意味着任何时候都比低阶思维好。</div></details><details class="qa"><summary><span class="qn">问肆</span><span class="qt">我懂这个道理以后，行为改变了吗？</span></summary><div class="body">「内外流动」的运用——从认识进入实践：知道 → 理解 → 行动 → 形成习惯。</div></details><p class="prose">这就是「跨界」。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>第一层 · 文字般若</h2></div><div class="sd">先获得别人的智慧 · 文字是智慧的载体</div><p class="prose">五层般若是整节课的主体。需要先说明一点——</p><div class="warn"><div class="wt">关于「五般若」分类的说明（整理者校正）</div><ul><li>老师使用的“实相般若、境界般若、文字般若、方便般若、眷属般若”确实可以见于部分佛教讲解体系</li><li>佛教文献中对“般若”的分类并不只有一种，常见的“三般若”则包括实相、观照、文字等</li><li>老师这里采用的是适合本课讲解的一套“五般若”框架</li></ul></div><p class="prose">而且老师实际上没有按照传统列举顺序讲，而是把它重新排列成了一个<b>人的智慧成长过程</b>。第一层从文字般若开始。老师举了一个例子：公司墙上写着<b>「天道酬勤」</b>——这四个字本身就把一种思想压缩进了文字。</p><div class="quote"><div class="q">人类把经验、思想和智慧编码成语言文字，我们通过阅读获得前人的认知成果。</div><div class="src">对「文字般若」的理解</div></div><p class="prose">书籍为什么重要？因为人不需要每一件事情都重新活一遍。牛顿、孔子、王阳明、康德、佛陀、历史人物、管理者……他们几十年甚至一生获得的经验，可以压缩成文字。你阅读，就是在进行第一次认知跨越：</p><div class="ladder"><div class="step"><div class="t">个人有限经验</div></div><div class="step hot"><div class="t">进入人类累积经验</div><div class="d">第一次认知跨越 —— 文字，是智慧的载体</div></div></div><p class="prose">但文字般若只是入口。<b>知道一句话，不等于拥有智慧。</b></p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>第二层 · 方便般若</h2></div><div class="sd">从「知道」进入「会用」</div><p class="prose">识字以后，看得多了 → 知道的事多了 → 方法也越来越多，就产生了「方便般若」。这里的「方便」不能理解成「图方便」：</p><div class="duo"><div class="col neg"><h4>「方便」不是 ✕</h4><ul><li>图方便、走捷径</li></ul></div><div class="col pos"><h4>而是 ✓</h4><ul><li><b>方法、路径、手段、工具</b></li><li>佛教语境里的「方便般若」通常和善巧、权宜的方法有关</li></ul></div></div><div class="quote"><div class="q">面对同一个问题，你手里有多少种认知工具。</div><div class="src">用现代语言翻译「方便般若」</div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">管理一个员工：一种思维 vs 多种方法</span><span class="ar">▸</span></div><div class="sm"><div class="inner">只有一种思维的人可能认为：不完成任务 → 扣绩效。<br>方法多的人则会想到：目标管理、激励、培训、流程优化、岗位匹配、团队文化、监督、数据反馈……</div></div></div><p class="prose"><b>文字般若解决「知道什么」，方便般若解决「怎么办」</b>——这就是第二次提升。</p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>第三层 · 实相般若</h2></div><div class="sd">从现象穿透到本质</div><p class="prose">方法越来越多以后，人逐渐获得另外一种能力——<b>不再只看表面，而开始追问事情真正是什么。</b>这就是老师所讲的「实相般若」。</p><div class="case"><div class="h"><span class="tag">例</span><span class="ht">看到一个员工不积极：向下穿透</span><span class="ar">▸</span></div><div class="sm"><div class="inner">表面：他懒。继续向下穿透——为什么懒？可能发现：<br>绩效没有区分度 → 做多做少一样；<br>职责边界不清 → 做了也没人认可；<br>工作目标模糊 → 不知道做什么；<br>长期负反馈 → 已经形成习得性消极。</div></div></div><div class="duo"><div class="col neg"><h4>现象 ✕</h4><ul><li>现象：员工不积极 ＝ 本质：这个人懒</li></ul></div><div class="col pos"><h4>穿透后 ✓</h4><ul><li>现象不一定等于本质</li><li>智慧开始发生在：能够穿过现象，寻找背后的结构</li></ul></div></div><div class="quote"><div class="q">能够穿过现象，寻找背后的结构。</div><div class="src">「实相般若」最可记的一句</div></div><div class="cards g3"><div class="card"><div class="idx">知</div><h4>文字般若</h4><p>知道</p></div><div class="card"><div class="idx">会</div><h4>方便般若</h4><p>会做</p></div><div class="card"><div class="idx">透</div><h4>实相般若</h4><p>看透</p></div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>第四层 · 境界般若</h2></div><div class="sd">看透得多了 · 看世界的位置也变了</div><p class="prose">这是非常有意思的一层。老师说：有人想的是今天怎样吃饱饭，有人想的是今天写一首什么诗——<b>并不是说后者天然比前者高贵</b>，而是在说明：</p><p class="prose">老师还用外星人的笑话表现这一点：同一个外星人掉下来，不同地方的人首先想到的东西不同。笑话背后其实是在说明——<b>客观对象没有变，解释框架变了。</b></p><div class="quote"><div class="q">你站在怎样的位置理解这个世界。</div><div class="src">对「境界」的理解 · 也是本讲课名的落点</div></div><div class="cards g2"><div class="card"><div class="idx">一</div><h4>“我倒霉。”</h4><p>同样的失败 · 第一种看法</p></div><div class="card"><div class="idx">二</div><h4>“这个方法错了。”</h4><p>第二种看法</p></div><div class="card"><div class="idx">叁</div><h4>“这个系统存在问题。”</h4><p>第三种看法</p></div><div class="card"><div class="idx">肆</div><h4>“这是一次重新认识自己的机会。”</h4><p>第四种看法</p></div></div><p class="prose">事件是一样的。<b>境界改变以后，事件的意义发生了变化。</b></p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>境界真正改变以后</h2></div><div class="sd">困扰仍在 · 但你和它的关系变了</div><div class="quote"><div class="q">以前困扰你的东西，可能仍然存在，但你和它的关系变了。</div><div class="src">境界改变以后出现的重要变化</div></div><p class="prose">例如遭遇批评，沿着层次向上看：</p><div class="ladder"><div class="step"><div class="t">他为什么针对我？</div></div><div class="step"><div class="t">他说得有没有道理？</div></div><div class="step"><div class="t">为什么他的评价会让我如此愤怒？</div></div><div class="step hot"><div class="t">我的自尊为什么依赖别人评价？</div></div></div><p class="prose">最后，问题从<b>「别人为什么批评我？」</b>逐渐变成<b>「我为什么如此害怕被否定？」</b>——这就是一种认知穿透。所以境界并不是「觉得自己高级」，而是——</p><div class="quote"><div class="q">能够用更大的框架容纳原来无法容纳的事情。</div><div class="src">对「境界」的最终理解</div></div></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>第五层 · 眷属般若</h2></div><div class="sd">真正的智慧必须落实到身体和行动</div><p class="prose">这是整个课程最后真正落地的地方。如果一个人能够谈很多哲学、读很多书、解释很多道理，但遇到事情仍然冲动、贪婪、没有原则、不能坚持，那么老师认为——</p><div class="quote"><div class="q">智慧还没有真正进入生命。</div><div class="src">老师对「懂得很多却没有活出来」的判断</div></div><p class="prose">因此最后进入「眷属般若」。在相关佛教解释里，所谓眷属般若，通常把六波罗蜜中的前五项——布施、持戒、忍辱、精进、禅定——视为般若智慧的助伴。老师正是沿着这个思路展开：</p><div class="cards g3"><div class="card"><div class="idx">施</div><h4>布施</h4><p>利他、分享、给予</p></div><div class="card"><div class="idx">戒</div><h4>持戒</h4><p>原则、边界、规则</p></div><div class="card"><div class="idx">忍</div><h4>忍辱</h4><p>情绪控制、承受挫折</p></div><div class="card"><div class="idx">进</div><h4>精进</h4><p>持续努力、不退转</p></div><div class="card"><div class="idx">定</div><h4>禅定</h4><p>专注、稳定、不被外界牵着走</p></div><div class="card"><div class="idx">慧</div><h4>般若</h4><p>看见、理解、智慧</p></div></div><p class="prose">这里有一个很深的意思：<b>智慧不是单独存在的。</b>真正的智慧需要品德、纪律、耐力、行动力、专注力来支撑。否则——<b>懂得很多 ≠ 成为那样的人。</b></p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>整节课讲了五次跨越</h2></div><div class="sd">把课程完全现代化以后的重新整理</div><div class="ladder"><div class="step"><div class="t">第一次跨越 · 从经验到知识</div><div class="d">我自己没经历过，也可以通过文字获得</div></div><div class="step"><div class="t">第二次跨越 · 从知识到方法</div><div class="d">不仅知道，还知道怎么解决问题</div></div><div class="step"><div class="t">第三次跨越 · 从方法到本质</div><div class="d">不再机械套方法，而能够理解现象背后的规律</div></div><div class="step"><div class="t">第四次跨越 · 从本质到境界</div><div class="d">不仅看懂事情，而且改变自己看待世界的位置</div></div><div class="step hot"><div class="t">第五次跨越 · 从理解到生命</div><div class="d">思想进入行为，变成一个人的习惯、品格与生活方式</div></div></div><div class="quote"><div class="q">文字 → 方法 → 本质 → 境界 → 实践</div><div class="src">五次跨越最终形成的认知链 · 这节课最值得建立的认知地图</div></div></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>为什么强调「行住坐卧」</h2></div><div class="sd">智慧应该出现在生活的一切场景里</div><p class="prose">真正掌握一种智慧以后，它不应该只出现在<b>「我认真思考哲学的时候」</b>，而应该出现在：</p><div class="chips"><span class="chip">吃饭</span><span class="chip">工作</span><span class="chip">开会</span><span class="chip">面对冲突</span><span class="chip">教育孩子</span><span class="chip">受到批评</span><span class="chip">面对利益</span><span class="chip">遭遇失败</span></div><div class="quote"><div class="q">最高层次的智慧不是“我知道这个理论”，而是“我已经自然地这样生活”。</div><div class="src">「行住坐卧」的真正含义</div></div><p class="prose">这实际上对应一个很重要的学习规律：</p><div class="ladder"><div class="step"><div class="t">信息</div><div class="d">只是听课，智慧停留在信息</div></div><div class="step"><div class="t">知识</div></div><div class="step"><div class="t">理解</div><div class="d">能够解释，进入理解</div></div><div class="step"><div class="t">能力</div><div class="d">能够处理问题，成为能力</div></div><div class="step"><div class="t">习惯</div><div class="d">长期反复实践，形成习惯</div></div><div class="step hot"><div class="t">人格</div><div class="d">不假思索地如此行动，才开始成为你这个人本身</div></div></div></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>容易被忽略的关键 · 不要迷信高阶思维</h2></div><div class="sd">尤其建议记住的一节</div><p class="prose">很多人学会系统思维、辩证思维、批判性思维、第一性原理以后，容易出现另外一种问题——<b>什么事情都分析。</b>但有时候：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>孩子哭了</h4><p>最好的反应不是分析家庭系统<br>而是<b>抱一下</b></p></div><div class="card"><div class="idx">貳</div><h4>有人问路</h4><p>不需要第一性原理<br>告诉他<b>左转</b>就行</p></div><div class="card"><div class="idx">叁</div><h4>同事明显疲惫</h4><p>有时候不需要分析绩效制度<br>先问一句：<b>最近是不是太累了？</b></p></div></div><p class="prose">因此真正智慧的人不是「我会复杂思考」，而是「<b>我知道什么时候复杂，什么时候简单</b>」。这正好对应老师讲的——系统思维可以下降到感性思维。</p><div class="quote"><div class="q">低水平的人被一种思维困住；高水平的人掌握多种思维；真正有智慧的人知道什么时候使用哪一种。</div><div class="src">整理者对「不迷信高阶思维」的提炼</div></div></section>
+<section class="sec" id="s15"><div class="sh"><span class="n">拾伍</span><h2>全课认知地图 · 五个带走观点</h2></div><div class="sd">复习这一课，只需要记住这一条</div><p class="prose">把整节课压缩成一张认知地图——<b>智慧 = 跨界 + 流动 + 穿透 + 融合 + 实践</b>，具体展开是：</p><div class="ladder"><div class="step"><div class="t">文字般若</div><div class="d">获得人类已有知识</div></div><div class="step"><div class="t">方便般若</div><div class="d">获得多种方法工具</div></div><div class="step"><div class="t">实相般若</div><div class="d">穿透现象认识本质</div></div><div class="step"><div class="t">境界般若</div><div class="d">改变理解世界的位置</div></div><div class="step"><div class="t">眷属般若</div><div class="d">落实到布施、持戒、忍辱、精进、禅定等实践</div></div><div class="step hot"><div class="t">真正智慧</div><div class="d">知道、理解、行动融为一体</div></div></div><div class="quote"><div class="q">思维能够上下、左右、内外自由流动。</div><div class="src">贯穿五层的能力</div></div><p class="prose">最后，这节课最值得带走的五个观点：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>智慧不是知识量</h4><p>而是<b>认知自由度</b>——能切换视角、改变框架才更重要</p></div><div class="card"><div class="idx">貳</div><h4>思维不是越高级越好</h4><p>而是<b>越适合越好</b>——感性、因果、辩证、系统都有自己的适用场景</p></div><div class="card"><div class="idx">叁</div><h4>真正的智慧具有可逆性</h4><p>既能从具体上升到抽象，也能从抽象重新回到具体</p></div><div class="card"><div class="idx">肆</div><h4>看穿本质以后</h4><p>真正发生变化的应该是<b>自己</b>——世界观与行为没有变化，理解仍停留在表面</p></div><div class="card"><div class="idx">伍</div><h4>智慧最终是一种生命状态</h4><p>而不是一套理论——最高层次不是「我会讲」，而是「我自然会这样做」</p></div></div><div class="quote"><div class="q">智慧，不是站得最高，而是能够在不同高度之间自由移动；不是懂得最多，而是能够看透、融通，并最终活出来。</div><div class="src">整理者为本课写的「课眼」· 可以串起整节课</div></div></section>
+<section class="sec" id="s16"><div class="sh"><span class="n">拾陆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">五层般若</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">思维层次</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">流动方向</div></div><div class="cnt"><div class="v" data-c="5">0</div><div class="l">次认知跨越</div></div></div><div class="panel"><h3><span class="no2">①</span>思维层次选用练习</h3><div class="pd">判断下列情境或提问对应哪种思维层次，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="简单问题需要简单思维，不需要第一性原理"><div class="st">1. 有人问路，告诉他左转就行</div><div class="opts"><button data-ok="1">感性思维</button><button data-ok="0">因果思维</button><button data-ok="0">辩证思维</button><button data-ok="0">系统思维</button></div><div class="verdict"></div></div><div class="sort-it" data-why="简单情境下直接的感知与反应更合适"><div class="st">2. 孩子哭了，先抱一下，而不是分析家庭系统</div><div class="opts"><button data-ok="1">感性思维</button><button data-ok="0">因果思维</button><button data-ok="0">辩证思维</button><button data-ok="0">系统思维</button></div><div class="verdict"></div></div><div class="sort-it" data-why="感性思维看到的是收入下降本身"><div class="st">3. “这个科室最近收入下降了。”—— 直接看到的现象</div><div class="opts"><button data-ok="1">感性思维</button><button data-ok="0">因果思维</button><button data-ok="0">辩证思维</button><button data-ok="0">系统思维</button></div><div class="verdict"></div></div><div class="sort-it" data-why="因果思维继续追问原因"><div class="st">4. 为什么下降？</div><div class="opts"><button data-ok="0">感性思维</button><button data-ok="1">因果思维</button><button data-ok="0">辩证思维</button><button data-ok="0">系统思维</button></div><div class="verdict"></div></div><div class="sort-it" data-why="辩证思维开始看事情的另一面"><div class="st">5. 收入下降是不是全部都是坏事？有没有质量提升、结构调整等另一面？</div><div class="opts"><button data-ok="0">感性思维</button><button data-ok="0">因果思维</button><button data-ok="1">辩证思维</button><button data-ok="0">系统思维</button></div><div class="verdict"></div></div><div class="sort-it" data-why="系统思维进一步看复杂系统中诸因素的关系"><div class="st">6. 门诊量、住院量、病种结构、医保政策、人员配置、绩效机制、社区转诊之间是什么关系？</div><div class="opts"><button data-ok="0">感性思维</button><button data-ok="0">因果思维</button><button data-ok="0">辩证思维</button><button data-ok="1">系统思维</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>认知自由度通关清单</h3><div class="pd">对照本讲方法论逐项检验自己（勾选进度保存在本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说出五层般若（文字、方便、实相、境界、眷属）各自回答的核心问题</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">遇到一个问题，我至少能换一个学科视角重新解释它</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能判断眼前的事：需要复杂思维，还是简单思维就够了</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">看人看事时，我会穿过现象追问背后的结构，而不是停在“他就是懒”</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">遭遇批评时，我能察觉问题正从“他为什么针对我”转向“我为什么如此害怕被否定”</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我懂的道理里，至少有一条已经变成了行为或习惯</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师把「般若波罗蜜多」形象地解释成什么？</div><div class="ans"><button data-ok="0">A. 智慧的五种分类</button><button data-ok="1">B. 智慧，就是让自己从这一边到达另一边</button><button data-ok="0">C. 思维的最高层次</button><button data-ok="0">D. 看穿事物本质的能力</button></div><div class="exp">「般若」通常译作智慧，「波罗蜜多」有「到彼岸」之意——所以老师把它解释成「从这一边到达另一边」。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>老师对智慧的定义、也是这一课最值得记住的一句是？</div><div class="ans"><button data-ok="0">A. 智慧是知识的积累</button><button data-ok="1">B. 智慧是思维能够上下左右自由流动</button><button data-ok="0">C. 智慧是永远使用系统思维</button><button data-ok="0">D. 智慧是超脱世俗的境界</button></div><div class="exp">老师提出的定义是：智慧，是思维能够上下左右自由流动——不是站得更高，而是能自由移动。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>停车场找人的例子想说明什么？</div><div class="ans"><button data-ok="0">A. 地库出口不好找</button><button data-ok="1">B. 高阶思维并不意味着任何时候都比低阶思维好</button><button data-ok="0">C. 推理能力需要更多训练</button><button data-ok="0">D. 感性思维最可靠</button></div><div class="exp">学生明知老师说过「在大门口等我」，过度推理反而越走越远——复杂问题需要复杂思维，简单问题反而需要简单思维。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>看到员工不积极就直接得出「这个人懒」，按「实相般若」的要求缺了什么？</div><div class="ans"><button data-ok="0">A. 缺少惩罚机制</button><button data-ok="1">B. 缺少穿过现象、寻找背后结构的穿透</button><button data-ok="0">C. 缺少沟通技巧</button><button data-ok="0">D. 缺少数据支撑</button></div><div class="exp">现象「员工不积极」不一定等于本质「这个人懒」——绩效区分度、职责边界、目标模糊、长期负反馈都可能是背后的结构。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>「眷属般若」提示我们什么？</div><div class="ans"><button data-ok="0">A. 智慧到境界般若就完成了</button><button data-ok="1">B. 智慧不是单独存在的，需要品德、纪律、耐力、行动力、专注力支撑</button><button data-ok="0">C. 读书越多智慧越高</button><button data-ok="0">D. 禅定比布施更重要</button></div><div class="exp">布施、持戒、忍辱、精进、禅定被视为般若智慧的助伴——懂得很多 ≠ 成为那样的人。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">智慧，是思维能够上下左右自由流动。</div><div class="src">老师对智慧的定义</div></div><div class="quote"><div class="q">复杂问题需要复杂思维，简单问题反而需要简单思维。</div><div class="src">停车场例子揭示的认知原则</div></div><div class="quote"><div class="q">智慧，不是站得最高，而是能够在不同高度之间自由移动；不是懂得最多，而是能够看透、融通，并最终活出来。</div><div class="src">本课「课眼」</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../42-化识转智/index.html">← 上一篇 · 化识转智</a><a href="../44-慧根/index.html">下一篇 · 慧根 →</a><span class="sp"></span><span class="cur">智慧的境界</span></div></nav>
+<footer class="coda"><div class="wm2">渡</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">智慧，不是站得最高，而是能够在不同高度之间<b>自由移动</b>；<br>不是懂得最多，而是能够<b>看透、融通，并最终活出来</b>。</div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第44讲《智慧的境界》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s6", "#s11", "#s15"], "sortok": [0, 0, 0, 1, 2, 3], "quizok": [1, 1, 1, 1, 1], "ckkey": "zx43-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

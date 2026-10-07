@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精英的引领 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx39-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../38-生活应该服从哪些准则/index.html">← 上一篇 · 生活应该服从哪些准则</a><a href="../40-精英的四个基本特征/index.html">下一篇 · 精英的四个基本特征 →</a><span class="sp"></span><span class="cur">精英的引领</span></div></nav>
+<header class="hero" id="top"><div class="wm">维</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十三章《精英的引领》第一节</div>
+  <div class="no">肆拾</div>
+  <h1>精英的引领</h1>
+  <div class="sub">生命五维 · 高宽强速长 · 人的成长坐标系</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>这一节的真正任务，是在讨论「什么样的人才算精英」之前，<br>先搭一个<b>生命评价模型</b>：<br>观念决定高度，胸怀决定宽度，信仰决定强度，思维决定速度，健康决定长度。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一章要解决什么</a><a href="#s2">貳 · 生命的前提 · 自我创造的系统</a><a href="#s3">叁 · 第一向度 · 高度——观念决定高度</a><a href="#s4">肆 · 第二向度 · 宽度——胸怀决定宽度</a><a href="#s5">伍 · 第三向度 · 强度——信仰决定强度</a><a href="#s6">陆 · 第四向度 · 速度——思维决定速度</a><a href="#s7">柒 · 第五向度 · 长度——健康决定长度</a><a href="#s8">捌 · 把五个向度放在一起看</a><a href="#s9">玖 · 五个维度并不相互替代</a><a href="#s10">拾 · 一个关键区分 · 批判性提醒</a><a href="#s11">拾壹 · 真正值得带走的 · 不是五个名词</a><a href="#s12">拾貳 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线，点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>章的入口</b><span>讨论精英之前 · 先搭生命评价模型</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s2"><b>生命前提</b><span>生命是自己创造自己的自动系统</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>高度</b><span>观念决定高度 · 站在多大尺度看问题</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s4"><b>宽度</b><span>胸怀决定宽度 · 容纳与自己不同的人</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>强度</b><span>信仰决定强度 · 不愿放弃的核心价值</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s6"><b>速度</b><span>思维决定速度 · 快速跨界与转换视角</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s7"><b>长度</b><span>健康决定长度 · 从治病到生命管理</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s11"><b>五维合观</b><span>不相互替代 · 协调发展 → 人应该往哪里成长</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一章要解决什么</h2></div><div class="sd">「精英的引领」的入口 · 先有生命评价模型，才谈得上谁算精英</div><p class="prose">这节课的核心，其实不是在讲“精英”本身，而是在为后面的“什么样的人才算精英”搭一个<b>生命评价模型</b>——先回答“人的生命怎么评价、从哪些维度成长”，才谈得上“谁配称精英”。</p><div class="quote"><div class="q">社会虽然由人民群众共同创造，但社会发展的某些方向，往往需要具有思想、能力和影响力的人去提出、示范和推动。</div><div class="src">老师对本章「精英的引领」的基本判断</div></div><p class="prose">因此，本章试图回答三个问题：</p><div class="cards g3"><div class="card"><div class="idx">壹</div><h4>生命怎么理解</h4><p>一个人的生命应该从哪些维度理解？——<b>生命的五个向度</b>（本节）</p></div><div class="card"><div class="idx">貳</div><h4>谁算精英</h4><p>什么样的人可以称为精英？——<b>精英的四个条件</b></p></div><div class="card"><div class="idx">叁</div><h4>精英什么样</h4><p>精英通常具有什么共同特征？——<b>精英的八个特征</b></p></div></div><p class="prose">所以整章逻辑是一条链：</p><div class="ladder"><div class="step"><div class="t">生命应该怎样发展</div></div><div class="step"><div class="t">发展到什么程度的人可以称为精英</div></div><div class="step"><div class="t">精英具体有哪些人格和能力特征</div></div><div class="step"><div class="t">精英如何影响社会方向</div></div></div><p class="prose">而这一节“生命的五个向度”，实际上是在回答：<b>一个人的生命究竟可以“成长”在哪些方向？</b></p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>生命的前提 · 自我创造的系统</h2></div><div class="sd">五个向度展开之前 · 先确立一个哲学前提</div><p class="prose">老师首先提出生命的基本前提——</p><div class="quote"><div class="q">生命是一个自己创造自己的自动系统。</div><div class="src">老师对生命的基本判断</div></div><p class="prose">这个说法并不是严格的生物学定义，它想表达的是一个哲学意义上的观点：<b>人的生命并不是完全被动决定的</b>。人具有<b>自主性＋创造性</b>。也就是说，人虽然受到——</p><div class="chips"><span class="chip">身体条件</span><span class="chip">出身</span><span class="chip">环境</span><span class="chip">社会制度</span><span class="chip">时代</span></div><p class="prose">——等因素限制，但人在一定范围内，仍然能够通过<b>选择、学习、思考、行动</b>重新塑造自己。</p><p class="prose">所以老师进一步提出一个区分：<b>肉体具有有限性，精神具有某种开放性和无限可能。</b>这里的“无限性”不能理解成真正没有边界，而更适合理解为：人的精神世界、认知能力、创造能力和价值追求<b>具有不断拓展的可能</b>。</p><p class="prose">于是问题就变成：<b>这种生命的发展，可以沿哪些方向展开？</b>答案就是五个向度。</p></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>第一向度 · 高度——观念决定高度</h2></div><div class="sd">高度不是地位，而是你站在多大的尺度上看问题</div><div class="quote"><div class="q">观念决定生命的高度。</div><div class="src">生命第一向度</div></div><p class="prose">这里所谓高度，本质上是：<b>你站在多大的尺度上看问题。</b>同一件事情，可以站在不同层次理解——</p><div class="ladder"><div class="step"><div class="t">个人</div></div><div class="step"><div class="t">家庭</div></div><div class="step"><div class="t">组织 / 企业</div></div><div class="step"><div class="t">社会</div></div><div class="step"><div class="t">国家</div></div><div class="step"><div class="t">人类</div></div><div class="step"><div class="t">自然 / 地球</div></div><div class="step"><div class="t">宇宙</div></div></div><p class="prose">站的位置不同，对同一问题得到的答案可能完全不同。例如环境问题：</p><div class="case"><div class="h"><span class="tag">尺度</span><span class="ht">同一件事 · 四种答案</span><span class="ar">▸</span></div><div class="sm"><div class="inner">只从个人角度：“使用一次性用品很方便。”<br>从企业角度：“怎样降低成本？”<br>从国家角度：“如何平衡发展与环境？”<br>从人类文明角度：“这种生产方式能不能持续几百年？”<br><br>尺度一扩大，问题就变了。</div></div></div><p class="prose">所以这里真正讲的是一种非常重要的能力——<b>视角升级能力</b>：</p><div class="quote"><div class="q">能不能从比自己更大的系统重新理解问题。</div><div class="src">「视角升级能力」的定义</div></div><p class="prose">这也是这一节和前面哲学课程中“跨界”“智慧”的概念连接起来的地方。</p></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>第二向度 · 宽度——胸怀决定宽度</h2></div><div class="sd">容纳差异的能力 · 成熟人格的重要标志</div><div class="quote"><div class="q">胸怀决定生命的宽度。</div><div class="src">生命第二向度</div></div><div class="quote"><div class="q">“看你心中能装下多少个敌人。”</div><div class="src">课程对「胸怀」的激烈表达</div></div><p class="prose">其真正意思不是鼓励制造敌人，而是在强调：<b>一个人的心理世界，能否容纳与自己不同的人。</b></p><div class="chips"><span class="chip">不喜欢自己的人</span><span class="chip">反对自己的人</span><span class="chip">与自己竞争的人</span><span class="chip">曾经伤害自己的人</span><span class="chip">与自己观点完全不同的人</span></div><div class="duo"><div class="col neg"><h4>胸怀小的人 ✕</h4><ul><li>别人一句批评</li><li>→ 愤怒</li><li>→ 对抗</li><li>→ 反复内耗</li></ul></div><div class="col pos"><h4>胸怀大的人 ✓</h4><ul><li>别人批评</li><li>→ 区分事实与情绪</li><li>→ 判断有没有值得吸收的信息</li><li>→ 继续做自己的事情</li></ul></div></div><p class="prose">所以老师还说：<b>不要在肉体上消灭敌人，而要在精神上消灭敌人。</b>更准确地理解，就是：不要通过摧毁别人解决冲突，而要让别人失去控制你情绪和思想的能力。</p><p class="prose">真正的“精神胜利”不是自我欺骗，而是：<b>对方存在，但你已经不再被对方支配。</b>这其实是成熟人格的重要标志。生命的宽度，本质上就是<b>容纳差异的能力</b>。</p></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>第三向度 · 强度——信仰决定强度</h2></div><div class="sd">压力与代价面前不愿放弃的核心价值 · 但信仰本身并不天然正确</div><div class="quote"><div class="q">信仰决定生命的强度。</div><div class="src">生命第三向度</div></div><p class="prose">这里的“信仰”，不一定只能理解为宗教信仰。更广义地说，它是——</p><div class="quote"><div class="q">一个人在压力、痛苦甚至重大代价面前仍然不愿放弃的核心价值。</div><div class="src">对「信仰」的广义理解</div></div><div class="chips"><span class="chip">国家</span><span class="chip">正义</span><span class="chip">家庭</span><span class="chip">科学</span><span class="chip">职业使命</span><span class="chip">宗教</span><span class="chip">某种人生理想</span></div><p class="prose">为什么信仰能够增加生命的“强度”？因为人在面对困难时，会问：<b>“我为什么要坚持？”</b>如果没有稳定的价值支点，困难一大，行动就很容易停止。因此可以形成一条链：</p><div class="ladder"><div class="step"><div class="t">信仰 / 价值</div></div><div class="step"><div class="t">意义</div></div><div class="step"><div class="t">意志</div></div><div class="step"><div class="t">坚持</div></div><div class="step hot"><div class="t">行动强度</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">邱少云、黄继光</span><span class="ar">▸</span></div><div class="sm"><div class="inner">老师举邱少云、黄继光的例子，就是想说明：<b>当一个人的价值信念足够强时，他承受痛苦和风险的能力可能远超普通状态。</b></div></div></div><div class="warn"><div class="wt">整理者的批判性补充</div><ul><li>信仰本身并不天然正确——错误的信仰同样可能产生极强的行动力量</li><li>成熟的哲学态度：既需要信仰的力量，也需要理性对信仰进行检验</li><li>否则「强度很大＋方向错误」，反而可能带来危险</li></ul></div></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>第四向度 · 速度——思维决定速度</h2></div><div class="sd">不是走路快慢 · 是认知和解决问题的速度</div><div class="quote"><div class="q">思维决定生命的速度。</div><div class="src">生命第四向度</div></div><p class="prose">这里当然不是指走路快慢，而是指<b>认知和解决问题的速度</b>。面对同一个问题：</p><div class="ladder"><div class="step"><div class="t">有人纠结三年</div></div><div class="step"><div class="t">有人三个月想通</div></div><div class="step hot"><div class="t">有人几分钟就找到关键结构</div></div></div><p class="prose">差别在哪里？老师认为核心在于：<b>思维能不能快速跨界和转换视角。</b>这和他前面课程中关于“智慧”的定义完全一致——<b>智慧＝跨界＋融通</b>。也就是说，高手并不一定知道所有答案，而是能够快速：</p><div class="ladder"><div class="step"><div class="t">识别问题</div></div><div class="step"><div class="t">改变视角</div></div><div class="step"><div class="t">调用其他领域知识</div></div><div class="step"><div class="t">建立联系</div></div><div class="step"><div class="t">找到结构</div></div><div class="step hot"><div class="t">形成行动方案</div></div></div><div class="case"><div class="h"><span class="tag">例</span><span class="ht">一个管理问题</span><span class="ar">▸</span></div><div class="sm"><div class="inner">普通人可能只从<b>“员工不听话”</b>理解；<br>而具有跨界思维的人可能同时想到：<b>激励机制、信息不对称、组织结构、权责关系、心理需求、绩效设计</b>。</div></div></div><div class="duo"><div class="col neg"><h4>普通理解 ✕</h4><ul><li>“某个人的问题”</li></ul></div><div class="col pos"><h4>认知转换后 ✓</h4><ul><li>“<b>一个系统的问题</b>”<br>这种认知转换，就是生命的「速度」</li></ul></div></div></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>第五向度 · 长度——健康决定长度</h2></div><div class="sd">身体是最基本的约束 · 健康从治病问题变成生命管理问题</div><div class="quote"><div class="q">健康决定生命的长度。</div><div class="src">生命第五向度</div></div><p class="prose">这是五个维度里最容易理解的一个：无论思想多高、胸怀多大、信仰多强、思维多快，最终都必须依托一个<b>生物学身体</b>——所以身体构成生命最基本的约束。老师在这里讨论了中西医，他大体提出：</p><div class="cards g2"><div class="card"><div class="idx">西</div><h4>西医</h4><p>强调<b>科学、量化、精准</b></p></div><div class="card"><div class="idx">中</div><h4>中医</h4><p>强调<b>整体、平衡</b></p></div></div><div class="warn"><div class="wt">中西医比较 · 需要注意</div><ul><li>这是一种非常概括性的课堂表达，只能帮助理解两套医学传统的某些思想特点</li><li>不能简单理解成“西医只讲数字，中医只讲平衡”</li><li>现代医学本身也高度重视：系统医学、稳态、生活方式、个体差异、预防医学</li><li>传统医学能否成立，也必须接受可靠证据的检验</li></ul></div><p class="prose">老师真正想引出的重点其实是：<b>随着生物技术、医学和健康管理发展，人类寿命可能进一步延长。</b>于是健康会逐渐从“治病问题”转变为<b>生命管理问题</b>——课程把它称作未来可能形成的新的<b>“生命经济逻辑”</b>。</p><div class="case"><div class="h"><span class="tag">推演</span><span class="ht">如果平均健康寿命大幅延长</span><span class="ar">▸</span></div><div class="sm"><div class="inner">那么<b>教育、工作、退休、财富积累、家庭结构乃至人生规划</b>，都可能发生变化。这一点很值得注意。</div></div></div></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>把五个向度放在一起看</h2></div><div class="sd">不是背五句话，而是理解它们分别在回答什么问题</div><p class="prose">整节课最重要的不是背五句话，而是理解它们分别在回答什么问题：</p><div class="cards g3"><div class="card"><div class="idx">高</div><h4>高度 · 观念</h4><p>我站在什么层次看世界？</p></div><div class="card"><div class="idx">宽</div><h4>宽度 · 胸怀</h4><p>我能容纳多少不同的人与观点？</p></div><div class="card"><div class="idx">强</div><h4>强度 · 信仰</h4><p>我愿意为什么坚持？</p></div><div class="card"><div class="idx">速</div><h4>速度 · 思维</h4><p>我多快能够看懂、转换和解决问题？</p></div><div class="card"><div class="idx">长</div><h4>长度 · 健康</h4><p>我的生命能够持续多久、保持多久质量？</p></div></div><div class="quote"><div class="q">高度看世界，宽度容世界，强度扛世界，速度理解世界，长度经历世界。</div><div class="src">源文给出的更易记忆版本</div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>五个维度并不相互替代</h2></div><div class="sd">单维突出的失衡样本 · 老师隐含提出的完整生命观</div><p class="prose">这一点非常重要：<b>五个维度之间并不是相互替代的。</b>一个人可能——</p><div class="cards g2"><div class="card"><div class="idx">偏</div><h4>有高度，没有宽度</h4><p>知识很多、格局很大，却极其傲慢，容不得不同意见</p></div><div class="card"><div class="idx">偏</div><h4>有强度，没有高度</h4><p>执行力和意志力极强，但方向可能错误</p></div><div class="card"><div class="idx">偏</div><h4>有速度，没有深度</h4><p>脑子转得特别快，却不停追逐短期利益</p></div><div class="card"><div class="idx">偏</div><h4>有长度，没有其他四维</h4><p>活得很久，但生命并没有获得更丰富的发展</p></div></div><div class="quote"><div class="q">好的生命不是某一个维度特别突出，而是多个维度协调发展。</div><div class="src">老师隐含提出的完整生命观</div></div><p class="prose">可以把它理解成一个<b>「五维生命模型」</b>。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>一个关键区分 · 批判性提醒</h2></div><div class="sd">哲学隐喻模型，不是严格科学验证的「生命五维理论」</div><p class="prose">学习这节课时尤其要注意：这五个词非常有启发性，但主要属于一种<b>哲学隐喻模型</b>，而不是经过严格科学验证的“生命五维理论”。</p><div class="warn"><div class="wt">需要校正理解的表述</div><ul><li>“观念决定高度”“信仰决定强度”“思维决定速度”——这里的「决定」最好不要理解成唯一因果关系</li><li>“生物技术让寿命快速逼近120岁”——更适合作为一种未来趋势判断，不能当作已经得到保证的事实</li><li>“生命是一个自己创造自己的自动系统”——并不是严格的生物学定义，是哲学意义上的表达</li></ul></div><div class="quote"><div class="q">观念是影响生命高度的重要因素；胸怀影响生命宽度；稳定价值影响心理韧性；思维能力影响认知效率；健康显著影响生命长度与质量。</div><div class="src">整理者给出的更严谨表述</div></div><p class="prose">这样既保留课程的思想力量，又避免把复杂的人生问题简单化。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>真正值得带走的 · 不是五个名词</h2></div><div class="sd">五个向度背后一直在问：一个人应该把自己培养成什么样的人</div><div class="quote"><div class="q">一个人应该把自己培养成什么样的人？</div><div class="src">老师表面讲五个向度，背后一直在问的问题</div></div><p class="prose">答案大致是——</p><div class="cards g2"><div class="card"><div class="idx">远</div><h4>看得远一点</h4><p>提高生命高度</p></div><div class="card"><div class="idx">容</div><h4>容得多一点</h4><p>拓展生命宽度</p></div><div class="card"><div class="idx">扛</div><h4>扛得住一点</h4><p>增强生命强度</p></div><div class="card"><div class="idx">快</div><h4>想得快、想得通</h4><p>提高生命速度</p></div><div class="card"><div class="idx">久</div><h4>活得久而且活得健康</h4><p>增加生命长度</p></div></div><p class="prose">最终形成的不是一个单一意义上的“成功者”，而是：<b>格局更高、胸怀更宽、内核更稳、思维更快、身体更健康的人。</b>这其实就是“精英的引领”这一章为什么先讲生命五维——<b>在讨论精英之前，老师先给出了一个“人应该往哪里成长”的坐标系。</b></p><p class="prose">复习这一课时，只要牢牢记住下面这个结构（生命五维）就够了：</p><div class="chips"><span class="chip">高度——观念</span><span class="chip">宽度——胸怀</span><span class="chip">强度——信仰</span><span class="chip">速度——思维</span><span class="chip">长度——健康</span></div><div class="quote"><div class="q">观念决定你看多远，胸怀决定你容多少，信仰决定你能扛多少，思维决定你多快想通，健康决定这一切能够持续多久。</div><div class="src">再往深一层记的版本</div></div></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="5">0</div><div class="l">生命向度</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">本章三问</div></div><div class="cnt"><div class="v" data-c="8">0</div><div class="l">视角层级</div></div><div class="cnt"><div class="v" data-c="4">0</div><div class="l">单维失衡示例</div></div></div><div class="panel"><h3><span class="no2">①</span>三档分清练习</h3><div class="pd">判断下列表述属于「骨架金句 / 需校正理解 / 不宜当事实」，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="全课压缩成的一句话，记忆主线用 → 骨架金句"><div class="st">1. 观念决定高度，胸怀决定宽度，信仰决定强度，思维决定速度，健康决定长度</div><div class="opts"><button data-ok="1">骨架金句</button><button data-ok="0">需校正理解</button><button data-ok="0">不宜当事实</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文明确说明：这并不是严格的生物学定义，是哲学意义上的表达 → 需校正理解"><div class="st">2. 生命是一个自己创造自己的自动系统</div><div class="opts"><button data-ok="0">骨架金句</button><button data-ok="1">需校正理解</button><button data-ok="0">不宜当事实</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文明确说明：更适合作为未来趋势判断，不能当作已经得到保证的事实 → 不宜当事实"><div class="st">3. 生物技术让寿命快速逼近120岁</div><div class="opts"><button data-ok="0">骨架金句</button><button data-ok="0">需校正理解</button><button data-ok="1">不宜当事实</button></div><div class="verdict"></div></div><div class="sort-it" data-why="五个向度的更易记忆版本 → 骨架金句"><div class="st">4. 高度看世界，宽度容世界，强度扛世界，速度理解世界，长度经历世界</div><div class="opts"><button data-ok="1">骨架金句</button><button data-ok="0">需校正理解</button><button data-ok="0">不宜当事实</button></div><div class="verdict"></div></div><div class="sort-it" data-why="整理者校正：五句话属于哲学隐喻模型，不是严格验证的科学理论 → 需校正理解"><div class="st">5. “决定”最好不要理解成唯一因果关系</div><div class="opts"><button data-ok="0">骨架金句</button><button data-ok="1">需校正理解</button><button data-ok="0">不宜当事实</button></div><div class="verdict"></div></div><div class="sort-it" data-why="源文明确警告：中西医比较是概括性课堂表达，不能简单理解成这句话 → 不宜当事实"><div class="st">6. 西医只讲数字，中医只讲平衡</div><div class="opts"><button data-ok="0">骨架金句</button><button data-ok="0">需校正理解</button><button data-ok="1">不宜当事实</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>五维成长通关清单</h3><div class="pd">对照五个向度逐条自检，勾选进度自动保存（本设备）</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">高度 · 我能站在比自己更大的系统（组织、社会、人类）重新理解眼前的问题</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">宽度 · 面对批评，我能先区分事实与情绪，再判断有没有值得吸收的信息</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">强度 · 我能说出自己在压力和代价面前仍不愿放弃的核心价值</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">速度 · 面对难题，我能主动转换视角、调用其他领域的知识找到结构</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">长度 · 我把健康当作生命管理问题，而不只是治病问题</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">合观 · 我能指出自己目前最失衡的两个维度，并说出补齐的方向</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>这一节的核心任务是什么？</div><div class="ans"><button data-ok="0">A. 介绍精英的历史演变</button><button data-ok="1">B. 为「什么样的人才算精英」搭一个生命评价模型</button><button data-ok="0">C. 比较中西医学传统</button><button data-ok="0">D. 讲解企业管理问题</button></div><div class="exp">源文开头明确：这节课的核心不是在讲“精英”本身，而是在为后面的问题搭一个生命评价模型。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>「观念决定高度」中的“高度”，本质上是？</div><div class="ans"><button data-ok="0">A. 社会地位的高低</button><button data-ok="1">B. 你站在多大的尺度上看问题</button><button data-ok="0">C. 学历和知识量</button><button data-ok="0">D. 收入水平</button></div><div class="exp">源文：这里所谓高度，本质上是“你站在多大的尺度上看问题”——从个人一直到宇宙，位置不同答案不同。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>“看你心中能装下多少个敌人”的真正意思是什么？</div><div class="ans"><button data-ok="0">A. 鼓励树立更多对手</button><button data-ok="0">B. 学会报复和打击敌人</button><button data-ok="1">C. 强调心理世界能否容纳与自己不同的人</button><button data-ok="0">D. 学会无条件忍耐</button></div><div class="exp">源文明确：其真正意思不是鼓励制造敌人，而是强调一个人的心理世界能否容纳与自己不同的人。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>按源文的推演，信仰增加生命强度的机制是？</div><div class="ans"><button data-ok="0">A. 信仰让人不再遇到困难</button><button data-ok="1">B. 面对“我为什么要坚持”时有稳定的价值支点，行动才不会停止</button><button data-ok="0">C. 信仰能直接带来好运气</button><button data-ok="0">D. 信仰可以替代行动</button></div><div class="exp">源文：人在面对困难时会问“我为什么要坚持？”没有稳定的价值支点，困难一大行动就停止——信仰/价值→意义→意志→坚持→行动强度。</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>整理者提醒：五句话里的“决定”应该怎么理解？</div><div class="ans"><button data-ok="0">A. 决定就是唯一的因果关系</button><button data-ok="0">B. 五句话已经过严格科学验证</button><button data-ok="1">C. 最好理解成“重要影响因素”，避免把复杂的人生问题简单化</button><button data-ok="0">D. 应该完全放弃这五句话</button></div><div class="exp">源文第十节：这五个词主要属于哲学隐喻模型，“决定”最好不要理解成唯一因果关系——更严谨的表述是“影响……的重要因素”。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">观念决定高度，胸怀决定宽度，信仰决定强度，思维决定速度，健康决定长度。</div><div class="src">把这一节压缩成的一句话 · 全课骨架</div></div><div class="quote"><div class="q">高度看世界，宽度容世界，强度扛世界，速度理解世界，长度经历世界。</div><div class="src">五个向度的更易记忆版本</div></div><div class="quote"><div class="q">好的生命不是某一个维度特别突出，而是多个维度协调发展。</div><div class="src">五维生命模型的隐含结论</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../38-生活应该服从哪些准则/index.html">← 上一篇 · 生活应该服从哪些准则</a><a href="../40-精英的四个基本特征/index.html">下一篇 · 精英的四个基本特征 →</a><span class="sp"></span><span class="cur">精英的引领</span></div></nav>
+<footer class="coda"><div class="wm2">成</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">老师表面在讲五个向度，背后一直在问：一个人应该把自己培养成什么样的人？<br><br><b>观念决定你看多远，胸怀决定你容多少，信仰决定你能扛多少，<br>思维决定你多快想通，健康决定这一切能够持续多久。</b></div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第40讲《精英的引领》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12"], "mnodes": ["#s1", "#s2", "#s3", "#s4", "#s5", "#s6", "#s7", "#s11"], "sortok": [0, 1, 2, 0, 1, 2], "quizok": [1, 1, 2, 1, 2], "ckkey": "zx39-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

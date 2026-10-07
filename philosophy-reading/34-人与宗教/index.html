@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人与宗教 · 哲学智慧与人生思考（郭春林）· 交互式精读</title>
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#0B1D33; --gold:#B8923A; --gold-l:#D9BC7A; --cinn:#A63B2A;
+  --teal:#2F6E63; --line:#E3DCC9; --ink-soft:#3A4A63; --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.9;-webkit-font-smoothing:antialiased}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-l));z-index:99;transition:width .1s linear}
+.hero{background:var(--ink);color:#EFE6CE;padding:72px 24px 66px;position:relative;overflow:hidden;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;inset:12px;border:1px solid rgba(184,146,58,.55);pointer-events:none}
+.hero::after{inset:18px;border-color:rgba(184,146,58,.28)}
+.hero .wm{position:absolute;right:-30px;bottom:-70px;font-size:min(300px,34vw);color:rgba(184,146,58,.06);font-weight:700;line-height:1;user-select:none;font-family:var(--serif)}
+.hero .tag{display:inline-block;font-family:var(--sans);font-size:13px;letter-spacing:.28em;color:var(--gold-l);border:1px solid rgba(217,188,122,.4);padding:5px 18px 5px 22px;border-radius:2px;margin-bottom:28px}
+.hero .no{width:64px;height:64px;margin:0 auto 22px;background:var(--cinn);color:#F6F3EC;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 4px 18px rgba(166,59,42,.45);font-family:var(--serif)}
+.hero h1{font-size:clamp(34px,6vw,52px);letter-spacing:.14em;font-weight:700;color:#F2E9D5;margin-bottom:8px}
+.hero .sub{font-family:var(--sans);font-size:14px;color:#9FB0C8;letter-spacing:.15em;margin-bottom:30px}
+.hero .thesis{max-width:720px;margin:0 auto;font-size:clamp(16px,2.4vw,19px);line-height:2.15;color:#D8CDB2;border-top:1px solid rgba(184,146,58,.35);border-bottom:1px solid rgba(184,146,58,.35);padding:22px 30px;position:relative}
+.hero .thesis b{color:var(--gold-l);font-weight:700}
+.hero .thesis .mark{font-family:var(--sans);font-size:12px;letter-spacing:.3em;color:var(--gold);display:block;margin-bottom:10px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:216px minmax(0,1fr);gap:40px;padding:44px 24px 80px}
+.side{position:sticky;top:0;max-height:100vh;overflow-y:auto;align-self:start;font-family:var(--sans)}
+.side .t{font-size:12px;letter-spacing:.3em;color:var(--gold);padding:6px 0 10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.side a{display:block;color:#5A6B85;text-decoration:none;font-size:13.5px;padding:7px 4px 7px 14px;border-left:2px solid transparent;letter-spacing:.03em;transition:all .15s}
+.side a:hover{color:var(--ink)}
+.side a.on{color:var(--ink);border-left-color:var(--gold);background:linear-gradient(90deg,rgba(184,146,58,.09),transparent);font-weight:600}
+main{min-width:0}
+.sec{margin-bottom:76px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sh .n{font-size:15px;color:var(--cinn);font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.sh h2{font-size:25px;letter-spacing:.06em;font-weight:700}
+.sh::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold) 56px,var(--line) 0);margin-left:6px;transform:translateY(-6px)}
+.sd{font-family:var(--sans);font-size:13.5px;color:#8B8266;margin-bottom:22px;letter-spacing:.04em}
+.map{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 22px 22px;box-shadow:0 2px 14px rgba(11,29,51,.05)}
+.map h3{font-size:16px;letter-spacing:.2em;color:var(--gold);text-align:center;font-weight:700;margin-bottom:22px;font-family:var(--serif)}
+.map .flow{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.mnode{position:relative;background:var(--paper);border:1px solid var(--line);padding:12px 16px;cursor:pointer;transition:all .15s;text-align:center}
+.mnode:hover{border-color:var(--gold);background:#fff;transform:translateX(3px)}
+.mnode b{display:block;font-size:15px;color:var(--ink);letter-spacing:.05em}
+.mnode span{font-family:var(--sans);font-size:12px;color:#8B8266}
+.mnode.gold{background:var(--ink);border-color:var(--ink)}
+.mnode.gold b{color:var(--gold-l)} .mnode.gold span{color:#9FB0C8}
+.marrow{align-self:center;color:var(--gold);font-size:15px;line-height:1;padding:5px 0;font-family:var(--sans)}
+.map .hint{font-family:var(--sans);font-size:12px;color:#B0A88C;text-align:center;margin-top:14px;letter-spacing:.08em}
+.prose{max-width:46em;font-size:16.5px;color:var(--ink-soft);margin-bottom:18px}
+.prose b{color:var(--ink)}
+.quote{background:#fff;border-left:3px solid var(--gold);padding:16px 20px;margin:24px 0;box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.quote .q{font-size:17.5px;color:var(--ink);line-height:2;font-weight:600}
+.quote .q::before{content:"「";color:var(--gold);font-weight:700}
+.quote .q::after{content:"」";color:var(--gold);font-weight:700}
+.quote .src{font-family:var(--sans);font-size:12.5px;color:#A89B77;margin-top:8px;letter-spacing:.06em}
+.cards{display:grid;gap:16px;margin:24px 0}
+.cards.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cards.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);padding:20px 18px;position:relative;box-shadow:0 1px 12px rgba(11,29,51,.05);transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card .idx{font-size:30px;color:rgba(184,146,58,.28);font-weight:700;position:absolute;top:8px;right:14px;font-family:var(--serif)}
+.card h4{font-size:16.5px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;padding-right:34px}
+.card p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);line-height:1.95}
+.card p b{color:var(--cinn)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;font-size:14.5px;color:var(--ink-soft);box-shadow:0 1px 6px rgba(11,29,51,.05)}
+.chip::before{content:"◆";font-size:9px;color:var(--gold);margin-right:8px;vertical-align:2px}
+.ladder{margin:26px 0;position:relative;padding-left:26px}
+.ladder::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--gold),var(--gold-l))}
+.step{position:relative;margin-bottom:14px;background:#fff;border:1px solid var(--line);padding:12px 18px;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 2px var(--gold)}
+.step .t{font-weight:700;font-size:15.5px;letter-spacing:.03em}
+.step .t::after{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;vertical-align:3px;margin-left:10px}
+.step .d{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.step.hot{border-color:var(--cinn);background:#FDF6F4}
+.step.hot .t{color:var(--cinn)}
+.step.hot::before{background:var(--cinn);box-shadow:0 0 0 2px var(--cinn)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.duo .col{background:#fff;border:1px solid var(--line);box-shadow:0 1px 10px rgba(11,29,51,.05)}
+.duo .col h4{padding:11px 16px;font-size:14.5px;font-family:var(--sans);letter-spacing:.1em;text-align:center;font-weight:600}
+.duo .col.neg h4{background:var(--cinn);color:#fff}
+.duo .col.pos h4{background:var(--ink);color:var(--gold-l)}
+.duo .col ul{list-style:none;padding:14px 18px}
+.do .col li,.duo .col li{font-size:14.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;line-height:1.8}
+.duo .col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.case{background:#fff;border:1px solid var(--line);margin:14px 0;box-shadow:0 1px 10px rgba(11,29,51,.05);overflow:hidden}
+.case .h{padding:15px 20px;cursor:pointer;display:flex;align-items:baseline;gap:12px;transition:background .15s}
+.case .h:hover{background:rgba(184,146,58,.05)}
+.case .h .tag{flex:none;font-family:var(--sans);font-size:11.5px;color:#fff;background:var(--teal);border-radius:2px;padding:2px 9px;letter-spacing:.08em}
+.case .h .ht{font-weight:700;font-size:15.5px}
+.case .h .ar{margin-left:auto;color:var(--gold);font-size:13px;transition:transform .25s;font-family:var(--sans)}
+.case.on .h .ar{transform:rotate(90deg)}
+.case .sm{max-height:0;transition:max-height .35s ease;overflow:hidden}
+.case.on .sm{max-height:800px}
+.case .sm .inner{padding:2px 20px 18px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);margin-top:2px;padding-top:14px}
+.tl{margin:26px 0;position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--ink))}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-26px;top:10px;width:9px;height:9px;background:var(--gold);border:2px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--gold)}
+.tl .ev .dyn{font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.tl .ev p{font-family:var(--sans);font-size:13.8px;color:var(--ink-soft);margin-top:3px}
+.tl .ev p b{color:var(--cinn)}
+.warn{background:#FDF4F1;border:1px solid rgba(166,59,42,.35);border-left:4px solid var(--cinn);padding:20px 24px;margin:26px 0}
+.warn .wt{font-weight:700;color:var(--cinn);font-size:15.5px;letter-spacing:.06em;margin-bottom:10px}
+.warn .wt::before{content:"※";margin-right:8px}
+.warn p,.warn li{font-family:var(--sans);font-size:14px;color:#5C4A44;line-height:2}
+.warn ul{margin:8px 0 8px 4px;list-style:none}
+.warn li{padding-left:18px;position:relative}
+.warn li::before{content:"▪";position:absolute;left:0;color:var(--cinn)}
+.qa{margin:14px 0;border:1px solid var(--line);background:#fff;box-shadow:0 1px 8px rgba(11,29,51,.05)}
+.qa summary{list-style:none;padding:15px 20px;cursor:pointer;display:flex;gap:14px;align-items:baseline}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .qn{flex:none;font-family:var(--serif);font-weight:700;font-size:21px;color:rgba(184,146,58,.5);min-width:32px}
+.qa summary .qt{font-size:16px;font-weight:600;line-height:1.8}
+.qa summary .qt::after{content:"展开思考 ↓";display:block;font-family:var(--sans);font-size:11.5px;color:#B0A88C;font-weight:400;margin-top:3px;letter-spacing:.1em}
+.qa[open] summary .qt::after{content:"收起 ↑"}
+.qa .body{padding:0 22px 18px 66px;font-family:var(--sans);font-size:14px;color:var(--ink-soft);line-height:2;border-top:1px dashed var(--line);padding-top:12px;margin:0 20px 6px 0}
+.panel{background:#fff;border:1px solid var(--line);border-top:3px solid var(--ink);padding:24px 22px;margin:22px 0;box-shadow:0 1px 12px rgba(11,29,51,.05)}
+.panel h3{font-size:17px;letter-spacing:.08em;font-weight:700;margin-bottom:6px}
+.panel h3 .no2{color:var(--gold);margin-right:10px;font-family:var(--serif)}
+.panel .pd{font-family:var(--sans);font-size:13px;color:#8B8266;margin-bottom:16px}
+.panel .quote{margin:12px 0}
+.sort-it{border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
+.sort-it .st{font-size:15.5px;font-weight:600;line-height:1.9}
+.sort-it .opts{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.sort-it button{font-family:var(--sans);font-size:13px;padding:6px 20px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;border-radius:3px;transition:all .15s}
+.sort-it button:hover{border-color:var(--gold);color:var(--ink)}
+.sort-it button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.sort-it button.no{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.sort-it .verdict{font-family:var(--sans);font-size:13px;margin-top:10px;display:none;padding-top:10px;border-top:1px dashed var(--line)}
+.sort-it.done .verdict{display:block}
+.sort-it.v-ok .verdict{color:var(--teal)} .sort-it.v-no .verdict{color:var(--cinn)}
+#sort-stat{font-family:var(--sans);font-size:14px;margin-top:14px;padding:12px 16px;background:var(--paper);border-radius:4px;display:none}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:var(--sans)}
+.ck:last-of-type{border-bottom:none}
+.ck .box{flex:none;width:20px;height:20px;border:2px solid #C9BFA4;border-radius:3px;margin-top:4px;position:relative;transition:all .15s}
+.ck.on .box{background:var(--teal);border-color:var(--teal)}
+.ck.on .box::after{content:"✓";position:absolute;inset:0;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .ct{font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.ck.on .ct{color:#8B9AA8;text-decoration:line-through}
+#ck-stat{font-family:var(--sans);font-size:13.5px;color:var(--teal);margin-top:14px;letter-spacing:.05em}
+.qz{border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;background:var(--paper)}
+.qz .qt{font-size:15.5px;font-weight:600;line-height:1.9;margin-bottom:10px}
+.qz .qt .qq{color:var(--cinn);font-weight:700;margin-right:8px;font-family:var(--serif)}
+.qz .ans{display:flex;flex-direction:column;gap:8px}
+.qz .ans button{text-align:left;font-family:var(--sans);font-size:14px;padding:9px 14px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;color:var(--ink-soft);transition:all .15s}
+.qz .ans button:hover{border-color:var(--gold)}
+.qz.right .ans button.ok,.qz.wrong .ans button.ok{background:var(--teal);border-color:var(--teal);color:#fff}
+.qz.wrong .ans button.pick{background:var(--cinn);border-color:var(--cinn);color:#fff}
+.qz .exp{display:none;margin-top:10px;font-family:var(--sans);font-size:13px;color:var(--ink-soft);background:#fff;border-left:3px solid var(--gold);padding:10px 14px;line-height:1.9}
+.qz.right .exp,.qz.wrong .exp{display:block}
+#qz-score{font-family:var(--sans);font-size:15px;margin-top:16px;padding:14px 18px;background:var(--ink);color:var(--gold-l);border-radius:4px;display:none;letter-spacing:.05em}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:22px 0}
+.cnt{background:var(--ink);color:#EFE6CE;text-align:center;padding:22px 10px 18px;border-radius:4px;position:relative;overflow:hidden}
+.cnt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold)}
+.cnt .v{font-size:34px;font-weight:700;color:var(--gold-l);font-family:var(--serif)}
+.cnt .l{font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:#9FB0C8;margin-top:4px}
+.bknav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bknav.bottom{position:static;border-top:1px solid var(--line);border-bottom:none;margin-top:64px}
+.bknav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 24px;font-family:var(--sans)}
+.bknav a{color:#7A6A48;text-decoration:none;font-size:13px;letter-spacing:.04em;padding:4px 10px;border-radius:3px;transition:all .15s;white-space:nowrap}
+.bknav a:hover{color:var(--ink);background:rgba(184,146,58,.12)}
+.bknav a.dis{color:#C5BDA8;pointer-events:none}
+.bknav .sp{flex:1}
+.bknav .cur{color:var(--cinn);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.coda{background:var(--ink);color:#D8CDB2;padding:56px 26px;text-align:center;position:relative;overflow:hidden}
+.coda .wm2{position:absolute;left:-20px;top:-40px;font-size:230px;color:rgba(184,146,58,.05);font-weight:700;line-height:1;user-select:none}
+.coda .mk{font-family:var(--sans);font-size:12px;letter-spacing:.35em;color:var(--gold);margin-bottom:20px}
+.coda .big{max-width:760px;margin:0 auto;font-size:clamp(18px,3vw,23px);line-height:2.2;font-weight:600;color:#F2E9D5}
+.coda .big b{color:var(--gold-l)}
+.coda .fin{font-family:var(--sans);font-size:13px;color:#8B98AC;margin-top:26px;letter-spacing:.1em}
+.coda .fin::before,.coda .fin::after{content:"———";color:var(--gold);margin:0 14px;letter-spacing:0}
+.h3blk{font-size:17px;font-weight:700;letter-spacing:.05em;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--gold)}
+@media(max-width:900px){
+  .wrap{grid-template-columns:minmax(0,1fr);padding:30px 16px 60px}
+  .side{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .side .t{display:none}
+  .side a{flex:none;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:12.5px}
+  .side a.on{border-color:var(--gold);background:rgba(184,146,58,.1)}
+  .cards.g2,.cards.g3,.cards.g4{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bknav .inner{flex-wrap:wrap;justify-content:space-between;gap:6px;padding:8px 14px;min-height:44px}
+  .bknav .sp{display:none}
+  .bknav a{max-width:54vw;overflow:hidden;text-overflow:ellipsis}
+  .hero{padding:56px 18px 50px}
+  .qa .body{padding-left:22px}
+}
+</style>
+</head>
+<body data-ckkey="zx34-checklist">
+<div id="bar"></div>
+<nav class="bknav"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../33-人与文化/index.html">← 上一篇 · 人与文化</a><a href="../35-人与艺术/index.html">下一篇 · 人与艺术 →</a><span class="sp"></span><span class="cur">人与宗教</span></div></nav>
+<header class="hero" id="top"><div class="wm">安</div>
+  <div class="tag">郭春林 · 哲学智慧与人生思考 · 第十一章《文化的融合》第二节</div>
+  <div class="no">叁拾伍</div>
+  <h1>人与宗教</h1>
+  <div class="sub">生老病死 · 悲情与安顿 · 超越死亡</div>
+  <div class="thesis"><span class="mark">本 讲 核 心 命 题</span>当人意识到「生老病死不可避免」之后，宗教究竟在人生中起什么作用？<br>老师的回答：把人面对生死的<b>悲情</b>，转化为一种可以<b>安顿心灵、指引生命，并最终试图超越死亡的意义系统</b>。</div>
+</header>
+<div class="wrap">
+<nav class="side"><div class="t">本讲目录</div><a href="#map">一篇之图 · 主线</a><a href="#s1">壹 · 这一讲要解决什么</a><a href="#s2">貳 · 从人生悲情到智慧</a><a href="#s3">叁 · 宗教的两个基本作用</a><a href="#s4">肆 · 各宗教的超越死亡叙事</a><a href="#s5">伍 · 安 · 善 · 超</a><a href="#s6">陆 · 真宗教与邪教</a><a href="#s7">柒 · 人到哪里去</a><a href="#s8">捌 · 宗教宽容与共同标准「善」</a><a href="#s9">玖 · 无我利他</a><a href="#s10">拾 · 佛教为什么在中国发生巨大变化</a><a href="#s11">拾壹 · 三条思想线</a><a href="#s12">拾貳 · 批判性提醒</a><a href="#s13">拾叁 · 知识地图与全课位置</a><a href="#s14">拾肆 · 自测与练习</a></nav>
+<main>
+<section class="sec" id="map"><div class="sh"><span class="n">◈</span><h2>一篇之图</h2></div><div class="sd">全讲论证主线 · 点击节点可直达对应章节</div><div class="map"><h3>本讲论证主线</h3><div class="flow"><div class="mnode jump" data-t="#s1"><b>现实困境</b><span>生老病死 → 悲情与死亡焦虑</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s1"><b>核心之问</b><span>人为什么需要宗教？</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s3"><b>两个作用</b><span>慰藉心灵 ＋ 超越生死</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s5"><b>三字抓手</b><span>安 · 善 · 超</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s8"><b>思想转折</b><span>从「哪个是真的」到「是否向善」</span></div><div class="marrow">▼</div><div class="mnode jump" data-t="#s10"><b>文明视角</b><span>宗教本土化 · 佛教中国化</span></div><div class="marrow">▼</div><div class="mnode gold" data-t="#s13"><b>最终归宿</b><span>心有所安，行有所善，死有所归</span></div></div><div class="hint">◈ 节点可点击直达对应章节</div></div></section>
+<section class="sec" id="s1"><div class="sh"><span class="n">壹</span><h2>这一讲要解决什么</h2></div><div class="sd">从「生老病死」出发 · 确立全讲的问题意识</div><p class="prose">这节课的核心，其实是在回答一个很大的问题：<b>当人意识到“生老病死不可避免”之后，宗教究竟在人生中起什么作用？</b>老师给出的答案可以压缩成一句话——</p><div class="quote"><div class="q">宗教把人面对生死时的悲情，转化为一种可以安顿心灵、指引生命，并最终试图超越死亡的意义系统。</div><div class="src">老师对「宗教在人生中起什么作用」的压缩回答</div></div><p class="prose">整节课可以整理成这样一条链条——</p><div class="ladder"><div class="step"><div class="t">生老病死</div></div><div class="step"><div class="t">人产生悲情与恐惧</div></div><div class="step"><div class="t">需要意义解释</div></div><div class="step"><div class="t">宗教安顿心灵</div></div><div class="step"><div class="t">约束欲望、趋向善</div></div><div class="step"><div class="t">建立死后世界或终极超越</div></div><div class="step hot"><div class="t">从而超越死亡焦虑</div></div></div><p class="prose">所以，老师真正讨论的并不只是“宗教是什么”，而是：<b>为什么人类会需要宗教？</b>他的解释是——</p><div class="quote"><div class="q">因为人不仅会死亡，而且知道自己会死亡。</div><div class="src">老师对「人为什么需要宗教」的解释</div></div><p class="prose">动物可能经历死亡，但是人会提前意识到：<b>我终有一天会衰老、患病、失去亲人，并最终死亡。</b>因此，“死亡”对人来说不仅是一个生物事件，也是一个<b>意义问题</b>。</p></section>
+<section class="sec" id="s2"><div class="sh"><span class="n">貳</span><h2>从人生悲情到智慧</h2></div><div class="sd">同一事实的两条路径 · 哲学、心理学与宗教的分工</div><p class="prose">上一节讨论人生的基本事实——生、老、病、死。如果只是停留在这个层面，人很容易产生一种体验——</p><div class="quote"><div class="q">人生最终似乎都指向失去和死亡。</div><div class="src">停留于「生老病死」层面时的体验</div></div><p class="prose">老师把人面对这种事实后的反应分成了两个层次——</p><div class="cards g2"><div class="card"><div class="idx">常</div><h4>普通人的路径</h4><p>悲剧 → 悲伤 → <b>悲情</b></p></div><div class="card"><div class="idx">智</div><h4>「智慧」的路径</h4><p>悲剧 → 思考 → 意义 → <b>智慧</b></p></div></div><div class="quote"><div class="q">智慧的人，要把悲情化作智慧。</div><div class="src">老师很重要的一句话</div></div><p class="prose">这里其实已经触碰到哲学和宗教共同面对的一个问题：<b>既然人生有限，人应该如何生活？</b>不同的回答路径各不相同——</p><div class="cards g3"><div class="card"><div class="idx">哲</div><h4>哲学</h4><p>通过<b>思想</b>来回答</p></div><div class="card"><div class="idx">心</div><h4>心理学</h4><p>通过<b>认知、情绪调节</b>来回答</p></div><div class="card"><div class="idx">宗</div><h4>宗教</h4><p>进一步回答：<b>死亡是不是生命的终点？</b></p></div></div><div class="quote"><div class="q">死亡是不是生命的终点？</div><div class="src">宗教进一步回答的问题</div></div></section>
+<section class="sec" id="s3"><div class="sh"><span class="n">叁</span><h2>宗教的两个基本作用</h2></div><div class="sd">慰藉心灵 · 超越生死 · 从不可控到秩序感</div><p class="prose">老师把宗教概括为两个作用。第一个是<b>慰藉心灵</b>——让人的心安下来。</p><div class="warn"><div class="wt">转录校勘</div><ul><li>原转录中的“喂鸡心灵”，应当是语音识别错误，更可能是——<b>慰藉心灵</b>。</li></ul></div><p class="prose">为什么人需要心灵安顿？因为人生中存在很多<b>不可完全控制</b>的问题——</p><div class="chips"><span class="chip">疾病</span><span class="chip">衰老</span><span class="chip">失去</span><span class="chip">灾难</span><span class="chip">孤独</span><span class="chip">失败</span><span class="chip">死亡</span></div><p class="prose">宗教提供了一套解释框架，让人相信：<b>我的生命不是完全偶然的；我的痛苦可能具有某种意义；我属于一个比“个人生命”更大的整体。</b>于是——</p><div class="ladder"><div class="step"><div class="t">不可控</div></div><div class="step"><div class="t">获得解释</div></div><div class="step"><div class="t">产生秩序感</div></div><div class="step hot"><div class="t">心灵获得安顿</div></div></div><p class="prose">这可以理解为宗教的<b>现实功能</b>。第二个作用则更深层——<b>超越生死</b>：哲学、心理学也可以帮助人面对死亡，但是宗教往往进一步建立一种关于“死亡之后”的世界图景。它不仅回答“我应该怎样活？”，还试图回答——</p><div class="quote"><div class="q">我死后去哪里？</div><div class="src">宗教在「我应该怎样活」之外进一步回答的问题</div></div></section>
+<section class="sec" id="s4"><div class="sh"><span class="n">肆</span><h2>各宗教的超越死亡叙事</h2></div><div class="sd">叙述不同 · 结构相同 · 宗教的共同结构</div><p class="prose">课程中举了几个例子——不同传统对“死亡之后”各有叙述，但都建立了自己的终极图景：</p><div class="cards g2"><div class="card"><div class="idx">基</div><h4>基督教传统</h4><p>死亡 → 末世审判 / 救赎 → <b>与上帝同在、永生</b></p></div><div class="card"><div class="idx">祖</div><h4>中国传统宗教和祖先信仰</h4><p>死亡 → 祖先世界 → <b>与祖先之间仍保持关系</b></p></div><div class="card"><div class="idx">印</div><h4>印度宗教传统</h4><p>死亡 → 轮回 / 解脱 → <b>摆脱生死循环或与终极实在建立关系</b></p></div><div class="card"><div class="idx">佛</div><h4>佛教</h4><p>生死轮回 → 修行 → <b>解脱、涅槃</b>；某些传统也强调往生净土、弥勒净土等</p></div></div><div class="quote"><div class="q">不同宗教虽然叙述方式不同，但都试图解决人的终极焦虑。</div><div class="src">老师由各宗教叙事得出的判断</div></div><p class="prose">即：<b>死亡不是毫无意义的终结。</b>这一点可以概括成宗教的共同结构——这是这一节非常值得记住的结构：</p><div class="ladder"><div class="step"><div class="t">有限生命</div></div><div class="step"><div class="t">死亡焦虑</div></div><div class="step"><div class="t">建立终极世界</div></div><div class="step"><div class="t">给予生命方向</div></div><div class="step hot"><div class="t">超越死亡恐惧</div></div></div></section>
+<section class="sec" id="s5"><div class="sh"><span class="n">伍</span><h2>安 · 善 · 超</h2></div><div class="sd">两个世俗作用，一个超越作用 · 本讲的记忆抓手</div><p class="prose">老师实际上提出了一个很有意思的分类——</p><div class="quote"><div class="q">宗教有两个世俗作用，一个超越作用。</div><div class="src">老师的分类</div></div><div class="cards g3"><div class="card"><div class="idx">一</div><h4>安顿心灵</h4><p>解决<b>焦虑、痛苦、失去</b>——让心安下来</p></div><div class="card"><div class="idx">二</div><h4>约束欲望</h4><p>解决<b>人应该怎样生活</b>——控制欲望，趋向善</p></div><div class="card"><div class="idx">三</div><h4>超越生死</h4><p>解决<b>人最终走向哪里</b>——让生命获得超越死亡的意义</p></div></div><p class="prose">可以进一步概括成三个字——<b>安、善、超。</b>这三个字非常适合作为这节课的记忆抓手。</p></section>
+<section class="sec" id="s6"><div class="sh"><span class="n">陆</span><h2>真宗教与邪教</h2></div><div class="sd">一个鲜明的判断 · 两条相反的链条</div><p class="prose">老师有一个非常鲜明的判断——</p><div class="quote"><div class="q">凡是克服你欲望的是真宗教，凡是调动你欲望的皆为邪教。</div><div class="src">老师对「真宗教 / 邪教」的判断标准</div></div><p class="prose">这句话很适合作为思想命题理解。老师想表达的本质应该是：<b>健康的宗教</b>倾向于节制人的贪欲、自我中心和占有欲；<b>有害的宗教组织</b>则可能利用人的恐惧、贪欲、依赖和崇拜来操纵人。可以整理成两条链——</p><div class="ladder"><div class="step"><div class="t">减少贪欲</div></div><div class="step"><div class="t">节制自我</div></div><div class="step"><div class="t">增强慈悲</div></div><div class="step"><div class="t">建立意义</div></div><div class="step hot"><div class="t">导向善</div></div></div><div class="ladder"><div class="step"><div class="t">制造恐惧</div></div><div class="step"><div class="t">刺激欲望</div></div><div class="step"><div class="t">神化领袖</div></div><div class="step"><div class="t">要求绝对服从</div></div><div class="step"><div class="t">切断外部信息</div></div><div class="step hot"><div class="t">控制成员</div></div></div><p class="prose">所以这句话的真正重点不是“欲望本身都是坏的”，而是——<b>一个宗教究竟在帮助人超越自我，还是在利用人的欲望控制人。</b></p></section>
+<section class="sec" id="s7"><div class="sh"><span class="n">柒</span><h2>人到哪里去</h2></div><div class="sd">三个经典之问 · 本节的重点在第三问</div><p class="prose">老师反复提到三个经典问题——这实际上也是哲学、宗教长期面对的三个问题：</p><div class="cards g3"><div class="card"><div class="idx">本</div><h4>人是什么？</h4><p>人的<b>本质</b>问题</p></div><div class="card"><div class="idx">源</div><h4>人从哪里来？</h4><p>生命<b>起源</b>问题</p></div><div class="card"><div class="idx">归</div><h4>人到哪里去？</h4><p><b>死亡与终极归宿</b>问题——本节重点</p></div></div><p class="prose">这一节重点放在第三个问题。老师给出的答案不是强调某一个具体宗教，而是——<b>到“善的世界”去。</b></p><p class="prose">于是他把不同宗教的终极世界理解成一种共同象征：天堂、净土、祖先世界等虽然不同，但都代表——<b>一个比现实世界更加纯净、善、美好的终极秩序。</b></p></section>
+<section class="sec" id="s8"><div class="sh"><span class="n">捌</span><h2>宗教宽容与共同标准「善」</h2></div><div class="sd">从「宗教为什么存在」转向「怎样看待不同宗教」</div><p class="prose">这节课后半部分的重点，其实已经从“宗教为什么存在”转向“<b>怎样看待不同宗教</b>”。老师提出——</p><div class="quote"><div class="q">信仰什么宗教并不是最重要的。</div><div class="src">老师的基本态度</div></div><p class="prose">真正重要的是它是否<b>让人心安、使人向善、帮助人面对生死</b>。因此——</p><div class="duo"><div class="col neg"><h4>不强调</h4><ul><li>“我的宗教是真理，你的是错误。”</li></ul></div><div class="col pos"><h4>而强调</h4><ul><li><b>不同宗教可能使用不同语言，回答相似的人生终极问题</b></li></ul></div></div><p class="prose">这里体现出一种<b>宗教多元主义 / 宗教宽容主义</b>的思想倾向，可以概括为：<b>形式不同 → 学说不同 → 象征不同 → 终极关怀可能相通。</b></p><p class="prose">老师进一步把不同宗教的共同核心归结成——<b>善</b>。于是这节课发生了一个非常重要的思想转折，这是这一节非常值得思考的地方：</p><div class="cards g2"><div class="card"><div class="idx">始</div><h4>最开始的问题</h4><p><b>哪个宗教是真的？</b>——评判标准是教义是否相同</p></div><div class="card"><div class="idx">终</div><h4>最后的问题</h4><p><b>这个宗教是否让人向善？</b>——评判标准是它把人变成什么样的人</p></div></div><p class="prose">由此可以形成一个公式：<b>宗教的价值 ≠ 名称和派别</b>，而更接近——</p><div class="quote"><div class="q">宗教的价值 = 是否让人心安 + 是否减少贪执 + 是否趋向善 + 是否赋予生命意义。</div><div class="src">由本节转折形成的公式</div></div></section>
+<section class="sec" id="s9"><div class="sh"><span class="n">玖</span><h2>无我利他</h2></div><div class="sd">「善」的佛教解释 · 两条生命结构</div><p class="prose">老师引用佛教思想，把“善”进一步解释为<b>无我、利他</b>。一个人如果始终围绕“<b>我得到什么？</b>”，那么很容易进入——</p><div class="ladder"><div class="step"><div class="t">欲望</div></div><div class="step"><div class="t">比较</div></div><div class="step"><div class="t">占有</div></div><div class="step hot"><div class="t">焦虑</div></div></div><p class="prose">而如果逐渐转向“<b>我可以为别人做什么？</b>”，生命结构就会发生变化——</p><div class="chips"><span class="chip">自我中心 ↓</span><span class="chip">利他 ↑</span><span class="chip">执着 ↓</span><span class="chip">内心安宁 ↑</span></div><p class="prose">所以老师把<b>无我 → 利他 → 善</b>，看作宗教共同具有的一种<b>精神方向</b>。</p></section>
+<section class="sec" id="s10"><div class="sh"><span class="n">拾</span><h2>佛教为什么在中国发生巨大变化</h2></div><div class="sd">宗教本土化 · 与「开放—包容—重构」的连接</div><p class="prose">课程后半段实际上又引出了一个文化问题——<b>宗教进入一种文明以后，会不会被重新塑造？</b>老师以佛教进入中国为例。</p><p class="prose">佛教起源于印度，但进入中国以后，与儒家、道家、中国伦理、祖先观念、政治社会结构不断融合，最后逐渐形成具有中国特色的佛教传统，例如——</p><div class="chips"><span class="chip">禅宗</span><span class="chip">天台宗</span><span class="chip">华严宗</span><span class="chip">净土宗</span><span class="chip">…</span></div><div class="warn"><div class="wt">这里真正重要的知识点</div><ul><li>不是“到底有八宗还是十宗”——<b>宗派数目不是考点</b>，重要的是下面这句判断。</li></ul></div><div class="quote"><div class="q">宗教不是简单移植，而会经历本土化。</div><div class="src">佛教中国化部分真正重要的知识点</div></div><div class="ladder"><div class="step"><div class="t">印度佛教</div></div><div class="step"><div class="t">进入中国</div></div><div class="step"><div class="t">与中国思想碰撞</div></div><div class="step"><div class="t">吸收儒道文化</div></div><div class="step"><div class="t">重新解释</div></div><div class="step hot"><div class="t">形成中国佛教</div></div></div><p class="prose">这实际上和前面课程讲的中国文化<b>「开放—包容—重构」</b>形成了连接。</p></section>
+<section class="sec" id="s11"><div class="sh"><span class="n">拾壹</span><h2>三条思想线</h2></div><div class="sd">整节课重新整理后 · 老师同时在讲三件事</div><p class="prose">把整节课重新整理以后，可以发现老师同时在讲三件事情——</p><div class="cards g3"><div class="card"><div class="idx">生</div><h4>人生问题</h4><p>人生有限 → 生老病死 → <b>悲情</b></p></div><div class="card"><div class="idx">宗</div><h4>宗教问题</h4><p>宗教 → 安顿心灵 → 趋善 → <b>超越死亡</b></p></div><div class="card"><div class="idx">文</div><h4>文明问题</h4><p>不同宗教 → 不同表达 → 相互尊重 → <b>文化融合与本土化</b></p></div></div><p class="prose">于是三条线最终汇聚成——<b>人在面对有限生命的时候，通过宗教建立意义，并通过善与超越，使有限生命连接到某种更大的价值世界。</b></p></section>
+<section class="sec" id="s12"><div class="sh"><span class="n">拾貳</span><h2>批判性提醒</h2></div><div class="sd">课程观点 ≠ 严格宗教学结论 · 三处需要区分的地方</div><p class="prose">老师的很多说法适合用于<b>哲学课堂启发思考</b>，但不能全部当作严格的宗教学事实。这一点很重要，至少要区分以下三处——</p><div class="warn"><div class="wt">课程观点 ≠ 严格宗教学结论</div><ul><li>“所有宗教目的都是超越生死”——这是一个很强的概括。死亡、救赎、解脱、终极意义确实是许多宗教的重要主题，但<b>不同宗教关注重点并不完全相同</b>：有些更强调伦理生活、共同体、神圣秩序、人与神的关系。</li><li>“真宗教克服欲望，邪教调动欲望”——这是一个有启发性的伦理标准，但<b>不是完整的学术定义</b>。判断一个组织是否具有邪教式危险，更需要观察：精神控制、信息控制、经济剥削、人身控制、领袖绝对化等。</li><li>“所有宗教都是善”——也需要进一步区分。世界主要宗教传统通常包含劝善、慈悲、自律等伦理资源，但历史中的宗教组织和信徒行为并不总是符合这些理想。要区分<b>宗教理想</b>和<b>历史实践</b>。</li></ul></div><p class="prose">按这三条区分，课程内容可以放心地当作<b>思想启发</b>来使用，而不是当作事实清单来背诵。</p></section>
+<section class="sec" id="s13"><div class="sh"><span class="n">拾叁</span><h2>知识地图与全课位置</h2></div><div class="sd">一条可背诵的主轴 · 承接「人生的真谛」</div><p class="prose">复习时，可以只记这一条主轴——</p><div class="ladder"><div class="step"><div class="t">人生有限</div></div><div class="step"><div class="t">生老病死</div></div><div class="step"><div class="t">悲情 / 死亡焦虑</div></div><div class="step"><div class="t">宗教产生终极关怀</div></div><div class="step"><div class="t">现实层面</div><div class="d">慰藉心灵 → 节制欲望 → 趋向善</div></div><div class="step"><div class="t">终极层面</div><div class="d">建立死后世界 → 赋予死亡意义 → 超越生死</div></div><div class="step hot"><div class="t">心有所安，行有所善，死有所归</div></div></div><div class="quote"><div class="q">心有所安，行有所善，死有所归。</div><div class="src">整理者认为最适合概括这一节的一句话</div></div><p class="prose">这一节并不是孤立的一课。它实际上承接了前面的<b>「人生的真谛——生老病死」</b>，然后继续追问：<b>既然人生终有死亡，人怎样承受这一事实？</b>答案是三者分工——</p><div class="cards g3"><div class="card"><div class="idx">哲</div><h4>哲学</h4><p>帮助我们<b>理解</b>死亡</p></div><div class="card"><div class="idx">心</div><h4>心理学</h4><p>帮助我们<b>接受</b>死亡</p></div><div class="card"><div class="idx">宗</div><h4>宗教</h4><p>进一步尝试赋予死亡一种<b>超越性的意义</b></p></div></div><p class="prose">所以这一节最值得你真正记住的，并不是某一种宗教的具体教义，而是一个更深的问题——</p><div class="quote"><div class="q">人类为什么总要创造一个超过有限生命的意义世界？</div><div class="src">这一节真正要讨论的哲学问题</div></div><p class="prose">因为只有当一个人把自己放进一个比“这一生”更大的坐标系里时，很多原本无法承受的事情——<b>衰老、失去、失败乃至死亡</b>——才可能被重新理解。这可能才是这节「人与宗教」真正要讨论的哲学问题。</p></section>
+<section class="sec" id="s14"><div class="sh"><span class="n">拾肆</span><h2>自测与练习</h2></div><div class="sd">四个模块 · 分类练习会即时判分 · 勾选清单自动保存进度（本设备）</div><div class="counters"><div class="cnt"><div class="v" data-c="2">0</div><div class="l">世俗作用</div></div><div class="cnt"><div class="v" data-c="1">0</div><div class="l">超越作用</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">经典三问</div></div><div class="cnt"><div class="v" data-c="3">0</div><div class="l">条思想线</div></div></div><div class="panel"><h3><span class="no2">①</span>安 · 善 · 超分档练习</h3><div class="pd">判断下列表述主要对应宗教的哪一层功能，点选后即时判分</div><div id="sort-area"><div class="sort-it" data-why="慰藉心灵，宗教的现实功能 → 安"><div class="st">1. 让人的心安下来——不可控 → 获得解释 → 产生秩序感</div><div class="opts"><button data-ok="1">安（安顿心灵）</button><button data-ok="0">善（约束欲望）</button><button data-ok="0">超（超越生死）</button></div><div class="verdict"></div></div><div class="sort-it" data-why="解释框架带来的心灵安顿 → 安"><div class="st">2. 我属于一个比“个人生命”更大的整体</div><div class="opts"><button data-ok="1">安（安顿心灵）</button><button data-ok="0">善（约束欲望）</button><button data-ok="0">超（超越生死）</button></div><div class="verdict"></div></div><div class="sort-it" data-why="解决「人应该怎样生活」→ 善"><div class="st">3. 让人控制欲望，趋向善</div><div class="opts"><button data-ok="0">安（安顿心灵）</button><button data-ok="1">善（约束欲望）</button><button data-ok="0">超（超越生死）</button></div><div class="verdict"></div></div><div class="sort-it" data-why="宗教共同的精神方向，落在「善」→ 善"><div class="st">4. 无我 → 利他 → 善</div><div class="opts"><button data-ok="0">安（安顿心灵）</button><button data-ok="1">善（约束欲望）</button><button data-ok="0">超（超越生死）</button></div><div class="verdict"></div></div><div class="sort-it" data-why="关于「死亡之后」的世界图景 → 超"><div class="st">5. 建立死后世界，回答「我死后去哪里？」</div><div class="opts"><button data-ok="0">安（安顿心灵）</button><button data-ok="0">善（约束欲望）</button><button data-ok="1">超（超越生死）</button></div><div class="verdict"></div></div><div class="sort-it" data-why="不同宗教的终极世界叙事 → 超"><div class="st">6. 天堂、净土、祖先世界的共同象征</div><div class="opts"><button data-ok="0">安（安顿心灵）</button><button data-ok="0">善（约束欲望）</button><button data-ok="1">超（超越生死）</button></div><div class="verdict"></div></div></div><div id="sort-stat"></div></div><div class="panel"><h3><span class="no2">②</span>本讲通关清单</h3><div class="pd">对照下列六项，检验自己是否真正消化了这一讲</div><div id="ck-area"><div class="ck" data-k="k0"><div class="box"></div><div class="ct">我能说清人为什么需要宗教——人不仅会死亡，而且知道自己会死亡</div></div><div class="ck" data-k="k1"><div class="box"></div><div class="ct">我能背出「安、善、超」三个字及对应的三个层次</div></div><div class="ck" data-k="k2"><div class="box"></div><div class="ct">我能复述「真宗教 / 邪教」的判断标准，并说出它的本质与限度</div></div><div class="ck" data-k="k3"><div class="box"></div><div class="ct">我能说出三个经典之问，并指出本节重点在「人到哪里去」</div></div><div class="ck" data-k="k4"><div class="box"></div><div class="ct">我能解释宗教价值的公式：心安 ＋ 减少贪执 ＋ 趋向善 ＋ 赋予生命意义</div></div><div class="ck" data-k="k5"><div class="box"></div><div class="ct">我能举出佛教中国化的链条，并连接「开放—包容—重构」</div></div></div><div id="ck-stat"></div></div><div class="panel"><h3><span class="no2">③</span>终极测验 · 五题</h3><div class="pd">单选 · 点选后立即判定并显示解析 · 全部作答后统计得分</div><div id="qz-area"><div class="qz"><div class="qt"><span class="qq">Q1</span>老师给出的答案，压缩成一句话是什么？</div><div class="ans"><button data-ok="0">A. 宗教是一套解释世界的知识体系</button><button data-ok="1">B. 宗教把人面对生死时的悲情，转化为可以安顿心灵、指引生命并试图超越死亡的意义系统</button><button data-ok="0">C. 宗教是稳定社会秩序的工具</button><button data-ok="0">D. 宗教是人畏惧自然力量的产物</button></div><div class="exp">开篇的压缩句——注意落点是「悲情 → 意义系统」的转化。</div></div><div class="qz"><div class="qt"><span class="qq">Q2</span>为什么人类会需要宗教？老师的解释是——</div><div class="ans"><button data-ok="0">A. 因为人天生畏惧黑暗</button><button data-ok="0">B. 因为社会需要道德约束</button><button data-ok="1">C. 因为人不仅会死亡，而且知道自己会死亡</button><button data-ok="0">D. 因为神灵真实存在</button></div><div class="exp">人会提前意识到衰老、患病、失去亲人并最终死亡——死亡对人不仅是生物事件，也是意义问题。</div></div><div class="qz"><div class="qt"><span class="qq">Q3</span>三种宗教功能可以进一步概括为哪三个字？</div><div class="ans"><button data-ok="0">A. 信、望、爱</button><button data-ok="0">B. 戒、定、慧</button><button data-ok="1">C. 安、善、超</button><button data-ok="0">D. 真、善、美</button></div><div class="exp">安顿心灵、约束欲望、超越生死——两个世俗作用，一个超越作用。</div></div><div class="qz"><div class="qt"><span class="qq">Q4</span>这节课非常重要的思想转折：评判宗教的标准从什么变成了什么？</div><div class="ans"><button data-ok="0">A. 从「是否让人向善」变成「教义是否相同」</button><button data-ok="1">B. 从「教义是否相同」变成「它把人变成什么样的人」</button><button data-ok="0">C. 从「历史悠久」变成「信徒众多」</button><button data-ok="0">D. 从「本土宗教」变成「外来宗教」</button></div><div class="exp">最开始的问题是「哪个宗教是真的？」最后变成了「这个宗教是否让人向善？」</div></div><div class="qz"><div class="qt"><span class="qq">Q5</span>佛教中国化这一段，真正重要的知识点是什么？</div><div class="ans"><button data-ok="0">A. 中国佛教到底有八宗还是十宗</button><button data-ok="0">B. 禅宗、天台宗、华严宗、净土宗的创立年代</button><button data-ok="1">C. 宗教不是简单移植，而会经历本土化</button><button data-ok="0">D. 印度佛教传入中国的确切年份</button></div><div class="exp">源文明确说：重要的不是宗派数目，而是本土化——印度佛教 → 进入中国 → 吸收儒道 → 重新解释 → 形成中国佛教。</div></div></div><div id="qz-score"></div></div><div class="panel"><h3><span class="no2">④</span>带走这三句</h3><div class="pd">本讲最值得长期记住的三句话 · 复习时先默背再看原文</div><div class="quote"><div class="q">智慧的人，要把悲情化作智慧。</div><div class="src">老师很重要的一句话</div></div><div class="quote"><div class="q">凡是克服你欲望的是真宗教，凡是调动你欲望的皆为邪教。</div><div class="src">真宗教 / 邪教的判断标准（宜作思想命题理解）</div></div><div class="quote"><div class="q">心有所安，行有所善，死有所归。</div><div class="src">整节课的最终收束</div></div></div></section>
+</main>
+</div>
+<nav class="bknav bottom"><div class="inner"><a href="../index.html">⌂ 总目录</a><a href="../33-人与文化/index.html">← 上一篇 · 人与文化</a><a href="../35-人与艺术/index.html">下一篇 · 人与艺术 →</a><span class="sp"></span><span class="cur">人与宗教</span></div></nav>
+<footer class="coda"><div class="wm2">归</div>
+  <div class="mk">如 果 只 记 住 一 句 话</div>
+  <div class="big">人生有限，人终有一死；<br>而宗教把人面对生死的<b>悲情</b>，转化为可以安顿心灵、指引生命、并试图超越死亡的意义系统。<br><br>最终不过是：<b>心有所安，行有所善，死有所归。</b></div>
+  <div class="fin">哲学智慧与人生思考 · 郭春林 · 第35讲《人与宗教》精读</div>
+</footer>
+<script id="pdata" type="application/json">{"secs": ["map", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14"], "mnodes": ["#s1", "#s1", "#s3", "#s5", "#s8", "#s10", "#s13"], "sortok": [0, 0, 1, 1, 2, 2], "quizok": [1, 2, 2, 1, 2], "ckkey": "zx34-checklist"}</script>
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function onScroll(){
+    var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(sc/max*100):0)+'%';
+    var links=[].slice.call(document.querySelectorAll('.side a'));
+    var cur=null;
+    links.forEach(function(a){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el&&el.offsetTop<=sc+120){cur=a;}
+    });
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.mnode[data-t]').forEach(function(n){
+    n.addEventListener('click',function(){
+      var t=document.querySelector(n.getAttribute('data-t'));
+      if(t) t.scrollIntoView({behavior:'instant',block:'start'});
+    });
+  });
+  document.querySelectorAll('.case .h').forEach(function(h){
+    h.addEventListener('click',function(){
+      var c=h.parentElement, was=c.classList.contains('on');
+      document.querySelectorAll('.case.on').forEach(function(x){x.classList.remove('on')});
+      if(!was) c.classList.add('on');
+    });
+  });
+  var counted=false;
+  var cf=document.querySelector('.counters');
+  if(cf){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('.cnt .v').forEach(function(v){
+            var target=+v.getAttribute('data-c'), n=0;
+            var t=setInterval(function(){
+              n++; v.textContent=n;
+              if(n>=target){clearInterval(t)}
+            },130);
+          });
+        }
+      });
+    },{threshold:.3});
+    io.observe(cf);
+  }
+  var sa=document.getElementById('sort-area'), sstat=document.getElementById('sort-stat');
+  var sdone=0, sok=0, sN=document.querySelectorAll('.sort-it').length;
+  if(sa){
+    document.querySelectorAll('.sort-it').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('done')) return;
+          var okBtn=null;
+          d.querySelectorAll('button').forEach(function(x){ if(x.getAttribute('data-ok')==='1') okBtn=x; });
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add('done','v-'+(pick?'ok':'no'));
+          if(pick) b.classList.add('ok'); else b.classList.add('no');
+          if(okBtn&&!pick) okBtn.classList.add('ok');
+          var v=d.querySelector('.verdict');
+          v.textContent=(pick?'✓ 正确 · ':'✗ 正确答案「'+okBtn.textContent+'」 · ')+d.getAttribute('data-why');
+          sdone++; if(pick) sok++;
+          sstat.style.display='block';
+          var sAll=(sok===sN&&sN>0);
+          sstat.textContent='已完成 '+sdone+' / '+sN+' · 答对 '+sok+' 题'+(sdone===sN?(sAll?' · 满分！':' · 建议回顾错题对应小节后再试'):'');
+        });
+      });
+    });
+  }
+  var CKKEY=document.body.getAttribute('data-ckkey');
+  var ckArea=document.getElementById('ck-area'), ckStat=document.getElementById('ck-stat');
+  function loadCk(){ try{return JSON.parse(localStorage.getItem(CKKEY))||{}}catch(e){return{}} }
+  function renderCkStat(){
+    if(!ckArea) return;
+    var st=loadCk(), n=0, tot=ckArea.querySelectorAll('.ck').length;
+    ckArea.querySelectorAll('.ck').forEach(function(ck){ if(st[ck.getAttribute('data-k')]) n++; });
+    if(ckStat) ckStat.textContent='通关进度：'+n+' / '+tot+(n===tot?' · 🎉 全部打通！':'');
+  }
+  if(ckArea){
+    var st0=loadCk();
+    ckArea.querySelectorAll('.ck').forEach(function(ck){
+      if(st0[ck.getAttribute('data-k')]) ck.classList.add('on');
+      ck.addEventListener('click',function(){
+        var k=ck.getAttribute('data-k'), s=loadCk();
+        s[k]=!s[k];
+        try{localStorage.setItem(CKKEY,JSON.stringify(s))}catch(e){}
+        ck.classList.toggle('on',s[k]);
+        renderCkStat();
+      });
+    });
+    renderCkStat();
+  }
+  var qa=document.getElementById('qz-area'), qscore=document.getElementById('qz-score');
+  var qdone=0, qok=0, qN=document.querySelectorAll('.qz').length;
+  if(qa){
+    document.querySelectorAll('.qz').forEach(function(d){
+      d.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click',function(){
+          if(d.classList.contains('right')||d.classList.contains('wrong')) return;
+          var pick=b.getAttribute('data-ok')==='1';
+          d.classList.add(pick?'right':'wrong');
+          if(!pick) b.classList.add('pick');
+          qdone++; if(pick) qok++;
+          if(qdone===qN){
+            qscore.style.display='block';
+            qscore.textContent='测验完成：'+qok+' / '+qN+(qok===qN?' · 满分，本讲核心已吃透 🎉':(qok>=Math.ceil(qN*0.6)?' · 良好，错题解析已展开，可回到对应章节复习':' · 建议从「一篇之图」重新走一遍主线'));
+          }
+        });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
